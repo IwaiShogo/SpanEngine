@@ -25,8 +25,8 @@
 #include <chrono>
 #include <cstdio>
 #include <cassert>
-#include <typeindex> // ECSの型ID用
-#include <filesystem> // モデルローダー用
+#include <typeindex>
+#include <filesystem>
 
 // 3. DirectX 12 & WRL (Windows Runtime Library)
 #include <d3d12.h>
@@ -35,13 +35,18 @@
 #include <wrl.h>
 #include <DirectXMath.h>
 
-// 4. 共通の名前空間の省略
+// 4. Assimp
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
+// 5. 共通の名前空間の省略
 using namespace Microsoft::WRL; // ComPtr用
 using namespace DirectX;		// XMMATRIX, XMFLOAT3等用
 
 namespace Span
 {
-	// 5. 基本型のエイリアス (RustやC#風の型定義)
+	// 6. 基本型のエイリアス (RustやC#風の型定義)
 	using int8	 = int8_t;
 	using int16	 = int16_t;
 	using int32	 = int32_t;
@@ -52,7 +57,7 @@ namespace Span
 	using uint32 = uint32_t;
 	using uint64 = uint64_t;
 
-	// 6. 便利マクロ / ヘルパー関数
+	// 7. 便利マクロ / ヘルパー関数
 
 	// メモリ安全解放 (ポインタ削除)
 	template<typename T>

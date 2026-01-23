@@ -23,3 +23,13 @@ add_custom_command(TARGET Playground POST_BUILD
     "$<TARGET_FILE_DIR:Playground>/Shaders"
     COMMENT "Copying Shaders to Output Directory..."
 )
+
+# ------------------------------------------------------------------------------
+# Assetsフォルダを実行ファイルの出力ディレクトリに自動コピーする
+# ------------------------------------------------------------------------------
+add_custom_command(TARGET Playground POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    "${CMAKE_CURRENT_SOURCE_DIR}/Assets"
+    "$<TARGET_FILE_DIR:Playground>/Assets"
+    COMMENT "Copying Assets to Output Directory..."
+)

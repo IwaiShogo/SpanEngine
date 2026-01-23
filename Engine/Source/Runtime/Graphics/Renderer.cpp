@@ -332,7 +332,15 @@ namespace Span
 		material->Update();
 
 		// 3. コマンドセット
-		commandList->SetPipelineState(pipelineState.Get());
+		if (material->IsTransparent())
+		{
+			commandList->SetPipelineState(pipelineStateTransparent.Get());
+		}
+		else
+		{
+			commandList->SetPipelineState(pipelineState.Get());
+		}
+
 		commandList->SetGraphicsRootSignature(rootSignature.Get());
 
 		// スロット0: Transform
@@ -445,21 +453,7 @@ namespace Span
 		psoDesc.RasterizerState.ForcedSampleCount = 0;
 		psoDesc.RasterizerState.ConservativeRaster = D3D12_CONSERVATIVE_RASTERIZATION_MODE_OFF;
 
-		// ブレンド設定 (不透明)
-		psoDesc.BlendState.AlphaToCoverageEnable = FALSE;
-		psoDesc.BlendState.IndependentBlendEnable = FALSE;
-		const D3D12_RENDER_TARGET_BLEND_DESC defaultRenderTargetBlendDesc =
-		{
-			FALSE,FALSE,
-			D3D12_BLEND_ONE, D3D12_BLEND_ZERO, D3D12_BLEND_OP_ADD,
-			D3D12_BLEND_ONE, D3D12_BLEND_ZERO, D3D12_BLEND_OP_ADD,
-			D3D12_LOGIC_OP_NOOP,
-			D3D12_COLOR_WRITE_ENABLE_ALL
-		};
-		for (UINT i = 0; i < D3D12_SIMULTANEOUS_RENDER_TARGET_COUNT; ++i)
-			psoDesc.BlendState.RenderTarget[i] = defaultRenderTargetBlendDesc;
-
-		// その他の設定
+		// デプスステンシル
 		psoDesc.DepthStencilState.DepthEnable = TRUE; // まだ深度バッファがないのでOFF
 		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ALL;
 		psoDesc.DepthStencilState.DepthFunc = D3D12_COMPARISON_FUNC_LESS;
@@ -471,9 +465,47 @@ namespace Span
 		psoDesc.SampleDesc.Count = 1;
 		psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
 
+		// ====================================================
+		// 1. 不透明用 PSO (Opaque)
+		// ====================================================
+		// ブレンド無効 (上書き)
+		D3D12_RENDER_TARGET_BLEND_DESC opaqueBlend = {};
+		opaqueBlend.BlendEnable = FALSE;
+		opaqueBlend.LogicOpEnable = FALSE;
+		opaqueBlend.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
+		psoDesc.BlendState.RenderTarget[0] = opaqueBlend;
+
 		if (FAILED(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&pipelineState))))
 		{
-			SPAN_ERROR("Failed to create Pipeline State!");
+			SPAN_ERROR("Failed to create Opaque PSO!");
+			return false;
+		}
+
+		// ====================================================
+		// 2. 透明用 PSO (Transparent)
+		// ====================================================
+		// アルファブレンド設定
+		// FinalColor = (SrcColor * SrcAlpha) + (DestColor * (1 - SrcAlpha))
+		D3D12_RENDER_TARGET_BLEND_DESC transBlend = {};
+		transBlend.BlendEnable = TRUE;
+		transBlend.LogicOpEnable = FALSE;
+		transBlend.SrcBlend = D3D12_BLEND_SRC_ALPHA;
+		transBlend.DestBlend = D3D12_BLEND_INV_SRC_ALPHA;
+		transBlend.BlendOp = D3D12_BLEND_OP_ADD;
+		transBlend.SrcBlendAlpha = D3D12_BLEND_ONE;
+		transBlend.DestBlendAlpha = D3D12_BLEND_ZERO;
+		transBlend.BlendOpAlpha = D3D12_BLEND_OP_ADD;
+		transBlend.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
+
+		psoDesc.BlendState.RenderTarget[0] = transBlend;
+
+		// 半透明物体は深度バッファに書き込まないことが多い
+		// (後ろのものが描画されなくなるのを防ぐため。ただし描画順序管理が必要)
+		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;
+
+		if (FAILED(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&pipelineStateTransparent))))
+		{
+			SPAN_ERROR("Failed to create Transparent PSO!");
 			return false;
 		}
 		return true;

@@ -31,7 +31,7 @@ file(GLOB_RECURSE ENGINE_SOURCES
 )
 
 # ライブラリとして定義
-add_library(SpanCore STATIC ${ENGINE_SOURCES})
+add_library(SpanCore STATIC ${ENGINE_SOURCES} "Source/Runtime/Graphics/ModelLoader.cpp")
 
 # インクルードパスの設定
 target_include_directories(SpanCore PUBLIC 

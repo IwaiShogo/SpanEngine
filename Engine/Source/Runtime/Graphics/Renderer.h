@@ -67,7 +67,8 @@ namespace Span
 
 		// --- パイプライン関連 ---
 		ComPtr<ID3D12RootSignature> rootSignature;
-		ComPtr<ID3D12PipelineState> pipelineState;
+		ComPtr<ID3D12PipelineState> pipelineState;				// 不透明用 (Opaque)
+		ComPtr<ID3D12PipelineState> pipelineStateTransparent;	// 透明用 (Transparent)
 
 		// --- シェーダー ---
 		Shader* vs = nullptr;

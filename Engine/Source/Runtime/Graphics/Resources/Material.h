@@ -12,7 +12,8 @@ namespace Span
 		float Roughness = 0.5f;					// 粗さ (0 = ツルツル, 1 = ザラザラ)
 
 		float Metallic = 0.0f;					// 金属度 (0 = 非金属, 1 = 金属)
-		float Padding[3];						// バイト数合わせ
+		float Opacity = 1.0f;					// 透明度 (1 = 不透明, 0 = 透明)
+		float Padding[2];						// バイト数合わせ
 	};
 
 	class Material
@@ -35,6 +36,17 @@ namespace Span
 		void SetRoughness(float roughness) { data.Roughness = roughness; isDirty = true; }
 		void SetMetallic(float metallic) { data.Metallic = metallic; isDirty = true; }
 
+		void SetOpacity(float opacity)
+		{
+			data.Opacity = opacity;
+			isDirty = true;
+			// 1.0未満なら自動的に透明モードとみなすフラグ
+			isTransparent = (opacity < 1.0f);
+		}
+
+		// マテリアルが透明か
+		bool IsTransparent() const { return isTransparent; }
+
 		// GPUアドレス取得
 		D3D12_GPU_VIRTUAL_ADDRESS GetGPUVirtualAddress() const;
 
@@ -42,5 +54,6 @@ namespace Span
 		MaterialData data;
 		ConstantBuffer<MaterialData>* constantBuffer = nullptr;
 		bool isDirty = true;
+		bool isTransparent = false;
 	};
 }
