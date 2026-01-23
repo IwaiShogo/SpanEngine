@@ -12,21 +12,27 @@ cbuffer MaterialBuffer : register(b1)
     float Roughness;
     float Metallic;
     float Opacity;
-    float3 Padding;
+    float UseTexture;
+    float Padding;
 };
+
+// テクスチャとサンプラー
+Texture2D g_texture : register(t0);
+SamplerState g_sampler : register(s0);
 
 struct VSInput
 {
     float3 position : POSITION;
     float3 normal : NORMAL;
-    float3 color : COLOR; // 今回は使いませんが残しておきます
+    float2 uv : TEXCOORD0;
 };
 
 struct PSInput
 {
     float4 position : SV_POSITION;
     float3 normal : NORMAL;
-    float3 worldPos : TEXCOORD0; // ライト計算用のワールド座標
+    float3 worldPos : TEXCOORD0;
+    float2 uv : TEXCOORD1;
 };
 
 // --- Vertex Shader ---
@@ -41,6 +47,9 @@ PSInput VSMain(VSInput input)
     // ワールド座標
     output.worldPos = mul(float4(input.position, 1.0f), World).xyz;
     
+    // UVをパススルー
+    output.uv = input.uv;
+    
     return output;
 }
 
@@ -53,9 +62,17 @@ float4 PSMain(PSInput input) : SV_TARGET
     float3 normal = normalize(input.normal);
     float3 halfVector = normalize(lightDir + viewDir);
 
+    // ★修正: テクスチャサンプリング
+    float3 baseColor = Albedo;
+    if (UseTexture > 0.5f)
+    {
+        float4 texColor = g_texture.Sample(g_sampler, input.uv);
+        baseColor *= texColor.rgb; // 色と乗算
+    }
+    
     // 2. 拡散反射 (Diffuse)
     float NdotL = max(dot(normal, lightDir), 0.0f);
-    float3 diffuse = Albedo * NdotL;
+    float3 diffuse = baseColor * NdotL;
 
     // 3. 鏡面反射 (Specular)
     // ガラスは鋭いハイライトを持つので、光沢度(Shininess)を高く保つ
@@ -64,11 +81,11 @@ float4 PSMain(PSInput input) : SV_TARGET
     float specIntensity = pow(NdotH, max(shininess, 1.0f));
     
     // 金属度が高い場合、スペキュラに色が乗る
-    float3 specularColor = lerp(float3(0.04f, 0.04f, 0.04f), Albedo, Metallic);
+    float3 specularColor = lerp(float3(0.04f, 0.04f, 0.04f), baseColor, Metallic);
     float3 finalSpecular = specularColor * specIntensity;
 
     // 4. 環境光
-    float3 ambient = Albedo * 0.1f;
+    float3 ambient = baseColor * 0.1f;
 
     // ===========================================================
     // フレネル効果

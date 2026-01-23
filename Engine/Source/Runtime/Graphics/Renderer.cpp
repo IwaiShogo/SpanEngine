@@ -351,6 +351,16 @@ namespace Span
 		// スロット1: Material
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
 
+		// テクスチャのバインド
+		if (material->GetTexture())
+		{
+			// テクスチャが持っているSRVヒープをセット
+			ID3D12DescriptorHeap* ppHeaps[] = { material->GetTexture()->GetSRVHeap() };
+			commandList->SetDescriptorHeaps(1, ppHeaps);
+			// テーブルハンドルをセット (RootParameter[2])
+			commandList->SetGraphicsRootDescriptorTable(2, material->GetTexture()->GetCPUDescriptorHandle());
+		}
+
 		mesh->Draw(commandList.Get());
 
 		constantBufferIndex++;
@@ -381,44 +391,57 @@ namespace Span
 
 	bool Renderer::CreateRootSignature()
 	{
-		// パラメータを 2つ
-		D3D12_ROOT_PARAMETER rootParameters[2];
+		// 1. ルートパラメータ (4つに増える)
+		// [0]: CBV (Transform)
+		// [1]: CBV (Material)
+		// [2]: Descriptor Table (Texture SRV) ★追加
+		CD3DX12_ROOT_PARAMETER rootParameters[3];
 
-		// 0番: Transform (b0) - Vertex Shaderのみ
-		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		rootParameters[0].Descriptor.ShaderRegister = 0;
-		rootParameters[0].Descriptor.RegisterSpace = 0;
-		rootParameters[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
+		// CBV (b0)
+		rootParameters[0].InitAsConstantBufferView(0);
+		// CBV (b1)
+		rootParameters[1].InitAsConstantBufferView(1);
 
-		// 1番: Material (b1) - Pixel Shaderのみ
-		rootParameters[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		rootParameters[1].Descriptor.ShaderRegister = 1;
-		rootParameters[1].Descriptor.RegisterSpace = 0;
-		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+		// ★追加: テクスチャ用テーブル (t0)
+		CD3DX12_DESCRIPTOR_RANGE descriptorRange;
+		descriptorRange.Init(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, 1, 0); // register(t0)
+		rootParameters[2].InitAsDescriptorTable(1, &descriptorRange, D3D12_SHADER_VISIBILITY_PIXEL);
 
-		D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc;
-		// パラメータ数をセット
-		rootSignatureDesc.NumParameters = 2;
-		rootSignatureDesc.pParameters = rootParameters;
+		// 2. サンプラー (画像のあやとり機)
+		// 拡大縮小時の補間方法などを定義 (s0)
+		D3D12_STATIC_SAMPLER_DESC sampler = {};
+		sampler.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR; // 線形補間 (滑らか)
+		sampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP; // 繰り返す
+		sampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
+		sampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
+		sampler.MipLODBias = 0;
+		sampler.MaxAnisotropy = 0;
+		sampler.ComparisonFunc = D3D12_COMPARISON_FUNC_NEVER;
+		sampler.BorderColor = D3D12_STATIC_BORDER_COLOR_TRANSPARENT_BLACK;
+		sampler.MinLOD = 0.0f;
+		sampler.MaxLOD = D3D12_FLOAT32_MAX;
+		sampler.ShaderRegister = 0; // register(s0)
+		sampler.RegisterSpace = 0;
+		sampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
-		rootSignatureDesc.NumStaticSamplers = 0;
-		rootSignatureDesc.pStaticSamplers = nullptr;
-		rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
+		CD3DX12_ROOT_SIGNATURE_DESC rootSignatureDesc;
+		rootSignatureDesc.Init(_countof(rootParameters), rootParameters, 1, &sampler,
+			D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT);
 
 		ComPtr<ID3DBlob> signature;
 		ComPtr<ID3DBlob> error;
-
 		if (FAILED(D3D12SerializeRootSignature(&rootSignatureDesc, D3D_ROOT_SIGNATURE_VERSION_1, &signature, &error)))
 		{
-			SPAN_ERROR("Failed to serialize root signature!");
+			SPAN_ERROR("Failed to serialize Root Signature: %s", (char*)error->GetBufferPointer());
 			return false;
 		}
 
 		if (FAILED(device->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&rootSignature))))
 		{
-			SPAN_ERROR("Failed to create root signature!");
+			SPAN_ERROR("Failed to create Root Signature!");
 			return false;
 		}
+
 		return true;
 	}
 
@@ -429,7 +452,7 @@ namespace Span
 		{
 			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT,	 0, 0,	D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
 			{ "NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT,    0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
-			{ "COLOR",	  0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 24, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
+			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,       0, 24, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
 		};
 
 		// PSOの設定構造体

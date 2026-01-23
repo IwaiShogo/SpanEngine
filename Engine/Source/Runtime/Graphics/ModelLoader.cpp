@@ -54,32 +54,25 @@ namespace Span
             for (unsigned int j = 0; j < face.mNumIndices; j++)
             {
                 unsigned int index = face.mIndices[j];
-
                 Vertex v;
 
-                // 1. 位置 (Position)
-                if (mesh->HasPositions())
-                {
-                    v.position.x = mesh->mVertices[index].x;
-                    v.position.y = mesh->mVertices[index].y;
-                    v.position.z = mesh->mVertices[index].z;
+                // 1. 位置
+                if (mesh->HasPositions()) {
+                    v.position = { mesh->mVertices[index].x, mesh->mVertices[index].y, mesh->mVertices[index].z };
                 }
 
-                // 2. 法線 (Normal) -> デバッグ用に色として表示
-                if (mesh->HasNormals())
-                {
-                    v.normal.x = mesh->mNormals[index].x;
-                    v.normal.y = mesh->mNormals[index].y;
-                    v.normal.z = mesh->mNormals[index].z;
-
-                    // 法線を色に変換 (-1~1 -> 0~1)
-                    v.color.x = (v.normal.x + 1.0f) * 0.5f;
-                    v.color.y = (v.normal.y + 1.0f) * 0.5f;
-                    v.color.z = (v.normal.z + 1.0f) * 0.5f;
+                // 2. 法線
+                if (mesh->HasNormals()) {
+                    v.normal = { mesh->mNormals[index].x, mesh->mNormals[index].y, mesh->mNormals[index].z };
                 }
-                else
-                {
-                    v.color = { 1.0f, 1.0f, 1.0f };
+
+                // 3. UV座標
+                if (mesh->HasTextureCoords(0)) {
+                    // Assimpは3次元(u,v,w)で持っているが、通常は2次元(u,v)しか使わない
+                    v.uv = { mesh->mTextureCoords[0][index].x, mesh->mTextureCoords[0][index].y };
+                }
+                else {
+                    v.uv = { 0.0f, 0.0f };
                 }
 
                 vertices.push_back(v);

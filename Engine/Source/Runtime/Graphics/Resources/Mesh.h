@@ -8,7 +8,7 @@ namespace Span
 	{
 		Vector3 position;
 		Vector3 normal;
-		Vector3 color;
+		Vector2 uv;
 	};
 
 	class Mesh

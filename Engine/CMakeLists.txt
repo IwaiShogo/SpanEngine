@@ -24,6 +24,14 @@ FetchContent_MakeAvailable(assimp)
 
 # ------------------------------------------------------------------------------
 
+# --- 2. stb (画像読み込み) ---
+FetchContent_Declare(
+    stb
+    GIT_REPOSITORY https://github.com/nothings/stb.git
+    GIT_TAG master
+)
+FetchContent_MakeAvailable(stb)
+
 # ソースファイルの収集
 file(GLOB_RECURSE ENGINE_SOURCES 
     "Source/*.cpp" 
@@ -31,7 +39,7 @@ file(GLOB_RECURSE ENGINE_SOURCES
 )
 
 # ライブラリとして定義
-add_library(SpanCore STATIC ${ENGINE_SOURCES} "Source/Runtime/Graphics/ModelLoader.cpp")
+add_library(SpanCore STATIC ${ENGINE_SOURCES} "Source/Runtime/Graphics/ModelLoader.cpp" "Source/Runtime/Graphics/Resources/Texture.cpp")
 
 # インクルードパスの設定
 target_include_directories(SpanCore PUBLIC 
@@ -39,6 +47,7 @@ target_include_directories(SpanCore PUBLIC
     Source/Core
     Source/Runtime
     Source/Editor
+    ${stb_SOURCE_DIR}
 )
 
 # プリコンパイル済みヘッダー

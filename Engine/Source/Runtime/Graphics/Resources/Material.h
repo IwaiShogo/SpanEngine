@@ -2,6 +2,7 @@
 #include "Core/CoreMinimal.h"
 #include "Core/Math/SpanMath.h"
 #include "Graphics/Core/ConstantBuffer.h"
+#include "Texture.h"
 
 namespace Span
 {
@@ -14,6 +15,7 @@ namespace Span
 		float Metallic = 0.0f;					// 金属度 (0 = 非金属, 1 = 金属)
 		float Opacity = 1.0f;					// 透明度 (1 = 不透明, 0 = 透明)
 		float Padding[2];						// バイト数合わせ
+		float useTexture = 0.0f;				// 1.0fならテクスチャ使用
 	};
 
 	class Material
@@ -44,6 +46,14 @@ namespace Span
 			isTransparent = (opacity < 1.0f);
 		}
 
+		void SetTexture(Texture* tex)
+		{
+			texture = tex;
+			data.useTexture = (tex != nullptr) ? 1.0f : 0.0f;
+			isDirty = true;
+		}
+		Texture* GetTexture() const { return texture; }
+
 		// マテリアルが透明か
 		bool IsTransparent() const { return isTransparent; }
 
@@ -55,5 +65,6 @@ namespace Span
 		ConstantBuffer<MaterialData>* constantBuffer = nullptr;
 		bool isDirty = true;
 		bool isTransparent = false;
+		Texture* texture = nullptr;
 	};
 }
