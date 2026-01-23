@@ -1,0 +1,46 @@
+#pragma once
+#include "Core/CoreMinimal.h"
+#include "Core/Math/SpanMath.h"
+#include "Graphics/Core/ConstantBuffer.h"
+
+namespace Span
+{
+	// シェーダーに送るデータ構造
+	struct MaterialData
+	{
+		Vector3 Albedo = { 1.0f, 1.0f, 1.0f };	// ベースカラー
+		float Roughness = 0.5f;					// 粗さ (0 = ツルツル, 1 = ザラザラ)
+
+		float Metallic = 0.0f;					// 金属度 (0 = 非金属, 1 = 金属)
+		float Padding[3];						// バイト数合わせ
+	};
+
+	class Material
+	{
+	public:
+		Material();
+		~Material();
+
+		// 初期化
+		bool Initialize(ID3D12Device* device);
+
+		// 終了
+		void Shutdown();
+
+		// データをGPUに転送
+		void Update();
+
+		// --- プロパティ ---
+		void SetAlbedo(const Vector3& color) { data.Albedo = color; isDirty = true; }
+		void SetRoughness(float roughness) { data.Roughness = roughness; isDirty = true; }
+		void SetMetallic(float metallic) { data.Metallic = metallic; isDirty = true; }
+
+		// GPUアドレス取得
+		D3D12_GPU_VIRTUAL_ADDRESS GetGPUVirtualAddress() const;
+
+	private:
+		MaterialData data;
+		ConstantBuffer<MaterialData>* constantBuffer = nullptr;
+		bool isDirty = true;
+	};
+}

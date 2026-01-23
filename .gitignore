@@ -1,0 +1,29 @@
+# --- .gitignore ---
+
+# Visual Studio / VS Code の設定ファイル
+.vs/
+.vscode/
+*.user
+*.suo
+*.opensdf
+*.sdf
+
+# CMake のビルド生成物 (ここが一番大事！)
+assimp-src/
+_deps/
+out/
+build/
+cmake-build-debug/
+cmake-build-release/
+
+# コンパイルされたバイナリ (必要ならBinも含めるが、基本は除外)
+Bin/
+Lib/
+
+# Windows のサムネイルキャッシュ
+Thumbs.db
+Desktop.ini
+
+# Python (もし使うなら)
+__pycache__/
+*.pyc
