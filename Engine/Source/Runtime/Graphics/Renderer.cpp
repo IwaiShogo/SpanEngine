@@ -1,6 +1,7 @@
 #include "Renderer.h"
 #include "Graphics/Resources/Material.h"
 #include "Graphics/Resources/Texture.h"
+#include "GuiManager.h"
 
 namespace Span
 {

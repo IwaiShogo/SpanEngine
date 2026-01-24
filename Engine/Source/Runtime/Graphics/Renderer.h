@@ -39,6 +39,12 @@ namespace Span
 		// コマンドキュー
 		ID3D12CommandQueue* GetCommandQueue() const { return commandQueue.Get(); }
 
+		// フレームバッファの数を返す
+		int GetFrameCount() const { return FrameCount; }
+
+		// コマンドリスト
+		ID3D12GraphicsCommandList* GetCommandList() const { return commandList.Get(); }
+
 	private:
 		// --- DX12 Core Objects ---
 		ComPtr<ID3D12Device> device;				// GPUデバイス

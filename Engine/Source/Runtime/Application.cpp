@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Core/Time/Time.h"
 #include "Core/Input/Input.h"
+#include "Editor/GuiManager.h"
 
 namespace Span
 {
@@ -39,11 +40,13 @@ namespace Span
 		// 4. 時間管理初期化
 		Time::Initialize();
 		Input::Initialize();
+		GuiManager::Initialize(window.GetHandle(), renderer.GetDevice(), renderer.GetFrameCount());
 	}
 
 	Application::~Application()
 	{
 		OnShutdown();
+		GuiManager::Shutdown();
 		renderer.Shutdown();
 		window.Shutdown();
 		Logger::Shutdown();
@@ -63,19 +66,34 @@ namespace Span
 				break;
 			}
 
-			// 時間更新
+			// 1. レンダリング開始
+			renderer.BeginFrame();
+
+			// 2. GUIの準備
+			GuiManager::BeginFrame();
+
+			// UI定義を書く
+			ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport());
+
+			// テストウィンドウ
+			ImGui::Begin("Inspector");
+			ImGui::Text("Application Running...");
+			ImGui::Text("Frame Rate: %.1f FPS", ImGui::GetIO().Framerate);
+			ImGui::End();
+
+			// 3. ゲームロジック更新
 			Time::Update();
 			Input::Update();
-
-			// 描画開始
-			renderer.BeginFrame();
 
 			// システムの一括更新
 			world.UpdateSystems();
 			// ユーザー定義の更新処理
 			OnUpdate();
 
-			// 描画終了
+			// 4. GUIの描画
+			GuiManager::EndFrame(renderer.GetCommandList());
+
+			// 5. フレーム終了
 			renderer.EndFrame();
 		}
 

@@ -1,6 +1,11 @@
 #include "Window.h"
 #include "Core/Input/Input.h"
 
+#include <imgui.h>
+
+// ImGui‚ÌWin32ƒnƒ“ƒhƒ‰’è‹`
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 namespace Span
 {
 	Window::~Window()
@@ -81,6 +86,8 @@ namespace Span
 
 	LRESULT CALLBACK Window::WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	{
+		if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam)) return true;
+
 		switch (message)
 		{
 		case WM_DESTROY:
