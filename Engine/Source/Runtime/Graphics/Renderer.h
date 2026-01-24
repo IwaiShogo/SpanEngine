@@ -36,6 +36,9 @@ namespace Span
 		// デバイスへのアクセス
 		ID3D12Device* GetDevice() const { return device.Get(); }
 
+		// コマンドキュー
+		ID3D12CommandQueue* GetCommandQueue() const { return commandQueue.Get(); }
+
 	private:
 		// --- DX12 Core Objects ---
 		ComPtr<ID3D12Device> device;				// GPUデバイス

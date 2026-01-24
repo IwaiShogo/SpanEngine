@@ -62,7 +62,7 @@ float4 PSMain(PSInput input) : SV_TARGET
     float3 normal = normalize(input.normal);
     float3 halfVector = normalize(lightDir + viewDir);
 
-    // ★修正: テクスチャサンプリング
+    // テクスチャサンプリング
     float3 baseColor = Albedo;
     if (UseTexture > 0.5f)
     {
@@ -86,10 +86,8 @@ float4 PSMain(PSInput input) : SV_TARGET
 
     // 4. 環境光
     float3 ambient = baseColor * 0.1f;
-
-    // ===========================================================
+    
     // フレネル効果
-    // ===========================================================
     // 視線と法線の角度 (1.0=正面、0.0=真横)
     float NdotV = max(dot(normal, viewDir), 0.0f);
     
@@ -103,8 +101,6 @@ float4 PSMain(PSInput input) : SV_TARGET
     // 2. 縁に行くほど不透明にする (Opacity + Fresnel)
     // これにより「中心は透けてるけど、輪郭はくっきり」したガラス玉になります
     float finalAlpha = saturate(Opacity + fresnel);
-
-    // ===========================================================
 
     // 合成
     float3 finalColor = ambient + (diffuse * (1.0f - Metallic)) + finalSpecular;

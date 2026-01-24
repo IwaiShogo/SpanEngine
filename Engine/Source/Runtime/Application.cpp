@@ -1,5 +1,6 @@
 #include "Application.h"
 #include "Core/Time/Time.h"
+#include "Core/Input/Input.h"
 
 namespace Span
 {
@@ -37,6 +38,7 @@ namespace Span
 
 		// 4. 時間管理初期化
 		Time::Initialize();
+		Input::Initialize();
 	}
 
 	Application::~Application()
@@ -63,6 +65,7 @@ namespace Span
 
 			// 時間更新
 			Time::Update();
+			Input::Update();
 
 			// 描画開始
 			renderer.BeginFrame();

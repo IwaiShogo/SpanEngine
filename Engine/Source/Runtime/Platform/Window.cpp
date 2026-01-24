@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "Core/Input/Input.h"
 
 namespace Span
 {
@@ -84,6 +85,28 @@ namespace Span
 		{
 		case WM_DESTROY:
 			PostQuitMessage(0);
+			return 0;
+
+		// --- キーボード入力 ---
+		case WM_KEYDOWN:
+			Input::OnKeyDown((uint32)wParam);
+			return 0;
+		case WM_KEYUP:
+			Input::OnKeyUp((uint32)wParam);
+			return 0;
+
+		// --- マウス入力 ---
+		case WM_LBUTTONDOWN: Input::OnMouseDown(0); return 0;
+		case WM_RBUTTONDOWN: Input::OnMouseDown(1); return 0;
+		case WM_MBUTTONDOWN: Input::OnMouseDown(2); return 0;
+
+		case WM_LBUTTONUP: Input::OnMouseUp(0); return 0;
+		case WM_RBUTTONUP: Input::OnMouseUp(1); return 0;
+		case WM_MBUTTONUP: Input::OnMouseUp(2); return 0;
+
+		case WM_MOUSEMOVE:
+			// クライアント領域内の座標を取得
+			Input::OnMouseMove(LOWORD(lParam), HIWORD(lParam));
 			return 0;
 		}
 

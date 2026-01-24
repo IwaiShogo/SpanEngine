@@ -76,61 +76,28 @@ namespace Span
 	Mesh* Mesh::CreateCube(ID3D12Device* device)
 	{
 		const float w = 0.5f;
-
-		// 位置(3), 法線(3), 色(3)
+		// Vertex: { Pos, Normal, UV }
 		std::vector<Vertex> vertices = {
-			// 前面 (Z = -0.5) 法線: (0, 0, -1)
-			{ {-w,	w, -w}, {0.0f, 0.0f, -1.0f}, {1.0f, 0.0f, 0.0f} },
-			{ { w,	w, -w}, {0.0f, 0.0f, -1.0f}, {1.0f, 0.0f, 0.0f} },
-			{ {-w, -w, -w}, {0.0f, 0.0f, -1.0f}, {1.0f, 0.0f, 0.0f} },
-			{ {-w, -w, -w}, {0.0f, 0.0f, -1.0f}, {1.0f, 0.0f, 0.0f} },
-			{ { w,	w, -w}, {0.0f, 0.0f, -1.0f}, {1.0f, 0.0f, 0.0f} },
-			{ { w, -w, -w}, {0.0f, 0.0f, -1.0f}, {1.0f, 0.0f, 0.0f} },
-
-			// 背面 (Z = +0.5) 法線: (0, 0, 1)
-			{ {-w, -w,	w}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f} },
-			{ { w, -w,	w}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f} },
-			{ {-w,	w,	w}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f} },
-			{ {-w,	w,	w}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f} },
-			{ { w, -w,	w}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f} },
-			{ { w,	w,	w}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f} },
-
-			// 上面 (Y = +0.5) 法線: (0, 1, 0)
-			{ {-w,	w,	w}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f} },
-			{ { w,	w,	w}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f} },
-			{ {-w,	w, -w}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f} },
-			{ {-w,	w, -w}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f} },
-			{ { w,	w,	w}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f} },
-			{ { w,	w, -w}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f} },
-
-			// 底面 (Y = -0.5) 法線: (0, -1, 0)
-			{ {-w, -w, -w}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f, 0.0f} },
-			{ { w, -w, -w}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f, 0.0f} },
-			{ {-w, -w,	w}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f, 0.0f} },
-			{ {-w, -w,	w}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f, 0.0f} },
-			{ { w, -w, -w}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f, 0.0f} },
-			{ { w, -w,	w}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f, 0.0f} },
-
-			// 右面 (X = +0.5) 法線: (1, 0, 0)
-			{ { w,	w, -w}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 1.0f} },
-			{ { w,	w,	w}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 1.0f} },
-			{ { w, -w, -w}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 1.0f} },
-			{ { w, -w, -w}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 1.0f} },
-			{ { w,	w,	w}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 1.0f} },
-			{ { w, -w,	w}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 1.0f} },
-
-			// 左面 (X = -0.5) 法線: (-1, 0, 0)
-			{ {-w,	w,	w}, {-1.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 1.0f} },
-			{ {-w,	w, -w}, {-1.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 1.0f} },
-			{ {-w, -w,	w}, {-1.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 1.0f} },
-			{ {-w, -w,	w}, {-1.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 1.0f} },
-			{ {-w,	w, -w}, {-1.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 1.0f} },
-			{ {-w, -w, -w}, {-1.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 1.0f} },
+			// Front (Z-)
+			{ {-w, w, -w}, {0,0,-1}, {0,0} }, { {w, w, -w}, {0,0,-1}, {1,0} }, { {-w, -w, -w}, {0,0,-1}, {0,1} },
+			{ {-w, -w, -w}, {0,0,-1}, {0,1} }, { {w, w, -w}, {0,0,-1}, {1,0} }, { {w, -w, -w}, {0,0,-1}, {1,1} },
+			// Back (Z+)
+			{ {-w, -w, w}, {0,0,1}, {1,1} }, { {w, -w, w}, {0,0,1}, {0,1} }, { {-w, w, w}, {0,0,1}, {1,0} },
+			{ {-w, w, w}, {0,0,1}, {1,0} }, { {w, -w, w}, {0,0,1}, {0,1} }, { {w, w, w}, {0,0,1}, {0,0} },
+			// Top (Y+)
+			{ {-w, w, w}, {0,1,0}, {0,0} }, { {w, w, w}, {0,1,0}, {1,0} }, { {-w, w, -w}, {0,1,0}, {0,1} },
+			{ {-w, w, -w}, {0,1,0}, {0,1} }, { {w, w, w}, {0,1,0}, {1,0} }, { {w, w, -w}, {0,1,0}, {1,1} },
+			// Bottom (Y-)
+			{ {-w, -w, -w}, {0,-1,0}, {0,0} }, { {w, -w, -w}, {0,-1,0}, {1,0} }, { {-w, -w, w}, {0,-1,0}, {0,1} },
+			{ {-w, -w, w}, {0,-1,0}, {0,1} }, { {w, -w, -w}, {0,-1,0}, {1,0} }, { {w, -w, w}, {0,-1,0}, {1,1} },
+			// Right (X+)
+			{ {w, w, -w}, {1,0,0}, {0,0} }, { {w, w, w}, {1,0,0}, {1,0} }, { {w, -w, -w}, {1,0,0}, {0,1} },
+			{ {w, -w, -w}, {1,0,0}, {0,1} }, { {w, w, w}, {1,0,0}, {1,0} }, { {w, -w, w}, {1,0,0}, {1,1} },
+			// Left (X-)
+			{ {-w, w, w}, {-1,0,0}, {0,0} }, { {-w, w, -w}, {-1,0,0}, {1,0} }, { {-w, -w, w}, {-1,0,0}, {0,1} },
+			{ {-w, -w, w}, {-1,0,0}, {0,1} }, { {-w, w, -w}, {-1,0,0}, {1,0} }, { {-w, -w, -w}, {-1,0,0}, {1,1} },
 		};
-
-		Mesh* mesh = new Mesh();
-		mesh->Initialize(device, vertices);
-		return mesh;
+		Mesh* mesh = new Mesh(); mesh->Initialize(device, vertices); return mesh;
 	}
 
 	Mesh* Mesh::CreateSphere(ID3D12Device* device, int slices, int stacks)
@@ -153,35 +120,19 @@ namespace Span
 
 				// 四角形の4点の座標と法線を計算
 				// ヘルパーラムダ式: 球面上の点(p, t)の情報を計算してVertexを返す
-				auto GetVertex = [&](float p, float t) -> Vertex
+				auto GetV = [&](float p, float t, float u, float v) -> Vertex
 					{
-						float y = radius * std::cos(p);
-						float r = radius * std::sin(p); // その高さでの半径
-						float x = r * std::cos(t);
-						float z = r * std::sin(t);
-
-						Vector3 pos(x, y, z);
-						Vector3 normal = pos * (1.0f / radius); // 正規化 (原点からの方向が法線になる)
-						Vector3 color(1.0f, 1.0f, 1.0f);		// とりあえず白
-
-						return { pos, normal, color };
+						float r = radius * std::sin(p);
+						Vector3 pos(r * std::cos(t), radius * std::cos(p), r * std::sin(t));
+						return { pos, pos * (1.0f / radius), { u, v } };
 					};
 
-				// 4つの頂点を作成
-				Vertex v1 = GetVertex(phi1, theta1); // 左上
-				Vertex v2 = GetVertex(phi1, theta2); // 右上
-				Vertex v3 = GetVertex(phi2, theta1); // 左下
-				Vertex v4 = GetVertex(phi2, theta2); // 右下
-
-				// 三角形1 (左上 -> 右上 -> 左下)
-				vertices.push_back(v1);
-				vertices.push_back(v2);
-				vertices.push_back(v3);
-
-				// 三角形2 (左下 -> 右上 -> 右下)
-				vertices.push_back(v3);
-				vertices.push_back(v2);
-				vertices.push_back(v4);
+				float u1 = (float)j / slices, u2 = (float)(j + 1) / slices;
+				float v1 = (float)i / stacks, v2 = (float)(i + 1) / stacks;
+				Vertex v_tl = GetV(phi1, theta1, u1, v1), v_tr = GetV(phi1, theta2, u2, v1);
+				Vertex v_bl = GetV(phi2, theta1, u1, v2), v_br = GetV(phi2, theta2, u2, v2);
+				vertices.push_back(v_tl); vertices.push_back(v_tr); vertices.push_back(v_bl);
+				vertices.push_back(v_bl); vertices.push_back(v_tr); vertices.push_back(v_br);
 			}
 		}
 
@@ -198,13 +149,8 @@ namespace Span
 
 		// 上向き(0,1,0)の大きな四角形
 		std::vector<Vertex> vertices = {
-			{ {-w, 0,  d}, {0, 1, 0}, {1, 1, 1} }, // 左奥
-			{ { w, 0,  d}, {0, 1, 0}, {1, 1, 1} }, // 右奥
-			{ {-w, 0, -d}, {0, 1, 0}, {1, 1, 1} }, // 左手前
-
-			{ {-w, 0, -d}, {0, 1, 0}, {1, 1, 1} }, // 左手前
-			{ { w, 0,  d}, {0, 1, 0}, {1, 1, 1} }, // 右奥
-			{ { w, 0, -d}, {0, 1, 0}, {1, 1, 1} }, // 右手前
+			{ {-w, 0, d}, {0,1,0}, {0,0} }, { {w, 0, d}, {0,1,0}, {1,0} }, { {-w, 0, -d}, {0,1,0}, {0,1} },
+			{ {-w, 0, -d}, {0,1,0}, {0,1} }, { {w, 0, d}, {0,1,0}, {1,0} }, { {w, 0, -d}, {0,1,0}, {1,1} }
 		};
 
 		Mesh* mesh = new Mesh();
@@ -221,63 +167,36 @@ namespace Span
 		// 側面 (Side)
 		for (int i = 0; i < slices; ++i)
 		{
-			float theta1 = 2.0f * Span::PI * i / slices;
-			float theta2 = 2.0f * Span::PI * (i + 1) / slices;
+			float t1 = 2.0f * Span::PI * i / slices;
+			float t2 = 2.0f * Span::PI * (i + 1) / slices;
+			float u1 = (float)i / slices;
+			float u2 = (float)(i + 1) / slices;
 
 			// 頂点位置計算
-			float x1 = radius * std::cos(theta1);
-			float z1 = radius * std::sin(theta1);
-			float x2 = radius * std::cos(theta2);
-			float z2 = radius * std::sin(theta2);
+			float x1 = radius * std::cos(t1);
+			float z1 = radius * std::sin(t1);
+			float x2 = radius * std::cos(t2);
+			float z2 = radius * std::sin(t2);
 
 			// 法線 (側面なのでXZ平面の外向き)
-			Vector3 n1 = Vector3(x1, 0, z1) * (1.0f / radius);
-			Vector3 n2 = Vector3(x2, 0, z2) * (1.0f / radius);
+			Vector3 n1(x1 / radius, 0, z1 / radius);
+			Vector3 n2(x2 / radius, 0, z2 / radius);
 
-			// 四角形 (2ポリゴン)
-			// 左上 -> 右上 -> 左下
-			vertices.push_back({ {x1,  h2, z1}, n1, {1,1,1} });
-			vertices.push_back({ {x2,  h2, z2}, n2, {1,1,1} });
-			vertices.push_back({ {x1, -h2, z1}, n1, {1,1,1} });
+			// Side
+			vertices.push_back({ {x1, h2, z1}, n1, {u1, 0} });
+			vertices.push_back({ {x2, h2, z2}, n2, {u2, 0} });
+			vertices.push_back({ {x1, -h2, z1}, n1, {u1, 1} });
+			vertices.push_back({ {x1, -h2, z1}, n1, {u1, 1} });
+			vertices.push_back({ {x2, h2, z2}, n2, {u2, 0} });
+			vertices.push_back({ {x2, -h2, z2}, n2, {u2, 1} });
 
-			// 左下 -> 右上 -> 右下
-			vertices.push_back({ {x1, -h2, z1}, n1, {1,1,1} });
-			vertices.push_back({ {x2,  h2, z2}, n2, {1,1,1} });
-			vertices.push_back({ {x2, -h2, z2}, n2, {1,1,1} });
-		}
-
-		// 上面 (Top Cap) - 法線(0,1,0)
-		for (int i = 0; i < slices; ++i)
-		{
-			float theta1 = 2.0f * Span::PI * i / slices;
-			float theta2 = 2.0f * Span::PI * (i + 1) / slices;
-
-			float x1 = radius * std::cos(theta1);
-			float z1 = radius * std::sin(theta1);
-			float x2 = radius * std::cos(theta2);
-			float z2 = radius * std::sin(theta2);
-
-			// 中心 -> 1 -> 2 の三角形
-			vertices.push_back({ {0, h2, 0}, {0,1,0}, {1,1,1} });
-			vertices.push_back({ {x2, h2, z2}, {0,1,0}, {1,1,1} }); // 時計回りに注意
-			vertices.push_back({ {x1, h2, z1}, {0,1,0}, {1,1,1} });
-		}
-
-		// 底面 (Bottom Cap) - 法線(0,-1,0)
-		for (int i = 0; i < slices; ++i)
-		{
-			float theta1 = 2.0f * Span::PI * i / slices;
-			float theta2 = 2.0f * Span::PI * (i + 1) / slices;
-
-			float x1 = radius * std::cos(theta1);
-			float z1 = radius * std::sin(theta1);
-			float x2 = radius * std::cos(theta2);
-			float z2 = radius * std::sin(theta2);
-
-			// 中心 -> 2 -> 1 (裏から見て時計回り＝表から見て反時計回りだが、底面は下を向くので)
-			vertices.push_back({ {0, -h2, 0}, {0,-1,0}, {1,1,1} });
-			vertices.push_back({ {x1, -h2, z1}, {0,-1,0}, {1,1,1} });
-			vertices.push_back({ {x2, -h2, z2}, {0,-1,0}, {1,1,1} });
+			// Caps
+			vertices.push_back({ {0, h2, 0}, {0,1,0}, {0.5f, 0.5f} });
+			vertices.push_back({ {x2, h2, z2}, {0,1,0}, {0.5f + x2 / radius / 2, 0.5f + z2 / radius / 2} });
+			vertices.push_back({ {x1, h2, z1}, {0,1,0}, {0.5f + x1 / radius / 2, 0.5f + z1 / radius / 2} });
+			vertices.push_back({ {0, -h2, 0}, {0,-1,0}, {0.5f, 0.5f} });
+			vertices.push_back({ {x1, -h2, z1}, {0,-1,0}, {0.5f + x1 / radius / 2, 0.5f + z1 / radius / 2} });
+			vertices.push_back({ {x2, -h2, z2}, {0,-1,0}, {0.5f + x2 / radius / 2, 0.5f + z2 / radius / 2} });
 		}
 
 		Mesh* mesh = new Mesh();
@@ -291,52 +210,26 @@ namespace Span
 		std::vector<Vertex> vertices;
 		float h2 = height * 0.5f;
 
-		// 側面 (Side)
-		// 頂点(Apex)と底面の円周を結ぶ三角形
 		for (int i = 0; i < slices; ++i)
 		{
-			float theta1 = 2.0f * Span::PI * i / slices;
-			float theta2 = 2.0f * Span::PI * (i + 1) / slices;
+			float t1 = 2.0f * Span::PI * i / slices;
+			float t2 = 2.0f * Span::PI * (i + 1) / slices;
 
-			float x1 = radius * std::cos(theta1);
-			float z1 = radius * std::sin(theta1);
-			float x2 = radius * std::cos(theta2);
-			float z2 = radius * std::sin(theta2);
+			float x1 = radius * std::cos(t1);
+			float z1 = radius * std::sin(t1);
+			float x2 = radius * std::cos(t2);
+			float z2 = radius * std::sin(t2);
 
 			// 法線の計算 (傾きを考慮)
-			// 簡易的に、底面頂点の外向きベクトルを少し上に傾ける
-			// 厳密には (x, radius/height, z) の正規化
-			float slope = radius / height;
-			Vector3 n1 = Vector3(x1, radius, z1); // 簡易法線
-			n1 = n1 * (1.0f / sqrt(n1.x * n1.x + n1.y * n1.y + n1.z * n1.z)); // 正規化
-			Vector3 n2 = Vector3(x2, radius, z2);
-			n2 = n2 * (1.0f / sqrt(n2.x * n2.x + n2.y * n2.y + n2.z * n2.z));
+			Vector3 n1 = Vector3(x1, radius, z1) * (1.0f / sqrt(x1 * x1 + radius * radius + z1 * z1));
+			Vector3 n2 = Vector3(x2, radius, z2) * (1.0f / sqrt(x2 * x2 + radius * radius + z2 * z2));
 
-			// 頂点法線は (0,1,0) ではなく、側面の平均をとるのが綺麗だが、
-			// ここでは簡易的に「各面の法線」を使用
-
-			// 頂点(Top) -> 下2 -> 下1
-			// 頂点の法線はどうする？ -> 側面の法線の平均 or 真上。今回は面法線に合わせる
-
-			vertices.push_back({ {0, h2, 0},   n1, {1,1,1} }); // 頂点 (法線は近似)
-			vertices.push_back({ {x2, -h2, z2}, n2, {1,1,1} });
-			vertices.push_back({ {x1, -h2, z1}, n1, {1,1,1} });
-		}
-
-		// 底面 (Bottom Cap)
-		for (int i = 0; i < slices; ++i)
-		{
-			float theta1 = 2.0f * Span::PI * i / slices;
-			float theta2 = 2.0f * Span::PI * (i + 1) / slices;
-
-			float x1 = radius * std::cos(theta1);
-			float z1 = radius * std::sin(theta1);
-			float x2 = radius * std::cos(theta2);
-			float z2 = radius * std::sin(theta2);
-
-			vertices.push_back({ {0, -h2, 0}, {0,-1,0}, {1,1,1} });
-			vertices.push_back({ {x1, -h2, z1}, {0,-1,0}, {1,1,1} });
-			vertices.push_back({ {x2, -h2, z2}, {0,-1,0}, {1,1,1} });
+			vertices.push_back({ {0, h2, 0}, n1, {0.5f, 0} });
+			vertices.push_back({ {x2, -h2, z2}, n2, { (float)(i + 1) / slices, 1} });
+			vertices.push_back({ {x1, -h2, z1}, n1, { (float)i / slices, 1} });
+			vertices.push_back({ {0, -h2, 0}, {0,-1,0}, {0.5f, 0.5f} });
+			vertices.push_back({ {x1, -h2, z1}, {0,-1,0}, {0.5f + x1 / radius / 2, 0.5f + z1 / radius / 2} });
+			vertices.push_back({ {x2, -h2, z2}, {0,-1,0}, {0.5f + x2 / radius / 2, 0.5f + z2 / radius / 2} });
 		}
 
 		Mesh* mesh = new Mesh();
@@ -351,50 +244,37 @@ namespace Span
 
 		for (int i = 0; i < segments; ++i)
 		{
-			float theta1 = 2.0f * Span::PI * i / segments;
-			float theta2 = 2.0f * Span::PI * (i + 1) / segments;
-
-			// リングの中心位置
-			Vector3 center1 = { radius * std::cos(theta1), 0, radius * std::sin(theta1) };
-			Vector3 center2 = { radius * std::cos(theta2), 0, radius * std::sin(theta2) };
-
 			for (int j = 0; j < tubeSegments; ++j)
 			{
-				float phi1 = 2.0f * Span::PI * j / tubeSegments;
-				float phi2 = 2.0f * Span::PI * (j + 1) / tubeSegments;
+				float u1 = (float)i / segments;
+				float u2 = (float)(i + 1) / segments;
+				float v1 = (float)j / tubeSegments;
+				float v2 = (float)(j + 1) / tubeSegments;
 
-				auto GetTorusVertex = [&](float theta, float phi, Vector3 center) -> Vertex
+				auto GetV = [&](float u, float v) -> Vertex
 					{
-						// チューブ断面の円
-						float x = std::cos(theta); // リング方向
-						float z = std::sin(theta);
+						float t = u * 2 * PI;
+						float p = v * 2 * PI;
+						float cx = radius * cos(t);
+						float cz = radius * sin(t);
 
-						// 断面のローカル座標
-						float localX = tubeRadius * std::cos(phi);
-						float localY = tubeRadius * std::sin(phi);
+						Vector3 c(cx, 0, cz);
+						Vector3 pos = c + Vector3(cos(t), 0, sin(t)) * (tubeRadius * cos(p));
 
-						// ワールド座標へ
-						// center方向に localX だけ移動し、Y軸方向に localY だけ移動
-						Vector3 pos = center + (Vector3(x, 0, z) * localX);
-						pos.y += localY;
-
-						// 法線: 中心から外側へ
-						Vector3 normal = pos - center;
-						normal = normal * (1.0f / tubeRadius); // 正規化
-
-						return { pos, normal, {1,1,1} };
+						pos.y += tubeRadius * sin(p);
+						return { pos, (pos - c) * (1.0f / tubeRadius), {u, v} };
 					};
+				Vertex v1v = GetV(u1, v1);
+				Vertex v2v = GetV(u2, v1);
+				Vertex v3v = GetV(u1, v2);
+				Vertex v4v = GetV(u2, v2);
 
-				Vertex v1 = GetTorusVertex(theta1, phi1, center1);
-				Vertex v2 = GetTorusVertex(theta2, phi1, center2); // 次のリング
-				Vertex v3 = GetTorusVertex(theta1, phi2, center1);
-				Vertex v4 = GetTorusVertex(theta2, phi2, center2);
-
-				// Tri 1: 左上 -> 左下 -> 右上
-				vertices.push_back(v1); vertices.push_back(v3); vertices.push_back(v2);
-				
-				// Tri 2: 右上 -> 左下 -> 右下
-				vertices.push_back(v2); vertices.push_back(v3); vertices.push_back(v4);
+				vertices.push_back(v1v);
+				vertices.push_back(v3v);
+				vertices.push_back(v2v);
+				vertices.push_back(v2v);
+				vertices.push_back(v3v);
+				vertices.push_back(v4v);
 			}
 		}
 
@@ -408,80 +288,116 @@ namespace Span
 		std::vector<Vertex> vertices;
 
 		// 円柱部分の高さ (全長 - 上下の半径)
+		// ※ height が 2*radius より小さい場合は球体になります
 		float cylinderHeight = std::max(0.0f, height - 2.0f * radius);
 		float halfHeight = cylinderHeight * 0.5f;
 
-		// ヘルパー: 四角形を追加するラムダ式 (頂点順序は時計回り: 左上->右上->左下, 右上->右下->左下)
-		// ※Torusでの反省を活かし、時計回り(CW)で統一します
-		auto PushQuad = [&](Vertex v1, Vertex v2, Vertex v3, Vertex v4) {
-			vertices.push_back(v1); vertices.push_back(v2); vertices.push_back(v3);
-			vertices.push_back(v2); vertices.push_back(v4); vertices.push_back(v3);
+		// UVマッピングのための全体長さを計算（球部分は円周の長さで近似）
+		// これによりテクスチャが伸び縮みせず均一に貼れます
+		float sphereArcLen = radius * Span::PI * 0.5f; // 半球の弧長
+		float totalLen = cylinderHeight + 2.0f * sphereArcLen;
+
+		// V座標の境界値
+		float vTopEnd = sphereArcLen / totalLen;		   // 上半球の終わり
+		float vBottomStart = (sphereArcLen + cylinderHeight) / totalLen; // 下半球の始まり
+
+		// ヘルパー: 頂点情報を生成するラムダ式
+		auto GetVertex = [&](float x, float y, float z, float u, float v, float nY_offset) -> Vertex
+			{
+				Vector3 pos(x, y, z);
+				// 法線の計算: 円柱部分はXZ平面、球部分は中心からの方向
+				// ここでは球の中心オフセットを引いて正規化することで汎用的に計算
+				Vector3 center(0, nY_offset, 0);
+				Vector3 normal = pos - center;
+				// 正規化 (手動)
+				float len = std::sqrt(normal.x * normal.x + normal.y * normal.y + normal.z * normal.z);
+				if (len > 0.0f) normal = normal * (1.0f / len);
+
+				return { pos, normal, {u, v} };
 			};
 
-		// --- 1. 上半球 (Top Hemisphere) ---
+		// --------------------------------------------------------
+		// 1. 上半球 (Top Hemisphere)
+		// --------------------------------------------------------
 		for (int i = 0; i < stacks; ++i)
 		{
-			// 緯度: 0 (頂点) ～ PI/2 (赤道)
-			float phi1 = (Span::PI * 0.5f) * i / stacks;
-			float phi2 = (Span::PI * 0.5f) * (i + 1) / stacks;
+			float phi1 = Span::PI * 0.5f * i / stacks;
+			float phi2 = Span::PI * 0.5f * (i + 1) / stacks;
 
 			for (int j = 0; j < slices; ++j)
 			{
 				float theta1 = 2.0f * Span::PI * j / slices;
 				float theta2 = 2.0f * Span::PI * (j + 1) / slices;
 
-				auto GetTopVertex = [&](float p, float t) -> Vertex {
-					float r = radius * std::sin(p);
-					float y = radius * std::cos(p);
-					float x = r * std::cos(t);
-					float z = r * std::sin(t);
+				float u1 = (float)j / slices;
+				float u2 = (float)(j + 1) / slices;
 
-					// 法線: 球の中心からの方向
-					Vector3 normal = Vector3(x, y, z) * (1.0f / radius);
-					// 位置: 中心を halfHeight だけ上にずらす
-					Vector3 pos = Vector3(x, y + halfHeight, z);
+				// V座標は 0.0 ～ vTopEnd にマッピング
+				float v1 = (float)i / stacks * vTopEnd;
+				float v2 = (float)(i + 1) / stacks * vTopEnd;
 
-					return { pos, normal, {1,1,1} };
+				// 四角形の4点計算
+				auto CalcSpherePoint = [&](float phi, float theta) -> Vector3 {
+					float r = radius * std::sin(phi);
+					return Vector3(r * std::cos(theta), radius * std::cos(phi) + halfHeight, r * std::sin(theta));
 					};
 
-				PushQuad(
-					GetTopVertex(phi1, theta1), // 左上
-					GetTopVertex(phi1, theta2), // 右上
-					GetTopVertex(phi2, theta1), // 左下
-					GetTopVertex(phi2, theta2)	// 右下
-				);
+				Vector3 p1 = CalcSpherePoint(phi1, theta1);
+				Vector3 p2 = CalcSpherePoint(phi1, theta2);
+				Vector3 p3 = CalcSpherePoint(phi2, theta1);
+				Vector3 p4 = CalcSpherePoint(phi2, theta2);
+
+				// 中心オフセットは halfHeight
+				Vertex v_tl = GetVertex(p1.x, p1.y, p1.z, u1, v1, halfHeight);
+				Vertex v_tr = GetVertex(p2.x, p2.y, p2.z, u2, v1, halfHeight);
+				Vertex v_bl = GetVertex(p3.x, p3.y, p3.z, u1, v2, halfHeight);
+				Vertex v_br = GetVertex(p4.x, p4.y, p4.z, u2, v2, halfHeight);
+
+				vertices.push_back(v_tl); vertices.push_back(v_tr); vertices.push_back(v_bl);
+				vertices.push_back(v_bl); vertices.push_back(v_tr); vertices.push_back(v_br);
 			}
 		}
 
-		// --- 2. 円柱部分 (Cylinder Body) ---
-		for (int j = 0; j < slices; ++j)
+		// --------------------------------------------------------
+		// 2. 円柱部分 (Cylinder Body)
+		// --------------------------------------------------------
+		if (cylinderHeight > 0.0f)
 		{
-			float theta1 = 2.0f * Span::PI * j / slices;
-			float theta2 = 2.0f * Span::PI * (j + 1) / slices;
+			for (int j = 0; j < slices; ++j)
+			{
+				float theta1 = 2.0f * Span::PI * j / slices;
+				float theta2 = 2.0f * Span::PI * (j + 1) / slices;
 
-			float x1 = radius * std::cos(theta1);
-			float z1 = radius * std::sin(theta1);
-			float x2 = radius * std::cos(theta2);
-			float z2 = radius * std::sin(theta2);
+				float u1 = (float)j / slices;
+				float u2 = (float)(j + 1) / slices;
 
-			// 法線 (XZ平面の外向き)
-			Vector3 n1(x1 / radius, 0, z1 / radius);
-			Vector3 n2(x2 / radius, 0, z2 / radius);
+				// V座標は vTopEnd ～ vBottomStart
+				float v1 = vTopEnd;
+				float v2 = vBottomStart;
 
-			// 上の縁 (y = +halfHeight)
-			Vertex v1 = { {x1, halfHeight, z1}, n1, {1,1,1} };
-			Vertex v2 = { {x2, halfHeight, z2}, n2, {1,1,1} };
-			// 下の縁 (y = -halfHeight)
-			Vertex v3 = { {x1, -halfHeight, z1}, n1, {1,1,1} };
-			Vertex v4 = { {x2, -halfHeight, z2}, n2, {1,1,1} };
+				float x1 = radius * std::cos(theta1);
+				float z1 = radius * std::sin(theta1);
+				float x2 = radius * std::cos(theta2);
+				float z2 = radius * std::sin(theta2);
 
-			PushQuad(v1, v2, v3, v4);
+				// 上の縁 (y = +halfHeight), 法線中心Y = y
+				// 円柱側面の法線は (x, 0, z) なので、Yオフセットをその点のYにすればよい
+				Vertex v_tl = GetVertex(x1, halfHeight, z1, u1, v1, halfHeight);
+				Vertex v_tr = GetVertex(x2, halfHeight, z2, u2, v1, halfHeight);
+				Vertex v_bl = GetVertex(x1, -halfHeight, z1, u1, v2, -halfHeight);
+				Vertex v_br = GetVertex(x2, -halfHeight, z2, u2, v2, -halfHeight);
+
+				vertices.push_back(v_tl); vertices.push_back(v_tr); vertices.push_back(v_bl);
+				vertices.push_back(v_bl); vertices.push_back(v_tr); vertices.push_back(v_br);
+			}
 		}
 
-		// --- 3. 下半球 (Bottom Hemisphere) ---
+		// --------------------------------------------------------
+		// 3. 下半球 (Bottom Hemisphere)
+		// --------------------------------------------------------
 		for (int i = 0; i < stacks; ++i)
 		{
-			// 緯度: PI/2 (赤道) ～ PI (底)
+			// 緯度: PI/2 ～ PI
 			float phi1 = (Span::PI * 0.5f) + (Span::PI * 0.5f) * i / stacks;
 			float phi2 = (Span::PI * 0.5f) + (Span::PI * 0.5f) * (i + 1) / stacks;
 
@@ -490,25 +406,32 @@ namespace Span
 				float theta1 = 2.0f * Span::PI * j / slices;
 				float theta2 = 2.0f * Span::PI * (j + 1) / slices;
 
-				auto GetBottomVertex = [&](float p, float t) -> Vertex {
-					float r = radius * std::sin(p);
-					float y = radius * std::cos(p);
-					float x = r * std::cos(t);
-					float z = r * std::sin(t);
+				float u1 = (float)j / slices;
+				float u2 = (float)(j + 1) / slices;
 
-					Vector3 normal = Vector3(x, y, z) * (1.0f / radius);
-					// 位置: 中心を halfHeight だけ下にずらす
-					Vector3 pos = Vector3(x, y - halfHeight, z);
+				// V座標: vBottomStart ～ 1.0
+				float v1 = vBottomStart + (float)i / stacks * (1.0f - vBottomStart);
+				float v2 = vBottomStart + (float)(i + 1) / stacks * (1.0f - vBottomStart);
 
-					return { pos, normal, {1,1,1} };
+				auto CalcSpherePoint = [&](float phi, float theta) -> Vector3 {
+					float r = radius * std::sin(phi);
+					// 下半球なのでオフセットは -halfHeight
+					return Vector3(r * std::cos(theta), radius * std::cos(phi) - halfHeight, r * std::sin(theta));
 					};
 
-				PushQuad(
-					GetBottomVertex(phi1, theta1),
-					GetBottomVertex(phi1, theta2),
-					GetBottomVertex(phi2, theta1),
-					GetBottomVertex(phi2, theta2)
-				);
+				Vector3 p1 = CalcSpherePoint(phi1, theta1);
+				Vector3 p2 = CalcSpherePoint(phi1, theta2);
+				Vector3 p3 = CalcSpherePoint(phi2, theta1);
+				Vector3 p4 = CalcSpherePoint(phi2, theta2);
+
+				// 中心オフセットは -halfHeight
+				Vertex v_tl = GetVertex(p1.x, p1.y, p1.z, u1, v1, -halfHeight);
+				Vertex v_tr = GetVertex(p2.x, p2.y, p2.z, u2, v1, -halfHeight);
+				Vertex v_bl = GetVertex(p3.x, p3.y, p3.z, u1, v2, -halfHeight);
+				Vertex v_br = GetVertex(p4.x, p4.y, p4.z, u2, v2, -halfHeight);
+
+				vertices.push_back(v_tl); vertices.push_back(v_tr); vertices.push_back(v_bl);
+				vertices.push_back(v_bl); vertices.push_back(v_tr); vertices.push_back(v_br);
 			}
 		}
 

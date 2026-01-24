@@ -1,4 +1,6 @@
 #include "Renderer.h"
+#include "Graphics/Resources/Material.h"
+#include "Graphics/Resources/Texture.h"
 
 namespace Span
 {
@@ -328,7 +330,6 @@ namespace Span
 		memcpy(dest, &data, sizeof(TransformData));
 
 		// 2. Material更新
-		// データに変更があればGPUへ転送
 		material->Update();
 
 		// 3. コマンドセット
@@ -358,7 +359,7 @@ namespace Span
 			ID3D12DescriptorHeap* ppHeaps[] = { material->GetTexture()->GetSRVHeap() };
 			commandList->SetDescriptorHeaps(1, ppHeaps);
 			// テーブルハンドルをセット (RootParameter[2])
-			commandList->SetGraphicsRootDescriptorTable(2, material->GetTexture()->GetCPUDescriptorHandle());
+			commandList->SetGraphicsRootDescriptorTable(2, material->GetTexture()->GetSRVHeap()->GetGPUDescriptorHandleForHeapStart());
 		}
 
 		mesh->Draw(commandList.Get());
@@ -391,27 +392,38 @@ namespace Span
 
 	bool Renderer::CreateRootSignature()
 	{
-		// 1. ルートパラメータ (4つに増える)
-		// [0]: CBV (Transform)
-		// [1]: CBV (Material)
-		// [2]: Descriptor Table (Texture SRV) ★追加
-		CD3DX12_ROOT_PARAMETER rootParameters[3];
+		// 1. ルートパラメータ (3つ)
+		D3D12_ROOT_PARAMETER rootParameters[3];
 
-		// CBV (b0)
-		rootParameters[0].InitAsConstantBufferView(0);
-		// CBV (b1)
-		rootParameters[1].InitAsConstantBufferView(1);
+		// [0] CBV: Transform
+		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[0].Descriptor.ShaderRegister = 0; // b0
+		rootParameters[0].Descriptor.RegisterSpace = 0;
+		rootParameters[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
 
-		// ★追加: テクスチャ用テーブル (t0)
-		CD3DX12_DESCRIPTOR_RANGE descriptorRange;
-		descriptorRange.Init(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, 1, 0); // register(t0)
-		rootParameters[2].InitAsDescriptorTable(1, &descriptorRange, D3D12_SHADER_VISIBILITY_PIXEL);
+		// [1] CBV: Material
+		rootParameters[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[1].Descriptor.ShaderRegister = 1; // b1
+		rootParameters[1].Descriptor.RegisterSpace = 0;
+		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
-		// 2. サンプラー (画像のあやとり機)
-		// 拡大縮小時の補間方法などを定義 (s0)
+		// [2] Descriptor Table: Texture (t0)
+		D3D12_DESCRIPTOR_RANGE descriptorRange = {};
+		descriptorRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
+		descriptorRange.NumDescriptors = 1;
+		descriptorRange.BaseShaderRegister = 0; // t0
+		descriptorRange.RegisterSpace = 0;
+		descriptorRange.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
+
+		rootParameters[2].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
+		rootParameters[2].DescriptorTable.NumDescriptorRanges = 1;
+		rootParameters[2].DescriptorTable.pDescriptorRanges = &descriptorRange;
+		rootParameters[2].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+
+		// 2. サンプラー
 		D3D12_STATIC_SAMPLER_DESC sampler = {};
-		sampler.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR; // 線形補間 (滑らか)
-		sampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP; // 繰り返す
+		sampler.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;
+		sampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
 		sampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
 		sampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
 		sampler.MipLODBias = 0;
@@ -420,13 +432,17 @@ namespace Span
 		sampler.BorderColor = D3D12_STATIC_BORDER_COLOR_TRANSPARENT_BLACK;
 		sampler.MinLOD = 0.0f;
 		sampler.MaxLOD = D3D12_FLOAT32_MAX;
-		sampler.ShaderRegister = 0; // register(s0)
+		sampler.ShaderRegister = 0;
 		sampler.RegisterSpace = 0;
 		sampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
-		CD3DX12_ROOT_SIGNATURE_DESC rootSignatureDesc;
-		rootSignatureDesc.Init(_countof(rootParameters), rootParameters, 1, &sampler,
-			D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT);
+		// 3. ルートシグネチャ記述
+		D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
+		rootSignatureDesc.NumParameters = _countof(rootParameters);
+		rootSignatureDesc.pParameters = rootParameters;
+		rootSignatureDesc.NumStaticSamplers = 1;
+		rootSignatureDesc.pStaticSamplers = &sampler;
+		rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
 
 		ComPtr<ID3DBlob> signature;
 		ComPtr<ID3DBlob> error;

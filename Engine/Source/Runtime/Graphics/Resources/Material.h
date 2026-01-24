@@ -14,8 +14,8 @@ namespace Span
 
 		float Metallic = 0.0f;					// 金属度 (0 = 非金属, 1 = 金属)
 		float Opacity = 1.0f;					// 透明度 (1 = 不透明, 0 = 透明)
-		float Padding[2];						// バイト数合わせ
 		float useTexture = 0.0f;				// 1.0fならテクスチャ使用
+		float Padding;						// バイト数合わせ
 	};
 
 	class Material

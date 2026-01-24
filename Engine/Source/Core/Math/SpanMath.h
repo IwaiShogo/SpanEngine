@@ -5,6 +5,43 @@ namespace Span
 {
 	using namespace DirectX;
 
+	// --- Vector2 ---
+	struct Vector2
+	{
+		float x, y;
+
+		Vector2() : x(0), y(0) {}
+		Vector2(float _x, float _y) : x(_x), y(_y) {}
+
+		// DirectXMath‚Ö‚Ì•ÏŠ·
+		XMVECTOR ToXM() const { return XMLoadFloat2(reinterpret_cast<const XMFLOAT2*>(this)); }
+		void FromXM(XMVECTOR v) { XMStoreFloat2(reinterpret_cast<XMFLOAT2*>(this), v); }
+
+		// ‘«‚µZ (+)
+		Vector2 operator+(const Vector2& other) const
+		{
+			Vector2 r;
+			r.FromXM(XMVectorAdd(ToXM(), other.ToXM()));
+			return r;
+		}
+
+		// ˆø‚«Z (-)
+		Vector2 operator-(const Vector2& other) const
+		{
+			Vector2 r;
+			r.FromXM(XMVectorSubtract(ToXM(), other.ToXM()));
+			return r;
+		}
+
+		// ƒXƒJƒ‰[Š|‚¯Z (*)
+		Vector2 operator*(float scalar) const
+		{
+			Vector2 r;
+			r.FromXM(XMVectorScale(ToXM(), scalar));
+			return r;
+		}
+	};
+
 	// --- Vector3 ---
 	struct Vector3
 	{

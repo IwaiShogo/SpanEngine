@@ -22,9 +22,23 @@ set(ASSIMP_BUILD_ZLIB ON CACHE BOOL "" FORCE) # 内蔵Zlibを使う
 # ダウンロードとビルドの実行
 FetchContent_MakeAvailable(assimp)
 
-# ------------------------------------------------------------------------------
+# --- 2. ImGui ---
+FetchContent_Declare(
+	imgui
+	GIT_REPOSITORY https://github.com/ocornut/imgui.git
+	GIT_TAG docking
+)
+FetchContent_MakeAvailable(imgui)
 
-# --- 2. stb (画像読み込み) ---
+# ソースファイルのリストアップ (ImGuiはcppを直接コンパイルに含める必要があります)
+set(IMGUI_DIR ${imgui_SOURCE_DIR})
+file(GLOB IMGUI_SOURCES
+	"${IMGUI_DIR}/*.cpp"
+	"${IMGUI_DIR}/backends/imgui_impl_dx12.cpp"
+	"${IMGUI_DIR}/backends/imgui_impl_win32.cpp"
+)
+
+# --- 3. stb (画像読み込み) ---
 FetchContent_Declare(
     stb
     GIT_REPOSITORY https://github.com/nothings/stb.git
@@ -39,7 +53,7 @@ file(GLOB_RECURSE ENGINE_SOURCES
 )
 
 # ライブラリとして定義
-add_library(SpanCore STATIC ${ENGINE_SOURCES} "Source/Runtime/Graphics/ModelLoader.cpp" "Source/Runtime/Graphics/Resources/Texture.cpp")
+add_library(SpanCore STATIC ${ENGINE_SOURCES} ${ENGINE_SOURCES} "Source/Runtime/Graphics/ModelLoader.cpp" "Source/Runtime/Graphics/Resources/Texture.cpp" "Source/Core/Input/Input.h" "Source/Core/Input/Input.cpp")
 
 # インクルードパスの設定
 target_include_directories(SpanCore PUBLIC 
@@ -48,6 +62,8 @@ target_include_directories(SpanCore PUBLIC
     Source/Runtime
     Source/Editor
     ${stb_SOURCE_DIR}
+    ${IMGUI_DIR}
+    ${IMGUI_DIR}/backends
 )
 
 # プリコンパイル済みヘッダー
@@ -60,7 +76,8 @@ target_link_libraries(SpanCore PUBLIC
     d3d12.lib 
     dxgi.lib 
     d3dcompiler.lib
-    assimp::assimp  # vcpkgなしでリンクできます
+    assimp::assimp
+    xinput
 )
 
 # コンパイルオプション
