@@ -33,6 +33,9 @@ namespace Span
 		// カメラ行列の設定
 		void SetCamera(const Matrix4x4& view, const Matrix4x4 projection);
 
+		// リサイズ
+		void OnResize(uint32 width, uint32 height);
+
 		// デバイスへのアクセス
 		ID3D12Device* GetDevice() const { return device.Get(); }
 
@@ -94,6 +97,8 @@ namespace Span
 
 		bool CreateRootSignature();
 		bool CreatePipelineState();
+
+		void CreateDepthBuffer(uint32 width, uint32 height);
 
 		struct TransformData
 		{

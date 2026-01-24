@@ -36,11 +36,15 @@ namespace Span
 			isRunning = false;
 			return;
 		}
+		// ウィンドウリサイズ時にレンダラーへ通知
+		window.SetOnResize([this](uint32 w, uint32 h) {
+			renderer.OnResize(w, h);
+			});
 
 		// 4. 時間管理初期化
 		Time::Initialize();
 		Input::Initialize();
-		GuiManager::Initialize(window.GetHandle(), renderer.GetDevice(), renderer.GetFrameCount());
+		GuiManager::Initialize(window.GetHandle(), renderer.GetDevice(), renderer.GetCommandQueue(), renderer.GetFrameCount());
 	}
 
 	Application::~Application()

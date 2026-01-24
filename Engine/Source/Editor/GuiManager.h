@@ -13,7 +13,7 @@ namespace Span
 	class GuiManager
 	{
 	public:
-		static void Initialize(HWND hWnd, ID3D12Device* device, int numFrames);
+		static void Initialize(HWND hWnd, ID3D12Device* device, ID3D12CommandQueue* commandQueue,int numFrames);
 		static void Shutdown();
 
 		static void BeginFrame();

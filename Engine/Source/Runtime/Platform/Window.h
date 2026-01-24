@@ -30,10 +30,15 @@ namespace Span
 		int GetWidth() const { return width; }
 		int GetHeight() const { return height; }
 
+		// リサイズ時のコールバック登録
+		void SetOnResize(std::function<void(uint32, uint32)> callback) { onResize = callback; }
+
 	private:
 		HWND hWnd = nullptr;
 		int width = 0;
 		int height = 0;
+
+		std::function<void(uint32, uint32)> onResize;
 
 		// Windowsからのメッセージを受け取るコールバック
 		static LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);

@@ -374,6 +374,50 @@ namespace Span
 		projectionMatrix = projection;
 	}
 
+	void Renderer::OnResize(uint32 width, uint32 height)
+	{
+		if (width == 0 || height == 0) return;
+
+		// GPUの処理完了を待つ (使用中のリソースを消すとクラッシュするため)
+		WaitForPreviousFrame();
+
+		// 1. 古いリソースを解放
+		for (int i = 0; i < FrameCount; ++i)
+		{
+			renderTargets[i].Reset();
+		}
+		depthBuffer.Reset();
+
+		// 2. スワップチェーンのサイズ変更
+		// DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH などが必要な場合もあるが基本は0でOK
+		HRESULT hr = swapChain->ResizeBuffers(FrameCount, width, height, DXGI_FORMAT_R8G8B8A8_UNORM, 0);
+		if (FAILED(hr))
+		{
+			SPAN_ERROR("Failed to resize swap chain!");
+			return;
+		}
+
+		frameIndex = swapChain->GetCurrentBackBufferIndex();
+
+		// 3. RTV (レンダーターゲットビュー) の再作成
+		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = rtvHeap->GetCPUDescriptorHandleForHeapStart();
+		for (uint32 i = 0; i < FrameCount; i++)
+		{
+			swapChain->GetBuffer(i, IID_PPV_ARGS(&renderTargets[i]));
+			device->CreateRenderTargetView(renderTargets[i].Get(), nullptr, rtvHandle);
+			rtvHandle.ptr += rtvDescriptorSize;
+		}
+
+		// 4. 深度バッファの再作成
+		CreateDepthBuffer(width, height);
+
+		// 5. ビューポートとシザー矩形の更新
+		viewport.Width = static_cast<float>(width);
+		viewport.Height = static_cast<float>(height);
+		scissorRect.right = static_cast<long>(width);
+		scissorRect.bottom = static_cast<long>(height);
+	}
+
 	void Renderer::WaitForPreviousFrame()
 	{
 		// シグナルを発行
@@ -549,5 +593,36 @@ namespace Span
 			return false;
 		}
 		return true;
+	}
+
+	void Renderer::CreateDepthBuffer(uint32 width, uint32 height)
+	{
+		D3D12_RESOURCE_DESC depthStencilDesc = {};
+		depthStencilDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
+		depthStencilDesc.Alignment = 0;
+		depthStencilDesc.Width = width;
+		depthStencilDesc.Height = height;
+		depthStencilDesc.DepthOrArraySize = 1;
+		depthStencilDesc.MipLevels = 1;
+		depthStencilDesc.Format = DXGI_FORMAT_D32_FLOAT;
+		depthStencilDesc.SampleDesc.Count = 1;
+		depthStencilDesc.SampleDesc.Quality = 0;
+		depthStencilDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
+		depthStencilDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL;
+
+		D3D12_CLEAR_VALUE optClear;
+		optClear.Format = DXGI_FORMAT_D32_FLOAT;
+		optClear.DepthStencil.Depth = 1.0f;
+		optClear.DepthStencil.Stencil = 0;
+
+		D3D12_HEAP_PROPERTIES heapProps = { D3D12_HEAP_TYPE_DEFAULT };
+
+		device->CreateCommittedResource(
+			&heapProps, D3D12_HEAP_FLAG_NONE, &depthStencilDesc,
+			D3D12_RESOURCE_STATE_DEPTH_WRITE, &optClear,
+			IID_PPV_ARGS(&depthBuffer)
+		);
+
+		device->CreateDepthStencilView(depthBuffer.Get(), nullptr, dsvHeap->GetCPUDescriptorHandleForHeapStart());
 	}
 }

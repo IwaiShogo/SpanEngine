@@ -88,10 +88,28 @@ namespace Span
 	{
 		if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam)) return true;
 
+		Window* window = reinterpret_cast<Window*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
+
 		switch (message)
 		{
 		case WM_DESTROY:
 			PostQuitMessage(0);
+			return 0;
+
+		// リサイズイベント
+		case WM_SIZE:
+			if (window && window->onResize)
+			{
+				uint32 w = LOWORD(lParam);
+				uint32 h = HIWORD(lParam);
+				// 0サイズは無視
+				if (w > 0 && h > 0)
+				{
+					window->width = w;
+					window->height = h;
+					window->onResize(w, h);
+				}
+			}
 			return 0;
 
 		// --- キーボード入力 ---

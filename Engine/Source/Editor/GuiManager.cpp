@@ -4,7 +4,7 @@ namespace Span
 {
 	ComPtr<ID3D12DescriptorHeap> GuiManager::srvHeap;
 
-	void GuiManager::Initialize(HWND hWnd, ID3D12Device* device, int numFrames)
+	void GuiManager::Initialize(HWND hWnd, ID3D12Device* device, ID3D12CommandQueue* commandQueue,int numFrames)
 	{
 		if (!device)
 		{
@@ -23,12 +23,12 @@ namespace Span
 		// 2. スタイル適用
 		ApplyStyle();
 
-		// 3. SRVヒープ作成 (ImGuiのフォント用)
+		// 3. SRVヒープ作成
 		srvHeap.Reset();
 
 		D3D12_DESCRIPTOR_HEAP_DESC desc = {};
 		desc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		desc.NumDescriptors = 1;
+		desc.NumDescriptors = 64;
 		desc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 
 		HRESULT hr = device->CreateDescriptorHeap(&desc, IID_PPV_ARGS(&srvHeap));
@@ -45,16 +45,30 @@ namespace Span
 			return;
 		}
 
-		if (!ImGui_ImplDX12_Init(device, numFrames,
-			DXGI_FORMAT_R8G8B8A8_UNORM, srvHeap.Get(),
-			srvHeap->GetCPUDescriptorHandleForHeapStart(),
-			srvHeap->GetGPUDescriptorHandleForHeapStart()))
+		// InitInfo構造体を使って初期化し、コマンドキューを渡す
+		ImGui_ImplDX12_InitInfo init_info = {};
+		init_info.Device = device;
+		init_info.CommandQueue = commandQueue;
+		init_info.NumFramesInFlight = numFrames;
+		init_info.RTVFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
+		init_info.DSVFormat = DXGI_FORMAT_D32_FLOAT; // Rendererの設定に合わせる
+
+		// ユーザー定義のヒープを使う場合の設定
+		init_info.SrvDescriptorHeap = srvHeap.Get();
+		init_info.LegacySingleSrvCpuDescriptor = srvHeap->GetCPUDescriptorHandleForHeapStart();
+		init_info.LegacySingleSrvGpuDescriptor = srvHeap->GetGPUDescriptorHandleForHeapStart();
+
+		if (!ImGui_ImplDX12_Init(&init_info))
 		{
 			SPAN_ERROR("[GuiManager] ImGui_ImplDX12_Init failed!");
 			return;
 		}
 
-		ImGui_ImplDX12_CreateDeviceObjects();
+		// フォント作成を明示的に呼び出し（任意だが、初期化確認のために推奨）
+		if (!ImGui_ImplDX12_CreateDeviceObjects())
+		{
+			SPAN_ERROR("[GuiManager] CreateDeviceObjects failed! Check Debug Layer output.");
+		}
 
 		SPAN_LOG("[GuiManager] Initialized Successfully.");
 	}
