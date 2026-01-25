@@ -61,7 +61,7 @@ namespace Span
 
 		DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM;
 		DXGI_FORMAT depthFormat = DXGI_FORMAT_D32_FLOAT;
-		float clearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+		float clearColor[4] = { 0.1f, 0.1f, 0.1f, 1.0f };
 
 		D3D12_RESOURCE_STATES currentState = D3D12_RESOURCE_STATE_COMMON;
 		uint32 width = 0;

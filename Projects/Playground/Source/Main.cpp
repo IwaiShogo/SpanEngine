@@ -1,36 +1,20 @@
-#include "Core/CoreMinimal.h"
-#include "Core/Time/Time.h"
-#include "Core/Input/Input.h"
-#include "Core/Math/SpanMath.h"
 #include "Runtime/EntryPoint.h"
 #include "Runtime/Application.h"
+#include "Core/Log/Logger.h"
 
-// ユーザーアプリケーションの定義
-class PlayergroundApp : public Span::Application
+using namespace Span;
+
+class PlaygroundApp : public Application
 {
 public:
-	PlayergroundApp()
-	{
-		// アプリケーション設定
-	}
-
-	~PlayergroundApp()
-	{
-
-	}
 
 	void OnStart() override
 	{
-		// ゲームの初期化
-	}
-
-	void OnUpdate() override
-	{
-		// アプリケーション固有の更新処理
+		
 	}
 };
 
-Span::Application* Span::CreateApplication()
+Application* Span::CreateApplication()
 {
-    return new PlayergroundApp();
+	return new PlaygroundApp();
 }

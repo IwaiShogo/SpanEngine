@@ -28,9 +28,9 @@ namespace Span
 		Window& GetWindow() { return window; }
 		Renderer& GetRenderer() { return renderer; }
 
+		World& GetWorld() { return world; }
 	protected:
 		// 子クラス（ユーザーのゲーム）からアクセスできるようにする
-		World* GetWorld() { return &world; }
 
 	private:
 		static Application* s_instance;

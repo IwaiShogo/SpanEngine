@@ -12,7 +12,7 @@ namespace Span
 		void OnUpdate() override
 		{
 			GetWorld()->ForEach<Transform, LocalToWorld>(
-				[](Transform& t, LocalToWorld& ltw)
+				[](Entity, Transform& t, LocalToWorld& ltw)
 				{
 					// çsóÒåvéZ
 					ltw.Value = Matrix4x4::TRS(t.Position, t.Rotation, t.Scale);

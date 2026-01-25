@@ -11,7 +11,7 @@
 
 namespace Span
 {
-	class RenderSystem : public System
+	class RenderingSystem : public System
 	{
 	public:
 		void OnUpdate() override
@@ -25,7 +25,7 @@ namespace Span
 			// 先に奥にある不透明な物体を描画して、深度バッファを埋めます。
 			// --------------------------------------------------------
 			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
-				[&](MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
+				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
 				{
 					if (!mf.mesh || !mr.material) return;
 
@@ -41,7 +41,7 @@ namespace Span
 			// 不透明な物体の上に重ねて描画します（深度書き込みなし）。
 			// --------------------------------------------------------
 			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
-				[&](MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
+				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
 				{
 					if (!mf.mesh || !mr.material) return;
 

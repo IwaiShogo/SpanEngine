@@ -122,7 +122,7 @@ namespace Span
 			OnUpdate();
 
 			sceneBuffer.TransitionToShaderResource(cmd);
-
+			
 
 			// --- 2. エディタ描画 (Back Buffer) ---
 
@@ -136,7 +136,7 @@ namespace Span
 			graphicsContext.SetRenderTargetToBackBuffer(cmd);
 
 			GuiManager::BeginFrame();
-			ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport());
+			ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
 
 			// ここで DrawSceneView を呼ぶ必要はなくなった (GuiManager::EndFrameで全パネルが呼ばれるため)
 
