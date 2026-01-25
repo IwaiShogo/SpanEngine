@@ -157,6 +157,13 @@ namespace Span
 			return FromEuler(euler.x, euler.y, euler.z);
 		}
 
+		static Quaternion AngleAxis(const Vector3& axis, float angle)
+		{
+			Quaternion q;
+			q.FromXM(XMQuaternionRotationAxis(axis.ToXM(), angle));
+			return q;
+		}
+
 		// 回転行列からクォータニオンを作成
 		static Quaternion FromRotationMatrix(const Matrix4x4& m);
 

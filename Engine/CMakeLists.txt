@@ -56,7 +56,7 @@ file(GLOB_RECURSE ENGINE_SOURCES
 add_library(SpanCore STATIC 
 	${ENGINE_SOURCES} 
 	${IMGUI_SOURCES}
- "Source/Runtime/Graphics/Core/RenderTarget.h" "Source/Runtime/Graphics/Core/RenderTarget.cpp" "Source/Runtime/Graphics/Core/GraphicsContext.h" "Source/Runtime/Graphics/Core/GraphicsContext.cpp" "Source/Editor/Panels/EditorPanel.h" "Source/Editor/Panels/SceneViewPanel.h" "Source/Editor/Panels/SceneViewPanel.cpp" "Source/Runtime/Components/Core/LocalToWorld.h" "Source/Runtime/Systems/Core/TransformSystem.h" "Source/Runtime/Components/Graphics/MeshRenderer.h")
+ "Source/Runtime/Graphics/Core/RenderTarget.h" "Source/Runtime/Graphics/Core/RenderTarget.cpp" "Source/Runtime/Graphics/Core/GraphicsContext.h" "Source/Runtime/Graphics/Core/GraphicsContext.cpp" "Source/Editor/Panels/EditorPanel.h" "Source/Editor/Panels/SceneViewPanel.h" "Source/Editor/Panels/SceneViewPanel.cpp" "Source/Runtime/Components/Core/LocalToWorld.h" "Source/Runtime/Systems/Core/TransformSystem.h" "Source/Runtime/Components/Graphics/MeshRenderer.h" "Source/Runtime/Systems/Graphics/EditorCameraSystem.h")
 
 # インクルードパスの設定
 target_include_directories(SpanCore PUBLIC 

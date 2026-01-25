@@ -129,14 +129,15 @@ namespace Span
 			// ★ SceneViewPanelに最新のテクスチャを渡す
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
 			{
-				scenePanel->SetTexture(sceneBuffer.GetSRV_GPU());
+				D3D12_GPU_DESCRIPTOR_HANDLE imGuiTexture = GuiManager::RegisterTexture(sceneBuffer.GetSRV());
+				scenePanel->SetTexture(imGuiTexture);
 			}
 
 			// ImGui用にバックバッファへ戻す (GraphicsContextに追加した関数を使う)
 			graphicsContext.SetRenderTargetToBackBuffer(cmd);
 
 			GuiManager::BeginFrame();
-			ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
+			ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport());
 
 			// ここで DrawSceneView を呼ぶ必要はなくなった (GuiManager::EndFrameで全パネルが呼ばれるため)
 

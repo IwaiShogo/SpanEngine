@@ -35,10 +35,14 @@ namespace Span
 			return nullptr;
 		}
 
+		static D3D12_GPU_DESCRIPTOR_HANDLE RegisterTexture(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle);
+
 	private:
 		static void ApplyStyle();
 
 		static ComPtr<ID3D12DescriptorHeap> srvHeap;
 		static std::vector<std::shared_ptr<EditorPanel>> panels;
+
+		static ID3D12Device* m_device;
 	};
 }

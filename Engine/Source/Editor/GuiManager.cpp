@@ -5,6 +5,8 @@ namespace Span
 	ComPtr<ID3D12DescriptorHeap> GuiManager::srvHeap;
 	std::vector<std::shared_ptr<EditorPanel>> GuiManager::panels;
 
+	ID3D12Device* GuiManager::m_device = nullptr;
+
 	void GuiManager::Initialize(HWND hWnd, ID3D12Device* device, ID3D12CommandQueue* commandQueue,int numFrames)
 	{
 		if (!device)
@@ -12,6 +14,8 @@ namespace Span
 			SPAN_ERROR("[GuiManager] Device is NULL!");
 			return;
 		}
+
+		m_device = device;
 
 		// 1. ImGuiコンテキスト作成
 		IMGUI_CHECKVERSION();
@@ -79,6 +83,7 @@ namespace Span
 		ImGui_ImplDX12_Shutdown();
 		ImGui_ImplWin32_Shutdown();
 		ImGui::DestroyContext();
+		m_device = nullptr;
 	}
 
 	void GuiManager::BeginFrame()
@@ -118,6 +123,29 @@ namespace Span
 	void GuiManager::AddPanel(std::shared_ptr<EditorPanel> panel)
 	{
 		panels.push_back(panel);
+	}
+
+	D3D12_GPU_DESCRIPTOR_HANDLE GuiManager::RegisterTexture(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)
+	{
+		if (!m_device || !srvHeap) return { 0 };
+
+		// SRVヒープの先頭ハンドルを取得
+		D3D12_CPU_DESCRIPTOR_HANDLE destHandleCPU = srvHeap->GetCPUDescriptorHandleForHeapStart();
+		D3D12_GPU_DESCRIPTOR_HANDLE destHandleGPU = srvHeap->GetGPUDescriptorHandleForHeapStart();
+
+		// インクリメントサイズを取得
+		UINT handleIncrementSize = m_device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+
+		// インデックス1番目を使用する (0番目はImGuiのフォント用に使われているため)
+		int index = 1;
+
+		destHandleCPU.ptr += (UINT64)index * handleIncrementSize;
+		destHandleGPU.ptr += (UINT64)index * handleIncrementSize;
+
+		// デバイスを使ってコピーを実行
+		m_device->CopyDescriptorsSimple(1, destHandleCPU, srcHandle, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+
+		return destHandleGPU;
 	}
 
 	void GuiManager::ApplyStyle()
