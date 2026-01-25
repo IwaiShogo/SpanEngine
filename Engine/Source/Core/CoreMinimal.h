@@ -10,6 +10,7 @@
 #endif
 
 #include <Windows.h>
+#include <wrl/client.h>
 
 // 2. •W€ƒ‰ƒCƒuƒ‰ƒŠ (Standard Library)
 #include <cstdint>

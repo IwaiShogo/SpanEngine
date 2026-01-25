@@ -53,9 +53,13 @@ namespace Span
 			return entity;
 		}
 
-		// --- クエリシステム (ForEach) ---
-		// 指定したコンポーネントを持つすべてのEntityに対して、関数 func を実行する
-		// Funcの型は: void(Entity entity, T1& c1, T2& c2...)
+		// --- ForEach ---
+
+		/**
+		 * @brief	指定したコンポーネントを持つすべてのEntityに対して関数を実行する
+		 * @tparam	ComponentType 要求するコンポーネント (例: Transform, LocalToWorld)
+		 * @param	func実行するラムダ式 [](Transform& t, LocalToWorld& ltw) { ... }
+		 */
 		template <typename... ComponentTypes, typename Func>
 		void ForEach(Func&& func)
 		{

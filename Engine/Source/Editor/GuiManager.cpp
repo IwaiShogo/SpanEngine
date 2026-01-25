@@ -3,6 +3,7 @@
 namespace Span
 {
 	ComPtr<ID3D12DescriptorHeap> GuiManager::srvHeap;
+	std::vector<std::shared_ptr<EditorPanel>> GuiManager::panels;
 
 	void GuiManager::Initialize(HWND hWnd, ID3D12Device* device, ID3D12CommandQueue* commandQueue,int numFrames)
 	{
@@ -89,6 +90,15 @@ namespace Span
 
 	void GuiManager::EndFrame(ID3D12GraphicsCommandList* commandList)
 	{
+		// “o˜^‚³‚ê‚½‘Sƒpƒlƒ‹‚ğ•`‰æ
+		for (auto& panel : panels)
+		{
+			if (panel->IsOpen())
+			{
+				panel->OnImGuiRender();
+			}
+		}
+
 		ImGui::Render();
 
 		// ƒq[ƒv‚ğƒZƒbƒg‚µ‚Ä•`‰æ
@@ -103,6 +113,11 @@ namespace Span
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault(nullptr, (void*)commandList);
 		}
+	}
+
+	void GuiManager::AddPanel(std::shared_ptr<EditorPanel> panel)
+	{
+		panels.push_back(panel);
 	}
 
 	void GuiManager::ApplyStyle()

@@ -26,13 +26,6 @@ namespace Span
 				std::hash<std::string_view>()(typeName)
 			);
 
-			static bool logged = false;
-			if (!logged)
-			{
-				SPAN_LOG("[ComponentType] Name: %s -> ID: %u\n", typeName, id);
-				logged = true;
-			}
-
 			return id;
 		}
 

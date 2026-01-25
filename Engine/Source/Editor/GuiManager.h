@@ -1,5 +1,7 @@
 #pragma once
 #define IMGUI_DEFINE_MATH_OPERATORS
+#include "Panels/EditorPanel.h"
+#include "Panels/SceneViewPanel.h"
 
 #include "Core/CoreMinimal.h"
 #include "Graphics/Renderer.h"
@@ -19,9 +21,24 @@ namespace Span
 		static void BeginFrame();
 		static void EndFrame(ID3D12GraphicsCommandList* commandList);
 
-		static void ApplyStyle();
+		// パネル管理
+		static void AddPanel(std::shared_ptr<EditorPanel> panel);
+
+		// 特定のパネルを取得するヘルパー
+		template<typename T>
+		static std::shared_ptr<T> GetPanel()
+		{
+			for (auto& panel : panels)
+			{
+				if (auto p = std::dynamic_pointer_cast<T>(panel)) return p;
+			}
+			return nullptr;
+		}
 
 	private:
+		static void ApplyStyle();
+
 		static ComPtr<ID3D12DescriptorHeap> srvHeap;
+		static std::vector<std::shared_ptr<EditorPanel>> panels;
 	};
 }

@@ -1,8 +1,10 @@
 #pragma once
 #include "Core/CoreMinimal.h"
 #include "Platform/Window.h"
-#include "ECS/Kernel/World.h"
 #include "Graphics/Renderer.h"
+#include "Graphics/Core/GraphicsContext.h"
+#include "Graphics/Core/RenderTarget.h"
+#include "ECS/Kernel/World.h"
 
 namespace Span
 {
@@ -12,12 +14,6 @@ namespace Span
 		Application();
 		virtual ~Application();
 
-		// どこからでもアプリ本体、ひいてはWindowやWorldにアクセス可能にする
-		static Application& Get() { return *s_instance; }
-
-		Window& GetWindow() { return window; }
-		Renderer& GetRenderer() { return renderer; }
-
 		// アプリを実行する
 		void Run();
 
@@ -26,18 +22,25 @@ namespace Span
 		virtual void OnUpdate() {}
 		virtual void OnShutdown() {}
 
+		// どこからでもアプリ本体、ひいてはWindowやWorldにアクセス可能にする
+		static Application& Get() { return *s_instance; }
+
+		Window& GetWindow() { return window; }
+		Renderer& GetRenderer() { return renderer; }
+
 	protected:
 		// 子クラス（ユーザーのゲーム）からアクセスできるようにする
 		World* GetWorld() { return &world; }
 
 	private:
 		static Application* s_instance;
-
 		bool isRunning = true;
-		Window window;	// Windowを待つ
-		World world;	// ECS Worldを持つ
 
+		Window window;
+		GraphicsContext graphicsContext;
 		Renderer renderer;
+		RenderTarget sceneBuffer;	// シーン描画用
+		World world;
 	};
 
 	// ユーザー側で定義してもらう関数（ファクトリー関数）

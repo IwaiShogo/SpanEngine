@@ -3,6 +3,8 @@
 #include "Core/Input/Input.h"
 #include "Editor/GuiManager.h"
 
+#include "Editor/Panels/SceneViewPanel.h"
+
 namespace Span
 {
 	Application* Application::s_instance = nullptr;
@@ -29,29 +31,51 @@ namespace Span
 			return;
 		}
 
-		// 3. レンダラー初期化
-		if (!renderer.Initialize(window))
+		// 3. graphicsContext初期化
+		if (!graphicsContext.Initialize(window))
 		{
-			SPAN_FATAL("Renderer Initialization Failed!");
+			SPAN_FATAL("GraphicsContext Initialization Failed!");
 			isRunning = false;
 			return;
 		}
+
+		// 4. レンダラー初期化
+		if (!renderer.Initialize(&graphicsContext))
+		{
+			SPAN_FATAL("Render Initialization Failed!");
+			isRunning = false;
+			return;
+		}
+
+		// 4-b. シーンバッファの初期化
+		if (!sceneBuffer.Initialize(renderer.GetDevice(), window.GetWidth(), window.GetHeight()))
+		{
+			SPAN_FATAL("SceneBuffer Initialization Failed!");
+			isRunning = false;
+		}
+
 		// ウィンドウリサイズ時にレンダラーへ通知
 		window.SetOnResize([this](uint32 w, uint32 h) {
 			renderer.OnResize(w, h);
+			sceneBuffer.Resize(renderer.GetDevice(), w, h);
 			});
 
-		// 4. 時間管理初期化
+		// 5. 時間・入力・GUI管理初期化
 		Time::Initialize();
 		Input::Initialize();
 		GuiManager::Initialize(window.GetHandle(), renderer.GetDevice(), renderer.GetCommandQueue(), renderer.GetFrameCount());
+
+		// パネルの登録
+		GuiManager::AddPanel(std::make_shared<SceneViewPanel>());
 	}
 
 	Application::~Application()
 	{
 		OnShutdown();
 		GuiManager::Shutdown();
+		sceneBuffer.Shutdown();
 		renderer.Shutdown();
+		graphicsContext.Shutdown();
 		window.Shutdown();
 		Logger::Shutdown();
 	}
@@ -70,34 +94,59 @@ namespace Span
 				break;
 			}
 
-			// 1. レンダリング開始
-			renderer.BeginFrame();
+			// --- 1. シーン描画 (Render to Texture) ---
 
-			// 2. GUIの準備
-			GuiManager::BeginFrame();
+			// 修正: 戻り値を受け取るように変更 (E0144修正)
+			ID3D12GraphicsCommandList* cmd = renderer.BeginFrame();
 
-			// UI定義を書く
-			ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport());
+			sceneBuffer.TransitionToRenderTarget(cmd);
 
-			// テストウィンドウ
-			ImGui::Begin("Inspector");
-			ImGui::Text("Application Running...");
-			ImGui::Text("Frame Rate: %.1f FPS", ImGui::GetIO().Framerate);
-			ImGui::End();
+			D3D12_CPU_DESCRIPTOR_HANDLE rtv = sceneBuffer.GetRTV();
 
-			// 3. ゲームロジック更新
+			// 修正: RenderTarget.h が正しく更新されていれば GetDSV() が使えるはず (E0135修正)
+			// もしエラーが続く場合は、RenderTarget.hにGetDSV()があるか確認してください
+			D3D12_CPU_DESCRIPTOR_HANDLE dsv = sceneBuffer.GetDSV();
+
+			cmd->OMSetRenderTargets(1, &rtv, FALSE, &dsv);
+			sceneBuffer.Clear(cmd);
+
+			// ビューポート設定
+			D3D12_VIEWPORT viewport = { 0.0f, 0.0f, (float)sceneBuffer.GetWidth(), (float)sceneBuffer.GetHeight(), 0.0f, 1.0f };
+			D3D12_RECT scissor = { 0, 0, (LONG)sceneBuffer.GetWidth(), (LONG)sceneBuffer.GetHeight() };
+			cmd->RSSetViewports(1, &viewport);
+			cmd->RSSetScissorRects(1, &scissor);
+
 			Time::Update();
 			Input::Update();
-
-			// システムの一括更新
 			world.UpdateSystems();
-			// ユーザー定義の更新処理
 			OnUpdate();
 
-			// 4. GUIの描画
-			GuiManager::EndFrame(renderer.GetCommandList());
+			sceneBuffer.TransitionToShaderResource(cmd);
 
-			// 5. フレーム終了
+
+			// --- 2. エディタ描画 (Back Buffer) ---
+
+			// ★ SceneViewPanelに最新のテクスチャを渡す
+			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
+			{
+				scenePanel->SetTexture(sceneBuffer.GetSRV_GPU());
+			}
+
+			// ImGui用にバックバッファへ戻す (GraphicsContextに追加した関数を使う)
+			graphicsContext.SetRenderTargetToBackBuffer(cmd);
+
+			GuiManager::BeginFrame();
+			ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport());
+
+			// ここで DrawSceneView を呼ぶ必要はなくなった (GuiManager::EndFrameで全パネルが呼ばれるため)
+
+			// デバッグ用ウィンドウ
+			ImGui::Begin("Stats");
+			ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
+			ImGui::End();
+
+			GuiManager::EndFrame(cmd);
+
 			renderer.EndFrame();
 		}
 
