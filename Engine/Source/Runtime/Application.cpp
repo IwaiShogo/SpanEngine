@@ -64,9 +64,6 @@ namespace Span
 		Time::Initialize();
 		Input::Initialize(window.GetHandle());
 		GuiManager::Initialize(window.GetHandle(), renderer.GetDevice(), renderer.GetCommandQueue(), renderer.GetFrameCount());
-
-		// ƒpƒlƒ‹‚Ì“o˜^
-		GuiManager::AddPanel(std::make_shared<SceneViewPanel>());
 	}
 
 	Application::~Application()

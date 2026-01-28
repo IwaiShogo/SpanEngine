@@ -1,4 +1,5 @@
 #include "GuiManager.h"
+#include "PanelManager.h"
 
 namespace Span
 {
@@ -74,6 +75,13 @@ namespace Span
 		if (!ImGui_ImplDX12_CreateDeviceObjects())
 		{
 			SPAN_ERROR("[GuiManager] CreateDeviceObjects failed! Check Debug Layer output.");
+		}
+
+		// ‘Sƒpƒlƒ‹‚ğˆêŠ‡¶¬
+		auto autoPanels = PanelManager::CreateAllPanels();
+		for (auto& p : autoPanels)
+		{
+			AddPanel(p);
 		}
 
 		SPAN_LOG("[GuiManager] Initialized Successfully.");

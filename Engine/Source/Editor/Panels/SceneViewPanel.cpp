@@ -1,7 +1,10 @@
 #include "SceneViewPanel.h"
+#include "Editor/PanelManager.h"
 
 namespace Span
 {
+	static AutoRegisterPanel<SceneViewPanel> _reg("Scene");
+
 	SceneViewPanel::SceneViewPanel()
 		: EditorPanel("Scene View")
 	{

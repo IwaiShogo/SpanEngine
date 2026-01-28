@@ -1,6 +1,8 @@
 #pragma once
 #include "ECS/Kernel/System.h"
 #include "ECS/Kernel/World.h"
+
+// Component
 #include "Components/Core/Transform.h"
 #include "Components/Core/LocalToWorld.h"
 #include "Components/Core/Relationship.h"

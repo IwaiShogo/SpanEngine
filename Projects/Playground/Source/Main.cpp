@@ -12,7 +12,7 @@
 // --- Components ---
 #include "Runtime/Components/Core/Transform.h"
 #include "Runtime/Components/Core/LocalToWorld.h"
-#include "Runtime/Components/Core/Relationship.h" // ★追加
+#include "Runtime/Components/Core/Relationship.h"
 #include "Runtime/Components/Graphics/MeshFilter.h"
 #include "Runtime/Components/Graphics/MeshRenderer.h"
 #include "Runtime/Components/Graphics/Camera.h"
@@ -22,22 +22,31 @@
 #include "Runtime/Graphics/Resources/Mesh.h"
 #include "Runtime/Graphics/Resources/Material.h"
 #include "Runtime/Graphics/Resources/Texture.h"
+#include "Runtime/Graphics/ModelLoader.h" // ★追加
+
+#include "Editor/SelectionManager.h"
+#include "Runtime/Reflection/ComponentRegistry.h"
+#include "Editor/ImGui/ImGuiUI.h"
+#include "Editor/GuiManager.h"
+#include "Editor/Panels/SceneViewPanel.h"
+#include "Editor/Panels/InspectorPanel.h"
 
 using namespace Span;
 
 class PlaygroundApp : public Application
 {
 public:
-    std::vector<Mesh*> meshes;
+    std::vector<Mesh*> loadedMeshes;
+    std::vector<Mesh*> builtInMeshes;
     std::vector<Material*> materials;
 
-    Entity parentCube;
-    Entity childSphere;
+    Entity modelRoot;
 
     void OnStart() override
     {
         SPAN_LOG("--- Playground App Started ---");
 
+        // システム登録
         GetWorld().AddSystem<EditorCameraSystem>();
         GetWorld().AddSystem<TransformSystem>();
         GetWorld().AddSystem<CameraSystem>();
@@ -45,101 +54,93 @@ public:
 
         ID3D12Device* device = GetRenderer().GetDevice();
 
-        // --- リソース作成 ---
+        // --- マテリアル作成 ---
         {
-            // 0: Plane
-            meshes.push_back(Mesh::CreatePlane(device, 20.0f, 20.0f));
-
-            // 1: Cube
-            meshes.push_back(Mesh::CreateCube(device));
-
-            // 2: Sphere (球体がないのでCubeで代用、あるいはModelLoaderがあればそれを使う)
-            // 今回は親子関係が分かればいいのでCubeを使い回します
-            meshes.push_back(Mesh::CreateCube(device));
-
-            // Materials
-            Material* gray = new Material(); gray->Initialize(device); gray->SetAlbedo(Vector3(0.5f, 0.5f, 0.5f));
+            Material* gray = new Material(); gray->Initialize(device); gray->SetAlbedo(Vector3(0.5f, 0.5f, 0.5f)); gray->SetRoughness(0.8f);
             materials.push_back(gray);
 
-            Material* red = new Material(); red->Initialize(device); red->SetAlbedo(Vector3(0.8f, 0.1f, 0.1f));
-            materials.push_back(red);
+            Material* white = new Material(); white->Initialize(device); white->SetAlbedo(Vector3(1.0f, 1.0f, 1.0f));
+            materials.push_back(white);
+        }
 
-            Material* blue = new Material(); blue->Initialize(device); blue->SetAlbedo(Vector3(0.1f, 0.1f, 0.8f));
-            materials.push_back(blue);
+        // --- 床の作成 ---
+        {
+            builtInMeshes.push_back(Mesh::CreatePlane(device, 20.0f, 20.0f));
+
+            Entity floor = GetWorld().CreateEntity<Transform, LocalToWorld, MeshFilter, MeshRenderer>();
+            GetWorld().SetComponent(floor, Transform(Vector3(0, 0, 0)));
+            GetWorld().SetComponent(floor, MeshFilter(builtInMeshes[0]));
+            GetWorld().SetComponent(floor, MeshRenderer(materials[0])); // グレー
+        }
+
+        // --- FBXモデルのロード ---
+        // Assetsフォルダは実行ファイルと同じ場所にコピーされているはずです
+        // ※パスは "Assets/Y Bot.fbx" です
+        loadedMeshes = ModelLoader::Load(device, "Assets/Y Bot.fbx");
+
+        if (loadedMeshes.empty())
+        {
+            SPAN_ERROR("Failed to load model! Please check 'Assets/Y Bot.fbx' exists.");
+        }
+        else
+        {
+            // モデルのルートEntityを作成 (操作用)
+            modelRoot = GetWorld().CreateEntity<Transform, LocalToWorld>();
+            GetWorld().SetComponent(modelRoot, Transform(Vector3(0, 0, 0))); // 原点
+
+            // 読み込まれたメッシュごとにEntityを作成し、ルートの子にする
+            for (Mesh* mesh : loadedMeshes)
+            {
+                Entity part = GetWorld().CreateEntity<Transform, LocalToWorld, MeshFilter, MeshRenderer, Parent>();
+
+                // 親設定
+                GetWorld().SetComponent(part, Parent(modelRoot));
+
+                // メッシュ設定
+                GetWorld().SetComponent(part, MeshFilter(mesh));
+                GetWorld().SetComponent(part, MeshRenderer(materials[1])); // 白マテリアル
+
+                // ローカル座標は初期値 (FBX内の階層構造はModelLoaderが平坦化してしまっているため、全て原点基準になります)
+                // 本格対応はフェーズ4のアニメーション実装時に行います
+                GetWorld().SetComponent(part, Transform::Identity());
+            }
+
+            // スケール調整 (Mixamoなどはデカいことが多いので 0.01倍 にしてみる)
+            Transform& t = GetWorld().GetComponent<Transform>(modelRoot);
+            t.Scale = Vector3(0.01f, 0.01f, 0.01f);
         }
 
         // --- Camera ---
         {
             Entity camera = GetWorld().CreateEntity<Transform, LocalToWorld, Camera, EditorCamera>();
             Transform t;
-            t.Position = Vector3(0.0f, 5.0f, -10.0f);
-            t.LookAt(Vector3::Zero);
+            t.Position = Vector3(0.0f, 2.0f, -5.0f); // モデルが見やすい位置へ
+            t.LookAt(Vector3(0.0f, 1.0f, 0.0f));
             GetWorld().SetComponent(camera, t);
             GetWorld().SetComponent(camera, Camera(60.0f));
             GetWorld().SetComponent(camera, EditorCamera{});
-        }
 
-        // --- Floor ---
-        {
-            Entity floor = GetWorld().CreateEntity<Transform, LocalToWorld, MeshFilter, MeshRenderer>();
-            GetWorld().SetComponent(floor, Transform(Vector3(0, 0, 0)));
-            GetWorld().SetComponent(floor, MeshFilter(meshes[0]));
-            GetWorld().SetComponent(floor, MeshRenderer(materials[0]));
-        }
-
-        // --- Parent Object (Red Cube) ---
-        {
-            parentCube = GetWorld().CreateEntity<Transform, LocalToWorld, MeshFilter, MeshRenderer>();
-
-            Transform t;
-            t.Position = Vector3(0, 1.5f, 0);
-            GetWorld().SetComponent(parentCube, t);
-
-            GetWorld().SetComponent(parentCube, MeshFilter(meshes[1]));
-            GetWorld().SetComponent(parentCube, MeshRenderer(materials[1]));
-        }
-
-        // --- Child Object (Blue Cube/Sphere) ---
-        // ★ Parentコンポーネントを追加
-        {
-            childSphere = GetWorld().CreateEntity<Transform, LocalToWorld, MeshFilter, MeshRenderer, Parent>();
-
-            // 親を設定
-            GetWorld().SetComponent(childSphere, Parent(parentCube));
-
-            Transform t;
-            t.Position = Vector3(3.0f, 0.0f, 0.0f); // 親から右に3m離れた位置 (ローカル座標)
-            t.Scale = Vector3(0.5f, 0.5f, 0.5f);    // 少し小さく
-            GetWorld().SetComponent(childSphere, t);
-
-            GetWorld().SetComponent(childSphere, MeshFilter(meshes[2]));
-            GetWorld().SetComponent(childSphere, MeshRenderer(materials[2]));
+            SelectionManager::Select(camera);
         }
     }
 
     void OnUpdate() override
     {
-        // 親をY軸回転させる
-        if (GetWorld().IsAlive(parentCube))
+        // モデルをY軸回転させて鑑賞
+        if (GetWorld().IsAlive(modelRoot))
         {
-            Transform& t = GetWorld().GetComponent<Transform>(parentCube);
-            t.Rotation = t.Rotation * Quaternion::AngleAxis(Vector3::Up, Time::GetDeltaTime() * 1.0f);
-        }
-
-        // 子をX軸回転させる（自転）
-        // 親が回るので、子は「親の周りを公転しながら、自分で自転する」動きになるはず
-        if (GetWorld().IsAlive(childSphere))
-        {
-            Transform& t = GetWorld().GetComponent<Transform>(childSphere);
-            t.Rotation = t.Rotation * Quaternion::AngleAxis(Vector3::Right, Time::GetDeltaTime() * 2.0f);
+            Transform& t = GetWorld().GetComponent<Transform>(modelRoot);
+            t.Rotation = t.Rotation * Quaternion::AngleAxis(Vector3::Up, Time::GetDeltaTime() * 0.5f);
         }
     }
 
     void OnShutdown() override
     {
-        for (auto m : meshes) { m->Shutdown(); delete m; }
+        for (auto m : loadedMeshes) { m->Shutdown(); delete m; }
+        for (auto m : builtInMeshes) { m->Shutdown(); delete m; }
         for (auto m : materials) { m->Shutdown(); delete m; }
-        meshes.clear();
+        loadedMeshes.clear();
+        builtInMeshes.clear();
         materials.clear();
     }
 };

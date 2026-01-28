@@ -1,5 +1,6 @@
 #pragma once
-#include "Core/Math/SpanMath.h" 
+#include "Core/Math/SpanMath.h"
+#include "Runtime/Reflection/SpanReflection.h"
 
 namespace Span
 {
@@ -107,5 +108,18 @@ namespace Span
 			// 4. 行列 -> クォータニオン変換して適用
 			Rotation = Quaternion::FromRotationMatrix(rotMat);
 		}
+
+		SPAN_INSPECTOR_BEGIN(Transform)
+			SPAN_FIELD(Position)
+			{
+				Vector3 euler = Rotation.ToEuler();
+				Vector3 deg = { ToDegrees(euler.x), ToDegrees(euler.y), ToDegrees(euler.z) };
+				if (ImGuiUI::DrawVec3Control("Rotation", deg))
+				{
+					Rotation = Quaternion::FromEuler(ToRadians(deg.x), ToRadians(deg.y), ToRadians(deg.z));
+				}
+			}
+		SPAN_FIELD(Scale)
+		SPAN_INSPECTOR_END()
 	};
 }

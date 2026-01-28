@@ -8,6 +8,11 @@ add_executable(Playground ${GAME_SOURCES})
 # エンジン本体とリンク
 target_link_libraries(Playground PRIVATE SpanCore)
 
+# SpanCore内の自動登録機能を有効にするための強制リンク
+if(MSVC)
+    target_link_options(Playground PRIVATE "/WHOLEARCHIVE:$<TARGET_FILE:SpanCore>")
+endif()
+
 # インクルードパス
 target_include_directories(Playground PRIVATE Source)
 
