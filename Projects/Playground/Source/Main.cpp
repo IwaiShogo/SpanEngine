@@ -12,9 +12,11 @@
 // --- Components ---
 #include "Runtime/Components/Core/Transform.h"
 #include "Runtime/Components/Core/LocalToWorld.h"
+#include "Runtime/Components/Core/Relationship.h" // ★追加
 #include "Runtime/Components/Graphics/MeshFilter.h"
 #include "Runtime/Components/Graphics/MeshRenderer.h"
 #include "Runtime/Components/Graphics/Camera.h"
+#include "Runtime/Components/Editor/EditorCamera.h"
 
 // --- Resources ---
 #include "Runtime/Graphics/Resources/Mesh.h"
@@ -26,97 +28,110 @@ using namespace Span;
 class PlaygroundApp : public Application
 {
 public:
-    // リソースの所有権管理
     std::vector<Mesh*> meshes;
     std::vector<Material*> materials;
 
-    // 動かす対象のEntity ID
-    Entity cubeEntity;
+    Entity parentCube;
+    Entity childSphere;
 
     void OnStart() override
     {
         SPAN_LOG("--- Playground App Started ---");
 
-        // 1. システムの登録 (GetWorld()を使用)
         GetWorld().AddSystem<EditorCameraSystem>();
         GetWorld().AddSystem<TransformSystem>();
         GetWorld().AddSystem<CameraSystem>();
         GetWorld().AddSystem<RenderingSystem>();
 
-        // デバイス取得
         ID3D12Device* device = GetRenderer().GetDevice();
 
-        // 2. リソースの作成
+        // --- リソース作成 ---
         {
-            // 床
-            Mesh* planeMesh = Mesh::CreatePlane(device, 20.0f, 20.0f);
-            Material* grayMat = new Material();
-            grayMat->Initialize(device);
-            grayMat->SetAlbedo(Vector3(0.5f, 0.5f, 0.5f));
-            grayMat->SetRoughness(0.8f);
+            // 0: Plane
+            meshes.push_back(Mesh::CreatePlane(device, 20.0f, 20.0f));
 
-            meshes.push_back(planeMesh);
-            materials.push_back(grayMat);
+            // 1: Cube
+            meshes.push_back(Mesh::CreateCube(device));
 
-            // キューブ
-            Mesh* cubeMesh = Mesh::CreateCube(device);
-            Material* redMat = new Material();
-            redMat->Initialize(device);
-            redMat->SetAlbedo(Vector3(0.8f, 0.1f, 0.1f));
-            redMat->SetRoughness(0.4f);
-            redMat->SetMetallic(0.1f);
+            // 2: Sphere (球体がないのでCubeで代用、あるいはModelLoaderがあればそれを使う)
+            // 今回は親子関係が分かればいいのでCubeを使い回します
+            meshes.push_back(Mesh::CreateCube(device));
 
-            meshes.push_back(cubeMesh);
-            materials.push_back(redMat);
+            // Materials
+            Material* gray = new Material(); gray->Initialize(device); gray->SetAlbedo(Vector3(0.5f, 0.5f, 0.5f));
+            materials.push_back(gray);
+
+            Material* red = new Material(); red->Initialize(device); red->SetAlbedo(Vector3(0.8f, 0.1f, 0.1f));
+            materials.push_back(red);
+
+            Material* blue = new Material(); blue->Initialize(device); blue->SetAlbedo(Vector3(0.1f, 0.1f, 0.8f));
+            materials.push_back(blue);
         }
 
-        // 3. エンティティの作成
-
-        // --- Camera Entity ---
+        // --- Camera ---
         {
-            Entity camera = GetWorld().CreateEntity<Transform, LocalToWorld, Camera>();
-
-            Transform camTrans;
-            camTrans.Position = Vector3(0.0f, 3.0f, 6.0f);
-            camTrans.LookAt(Vector3(0.0f, 0.0f, 0.0f));
-
-            GetWorld().SetComponent(camera, camTrans);
+            Entity camera = GetWorld().CreateEntity<Transform, LocalToWorld, Camera, EditorCamera>();
+            Transform t;
+            t.Position = Vector3(0.0f, 5.0f, -10.0f);
+            t.LookAt(Vector3::Zero);
+            GetWorld().SetComponent(camera, t);
             GetWorld().SetComponent(camera, Camera(60.0f));
+            GetWorld().SetComponent(camera, EditorCamera{});
         }
 
-        // --- Floor Entity ---
+        // --- Floor ---
         {
             Entity floor = GetWorld().CreateEntity<Transform, LocalToWorld, MeshFilter, MeshRenderer>();
-
             GetWorld().SetComponent(floor, Transform(Vector3(0, 0, 0)));
             GetWorld().SetComponent(floor, MeshFilter(meshes[0]));
             GetWorld().SetComponent(floor, MeshRenderer(materials[0]));
         }
 
-        // --- Cube Entity ---
+        // --- Parent Object (Red Cube) ---
         {
-            cubeEntity = GetWorld().CreateEntity<Transform, LocalToWorld, MeshFilter, MeshRenderer>();
+            parentCube = GetWorld().CreateEntity<Transform, LocalToWorld, MeshFilter, MeshRenderer>();
 
-            GetWorld().SetComponent(cubeEntity, Transform(Vector3(0, 1.0f, 0)));
-            GetWorld().SetComponent(cubeEntity, MeshFilter(meshes[1]));
-            GetWorld().SetComponent(cubeEntity, MeshRenderer(materials[1]));
+            Transform t;
+            t.Position = Vector3(0, 1.5f, 0);
+            GetWorld().SetComponent(parentCube, t);
+
+            GetWorld().SetComponent(parentCube, MeshFilter(meshes[1]));
+            GetWorld().SetComponent(parentCube, MeshRenderer(materials[1]));
+        }
+
+        // --- Child Object (Blue Cube/Sphere) ---
+        // ★ Parentコンポーネントを追加
+        {
+            childSphere = GetWorld().CreateEntity<Transform, LocalToWorld, MeshFilter, MeshRenderer, Parent>();
+
+            // 親を設定
+            GetWorld().SetComponent(childSphere, Parent(parentCube));
+
+            Transform t;
+            t.Position = Vector3(3.0f, 0.0f, 0.0f); // 親から右に3m離れた位置 (ローカル座標)
+            t.Scale = Vector3(0.5f, 0.5f, 0.5f);    // 少し小さく
+            GetWorld().SetComponent(childSphere, t);
+
+            GetWorld().SetComponent(childSphere, MeshFilter(meshes[2]));
+            GetWorld().SetComponent(childSphere, MeshRenderer(materials[2]));
         }
     }
 
     void OnUpdate() override
     {
-        // キューブを回転させるアニメーション
-        if (GetWorld().IsAlive(cubeEntity))
+        // 親をY軸回転させる
+        if (GetWorld().IsAlive(parentCube))
         {
-            Transform& t = GetWorld().GetComponent<Transform>(cubeEntity);
+            Transform& t = GetWorld().GetComponent<Transform>(parentCube);
+            t.Rotation = t.Rotation * Quaternion::AngleAxis(Vector3::Up, Time::GetDeltaTime() * 1.0f);
+        }
 
-            // 修正: RotationAxisが存在しない可能性があるため、安全策としてAngleAxisまたは行列経由を試す
-            // ここではよくある命名規則である "AngleAxis" を試してみます
-            // もしこれでもエラーが出る場合は、SpanMath.hの中身を見せていただく必要があります
-            Quaternion rot = Quaternion::AngleAxis(Vector3::Up, 0.01f);
-
-            // 合成
-            t.Rotation = t.Rotation * rot;
+        // 子をX軸回転させる（自転）
+        // 親が回るので、子は「親の周りを公転しながら、自分で自転する」動きになるはず
+        if (GetWorld().IsAlive(childSphere))
+        {
+            Transform& t = GetWorld().GetComponent<Transform>(childSphere);
+            t.Rotation = t.Rotation * Quaternion::AngleAxis(Vector3::Right, Time::GetDeltaTime() * 2.0f);
         }
     }
 

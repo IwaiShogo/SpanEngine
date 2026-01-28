@@ -157,6 +157,9 @@ namespace Span
 			return FromEuler(euler.x, euler.y, euler.z);
 		}
 
+		// 現在のQuaternionをEuler角 (Pitch, Yaw, Roll) に変換
+		Vector3 ToEuler() const;
+
 		static Quaternion AngleAxis(const Vector3& axis, float angle)
 		{
 			Quaternion q;
@@ -295,6 +298,33 @@ namespace Span
 		Quaternion q;
 		q.FromXM(XMQuaternionRotationMatrix(m.ToXM()));
 		return q;
+	}
+
+	inline Vector3 Quaternion::ToEuler() const
+	{
+		// Matrixを経由して正確にEuler角を取り出す
+		Matrix4x4 m = Matrix4x4::Rotation(*this);
+
+		float pitch, yaw, roll;
+
+		// Pitch (X軸回転)
+		if (m._32 < -0.999f) pitch = HalfPI;
+		else if (m._32 > 0.999f) pitch = -HalfPI;
+		else pitch = asin(-m._32);
+
+		// Yaw (Y軸回転) & Roll (Z軸回転)
+		if (abs(m._32) < 0.999f)
+		{
+			yaw = atan2(m._31, m._33);
+			roll = atan2(m._12, m._22);
+		}
+		else
+		{
+			yaw = atan2(-m._13, m._11);
+			roll = 0.0f;
+		}
+
+		return Vector3(pitch, yaw, roll);
 	}
 
 	// 静的メンバの実体定義 (ヘッダ内記述のため inline を使用)

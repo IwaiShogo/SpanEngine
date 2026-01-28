@@ -39,8 +39,9 @@ namespace Span
 	class Input
 	{
 	public:
-		static void Initialize();
+		static void Initialize(HWND hWnd);
 		static void Update();
+		static void EndFrame();
 
 		// --- ユーザー向けAPI ---
 		static bool GetKey(Key key);		// 押しっぱなし
@@ -49,6 +50,10 @@ namespace Span
 
 		static Vector2 GetMousePosition();	// マウスの位置
 		static Vector2 GetMouseDelta();		// マウスの移動量
+
+		// カーソル制御
+		static void SetCursorVisible(bool visible);
+		static void SetLockCursor(bool lock);		// FPSスタイルのロック
 
 		// コントローラー用関数
 		static bool GetButton(Key key);		// ボタン押しっぱなし
@@ -77,5 +82,10 @@ namespace Span
 		static bool prevGamepadStates[20];	// 前フレーム
 		static float gamepadAxes[6];		// スティック/トリガー値
 		static bool isConnected;			// 接続されているか
+
+		static HWND hWnd;
+		static bool isCursorLocked;
+		static bool ignoreNextDelta;
+		static void ResetCursorToCenter();
 	};
 }

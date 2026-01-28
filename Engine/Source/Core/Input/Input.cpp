@@ -12,6 +12,10 @@ namespace Span
 	Vector2 Input::prevMousePosition = { 0, 0 };
 	Vector2 Input::mouseDelta = { 0, 0 };
 
+	HWND Input::hWnd = nullptr;
+	bool Input::isCursorLocked = false;
+	bool Input::ignoreNextDelta = false;
+
 	// コントローラー用
 	bool Input::gamepadStates[20] = { false };
 	bool Input::prevGamepadStates[20] = { false };
@@ -39,21 +43,60 @@ namespace Span
 		}
 	}
 
-	void Input::Initialize()
+	void Input::Initialize(HWND windowHandle)
 	{
+		hWnd = windowHandle;
+
 		// マウス初期位置を取得
 		POINT p;
 		GetCursorPos(&p);
+		ScreenToClient(hWnd, &p);
 		mousePosition = { (float)p.x, (float)p.y };
 		prevMousePosition = mousePosition;
 	}
 
 	void Input::Update()
 	{
-		// 1. キーボード・マウスの前回状態保存
-		memcpy(prevKeyStates, keyStates, sizeof(bool) * 256);
-		mouseDelta = mousePosition - prevMousePosition;
-		prevMousePosition = mousePosition;
+		// ロック中は「移動量」を計算した後、カーソルを中央に戻す
+		if (isCursorLocked && hWnd)
+		{
+			// 1. 現在のカーソル位置（スクリーン座標）を取得
+			POINT curP;
+			GetCursorPos(&curP);
+
+			// 2. ウィンドウ中央（スクリーン座標）を計算
+			RECT rect;
+			GetClientRect(hWnd, &rect);
+			POINT center = { (rect.right - rect.left) / 2, (rect.bottom - rect.top) / 2 };
+			ClientToScreen(hWnd, &center);
+
+			// 3. 中央からのズレを移動量(Delta)とする
+			// これにより、前回位置に関係なく純粋な移動量が取れる
+			if (ignoreNextDelta)
+			{
+				mouseDelta = { 0, 0 };
+				ignoreNextDelta = false;
+			}
+			else
+			{
+				mouseDelta.x = (float)(curP.x - center.x);
+				mouseDelta.y = (float)(curP.y - center.y);
+			}
+
+			// 4. カーソルを物理的に中央に戻す
+			SetCursorPos(center.x, center.y);
+
+			// 5. 内部座標も中央固定にしておく
+			ScreenToClient(hWnd, &center);
+			mousePosition = { (float)center.x, (float)center.y };
+			prevMousePosition = mousePosition;
+		}
+		else
+		{
+			// 通常
+			mouseDelta = mousePosition - prevMousePosition;
+			prevMousePosition = mousePosition;
+		}
 
 		// 2. コントローラーの前回状態保存
 		memcpy(prevGamepadStates, gamepadStates, sizeof(bool) * 20);
@@ -105,6 +148,12 @@ namespace Span
 		}
 	}
 
+	void Input::EndFrame()
+	{
+		// 次のフレームの為に、現在の状態を「過去」として保存
+		memcpy(prevKeyStates, keyStates, sizeof(bool) * 256);
+	}
+
 	bool Input::GetKey(Key key) { return keyStates[(int)key]; }
 	bool Input::GetKeyDown(Key key) { return keyStates[(int)key] && !prevKeyStates[(int)key]; }
 	bool Input::GetKeyUp(Key key) { return !keyStates[(int)key] && prevKeyStates[(int)key]; }
@@ -143,5 +192,37 @@ namespace Span
 	void Input::OnMouseMove(int x, int y)
 	{
 		mousePosition = { (float)x, (float)y };
+	}
+
+	// カーソル制御
+	void Input::SetCursorVisible(bool visible)
+	{
+		ShowCursor(visible ? TRUE : FALSE);
+	}
+	void Input::SetLockCursor(bool lock)
+	{
+		isCursorLocked = lock;
+		if (lock)
+		{
+			SetCursorVisible(false);
+
+			// カーソルを中央へ移動
+			ResetCursorToCenter();
+			ignoreNextDelta = true;
+			mouseDelta = { 0, 0 };
+		}
+		else
+		{
+			SetCursorVisible(true);
+		}
+	}
+	void Input::ResetCursorToCenter()
+	{
+		if (!hWnd) return;
+		RECT rect;
+		GetClientRect(hWnd, &rect);
+		POINT center = { (rect.right - rect.left) / 2, (rect.bottom - rect.top) / 2 };
+		ClientToScreen(hWnd, &center);
+		SetCursorPos(center.x, center.y);
 	}
 }

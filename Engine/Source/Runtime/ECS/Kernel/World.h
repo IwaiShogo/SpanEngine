@@ -53,6 +53,61 @@ namespace Span
 			return entity;
 		}
 
+		// --- Entity削除 ---
+		void DestroyEntity(Entity entity)
+		{
+			if (!IsAlive(entity)) return;
+
+			auto it = entityLocationMap.find(entity.ID);
+			if (it == entityLocationMap.end()) return;
+
+			EntityLocation loc = it->second;
+			Chunk* chunk = loc.PtrChunk;
+			Archetype* arch = loc.PtrArchetype;
+
+			// Swap-Back Removal アルゴリズム
+			// 削除するEntityの場所に、Chunkの最後尾にあるEntityを移動させて穴を埋める
+
+			uint32 lastIndex = chunk->Count - 1;
+			EntityID lastEntityID = reinterpret_cast<EntityID*>(chunk->Memory)[lastIndex];
+			Entity lastEntity = { lastEntityID };
+
+			if (loc.IndexInChunk != lastIndex)
+			{
+				// 1. コンポーネントデータの移動
+				// 各コンポーネント配列のオフセットを取得してループ
+				for (ComponentTypeID typeID : arch->GetTypes())
+				{
+					size_t offset = arch->GetComponentOffset(typeID);
+					size_t size = arch->GetComponentSize(typeID);
+
+					uint8* basePtr = chunk->Memory + offset;
+
+					// 削除対象の場所 <- 最後尾のデータ
+					uint8* dest = basePtr + (static_cast<size_t>(loc.IndexInChunk) * size);
+					uint8* src = basePtr + (static_cast<size_t>(lastIndex) * size);
+
+					memcpy(dest, src, size);
+				}
+
+				// 2. EntityID配列も更新
+				EntityID* ids = reinterpret_cast<EntityID*>(chunk->Memory);
+				ids[loc.IndexInChunk] = ids[lastIndex];
+
+				// 3. 移動させた「最後尾だったEntity」の住所録を登録
+				entityLocationMap[lastEntityID].IndexInChunk = loc.IndexInChunk;
+			}
+
+			// チャンクのカウントを減らす
+			chunk->Count--;
+
+			// マップから削除
+			entityLocationMap.erase(entity.ID);
+
+			// ID管理システムに返却
+			entityManager.DestroyEntity(entity);
+		}
+
 		// --- ForEach ---
 
 		/**
@@ -92,7 +147,21 @@ namespace Span
 			}
 		}
 
-		// --- コンポーネント取得 (読み書き用) ---
+		// --- コンポーネント操作 ---
+
+		// 存在確認
+		template <typename T>
+		bool HasComponent(Entity entity)
+		{
+			if (!IsAlive(entity)) return false;
+			auto it = entityLocationMap.find(entity.ID);
+			if (it == entityLocationMap.end()) return false;
+
+			// アーキタイプがそのコンポーネントを持っているか確認
+			return it->second.PtrArchetype->HasComponent(ComponentType<T>::GetID());
+		}
+
+		// 参照取得
 		template <typename T>
 		T& GetComponent(Entity entity)
 		{
@@ -126,6 +195,21 @@ namespace Span
 			T* componentArray = reinterpret_cast<T*>(componentArrayBase);
 
 			return componentArray[loc.IndexInChunk];
+		}
+
+		// ポインタ取得
+		template <typename T>
+		T* GetComponentPtr(Entity entity)
+		{
+			if (!IsAlive(entity)) return nullptr;
+
+			auto it = entityLocationMap.find(entity.ID);
+			if (it == entityLocationMap.end()) return nullptr;
+
+			// 持っていない場合
+			if (!it->second.PtrArchetype->HasComponent(ComponentType<T>::GetID())) return nullptr;
+
+			return &GetComponentUnsafe<T>(it->second);
 		}
 
 		// --- コンポーネント設定 (値渡し) ---
@@ -191,6 +275,16 @@ namespace Span
 
 		// ID -> 住所 の高速検索マップ
 		std::unordered_map<EntityID, EntityLocation> entityLocationMap;
+
+		// ヘルパー: Locationからコンポーネント参照を解決
+		template <typename T>
+		T& GetComponentUnsafe(const EntityLocation& loc)
+		{
+			size_t offset = loc.PtrArchetype->GetComponentOffset(ComponentType<T>::GetID());
+			uint8* componentArrayBase = loc.PtrChunk->Memory + offset;
+			T* componentArray = reinterpret_cast<T*>(componentArrayBase);
+			return componentArray[loc.IndexInChunk];
+		}
 
 		// ヘルパー: インデックスからチャンクを特定する
 		Chunk* GetTargetChunk(Archetype* arch, uint32 totalIndex)

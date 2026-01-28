@@ -24,6 +24,7 @@ namespace Span
 
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+		io.ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
 
 		// 2. スタイル適用
 		ApplyStyle();

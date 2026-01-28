@@ -3,6 +3,7 @@
 #include "Core/Input/Input.h"
 #include "Components/Core/Transform.h"
 #include "Components/Graphics/Camera.h"
+#include "Components/Editor/EditorCamera.h"
 #include "Core/Time/Time.h"
 #include "Core/Math/SpanMath.h"
 
@@ -14,21 +15,34 @@ namespace Span
 		// 現在の角度を保持 (ラジアン)
 		float m_yaw = 0.0f;
 		float m_pitch = 0.0f;
-		bool m_isInitialized = false;
+		bool m_controlling = false;
 
 	public:
 		void OnUpdate() override
 		{
-			GetWorld()->ForEach<Camera, Transform>(
-				[&](Entity, Camera& cam, Transform& trans)
+			GetWorld()->ForEach<EditorCamera, Camera, Transform>(
+				[&](Entity e, EditorCamera&,Camera& cam, Transform& trans)
 				{
-					// 初回のみ現在の回転から角度を推定（簡易的にリセット）
-					if (!m_isInitialized)
+					// --- 右クリック開始時の処理 ---
+					if (Input::GetKeyDown(Key::MouseRight))
 					{
-						// 今回は簡易的に0リセットしますが、本来はLookAtの向きから逆算します
-						m_yaw = 0.0f;
-						m_pitch = 0.0f;
-						m_isInitialized = true;
+						// カーソルをロックして無限回転モード
+						Input::SetLockCursor(true);
+						m_controlling = true;
+
+						// 現在のQuaternionからYaw/Pitchを逆算して同期させる
+						Vector3 euler = trans.Rotation.ToEuler();
+						m_pitch = euler.x;
+						m_yaw = euler.y;
+
+						SPAN_LOG("Camera Init: Pitch=%f, Yaw=%f", m_pitch, m_yaw);
+					}
+
+					// --- 右クリック終了時の処理 ---
+					if (Input::GetKeyUp(Key::MouseRight))
+					{
+						Input::SetLockCursor(false);
+						m_controlling = false;
 					}
 
 					float dt = Time::GetDeltaTime();
@@ -38,6 +52,8 @@ namespace Span
 					{
 						Vector2 delta = Input::GetMouseDelta();
 						float sensitivity = 0.002f;
+
+						if (delta.x != 0 || delta.y != 0) SPAN_LOG("Delta: %f, %f", delta.x, delta.y);
 
 						// 値を加算
 						m_yaw += delta.x * sensitivity;
@@ -53,23 +69,26 @@ namespace Span
 					}
 
 					// --- 2. 移動 (ローカル座標基準) ---
-					float speed = 10.0f * dt; // 少し速くしました
-					if (Input::GetKey(Key::LeftShift)) speed *= 4.0f;
+					if (m_controlling)
+					{
+						float speed = 10.0f * dt; // 少し速くしました
+						if (Input::GetKey(Key::LeftShift)) speed *= 4.0f;
 
-					Vector3 moveDir = Vector3::Zero;
+						Vector3 moveDir = Vector3::Zero;
 
-					// カメラの現在の向きに合わせて移動ベクトルを作成
-					// Forward/Rightは現在のRotationから計算されるため、視線方向に正しく進みます
-					if (Input::GetKey(Key::W)) moveDir += trans.GetForward();
-					if (Input::GetKey(Key::S)) moveDir -= trans.GetForward();
-					if (Input::GetKey(Key::D)) moveDir += trans.GetRight();
-					if (Input::GetKey(Key::A)) moveDir -= trans.GetRight();
+						// カメラの現在の向きに合わせて移動ベクトルを作成
+						// Forward/Rightは現在のRotationから計算されるため、視線方向に正しく進みます
+						if (Input::GetKey(Key::W)) moveDir += trans.GetForward();
+						if (Input::GetKey(Key::S)) moveDir -= trans.GetForward();
+						if (Input::GetKey(Key::D)) moveDir += trans.GetRight();
+						if (Input::GetKey(Key::A)) moveDir -= trans.GetRight();
 
-					// 上昇・下降 (ワールドY軸)
-					if (Input::GetKey(Key::E)) moveDir += Vector3::Up;
-					if (Input::GetKey(Key::Q)) moveDir -= Vector3::Up;
+						// 上昇・下降 (ワールドY軸)
+						if (Input::GetKey(Key::E)) moveDir += Vector3::Up;
+						if (Input::GetKey(Key::Q)) moveDir -= Vector3::Up;
 
-					trans.Position += moveDir * speed;
+						trans.Position += moveDir * speed;
+					}
 				}
 			);
 		}

@@ -32,7 +32,7 @@ namespace Span
 		// 最低1体は入るように保証
 		if (chunkCapacity == 0) chunkCapacity = 1;
 
-		// 2. オフセット計算 (SoA配置)
+		// 2. オフセット計算 (SoA配置) & サイズ保存
 		// Memory: [EntityIDs (Cap個)] [CompA (Cap個)] [CompB (Cap個)] ...
 
 		size_t currentOffset = 0;
@@ -45,6 +45,9 @@ namespace Span
 		{
 			// 本来はここでアライメント調整(Padding)を入れるべきだが、簡易実装
 			typeOffsets[types[i]] = currentOffset;
+
+			// サイズを保存
+			typeSizes[types[i]] = sizes[i];
 
 			// 次のコンポーネントのためにオフセットを進める (サイズ * キャパシティ)
 			currentOffset += sizes[i] * chunkCapacity;
@@ -102,5 +105,15 @@ namespace Span
 			return it->second;
 		}
 		return 0; // エラー
+	}
+
+	size_t Archetype::GetComponentSize(ComponentTypeID typeID) const
+	{
+		auto it = typeSizes.find(typeID);
+		if (it != typeSizes.end())
+		{
+			return it->second;
+		}
+		return 0;
 	}
 }

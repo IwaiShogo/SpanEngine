@@ -62,7 +62,7 @@ namespace Span
 
 		// 5. 時間・入力・GUI管理初期化
 		Time::Initialize();
-		Input::Initialize();
+		Input::Initialize(window.GetHandle());
 		GuiManager::Initialize(window.GetHandle(), renderer.GetDevice(), renderer.GetCommandQueue(), renderer.GetFrameCount());
 
 		// パネルの登録
@@ -96,14 +96,14 @@ namespace Span
 
 			// --- 1. シーン描画 (Render to Texture) ---
 
-			// 修正: 戻り値を受け取るように変更 (E0144修正)
+			// 戻り値を受け取るように変更 (E0144修正)
 			ID3D12GraphicsCommandList* cmd = renderer.BeginFrame();
 
 			sceneBuffer.TransitionToRenderTarget(cmd);
 
 			D3D12_CPU_DESCRIPTOR_HANDLE rtv = sceneBuffer.GetRTV();
 
-			// 修正: RenderTarget.h が正しく更新されていれば GetDSV() が使えるはず (E0135修正)
+			// RenderTarget.h が正しく更新されていれば GetDSV() が使えるはず (E0135修正)
 			// もしエラーが続く場合は、RenderTarget.hにGetDSV()があるか確認してください
 			D3D12_CPU_DESCRIPTOR_HANDLE dsv = sceneBuffer.GetDSV();
 
@@ -126,7 +126,7 @@ namespace Span
 
 			// --- 2. エディタ描画 (Back Buffer) ---
 
-			// ★ SceneViewPanelに最新のテクスチャを渡す
+			// SceneViewPanelに最新のテクスチャを渡す
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
 			{
 				D3D12_GPU_DESCRIPTOR_HANDLE imGuiTexture = GuiManager::RegisterTexture(sceneBuffer.GetSRV());
@@ -149,6 +149,8 @@ namespace Span
 			GuiManager::EndFrame(cmd);
 
 			renderer.EndFrame();
+
+			Input::EndFrame();
 		}
 
 		world.ShutdownSystem();

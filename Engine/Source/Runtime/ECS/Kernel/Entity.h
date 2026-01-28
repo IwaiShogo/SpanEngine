@@ -25,6 +25,8 @@ namespace Span
 	{
 		EntityID ID = NullEntityID;
 
+		static const Entity Null;
+
 		// 無効なEntityかどうか
 		bool IsNull() const { return ID.Index == UINT32_MAX; }
 
@@ -35,6 +37,9 @@ namespace Span
 		// ログ出力などで数字としてほしい時用
 		uint64 ToUInt64() const { return (static_cast<uint64>(ID.Generation) << 32) | ID.Index; }
 	};
+
+	// 実体定義
+	inline const Entity Entity::Null = { NullEntityID };
 }
 
 namespace std
