@@ -33,21 +33,10 @@ namespace Span
 			Archetype* archetype = archetypeManager.GetOrCreateArchetype<ComponentTypes...>();
 
 			// 3. アーキタイプ内のチャンクに場所を確保
-			uint32 index = archetype->AllocateEntity(entity.ID);
+			MoveEntityToArchetype(entity, archetype);
 
-			// チャンクは末尾に追加されたもの
-			Chunk* targetChunk = archetype->GetChunks().back();
-			targetChunk = GetTargetChunk(archetype, index);
-
-			// 4. 住所録に登録
-			EntityLocation loc;
-			loc.PtrArchetype = archetype;
-			loc.PtrChunk = targetChunk;
-			loc.IndexInChunk = index;
-
-			entityLocationMap[entity.ID] = loc;
-
-			// 5. コンポーネントの初期化
+			// 4. コンポーネントの初期化
+			EntityLocation& loc = entityLocationMap[entity.ID];
 			InitializeComponents<ComponentTypes...>(loc);
 
 			return entity;
@@ -62,39 +51,19 @@ namespace Span
 			if (it == entityLocationMap.end()) return;
 
 			EntityLocation loc = it->second;
+			
+			// アーキタイプから削除 (Swap-back removal)
+
 			Chunk* chunk = loc.PtrChunk;
-			Archetype* arch = loc.PtrArchetype;
-
-			// Swap-Back Removal アルゴリズム
-			// 削除するEntityの場所に、Chunkの最後尾にあるEntityを移動させて穴を埋める
-
 			uint32 lastIndex = chunk->Count - 1;
 			EntityID lastEntityID = reinterpret_cast<EntityID*>(chunk->Memory)[lastIndex];
-			Entity lastEntity = { lastEntityID };
 
 			if (loc.IndexInChunk != lastIndex)
 			{
-				// 1. コンポーネントデータの移動
-				// 各コンポーネント配列のオフセットを取得してループ
-				for (ComponentTypeID typeID : arch->GetTypes())
-				{
-					size_t offset = arch->GetComponentOffset(typeID);
-					size_t size = arch->GetComponentSize(typeID);
+				// データの移動
+				chunk->MoveEntityData(loc.PtrArchetype, lastIndex, loc.IndexInChunk);
 
-					uint8* basePtr = chunk->Memory + offset;
-
-					// 削除対象の場所 <- 最後尾のデータ
-					uint8* dest = basePtr + (static_cast<size_t>(loc.IndexInChunk) * size);
-					uint8* src = basePtr + (static_cast<size_t>(lastIndex) * size);
-
-					memcpy(dest, src, size);
-				}
-
-				// 2. EntityID配列も更新
-				EntityID* ids = reinterpret_cast<EntityID*>(chunk->Memory);
-				ids[loc.IndexInChunk] = ids[lastIndex];
-
-				// 3. 移動させた「最後尾だったEntity」の住所録を登録
+				// 移動させたEntityの住所録を更新
 				entityLocationMap[lastEntityID].IndexInChunk = loc.IndexInChunk;
 			}
 
@@ -106,6 +75,39 @@ namespace Span
 
 			// ID管理システムに返却
 			entityManager.DestroyEntity(entity);
+		}
+		 
+		// --- コンポーネント操作 ---
+
+		/**
+		 * @brief	既存のEntityに新しいコンポーネントを追加する
+		 */
+		template <typename T>
+		void AddComponent(Entity entity, const T& initialValue = T())
+		{
+			if (!IsAlive(entity)) return;
+			if (HasComponent<T>(entity)) return;
+
+			// 1. 現在のアーキタイプを取得
+			EntityLocation oldLoc = entityLocationMap[entity.ID];
+			Archetype* oldArchetype = oldLoc.PtrArchetype;
+
+			// 2. 新しい型リストを作成 (現在の型 + T)
+			std::vector<ComponentTypeID> newTypeIDs = oldArchetype->GetTypes();
+			newTypeIDs.push_back(ComponentType<T>::GetID());
+
+			// 3. 新しいアーキタイプを取得
+
+			SPAN_ERROR("AddComponent at runtime is not fully supported in this phase yet (Requires Archetype Migration).");
+		}
+
+		template <typename T>
+		void RemoveComponent(Entity entity)
+		{
+			if (!IsAlive(entity)) return;
+			if (!HasComponent<T>(entity)) return;
+
+			SPAN_ERROR("RemoveComponent at runtime is not fully supported in this phase yet.");
 		}
 
 		// --- ForEach ---
@@ -276,16 +278,6 @@ namespace Span
 		// ID -> 住所 の高速検索マップ
 		std::unordered_map<EntityID, EntityLocation> entityLocationMap;
 
-		// ヘルパー: Locationからコンポーネント参照を解決
-		template <typename T>
-		T& GetComponentUnsafe(const EntityLocation& loc)
-		{
-			size_t offset = loc.PtrArchetype->GetComponentOffset(ComponentType<T>::GetID());
-			uint8* componentArrayBase = loc.PtrChunk->Memory + offset;
-			T* componentArray = reinterpret_cast<T*>(componentArrayBase);
-			return componentArray[loc.IndexInChunk];
-		}
-
 		// ヘルパー: インデックスからチャンクを特定する
 		Chunk* GetTargetChunk(Archetype* arch, uint32 totalIndex)
 		{
@@ -298,6 +290,29 @@ namespace Span
 			return nullptr;
 		}
 
+		void MoveEntityToArchetype(Entity entity, Archetype* newArchetype)
+		{
+			// チャンク確保
+			uint32 index = newArchetype->AllocateEntity(entity.ID);
+			Chunk* chunk = newArchetype->GetChunks().back();
+
+			EntityLocation loc;
+			loc.PtrArchetype = newArchetype;
+			loc.PtrChunk = chunk;
+			loc.IndexInChunk = index;
+			entityLocationMap[entity.ID] = loc;
+		}
+
+		// ヘルパー: Locationからコンポーネント参照を解決
+		template <typename T>
+		T& GetComponentUnsafe(const EntityLocation& loc)
+		{
+			size_t offset = loc.PtrArchetype->GetComponentOffset(ComponentType<T>::GetID());
+			uint8* componentArrayBase = loc.PtrChunk->Memory + offset;
+			T* componentArray = reinterpret_cast<T*>(componentArrayBase);
+			return componentArray[loc.IndexInChunk];
+		}
+
 		// コンポーネントの初期化ヘルパー (可変長テンプレート展開)
 		template <typename... Ts>
 		void InitializeComponents(const EntityLocation& loc)
@@ -308,12 +323,8 @@ namespace Span
 		template <typename T>
 		void InitializeComponent(const EntityLocation& loc)
 		{
-			size_t offset = loc.PtrArchetype->GetComponentOffset(ComponentType<T>::GetID());
-			uint8* ptr = loc.PtrChunk->Memory + offset;
-			T* array = reinterpret_cast<T*>(ptr);
-
-			// 配置newでコンストラクタを呼び出す
-			new (&array[loc.IndexInChunk]) T();
+			T& val = GetComponentUnsafe<T>(loc);
+			new (&val) T();
 		}
 
 		// --- ヘルパー関数 ---

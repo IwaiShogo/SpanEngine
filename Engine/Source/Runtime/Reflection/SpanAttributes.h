@@ -59,6 +59,11 @@ namespace Span
 		Attribute attr; attr.Type = AttributeType::HideInInspector; return attr;
 	}
 
+	inline Attribute ReadOnly()
+	{
+		Attribute attr; attr.Type = AttributeType::ReadOnly; return attr;
+	}
+
 	// Unityの SerializeField = 「privateでも表示する」だが、C++はpublic前提なので「読み取り専用」として扱うか、単なるマーカーにする
 	inline Attribute SerializeField()
 	{
