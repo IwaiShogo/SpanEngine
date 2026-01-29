@@ -15,7 +15,7 @@ namespace Span
 		SPAN_INSPECTOR_BEGIN(Camera)
 			SPAN_FIELD(Fov, Range(1.0f, 179.0f), Tooltip("Field of View"))
 			SPAN_FIELD(NearClip, Min(0.01f), Tooltip("Cannot be 0"))
-			SPAN_FIELD(FarClip)
+			SPAN_FIELD(FarClip, Min(0.01f))
 		SPAN_INSPECTOR_END()
 	};
 }
