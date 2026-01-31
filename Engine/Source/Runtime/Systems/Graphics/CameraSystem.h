@@ -2,6 +2,7 @@
 #include "ECS/Kernel/System.h"
 #include "Application.h"
 #include "Components/Core/Transform.h"
+#include "Components/Core/LocalToWorld.h"
 #include "Components/Graphics/Camera.h"
 
 namespace Span

@@ -45,9 +45,10 @@ namespace Span
 		{
 			// 本来はここでアライメント調整(Padding)を入れるべきだが、簡易実装
 			typeOffsets[types[i]] = currentOffset;
-
 			// サイズを保存
 			typeSizes[types[i]] = sizes[i];
+			// アライメント
+			typeAlignments[types[i]] = alignments[i];
 
 			// 次のコンポーネントのためにオフセットを進める (サイズ * キャパシティ)
 			currentOffset += sizes[i] * chunkCapacity;
@@ -100,20 +101,18 @@ namespace Span
 	size_t Archetype::GetComponentOffset(ComponentTypeID typeID) const
 	{
 		auto it = typeOffsets.find(typeID);
-		if (it != typeOffsets.end())
-		{
-			return it->second;
-		}
-		return 0; // エラー
+		return (it != typeOffsets.end()) ? it->second : 0;
 	}
 
 	size_t Archetype::GetComponentSize(ComponentTypeID typeID) const
 	{
 		auto it = typeSizes.find(typeID);
-		if (it != typeSizes.end())
-		{
-			return it->second;
-		}
-		return 0;
+		return (it != typeSizes.end()) ? it->second : 0;
+	}
+
+	size_t Archetype::GetComponentAlignment(ComponentTypeID typeID) const
+	{
+		auto it = typeAlignments.find(typeID);
+		return (it != typeAlignments.end()) ? it->second : 0;
 	}
 }

@@ -3,7 +3,7 @@
 #include "Core/Input/Input.h"
 #include "Editor/GuiManager.h"
 
-#include "Editor/Panels/SceneViewPanel.h"
+#include "Editor/Panels/SceneView/SceneViewPanel.h"
 
 namespace Span
 {
@@ -135,13 +135,6 @@ namespace Span
 
 			GuiManager::BeginFrame();
 			ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport());
-
-			// ここで DrawSceneView を呼ぶ必要はなくなった (GuiManager::EndFrameで全パネルが呼ばれるため)
-
-			// デバッグ用ウィンドウ
-			ImGui::Begin("Stats");
-			ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
-			ImGui::End();
 
 			GuiManager::EndFrame(cmd);
 

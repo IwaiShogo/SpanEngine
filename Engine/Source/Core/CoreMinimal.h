@@ -28,6 +28,7 @@
 #include <cassert>
 #include <typeindex>
 #include <filesystem>
+#include <set>
 
 // 3. DirectX 12 & WRL (Windows Runtime Library)
 #include <d3d12.h>

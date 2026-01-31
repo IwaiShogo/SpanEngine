@@ -7,12 +7,13 @@
 #include "Core/Time/Time.h"
 #include "Core/Math/SpanMath.h"
 
+#include <imgui.h>
+
 namespace Span
 {
 	class EditorCameraSystem : public System
 	{
 	private:
-		// 現在の角度を保持 (ラジアン)
 		float m_yaw = 0.0f;
 		float m_pitch = 0.0f;
 		bool m_controlling = false;
@@ -34,8 +35,6 @@ namespace Span
 						Vector3 euler = trans.Rotation.ToEuler();
 						m_pitch = euler.x;
 						m_yaw = euler.y;
-
-						SPAN_LOG("Camera Init: Pitch=%f, Yaw=%f", m_pitch, m_yaw);
 					}
 
 					// --- 右クリック終了時の処理 ---
@@ -52,8 +51,6 @@ namespace Span
 					{
 						Vector2 delta = Input::GetMouseDelta();
 						float sensitivity = 0.002f;
-
-						if (delta.x != 0 || delta.y != 0) SPAN_LOG("Delta: %f, %f", delta.x, delta.y);
 
 						// 値を加算
 						m_yaw += delta.x * sensitivity;

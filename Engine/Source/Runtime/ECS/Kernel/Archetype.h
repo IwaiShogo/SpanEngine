@@ -93,6 +93,8 @@ namespace Span
 		// コンポーネントのサイズを取得
 		size_t GetComponentSize(ComponentTypeID typeID) const;
 
+		size_t GetComponentAlignment(ComponentTypeID typeID) const;
+
 		// このアーキタイプが持つ全チャンク
 		const std::vector<Chunk*>& GetChunks() const { return chunks; }
 
@@ -111,6 +113,7 @@ namespace Span
 		// メモリレイアウト情報
 		std::unordered_map<ComponentTypeID, size_t> typeOffsets;	// TypeID -> Chunk内オフセット
 		std::unordered_map<ComponentTypeID, size_t> typeSizes;		// TypeID -> サイズ (バイト)
+		std::unordered_map<ComponentTypeID, size_t> typeAlignments;	// TypeID -> アライメント
 
 		size_t entitySize = 0;										// Entity1体あたりの合計サイズ (バイト)
 		uint32 chunkCapacity = 0;									// 1チャンクに何体入るか

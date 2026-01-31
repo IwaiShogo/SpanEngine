@@ -46,6 +46,27 @@ namespace Span
 			return newArchetype;
 		}
 
+		Archetype* GetOrCreateArchetype(
+			const std::vector<ComponentTypeID>& typeIDs,
+			const std::vector<size_t>& sizes,
+			const std::vector<size_t>& alignments)
+		{
+			ArchetypeSignature signature;
+			for (auto id : typeIDs)
+			{
+				signature.Add(id);
+			}
+
+			if (auto it = archetypes.find(signature); it != archetypes.end())
+			{
+				return it->second;
+			}
+
+			Archetype* newArchetype = new Archetype(typeIDs, sizes, alignments);
+			archetypes[signature] = newArchetype;
+			return newArchetype;
+		}
+
 		const std::map<ArchetypeSignature, Archetype*>& GetAllArchetypes() const { return archetypes; }
 
 	private:

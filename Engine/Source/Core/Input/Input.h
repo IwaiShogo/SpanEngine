@@ -67,6 +67,11 @@ namespace Span
 		static void OnMouseUp(uint32 btn);
 		static void OnMouseMove(int x, int y);
 
+		// ImGuiがマウスを占有しているか設定する
+		static void SetImGuiWantCapture(bool wantCapture) { imGuiWantCaptureMouse = wantCapture; }
+		// ゲーム側で入力を受け付けて良いか
+		static bool IsInputAvailable() { return !imGuiWantCaptureMouse; }
+
 	private:
 		// 現在のフレームのキー状態
 		static bool keyStates[256];
@@ -87,5 +92,7 @@ namespace Span
 		static bool isCursorLocked;
 		static bool ignoreNextDelta;
 		static void ResetCursorToCenter();
+
+		static bool imGuiWantCaptureMouse;
 	};
 }

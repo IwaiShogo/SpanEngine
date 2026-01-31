@@ -34,5 +34,8 @@ namespace Span
 		{
 			return Memory + offset;
 		}
+
+		// ƒf[ƒ^‚ÌˆÚ“®
+		void MoveEntityData(Archetype* arch, uint32 srcIndex, uint32 destIndex);
 	};
 }

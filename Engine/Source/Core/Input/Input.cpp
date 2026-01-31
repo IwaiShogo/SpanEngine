@@ -22,6 +22,8 @@ namespace Span
 	float Input::gamepadAxes[6] = { 0.0f };
 	bool Input::isConnected = false;
 
+	bool Input::imGuiWantCaptureMouse = false;
+
 	// ボタンと配列インデックスの対応表マップ
 	int GetGamepadIndex(Key key)
 	{

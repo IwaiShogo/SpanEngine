@@ -1,7 +1,7 @@
 #pragma once
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include "Panels/EditorPanel.h"
-#include "Panels/SceneViewPanel.h"
+#include "Panels/SceneView/SceneViewPanel.h"
 
 #include "Core/CoreMinimal.h"
 #include "Graphics/Renderer.h"

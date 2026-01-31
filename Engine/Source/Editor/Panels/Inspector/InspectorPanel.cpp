@@ -4,8 +4,17 @@
 #include "Runtime/Reflection/ComponentRegistry.h"
 #include "Core/Math/SpanMath.h"
 #include "Editor/PanelManager.h"
+#include "Editor/ImGui/ImGuiUI.h"
+
+// 基本コンポーネント
+#include "Runtime/Components/Core/Name.h"
+#include "Runtime/Components/Core/Tag.h"
+#include "Runtime/Components/Core/Layer.h"
+#include "Runtime/Components/Core/Transform.h"
+#include "Runtime/Components/Core/Active.h"
 
 #include <imgui.h>
+#include <imgui_internal.h>
 
 namespace Span
 {
@@ -29,28 +38,152 @@ namespace Span
 		ImGui::Separator();
 		ImGui::Spacing();
 
-		// --- コンポーネントの並び替えと描画 ---
-
-		// 1. レジストリからリストをコピー
-		std::vector<ComponentMetadata> components = ComponentRegistry::GetAll();
-
-		// 2. ソート (Transformを最優先、あとは名前順)
-		std::sort(components.begin(), components.end(), [](const ComponentMetadata& a, const ComponentMetadata& b)
-			{
-				if (a.Name == "Transform") return true; // aが先
-				if (b.Name == "Transform") return false; // bが先
-
-				// それ以外は名前順
-				return a.Name < b.Name;
-			});
-
-		// 3. 描画
-		for (const auto& meta : components)
+		// 1. アイコンとアクティブチェックボックス
+		bool isActive = true;
+		if (Active* a = world.GetComponentPtr<Active>(selected))
 		{
-			meta.DrawFunc(selected, world);
+			isActive = a->Value;
+		}
+		else
+		{
+			world.AddComponent<Active>(selected);
 		}
 
-		// コンポーネント追加ボタン
+		if (ImGui::Checkbox("##Active", &isActive))
+		{
+			if (Active* a = world.GetComponentPtr<Active>(selected)) a->Value = isActive;
+		}
+
+		ImGui::SameLine();
+
+		// 2. エンティティ名
+		ImGui::PushItemWidth(ImGui::GetContentRegionAvail().x * 0.6f);
+		if (Name* nameComp = world.GetComponentPtr<Name>(selected))
+		{
+			if (ImGui::InputText("##Name", nameComp->Value, sizeof(nameComp->Value)))
+			{
+				// 名前変更時の処理
+			}
+		}
+		else
+		{
+			// Nameコンポーネントが無い場合は追加ボタンか、ダミー表示
+			char buf[64];
+			sprintf_s(buf, "Entity %d", selected.ID.Index);
+			if (ImGui::InputText("##Name", buf, sizeof(buf), ImGuiInputTextFlags_EnterReturnsTrue))
+			{
+				world.AddComponent<Name>(selected);
+				Name& n = world.GetComponent<Name>(selected);
+				strcpy_s(n.Value, buf);
+			}
+		}
+		ImGui::PopItemWidth();
+
+		// 3. Staticフラグ
+		ImGui::SameLine();
+		ImGui::TextDisabled("Static");
+		// ドロップダウンで (Nothing, Everything, etc) など
+
+		ImGui::Spacing();
+		ImGui::Separator();
+
+		// 4. Tag & Layer 行
+		{
+			float labelWidth = 50.0f;
+
+			// --- Tag ---
+			ImGui::Text("Tag"); ImGui::SameLine(labelWidth);
+			ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x * 0.5f - 10);
+
+			// タグリスト (将来的にはTagManagerから取得)
+			const char* tags[] = { "Untagged", "Player", "Enemy", "MainCamera" };
+			int currentTagIndex = 0;
+
+			// 現在のタグを取得
+			if (Tag* t = world.GetComponentPtr<Tag>(selected))
+			{
+				for (int i = 0; i < IM_ARRAYSIZE(tags); i++) {
+					if (t->Value == tags[i]) { currentTagIndex = i; break; }
+				}
+			}
+			else
+			{
+				// 持っていなければ追加してUntaggedにする
+				world.AddComponent<Tag>(selected, Tag("Untagged"));
+			}
+
+			if (ImGui::Combo("##Tag", &currentTagIndex, tags, IM_ARRAYSIZE(tags)))
+			{
+				// 変更を適用
+				if (Tag* t = world.GetComponentPtr<Tag>(selected)) {
+					t->Value = tags[currentTagIndex];
+				}
+			}
+
+			ImGui::SameLine();
+
+			// --- Layer ---
+			ImGui::Text("Layer"); ImGui::SameLine(labelWidth + ImGui::GetContentRegionAvail().x * 0.5f + 5);
+			ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
+
+			const char* layers[] = { "Default", "Transparent", "Ignore Raycast", "Water", "UI" };
+			int currentLayerIndex = 0;
+
+			if (Layer* l = world.GetComponentPtr<Layer>(selected))
+			{
+				currentLayerIndex = l->Value;
+				if (currentLayerIndex < 0 || currentLayerIndex >= IM_ARRAYSIZE(layers)) currentLayerIndex = 0;
+			}
+			else
+			{
+				world.AddComponent<Layer>(selected, Layer(0));
+			}
+
+			if (ImGui::Combo("##Layer", &currentLayerIndex, layers, IM_ARRAYSIZE(layers)))
+			{
+				if (Layer* l = world.GetComponentPtr<Layer>(selected)) {
+					l->Value = currentLayerIndex;
+				}
+			}
+		}
+
+		ImGui::Spacing();
+		ImGui::Separator();
+		ImGui::Spacing();
+
+		// --- Component List ---
+
+		// レジストリからリストをコピー
+		auto& components = ComponentRegistry::GetAll();
+
+		// ソート (Transformを最優先、あとは名前順)
+		std::sort(components.begin(), components.end(), [](const ComponentMetadata& a, const ComponentMetadata& b)
+		{
+			if (a.Name == "Transform") return true;
+			if (b.Name == "Transform") return false;
+
+			return a.Order < b.Order;
+		});
+
+		// 描画ループ
+		for (size_t i = 0; i < components.size(); ++i)
+		{
+			auto& meta = components[i];
+
+			bool isRemove = false;
+
+			// 基本コンポーネントはリストに出さない
+			if (meta.Name == "Name" || meta.Name == "Tag" || meta.Name == "Layer" || meta.Name == "Active") continue;
+
+			ImGui::PushID(i);
+
+			// 描画実行
+			meta.DrawFunc(selected, world);
+
+			ImGui::PopID();
+		}
+
+		// 追加ボタン
 		ImGui::Spacing();
 		ImGui::Separator();
 		if (ImGui::Button("Add Component", ImVec2(-1, 0)))
@@ -58,17 +191,20 @@ namespace Span
 			ImGui::OpenPopup("AddComponentPopup");
 		}
 
-		// ポップアップの中身もソートして表示すると親切
 		if (ImGui::BeginPopup("AddComponentPopup"))
 		{
-			// ここでも同じリストを使える
-			for (const auto& meta : components)
+			// コンポーネント名をソートして表示
+			std::vector<const ComponentMetadata*> sortedMetas;
+			for (const auto& meta : components) sortedMetas.push_back(&meta);
+			std::sort(sortedMetas.begin(), sortedMetas.end(), [](const auto* a, const auto* b) { return a->Name < b->Name; });
+
+			for (const auto* meta : sortedMetas)
 			{
-				// 既に持っているコンポーネントは表示しない等の制御も将来的に入れる
-				if (ImGui::MenuItem(meta.Name.c_str()))
+				if (meta->Name == "Name" || meta->Name == "Tag" || meta->Name == "Layer" || meta->Name == "Transform" || meta->Name == "Active") continue;
+
+				if (ImGui::MenuItem(meta->Name.c_str()))
 				{
-					// AddComponentの実装はまだリフレクションに入っていないため
-					// フェーズ2-3以降で実装します
+					// AddComponent...
 				}
 			}
 			ImGui::EndPopup();

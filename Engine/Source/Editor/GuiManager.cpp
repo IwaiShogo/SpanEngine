@@ -1,5 +1,6 @@
 #include "GuiManager.h"
 #include "PanelManager.h"
+#include "Input/Input.h"
 
 namespace Span
 {
@@ -100,6 +101,9 @@ namespace Span
 		ImGui_ImplDX12_NewFrame();
 		ImGui_ImplWin32_NewFrame();
 		ImGui::NewFrame();
+
+		ImGuiIO& io = ImGui::GetIO();
+		Input::SetImGuiWantCapture(io.WantCaptureMouse);
 	}
 
 	void GuiManager::EndFrame(ID3D12GraphicsCommandList* commandList)

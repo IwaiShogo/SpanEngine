@@ -3,13 +3,12 @@
 
 namespace Span
 {
-	// 親を持つEntityに付与するコンポーネント
-	// ※子は親を知っているが、親は子を知らない
-	struct Parent
+	// 親子関係と兄弟関係を管理するコンポーネント (双方向リスト)
+	struct Relationship
 	{
-		Entity Value;
-
-		Parent() : Value(Entity::Null) {}
-		Parent(Entity parent) : Value(parent) {}
+		Entity Parent = Entity::Null;
+		Entity FirstChild = Entity::Null;
+		Entity PrevSibling = Entity::Null;
+		Entity NextSibling = Entity::Null;	// ヒエラルキーの順序
 	};
 }

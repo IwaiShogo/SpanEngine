@@ -12,6 +12,12 @@ namespace Span
 		// ”äŠr‰‰ŽZŽq
 		bool operator==(const EntityID& other) const { return Index == other.Index && Generation == other.Generation; }
 		bool operator!=(const EntityID& other) const { return !(*this == other); }
+
+		bool operator<(const EntityID& other) const
+		{
+			if (Index != other.Index) return Index < other.Index;
+			return Generation < other.Generation;
+		}
 	};
 
 	// null‚Æ‚µ‚Äˆµ‚¤‚½‚ß‚Ì’è”
@@ -33,6 +39,7 @@ namespace Span
 		// ”äŠr‰‰ŽZŽq
 		bool operator==(const Entity& other) const { return ID == other.ID; }
 		bool operator!=(const Entity& other) const { return ID != other.ID; }
+		bool operator<(const Entity& other) const { return ID < other.ID; }
 
 		// ƒƒOo—Í‚È‚Ç‚Å”Žš‚Æ‚µ‚Ä‚Ù‚µ‚¢Žž—p
 		uint64 ToUInt64() const { return (static_cast<uint64>(ID.Generation) << 32) | ID.Index; }

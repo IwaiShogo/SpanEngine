@@ -36,14 +36,14 @@ namespace Span
 			Matrix4x4 localMat = Matrix4x4::TRS(t->Position, t->Rotation, t->Scale);
 
 			// 2. 親がいるか確認
-			Parent* parent = world->GetComponentPtr<Parent>(entity);
-			if (parent && !parent->Value.IsNull())
+			if (Relationship* rel = world->GetComponentPtr<Relationship>(entity))
 			{
-				// 親のワールド行列を再帰的に取得
-				Matrix4x4 parentWorldMat = ComputeWorldMatrix(parent->Value);
+				if (!rel->Parent.IsNull())
+				{
+					Matrix4x4 parentWorldMat = ComputeWorldMatrix(rel->Parent);
 
-				// 親 * 自分
-				return localMat * parentWorldMat;
+					return localMat * parentWorldMat;
+				}
 			}
 
 			return localMat;

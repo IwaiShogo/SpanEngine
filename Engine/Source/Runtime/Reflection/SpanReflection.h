@@ -16,18 +16,22 @@
 	public: \
 	using _InspectorSelfType = ComponentType; \
 	static const char* _GetInspectorName() { return #ComponentType; } \
-	void OnGui() { \
-		if (Span::ImGuiUI::DrawComponentHeader(#ComponentType)) {
+	void OnGui(Span::Entity entity, Span::World& world) { \
+		bool isRemoved = false; \
+		if (Span::ImGuiUI::DrawComponentHeader(#ComponentType, isRemoved)) {
 
 #define SPAN_INSPECTOR_END() \
 			ImGui::TreePop(); \
+		} \
+		if (isRemoved) { \
+			world.RemoveComponent<_InspectorSelfType>(entity); \
 		} \
 	} \
 	struct _AutoReg_Inspector { \
 		_AutoReg_Inspector() { \
 			Span::ComponentRegistry::Register<_InspectorSelfType>( \
 				_InspectorSelfType::_GetInspectorName(), \
-				[](_InspectorSelfType& t){ t.OnGui(); } \
+				[](_InspectorSelfType& t, Span::Entity e, Span::World& w){ t.OnGui(e, w); } \
 			); \
 		} \
 	}; \

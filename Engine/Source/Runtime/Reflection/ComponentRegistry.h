@@ -28,7 +28,7 @@ namespace Span
 	{
 	public:
 		template<typename T>
-		static void Register(const std::string& name, std::function<void(T&)> onGui)
+		static void Register(const std::string& name, std::function<void(T&, Entity, World&)> onGui)
 		{
 			ComponentMetadata meta;
 			meta.Name = name;
@@ -39,7 +39,7 @@ namespace Span
 			{
 				if (T* component = world.GetComponentPtr<T>(entity))
 				{
-					onGui(*component);
+					onGui(*component, entity, world);
 				}
 			};
 
