@@ -14,6 +14,8 @@ namespace Span
 		Application();
 		virtual ~Application();
 
+		static Application& Get() { return *s_instance; }
+
 		// アプリを実行する
 		void Run();
 
@@ -22,13 +24,12 @@ namespace Span
 		virtual void OnUpdate() {}
 		virtual void OnShutdown() {}
 
-		// どこからでもアプリ本体、ひいてはWindowやWorldにアクセス可能にする
-		static Application& Get() { return *s_instance; }
-
+		// ゲッター
 		Window& GetWindow() { return window; }
 		Renderer& GetRenderer() { return renderer; }
-
 		World& GetWorld() { return world; }
+		RenderTarget& GetSceneBuffer() { return sceneBuffer; }
+
 	protected:
 		// 子クラス（ユーザーのゲーム）からアクセスできるようにする
 

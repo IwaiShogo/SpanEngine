@@ -38,7 +38,20 @@ file(GLOB IMGUI_SOURCES
 	"${IMGUI_DIR}/backends/imgui_impl_win32.cpp"
 )
 
-# --- 3. stb (画像読み込み) ---
+# --- 3. ImGuizmo ---
+message(STATUS "Downloading ImGuizmo...")
+
+FetchContent_Declare(
+	imguizmo
+	GIT_REPOSITORY https://github.com/CedricGuillemet/ImGuizmo.git
+	GIT_TAG master
+)
+FetchContent_MakeAvailable(imguizmo)
+
+set(IMGUIZMO_DIR ${imguizmo_SOURCE_DIR})
+file(GLOB IMGUIZMO_SOURCES "${IMGUIZMO_DIR}/*.cpp")
+
+# --- 4. stb (画像読み込み) ---
 FetchContent_Declare(
 	stb
 	GIT_REPOSITORY https://github.com/nothings/stb.git
@@ -56,6 +69,7 @@ file(GLOB_RECURSE ENGINE_SOURCES
 add_library(SpanCore STATIC 
 	${ENGINE_SOURCES} 
 	${IMGUI_SOURCES}
+	${IMGUIZMO_SOURCES}
  "Source/Runtime/Graphics/Core/RenderTarget.h" "Source/Runtime/Graphics/Core/RenderTarget.cpp" "Source/Runtime/Graphics/Core/GraphicsContext.h" "Source/Runtime/Graphics/Core/GraphicsContext.cpp" "Source/Editor/Panels/EditorPanel.h" "Source/Editor/Panels/SceneView/SceneViewPanel.h" "Source/Editor/Panels/SceneView/SceneViewPanel.cpp" "Source/Runtime/Components/Core/LocalToWorld.h"  "Source/Runtime/Components/Graphics/MeshRenderer.h" "Source/Runtime/Systems/Graphics/EditorCameraSystem.h" "Source/Runtime/Systems/Core/RelationshipSystem.h" "Source/Runtime/Components/Editor/EditorCamera.h" "Source/Editor/SelectionManager.h" "Source/Editor/ImGui/ImGuiUI.h" "Source/Runtime/Reflection/ComponentRegistry.h" "Source/Editor/Panels/Inspector/InspectorPanel.h" "Source/Editor/Panels/Inspector/InspectorPanel.cpp" "Source/Editor/PanelManager.h" "Source/Runtime/Reflection/SpanAttributes.h" "Source/Runtime/Reflection/SpanReflection.h" "Source/Runtime/Components/Core/Tag.h" "Source/Runtime/Components/Core/Layer.h" "Source/Editor/Panels/Hierarchy/HierarchyPanel.h" "Source/Editor/Panels/Hierarchy/HierarchyPanel.cpp" "Source/Runtime/ECS/Kernel/EntityBuilder.h" "Source/Runtime/Components/Core/Active.h")
 
 # インクルードパスの設定
@@ -67,6 +81,7 @@ target_include_directories(SpanCore PUBLIC
 	${stb_SOURCE_DIR}
 	${IMGUI_DIR}
 	${IMGUI_DIR}/backends
+	${IMGUIZMO_DIR}
 )
 
 # プリコンパイル済みヘッダー
@@ -92,3 +107,4 @@ endif()
 # フィルタ設定 (Visual Studio上のフォルダ分け)
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/Source PREFIX "Source" FILES ${ENGINE_SOURCES})
 source_group("ImGui" FILES ${IMGUI_SOURCES})
+source_group("ImGuizmo" FILES ${IMGUIZMO_SOURCES})

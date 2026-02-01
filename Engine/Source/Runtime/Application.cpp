@@ -91,17 +91,28 @@ namespace Span
 				break;
 			}
 
+			// フレーム開始前にシーンビューのリサイズ
+			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
+			{
+				Vector2 viewSize = scenePanel->GetTargetResolution();
+				if (viewSize.x > 0 && viewSize.y > 0)
+				{
+					if (sceneBuffer.GetWidth() != (uint32)viewSize.x || sceneBuffer.GetHeight() != (uint32)viewSize.y)
+					{
+						graphicsContext.WaitForGpu();
+						renderer.OnResize((uint32)viewSize.x, (uint32)viewSize.y);
+						sceneBuffer.Resize(renderer.GetDevice(), (uint32)viewSize.x, (uint32)viewSize.y);
+					}
+				}
+			}
+
 			// --- 1. シーン描画 (Render to Texture) ---
 
-			// 戻り値を受け取るように変更 (E0144修正)
 			ID3D12GraphicsCommandList* cmd = renderer.BeginFrame();
 
 			sceneBuffer.TransitionToRenderTarget(cmd);
 
 			D3D12_CPU_DESCRIPTOR_HANDLE rtv = sceneBuffer.GetRTV();
-
-			// RenderTarget.h が正しく更新されていれば GetDSV() が使えるはず (E0135修正)
-			// もしエラーが続く場合は、RenderTarget.hにGetDSV()があるか確認してください
 			D3D12_CPU_DESCRIPTOR_HANDLE dsv = sceneBuffer.GetDSV();
 
 			cmd->OMSetRenderTargets(1, &rtv, FALSE, &dsv);
@@ -119,11 +130,8 @@ namespace Span
 			OnUpdate();
 
 			sceneBuffer.TransitionToShaderResource(cmd);
-			
 
 			// --- 2. エディタ描画 (Back Buffer) ---
-
-			// SceneViewPanelに最新のテクスチャを渡す
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
 			{
 				D3D12_GPU_DESCRIPTOR_HANDLE imGuiTexture = GuiManager::RegisterTexture(sceneBuffer.GetSRV());
@@ -135,11 +143,9 @@ namespace Span
 
 			GuiManager::BeginFrame();
 			ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport());
-
 			GuiManager::EndFrame(cmd);
 
 			renderer.EndFrame();
-
 			Input::EndFrame();
 		}
 
