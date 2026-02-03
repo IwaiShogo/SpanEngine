@@ -38,7 +38,7 @@ namespace Span
 			// 3. アーキタイプ内のチャンクに場所を確保
 			uint32 index = archetype->AllocateEntity(entity.ID);
 			Chunk* chunk = archetype->GetChunks().back();
-
+			
 			// 4. コンポーネントの初期化
 			EntityLocation loc{ archetype, chunk, index };
 			entityLocationMap[entity.ID] = loc;
