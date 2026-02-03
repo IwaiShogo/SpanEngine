@@ -1,0 +1,18 @@
+var searchData=
+[
+  ['identity_0',['Identity',['../structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557',1,'Span::Matrix4x4::Identity()'],['../structSpan_1_1Transform.html#a9d153f15fae559d82693d957fd0a7f5d',1,'Span::Transform::Identity()']]],
+  ['imgui_5fimplwin32_5fwndprochandler_1',['ImGui_ImplWin32_WndProcHandler',['../Window_8cpp.html#a87a3f9652a75339308cf5fd5699ef1fd',1,'Window.cpp']]],
+  ['initialize_2',['Initialize',['../classSpan_1_1Input.html#aac6e8f1cf694b484ed01742f2d16d63c',1,'Span::Input::Initialize()'],['../classSpan_1_1Logger.html#a557d77ccfa31551817d7b28d985866c8',1,'Span::Logger::Initialize()'],['../classSpan_1_1Time.html#ae9e018cd0d5a3b34b773e80c750860e7',1,'Span::Time::Initialize()'],['../classSpan_1_1GuiManager.html#ab78e1a284f6d5aced7912c00ab43c559',1,'Span::GuiManager::Initialize()'],['../classSpan_1_1System.html#a449531be837aa681835ab1c36607f959',1,'Span::System::Initialize()'],['../classSpan_1_1ConstantBuffer.html#a63487527b7a1664a0bf11cc78411a48f',1,'Span::ConstantBuffer::Initialize()'],['../classSpan_1_1GraphicsContext.html#a2d9afc9f1fbc0a0222ac906178ef18b4',1,'Span::GraphicsContext::Initialize()'],['../classSpan_1_1RenderTarget.html#ac1703527dc5af60c0d739f212e65b28d',1,'Span::RenderTarget::Initialize()'],['../classSpan_1_1Renderer.html#a69d729ceadccffbf66343b02cd2aaac8',1,'Span::Renderer::Initialize()'],['../classSpan_1_1Material.html#a2b920fe1642aae29b0f2aca9b09cbeba',1,'Span::Material::Initialize()'],['../classSpan_1_1Mesh.html#ae731b2ee0cf4e9bbfd30b70285a6688f',1,'Span::Mesh::Initialize()'],['../classSpan_1_1Texture.html#a4149a1e0df66fc08179a7e3b4a3f5d49',1,'Span::Texture::Initialize()'],['../classSpan_1_1Window.html#a77733f63cf98420637c73589f11ff888',1,'Span::Window::Initialize()']]],
+  ['initializecomponent_3',['InitializeComponent',['../classSpan_1_1World.html#adf76f23216798eebcc87947b5ff8cb0a',1,'Span::World']]],
+  ['initializecomponents_4',['InitializeComponents',['../classSpan_1_1World.html#a3bda7c850e57241f9cfb3d5c67695aff',1,'Span::World']]],
+  ['insertbefore_5',['InsertBefore',['../classSpan_1_1RelationshipSystem.html#aa4b5cd977689e1b6689786315d0fa6e6',1,'Span::RelationshipSystem']]],
+  ['inspectorpanel_6',['InspectorPanel',['../classSpan_1_1InspectorPanel.html#a2c067589801cb71a36c33e142aed6eff',1,'Span::InspectorPanel']]],
+  ['invert_7',['Invert',['../structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e',1,'Span::Matrix4x4']]],
+  ['isalive_8',['IsAlive',['../classSpan_1_1EntityManager.html#a3056c638e46d14b21123cbec5b76ee39',1,'Span::EntityManager::IsAlive()'],['../classSpan_1_1World.html#a5e0da52990e6715e2cc31a0d85913748',1,'Span::World::IsAlive()']]],
+  ['isenabled_9',['IsEnabled',['../classSpan_1_1System.html#a779e39d5ac0a7e503b3b26e4950ffff7',1,'Span::System']]],
+  ['isinputavailable_10',['IsInputAvailable',['../classSpan_1_1Input.html#a26b62cb0acb4961842496ac0175d5e3a',1,'Span::Input']]],
+  ['isnull_11',['IsNull',['../structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3',1,'Span::Entity']]],
+  ['isopen_12',['IsOpen',['../classSpan_1_1EditorPanel.html#aff44b6072075af32e53652f92d235829',1,'Span::EditorPanel']]],
+  ['isselected_13',['IsSelected',['../classSpan_1_1SelectionManager.html#a65d6aa36e0d09b69ff3914e6387d667d',1,'Span::SelectionManager']]],
+  ['istransparent_14',['IsTransparent',['../classSpan_1_1Material.html#abc4ee804b2e3c79090588ddcb26eef8f',1,'Span::Material']]]
+];

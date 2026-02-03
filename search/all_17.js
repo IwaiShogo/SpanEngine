@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['w_0',['W',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa61e9c06ea9a85a5088a499df6458d276',1,'Span']]],
+  ['w_1',['w',['../structSpan_1_1Vector4.html#afa3a55fc2cd9a6cada8e168b798efa8e',1,'Span::Vector4::w'],['../structSpan_1_1Quaternion.html#ab931b3dac6a116cff7470ffdcd1a64db',1,'Span::Quaternion::w']]],
+  ['waitforgpu_2',['WaitForGpu',['../classSpan_1_1GraphicsContext.html#a2b668849f44321ef8ff8b944e4e786e2',1,'Span::GraphicsContext']]],
+  ['warning_3',['Warning',['../namespaceSpan.html#a706679730aeab52031ed8774240027f2a0eaadb4fcb48a0a0ed7bc9868be9fbaa',1,'Span']]],
+  ['water_4',['Water',['../namespaceSpan.html#a0218d3201263d090d434e06833479948a27634ff8002b12e75d98e07ccd005d18',1,'Span']]],
+  ['width_5',['Width',['../structSpan_1_1WindowDesc.html#ac36034e45401ef5c779a7cd41eaf8ba0',1,'Span::WindowDesc']]],
+  ['width_6',['width',['../classSpan_1_1GraphicsContext.html#a3b9bf0727cc7aea7de42f9afe82e0c46',1,'Span::GraphicsContext::width'],['../classSpan_1_1RenderTarget.html#a78a0f4f8fa246f9e2deee9b1092bb6f9',1,'Span::RenderTarget::width'],['../classSpan_1_1Texture.html#ad4bffa9fb2e8830770ed4209ba6d362b',1,'Span::Texture::width'],['../classSpan_1_1Window.html#aa0ea22e00d585f4ddf405264723f52bc',1,'Span::Window::width']]],
+  ['win32_5flean_5fand_5fmean_7',['WIN32_LEAN_AND_MEAN',['../CoreMinimal_8h.html#ac7bef5d85e3dcd73eef56ad39ffc84a9',1,'CoreMinimal.h']]],
+  ['window_8',['Window',['../classSpan_1_1Window.html',1,'Span::Window'],['../classSpan_1_1Window.html#a37a75d2d3ff4e663a94df8e1c41958e3',1,'Span::Window::Window()']]],
+  ['window_9',['window',['../classSpan_1_1Application.html#acac29b85acb51a2c94f9febfa9427bc1',1,'Span::Application']]],
+  ['window_2ecpp_10',['Window.cpp',['../Window_8cpp.html',1,'']]],
+  ['window_2eh_11',['Window.h',['../Window_8h.html',1,'']]],
+  ['windowdesc_12',['WindowDesc',['../structSpan_1_1WindowDesc.html',1,'Span']]],
+  ['windowproc_13',['WindowProc',['../classSpan_1_1Window.html#a24635208c038c943fedace7500f9ba18',1,'Span::Window']]],
+  ['with_14',['With',['../classSpan_1_1EntityBuilder.html#ab28545e60edea3e91a3606552f952614',1,'Span::EntityBuilder']]],
+  ['world_15',['World',['../classSpan_1_1World.html',1,'Span::World'],['../structSpan_1_1TransformData.html#af5eb0294b4a8dc4080305b4c20c9bdfb',1,'Span::TransformData::World'],['../classSpan_1_1World.html#aba3445185cce62ba69ea55949875a74f',1,'Span::World::World()']]],
+  ['world_16',['world',['../classSpan_1_1Application.html#a6b218a6b6618fa3fff11183802b81f66',1,'Span::Application']]],
+  ['world_2eh_17',['World.h',['../World_8h.html',1,'']]]
+];
