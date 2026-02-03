@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "EntityManager.h"
 #include "ArchetypeManager.h"
@@ -7,14 +7,14 @@
 namespace Span
 {
 	/**
-	 * @brief	ƒGƒ“ƒeƒBƒeƒB‚Ìƒf[ƒ^‚ªŠi”[‚³‚ê‚Ä‚¢‚é•¨—“I‚Èƒƒ‚ƒŠˆÊ’u‚ğ¦‚·\‘¢‘ÌB
-	 * * ƒGƒ“ƒeƒBƒeƒBID‚©‚çÀÛ‚ÌƒRƒ“ƒ|[ƒlƒ“ƒgƒf[ƒ^‚ÖƒAƒNƒZƒX‚·‚é‚½‚ß‚Ég—p‚³‚ê‚Ü‚·B
+	 * @brief	ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®ãƒ‡ãƒ¼ã‚¿ãŒæ ¼ç´ã•ã‚Œã¦ã„ã‚‹ç‰©ç†çš„ãªãƒ¡ãƒ¢ãƒªä½ç½®ã‚’ç¤ºã™æ§‹é€ ä½“ã€‚
+	 * * ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£IDã‹ã‚‰å®Ÿéš›ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿ã¸ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã«ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚
 	 */
 	struct EntityLocation
 	{
-		Archetype* PtrArchetype;	///< Š‘®‚µ‚Ä‚¢‚éƒA[ƒLƒ^ƒCƒv‚Ö‚Ìƒ|ƒCƒ“ƒ^
-		Chunk* PtrChunk;			///< ƒf[ƒ^‚ªŠi”[‚³‚ê‚Ä‚¢‚éƒ`ƒƒƒ“ƒN‚Ö‚Ìƒ|ƒCƒ“ƒ^
-		uint32 IndexInChunk;		///< ƒ`ƒƒƒ“ƒN“à‚Å‚ÌƒCƒ“ƒfƒbƒNƒX (0 ~ ChunkCapacity)
+		Archetype* PtrArchetype;	///< æ‰€å±ã—ã¦ã„ã‚‹ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+		Chunk* PtrChunk;			///< ãƒ‡ãƒ¼ã‚¿ãŒæ ¼ç´ã•ã‚Œã¦ã„ã‚‹ãƒãƒ£ãƒ³ã‚¯ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+		uint32 IndexInChunk;		///< ãƒãƒ£ãƒ³ã‚¯å†…ã§ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ (0 ~ ChunkCapacity)
 	};
 
 	class World
@@ -25,21 +25,21 @@ namespace Span
 
 		SPAN_NON_COPYABLE(World);
 
-		// --- Entityì¬ ---
+		// --- Entityä½œæˆ ---
 		template <typename... ComponentTypes>
 		Entity CreateEntity()
 		{
-			// 1. ID‚ğ”­s
+			// 1. IDã‚’ç™ºè¡Œ
 			Entity entity = entityManager.CreateEntity();
 
-			// 2. “KØ‚ÈƒA[ƒLƒ^ƒCƒv‚ğæ“¾
+			// 2. é©åˆ‡ãªã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã‚’å–å¾—
 			Archetype* archetype = archetypeManager.GetOrCreateArchetype<ComponentTypes...>();
 
-			// 3. ƒA[ƒLƒ^ƒCƒv“à‚Ìƒ`ƒƒƒ“ƒN‚ÉêŠ‚ğŠm•Û
+			// 3. ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—å†…ã®ãƒãƒ£ãƒ³ã‚¯ã«å ´æ‰€ã‚’ç¢ºä¿
 			uint32 index = archetype->AllocateEntity(entity.ID);
 			Chunk* chunk = archetype->GetChunks().back();
 
-			// 4. ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‰Šú‰»
+			// 4. ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®åˆæœŸåŒ–
 			EntityLocation loc{ archetype, chunk, index };
 			entityLocationMap[entity.ID] = loc;
 
@@ -47,7 +47,7 @@ namespace Span
 			return entity;
 		}
 
-		// --- Entityíœ ---
+		// --- Entityå‰Šé™¤ ---
 		void DestroyEntity(Entity entity)
 		{
 			if (!IsAlive(entity)) return;
@@ -58,33 +58,33 @@ namespace Span
 			EntityLocation loc = it->second;
 			Chunk* chunk = loc.PtrChunk;
 
-			// ƒA[ƒLƒ^ƒCƒv‚©‚çíœ (Swap-back removal)
+			// ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã‹ã‚‰å‰Šé™¤ (Swap-back removal)
 			uint32 lastIndex = chunk->Count - 1;
 			EntityID lastEntityID = reinterpret_cast<EntityID*>(chunk->Memory)[lastIndex];
 
 			if (loc.IndexInChunk != lastIndex)
 			{
-				// ƒf[ƒ^‚ÌˆÚ“®
+				// ãƒ‡ãƒ¼ã‚¿ã®ç§»å‹•
 				chunk->MoveEntityData(loc.PtrArchetype, lastIndex, loc.IndexInChunk);
 
-				// ˆÚ“®‚³‚¹‚½Entity‚ÌZŠ˜^‚ğXV
+				// ç§»å‹•ã•ã›ãŸEntityã®ä½æ‰€éŒ²ã‚’æ›´æ–°
 				entityLocationMap[lastEntityID].IndexInChunk = loc.IndexInChunk;
 			}
 
-			// ƒ`ƒƒƒ“ƒN‚ÌƒJƒEƒ“ƒg‚ğŒ¸‚ç‚·
+			// ãƒãƒ£ãƒ³ã‚¯ã®ã‚«ã‚¦ãƒ³ãƒˆã‚’æ¸›ã‚‰ã™
 			chunk->Count--;
 
-			// ƒ}ƒbƒv‚©‚çíœ
+			// ãƒãƒƒãƒ—ã‹ã‚‰å‰Šé™¤
 			entityLocationMap.erase(entity.ID);
 
-			// IDŠÇ—ƒVƒXƒeƒ€‚É•Ô‹p
+			// IDç®¡ç†ã‚·ã‚¹ãƒ†ãƒ ã«è¿”å´
 			entityManager.DestroyEntity(entity);
 		}
 
-		// --- ƒRƒ“ƒ|[ƒlƒ“ƒg‘€ì ---
+		// --- ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæ“ä½œ ---
 
 		/**
-		 * @brief	Šù‘¶‚ÌEntity‚ÉV‚µ‚¢ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’Ç‰Á‚·‚é
+		 * @brief	æ—¢å­˜ã®Entityã«æ–°ã—ã„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹
 		 */
 		template <typename T>
 		void AddComponent(Entity entity, const T& initialValue = T())
@@ -95,29 +95,29 @@ namespace Span
 			EntityLocation oldLoc = entityLocationMap[entity.ID];
 			Archetype* oldArchetype = oldLoc.PtrArchetype;
 
-			// V‚µ‚¢ƒA[ƒLƒ^ƒCƒv\¬‚ğì¬
+			// æ–°ã—ã„ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—æ§‹æˆã‚’ä½œæˆ
 			std::vector<ComponentTypeID> types = oldArchetype->GetTypes();
 			std::vector<size_t> sizes;
 			std::vector<size_t> aligns;
 
-			// Šù‘¶ƒRƒ“ƒ|[ƒlƒ“ƒgî•ñ
+			// æ—¢å­˜ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæƒ…å ±
 			for (auto id : types)
 			{
 				sizes.push_back(oldArchetype->GetComponentSize(id));
 				aligns.push_back(oldArchetype->GetComponentAlignment(id));
 			}
 
-			// V‹KƒRƒ“ƒ|[ƒlƒ“ƒg’Ç‰Á
+			// æ–°è¦ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè¿½åŠ 
 			types.push_back(ComponentType<T>::GetID());
 			sizes.push_back(sizeof(T));
 			aligns.push_back(alignof(T));
 
 			Archetype* newArchetype = archetypeManager.GetOrCreateArchetype(types, sizes, aligns);
 
-			// ƒf[ƒ^ˆÚs
+			// ãƒ‡ãƒ¼ã‚¿ç§»è¡Œ
 			MigrateEntity(entity, newArchetype);
 
-			// V‚µ‚¢ƒRƒ“ƒ|[ƒlƒ“ƒg‚É’l‚ğİ’è
+			// æ–°ã—ã„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«å€¤ã‚’è¨­å®š
 			if (T* ptr = GetComponentPtr<T>(entity))
 			{
 				new (ptr) T(initialValue);
@@ -138,7 +138,7 @@ namespace Span
 			EntityLocation oldLoc = entityLocationMap[entity.ID];
 			Archetype* oldArchetype = oldLoc.PtrArchetype;
 
-			// V‚µ‚¢ƒA[ƒLƒ^ƒCƒv\¬‚ğì¬
+			// æ–°ã—ã„ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—æ§‹æˆã‚’ä½œæˆ
 			std::vector<ComponentTypeID> types;
 			std::vector<size_t> sizes;
 			std::vector<size_t> aligns;
@@ -156,13 +156,13 @@ namespace Span
 
 			Archetype* newArchetype = archetypeManager.GetOrCreateArchetype(types, sizes, aligns);
 
-			// ƒf[ƒ^ˆÚs
+			// ãƒ‡ãƒ¼ã‚¿ç§»è¡Œ
 			MigrateEntity(entity, newArchetype);
 		}
 
-		// --- ƒRƒ“ƒ|[ƒlƒ“ƒg‘€ì ---
+		// --- ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæ“ä½œ ---
 
-		// ‘¶İŠm”F
+		// å­˜åœ¨ç¢ºèª
 		template <typename T>
 		bool HasComponent(Entity entity)
 		{
@@ -170,11 +170,11 @@ namespace Span
 			auto it = entityLocationMap.find(entity.ID);
 			if (it == entityLocationMap.end()) return false;
 
-			// ƒA[ƒLƒ^ƒCƒv‚ª‚»‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‚Á‚Ä‚¢‚é‚©Šm”F
+			// ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ãŒãã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æŒã£ã¦ã„ã‚‹ã‹ç¢ºèª
 			return it->second.PtrArchetype->HasComponent(ComponentType<T>::GetID());
 		}
 
-		// QÆæ“¾
+		// å‚ç…§å–å¾—
 		template <typename T>
 		T& GetComponent(Entity entity)
 		{
@@ -187,7 +187,7 @@ namespace Span
 			return GetComponentUnsafe<T>(entityLocationMap[entity.ID]);
 		}
 
-		// ƒ|ƒCƒ“ƒ^æ“¾
+		// ãƒã‚¤ãƒ³ã‚¿å–å¾—
 		template <typename T>
 		T* GetComponentPtr(Entity entity)
 		{
@@ -196,13 +196,13 @@ namespace Span
 			auto it = entityLocationMap.find(entity.ID);
 			if (it == entityLocationMap.end()) return nullptr;
 
-			// ‚Á‚Ä‚¢‚È‚¢ê‡
+			// æŒã£ã¦ã„ãªã„å ´åˆ
 			if (!it->second.PtrArchetype->HasComponent(ComponentType<T>::GetID())) return nullptr;
 
 			return &GetComponentUnsafe<T>(it->second);
 		}
 
-		// --- ƒRƒ“ƒ|[ƒlƒ“ƒgİ’è (’l“n‚µ) ---
+		// --- ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè¨­å®š (å€¤æ¸¡ã—) ---
 		template <typename T>
 		void SetComponent(Entity entity, const T& value)
 		{
@@ -212,7 +212,7 @@ namespace Span
 			}
 		}
 
-		// ¶‘¶Šm”F
+		// ç”Ÿå­˜ç¢ºèª
 		bool IsAlive(Entity entity) const
 		{
 			return entityManager.IsAlive(entity);
@@ -220,23 +220,23 @@ namespace Span
 
 		// --- System Management ---
 
-		// ƒVƒXƒeƒ€‚ğ“o˜^‚·‚é
+		// ã‚·ã‚¹ãƒ†ãƒ ã‚’ç™»éŒ²ã™ã‚‹
 		// world.AddSystem<MovementSystem>();
 		template <typename T, typename... Args>
 		T* AddSystem(Args&&... args)
 		{
-			// ƒƒ‚ƒŠŠm•Û‚µ‚ÄŠ—LŒ ‚ğ‚Â
+			// ãƒ¡ãƒ¢ãƒªç¢ºä¿ã—ã¦æ‰€æœ‰æ¨©ã‚’æŒã¤
 			auto sys = std::make_unique<T>(std::forward<Args>(args)...);
 			T* rawPtr = sys.get();
 
-			// ‰Šú‰»
+			// åˆæœŸåŒ–
 			rawPtr->Initialize(this);
 
 			systems.push_back(std::move(sys));
 			return rawPtr;
 		}
 
-		// ‘SƒVƒXƒeƒ€‚ÌXV
+		// å…¨ã‚·ã‚¹ãƒ†ãƒ ã®æ›´æ–°
 		void UpdateSystems()
 		{
 			for (auto& sys : systems)
@@ -248,7 +248,7 @@ namespace Span
 			}
 		}
 
-		// ‘SƒVƒXƒeƒ€‚ÌI—¹ˆ—
+		// å…¨ã‚·ã‚¹ãƒ†ãƒ ã®çµ‚äº†å‡¦ç†
 		void ShutdownSystem()
 		{
 			for (auto& sys : systems)
@@ -261,37 +261,37 @@ namespace Span
 		// --- ForEach ---
 
 		/**
-		 * @brief	w’è‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‚Â‚·‚×‚Ä‚ÌEntity‚É‘Î‚µ‚ÄŠÖ”‚ğÀs‚·‚é
-		 * @tparam	ComponentType —v‹‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒg (—á: Transform, LocalToWorld)
-		 * @param	funcÀs‚·‚éƒ‰ƒ€ƒ_® [](Transform& t, LocalToWorld& ltw) { ... }
+		 * @brief	æŒ‡å®šã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æŒã¤ã™ã¹ã¦ã®Entityã«å¯¾ã—ã¦é–¢æ•°ã‚’å®Ÿè¡Œã™ã‚‹
+		 * @tparam	ComponentType è¦æ±‚ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ (ä¾‹: Transform, LocalToWorld)
+		 * @param	funcå®Ÿè¡Œã™ã‚‹ãƒ©ãƒ ãƒ€å¼ [](Transform& t, LocalToWorld& ltw) { ... }
 		 */
 		template <typename... ComponentTypes, typename Func>
 		void ForEach(Func&& func)
 		{
-			// 1. ŒŸõ‘ÎÛ‚ÌŒ^IDƒŠƒXƒg‚ğì¬
+			// 1. æ¤œç´¢å¯¾è±¡ã®å‹IDãƒªã‚¹ãƒˆã‚’ä½œæˆ
 			std::vector<ComponentTypeID> queryTypes = { ComponentType<ComponentTypes>::GetID()... };
 
-			// 2. ‘SƒA[ƒLƒ^ƒCƒv‚ğ‘–¸
+			// 2. å…¨ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã‚’èµ°æŸ»
 			const auto& allArchetypes = archetypeManager.GetAllArchetypes();
 
 			for (const auto& pair : allArchetypes)
 			{
 				Archetype* arch = pair.second;
 
-				// 3. ğŒ‚É‡‚¤ƒA[ƒLƒ^ƒCƒv‚©
+				// 3. æ¡ä»¶ã«åˆã†ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã‹
 				if (!arch->HasAllComponents(queryTypes))
 				{
 					continue;
 				}
 
-				// 4. ƒ`ƒƒƒ“ƒN‚²‚Æ‚Ìˆ—
+				// 4. ãƒãƒ£ãƒ³ã‚¯ã”ã¨ã®å‡¦ç†
 				auto offsets = std::make_tuple(arch->GetComponentOffset(ComponentType<ComponentTypes>::GetID())...);
 
 				for (Chunk* chunk : arch->GetChunks())
 				{
 					if (chunk->Count == 0) continue;
 
-					// 5. ŠeƒRƒ“ƒ|[ƒlƒ“ƒg”z—ñ‚Ìæ“ªƒ|ƒCƒ“ƒ^‚ğæ“¾‚µ‚ÄÀs
+					// 5. å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé…åˆ—ã®å…ˆé ­ãƒã‚¤ãƒ³ã‚¿ã‚’å–å¾—ã—ã¦å®Ÿè¡Œ
 					ProcessChunk<ComponentTypes...>(chunk, chunk->Count, offsets, func);
 				}
 			}
@@ -301,23 +301,23 @@ namespace Span
 		EntityManager entityManager;
 		ArchetypeManager archetypeManager;
 
-		// ƒVƒXƒeƒ€‚ÌŠ—LŒ ƒŠƒXƒg
+		// ã‚·ã‚¹ãƒ†ãƒ ã®æ‰€æœ‰æ¨©ãƒªã‚¹ãƒˆ
 		std::vector<std::unique_ptr<System>> systems;
 
-		// ID -> ZŠ ‚Ì‚‘¬ŒŸõƒ}ƒbƒv
+		// ID -> ä½æ‰€ ã®é«˜é€Ÿæ¤œç´¢ãƒãƒƒãƒ—
 		std::unordered_map<EntityID, EntityLocation> entityLocationMap;
 
-		// ƒA[ƒLƒ^ƒCƒvŠÔ‚ÌˆÚ“®
+		// ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—é–“ã®ç§»å‹•
 		void MigrateEntity(Entity entity, Archetype* newArchetype)
 		{
 			EntityLocation oldLoc = entityLocationMap[entity.ID];
 			if (oldLoc.PtrArchetype == newArchetype) return;
 
-			// 1. V‚µ‚¢êŠ‚ğŠm•Û
+			// 1. æ–°ã—ã„å ´æ‰€ã‚’ç¢ºä¿
 			uint32 newIndex = newArchetype->AllocateEntity(entity.ID);
 			Chunk* newChunk = newArchetype->GetChunks().back();
 
-			// 2. ‹¤’Ê‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒf[ƒ^‚ğƒRƒs[
+			// 2. å…±é€šã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ‡ãƒ¼ã‚¿ã‚’ã‚³ãƒ”ãƒ¼
 			for (ComponentTypeID typeID : oldLoc.PtrArchetype->GetTypes())
 			{
 				if (newArchetype->HasComponent(typeID))
@@ -333,7 +333,7 @@ namespace Span
 				}
 			}
 
-			// 3. ŒÃ‚¢î•ñ‚ğíœ (Swap-back)
+			// 3. å¤ã„æƒ…å ±ã‚’å‰Šé™¤ (Swap-back)
 			Chunk* oldChunk = oldLoc.PtrChunk;
 			uint32 lastIndex = oldChunk->Count - 1;
 			EntityID lastEntityID = reinterpret_cast<EntityID*>(oldChunk->Memory)[lastIndex];
@@ -345,12 +345,12 @@ namespace Span
 			}
 			oldChunk->Count--;
 
-			// 4. ƒ}ƒbƒvXV
+			// 4. ãƒãƒƒãƒ—æ›´æ–°
 			EntityLocation newLoc{ newArchetype, newChunk, newIndex };
 			entityLocationMap[entity.ID] = newLoc;
 		}
 
-		// ƒwƒ‹ƒp[: Location‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒgQÆ‚ğ‰ğŒˆ
+		// ãƒ˜ãƒ«ãƒ‘ãƒ¼: Locationã‹ã‚‰ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå‚ç…§ã‚’è§£æ±º
 		template <typename T>
 		T& GetComponentUnsafe(const EntityLocation& loc)
 		{
@@ -360,7 +360,7 @@ namespace Span
 			return componentArray[loc.IndexInChunk];
 		}
 
-		// ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‰Šú‰»ƒwƒ‹ƒp[ (‰Â•Ï’·ƒeƒ“ƒvƒŒ[ƒg“WŠJ)
+		// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®åˆæœŸåŒ–ãƒ˜ãƒ«ãƒ‘ãƒ¼ (å¯å¤‰é•·ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆå±•é–‹)
 		template <typename... Ts>
 		void InitializeComponents(const EntityLocation& loc)
 		{
@@ -374,24 +374,24 @@ namespace Span
 			new (&val) T();
 		}
 
-		// --- ƒwƒ‹ƒp[ŠÖ” ---
+		// --- ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•° ---
 		template <typename... ComponentTypes, typename Func, size_t... Indices>
 		void ProcessChunk_Impl(Chunk* chunk, uint32 count, const std::tuple<decltype(sizeof(ComponentTypes))...>& offsets, Func&& func, std::index_sequence<Indices...>)
 		{
-			// ŠeƒRƒ“ƒ|[ƒlƒ“ƒg”z—ñ‚Ìæ“ªƒAƒhƒŒƒX‚ğæ“¾
+			// å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé…åˆ—ã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—
 			std::tuple<ComponentTypes*...> arrays = std::make_tuple(
 				reinterpret_cast<ComponentTypes*>(chunk->Memory + std::get<Indices>(offsets))...
 			);
 
-			// EntityID”z—ñ‚Ö‚Ìƒ|ƒCƒ“ƒ^
+			// EntityIDé…åˆ—ã¸ã®ãƒã‚¤ãƒ³ã‚¿
 			EntityID* entityIDs = reinterpret_cast<EntityID*>(chunk->Memory);
 
-			// ƒ`ƒƒƒ“ƒN“àƒ‹[ƒv
+			// ãƒãƒ£ãƒ³ã‚¯å†…ãƒ«ãƒ¼ãƒ—
 			for (uint32 i = 0; i < count; ++i)
 			{
 				Entity entity = { entityIDs[i] };
 
-				// ƒ†[ƒU[ŠÖ”‚ğÀs: func(entity, compA[i], compB[i]...)
+				// ãƒ¦ãƒ¼ã‚¶ãƒ¼é–¢æ•°ã‚’å®Ÿè¡Œ: func(entity, compA[i], compB[i]...)
 				func(entity, (std::get<Indices>(arrays)[i])...);
 			}
 		}
