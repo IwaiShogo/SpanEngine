@@ -109,10 +109,10 @@ $(function(){initNavTree('Shader_8h_source.html','',''); });
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classSpan_1_1Shader.html">   12</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    {</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="comment">// ƒtƒ@ƒCƒ‹‚©‚çƒVƒF[ƒ_[‚ğƒ[ƒh‚µ‚ÄƒRƒ“ƒpƒCƒ‹</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="comment">// ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¦ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1Shader.html#a546bb2f333eab4df01ea6cf76262cba9">Load</a>(<span class="keyword">const</span> std::wstring&amp; filename, <a class="code hl_enumeration" href="namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920d">ShaderType</a> type, <span class="keyword">const</span> std::string&amp; entryPoint = <span class="stringliteral">&quot;Main&quot;</span>);</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="comment">// GPU‚É“n‚·‚½‚ß‚ÌƒoƒCƒiƒŠæ“¾</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="comment">// GPUã«æ¸¡ã™ãŸã‚ã®ãƒã‚¤ãƒŠãƒªå–å¾—</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classSpan_1_1Shader.html#ad23c22068c8d3769477b03c9289e3b9b">   19</a></span>        ID3DBlob* <a class="code hl_function" href="classSpan_1_1Shader.html#ad23c22068c8d3769477b03c9289e3b9b">GetBlob</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1Shader.html#a310a6d51aa8d8384146ca65de3f4e842">blob</a>.Get(); }</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classSpan_1_1Shader.html#a807ff40b4d40f75c7ea66e3838c2a596">   20</a></span>        D3D12_SHADER_BYTECODE <a class="code hl_function" href="classSpan_1_1Shader.html#a807ff40b4d40f75c7ea66e3838c2a596">GetBytecode</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> { <a class="code hl_variable" href="classSpan_1_1Shader.html#a310a6d51aa8d8384146ca65de3f4e842">blob</a>-&gt;GetBufferPointer(), <a class="code hl_variable" href="classSpan_1_1Shader.html#a310a6d51aa8d8384146ca65de3f4e842">blob</a>-&gt;GetBufferSize() }; }</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
@@ -121,6 +121,7 @@ $(function(){initNavTree('Shader_8h_source.html','',''); });
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    };</div>
 </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Shader_html"><div class="ttname"><a href="classSpan_1_1Shader.html">Span::Shader</a></div><div class="ttdef"><b>Definition</b> Shader.h:13</div></div>
 <div class="ttc" id="aclassSpan_1_1Shader_html_a310a6d51aa8d8384146ca65de3f4e842"><div class="ttname"><a href="classSpan_1_1Shader.html#a310a6d51aa8d8384146ca65de3f4e842">Span::Shader::blob</a></div><div class="ttdeci">ComPtr&lt; ID3DBlob &gt; blob</div><div class="ttdef"><b>Definition</b> Shader.h:23</div></div>

@@ -151,17 +151,17 @@ $(function(){initNavTree('SpanReflection_8h_source.html','',''); });
 <div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="namespaceSpan_1_1Internal.html">   51</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan_1_1Internal.html">Span::Internal</a></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// ”Ä—p•`‰æŠÖ”</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// æ±ç”¨æç”»é–¢æ•°</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceSpan_1_1Internal.html#ae18b71c51d88d168549fe9542ed952bb">   55</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceSpan_1_1Internal.html#ae18b71c51d88d168549fe9542ed952bb">DrawField</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* label, <a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&amp; value, <span class="keyword">const</span> std::vector&lt;Attribute&gt;&amp; attrs)</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="comment">// ‘®«‰ğÍ</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>       std::string tooltip;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="comment">// å±æ€§è§£æ</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        std::string tooltip;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">float</span> minV = -FLT_MAX, maxV = FLT_MAX;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordtype">bool</span> hasRange = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordtype">bool</span> hasMin = <span class="keyword">false</span>; <span class="comment">// š’Ç‰Á</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>       <span class="keywordtype">bool</span> isReadOnly = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordtype">bool</span> hasMin = <span class="keyword">false</span>; <span class="comment">// â˜…è¿½åŠ </span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">bool</span> isReadOnly = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; a : attrs) {</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">if</span> (a.Type == <a class="code hl_enumvalue" href="namespaceSpan.html#a00c320c889b6c836e32c17b01071d257a56e3bd5ed469b7ba659ba60b2d65833a">AttributeType::HideInInspector</a>) <span class="keywordflow">return</span>;</div>
@@ -175,9 +175,9 @@ $(function(){initNavTree('SpanReflection_8h_source.html','',''); });
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keywordflow">if</span> (a.Type == <a class="code hl_enumvalue" href="namespaceSpan.html#a00c320c889b6c836e32c17b01071d257a131fb182a881796e7606ed6da27f1197">AttributeType::ReadOnly</a>) isReadOnly = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">if</span> (a.Type == <a class="code hl_enumvalue" href="namespaceSpan.html#a00c320c889b6c836e32c17b01071d257a78d811e98514cd165dda532286610fd2">AttributeType::Min</a>) {</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                hasMin = <span class="keyword">true</span>; <span class="comment">// š’Ç‰Á</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>             minV = a.FloatValue1;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                <span class="comment">// •`‰æ‘O‚Ì–‘Oƒ`ƒFƒbƒN</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                hasMin = <span class="keyword">true</span>; <span class="comment">// â˜…è¿½åŠ </span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                minV = a.FloatValue1;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                <span class="comment">// æç”»å‰ã®äº‹å‰ãƒã‚§ãƒƒã‚¯</span></div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_arithmetic_v&lt;T&gt;) {</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                    <span class="keywordflow">if</span> (value &lt; <span class="keyword">static_cast&lt;</span><a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a><span class="keyword">&gt;</span>(a.FloatValue1)) value = <span class="keyword">static_cast&lt;</span><a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a><span class="keyword">&gt;</span>(a.FloatValue1);</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                }</div>
@@ -186,7 +186,7 @@ $(function(){initNavTree('SpanReflection_8h_source.html','',''); });
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">if</span> (isReadOnly) ImGui::BeginDisabled();</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="comment">// --- Œ^•Ê•`‰æ ---</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="comment">// --- å‹åˆ¥æç”» ---</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, float&gt;) {</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keywordflow">if</span> (hasRange) ImGui::SliderFloat(label, &amp;value, minV, maxV);</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordflow">else</span> ImGui::DragFloat(label, &amp;value, 0.1f, minV, maxV);</div>

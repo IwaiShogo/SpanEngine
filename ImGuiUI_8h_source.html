@@ -103,22 +103,22 @@ $(function(){initNavTree('ImGuiUI_8h_source.html','',''); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classSpan_1_1ImGuiUI.html">    8</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1ImGuiUI.html">ImGuiUI</a></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="comment">// XYZƒJƒ‰[•t‚«ƒxƒNƒgƒ‹•ÒW (Table API”Å)</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="comment">// XYZã‚«ãƒ©ãƒ¼ä»˜ããƒ™ã‚¯ãƒˆãƒ«ç·¨é›† (Table APIç‰ˆ)</span></div>
 <div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classSpan_1_1ImGuiUI.html#a82e31b59f1f904100b23729fbe79655b">   12</a></span>        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1ImGuiUI.html#a82e31b59f1f904100b23729fbe79655b">DrawVec3Control</a>(<span class="keyword">const</span> std::string&amp; label, <a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a>&amp; values, <span class="keywordtype">float</span> resetValue = 0.0f, <span class="keywordtype">float</span> columnWidth = 100.0f)</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        {</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            <span class="keywordtype">bool</span> changed = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            ImGui::PushID(label.c_str());</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <span class="comment">// Columns API‚ğg—p (BeginTable‚æ‚èƒNƒ‰ƒbƒVƒ…‚µ‚É‚­‚¢)</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <span class="comment">// Columns APIã‚’ä½¿ç”¨ (BeginTableã‚ˆã‚Šã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã—ã«ãã„)</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            ImGui::Columns(2);</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="comment">// 1—ñ–Ú‚Ì•İ’è</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>         ImGui::SetColumnWidth(0, columnWidth);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="comment">// 1åˆ—ç›®ã®å¹…è¨­å®š</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            ImGui::SetColumnWidth(0, columnWidth);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            ImGui::Text(<span class="stringliteral">&quot;%s&quot;</span>, label.c_str());</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            ImGui::NextColumn();</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="comment">// 2—ñ–Ú: X, Y, Z ‚Ì•`‰æ</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="comment">// 2åˆ—ç›®: X, Y, Z ã®æç”»</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            ImGui::PushMultiItemsWidths(3, ImGui::CalcItemWidth());</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2{ 0, 0 });</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
@@ -127,7 +127,7 @@ $(function(){initNavTree('ImGuiUI_8h_source.html','',''); });
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keyword">auto</span> DrawAxis = [&amp;](<span class="keyword">const</span> <span class="keywordtype">char</span>* axisLabel, <span class="keywordtype">float</span>&amp; value, <span class="keyword">const</span> ImVec4&amp; color)</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                    <span class="comment">// ²‚²‚Æ‚ÌIDƒXƒR[ƒv‚ğì‚é (‚±‚ê‚ª‚È‚¢‚Æ‘S‚Ä“¯‚¶ID‚É‚È‚è˜A“®‚µ‚Ä‚µ‚Ü‚¤)</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                    <span class="comment">// è»¸ã”ã¨ã®IDã‚¹ã‚³ãƒ¼ãƒ—ã‚’ä½œã‚‹ (ã“ã‚ŒãŒãªã„ã¨å…¨ã¦åŒã˜IDã«ãªã‚Šé€£å‹•ã—ã¦ã—ã¾ã†)</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                    ImGui::PushID(axisLabel);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                    ImGui::PushStyleColor(ImGuiCol_Button, color);</div>
@@ -143,14 +143,14 @@ $(function(){initNavTree('ImGuiUI_8h_source.html','',''); });
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    ImGui::SameLine();</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                    <span class="comment">// ID‚Í &quot;label/axisLabel/##Drag&quot; ‚Æ‚È‚èˆêˆÓ‚É‚È‚é</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                   <span class="keywordflow">if</span> (ImGui::DragFloat(<span class="stringliteral">&quot;##Drag&quot;</span>, &amp;value, 0.1f, 0.0f, 0.0f, <span class="stringliteral">&quot;%.2f&quot;</span>))</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                    <span class="comment">// IDã¯ &quot;label/axisLabel/##Drag&quot; ã¨ãªã‚Šä¸€æ„ã«ãªã‚‹</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                    <span class="keywordflow">if</span> (ImGui::DragFloat(<span class="stringliteral">&quot;##Drag&quot;</span>, &amp;value, 0.1f, 0.0f, 0.0f, <span class="stringliteral">&quot;%.2f&quot;</span>))</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                    {</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                        changed = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                    }</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                    ImGui::PopItemWidth();</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                    ImGui::PopID(); <span class="comment">// axisLabel‚ÌID‚ğƒ|ƒbƒv</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                    ImGui::PopID(); <span class="comment">// axisLabelã®IDã‚’ãƒãƒƒãƒ—</span></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                };</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="comment">// X Axis</span></div>
@@ -165,14 +165,14 @@ $(function(){initNavTree('ImGuiUI_8h_source.html','',''); });
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            DrawAxis(<span class="stringliteral">&quot;Z&quot;</span>, values.<a class="code hl_variable" href="structSpan_1_1Vector3.html#a20fbb380d1c4ef3fc1be2c4f4f73087b">z</a>, ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            ImGui::PopStyleVar(); <span class="comment">// ItemSpacing</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            ImGui::Columns(1); <span class="comment">// ƒJƒ‰ƒ€ƒŠƒZƒbƒg</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            ImGui::Columns(1); <span class="comment">// ã‚«ãƒ©ãƒ ãƒªã‚»ãƒƒãƒˆ</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            ImGui::PopID();</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">return</span> changed;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
 </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">// ƒRƒ“ƒ|[ƒlƒ“ƒg—p‚Ìƒwƒbƒ_[•`‰æ</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆç”¨ã®ãƒ˜ãƒƒãƒ€ãƒ¼æç”»</span></div>
 <div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classSpan_1_1ImGuiUI.html#a52bfa8cd974637ba2dd51cba44415a11">   79</a></span>        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1ImGuiUI.html#a52bfa8cd974637ba2dd51cba44415a11">DrawComponentHeader</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keywordtype">bool</span>&amp; isRemoved, <span class="keywordtype">bool</span> defaultOpen = <span class="keyword">true</span>)</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        {</div>
@@ -183,8 +183,8 @@ $(function(){initNavTree('ImGuiUI_8h_source.html','',''); });
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keywordtype">bool</span> open = ImGui::TreeNodeEx(name.c_str(), treeNodeFlags, name.c_str());</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <span class="comment">// ‰EƒNƒŠƒbƒNƒƒjƒ…[ (TreeNode‚Ì’¼Œã‚É”z’u‚·‚é‚±‚Æ‚Åƒwƒbƒ_[‘S‘Ì‚Å”½‰‚·‚é)</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>          <span class="keywordflow">if</span> (ImGui::BeginPopupContextItem(<span class="stringliteral">&quot;ComponentSettings_Context&quot;</span>, ImGuiPopupFlags_MouseButtonRight))</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <span class="comment">// å³ã‚¯ãƒªãƒƒã‚¯ãƒ¡ãƒ‹ãƒ¥ãƒ¼ (TreeNodeã®ç›´å¾Œã«é…ç½®ã™ã‚‹ã“ã¨ã§ãƒ˜ãƒƒãƒ€ãƒ¼å…¨ä½“ã§åå¿œã™ã‚‹)</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keywordflow">if</span> (ImGui::BeginPopupContextItem(<span class="stringliteral">&quot;ComponentSettings_Context&quot;</span>, ImGuiPopupFlags_MouseButtonRight))</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            {</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                ImGui::TextDisabled(<span class="stringliteral">&quot;%s&quot;</span>, name.c_str());</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                ImGui::Separator();</div>
@@ -195,12 +195,12 @@ $(function(){initNavTree('ImGuiUI_8h_source.html','',''); });
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                ImGui::EndPopup();</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            }</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="comment">// --- •ÔƒAƒCƒRƒ“ (‰E’[) ---</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="comment">// --- æ­¯è»Šã‚¢ã‚¤ã‚³ãƒ³ (å³ç«¯) ---</span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            ImGui::SameLine();</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordtype">float</span> buttonWidth = 20.0f;</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x - buttonWidth - 5.0f);</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0)); <span class="comment">// “§–¾</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0)); <span class="comment">// é€æ˜</span></div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="keywordflow">if</span> (ImGui::Button(<span class="stringliteral">&quot;:&quot;</span>, ImVec2(buttonWidth, 0)))</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            {</div>
@@ -208,7 +208,7 @@ $(function(){initNavTree('ImGuiUI_8h_source.html','',''); });
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            }</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            ImGui::PopStyleColor();</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="comment">// •Ôƒ{ƒ^ƒ“—p‚Ìƒ|ƒbƒvƒAƒbƒv</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="comment">// æ­¯è»Šãƒœã‚¿ãƒ³ç”¨ã®ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—</span></div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <span class="keywordflow">if</span> (ImGui::BeginPopup(<span class="stringliteral">&quot;ComponentSettings&quot;</span>))</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            {</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                <span class="keywordflow">if</span> (ImGui::MenuItem(<span class="stringliteral">&quot;Remove Component&quot;</span>))</div>

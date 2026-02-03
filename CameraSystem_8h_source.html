@@ -114,10 +114,10 @@ $(function(){initNavTree('CameraSystem_8h_source.html','',''); });
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <a class="code hl_function" href="classSpan_1_1System.html#adda3b04cc8e931689a3e86a5cf91b16e">GetWorld</a>()-&gt;<a class="code hl_function" href="classSpan_1_1World.html#afd6041d6b68f1964882d1941fc0fddaf">ForEach</a>&lt;<a class="code hl_struct" href="structSpan_1_1Camera.html">Camera</a>, <a class="code hl_struct" href="structSpan_1_1LocalToWorld.html">LocalToWorld</a>&gt;(</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                [&amp;](<a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a>, <a class="code hl_struct" href="structSpan_1_1Camera.html">Camera</a>&amp; cam, <a class="code hl_struct" href="structSpan_1_1LocalToWorld.html">LocalToWorld</a>&amp; ltw)</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                    <span class="comment">// 1. Views—ñ</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                  <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> viewMatrix = ltw.Value.<a class="code hl_function" href="structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e">Invert</a>();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                    <span class="comment">// 1. Viewè¡Œåˆ—</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                    <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> viewMatrix = ltw.Value.<a class="code hl_function" href="structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e">Invert</a>();</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                    <span class="comment">// 2. Projections—ñ</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                    <span class="comment">// 2. Projectionè¡Œåˆ—</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                    <span class="keywordtype">float</span> aspectRatio = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(window.GetWidth()) / <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(window.GetHeight());</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                    <span class="keywordflow">if</span> (aspectRatio &lt;= 0.0f) aspectRatio = 1.0f;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
@@ -128,7 +128,7 @@ $(function(){initNavTree('CameraSystem_8h_source.html','',''); });
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                        cam.FarClip</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                    );</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                    <span class="comment">// 3. ƒŒƒ“ƒ_ƒ‰[‚É“K—p</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                    <span class="comment">// 3. ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ã«é©ç”¨</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                    renderer.SetCamera(viewMatrix, projMatrix);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                }</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            );</div>
@@ -137,6 +137,7 @@ $(function(){initNavTree('CameraSystem_8h_source.html','',''); });
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    };</div>
 </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="ttc" id="aApplication_8h_html"><div class="ttname"><a href="Application_8h.html">Application.h</a></div></div>
 <div class="ttc" id="aCamera_8h_html"><div class="ttname"><a href="Camera_8h.html">Camera.h</a></div></div>
 <div class="ttc" id="aLocalToWorld_8h_html"><div class="ttname"><a href="LocalToWorld_8h.html">LocalToWorld.h</a></div></div>
@@ -153,7 +154,7 @@ $(function(){initNavTree('CameraSystem_8h_source.html','',''); });
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> CoreMinimal.h:52</div></div>
 <div class="ttc" id="anamespaceSpan_html_a2e4930a806963e7ab8c6c60031c41fe8"><div class="ttname"><a href="namespaceSpan.html#a2e4930a806963e7ab8c6c60031c41fe8">Span::ToRadians</a></div><div class="ttdeci">float ToRadians(float degrees)</div><div class="ttdef"><b>Definition</b> SpanMath.h:22</div></div>
 <div class="ttc" id="astructSpan_1_1Camera_html"><div class="ttname"><a href="structSpan_1_1Camera.html">Span::Camera</a></div><div class="ttdef"><b>Definition</b> Camera.h:7</div></div>
-<div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">Entityƒnƒ“ƒhƒ‹ ƒ†[ƒU[‚ªˆµ‚¤‚Ì‚Í‚±‚ÌƒNƒ‰ƒXBÀ‘Ì‚ÍID‚Ì‚İ‚ğ‚ÂŒy—ÊƒIƒuƒWƒFƒNƒg</div><div class="ttdef"><b>Definition</b> Entity.h:31</div></div>
+<div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">Entityãƒãƒ³ãƒ‰ãƒ« ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒæ‰±ã†ã®ã¯ã“ã®ã‚¯ãƒ©ã‚¹ã€‚å®Ÿä½“ã¯IDã®ã¿ã‚’æŒã¤è»½é‡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</div><div class="ttdef"><b>Definition</b> Entity.h:31</div></div>
 <div class="ttc" id="astructSpan_1_1LocalToWorld_html"><div class="ttname"><a href="structSpan_1_1LocalToWorld.html">Span::LocalToWorld</a></div><div class="ttdef"><b>Definition</b> LocalToWorld.h:9</div></div>
 <div class="ttc" id="astructSpan_1_1Matrix4x4_html"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html">Span::Matrix4x4</a></div><div class="ttdef"><b>Definition</b> SpanMath.h:194</div></div>
 <div class="ttc" id="astructSpan_1_1Matrix4x4_html_a3544a5d56ec62c035d6e1aa0b20bba2e"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e">Span::Matrix4x4::Invert</a></div><div class="ttdeci">Matrix4x4 Invert() const</div><div class="ttdef"><b>Definition</b> SpanMath.h:270</div></div>

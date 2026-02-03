@@ -11,6 +11,7 @@ var hierarchy =
     [ "Span::Chunk", "structSpan_1_1Chunk.html", null ],
     [ "Span::ComponentMetadata", "structSpan_1_1ComponentMetadata.html", null ],
     [ "Span::ComponentRegistry", "classSpan_1_1ComponentRegistry.html", null ],
+    [ "Span::ComponentType&lt; T &gt;", "classSpan_1_1ComponentType.html", null ],
     [ "Span::ConstantBuffer&lt; T &gt;", "classSpan_1_1ConstantBuffer.html", null ],
     [ "Span::EditorCamera", "structSpan_1_1EditorCamera.html", null ],
     [ "Span::EditorPanel", "classSpan_1_1EditorPanel.html", [
@@ -34,6 +35,7 @@ var hierarchy =
     [ "Span::Material", "classSpan_1_1Material.html", null ],
     [ "Span::MaterialData", "structSpan_1_1MaterialData.html", null ],
     [ "Span::Matrix4x4", "structSpan_1_1Matrix4x4.html", null ],
+    [ "Span::MemoryArena", "classSpan_1_1MemoryArena.html", null ],
     [ "Span::Mesh", "classSpan_1_1Mesh.html", null ],
     [ "Span::MeshFilter", "structSpan_1_1MeshFilter.html", null ],
     [ "Span::MeshRenderer", "structSpan_1_1MeshRenderer.html", null ],

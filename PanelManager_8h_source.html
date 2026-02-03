@@ -103,7 +103,7 @@ $(function(){initNavTree('PanelManager_8h_source.html','',''); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classSpan_1_1PanelManager.html#a9a8ef9fa736cd3bcb1dca466179d7223">    9</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="classSpan_1_1PanelManager.html#a9a8ef9fa736cd3bcb1dca466179d7223">PanelFactory</a> = std::function&lt;std::shared_ptr&lt;EditorPanel&gt;()&gt;;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="comment">// ƒpƒlƒ‹“o˜^—pŠÖ”</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="comment">// ãƒ‘ãƒãƒ«ç™»éŒ²ç”¨é–¢æ•°</span></div>
 <div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classSpan_1_1PanelManager.html#aef907c4549b0188709bb1195c4f6b5d2">   12</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1PanelManager.html#aef907c4549b0188709bb1195c4f6b5d2">RegisterPanel</a>(<span class="keyword">const</span> std::string&amp; name, <a class="code hl_typedef" href="classSpan_1_1PanelManager.html#a9a8ef9fa736cd3bcb1dca466179d7223">PanelFactory</a> factory)</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        {</div>
@@ -111,7 +111,7 @@ $(function(){initNavTree('PanelManager_8h_source.html','',''); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        }</div>
 </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">// ‘Sƒpƒlƒ‹‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‰»</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">// å…¨ãƒ‘ãƒãƒ«ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–</span></div>
 <div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classSpan_1_1PanelManager.html#a27ae1b3b9f089f8ad657d3f74f2d45be">   18</a></span>        <span class="keyword">static</span> std::vector&lt;std::shared_ptr&lt;EditorPanel&gt;&gt; <a class="code hl_function" href="classSpan_1_1PanelManager.html#a27ae1b3b9f089f8ad657d3f74f2d45be">CreateAllPanels</a>()</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        {</div>
@@ -125,7 +125,7 @@ $(function(){initNavTree('PanelManager_8h_source.html','',''); });
 </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="comment">// Ã“Iƒ}ƒbƒv‚Ö‚ÌƒAƒNƒZƒT</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="comment">// é™çš„ãƒãƒƒãƒ—ã¸ã®ã‚¢ã‚¯ã‚»ã‚µ</span></div>
 <div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classSpan_1_1PanelManager.html#a42dcfb9527ac74e0af561d8f1dbfe833">   30</a></span>        <span class="keyword">static</span> std::map&lt;std::string, PanelFactory&gt;&amp; <a class="code hl_function" href="classSpan_1_1PanelManager.html#a42dcfb9527ac74e0af561d8f1dbfe833">GetRegistry</a>()</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        {</div>
@@ -136,8 +136,8 @@ $(function(){initNavTree('PanelManager_8h_source.html','',''); });
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    };</div>
 </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// ©“®“o˜^—pƒwƒ‹ƒp[\‘¢‘Ì</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// è‡ªå‹•ç™»éŒ²ç”¨ãƒ˜ãƒ«ãƒ‘ãƒ¼æ§‹é€ ä½“</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structSpan_1_1AutoRegisterPanel.html">   39</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="structSpan_1_1AutoRegisterPanel.html#aedbb84d49a06f20b24c3f7c951b26e2d">AutoRegisterPanel</a></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
@@ -150,6 +150,7 @@ $(function(){initNavTree('PanelManager_8h_source.html','',''); });
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    };</div>
 </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="ttc" id="aEditorPanel_8h_html"><div class="ttname"><a href="EditorPanel_8h.html">EditorPanel.h</a></div></div>
 <div class="ttc" id="aclassSpan_1_1PanelManager_html"><div class="ttname"><a href="classSpan_1_1PanelManager.html">Span::PanelManager</a></div><div class="ttdef"><b>Definition</b> PanelManager.h:7</div></div>
 <div class="ttc" id="aclassSpan_1_1PanelManager_html_a27ae1b3b9f089f8ad657d3f74f2d45be"><div class="ttname"><a href="classSpan_1_1PanelManager.html#a27ae1b3b9f089f8ad657d3f74f2d45be">Span::PanelManager::CreateAllPanels</a></div><div class="ttdeci">static std::vector&lt; std::shared_ptr&lt; EditorPanel &gt; &gt; CreateAllPanels()</div><div class="ttdef"><b>Definition</b> PanelManager.h:18</div></div>

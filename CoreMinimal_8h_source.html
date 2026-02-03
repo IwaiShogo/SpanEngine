@@ -94,8 +94,8 @@ $(function(){initNavTree('CoreMinimal_8h_source.html','',''); });
 <div class="contents">
 <a href="CoreMinimal_8h.html">[è©³è§£]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// 1. Windows API İ’è</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// ƒ}ƒNƒ‚ÌÕ“Ë‚ğ–h‚®‚½‚ß‚Ì’è‹`</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// 1. Windows API è¨­å®š</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// ãƒã‚¯ãƒ­ã®è¡çªã‚’é˜²ããŸã‚ã®å®šç¾©</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef WIN32_LEAN_AND_MEAN</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="CoreMinimal_8h.html#ac7bef5d85e3dcd73eef56ad39ffc84a9">    6</a></span><span class="preprocessor">#define WIN32_LEAN_AND_MEAN</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#endif</span></div>
@@ -106,7 +106,7 @@ $(function(){initNavTree('CoreMinimal_8h_source.html','',''); });
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;Windows.h&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;wrl/client.h&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// 2. •W€ƒ‰ƒCƒuƒ‰ƒŠ (Standard Library)</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// 2. æ¨™æº–ãƒ©ã‚¤ãƒ–ãƒ©ãƒª (Standard Library)</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;string&gt;</span></div>
@@ -138,14 +138,14 @@ $(function(){initNavTree('CoreMinimal_8h_source.html','',''); });
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// 5. ImgGui</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">// 6. ‹¤’Ê‚Ì–¼‘O‹óŠÔ‚ÌÈ—ª</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">using namespace </span>Microsoft::WRL; <span class="comment">// ComPtr—p</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">using namespace </span>DirectX;        <span class="comment">// XMMATRIX, XMFLOAT3“™—p</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">// 6. å…±é€šã®åå‰ç©ºé–“ã®çœç•¥</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">using namespace </span>Microsoft::WRL; <span class="comment">// ComPtrç”¨</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">using namespace </span>DirectX;        <span class="comment">// XMMATRIX, XMFLOAT3ç­‰ç”¨</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="namespaceSpan.html">   51</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// 7. Šî–{Œ^‚ÌƒGƒCƒŠƒAƒX (Rust‚âC#•—‚ÌŒ^’è‹`)</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// 7. åŸºæœ¬å‹ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ (Rustã‚„C#é¢¨ã®å‹å®šç¾©)</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a22abb8fc8284de21b5e9d080a1836f46">   54</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a22abb8fc8284de21b5e9d080a1836f46">int8</a>   = int8_t;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391">   55</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391">int16</a>  = int16_t;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a7d00f8fdfe7b0d03b2a4d5ba06efe594">   56</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a7d00f8fdfe7b0d03b2a4d5ba06efe594">int32</a>  = int32_t;</div>
@@ -156,9 +156,9 @@ $(function(){initNavTree('CoreMinimal_8h_source.html','',''); });
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">   61</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> = uint32_t;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">   62</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">uint64</a> = uint64_t;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// 8. •Ö—˜ƒ}ƒNƒ / ƒwƒ‹ƒp[ŠÖ”</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// 8. ä¾¿åˆ©ãƒã‚¯ãƒ­ / ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•°</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// ƒƒ‚ƒŠˆÀ‘S‰ğ•ú (ƒ|ƒCƒ“ƒ^íœ)</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// ãƒ¡ãƒ¢ãƒªå®‰å…¨è§£æ”¾ (ãƒã‚¤ãƒ³ã‚¿å‰Šé™¤)</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a825e5690a4fd5830377dd61ef46f22a6">   68</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceSpan.html#a825e5690a4fd5830377dd61ef46f22a6">SafeDelete</a>(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>*&amp; ptr) {</div>
@@ -170,7 +170,7 @@ $(function(){initNavTree('CoreMinimal_8h_source.html','',''); });
 </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">   74</a></span><span class="preprocessor">    #define SAFE_DELETE(x) Span::SafeDelete(x)</span></div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// COMƒIƒuƒWƒFƒNƒgˆÀ‘S‰ğ•ú (ReleaseŒÄ‚Ño‚µ)</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// COMã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå®‰å…¨è§£æ”¾ (Releaseå‘¼ã³å‡ºã—)</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a247e3d3dd552cb352584f6b968a21bd1">   78</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceSpan.html#a247e3d3dd552cb352584f6b968a21bd1">SafeRelease</a>(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>*&amp; ptr) {</div>
@@ -182,7 +182,7 @@ $(function(){initNavTree('CoreMinimal_8h_source.html','',''); });
 </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="CoreMinimal_8h.html#a2bc549675ca29f733709b4656d22d52a">   84</a></span><span class="preprocessor">    #define SAFE_RELEASE(x) Span::SafeRelease(x)</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// ƒRƒs[‹Ö~ƒ}ƒNƒ (ƒNƒ‰ƒX’è‹`“à‚Åg—p)</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// ã‚³ãƒ”ãƒ¼ç¦æ­¢ãƒã‚¯ãƒ­ (ã‚¯ãƒ©ã‚¹å®šç¾©å†…ã§ä½¿ç”¨)</span></div>
 <div class="foldopen" id="foldopen00087" data-start="" data-end="">
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="CoreMinimal_8h.html#a8060c7382a7330c4518b5bbccf78d2b7">   87</a></span><span class="preprocessor">    #define SPAN_NON_COPYABLE(ClassName) \</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">        ClassName(const ClassName&amp;) = delete; \</span></div>
@@ -191,7 +191,7 @@ $(function(){initNavTree('CoreMinimal_8h_source.html','',''); });
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
 </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">// ƒƒOo—Í</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">// ãƒ­ã‚°å‡ºåŠ›</span></div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#include &quot;<a class="code" href="Logger_8h.html">Log/Logger.h</a>&quot;</span></div>
 <div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="Logger_8h.html">Logger.h</a></div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> CoreMinimal.h:52</div></div>

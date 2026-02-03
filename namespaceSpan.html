@@ -106,6 +106,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:Vector4" id="r_Vector4"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Vector4.html">Vector4</a></td></tr>
 <tr class="memitem:Quaternion" id="r_Quaternion"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Quaternion.html">Quaternion</a></td></tr>
 <tr class="memitem:Matrix4x4" id="r_Matrix4x4"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a></td></tr>
+<tr class="memitem:MemoryArena" id="r_MemoryArena"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1MemoryArena.html">MemoryArena</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">線形メモリ割り当てクラス（Linear Allocator） 事前に巨大なブロックを確保し、ポインタを進めるだけで割り当てる。 解放は「全リセット」のみ対応することで、極限の速度を実現する。  <a href="classSpan_1_1MemoryArena.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Time" id="r_Time"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Time.html">Time</a></td></tr>
 <tr class="memitem:GuiManager" id="r_GuiManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1GuiManager.html">GuiManager</a></td></tr>
 <tr class="memitem:ImGuiUI" id="r_ImGuiUI"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ImGuiUI.html">ImGuiUI</a></td></tr>
@@ -128,18 +130,18 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:Camera" id="r_Camera"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Camera.html">Camera</a></td></tr>
 <tr class="memitem:MeshFilter" id="r_MeshFilter"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1MeshFilter.html">MeshFilter</a></td></tr>
 <tr class="memitem:MeshRenderer" id="r_MeshRenderer"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1MeshRenderer.html">MeshRenderer</a></td></tr>
+<tr class="memitem:ComponentType" id="r_ComponentType"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ComponentType.html">ComponentType</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">型(T)から一意のIDを取得するテンプレートクラス ユーザーが struct Position を定義すると、 <a class="el" href="classSpan_1_1ComponentType.html#aa561932b92eabbe74390cb7b0cef0de6">ComponentType&lt;Position&gt;::GetID()</a> で自動的にユニークな番号が発行される。  <a href="classSpan_1_1ComponentType.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:ArchetypeSignature" id="r_ArchetypeSignature"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ArchetypeSignature.html">ArchetypeSignature</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">�A�[�L�^�C�v���� (Signature) �R���|�[�l���gID�̃��X�g���\�[�g���ĕێ��������́B ���ꂪ��v����΁u�����A�[�L�^�C�v�v�Ƃ݂Ȃ��B  <a href="classSpan_1_1ArchetypeSignature.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーキタイプ署名 (Signature) コンポーネントIDのリストをソートして保持したもの。 これが一致すれば「同じアーキタイプ」とみなす。  <a href="classSpan_1_1ArchetypeSignature.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Archetype" id="r_Archetype"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Archetype.html">Archetype</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">�A�[�L�^�C�v �����R���|�[�l���g�\��������Entity�Q���Ǘ�����B �f�[�^�́u�^�v�����łȂ��A���ۂ́u������(<a class="el" href="structSpan_1_1Chunk.html" title="������N (Chunk) �R���|�[�l���g�f�[�^���i�[����Œ�T�C�Y�̃������u���b�N�B 1�̃�����N�ɂ́A�����A�[�L�^�C�v��Ent...">Chunk</a>)�v���Ǘ�����B  <a href="classSpan_1_1Archetype.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーキタイプ 同じコンポーネント構成を持つEntity群を管理する。 データの「型」だけでなく、実際の「メモリ(Chunk)」も管理する。  <a href="classSpan_1_1Archetype.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:ArchetypeManager" id="r_ArchetypeManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ArchetypeManager.html">ArchetypeManager</a></td></tr>
 <tr class="memitem:Chunk" id="r_Chunk"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Chunk.html">Chunk</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">�<span class="tt">�����N (<a class="el" href="structSpan_1_1Chunk.html" title="������N (Chunk) �R���|�[�l���g�f�[�^���i�[����Œ�T�C�Y�̃������u���b�N�B 1�̃�����N�ɂ́A�����A�[�L�^�C�v��Ent...">Chunk</a>)
-�R���|�[�l���g�f�[�^���i�[����Œ�T�C�Y�̃������u���b�N�B
-1�̃</span>�����N�ɂ́A�����A�[�L�^�C�v��Entity�f�[�^����������܂��B  <a href="structSpan_1_1Chunk.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">チャンク (<a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a>) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。  <a href="structSpan_1_1Chunk.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:EntityID" id="r_EntityID"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1EntityID.html">EntityID</a></td></tr>
 <tr class="memitem:Entity" id="r_Entity"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Entity.html">Entity</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entity�n���h�� ���[�U�[�������̂͂��̃N���X�B���̂�ID�݂̂����y�ʃI�u�W�F�N�g  <a href="structSpan_1_1Entity.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entityハンドル ユーザーが扱うのはこのクラス。実体はIDのみを持つ軽量オブジェクト  <a href="structSpan_1_1Entity.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:EntityBuilder" id="r_EntityBuilder"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1EntityBuilder.html">EntityBuilder</a></td></tr>
 <tr class="memitem:EntityManager" id="r_EntityManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1EntityManager.html">EntityManager</a></td></tr>
 <tr class="memitem:System" id="r_System"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1System.html">System</a></td></tr>

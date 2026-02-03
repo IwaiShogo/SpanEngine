@@ -4,6 +4,7 @@ var structSpan_1_1Vector2 =
     [ "Vector2", "structSpan_1_1Vector2.html#a6a3c22ec6144ead9287b9cb20f4374c5", null ],
     [ "Vector2", "structSpan_1_1Vector2.html#ae4fc220bb9f07a0abbb2ec3482e9461f", null ],
     [ "FromXM", "structSpan_1_1Vector2.html#ab0b4e9cf9b8f4eeeb9aa17bb42a61453", null ],
+    [ "Length", "structSpan_1_1Vector2.html#a4562c34c0d9fda10cab79f8ab076438c", null ],
     [ "LengthSquared", "structSpan_1_1Vector2.html#aa6896267dd2a0f91e74443b32866898e", null ],
     [ "Normalized", "structSpan_1_1Vector2.html#a29bb4cbfa4114773082ce6e20c9faf69", null ],
     [ "operator*", "structSpan_1_1Vector2.html#a1fbfa57d9672e01e736f8ec104bbf29a", null ],

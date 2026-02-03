@@ -104,7 +104,7 @@ $(function(){initNavTree('RelationshipSystem_8h_source.html','',''); });
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classSpan_1_1RelationshipSystem.html">    9</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1RelationshipSystem.html">RelationshipSystem</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSpan_1_1System.html">System</a></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="comment">// e‚©‚çØ’f‚·‚é (ŒÇ—§‚³‚¹‚é)</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="comment">// è¦ªã‹ã‚‰åˆ‡æ–­ã™ã‚‹ (å­¤ç«‹ã•ã›ã‚‹)</span></div>
 <div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26">   13</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26">Disconnect</a>(<a class="code hl_class" href="classSpan_1_1World.html">World</a>* world, <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> entity)</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        {</div>
@@ -113,43 +113,43 @@ $(function(){initNavTree('RelationshipSystem_8h_source.html','',''); });
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> prev = rel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#adb73bb8bf7205f7e1d37f50e3a06dffe">PrevSibling</a>;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> next = rel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#a8e32cd5bcc454ebd1c9f4f3866f29d8f">NextSibling</a>;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="comment">// ‘O‚ÌŒZ’í‚Ì Next ‚ğXV</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="comment">// å‰ã®å…„å¼Ÿã® Next ã‚’æ›´æ–°</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordflow">if</span> (!prev.<a class="code hl_function" href="structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3">IsNull</a>())</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                world-&gt;<a class="code hl_function" href="classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677">GetComponent</a>&lt;<a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&gt;(prev).NextSibling = next;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="comment">// ©•ª‚ª’·’j‚È‚çAe‚Ì FirstChild ‚ğŸ‚ÌŒZ’í‚É‚·‚é</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>           <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!parent.IsNull())</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="comment">// è‡ªåˆ†ãŒé•·ç”·ãªã‚‰ã€è¦ªã® FirstChild ã‚’æ¬¡ã®å…„å¼Ÿã«ã™ã‚‹</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!parent.IsNull())</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                world-&gt;<a class="code hl_function" href="classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677">GetComponent</a>&lt;<a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&gt;(parent).FirstChild = next;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            }</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="comment">// Ÿ‚ÌŒZ’í‚Ì Prev ‚ğXV</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="comment">// æ¬¡ã®å…„å¼Ÿã® Prev ã‚’æ›´æ–°</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keywordflow">if</span> (!next.<a class="code hl_function" href="structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3">IsNull</a>())</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            {</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                world-&gt;<a class="code hl_function" href="classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677">GetComponent</a>&lt;<a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&gt;(next).PrevSibling = prev;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            }</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="comment">// ©•ª‚ÌƒŠƒ“ƒNî•ñ‚ğƒNƒŠƒA</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="comment">// è‡ªåˆ†ã®ãƒªãƒ³ã‚¯æƒ…å ±ã‚’ã‚¯ãƒªã‚¢</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            rel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#a1a1b2f5afd78543f84bdc2993f69201d">Parent</a> = <a class="code hl_variable" href="structSpan_1_1Entity.html#a3bc29e7cdb8d6012f8be1de9f0da5687">Entity::Null</a>;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            rel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#adb73bb8bf7205f7e1d37f50e3a06dffe">PrevSibling</a> = <a class="code hl_variable" href="structSpan_1_1Entity.html#a3bc29e7cdb8d6012f8be1de9f0da5687">Entity::Null</a>;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            rel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#a8e32cd5bcc454ebd1c9f4f3866f29d8f">NextSibling</a> = <a class="code hl_variable" href="structSpan_1_1Entity.html#a3bc29e7cdb8d6012f8be1de9f0da5687">Entity::Null</a>;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
 </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// ––”ö‚Éeq•t‚¯‘Ö‚¦</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// æœ«å°¾ã«è¦ªå­ä»˜ã‘æ›¿ãˆ</span></div>
 <div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classSpan_1_1RelationshipSystem.html#a22d8d93f263f586db5a1aa6de46711a0">   44</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1RelationshipSystem.html#a22d8d93f263f586db5a1aa6de46711a0">SetParent</a>(<a class="code hl_class" href="classSpan_1_1World.html">World</a>* world, <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> child, <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> parent)</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        {</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&amp; childRel = world-&gt;<a class="code hl_function" href="classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677">GetComponent</a>&lt;<a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&gt;(child);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="comment">// Šù‚É‚»‚Ìe‚È‚ç‰½‚à‚µ‚È‚¢</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="comment">// æ—¢ã«ãã®è¦ªãªã‚‰ä½•ã‚‚ã—ãªã„</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keywordflow">if</span> (childRel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#a1a1b2f5afd78543f84bdc2993f69201d">Parent</a> == parent &amp;&amp; parent.<a class="code hl_function" href="structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3">IsNull</a>()) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="comment">// 1. Œ»İ‚ÌŒq‚ª‚è‚ğØ‚é</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>         <a class="code hl_function" href="classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26">Disconnect</a>(world, child);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="comment">// 1. ç¾åœ¨ã®ç¹‹ãŒã‚Šã‚’åˆ‡ã‚‹</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <a class="code hl_function" href="classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26">Disconnect</a>(world, child);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="comment">// 2. V‚µ‚¢e‚ÉÚ‘±</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="comment">// 2. æ–°ã—ã„è¦ªã«æ¥ç¶š</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            childRel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#a1a1b2f5afd78543f84bdc2993f69201d">Parent</a> = parent;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">if</span> (!parent.<a class="code hl_function" href="structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3">IsNull</a>())</div>
@@ -159,12 +159,12 @@ $(function(){initNavTree('RelationshipSystem_8h_source.html','',''); });
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="keywordflow">if</span> (firstChild.IsNull())</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                    <span class="comment">// Å‰‚Ìq</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                    <span class="comment">// æœ€åˆã®å­</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                    newParentRel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#a0b44287d9459b91fa2dc4ac53c076471">FirstChild</a> = child;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                }</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                    <span class="comment">// ƒŠƒXƒg‚Ì––”ö‚É’Ç‰Á</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                    <span class="comment">// ãƒªã‚¹ãƒˆã®æœ«å°¾ã«è¿½åŠ </span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                    <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> current = firstChild;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                    <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                    {</div>
@@ -182,18 +182,18 @@ $(function(){initNavTree('RelationshipSystem_8h_source.html','',''); });
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        }</div>
 </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment">// “Á’è‚ÌŒZ’í‚Ìu‘Ov‚É‘}“ü‚·‚é (•À‚Ñ‘Ö‚¦—p)</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment">// ç‰¹å®šã®å…„å¼Ÿã®ã€Œå‰ã€ã«æŒ¿å…¥ã™ã‚‹ (ä¸¦ã³æ›¿ãˆç”¨)</span></div>
 <div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classSpan_1_1RelationshipSystem.html#aa4b5cd977689e1b6689786315d0fa6e6">   87</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1RelationshipSystem.html#aa4b5cd977689e1b6689786315d0fa6e6">InsertBefore</a>(<a class="code hl_class" href="classSpan_1_1World.html">World</a>* world, <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> child, <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> targetSibling, <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> parentIfTargetIsNull = <a class="code hl_variable" href="structSpan_1_1Entity.html#a3bc29e7cdb8d6012f8be1de9f0da5687">Entity::Null</a>)</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        {</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keywordflow">if</span> (child == targetSibling) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="comment">// ƒ^[ƒQƒbƒg‚ªNull‚Ìê‡ (––”ö’Ç‰Á)</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="comment">// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãŒNullã®å ´åˆ (æœ«å°¾è¿½åŠ )</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordflow">if</span> (targetSibling.<a class="code hl_function" href="structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3">IsNull</a>())</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            {</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                <span class="keywordflow">if</span> (parentIfTargetIsNull.IsNull()) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                <span class="comment">// Šù‘¶‚ÌSetParent‚ğg‚¦‚Î––”ö‚É’Ç‰Á‚³‚ê‚é</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                <span class="comment">// æ—¢å­˜ã®SetParentã‚’ä½¿ãˆã°æœ«å°¾ã«è¿½åŠ ã•ã‚Œã‚‹</span></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                <a class="code hl_function" href="classSpan_1_1RelationshipSystem.html#a22d8d93f263f586db5a1aa6de46711a0">SetParent</a>(world, child, parentIfTargetIsNull);</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            }</div>
@@ -201,20 +201,20 @@ $(function(){initNavTree('RelationshipSystem_8h_source.html','',''); });
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&amp; targetRel = world-&gt;<a class="code hl_function" href="classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677">GetComponent</a>&lt;<a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&gt;(targetSibling);</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> parent = targetRel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#a1a1b2f5afd78543f84bdc2993f69201d">Parent</a>;</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <span class="comment">// 1. Ø’f</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <span class="comment">// 1. åˆ‡æ–­</span></div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <a class="code hl_function" href="classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26">Disconnect</a>(world, child);</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="comment">// 2. e‚ğİ’è</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>         <a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&amp; childRel = world-&gt;<a class="code hl_function" href="classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677">GetComponent</a>&lt;<a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&gt;(child);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="comment">// 2. è¦ªã‚’è¨­å®š</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&amp; childRel = world-&gt;<a class="code hl_function" href="classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677">GetComponent</a>&lt;<a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&gt;(child);</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            childRel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#a1a1b2f5afd78543f84bdc2993f69201d">Parent</a> = parent;</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="comment">// 3. ‘}“üˆ—</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>          <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> prev = targetRel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#adb73bb8bf7205f7e1d37f50e3a06dffe">PrevSibling</a>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="comment">// 3. æŒ¿å…¥å‡¦ç†</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> prev = targetRel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#adb73bb8bf7205f7e1d37f50e3a06dffe">PrevSibling</a>;</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <span class="keywordflow">if</span> (prev.<a class="code hl_function" href="structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3">IsNull</a>())</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                <span class="comment">// target‚ª’·’j‚¾‚Á‚½ê‡ -&gt; child‚ªV’·’j‚É‚È‚é</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>             <span class="keywordflow">if</span> (!parent.IsNull())</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                <span class="comment">// targetãŒé•·ç”·ã ã£ãŸå ´åˆ -&gt; childãŒæ–°é•·ç”·ã«ãªã‚‹</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                <span class="keywordflow">if</span> (!parent.IsNull())</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                {</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                    world-&gt;<a class="code hl_function" href="classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677">GetComponent</a>&lt;<a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&gt;(parent).FirstChild = child;</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                }</div>
@@ -223,7 +223,7 @@ $(function(){initNavTree('RelationshipSystem_8h_source.html','',''); });
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            }</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            {</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                <span class="comment">// prev &lt;-&gt; child &lt;-&gt; target ‚ÌŒ`‚ÉŒq‚®</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                <span class="comment">// prev &lt;-&gt; child &lt;-&gt; target ã®å½¢ã«ç¹‹ã</span></div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                <a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&amp; prevRel = world-&gt;<a class="code hl_function" href="classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677">GetComponent</a>&lt;<a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>&gt;(prev);</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                prevRel.<a class="code hl_variable" href="structSpan_1_1Relationship.html#a8e32cd5bcc454ebd1c9f4f3866f29d8f">NextSibling</a> = child;</div>
@@ -237,6 +237,7 @@ $(function(){initNavTree('RelationshipSystem_8h_source.html','',''); });
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    };</div>
 </div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>}</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
 <div class="ttc" id="aLocalToWorld_8h_html"><div class="ttname"><a href="LocalToWorld_8h.html">LocalToWorld.h</a></div></div>
 <div class="ttc" id="aRelationship_8h_html"><div class="ttname"><a href="Relationship_8h.html">Relationship.h</a></div></div>
 <div class="ttc" id="aSystem_8h_html"><div class="ttname"><a href="System_8h.html">System.h</a></div></div>
@@ -249,7 +250,7 @@ $(function(){initNavTree('RelationshipSystem_8h_source.html','',''); });
 <div class="ttc" id="aclassSpan_1_1World_html"><div class="ttname"><a href="classSpan_1_1World.html">Span::World</a></div><div class="ttdef"><b>Definition</b> World.h:21</div></div>
 <div class="ttc" id="aclassSpan_1_1World_html_a0cebb4506e5366293854cde16a208677"><div class="ttname"><a href="classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677">Span::World::GetComponent</a></div><div class="ttdeci">T &amp; GetComponent(Entity entity)</div><div class="ttdef"><b>Definition</b> World.h:179</div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> CoreMinimal.h:52</div></div>
-<div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">Entityƒnƒ“ƒhƒ‹ ƒ†[ƒU[‚ªˆµ‚¤‚Ì‚Í‚±‚ÌƒNƒ‰ƒXBÀ‘Ì‚ÍID‚Ì‚İ‚ğ‚ÂŒy—ÊƒIƒuƒWƒFƒNƒg</div><div class="ttdef"><b>Definition</b> Entity.h:31</div></div>
+<div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">Entityãƒãƒ³ãƒ‰ãƒ« ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒæ‰±ã†ã®ã¯ã“ã®ã‚¯ãƒ©ã‚¹ã€‚å®Ÿä½“ã¯IDã®ã¿ã‚’æŒã¤è»½é‡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</div><div class="ttdef"><b>Definition</b> Entity.h:31</div></div>
 <div class="ttc" id="astructSpan_1_1Entity_html_a2ccdecba28a3d0bd98174e83b573bbe3"><div class="ttname"><a href="structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3">Span::Entity::IsNull</a></div><div class="ttdeci">bool IsNull() const</div><div class="ttdef"><b>Definition</b> Entity.h:37</div></div>
 <div class="ttc" id="astructSpan_1_1Entity_html_a3bc29e7cdb8d6012f8be1de9f0da5687"><div class="ttname"><a href="structSpan_1_1Entity.html#a3bc29e7cdb8d6012f8be1de9f0da5687">Span::Entity::Null</a></div><div class="ttdeci">static const Entity Null</div><div class="ttdef"><b>Definition</b> Entity.h:34</div></div>
 <div class="ttc" id="astructSpan_1_1Relationship_html"><div class="ttname"><a href="structSpan_1_1Relationship.html">Span::Relationship</a></div><div class="ttdef"><b>Definition</b> Relationship.h:8</div></div>

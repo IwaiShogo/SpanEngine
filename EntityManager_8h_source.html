@@ -106,33 +106,34 @@ $(function(){initNavTree('EntityManager_8h_source.html','',''); });
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classSpan_1_1EntityManager.html#aab73c13b4f611bda136baaf9369e195e">   12</a></span>        <a class="code hl_function" href="classSpan_1_1EntityManager.html#aab73c13b4f611bda136baaf9369e195e">SPAN_NON_COPYABLE</a>(<a class="code hl_function" href="classSpan_1_1EntityManager.html#aad5d6c6482443077bc8a95dd66ab0ee9">EntityManager</a>);</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="comment">// V‚µ‚¢Entity‚ğì¬‚µ‚Ä•Ô‚·</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="comment">// æ–°ã—ã„Entityã‚’ä½œæˆã—ã¦è¿”ã™</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> <a class="code hl_function" href="classSpan_1_1EntityManager.html#ab12d01434f128cc0b3b90dd202809602">CreateEntity</a>();</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">// Entity‚ğíœ‚·‚é</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">// Entityã‚’å‰Šé™¤ã™ã‚‹</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1EntityManager.html#a2a18e908149d19569922e088b953723c">DestroyEntity</a>(<a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> entity);</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment">// ‚»‚ÌEntity‚ª‚Ü‚¾‘¶İ‚µ‚Ä‚¢‚é‚©Šm”F‚·‚é</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>     <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1EntityManager.html#a3056c638e46d14b21123cbec5b76ee39">IsAlive</a>(<a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> entity) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment">// ãã®EntityãŒã¾ã å­˜åœ¨ã—ã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1EntityManager.html#a3056c638e46d14b21123cbec5b76ee39">IsAlive</a>(<a class="code hl_struct" href="structSpan_1_1Entity.html">Entity</a> entity) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="comment">// Œ»İ‚ÌƒAƒNƒeƒBƒu‚ÈEntity”</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="comment">// ç¾åœ¨ã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªEntityæ•°</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classSpan_1_1EntityManager.html#aeb46cc4ea8bf7323b18647587fa2feac">   24</a></span>        <span class="keywordtype">size_t</span> <a class="code hl_function" href="classSpan_1_1EntityManager.html#aeb46cc4ea8bf7323b18647587fa2feac">GetActiveEntityCount</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1EntityManager.html#a683a39bece0bfd4ceec80a32ad70063a">activeCount</a>; }</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">// ŠeƒXƒƒbƒg‚ÌŒ»İ‚Ì¢‘ã”Ô†‚ğŠÇ—‚·‚é”z—ñ</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">// å„ã‚¹ãƒ­ãƒƒãƒˆã®ç¾åœ¨ã®ä¸–ä»£ç•ªå·ã‚’ç®¡ç†ã™ã‚‹é…åˆ—</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classSpan_1_1EntityManager.html#a99924e112cb35af95c5c9394c3ed3a59">   28</a></span>        std::vector&lt;uint32&gt; <a class="code hl_variable" href="classSpan_1_1EntityManager.html#a99924e112cb35af95c5c9394c3ed3a59">generations</a>;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="comment">// Ä—˜—p‘Ò‚¿‚ÌƒCƒ“ƒfƒbƒNƒXƒŠƒXƒg</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="comment">// å†åˆ©ç”¨å¾…ã¡ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒªã‚¹ãƒˆ</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classSpan_1_1EntityManager.html#a78f8f460559f740d2fd8d2e236b4dff1">   31</a></span>        std::deque&lt;uint32&gt; <a class="code hl_variable" href="classSpan_1_1EntityManager.html#a78f8f460559f740d2fd8d2e236b4dff1">freeIndices</a>;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// ¶‘¶”</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// ç”Ÿå­˜æ•°</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classSpan_1_1EntityManager.html#a683a39bece0bfd4ceec80a32ad70063a">   34</a></span>        <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classSpan_1_1EntityManager.html#a683a39bece0bfd4ceec80a32ad70063a">activeCount</a> = 0;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="comment">// Å’áŒÀ‚ÌƒCƒ“ƒfƒbƒNƒXŠÇ—”</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="comment">// æœ€ä½é™ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç®¡ç†æ•°</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classSpan_1_1EntityManager.html#a4cf692d0564677367a1b6192a2639cba">   37</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="code hl_variable" href="classSpan_1_1EntityManager.html#a4cf692d0564677367a1b6192a2639cba">MINIMUM_FREE_INDICES</a> = 1024;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    };</div>
 </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="ttc" id="aEntity_8h_html"><div class="ttname"><a href="Entity_8h.html">Entity.h</a></div></div>
 <div class="ttc" id="aclassSpan_1_1EntityManager_html_a2a18e908149d19569922e088b953723c"><div class="ttname"><a href="classSpan_1_1EntityManager.html#a2a18e908149d19569922e088b953723c">Span::EntityManager::DestroyEntity</a></div><div class="ttdeci">void DestroyEntity(Entity entity)</div><div class="ttdef"><b>Definition</b> EntityManager.cpp:28</div></div>
 <div class="ttc" id="aclassSpan_1_1EntityManager_html_a3056c638e46d14b21123cbec5b76ee39"><div class="ttname"><a href="classSpan_1_1EntityManager.html#a3056c638e46d14b21123cbec5b76ee39">Span::EntityManager::IsAlive</a></div><div class="ttdeci">bool IsAlive(Entity entity) const</div><div class="ttdef"><b>Definition</b> EntityManager.cpp:50</div></div>
@@ -147,7 +148,7 @@ $(function(){initNavTree('EntityManager_8h_source.html','',''); });
 <div class="ttc" id="aclassSpan_1_1EntityManager_html_aeb46cc4ea8bf7323b18647587fa2feac"><div class="ttname"><a href="classSpan_1_1EntityManager.html#aeb46cc4ea8bf7323b18647587fa2feac">Span::EntityManager::GetActiveEntityCount</a></div><div class="ttdeci">size_t GetActiveEntityCount() const</div><div class="ttdef"><b>Definition</b> EntityManager.h:24</div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> CoreMinimal.h:52</div></div>
 <div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> CoreMinimal.h:61</div></div>
-<div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">Entityƒnƒ“ƒhƒ‹ ƒ†[ƒU[‚ªˆµ‚¤‚Ì‚Í‚±‚ÌƒNƒ‰ƒXBÀ‘Ì‚ÍID‚Ì‚İ‚ğ‚ÂŒy—ÊƒIƒuƒWƒFƒNƒg</div><div class="ttdef"><b>Definition</b> Entity.h:31</div></div>
+<div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">Entityãƒãƒ³ãƒ‰ãƒ« ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒæ‰±ã†ã®ã¯ã“ã®ã‚¯ãƒ©ã‚¹ã€‚å®Ÿä½“ã¯IDã®ã¿ã‚’æŒã¤è»½é‡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</div><div class="ttdef"><b>Definition</b> Entity.h:31</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

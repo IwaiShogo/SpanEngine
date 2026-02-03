@@ -11,6 +11,7 @@ var searchData=
   ['updatesystems_8',['UpdateSystems',['../classSpan_1_1World.html#a0cf3c16fe3672409ea7d34226220111c',1,'Span::World']]],
   ['uploadbuffer_9',['uploadBuffer',['../classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a',1,'Span::Texture']]],
   ['uploadtexture_10',['UploadTexture',['../classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749',1,'Span::Texture']]],
-  ['usetexture_11',['useTexture',['../structSpan_1_1MaterialData.html#a9d1bff25941d1bddd389c32dc8c44f1d',1,'Span::MaterialData']]],
-  ['uv_12',['uv',['../structSpan_1_1Vertex.html#abac13f64d1c801dba33ee5ffac17474c',1,'Span::Vertex']]]
+  ['usedoffset_11',['usedOffset',['../classSpan_1_1MemoryArena.html#a029c90126f890269c315d7c8f34af0bd',1,'Span::MemoryArena']]],
+  ['usetexture_12',['useTexture',['../structSpan_1_1MaterialData.html#a9d1bff25941d1bddd389c32dc8c44f1d',1,'Span::MaterialData']]],
+  ['uv_13',['uv',['../structSpan_1_1Vertex.html#abac13f64d1c801dba33ee5ffac17474c',1,'Span::Vertex']]]
 ];

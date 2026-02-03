@@ -116,7 +116,7 @@ $(function(){initNavTree('SpanAttributes_8h_source.html','',''); });
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structSpan_1_1Attribute.html#ad4f69260b473673f7fa22e5004c8ab99">   20</a></span>        <a class="code hl_enumeration" href="namespaceSpan.html#a00c320c889b6c836e32c17b01071d257">AttributeType</a> <a class="code hl_variable" href="structSpan_1_1Attribute.html#ad4f69260b473673f7fa22e5004c8ab99">Type</a> = <a class="code hl_enumvalue" href="namespaceSpan.html#a00c320c889b6c836e32c17b01071d257a6adf97f83acf6453d4a6a4b1070f3754">AttributeType::None</a>;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="comment">// �ėp�f�[�^</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="comment">// 汎用データ</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structSpan_1_1Attribute.html#a4252b44910c80acb47774186a76e91e2">   23</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structSpan_1_1Attribute.html#a4252b44910c80acb47774186a76e91e2">FloatValue1</a> = 0.0f;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structSpan_1_1Attribute.html#a6a9f2423897629141471ec01082e5130">   24</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structSpan_1_1Attribute.html#a6a9f2423897629141471ec01082e5130">FloatValue2</a> = 0.0f;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structSpan_1_1Attribute.html#a98e11c6a540d8adc713e8f4cf68c3450">   25</a></span>        std::string <a class="code hl_variable" href="structSpan_1_1Attribute.html#a98e11c6a540d8adc713e8f4cf68c3450">StringValue</a>;</div>
@@ -125,7 +125,7 @@ $(function(){initNavTree('SpanAttributes_8h_source.html','',''); });
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    };</div>
 </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// ---���[�U�[���g��������` ---</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// ---ユーザーが使う属性定義 ---</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a32a1ef503ab803ad2c45c621d77445a0">   32</a></span>    <span class="keyword">inline</span> <a class="code hl_struct" href="structSpan_1_1Attribute.html">Attribute</a> <a class="code hl_function" href="namespaceSpan.html#a32a1ef503ab803ad2c45c621d77445a0">Range</a>(<span class="keywordtype">float</span> min, <span class="keywordtype">float</span> max)</div>
@@ -176,7 +176,7 @@ $(function(){initNavTree('SpanAttributes_8h_source.html','',''); });
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
 </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">// Unity�� SerializeField = �uprivate�ł��\������v�����AC++��public�O��Ȃ̂Łu�ǂݎ���p�v�Ƃ��Ĉ������A�P�Ȃ�}�[�J�[�ɂ���</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">// Unityの SerializeField = 「privateでも表示する」だが、C++はpublic前提なので「読み取り専用」として扱うか、単なるマーカーにする</span></div>
 <div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="namespaceSpan.html#ac4fda9227bb1ab31d0d5e2026ed86d53">   68</a></span>    <span class="keyword">inline</span> <a class="code hl_struct" href="structSpan_1_1Attribute.html">Attribute</a> <a class="code hl_function" href="namespaceSpan.html#ac4fda9227bb1ab31d0d5e2026ed86d53">SerializeField</a>()</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    {</div>
@@ -191,6 +191,7 @@ $(function(){initNavTree('SpanAttributes_8h_source.html','',''); });
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
 </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> CoreMinimal.h:52</div></div>
 <div class="ttc" id="anamespaceSpan_html_a00c320c889b6c836e32c17b01071d257"><div class="ttname"><a href="namespaceSpan.html#a00c320c889b6c836e32c17b01071d257">Span::AttributeType</a></div><div class="ttdeci">AttributeType</div><div class="ttdef"><b>Definition</b> SpanAttributes.h:6</div></div>
 <div class="ttc" id="anamespaceSpan_html_a00c320c889b6c836e32c17b01071d257a131fb182a881796e7606ed6da27f1197"><div class="ttname"><a href="namespaceSpan.html#a00c320c889b6c836e32c17b01071d257a131fb182a881796e7606ed6da27f1197">Span::AttributeType::ReadOnly</a></div><div class="ttdeci">@ ReadOnly</div><div class="ttdef"><b>Definition</b> SpanAttributes.h:14</div></div>

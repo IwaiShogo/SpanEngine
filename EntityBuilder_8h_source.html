@@ -111,20 +111,20 @@ $(function(){initNavTree('EntityBuilder_8h_source.html','',''); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2">   15</a></span>        <a class="code hl_function" href="classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2">EntityBuilder</a>(<a class="code hl_class" href="classSpan_1_1World.html">World</a>* world, <span class="keyword">const</span> std::string&amp; name = <span class="stringliteral">&quot;GameObject&quot;</span>)</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            : <a class="code hl_variable" href="classSpan_1_1EntityBuilder.html#a7f1564be0485ea8999aa228cdfb52cb5">m_world</a>(world)</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="comment">// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒZƒbƒg‚Åì¬</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="comment">// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ã‚»ãƒƒãƒˆã§ä½œæˆ</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <a class="code hl_variable" href="classSpan_1_1EntityBuilder.html#a5fccfe252e5af4c6a2267c6c7080c208">m_entity</a> = <a class="code hl_variable" href="classSpan_1_1EntityBuilder.html#a7f1564be0485ea8999aa228cdfb52cb5">m_world</a>-&gt;CreateEntity&lt;<a class="code hl_struct" href="structSpan_1_1Name.html">Name</a>, <a class="code hl_struct" href="structSpan_1_1Tag.html">Tag</a>, <a class="code hl_struct" href="structSpan_1_1Layer.html">Layer</a>, <a class="code hl_struct" href="structSpan_1_1Transform.html">Transform</a>, <a class="code hl_struct" href="structSpan_1_1Relationship.html">Relationship</a>, <a class="code hl_struct" href="structSpan_1_1Active.html">Active</a>&gt;();</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="comment">// ‰Šú’lİ’è</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>           <a class="code hl_struct" href="structSpan_1_1Name.html">Name</a>&amp; nameComp = <a class="code hl_variable" href="classSpan_1_1EntityBuilder.html#a7f1564be0485ea8999aa228cdfb52cb5">m_world</a>-&gt;GetComponent&lt;<a class="code hl_struct" href="structSpan_1_1Name.html">Name</a>&gt;(<a class="code hl_variable" href="classSpan_1_1EntityBuilder.html#a5fccfe252e5af4c6a2267c6c7080c208">m_entity</a>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="comment">// åˆæœŸå€¤è¨­å®š</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <a class="code hl_struct" href="structSpan_1_1Name.html">Name</a>&amp; nameComp = <a class="code hl_variable" href="classSpan_1_1EntityBuilder.html#a7f1564be0485ea8999aa228cdfb52cb5">m_world</a>-&gt;GetComponent&lt;<a class="code hl_struct" href="structSpan_1_1Name.html">Name</a>&gt;(<a class="code hl_variable" href="classSpan_1_1EntityBuilder.html#a5fccfe252e5af4c6a2267c6c7080c208">m_entity</a>);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            strcpy_s(nameComp.<a class="code hl_variable" href="structSpan_1_1Name.html#acdd7b0d9049c91d08576bc5b533c8939">Value</a>, name.c_str());</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="comment">// ƒ^ƒO‚Ì‰Šú‰»</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="comment">// ã‚¿ã‚°ã®åˆæœŸåŒ–</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <a class="code hl_variable" href="classSpan_1_1EntityBuilder.html#a7f1564be0485ea8999aa228cdfb52cb5">m_world</a>-&gt;GetComponent&lt;<a class="code hl_struct" href="structSpan_1_1Tag.html">Tag</a>&gt;(<a class="code hl_variable" href="classSpan_1_1EntityBuilder.html#a5fccfe252e5af4c6a2267c6c7080c208">m_entity</a>).Value = <span class="stringliteral">&quot;Untagged&quot;</span>;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        }</div>
 </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="comment">// ƒRƒ“ƒ|[ƒlƒ“ƒg’Ç‰Á &amp; ’lİ’è</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>     <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="comment">// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè¿½åŠ  &amp; å€¤è¨­å®š</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classSpan_1_1EntityBuilder.html#a38373dfa38793362a5925c11f7df578e">   31</a></span>        <a class="code hl_function" href="classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2">EntityBuilder</a>&amp; <a class="code hl_function" href="classSpan_1_1EntityBuilder.html#a38373dfa38793362a5925c11f7df578e">Add</a>(<span class="keyword">const</span> <a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&amp; componentValue)</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        {</div>
@@ -133,7 +133,7 @@ $(function(){initNavTree('EntityBuilder_8h_source.html','',''); });
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        }</div>
 </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">// ƒRƒ“ƒ|[ƒlƒ“ƒg’Ç‰Á (ƒfƒtƒHƒ‹ƒg’l)</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè¿½åŠ  (ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤)</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classSpan_1_1EntityBuilder.html#aaef1f52903af0ee5dd2675bdecc9daff">   39</a></span>        <a class="code hl_function" href="classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2">EntityBuilder</a>&amp; <a class="code hl_function" href="classSpan_1_1EntityBuilder.html#aaef1f52903af0ee5dd2675bdecc9daff">Add</a>()</div>
@@ -143,8 +143,8 @@ $(function(){initNavTree('EntityBuilder_8h_source.html','',''); });
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
 </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="comment">// “Á’è‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘€ì</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>     <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="comment">// ç‰¹å®šã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æ“ä½œ</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classSpan_1_1EntityBuilder.html#ab28545e60edea3e91a3606552f952614">   47</a></span>        <a class="code hl_function" href="classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2">EntityBuilder</a>&amp; <a class="code hl_function" href="classSpan_1_1EntityBuilder.html#ab28545e60edea3e91a3606552f952614">With</a>(std::function&lt;<span class="keywordtype">void</span>(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&amp;)&gt; func)</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
@@ -169,6 +169,7 @@ $(function(){initNavTree('EntityBuilder_8h_source.html','',''); });
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    };</div>
 </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
 <div class="ttc" id="aActive_8h_html"><div class="ttname"><a href="Active_8h.html">Active.h</a></div></div>
 <div class="ttc" id="aLayer_8h_html"><div class="ttname"><a href="Layer_8h.html">Layer.h</a></div></div>
 <div class="ttc" id="aName_8h_html"><div class="ttname"><a href="Name_8h.html">Name.h</a></div></div>
@@ -187,7 +188,7 @@ $(function(){initNavTree('EntityBuilder_8h_source.html','',''); });
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> CoreMinimal.h:52</div></div>
 <div class="ttc" id="anamespaceSpan_html_aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">Span::Key::T</a></div><div class="ttdeci">@ T</div><div class="ttdef"><b>Definition</b> Input.h:18</div></div>
 <div class="ttc" id="astructSpan_1_1Active_html"><div class="ttname"><a href="structSpan_1_1Active.html">Span::Active</a></div><div class="ttdef"><b>Definition</b> Active.h:6</div></div>
-<div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">Entityƒnƒ“ƒhƒ‹ ƒ†[ƒU[‚ªˆµ‚¤‚Ì‚Í‚±‚ÌƒNƒ‰ƒXBÀ‘Ì‚ÍID‚Ì‚İ‚ğ‚ÂŒy—ÊƒIƒuƒWƒFƒNƒg</div><div class="ttdef"><b>Definition</b> Entity.h:31</div></div>
+<div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">Entityãƒãƒ³ãƒ‰ãƒ« ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒæ‰±ã†ã®ã¯ã“ã®ã‚¯ãƒ©ã‚¹ã€‚å®Ÿä½“ã¯IDã®ã¿ã‚’æŒã¤è»½é‡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</div><div class="ttdef"><b>Definition</b> Entity.h:31</div></div>
 <div class="ttc" id="astructSpan_1_1Layer_html"><div class="ttname"><a href="structSpan_1_1Layer.html">Span::Layer</a></div><div class="ttdef"><b>Definition</b> Layer.h:16</div></div>
 <div class="ttc" id="astructSpan_1_1Name_html"><div class="ttname"><a href="structSpan_1_1Name.html">Span::Name</a></div><div class="ttdef"><b>Definition</b> Name.h:7</div></div>
 <div class="ttc" id="astructSpan_1_1Name_html_acdd7b0d9049c91d08576bc5b533c8939"><div class="ttname"><a href="structSpan_1_1Name.html#acdd7b0d9049c91d08576bc5b533c8939">Span::Name::Value</a></div><div class="ttdeci">char Value[256]</div><div class="ttdef"><b>Definition</b> Name.h:8</div></div>
