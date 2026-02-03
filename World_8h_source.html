@@ -132,7 +132,7 @@ $(function(){initNavTree('World_8h_source.html','',''); });
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="comment">// 3. アーキタイプ内のチャンクに場所を確保</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>          <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> index = archetype-&gt;<a class="code hl_function" href="classSpan_1_1Archetype.html#aaef35d070780bc90b4a82c72c710b322">AllocateEntity</a>(entity.<a class="code hl_variable" href="structSpan_1_1Entity.html#acd6d59e160a7b514d0ca760c8bdca32f">ID</a>);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>* chunk = archetype-&gt;<a class="code hl_function" href="classSpan_1_1Archetype.html#aa2e946edc196fefbef2969c9f6092479">GetChunks</a>().back();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="comment">// 4. コンポーネントの初期化</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>           <a class="code hl_struct" href="structSpan_1_1EntityLocation.html">EntityLocation</a> loc{ archetype, chunk, index };</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <a class="code hl_variable" href="classSpan_1_1World.html#aa4900466246de55e1285617e82da3db5">entityLocationMap</a>[entity.<a class="code hl_variable" href="structSpan_1_1Entity.html#acd6d59e160a7b514d0ca760c8bdca32f">ID</a>] = loc;</div>
@@ -153,7 +153,7 @@ $(function(){initNavTree('World_8h_source.html','',''); });
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <a class="code hl_struct" href="structSpan_1_1EntityLocation.html">EntityLocation</a> loc = it-&gt;second;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>* chunk = loc.<a class="code hl_variable" href="structSpan_1_1EntityLocation.html#ae45a9bc42c1708063a91162472243478">PtrChunk</a>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="comment">// アーキタイプから削除 (Swap-back removal)</span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> lastIndex = chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a> - 1;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a> lastEntityID = <span class="keyword">reinterpret_cast&lt;</span><a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>*<span class="keyword">&gt;</span>(chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a9c06b41981e0694f79894e16a6c92bdb">Memory</a>)[lastIndex];</div>
@@ -177,7 +177,7 @@ $(function(){initNavTree('World_8h_source.html','',''); });
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <a class="code hl_variable" href="classSpan_1_1World.html#a756621ec548408d3d8e438d91d701d64">entityManager</a>.DestroyEntity(entity);</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
 </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>         </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="comment">// --- コンポーネント操作 ---</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
