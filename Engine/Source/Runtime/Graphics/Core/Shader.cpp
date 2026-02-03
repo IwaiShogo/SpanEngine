@@ -1,24 +1,24 @@
-#include "Shader.h"
+ï»¿#include "Shader.h"
 
 namespace Span
 {
 	bool Shader::Load(const std::wstring& filename, ShaderType type, const std::string& entryPoint)
 	{
-		// ŠJ”­’†‚ÍƒfƒoƒbƒOî•ñ‚ğ•t—^
+		// é–‹ç™ºä¸­ã¯ãƒ‡ãƒãƒƒã‚°æƒ…å ±ã‚’ä»˜ä¸
 		UINT compileFlags = 0;
 #if defined(_DEBUG)
 		compileFlags = D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
 #endif
 
-		// ƒVƒF[ƒ_[ƒ‚ƒfƒ‹‚Ìw’è (vs_5_0, ps_5_0)
+		// ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ãƒ¢ãƒ‡ãƒ«ã®æŒ‡å®š (vs_5_0, ps_5_0)
 		std::string target = (type == ShaderType::Vertex) ? "vs_5_0" : "ps_5_0";
 
-		// ƒpƒX‰ğŒˆ (Àsƒtƒ@ƒCƒ‹‚©‚ç‚Ì‘Š‘ÎƒpƒX)
-		// ƒrƒ‹ƒhŒã‚Ì\¬‚É‡‚í‚¹‚Ä’²®‚ª•K—v‚¾‚ªA¡‰ñ‚ÍƒVƒ“ƒvƒ‹‚É "Shaders/" ‚ğ’T‚·
+		// ãƒ‘ã‚¹è§£æ±º (å®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã®ç›¸å¯¾ãƒ‘ã‚¹)
+		// ãƒ“ãƒ«ãƒ‰å¾Œã®æ§‹æˆã«åˆã‚ã›ã¦èª¿æ•´ãŒå¿…è¦ã ãŒã€ä»Šå›ã¯ã‚·ãƒ³ãƒ—ãƒ«ã« "Shaders/" ã‚’æ¢ã™
 		std::wstring path = L"Shaders/" + filename;
 		if (!std::filesystem::exists(path))
 		{
-			// ƒfƒoƒbƒK‚©‚çÀs‚µ‚½ê‡AƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ‚ªƒYƒŒ‚é‚±‚Æ‚ª‚ ‚é‚½‚ße‚à’T‚·
+			// ãƒ‡ãƒãƒƒã‚¬ã‹ã‚‰å®Ÿè¡Œã—ãŸå ´åˆã€ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒã‚ºãƒ¬ã‚‹ã“ã¨ãŒã‚ã‚‹ãŸã‚è¦ªã‚‚æ¢ã™
 			path = L"../../Engine/Shaders/" + filename;
 		}
 
@@ -51,3 +51,4 @@ namespace Span
 		return true;
 	}
 }
+

@@ -1,14 +1,15 @@
-#pragma once
+ï»¿#pragma once
 #include "ECS/Kernel/Entity.h"
 
 namespace Span
 {
-	// eqŠÖŒW‚ÆŒZ’íŠÖŒW‚ğŠÇ—‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒg (‘o•ûŒüƒŠƒXƒg)
+	// è¦ªå­é–¢ä¿‚ã¨å…„å¼Ÿé–¢ä¿‚ã‚’ç®¡ç†ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ (åŒæ–¹å‘ãƒªã‚¹ãƒˆ)
 	struct Relationship
 	{
 		Entity Parent = Entity::Null;
 		Entity FirstChild = Entity::Null;
 		Entity PrevSibling = Entity::Null;
-		Entity NextSibling = Entity::Null;	// ƒqƒGƒ‰ƒ‹ƒL[‚Ì‡˜
+		Entity NextSibling = Entity::Null;	// ãƒ’ã‚¨ãƒ©ãƒ«ã‚­ãƒ¼ã®é †åº
 	};
 }
+

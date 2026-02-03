@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Core/Math/SpanMath.h"
 
 namespace Span
 {
-	// ƒŒƒ“ƒ_ƒŠƒ“ƒO‚â•¨—‰‰Z‚Åg—p‚·‚éuŒvZÏ‚İ‚Ìƒ[ƒ‹ƒhs—ñv
+	// ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°ã‚„ç‰©ç†æ¼”ç®—ã§ä½¿ç”¨ã™ã‚‹ã€Œè¨ˆç®—æ¸ˆã¿ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰è¡Œåˆ—ã€
 	struct LocalToWorld
 	{
 		Matrix4x4 Value;
@@ -13,3 +13,4 @@ namespace Span
 		LocalToWorld(const Matrix4x4& matrix) : Value(matrix) {}
 	};
 }
+

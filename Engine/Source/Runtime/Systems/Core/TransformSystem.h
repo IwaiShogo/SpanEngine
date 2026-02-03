@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "ECS/Kernel/System.h"
 #include "ECS/Kernel/World.h"
 
@@ -17,25 +17,25 @@ namespace Span
 			GetWorld()->ForEach<Transform, LocalToWorld>(
 				[&](Entity entity, Transform& t, LocalToWorld& ltw)
 				{
-					// s—ñŒvŽZ
+					// è¡Œåˆ—è¨ˆç®—
 					ltw.Value = ComputeWorldMatrix(entity);
 				}
 			);
 		}
 
 	private:
-		// Ä‹A“I‚Éƒ[ƒ‹ƒhs—ñ‚ðŒvŽZ‚·‚éƒwƒ‹ƒp[
+		// å†å¸°çš„ã«ãƒ¯ãƒ¼ãƒ«ãƒ‰è¡Œåˆ—ã‚’è¨ˆç®—ã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼
 		Matrix4x4 ComputeWorldMatrix(Entity entity)
 		{
 			World* world = GetWorld();
 
-			// 1. Ž©g‚Ìƒ[ƒJƒ‹s—ñ (T * R * S)
+			// 1. è‡ªèº«ã®ãƒ­ãƒ¼ã‚«ãƒ«è¡Œåˆ— (T * R * S)
 			Transform* t = world->GetComponentPtr<Transform>(entity);
 			if (!t) return Matrix4x4::Identity();
 
 			Matrix4x4 localMat = Matrix4x4::TRS(t->Position, t->Rotation, t->Scale);
 
-			// 2. e‚ª‚¢‚é‚©Šm”F
+			// 2. è¦ªãŒã„ã‚‹ã‹ç¢ºèª
 			if (Relationship* rel = world->GetComponentPtr<Relationship>(entity))
 			{
 				if (!rel->Parent.IsNull())
@@ -50,3 +50,4 @@ namespace Span
 		}
 	};
 }
+

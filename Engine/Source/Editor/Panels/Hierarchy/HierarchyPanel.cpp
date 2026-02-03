@@ -1,10 +1,10 @@
-#include "HierarchyPanel.h"
+ï»¿#include "HierarchyPanel.h"
 #include "Editor/SelectionManager.h"
 #include "Runtime/Application.h"
 #include "Editor/PanelManager.h"
 #include "Runtime/ECS/Kernel/EntityBuilder.h"
 
-// ƒRƒ“ƒ|[ƒlƒ“ƒg & ƒVƒXƒeƒ€
+// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ & ã‚·ã‚¹ãƒ†ãƒ 
 #include "Runtime/Components/Core/Name.h"
 #include "Runtime/Components/Core/Relationship.h"
 #include "Runtime/Components/Core/Active.h"
@@ -22,7 +22,7 @@ namespace Span
 
 		World& world = Application::Get().GetWorld();
 
-		// ƒ‹[ƒgƒGƒ“ƒeƒBƒeƒB‚ğ’T‚µ‚Ä•`‰æ
+		// ãƒ«ãƒ¼ãƒˆã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã‚’æ¢ã—ã¦æç”»
 		std::vector<Entity> roots;
 		world.ForEach<Relationship>([&](Entity entity, Relationship& rel)
 		{
@@ -33,10 +33,10 @@ namespace Span
 		});
 
 		ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 0.0f));
-		// ƒpƒfƒBƒ“ƒO’²®
+		// ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°èª¿æ•´
 		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4.0f, 4.0f));
 
-		// ƒ‹[ƒg—v‘f‚ğ•`‰æ
+		// ãƒ«ãƒ¼ãƒˆè¦ç´ ã‚’æç”»
 		for (Entity root : roots)
 		{
 			Relationship& rel = world.GetComponent<Relationship>(root);
@@ -51,17 +51,17 @@ namespace Span
 			}
 		}
 
-		// ƒXƒ^ƒCƒ‹‚ğ–ß‚·
+		// ã‚¹ã‚¿ã‚¤ãƒ«ã‚’æˆ»ã™
 		ImGui::PopStyleVar(2);
 
-		// ‹ó”’•”•ª‚Å‚ÌƒRƒ“ƒeƒLƒXƒgƒƒjƒ…[
+		// ç©ºç™½éƒ¨åˆ†ã§ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ¡ãƒ‹ãƒ¥ãƒ¼
 		if (ImGui::BeginPopupContextWindow("HierarchyEmptyContext", ImGuiPopupFlags_MouseButtonRight | ImGuiPopupFlags_NoOpenOverItems))
 		{
 			DrawEmptySpaceContextMenu();
 			ImGui::EndPopup();
 		}
 
-		// ƒhƒ‰ƒbƒO&ƒhƒƒbƒv‚Ìó‚¯M
+		// ãƒ‰ãƒ©ãƒƒã‚°&ãƒ‰ãƒ­ãƒƒãƒ—ã®å—ã‘çš¿
 		if (ImGui::BeginDragDropTargetCustom(ImGui::GetCurrentWindow()->Rect(), ImGui::GetID("Hierarchy")))
 		{
 			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("HIERARCHY_ENTITY_MOVE"))
@@ -80,7 +80,7 @@ namespace Span
 		World& world = Application::Get().GetWorld();
 		Relationship& rel = world.GetComponent<Relationship>(entity);
 
-		// IDƒXƒR[ƒv‚ğŠJn
+		// IDã‚¹ã‚³ãƒ¼ãƒ—ã‚’é–‹å§‹
 		ImGui::PushID((int)entity.ID.Index);
 
 		// --- 1. Active Checkbox ---
@@ -91,15 +91,15 @@ namespace Span
 		}
 		else
 		{
-			// ‚Á‚Ä‚¢‚È‚¯‚ê‚Î’Ç‰Á
+			// æŒã£ã¦ã„ãªã‘ã‚Œã°è¿½åŠ 
 			world.AddComponent<Active>(entity);
 		}
 
-		// ¶’[‚Ìƒ}[ƒWƒ“’²®
+		// å·¦ç«¯ã®ãƒãƒ¼ã‚¸ãƒ³èª¿æ•´
 		ImGui::Dummy(ImVec2(0, 0));
 		ImGui::SameLine();
 
-		// ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚ğ•`‰æ
+		// ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã‚’æç”»
 		if (ImGui::Checkbox("##Active", &isActive))
 		{
 			if (Active* a = world.GetComponentPtr<Active>(entity)) a->Value = isActive;
@@ -109,29 +109,29 @@ namespace Span
 
 		// --- 2. Tree Node ---
 
-		// •\¦–¼
+		// è¡¨ç¤ºå
 		std::string name = "Entity " + std::to_string(entity.ID.Index);
 		if (Name* n = world.GetComponentPtr<Name>(entity))
 		{
 			if (strlen(n->Value) > 0) name = n->Value;
 		}
 
-		// ƒtƒ‰ƒOİ’è
+		// ãƒ•ãƒ©ã‚°è¨­å®š
 		ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_FramePadding;
 
-		// ‘I‘ğó‘Ô
+		// é¸æŠçŠ¶æ…‹
 		if (SelectionManager::IsSelected(entity))
 		{
 			flags |= ImGuiTreeNodeFlags_Selected;
 		}
 
-		// q‚ª–³‚¯‚ê‚ÎƒŠ[ƒt
+		// å­ãŒç„¡ã‘ã‚Œã°ãƒªãƒ¼ãƒ•
 		if (rel.FirstChild.IsNull())
 		{
 			flags |= ImGuiTreeNodeFlags_Leaf;
 		}
 
-		// ”ñƒAƒNƒeƒBƒu‚È‚çƒOƒŒ[ƒAƒEƒg
+		// éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚‰ã‚°ãƒ¬ãƒ¼ã‚¢ã‚¦ãƒˆ
 		if (!isActive)
 		{
 			ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.5f, 0.5f, 0.5f, 1.0f));
@@ -143,23 +143,23 @@ namespace Span
 
 		// --- 3. Interaction ---
 
-		// ƒNƒŠƒbƒN‚Å‘I‘ğ
+		// ã‚¯ãƒªãƒƒã‚¯ã§é¸æŠ
 		if (ImGui::IsItemClicked())
 		{
 			SelectionManager::Select(entity);
 		}
 
-		// ƒhƒ‰ƒbƒO&ƒhƒƒbƒvˆ—
+		// ãƒ‰ãƒ©ãƒƒã‚°&ãƒ‰ãƒ­ãƒƒãƒ—å‡¦ç†
 		HandleDragDrop(entity);
 
-		// ‰EƒNƒŠƒbƒNƒƒjƒ…[
+		// å³ã‚¯ãƒªãƒƒã‚¯ãƒ¡ãƒ‹ãƒ¥ãƒ¼
 		if (ImGui::BeginPopupContextItem())
 		{
 			DrawContextMenu(entity);
 			ImGui::EndPopup();
 		}
 
-		// q—v‘f‚Ì•`‰æ
+		// å­è¦ç´ ã®æç”»
 		if (opened)
 		{
 			Entity child = rel.FirstChild;
@@ -197,7 +197,7 @@ namespace Span
 
 		if (ImGui::MenuItem("Delete"))
 		{
-			// q‚àÁ‚·‚×‚«‚¾‚ªA‚Æ‚è‚ ‚¦‚¸‘ÎÛ‚Ì‚İíœ
+			// å­ã‚‚æ¶ˆã™ã¹ãã ãŒã€ã¨ã‚Šã‚ãˆãšå¯¾è±¡ã®ã¿å‰Šé™¤
 			world.DestroyEntity(entity);
 			if (SelectionManager::GetPrimary() == entity)
 			{
@@ -209,7 +209,7 @@ namespace Span
 
 		if (ImGui::MenuItem("Duplicate"))
 		{
-			// –¢‚¾ƒRƒs[‹@”\‚ª–³‚¢‚Ì‚ÅƒƒO
+			// æœªã ã‚³ãƒ”ãƒ¼æ©Ÿèƒ½ãŒç„¡ã„ã®ã§ãƒ­ã‚°
 			SPAN_LOG("Duplicate not implemented yet.");
 		}
 	}
@@ -227,7 +227,7 @@ namespace Span
 
 	void HierarchyPanel::HandleDragDrop(Entity targetEntity)
 	{
-		// ƒhƒ‰ƒbƒOŠJn
+		// ãƒ‰ãƒ©ãƒƒã‚°é–‹å§‹
 		if (ImGui::BeginDragDropSource())
 		{
 			ImGui::SetDragDropPayload("HIERARCHY_ENTITY_MOVE", &targetEntity, sizeof(Entity));
@@ -235,7 +235,7 @@ namespace Span
 			ImGui::EndDragDropSource();
 		}
 
-		// ƒhƒ‰ƒbƒOƒhƒƒbƒvó‚¯“ü‚ê
+		// ãƒ‰ãƒ©ãƒƒã‚°ãƒ‰ãƒ­ãƒƒãƒ—å—ã‘å…¥ã‚Œ
 		if (ImGui::BeginDragDropTarget())
 		{
 			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("HIERARCHY_ENTITY_MOVE", ImGuiDragDropFlags_AcceptBeforeDelivery | ImGuiDragDropFlags_AcceptNoDrawDefaultRect))
@@ -245,24 +245,24 @@ namespace Span
 
 				if (draggedEntity != targetEntity)
 				{
-					// ‹éŒ`î•ñ‚Ìæ“¾
+					// çŸ©å½¢æƒ…å ±ã®å–å¾—
 					ImVec2 min = ImGui::GetItemRectMin();
 					ImVec2 max = ImGui::GetItemRectMax();
 					float height = max.y - min.y;
 					float mouseY = ImGui::GetMousePos().y;
 					float relativeY = (mouseY - min.y) / height;
 
-					// ƒKƒCƒh•`‰æ—p‚ÌƒŠƒXƒg
+					// ã‚¬ã‚¤ãƒ‰æç”»ç”¨ã®ãƒªã‚¹ãƒˆ
 					ImDrawList* drawList = ImGui::GetWindowDrawList();
-					ImU32 guideColor = IM_COL32(255, 165, 0, 255); // ƒIƒŒƒ“ƒW
+					ImU32 guideColor = IM_COL32(255, 165, 0, 255); // ã‚ªãƒ¬ãƒ³ã‚¸
 					float thickness = 2.0f;
 
-					bool isDelivery = payload->IsDelivery(); // ƒ}ƒEƒX‚ğ—£‚µ‚½uŠÔ‚©H
+					bool isDelivery = payload->IsDelivery(); // ãƒã‚¦ã‚¹ã‚’é›¢ã—ãŸç¬é–“ã‹ï¼Ÿ
 
-					// --- ã•” 25%: ‘O‚É‘}“ü ---
+					// --- ä¸Šéƒ¨ 25%: å‰ã«æŒ¿å…¥ ---
 					if (relativeY < 0.25f)
 					{
-						// ãü‚ğ•`‰æ
+						// ä¸Šç·šã‚’æç”»
 						drawList->AddLine(min, ImVec2(max.x, min.y), guideColor, thickness);
 
 						if (isDelivery)
@@ -270,10 +270,10 @@ namespace Span
 							RelationshipSystem::InsertBefore(&world, draggedEntity, targetEntity);
 						}
 					}
-					// --- ‰º•” 25%: Œã‚ë‚É‘}“ü ---
+					// --- ä¸‹éƒ¨ 25%: å¾Œã‚ã«æŒ¿å…¥ ---
 					else if (relativeY > 0.75f)
 					{
-						// ‰ºü‚ğ•`‰æ
+						// ä¸‹ç·šã‚’æç”»
 						drawList->AddLine(ImVec2(min.x, max.y), max, guideColor, thickness);
 
 						if (isDelivery)
@@ -282,15 +282,15 @@ namespace Span
 							Entity nextSibling = targetRel.NextSibling;
 							Entity parent = targetRel.Parent;
 
-							// Ÿ‚ÌŒZ’í‚Ì‘O = ©•ª‚ÌŒã‚ë
-							// eî•ñ‚ğ“n‚·‚±‚Æ‚ÅA––”ö(nextSibling‚ªNull)‚Ìê‡‚Å‚à³‚µ‚­’Ç‰Á‚³‚¹‚é
+							// æ¬¡ã®å…„å¼Ÿã®å‰ = è‡ªåˆ†ã®å¾Œã‚
+							// è¦ªæƒ…å ±ã‚’æ¸¡ã™ã“ã¨ã§ã€æœ«å°¾(nextSiblingãŒNull)ã®å ´åˆã§ã‚‚æ­£ã—ãè¿½åŠ ã•ã›ã‚‹
 							RelationshipSystem::InsertBefore(&world, draggedEntity, nextSibling, parent);
 						}
 					}
-					// --- ’†‰› 50%: q‚É‚·‚é ---
+					// --- ä¸­å¤® 50%: å­ã«ã™ã‚‹ ---
 					else
 					{
-						// ˜gü‚ğ•`‰æ
+						// æ ç·šã‚’æç”»
 						drawList->AddRect(min, max, guideColor, 0.0f, 0, thickness);
 
 						if (isDelivery)
@@ -304,3 +304,4 @@ namespace Span
 		}
 	}
 }
+

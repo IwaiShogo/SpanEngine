@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Entity.h"
 
 namespace Span
@@ -11,29 +11,30 @@ namespace Span
 
 		SPAN_NON_COPYABLE(EntityManager);
 
-		// V‚µ‚¢Entity‚ğì¬‚µ‚Ä•Ô‚·
+		// æ–°ã—ã„Entityã‚’ä½œæˆã—ã¦è¿”ã™
 		Entity CreateEntity();
 
-		// Entity‚ğíœ‚·‚é
+		// Entityã‚’å‰Šé™¤ã™ã‚‹
 		void DestroyEntity(Entity entity);
 
-		// ‚»‚ÌEntity‚ª‚Ü‚¾‘¶İ‚µ‚Ä‚¢‚é‚©Šm”F‚·‚é
+		// ãã®EntityãŒã¾ã å­˜åœ¨ã—ã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹
 		bool IsAlive(Entity entity) const;
 
-		// Œ»İ‚ÌƒAƒNƒeƒBƒu‚ÈEntity”
+		// ç¾åœ¨ã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªEntityæ•°
 		size_t GetActiveEntityCount() const { return activeCount; }
 
 	private:
-		// ŠeƒXƒƒbƒg‚ÌŒ»İ‚Ì¢‘ã”Ô†‚ğŠÇ—‚·‚é”z—ñ
+		// å„ã‚¹ãƒ­ãƒƒãƒˆã®ç¾åœ¨ã®ä¸–ä»£ç•ªå·ã‚’ç®¡ç†ã™ã‚‹é…åˆ—
 		std::vector<uint32> generations;
 
-		// Ä—˜—p‘Ò‚¿‚ÌƒCƒ“ƒfƒbƒNƒXƒŠƒXƒg
+		// å†åˆ©ç”¨å¾…ã¡ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒªã‚¹ãƒˆ
 		std::deque<uint32> freeIndices;
 
-		// ¶‘¶”
+		// ç”Ÿå­˜æ•°
 		size_t activeCount = 0;
 
-		// Å’áŒÀ‚ÌƒCƒ“ƒfƒbƒNƒXŠÇ—”
+		// æœ€ä½é™ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç®¡ç†æ•°
 		static constexpr uint32 MINIMUM_FREE_INDICES = 1024;
 	};
 }
+

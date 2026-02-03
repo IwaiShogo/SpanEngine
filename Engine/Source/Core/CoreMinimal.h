@@ -1,7 +1,7 @@
-#pragma once
+ï»¿#pragma once
 
-// 1. Windows API İ’è
-// ƒ}ƒNƒ‚ÌÕ“Ë‚ğ–h‚®‚½‚ß‚Ì’è‹`
+// 1. Windows API è¨­å®š
+// ãƒã‚¯ãƒ­ã®è¡çªã‚’é˜²ããŸã‚ã®å®šç¾©
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
 #endif
@@ -12,7 +12,7 @@
 #include <Windows.h>
 #include <wrl/client.h>
 
-// 2. •W€ƒ‰ƒCƒuƒ‰ƒŠ (Standard Library)
+// 2. æ¨™æº–ãƒ©ã‚¤ãƒ–ãƒ©ãƒª (Standard Library)
 #include <cstdint>
 #include <iostream>
 #include <string>
@@ -44,13 +44,13 @@
 
 // 5. ImgGui
 
-// 6. ‹¤’Ê‚Ì–¼‘O‹óŠÔ‚ÌÈ—ª
-using namespace Microsoft::WRL; // ComPtr—p
-using namespace DirectX;		// XMMATRIX, XMFLOAT3“™—p
+// 6. å…±é€šã®åå‰ç©ºé–“ã®çœç•¥
+using namespace Microsoft::WRL; // ComPtrç”¨
+using namespace DirectX;		// XMMATRIX, XMFLOAT3ç­‰ç”¨
 
 namespace Span
 {
-	// 7. Šî–{Œ^‚ÌƒGƒCƒŠƒAƒX (Rust‚âC#•—‚ÌŒ^’è‹`)
+	// 7. åŸºæœ¬å‹ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ (Rustã‚„C#é¢¨ã®å‹å®šç¾©)
 	using int8	 = int8_t;
 	using int16	 = int16_t;
 	using int32	 = int32_t;
@@ -61,9 +61,9 @@ namespace Span
 	using uint32 = uint32_t;
 	using uint64 = uint64_t;
 
-	// 8. •Ö—˜ƒ}ƒNƒ / ƒwƒ‹ƒp[ŠÖ”
+	// 8. ä¾¿åˆ©ãƒã‚¯ãƒ­ / ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•°
 
-	// ƒƒ‚ƒŠˆÀ‘S‰ğ•ú (ƒ|ƒCƒ“ƒ^íœ)
+	// ãƒ¡ãƒ¢ãƒªå®‰å…¨è§£æ”¾ (ãƒã‚¤ãƒ³ã‚¿å‰Šé™¤)
 	template<typename T>
 	inline void SafeDelete(T*& ptr) {
 		if (ptr) {
@@ -73,7 +73,7 @@ namespace Span
 	}
 	#define SAFE_DELETE(x) Span::SafeDelete(x)
 
-	// COMƒIƒuƒWƒFƒNƒgˆÀ‘S‰ğ•ú (ReleaseŒÄ‚Ño‚µ)
+	// COMã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå®‰å…¨è§£æ”¾ (Releaseå‘¼ã³å‡ºã—)
 	template<typename T>
 	inline void SafeRelease(T*& ptr) {
 		if (ptr) {
@@ -83,11 +83,11 @@ namespace Span
 	}
 	#define SAFE_RELEASE(x) Span::SafeRelease(x)
 
-	// ƒRƒs[‹Ö~ƒ}ƒNƒ (ƒNƒ‰ƒX’è‹`“à‚Åg—p)
+	// ã‚³ãƒ”ãƒ¼ç¦æ­¢ãƒã‚¯ãƒ­ (ã‚¯ãƒ©ã‚¹å®šç¾©å†…ã§ä½¿ç”¨)
 	#define SPAN_NON_COPYABLE(ClassName) \
 		ClassName(const ClassName&) = delete; \
 		ClassName& operator=(const ClassName&) = delete;
 }
 
-// ƒƒOo—Í
+// ãƒ­ã‚°å‡ºåŠ›
 #include "Log/Logger.h"

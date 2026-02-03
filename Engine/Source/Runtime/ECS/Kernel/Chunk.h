@@ -1,41 +1,41 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Entity.h"
 
 namespace Span
 {
-	// ƒ`ƒƒƒ“ƒN1‚Â‚ ‚½‚è‚ÌƒTƒCƒY (16KB)
+	// ãƒãƒ£ãƒ³ã‚¯1ã¤ã‚ãŸã‚Šã®ã‚µã‚¤ã‚º (16KB)
 	constexpr size_t CHUNK_SIZE = 16 * 1024;
 
 	/**
-	 * @brief ƒ`ƒƒƒ“ƒN (Chunk)
-	 * ƒRƒ“ƒ|[ƒlƒ“ƒgƒf[ƒ^‚ğŠi”[‚·‚éŒÅ’èƒTƒCƒY‚Ìƒƒ‚ƒŠƒuƒƒbƒNB
-	 * 1‚Â‚Ìƒ`ƒƒƒ“ƒN‚É‚ÍA“¯‚¶ƒA[ƒLƒ^ƒCƒv‚ÌEntityƒf[ƒ^‚¾‚¯‚ª“ü‚è‚Ü‚·B
+	 * @brief ãƒãƒ£ãƒ³ã‚¯ (Chunk)
+	 * ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã™ã‚‹å›ºå®šã‚µã‚¤ã‚ºã®ãƒ¡ãƒ¢ãƒªãƒ–ãƒ­ãƒƒã‚¯ã€‚
+	 * 1ã¤ã®ãƒãƒ£ãƒ³ã‚¯ã«ã¯ã€åŒã˜ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã®Entityãƒ‡ãƒ¼ã‚¿ã ã‘ãŒå…¥ã‚Šã¾ã™ã€‚
 	 */
 	struct Chunk
 	{
-		// ¶ƒƒ‚ƒŠƒuƒƒbƒN (16KB)
+		// ç”Ÿãƒ¡ãƒ¢ãƒªãƒ–ãƒ­ãƒƒã‚¯ (16KB)
 		uint8* Memory = nullptr;
 
-		// Œ»İŠi”[‚³‚ê‚Ä‚¢‚éEntity”
+		// ç¾åœ¨æ ¼ç´ã•ã‚Œã¦ã„ã‚‹Entityæ•°
 		uint32 Count = 0;
 
-		// ‚±‚Ìƒ`ƒƒƒ“ƒN‚ÉŠi”[‚Å‚«‚éÅ‘å”
+		// ã“ã®ãƒãƒ£ãƒ³ã‚¯ã«æ ¼ç´ã§ãã‚‹æœ€å¤§æ•°
 		uint32 Capacity = 0;
 
-		// Š‘®‚·‚éƒA[ƒLƒ^ƒCƒv‚Ö‚Ìƒ|ƒCƒ“ƒ^
+		// æ‰€å±ã™ã‚‹ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã¸ã®ãƒã‚¤ãƒ³ã‚¿
 		class Archetype* OwnerArchetype = nullptr;
 
 		Chunk(uint32 capacity);
 		~Chunk();
 
-		// w’è‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg”z—ñ‚Ìæ“ªƒAƒhƒŒƒX‚ğæ“¾‚·‚é
+		// æŒ‡å®šã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé…åˆ—ã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹
 		void* GetBuffer(size_t offset) const
 		{
 			return Memory + offset;
 		}
 
-		// ƒf[ƒ^‚ÌˆÚ“®
+		// ãƒ‡ãƒ¼ã‚¿ã®ç§»å‹•
 		void MoveEntityData(Archetype* arch, uint32 srcIndex, uint32 destIndex);
 	};
 }

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Graphics/Resources/Material.h"
 
@@ -14,3 +14,4 @@ namespace Span
 		MeshRenderer(Material* m) : material(m) {}
 	};
 }
+

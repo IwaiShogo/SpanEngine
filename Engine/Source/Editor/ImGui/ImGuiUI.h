@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/Math/SpanMath.h"
 #include <imgui.h>
 #include <imgui_internal.h>
@@ -8,21 +8,21 @@ namespace Span
 	class ImGuiUI
 	{
 	public:
-		// XYZƒJƒ‰[•t‚«ƒxƒNƒgƒ‹•ÒW (Table API”Å)
+		// XYZã‚«ãƒ©ãƒ¼ä»˜ããƒ™ã‚¯ãƒˆãƒ«ç·¨é›† (Table APIç‰ˆ)
 		static bool DrawVec3Control(const std::string& label, Vector3& values, float resetValue = 0.0f, float columnWidth = 100.0f)
 		{
 			bool changed = false;
 			ImGui::PushID(label.c_str());
 
-			// Columns API‚ğg—p (BeginTable‚æ‚èƒNƒ‰ƒbƒVƒ…‚µ‚É‚­‚¢)
+			// Columns APIã‚’ä½¿ç”¨ (BeginTableã‚ˆã‚Šã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã—ã«ãã„)
 			ImGui::Columns(2);
 
-			// 1—ñ–Ú‚Ì•İ’è
+			// 1åˆ—ç›®ã®å¹…è¨­å®š
 			ImGui::SetColumnWidth(0, columnWidth);
 			ImGui::Text("%s", label.c_str());
 			ImGui::NextColumn();
 
-			// 2—ñ–Ú: X, Y, Z ‚Ì•`‰æ
+			// 2åˆ—ç›®: X, Y, Z ã®æç”»
 			ImGui::PushMultiItemsWidths(3, ImGui::CalcItemWidth());
 			ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2{ 0, 0 });
 
@@ -31,7 +31,7 @@ namespace Span
 
 			auto DrawAxis = [&](const char* axisLabel, float& value, const ImVec4& color)
 				{
-					// ²‚²‚Æ‚ÌIDƒXƒR[ƒv‚ğì‚é (‚±‚ê‚ª‚È‚¢‚Æ‘S‚Ä“¯‚¶ID‚É‚È‚è˜A“®‚µ‚Ä‚µ‚Ü‚¤)
+					// è»¸ã”ã¨ã®IDã‚¹ã‚³ãƒ¼ãƒ—ã‚’ä½œã‚‹ (ã“ã‚ŒãŒãªã„ã¨å…¨ã¦åŒã˜IDã«ãªã‚Šé€£å‹•ã—ã¦ã—ã¾ã†)
 					ImGui::PushID(axisLabel);
 
 					ImGui::PushStyleColor(ImGuiCol_Button, color);
@@ -47,14 +47,14 @@ namespace Span
 
 					ImGui::SameLine();
 
-					// ID‚Í "label/axisLabel/##Drag" ‚Æ‚È‚èˆêˆÓ‚É‚È‚é
+					// IDã¯ "label/axisLabel/##Drag" ã¨ãªã‚Šä¸€æ„ã«ãªã‚‹
 					if (ImGui::DragFloat("##Drag", &value, 0.1f, 0.0f, 0.0f, "%.2f"))
 					{
 						changed = true;
 					}
 					ImGui::PopItemWidth();
 
-					ImGui::PopID(); // axisLabel‚ÌID‚ğƒ|ƒbƒv
+					ImGui::PopID(); // axisLabelã®IDã‚’ãƒãƒƒãƒ—
 				};
 
 			// X Axis
@@ -69,13 +69,13 @@ namespace Span
 			DrawAxis("Z", values.z, ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });
 
 			ImGui::PopStyleVar(); // ItemSpacing
-			ImGui::Columns(1); // ƒJƒ‰ƒ€ƒŠƒZƒbƒg
+			ImGui::Columns(1); // ã‚«ãƒ©ãƒ ãƒªã‚»ãƒƒãƒˆ
 
 			ImGui::PopID();
 			return changed;
 		}
 
-		// ƒRƒ“ƒ|[ƒlƒ“ƒg—p‚Ìƒwƒbƒ_[•`‰æ
+		// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆç”¨ã®ãƒ˜ãƒƒãƒ€ãƒ¼æç”»
 		static bool DrawComponentHeader(const std::string& name, bool& isRemoved, bool defaultOpen = true)
 		{
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4, 4));
@@ -85,7 +85,7 @@ namespace Span
 
 			bool open = ImGui::TreeNodeEx(name.c_str(), treeNodeFlags, name.c_str());
 
-			// ‰EƒNƒŠƒbƒNƒƒjƒ…[ (TreeNode‚Ì’¼Œã‚É”z’u‚·‚é‚±‚Æ‚Åƒwƒbƒ_[‘S‘Ì‚Å”½‰‚·‚é)
+			// å³ã‚¯ãƒªãƒƒã‚¯ãƒ¡ãƒ‹ãƒ¥ãƒ¼ (TreeNodeã®ç›´å¾Œã«é…ç½®ã™ã‚‹ã“ã¨ã§ãƒ˜ãƒƒãƒ€ãƒ¼å…¨ä½“ã§åå¿œã™ã‚‹)
 			if (ImGui::BeginPopupContextItem("ComponentSettings_Context", ImGuiPopupFlags_MouseButtonRight))
 			{
 				ImGui::TextDisabled("%s", name.c_str());
@@ -97,12 +97,12 @@ namespace Span
 				ImGui::EndPopup();
 			}
 
-			// --- •ÔƒAƒCƒRƒ“ (‰E’[) ---
+			// --- æ­¯è»Šã‚¢ã‚¤ã‚³ãƒ³ (å³ç«¯) ---
 			ImGui::SameLine();
 			float buttonWidth = 20.0f;
 			ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x - buttonWidth - 5.0f);
 
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0)); // “§–¾
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0)); // é€æ˜
 
 			if (ImGui::Button(":", ImVec2(buttonWidth, 0)))
 			{
@@ -110,7 +110,7 @@ namespace Span
 			}
 			ImGui::PopStyleColor();
 
-			// •Ôƒ{ƒ^ƒ“—p‚Ìƒ|ƒbƒvƒAƒbƒv
+			// æ­¯è»Šãƒœã‚¿ãƒ³ç”¨ã®ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—
 			if (ImGui::BeginPopup("ComponentSettings"))
 			{
 				if (ImGui::MenuItem("Remove Component"))

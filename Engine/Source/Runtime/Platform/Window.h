@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
@@ -19,18 +19,18 @@ namespace Span
 		bool Initialize(const WindowDesc& desc);
 		void Shutdown();
 
-		// ƒƒbƒZ[ƒWƒ|ƒ“ƒv (ƒEƒBƒ“ƒhƒE‚Ìxƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©ƒ`ƒFƒbƒN)
-		// –ß‚è’l: false ‚È‚çƒAƒvƒŠI—¹
+		// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ³ãƒ— (ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®xãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹ãƒã‚§ãƒƒã‚¯)
+		// æˆ»ã‚Šå€¤: false ãªã‚‰ã‚¢ãƒ—ãƒªçµ‚äº†
 		bool PollEvents();
 
-		// “à•”ƒnƒ“ƒhƒ‹æ“¾
+		// å†…éƒ¨ãƒãƒ³ãƒ‰ãƒ«å–å¾—
 		HWND GetHandle() const { return hWnd; }
 
-		// ‰æ–ÊƒTƒCƒYæ“¾
+		// ç”»é¢ã‚µã‚¤ã‚ºå–å¾—
 		int GetWidth() const { return width; }
 		int GetHeight() const { return height; }
 
-		// ƒŠƒTƒCƒY‚ÌƒR[ƒ‹ƒoƒbƒN“o˜^
+		// ãƒªã‚µã‚¤ã‚ºæ™‚ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ç™»éŒ²
 		void SetOnResize(std::function<void(uint32, uint32)> callback) { onResize = callback; }
 
 	private:
@@ -40,7 +40,8 @@ namespace Span
 
 		std::function<void(uint32, uint32)> onResize;
 
-		// Windows‚©‚ç‚ÌƒƒbƒZ[ƒW‚ğó‚¯æ‚éƒR[ƒ‹ƒoƒbƒN
+		// Windowsã‹ã‚‰ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ã‘å–ã‚‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
 		static LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	};
 }
+

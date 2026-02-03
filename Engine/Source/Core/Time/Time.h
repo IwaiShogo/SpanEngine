@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
@@ -6,17 +6,17 @@ namespace Span
 	class Time
 	{
 	public:
-		// ‰Šú‰»iƒGƒ“ƒWƒ“‹N“®j
+		// åˆæœŸåŒ–ï¼ˆã‚¨ãƒ³ã‚¸ãƒ³èµ·å‹•æ™‚ï¼‰
 		static void Initialize();
-		// ƒtƒŒ[ƒ€ŠJn‚ÉŒÄ‚ÔiŠÔ‚ği‚ß‚éj
+		// ãƒ•ãƒ¬ãƒ¼ãƒ é–‹å§‹æ™‚ã«å‘¼ã¶ï¼ˆæ™‚é–“ã‚’é€²ã‚ã‚‹ï¼‰
 		static void Update();
 
-		// --- ƒpƒuƒŠƒbƒN API (ƒ†[ƒU[‚ªg‚¤) ---
+		// --- ãƒ‘ãƒ–ãƒªãƒƒã‚¯ API (ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒä½¿ã†) ---
 
-		// ‘OƒtƒŒ[ƒ€‚©‚ç‚ÌŒo‰ßŠÔ (•b)
+		// å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã‹ã‚‰ã®çµŒéæ™‚é–“ (ç§’)
 		static float GetDeltaTime() { return deltaTime; }
 
-		// ƒQ[ƒ€ŠJn‚©‚ç‚Ì‘ŠÔ (•b)
+		// ã‚²ãƒ¼ãƒ é–‹å§‹ã‹ã‚‰ã®ç·æ™‚é–“ (ç§’)
 		static float GetTotalTime() { return totalTime; }
 
 	private:
@@ -26,3 +26,4 @@ namespace Span
 		static float totalTime;
 	};
 }
+

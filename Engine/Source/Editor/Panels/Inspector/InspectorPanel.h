@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Editor/Panels/EditorPanel.h"
 #include "ECS/Kernel/Entity.h"
 
@@ -12,3 +12,4 @@ namespace Span
 		void OnImGuiRender() override;
 	};
 }
+

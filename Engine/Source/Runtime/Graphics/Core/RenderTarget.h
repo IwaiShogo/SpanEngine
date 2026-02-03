@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
@@ -9,25 +9,25 @@ namespace Span
 		RenderTarget();
 		~RenderTarget();
 
-		// ƒeƒNƒXƒ`ƒƒƒŠƒ\[ƒX‚Æƒrƒ…[‚ğì¬
-		// width, height: ‰ğ‘œ“x
-		// format: ƒeƒNƒXƒ`ƒƒƒtƒH[ƒ}ƒbƒg (’Êí‚Í R8G8B8A8_UNORM)
-		// clearColor: ƒNƒŠƒA‚ÌF
+		// ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒªã‚½ãƒ¼ã‚¹ã¨ãƒ“ãƒ¥ãƒ¼ã‚’ä½œæˆ
+		// width, height: è§£åƒåº¦
+		// format: ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ (é€šå¸¸ã¯ R8G8B8A8_UNORM)
+		// clearColor: ã‚¯ãƒªã‚¢æ™‚ã®è‰²
 		bool Initialize(ID3D12Device* device, uint32 width, uint32 height, DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM);
 
-		// ‰ğ‘œ“x•ÏXiƒEƒBƒ“ƒhƒEƒŠƒTƒCƒY‚ÉŒÄ‚Ôj
+		// è§£åƒåº¦å¤‰æ›´ï¼ˆã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒªã‚µã‚¤ã‚ºæ™‚ã«å‘¼ã¶ï¼‰
 		bool Resize(ID3D12Device* device, uint32 width, uint32 height);
 
-		// ƒŠƒ\[ƒX‰ğ•ú
+		// ãƒªã‚½ãƒ¼ã‚¹è§£æ”¾
 		void Shutdown();
 
-		// •`‰æŠJn‘O‚ÉƒoƒŠƒA‚ğİ’èiSRV -> RTVj
+		// æç”»é–‹å§‹å‰ã«ãƒãƒªã‚¢ã‚’è¨­å®šï¼ˆSRV -> RTVï¼‰
 		void TransitionToRenderTarget(ID3D12GraphicsCommandList* commandList);
 
-		// •`‰æI—¹Œã‚ÉƒoƒŠƒA‚ğİ’èiRTV -> SRV: ImGui‚Å•\¦‚·‚é‚½‚ßj
+		// æç”»çµ‚äº†å¾Œã«ãƒãƒªã‚¢ã‚’è¨­å®šï¼ˆRTV -> SRV: ImGuiã§è¡¨ç¤ºã™ã‚‹ãŸã‚ï¼‰
 		void TransitionToShaderResource(ID3D12GraphicsCommandList* commandList);
 
-		// ‰æ–ÊƒNƒŠƒA
+		// ç”»é¢ã‚¯ãƒªã‚¢
 		void Clear(ID3D12GraphicsCommandList* commandList);
 
 		// Getters
@@ -41,7 +41,7 @@ namespace Span
 		uint32 GetHeight() const { return height; }
 
 	private:
-		// ƒrƒ…[‚Ìì¬
+		// ãƒ“ãƒ¥ãƒ¼ã®ä½œæˆ
 		void CreateViews(ID3D12Device* device);
 		void CreateDepthBuffer(ID3D12Device* device);
 
@@ -68,3 +68,4 @@ namespace Span
 		uint32 height = 0;
 	};
 }
+

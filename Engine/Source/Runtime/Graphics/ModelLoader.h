@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Resources/Mesh.h"
 
 namespace Span
@@ -12,3 +12,4 @@ namespace Span
 		static Mesh* ProcessMesh(ID3D12Device* device, aiMesh* mesh, const aiScene* scene);
 	};
 }
+

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Core/GraphicsContext.h"
 #include "Core/Shader.h"
@@ -11,7 +11,7 @@ namespace Span
 {
 	using Microsoft::WRL::ComPtr;
 
-	// ’è”ƒoƒbƒtƒ@—p\‘¢‘Ì (GPU‚É‘—‚éƒf[ƒ^)
+	// å®šæ•°ãƒãƒƒãƒ•ã‚¡ç”¨æ§‹é€ ä½“ (GPUã«é€ã‚‹ãƒ‡ãƒ¼ã‚¿)
 	struct TransformData
 	{
 		Matrix4x4 MVP;
@@ -24,54 +24,54 @@ namespace Span
 		Renderer();
 		~Renderer();
 
-		// ‰Šú‰»: Window‚Å‚Í‚È‚­A‰Šú‰»Ï‚İ‚ÌGraphicsContext‚ğó‚¯æ‚é
+		// åˆæœŸåŒ–: Windowã§ã¯ãªãã€åˆæœŸåŒ–æ¸ˆã¿ã®GraphicsContextã‚’å—ã‘å–ã‚‹
 		bool Initialize(GraphicsContext* context);
 		void Shutdown();
 
-		// ƒtƒŒ[ƒ€ŠJnEI—¹
+		// ãƒ•ãƒ¬ãƒ¼ãƒ é–‹å§‹ãƒ»çµ‚äº†
 		ID3D12GraphicsCommandList* BeginFrame();
 		void EndFrame();
 
-		// ƒŠƒTƒCƒY‘Î‰
+		// ãƒªã‚µã‚¤ã‚ºå¯¾å¿œ
 		void OnResize(uint32 width, uint32 height);
 
-		// •`‰æƒRƒ}ƒ“ƒh
+		// æç”»ã‚³ãƒãƒ³ãƒ‰
 		void DrawMesh(Mesh* mesh, Material* material, const Matrix4x4& worldMatrix);
 		void SetCamera(const Matrix4x4& view, const Matrix4x4 projection);
 
-		// ƒQƒbƒ^[
+		// ã‚²ãƒƒã‚¿ãƒ¼
 		ID3D12GraphicsCommandList* GetCommandList() const { return commandList; }
 		ID3D12Device* GetDevice() const { return context ? context->GetDevice() : nullptr; }
 		uint32 GetFrameCount() const { return context ? context->GetFrameCount() : 2; }
 		ID3D12CommandQueue* GetCommandQueue() const { return context ? context->GetCommandQueue() : nullptr; }
 
 	private:
-		// “à•”‰Šú‰»ŠÖ”
+		// å†…éƒ¨åˆæœŸåŒ–é–¢æ•°
 		bool CreateRootSignature();
 		bool CreatePipelineState();
 		bool CreateConstantBuffer();
 
 	private:
-		GraphicsContext* context = nullptr; // Š—LŒ ‚ÍApplication‚ª‚Â
-		ID3D12GraphicsCommandList* commandList = nullptr; // Context‚©‚çƒtƒŒ[ƒ€‚²‚Æ‚ÉØ‚è‚é
+		GraphicsContext* context = nullptr; // æ‰€æœ‰æ¨©ã¯ApplicationãŒæŒã¤
+		ID3D12GraphicsCommandList* commandList = nullptr; // Contextã‹ã‚‰ãƒ•ãƒ¬ãƒ¼ãƒ ã”ã¨ã«å€Ÿã‚Šã‚‹
 
-		// ƒpƒCƒvƒ‰ƒCƒ“ƒXƒe[ƒg (PSO)
+		// ãƒ‘ã‚¤ãƒ—ãƒ©ã‚¤ãƒ³ã‚¹ãƒ†ãƒ¼ãƒˆ (PSO)
 		ComPtr<ID3D12RootSignature> rootSignature;
-		ComPtr<ID3D12PipelineState> pipelineState;			  // •s“§–¾—p
-		ComPtr<ID3D12PipelineState> pipelineStateTransparent; // “§–¾—p
+		ComPtr<ID3D12PipelineState> pipelineState;			  // ä¸é€æ˜ç”¨
+		ComPtr<ID3D12PipelineState> pipelineStateTransparent; // é€æ˜ç”¨
 
-		// ƒVƒF[ƒ_[
+		// ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼
 		Shader* vs = nullptr;
 		Shader* ps = nullptr;
 
-		// ’è”ƒoƒbƒtƒ@ (Transforms—ñ—p)
+		// å®šæ•°ãƒãƒƒãƒ•ã‚¡ (Transformè¡Œåˆ—ç”¨)
 		static const uint32 MAX_OBJECTS = 10000;
-		static const uint32 CB_OBJ_SIZE = 256; // 256ƒoƒCƒgƒAƒ‰ƒCƒƒ“ƒg
+		static const uint32 CB_OBJ_SIZE = 256; // 256ãƒã‚¤ãƒˆã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆ
 		ComPtr<ID3D12Resource> constantBuffer;
 		UINT8* mappedConstantBuffer = nullptr;
 		uint32 constantBufferIndex = 0;
 
-		// ƒJƒƒ‰s—ñ
+		// ã‚«ãƒ¡ãƒ©è¡Œåˆ—
 		Matrix4x4 viewMatrix;
 		Matrix4x4 projectionMatrix;
 	};

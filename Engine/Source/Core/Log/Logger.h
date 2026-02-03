@@ -1,9 +1,9 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
 {
-	// ƒƒOƒŒƒxƒ‹’è‹`
+	// ãƒ­ã‚°ãƒ¬ãƒ™ãƒ«å®šç¾©
 	enum class LogLevel : uint8
 	{
 		Info,
@@ -15,12 +15,12 @@ namespace Span
 	class Logger
 	{
 	public:
-		// ƒGƒ“ƒWƒ“‹N“®‚ÉƒƒOƒtƒ@ƒCƒ‹‚ğŠJ‚­
+		// ã‚¨ãƒ³ã‚¸ãƒ³èµ·å‹•æ™‚ã«ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
 		static void Initialize();
-		// I—¹‚Éƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚é
+		// çµ‚äº†æ™‚ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‰ã˜ã‚‹
 		static void Shutdown();
 
-		// ƒƒOo—ÍŠÖ”iƒ†[ƒU[‚Í’¼ÚŒÄ‚Î‚¸Aƒ}ƒNƒŒo—R‚Åg‚¤j
+		// ãƒ­ã‚°å‡ºåŠ›é–¢æ•°ï¼ˆãƒ¦ãƒ¼ã‚¶ãƒ¼ã¯ç›´æ¥å‘¼ã°ãšã€ãƒã‚¯ãƒ­çµŒç”±ã§ä½¿ã†ï¼‰
 		static void Log(LogLevel level, const char* file, int line, const char* format, ...);
 
 	private:
@@ -30,8 +30,8 @@ namespace Span
 }
 
 // --------------------------------------------------------------------------------
-// ƒƒOƒ}ƒNƒig‚¢‚â‚·‚­‚·‚é‚½‚ß‚Ìƒ‰ƒbƒp[j
-// __FILE__, __LINE__ ‚ğ©“®‚Å“n‚·‚±‚Æ‚ÅA‚Ç‚Ìƒtƒ@ƒCƒ‹‚Ì‰½s–Ú‚Å‹N‚«‚½‚©‹L˜^‚µ‚Ü‚·B
+// ãƒ­ã‚°ãƒã‚¯ãƒ­ï¼ˆä½¿ã„ã‚„ã™ãã™ã‚‹ãŸã‚ã®ãƒ©ãƒƒãƒ‘ãƒ¼ï¼‰
+// __FILE__, __LINE__ ã‚’è‡ªå‹•ã§æ¸¡ã™ã“ã¨ã§ã€ã©ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ä½•è¡Œç›®ã§èµ·ããŸã‹è¨˜éŒ²ã—ã¾ã™ã€‚
 // --------------------------------------------------------------------------------
 #define SPAN_LOG(Format, ...)	Span::Logger::Log(Span::LogLevel::Info,		__FILE__, __LINE__, Format, ##__VA_ARGS__)
 #define SPAN_WARN(Format, ...)	Span::Logger::Log(Span::LogLevel::Warning,	__FILE__, __LINE__, Format, ##__VA_ARGS__)

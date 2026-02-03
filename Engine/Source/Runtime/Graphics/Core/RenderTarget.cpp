@@ -1,4 +1,4 @@
-#include "RenderTarget.h"
+ï»¿#include "RenderTarget.h"
 
 namespace Span
 {
@@ -86,7 +86,7 @@ namespace Span
 	{
 		if (newWidth == 0 || newHeight == 0) return false;
 
-		// Å¬ƒTƒCƒY•ÛØ
+		// æœ€å°ã‚µã‚¤ã‚ºä¿è¨¼
 		newWidth = std::max(newWidth, 1u);
 		newHeight = std::max(newHeight, 1u);
 
@@ -95,11 +95,11 @@ namespace Span
 		width = newWidth;
 		height = newHeight;
 
-		// Šù‘¶‚ÌƒŠƒ\[ƒX‚ª‚ ‚ê‚Î‰ð•ú
+		// æ—¢å­˜ã®ãƒªã‚½ãƒ¼ã‚¹ãŒã‚ã‚Œã°è§£æ”¾
 		resource.Reset();
 		depthResource.Reset();
 
-		// ƒŠƒ\[ƒX‹Lq
+		// ãƒªã‚½ãƒ¼ã‚¹è¨˜è¿°
 		D3D12_RESOURCE_DESC resDesc = {};
 		resDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
 		resDesc.Alignment = 0;
@@ -113,12 +113,12 @@ namespace Span
 		resDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
 		resDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET;
 
-		// ƒNƒŠƒA’l‚ÌÝ’è
+		// ã‚¯ãƒªã‚¢å€¤ã®è¨­å®š
 		D3D12_CLEAR_VALUE optClear;
 		optClear.Format = format;
 		memcpy(optClear.Color, clearColor, sizeof(float) * 4);
 
-		// ƒfƒtƒHƒ‹ƒgƒq[ƒviVRAMj‚Éì¬
+		// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ’ãƒ¼ãƒ—ï¼ˆVRAMï¼‰ã«ä½œæˆ
 		D3D12_HEAP_PROPERTIES heapProps = {};
 		heapProps.Type = D3D12_HEAP_TYPE_DEFAULT;
 		heapProps.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
@@ -126,7 +126,7 @@ namespace Span
 		heapProps.CreationNodeMask = 1;
 		heapProps.VisibleNodeMask = 1;
 
-		// ‰Šúó‘Ô‚Í PIXEL_SHADER_RESOURCE ‚É‚µ‚Ä‚¨‚­iImGui‚ª•\Ž¦‚·‚é‚½‚ßj
+		// åˆæœŸçŠ¶æ…‹ã¯ PIXEL_SHADER_RESOURCE ã«ã—ã¦ãŠãï¼ˆImGuiãŒè¡¨ç¤ºã™ã‚‹ãŸã‚ï¼‰
 		currentState = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
 
 		HRESULT hr = device->CreateCommittedResource(
@@ -154,7 +154,7 @@ namespace Span
 	{
 		if (!resource) return;
 
-		// RTV ì¬
+		// RTV ä½œæˆ
 		D3D12_RENDER_TARGET_VIEW_DESC rtvDesc = {};
 		rtvDesc.Format = format;
 		rtvDesc.ViewDimension = D3D12_RTV_DIMENSION_TEXTURE2D;
@@ -162,7 +162,7 @@ namespace Span
 		rtvDesc.Texture2D.PlaneSlice = 0;
 		device->CreateRenderTargetView(resource.Get(), &rtvDesc, rtvHandle);
 
-		// SRV ì¬
+		// SRV ä½œæˆ
 		D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
 		srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
 		srvDesc.Format = format;
@@ -236,7 +236,7 @@ namespace Span
 
 	void RenderTarget::Clear(ID3D12GraphicsCommandList* commandList)
 	{
-		// ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgó‘Ô‚Å‚ ‚é‚±‚Æ‚ð‘O’ñ‚Æ‚·‚éiŽ–‘O‚ÉTransition‚ðŒÄ‚Ô‚±‚Æj
+		// ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆçŠ¶æ…‹ã§ã‚ã‚‹ã“ã¨ã‚’å‰æã¨ã™ã‚‹ï¼ˆäº‹å‰ã«Transitionã‚’å‘¼ã¶ã“ã¨ï¼‰
 		commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
 
 		commandList->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);

@@ -1,9 +1,9 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
 {
-	// 256ƒoƒCƒgƒAƒ‰ƒCƒƒ“ƒgŒvŽZ—pƒwƒ‹ƒp[
+	// 256ãƒã‚¤ãƒˆã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆè¨ˆç®—ç”¨ãƒ˜ãƒ«ãƒ‘ãƒ¼
 	inline uint32 CalcConstantBufferByteSize(uint32 byteSize)
 	{
 		return (byteSize + 255) & ~255;
@@ -13,12 +13,12 @@ namespace Span
 	class ConstantBuffer
 	{
 	public:
-		// ‰Šú‰»
+		// åˆæœŸåŒ–
 		bool Initialize(ID3D12Device* device)
 		{
 			uint32 sizeInBytes = CalcConstantBufferByteSize(sizeof(T));
 
-			// ƒAƒbƒvƒ[ƒhƒq[ƒv‚ðì¬ (CPU‚©‚ç‘‚«ž‚Þ—p)
+			// ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒ’ãƒ¼ãƒ—ã‚’ä½œæˆ (CPUã‹ã‚‰æ›¸ãè¾¼ã‚€ç”¨)
 			D3D12_HEAP_PROPERTIES heapProps = {};
 			heapProps.Type = D3D12_HEAP_TYPE_UPLOAD;
 			heapProps.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
@@ -50,7 +50,7 @@ namespace Span
 				return false;
 			}
 
-			// ƒ}ƒbƒv‚µ‚Äƒ|ƒCƒ“ƒ^‚ðŽæ“¾‚µ‚Ä‚¨‚­ (–ˆ‰ñMap/Unmap‚µ‚È‚­‚Ä—Ç‚¢)
+			// ãƒžãƒƒãƒ—ã—ã¦ãƒã‚¤ãƒ³ã‚¿ã‚’å–å¾—ã—ã¦ãŠã (æ¯Žå›žMap/Unmapã—ãªãã¦è‰¯ã„)
 			D3D12_RANGE readRange = { 0, 0 };
 			if (FAILED(resource->Map(0, &readRange, reinterpret_cast<void**>(&mappedData))))
 			{
@@ -71,7 +71,7 @@ namespace Span
 			}
 		}
 
-		// ƒf[ƒ^‚ðGPUƒƒ‚ƒŠ‚É‘‚«ž‚Þ
+		// ãƒ‡ãƒ¼ã‚¿ã‚’GPUãƒ¡ãƒ¢ãƒªã«æ›¸ãè¾¼ã‚€
 		void Update(const T& data)
 		{
 			if (mappedData)
@@ -80,7 +80,7 @@ namespace Span
 			}
 		}
 
-		// GPUã‚ÌƒAƒhƒŒƒX‚ðŽæ“¾
+		// GPUä¸Šã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—
 		D3D12_GPU_VIRTUAL_ADDRESS GetGPUVirtualAddress() const
 		{
 			return resource->GetGPUVirtualAddress();
@@ -91,3 +91,4 @@ namespace Span
 		T* mappedData = nullptr;
 	};
 }
+

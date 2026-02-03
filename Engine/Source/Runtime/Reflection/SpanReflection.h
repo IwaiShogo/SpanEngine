@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "SpanAttributes.h"
 #include "Editor/ImGui/ImGuiUI.h"
 #include <vector>
@@ -50,15 +50,15 @@
 
 namespace Span::Internal
 {
-	// ”Ä—p•`‰æŠÖ”
+	// æ±ç”¨æç”»é–¢æ•°
 	template<typename T>
 	void DrawField(const char* label, T& value, const std::vector<Attribute>& attrs)
 	{
-		// ‘®«‰ğÍ
+		// å±æ€§è§£æ
 		std::string tooltip;
 		float minV = -FLT_MAX, maxV = FLT_MAX;
 		bool hasRange = false;
-		bool hasMin = false; // š’Ç‰Á
+		bool hasMin = false; // â˜…è¿½åŠ 
 		bool isReadOnly = false;
 
 		for (const auto& a : attrs) {
@@ -73,9 +73,9 @@ namespace Span::Internal
 			if (a.Type == AttributeType::ReadOnly) isReadOnly = true;
 
 			if (a.Type == AttributeType::Min) {
-				hasMin = true; // š’Ç‰Á
+				hasMin = true; // â˜…è¿½åŠ 
 				minV = a.FloatValue1;
-				// •`‰æ‘O‚Ì–‘Oƒ`ƒFƒbƒN
+				// æç”»å‰ã®äº‹å‰ãƒã‚§ãƒƒã‚¯
 				if constexpr (std::is_arithmetic_v<T>) {
 					if (value < static_cast<T>(a.FloatValue1)) value = static_cast<T>(a.FloatValue1);
 				}
@@ -84,7 +84,7 @@ namespace Span::Internal
 
 		if (isReadOnly) ImGui::BeginDisabled();
 
-		// --- Œ^•Ê•`‰æ ---
+		// --- å‹åˆ¥æç”» ---
 		if constexpr (std::is_same_v<T, float>) {
 			if (hasRange) ImGui::SliderFloat(label, &value, minV, maxV);
 			else ImGui::DragFloat(label, &value, 0.1f, minV, maxV);

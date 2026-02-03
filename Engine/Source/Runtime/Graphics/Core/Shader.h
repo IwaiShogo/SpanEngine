@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
@@ -12,10 +12,10 @@ namespace Span
 	class Shader
 	{
 	public:
-		// ƒtƒ@ƒCƒ‹‚©‚çƒVƒF[ƒ_[‚ðƒ[ƒh‚µ‚ÄƒRƒ“ƒpƒCƒ‹
+		// ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¦ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«
 		bool Load(const std::wstring& filename, ShaderType type, const std::string& entryPoint = "Main");
 
-		// GPU‚É“n‚·‚½‚ß‚ÌƒoƒCƒiƒŠŽæ“¾
+		// GPUã«æ¸¡ã™ãŸã‚ã®ãƒã‚¤ãƒŠãƒªå–å¾—
 		ID3DBlob* GetBlob() const { return blob.Get(); }
 		D3D12_SHADER_BYTECODE GetBytecode() const { return { blob->GetBufferPointer(), blob->GetBufferSize() }; }
 
@@ -23,3 +23,4 @@ namespace Span
 		ComPtr<ID3DBlob> blob;
 	};
 }
+

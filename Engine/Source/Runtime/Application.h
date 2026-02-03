@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Platform/Window.h"
 #include "Graphics/Renderer.h"
@@ -16,22 +16,22 @@ namespace Span
 
 		static Application& Get() { return *s_instance; }
 
-		// ƒAƒvƒŠ‚ğÀs‚·‚é
+		// ã‚¢ãƒ—ãƒªã‚’å®Ÿè¡Œã™ã‚‹
 		void Run();
 
-		// --- ƒ†[ƒU[‚ªƒI[ƒo[ƒ‰ƒCƒh‚·‚éŠÖ” ---
+		// --- ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã™ã‚‹é–¢æ•° ---
 		virtual void OnStart() {}
 		virtual void OnUpdate() {}
 		virtual void OnShutdown() {}
 
-		// ƒQƒbƒ^[
+		// ã‚²ãƒƒã‚¿ãƒ¼
 		Window& GetWindow() { return window; }
 		Renderer& GetRenderer() { return renderer; }
 		World& GetWorld() { return world; }
 		RenderTarget& GetSceneBuffer() { return sceneBuffer; }
 
 	protected:
-		// qƒNƒ‰ƒXiƒ†[ƒU[‚ÌƒQ[ƒ€j‚©‚çƒAƒNƒZƒX‚Å‚«‚é‚æ‚¤‚É‚·‚é
+		// å­ã‚¯ãƒ©ã‚¹ï¼ˆãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ã‚²ãƒ¼ãƒ ï¼‰ã‹ã‚‰ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
 
 	private:
 		static Application* s_instance;
@@ -40,10 +40,11 @@ namespace Span
 		Window window;
 		GraphicsContext graphicsContext;
 		Renderer renderer;
-		RenderTarget sceneBuffer;	// ƒV[ƒ“•`‰æ—p
+		RenderTarget sceneBuffer;	// ã‚·ãƒ¼ãƒ³æç”»ç”¨
 		World world;
 	};
 
-	// ƒ†[ƒU[‘¤‚Å’è‹`‚µ‚Ä‚à‚ç‚¤ŠÖ”iƒtƒ@ƒNƒgƒŠ[ŠÖ”j
+	// ãƒ¦ãƒ¼ã‚¶ãƒ¼å´ã§å®šç¾©ã—ã¦ã‚‚ã‚‰ã†é–¢æ•°ï¼ˆãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼é–¢æ•°ï¼‰
 	Application* CreateApplication();
 }
+

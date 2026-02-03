@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Panels/EditorPanel.h"
 
 namespace Span
@@ -8,13 +8,13 @@ namespace Span
 	public:
 		using PanelFactory = std::function<std::shared_ptr<EditorPanel>()>;
 
-		// ƒpƒlƒ‹“o˜^—pŠÖ”
+		// ãƒ‘ãƒãƒ«ç™»éŒ²ç”¨é–¢æ•°
 		static void RegisterPanel(const std::string& name, PanelFactory factory)
 		{
 			GetRegistry()[name] = factory;
 		}
 
-		// ‘Sƒpƒlƒ‹‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‰»
+		// å…¨ãƒ‘ãƒãƒ«ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
 		static std::vector<std::shared_ptr<EditorPanel>> CreateAllPanels()
 		{
 			std::vector<std::shared_ptr<EditorPanel>> panels;
@@ -26,7 +26,7 @@ namespace Span
 		}
 
 	private:
-		// Ã“Iƒ}ƒbƒv‚Ö‚ÌƒAƒNƒZƒT
+		// é™çš„ãƒãƒƒãƒ—ã¸ã®ã‚¢ã‚¯ã‚»ã‚µ
 		static std::map<std::string, PanelFactory>& GetRegistry()
 		{
 			static std::map<std::string, PanelFactory> registry;
@@ -34,7 +34,7 @@ namespace Span
 		}
 	};
 
-	// ©“®“o˜^—pƒwƒ‹ƒp[\‘¢‘Ì
+	// è‡ªå‹•ç™»éŒ²ç”¨ãƒ˜ãƒ«ãƒ‘ãƒ¼æ§‹é€ ä½“
 	template <typename T>
 	struct AutoRegisterPanel
 	{
@@ -44,3 +44,4 @@ namespace Span
 		}
 	};
 }
+

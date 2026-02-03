@@ -1,4 +1,4 @@
-#include "Renderer.h"
+ï»¿#include "Renderer.h"
 #include "Resources/Texture.h"
 #include "Core/Log/Logger.h"
 
@@ -28,7 +28,7 @@ namespace Span
 
 		if (!CreateRootSignature()) return false;
 
-		// ƒVƒF[ƒ_[ƒ[ƒh
+		// ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ãƒ­ãƒ¼ãƒ‰
 		vs = new Shader();
 		if (!vs->Load(L"Basic.hlsl", ShaderType::Vertex, "VSMain")) return false;
 
@@ -44,8 +44,8 @@ namespace Span
 
 	void Renderer::Shutdown()
 	{
-		// Context‚ÌGPU‘Ò‚¿‡‚í‚¹‚ÍApplication‘¤‚Ås‚¤‘z’è‚¾‚ªA
-		// ”O‚Ì‚½‚ß‚±‚±‚Å‚à‘Ò‚Ä‚é‚ÆˆÀ‘Si¡‰ñ‚ÍContext”C‚¹‚É‚·‚éj
+		// Contextã®GPUå¾…ã¡åˆã‚ã›ã¯Applicationå´ã§è¡Œã†æƒ³å®šã ãŒã€
+		// å¿µã®ãŸã‚ã“ã“ã§ã‚‚å¾…ã¦ã‚‹ã¨å®‰å…¨ï¼ˆä»Šå›žã¯Contextä»»ã›ã«ã™ã‚‹ï¼‰
 
 		SAFE_DELETE(vs);
 		SAFE_DELETE(ps);
@@ -62,7 +62,7 @@ namespace Span
 	{
 		if (!context) return nullptr;
 
-		// Context‚Éu€”õŠJŽnv‚ðˆË—Š‚µAƒRƒ}ƒ“ƒhƒŠƒXƒg‚ðŽó‚¯Žæ‚é
+		// Contextã«ã€Œæº–å‚™é–‹å§‹ã€ã‚’ä¾é ¼ã—ã€ã‚³ãƒžãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’å—ã‘å–ã‚‹
 		commandList = context->BeginFrame();
 		constantBufferIndex = 0;
 
@@ -73,7 +73,7 @@ namespace Span
 	{
 		if (!context) return;
 		context->EndFrame();
-		commandList = nullptr; // Š—LŒ •úŠü
+		commandList = nullptr; // æ‰€æœ‰æ¨©æ”¾æ£„
 	}
 
 	void Renderer::OnResize(uint32 width, uint32 height)
@@ -90,11 +90,11 @@ namespace Span
 
 		if (constantBufferIndex >= MAX_OBJECTS)
 		{
-			// ŠÈˆÕ“I‚ÈãŒÀƒ`ƒFƒbƒN (–{—ˆ‚Í“®“IŠm•Û‚·‚×‚«)
+			// ç°¡æ˜“çš„ãªä¸Šé™ãƒã‚§ãƒƒã‚¯ (æœ¬æ¥ã¯å‹•çš„ç¢ºä¿ã™ã¹ã)
 			return;
 		}
 
-		// 1. TransformXV
+		// 1. Transformæ›´æ–°
 		Matrix4x4 mvp = worldMatrix * viewMatrix * projectionMatrix;
 		TransformData data;
 		data.MVP.FromXM(XMMatrixTranspose(mvp.ToXM()));
@@ -103,22 +103,22 @@ namespace Span
 		UINT8* dest = mappedConstantBuffer + (constantBufferIndex * CB_OBJ_SIZE);
 		memcpy(dest, &data, sizeof(TransformData));
 
-		// 2. MaterialXV
+		// 2. Materialæ›´æ–°
 		material->Update();
 
-		// 3. ƒRƒ}ƒ“ƒhƒZƒbƒg
+		// 3. ã‚³ãƒžãƒ³ãƒ‰ã‚»ãƒƒãƒˆ
 		commandList->SetPipelineState(material->IsTransparent() ? pipelineStateTransparent.Get() : pipelineState.Get());
 		commandList->SetGraphicsRootSignature(rootSignature.Get());
 
-		// ƒXƒƒbƒg0: Transform CBV
+		// ã‚¹ãƒ­ãƒƒãƒˆ0: Transform CBV
 		D3D12_GPU_VIRTUAL_ADDRESS cbAddress = constantBuffer->GetGPUVirtualAddress();
 		cbAddress += constantBufferIndex * CB_OBJ_SIZE;
 		commandList->SetGraphicsRootConstantBufferView(0, cbAddress);
 
-		// ƒXƒƒbƒg1: Material CBV
+		// ã‚¹ãƒ­ãƒƒãƒˆ1: Material CBV
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
 
-		// ƒXƒƒbƒg2: Texture SRV
+		// ã‚¹ãƒ­ãƒƒãƒˆ2: Texture SRV
 		if (material->GetTexture())
 		{
 			ID3D12DescriptorHeap* ppHeaps[] = { material->GetTexture()->GetSRVHeap() };
@@ -139,7 +139,7 @@ namespace Span
 
 	bool Renderer::CreateRootSignature()
 	{
-		// ƒ‹[ƒgƒpƒ‰ƒ[ƒ^’è‹` (CBV x2, Table x1)
+		// ãƒ«ãƒ¼ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å®šç¾© (CBV x2, Table x1)
 		D3D12_ROOT_PARAMETER rootParameters[3];
 
 		// [0] Transform (b0)
@@ -167,7 +167,7 @@ namespace Span
 		rootParameters[2].DescriptorTable.pDescriptorRanges = &descriptorRange;
 		rootParameters[2].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
-		// ƒTƒ“ƒvƒ‰[ (Static Sampler)
+		// ã‚µãƒ³ãƒ—ãƒ©ãƒ¼ (Static Sampler)
 		D3D12_STATIC_SAMPLER_DESC sampler = {};
 		sampler.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;
 		sampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
@@ -258,7 +258,7 @@ namespace Span
 		transBlend.BlendOpAlpha = D3D12_BLEND_OP_ADD;
 		transBlend.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
 		psoDesc.BlendState.RenderTarget[0] = transBlend;
-		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO; // [“x‘‚«ž‚Ý‚È‚µ
+		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO; // æ·±åº¦æ›¸ãè¾¼ã¿ãªã—
 
 		if (FAILED(context->GetDevice()->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&pipelineStateTransparent))))
 		{

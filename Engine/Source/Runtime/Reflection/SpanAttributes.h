@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 namespace Span
 {
@@ -19,7 +19,7 @@ namespace Span
 	{
 		AttributeType Type = AttributeType::None;
 
-		// ”Ä—pƒf[ƒ^
+		// æ±ç”¨ãƒ‡ãƒ¼ã‚¿
 		float FloatValue1 = 0.0f;
 		float FloatValue2 = 0.0f;
 		std::string StringValue;
@@ -27,7 +27,7 @@ namespace Span
 		Attribute() = default;
 	};
 
-	// ---ƒ†[ƒU[‚ªg‚¤‘®«’è‹` ---
+	// ---ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒä½¿ã†å±æ€§å®šç¾© ---
 
 	inline Attribute Range(float min, float max)
 	{
@@ -64,7 +64,7 @@ namespace Span
 		Attribute attr; attr.Type = AttributeType::ReadOnly; return attr;
 	}
 
-	// Unity‚Ì SerializeField = uprivate‚Å‚à•\¦‚·‚év‚¾‚ªAC++‚Ípublic‘O’ñ‚È‚Ì‚Åu“Ç‚İæ‚èê—pv‚Æ‚µ‚Äˆµ‚¤‚©A’P‚È‚éƒ}[ƒJ[‚É‚·‚é
+	// Unityã® SerializeField = ã€Œprivateã§ã‚‚è¡¨ç¤ºã™ã‚‹ã€ã ãŒã€C++ã¯publicå‰æãªã®ã§ã€Œèª­ã¿å–ã‚Šå°‚ç”¨ã€ã¨ã—ã¦æ‰±ã†ã‹ã€å˜ãªã‚‹ãƒãƒ¼ã‚«ãƒ¼ã«ã™ã‚‹
 	inline Attribute SerializeField()
 	{
 		Attribute attr; attr.Type = AttributeType::None; return attr;
@@ -75,3 +75,4 @@ namespace Span
 		Attribute attr; attr.Type = AttributeType::MultiLine; return attr;
 	}
 }
+

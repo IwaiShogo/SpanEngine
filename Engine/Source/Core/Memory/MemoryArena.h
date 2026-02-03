@@ -1,12 +1,12 @@
-#pragma once
+﻿#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
 {
 	/**
-	 * @brief	���`���������蓖�ăN���X�iLinear Allocator�j
-	 * ���O�ɋ���ȃu���b�N���m�ۂ��A�|�C���^��i�߂邾���Ŋ��蓖�Ă�B
-	 * ����́u�S���Z�b�g�v�̂ݑΉ����邱�ƂŁA�Ɍ��̑��x����������B
+	 * @brief	線形メモリ割り当てクラス（Linear Allocator）
+	 * 事前に巨大なブロックを確保し、ポインタを進めるだけで割り当てる。
+	 * 解放は「全リセット」のみ対応することで、極限の速度を実現する。
 	 */
 	class MemoryArena
 	{
@@ -14,36 +14,37 @@ namespace Span
 		MemoryArena() = default;
 		~MemoryArena();
 
-		// �R�s�[�֎~
+		// コピー禁止
 		SPAN_NON_COPYABLE(MemoryArena);
 
-		// ������: �w�肵���T�C�Y(byte)�̃������u���b�N��OS����m�ۂ���
+		// 初期化: 指定したサイズ(byte)のメモリブロックをOSから確保する
 		void Initialize(size_t sizeInBytes);
 
-		// ���: OS�Ƀ�������ԋp����
+		// 解放: OSにメモリを返却する
 		void Shutdown();
 
-		// ���蓖��: Arena���烁������؂�o���ĕԂ�
+		// 割り当て: Arenaからメモリを切り出して返す
 		template <typename T>
 		T* Allocate(size_t count = 1)
 		{
 			return reinterpret_cast<T*>(AllocateRaw(sizeof(T) * count, alignof(T)));
 		}
 
-		// ���蓖��: ���̃o�C�g���w��
+		// 割り当て: 生のバイト数指定
 		void* AllocateRaw(size_t size, size_t alignment);
 
-		// ���Z�b�g: �|�C���^��擪�ɖ߂�
+		// リセット: ポインタを先頭に戻す
 		void Reset();
 
-		// ���݂̎g�p�ʂ��擾
+		// 現在の使用量を取得
 		size_t GetUsedMemory() const { return usedOffset; }
-		// �S�̗̂e�ʂ��擾
+		// 全体の容量を取得
 		size_t GetTotalSize() const { return totalSize; }
 
 	private:
-		uint8* memoryBlock = nullptr;	// ���������̐擪�|�C���^
-		size_t totalSize = 0;			// �S�e��
-		size_t usedOffset = 0;			// ���݂ǂ��܂Ŏg������
+		uint8* memoryBlock = nullptr;	// 生メモリの先頭ポインタ
+		size_t totalSize = 0;			// 全容量
+		size_t usedOffset = 0;			// 現在どこまで使ったか
 	};
 }
+

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/Math/SpanMath.h"
 #include "Editor/Panels/EditorPanel.h"
 
@@ -20,38 +20,39 @@ namespace Span
 
 		void OnImGuiRender() override;
 
-		// •\¦‚·‚éƒeƒNƒXƒ`ƒƒ
+		// è¡¨ç¤ºã™ã‚‹ãƒ†ã‚¯ã‚¹ãƒãƒ£
 		void SetTexture(D3D12_GPU_DESCRIPTOR_HANDLE handle) { textureHandle = handle; }
 
-		// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘¤‚ªƒŠƒTƒCƒY”»’è‚Ég‚¤
+		// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å´ãŒãƒªã‚µã‚¤ã‚ºåˆ¤å®šã«ä½¿ã†
 		Vector2 GetTargetResolution() const { return m_TargetResolution; }
 
 	private:
-		// ƒc[ƒ‹ƒo[‚ğ•`‰æ‚·‚éƒwƒ‹ƒp[
+		// ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ã‚’æç”»ã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼
 		void DrawToolbarOverlay();
-		// ƒMƒYƒ‚‘€ì‚ÌÀ‘•
+		// ã‚®ã‚ºãƒ¢æ“ä½œã®å®Ÿè£…
 		void DrawGizmo(const Vector2& pos, const Vector2& size);
-		// ƒAƒXƒyƒNƒg”ä‚É‰‚¶‚½‹éŒ`ŒvZ
+		// ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”ã«å¿œã˜ãŸçŸ©å½¢è¨ˆç®—
 		void CalculateImageArea(const Vector2& availableSize, Vector2& outPos, Vector2& outSize);
 
 	private:
 		D3D12_GPU_DESCRIPTOR_HANDLE textureHandle = {};
 
-		// ƒpƒlƒ‹©‘Ì‚ÌƒTƒCƒY
+		// ãƒ‘ãƒãƒ«è‡ªä½“ã®ã‚µã‚¤ã‚º
 		Vector2 m_PanelSize = { 0.0f, 0.0f };
 
-		// ÀÛ‚ÉƒŒƒ“ƒ_ƒŠƒ“ƒO‚·‚é‰ğ‘œ“x
+		// å®Ÿéš›ã«ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°ã™ã‚‹è§£åƒåº¦
 		Vector2 m_TargetResolution = { 0.0f, 0.0f };
 
-		// ƒMƒYƒ‚İ’è
+		// ã‚®ã‚ºãƒ¢è¨­å®š
 		int m_GizmoType = 0;	// 0 = None, 1 = Translate, 2 = Rotate, 3 = Scale
-		int m_GizmoMode = 0;	// À•WŒn (0 = Local, 1 = World)
+		int m_GizmoMode = 0;	// åº§æ¨™ç³» (0 = Local, 1 = World)
 		bool m_UseSnap = false;
 		float m_SnapValueMove = 0.5f;
 		float m_SnapValueRotate = 45.0f;
 		float m_SnapValueScale = 0.5f;
 
-		// ƒAƒXƒyƒNƒg”äİ’è
+		// ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”è¨­å®š
 		AspectRatioType m_AspectRatio = AspectRatioType::Free;
 	};
 }
+

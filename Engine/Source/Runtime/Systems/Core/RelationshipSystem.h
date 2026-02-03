@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "ECS/Kernel/System.h"
 #include "Components/Core/Relationship.h"
 #include "Components/Core/Transform.h"
@@ -9,7 +9,7 @@ namespace Span
 	class RelationshipSystem : public System
 	{
 	public:
-		// e‚©‚çØ’f‚·‚é (ŒÇ—§‚³‚¹‚é)
+		// è¦ªã‹ã‚‰åˆ‡æ–­ã™ã‚‹ (å­¤ç«‹ã•ã›ã‚‹)
 		static void Disconnect(World* world, Entity entity)
 		{
 			Relationship& rel = world->GetComponent<Relationship>(entity);
@@ -17,41 +17,41 @@ namespace Span
 			Entity prev = rel.PrevSibling;
 			Entity next = rel.NextSibling;
 
-			// ‘O‚ÌŒZ’í‚Ì Next ‚ðXV
+			// å‰ã®å…„å¼Ÿã® Next ã‚’æ›´æ–°
 			if (!prev.IsNull())
 			{
 				world->GetComponent<Relationship>(prev).NextSibling = next;
 			}
-			// Ž©•ª‚ª’·’j‚È‚çAe‚Ì FirstChild ‚ðŽŸ‚ÌŒZ’í‚É‚·‚é
+			// è‡ªåˆ†ãŒé•·ç”·ãªã‚‰ã€è¦ªã® FirstChild ã‚’æ¬¡ã®å…„å¼Ÿã«ã™ã‚‹
 			else if (!parent.IsNull())
 			{
 				world->GetComponent<Relationship>(parent).FirstChild = next;
 			}
 
-			// ŽŸ‚ÌŒZ’í‚Ì Prev ‚ðXV
+			// æ¬¡ã®å…„å¼Ÿã® Prev ã‚’æ›´æ–°
 			if (!next.IsNull())
 			{
 				world->GetComponent<Relationship>(next).PrevSibling = prev;
 			}
 
-			// Ž©•ª‚ÌƒŠƒ“ƒNî•ñ‚ðƒNƒŠƒA
+			// è‡ªåˆ†ã®ãƒªãƒ³ã‚¯æƒ…å ±ã‚’ã‚¯ãƒªã‚¢
 			rel.Parent = Entity::Null;
 			rel.PrevSibling = Entity::Null;
 			rel.NextSibling = Entity::Null;
 		}
 
-		// ––”ö‚ÉeŽq•t‚¯‘Ö‚¦
+		// æœ«å°¾ã«è¦ªå­ä»˜ã‘æ›¿ãˆ
 		static void SetParent(World* world, Entity child, Entity parent)
 		{
 			Relationship& childRel = world->GetComponent<Relationship>(child);
 
-			// Šù‚É‚»‚Ìe‚È‚ç‰½‚à‚µ‚È‚¢
+			// æ—¢ã«ãã®è¦ªãªã‚‰ä½•ã‚‚ã—ãªã„
 			if (childRel.Parent == parent && parent.IsNull()) return;
 
-			// 1. Œ»Ý‚ÌŒq‚ª‚è‚ðØ‚é
+			// 1. ç¾åœ¨ã®ç¹‹ãŒã‚Šã‚’åˆ‡ã‚‹
 			Disconnect(world, child);
 
-			// 2. V‚µ‚¢e‚ÉÚ‘±
+			// 2. æ–°ã—ã„è¦ªã«æŽ¥ç¶š
 			childRel.Parent = parent;
 
 			if (!parent.IsNull())
@@ -61,12 +61,12 @@ namespace Span
 
 				if (firstChild.IsNull())
 				{
-					// Å‰‚ÌŽq
+					// æœ€åˆã®å­
 					newParentRel.FirstChild = child;
 				}
 				else
 				{
-					// ƒŠƒXƒg‚Ì––”ö‚É’Ç‰Á
+					// ãƒªã‚¹ãƒˆã®æœ«å°¾ã«è¿½åŠ 
 					Entity current = firstChild;
 					while (true)
 					{
@@ -83,17 +83,17 @@ namespace Span
 			}
 		}
 
-		// “Á’è‚ÌŒZ’í‚Ìu‘Ov‚É‘}“ü‚·‚é (•À‚Ñ‘Ö‚¦—p)
+		// ç‰¹å®šã®å…„å¼Ÿã®ã€Œå‰ã€ã«æŒ¿å…¥ã™ã‚‹ (ä¸¦ã³æ›¿ãˆç”¨)
 		static void InsertBefore(World* world, Entity child, Entity targetSibling, Entity parentIfTargetIsNull = Entity::Null)
 		{
 			if (child == targetSibling) return;
 
-			// ƒ^[ƒQƒbƒg‚ªNull‚Ìê‡ (––”ö’Ç‰Á)
+			// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãŒNullã®å ´åˆ (æœ«å°¾è¿½åŠ )
 			if (targetSibling.IsNull())
 			{
 				if (parentIfTargetIsNull.IsNull()) return;
 
-				// Šù‘¶‚ÌSetParent‚ðŽg‚¦‚Î––”ö‚É’Ç‰Á‚³‚ê‚é
+				// æ—¢å­˜ã®SetParentã‚’ä½¿ãˆã°æœ«å°¾ã«è¿½åŠ ã•ã‚Œã‚‹
 				SetParent(world, child, parentIfTargetIsNull);
 				return;
 			}
@@ -101,19 +101,19 @@ namespace Span
 			Relationship& targetRel = world->GetComponent<Relationship>(targetSibling);
 			Entity parent = targetRel.Parent;
 
-			// 1. Ø’f
+			// 1. åˆ‡æ–­
 			Disconnect(world, child);
 
-			// 2. e‚ðÝ’è
+			// 2. è¦ªã‚’è¨­å®š
 			Relationship& childRel = world->GetComponent<Relationship>(child);
 			childRel.Parent = parent;
 
-			// 3. ‘}“üˆ—
+			// 3. æŒ¿å…¥å‡¦ç†
 			Entity prev = targetRel.PrevSibling;
 
 			if (prev.IsNull())
 			{
-				// target‚ª’·’j‚¾‚Á‚½ê‡ -> child‚ªV’·’j‚É‚È‚é
+				// targetãŒé•·ç”·ã ã£ãŸå ´åˆ -> childãŒæ–°é•·ç”·ã«ãªã‚‹
 				if (!parent.IsNull())
 				{
 					world->GetComponent<Relationship>(parent).FirstChild = child;
@@ -123,7 +123,7 @@ namespace Span
 			}
 			else
 			{
-				// prev <-> child <-> target ‚ÌŒ`‚ÉŒq‚®
+				// prev <-> child <-> target ã®å½¢ã«ç¹‹ã
 				Relationship& prevRel = world->GetComponent<Relationship>(prev);
 
 				prevRel.NextSibling = child;
@@ -135,3 +135,4 @@ namespace Span
 		}
 	};
 }
+

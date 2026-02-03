@@ -1,4 +1,4 @@
-#include "Material.h"
+﻿#include "Material.h"
 
 namespace Span
 {
@@ -41,3 +41,4 @@ namespace Span
 		return constantBuffer ? constantBuffer->GetGPUVirtualAddress() : 0;
 	}
 }
+

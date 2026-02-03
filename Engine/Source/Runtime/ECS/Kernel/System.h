@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
@@ -10,26 +10,26 @@ namespace Span
 	public:
 		virtual ~System() = default;
 
-		// ƒGƒ“ƒWƒ“‚ªƒVƒXƒeƒ€‚ğ“o˜^‚·‚é‚Æ‚«‚ÉŒÄ‚Ô
+		// ã‚¨ãƒ³ã‚¸ãƒ³ãŒã‚·ã‚¹ãƒ†ãƒ ã‚’ç™»éŒ²ã™ã‚‹ã¨ãã«å‘¼ã¶
 		void Initialize(World* world)
 		{
 			m_world = world;
 			OnCreate();
 		}
 
-		// ‰Šú‰»‚É1‰ñŒÄ‚Î‚ê‚é
+		// åˆæœŸåŒ–æ™‚ã«1å›å‘¼ã°ã‚Œã‚‹
 		virtual void OnCreate() {}
 
-		// –ˆƒtƒŒ[ƒ€ŒÄ‚Î‚ê‚é
+		// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å‘¼ã°ã‚Œã‚‹
 		virtual void OnUpdate() {}
 
-		// ”jŠü‚ÉŒÄ‚Î‚ê‚é
+		// ç ´æ£„æ™‚ã«å‘¼ã°ã‚Œã‚‹
 		virtual void OnDestroy() {}
 
 		bool IsEnabled() const { return isEnabled; }
 
 	protected:
-		// ƒVƒXƒeƒ€“à‚©‚ç‚¢‚Â‚Å‚àWorld‚ÉƒAƒNƒZƒX‚Å‚«‚é
+		// ã‚·ã‚¹ãƒ†ãƒ å†…ã‹ã‚‰ã„ã¤ã§ã‚‚Worldã«ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹
 		World* GetWorld() const { return m_world; }
 
 	private:
@@ -37,3 +37,4 @@ namespace Span
 		bool isEnabled = true;
 	};
 }
+

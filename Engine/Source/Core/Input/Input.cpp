@@ -1,11 +1,11 @@
-#include "Input.h"
+ï»¿#include "Input.h"
 #include <Xinput.h>
 
 #pragma comment(lib, "xinput.lib")
 
 namespace Span
 {
-	// Ã“Iƒƒ“ƒo‚Ì’è‹`
+	// é™çš„ãƒ¡ãƒ³ãƒã®å®šç¾©
 	bool Input::keyStates[256] = { false };
 	bool Input::prevKeyStates[256] = { false };
 	Vector2 Input::mousePosition = { 0, 0 };
@@ -16,7 +16,7 @@ namespace Span
 	bool Input::isCursorLocked = false;
 	bool Input::ignoreNextDelta = false;
 
-	// ƒRƒ“ƒgƒ[ƒ‰[—p
+	// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ç”¨
 	bool Input::gamepadStates[20] = { false };
 	bool Input::prevGamepadStates[20] = { false };
 	float Input::gamepadAxes[6] = { 0.0f };
@@ -24,7 +24,7 @@ namespace Span
 
 	bool Input::imGuiWantCaptureMouse = false;
 
-	// ƒ{ƒ^ƒ“‚Æ”z—ñƒCƒ“ƒfƒbƒNƒX‚Ì‘Î‰•\ƒ}ƒbƒv
+	// ãƒœã‚¿ãƒ³ã¨é…åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å¯¾å¿œè¡¨ãƒãƒƒãƒ—
 	int GetGamepadIndex(Key key)
 	{
 		switch (key)
@@ -49,7 +49,7 @@ namespace Span
 	{
 		hWnd = windowHandle;
 
-		// ƒ}ƒEƒX‰ŠúˆÊ’u‚ğæ“¾
+		// ãƒã‚¦ã‚¹åˆæœŸä½ç½®ã‚’å–å¾—
 		POINT p;
 		GetCursorPos(&p);
 		ScreenToClient(hWnd, &p);
@@ -59,21 +59,21 @@ namespace Span
 
 	void Input::Update()
 	{
-		// ƒƒbƒN’†‚ÍuˆÚ“®—Êv‚ğŒvZ‚µ‚½ŒãAƒJ[ƒ\ƒ‹‚ğ’†‰›‚É–ß‚·
+		// ãƒ­ãƒƒã‚¯ä¸­ã¯ã€Œç§»å‹•é‡ã€ã‚’è¨ˆç®—ã—ãŸå¾Œã€ã‚«ãƒ¼ã‚½ãƒ«ã‚’ä¸­å¤®ã«æˆ»ã™
 		if (isCursorLocked && hWnd)
 		{
-			// 1. Œ»İ‚ÌƒJ[ƒ\ƒ‹ˆÊ’uiƒXƒNƒŠ[ƒ“À•Wj‚ğæ“¾
+			// 1. ç¾åœ¨ã®ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ï¼ˆã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ï¼‰ã‚’å–å¾—
 			POINT curP;
 			GetCursorPos(&curP);
 
-			// 2. ƒEƒBƒ“ƒhƒE’†‰›iƒXƒNƒŠ[ƒ“À•Wj‚ğŒvZ
+			// 2. ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ä¸­å¤®ï¼ˆã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ï¼‰ã‚’è¨ˆç®—
 			RECT rect;
 			GetClientRect(hWnd, &rect);
 			POINT center = { (rect.right - rect.left) / 2, (rect.bottom - rect.top) / 2 };
 			ClientToScreen(hWnd, &center);
 
-			// 3. ’†‰›‚©‚ç‚ÌƒYƒŒ‚ğˆÚ“®—Ê(Delta)‚Æ‚·‚é
-			// ‚±‚ê‚É‚æ‚èA‘O‰ñˆÊ’u‚ÉŠÖŒW‚È‚­ƒˆ‚ÈˆÚ“®—Ê‚ªæ‚ê‚é
+			// 3. ä¸­å¤®ã‹ã‚‰ã®ã‚ºãƒ¬ã‚’ç§»å‹•é‡(Delta)ã¨ã™ã‚‹
+			// ã“ã‚Œã«ã‚ˆã‚Šã€å‰å›ä½ç½®ã«é–¢ä¿‚ãªãç´”ç²‹ãªç§»å‹•é‡ãŒå–ã‚Œã‚‹
 			if (ignoreNextDelta)
 			{
 				mouseDelta = { 0, 0 };
@@ -85,34 +85,34 @@ namespace Span
 				mouseDelta.y = (float)(curP.y - center.y);
 			}
 
-			// 4. ƒJ[ƒ\ƒ‹‚ğ•¨—“I‚É’†‰›‚É–ß‚·
+			// 4. ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç‰©ç†çš„ã«ä¸­å¤®ã«æˆ»ã™
 			SetCursorPos(center.x, center.y);
 
-			// 5. “à•”À•W‚à’†‰›ŒÅ’è‚É‚µ‚Ä‚¨‚­
+			// 5. å†…éƒ¨åº§æ¨™ã‚‚ä¸­å¤®å›ºå®šã«ã—ã¦ãŠã
 			ScreenToClient(hWnd, &center);
 			mousePosition = { (float)center.x, (float)center.y };
 			prevMousePosition = mousePosition;
 		}
 		else
 		{
-			// ’Êí
+			// é€šå¸¸
 			mouseDelta = mousePosition - prevMousePosition;
 			prevMousePosition = mousePosition;
 		}
 
-		// 2. ƒRƒ“ƒgƒ[ƒ‰[‚Ì‘O‰ñó‘Ô•Û‘¶
+		// 2. ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ã®å‰å›çŠ¶æ…‹ä¿å­˜
 		memcpy(prevGamepadStates, gamepadStates, sizeof(bool) * 20);
 
-		// 3. XInputƒ|[ƒŠƒ“ƒO (ƒRƒ“ƒgƒ[ƒ‰[0”Ô‚Ì‚İ‘Î‰)
+		// 3. XInputãƒãƒ¼ãƒªãƒ³ã‚° (ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼0ç•ªã®ã¿å¯¾å¿œ)
 		XINPUT_STATE state;
 		ZeroMemory(&state, sizeof(XINPUT_STATE));
 
-		// Ú‘±Šm”F‚Ææ“¾
+		// æ¥ç¶šç¢ºèªã¨å–å¾—
 		if (XInputGetState(0, &state) == ERROR_SUCCESS)
 		{
 			isConnected = true;
 
-			// --- ƒ{ƒ^ƒ“‚Ì“Ç‚İæ‚è ---
+			// --- ãƒœã‚¿ãƒ³ã®èª­ã¿å–ã‚Š ---
 			auto CheckBtn = [&](int idx, int mask) { gamepadStates[idx] = (state.Gamepad.wButtons & mask) != 0; };
 			CheckBtn(0, XINPUT_GAMEPAD_A);
 			CheckBtn(1, XINPUT_GAMEPAD_B);
@@ -127,7 +127,7 @@ namespace Span
 			CheckBtn(10, XINPUT_GAMEPAD_DPAD_LEFT);
 			CheckBtn(11, XINPUT_GAMEPAD_DPAD_RIGHT);
 
-			// --- ƒXƒeƒBƒbƒN‚Ì“Ç‚İæ‚è‚Æƒfƒbƒhƒ][ƒ“ˆ— ---
+			// --- ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã®èª­ã¿å–ã‚Šã¨ãƒ‡ãƒƒãƒ‰ã‚¾ãƒ¼ãƒ³å‡¦ç† ---
 			auto ApplyDeadzone = [](short val) -> float {
 				if (std::abs(val) < XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE) return 0.0f;
 				return val / 32767.0f;
@@ -138,7 +138,7 @@ namespace Span
 			gamepadAxes[(int)Axis::RightStickX] = ApplyDeadzone(state.Gamepad.sThumbRX);
 			gamepadAxes[(int)Axis::RightStickY] = ApplyDeadzone(state.Gamepad.sThumbRY);
 
-			// ƒgƒŠƒK[ (0-255 -> 0.0-1.0)
+			// ãƒˆãƒªã‚¬ãƒ¼ (0-255 -> 0.0-1.0)
 			gamepadAxes[(int)Axis::LeftTrigger] = state.Gamepad.bLeftTrigger / 255.0f;
 			gamepadAxes[(int)Axis::RightTrigger] = state.Gamepad.bRightTrigger / 255.0f;
 		}
@@ -152,7 +152,7 @@ namespace Span
 
 	void Input::EndFrame()
 	{
-		// Ÿ‚ÌƒtƒŒ[ƒ€‚Ìˆ×‚ÉAŒ»İ‚Ìó‘Ô‚ğu‰ß‹v‚Æ‚µ‚Ä•Û‘¶
+		// æ¬¡ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®ç‚ºã«ã€ç¾åœ¨ã®çŠ¶æ…‹ã‚’ã€Œéå»ã€ã¨ã—ã¦ä¿å­˜
 		memcpy(prevKeyStates, keyStates, sizeof(bool) * 256);
 	}
 
@@ -163,7 +163,7 @@ namespace Span
 	Vector2 Input::GetMousePosition() { return mousePosition; }
 	Vector2 Input::GetMouseDelta() { return mouseDelta; }
 
-	// ƒRƒ“ƒgƒ[ƒ‰[API
+	// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼API
 	bool Input::GetButton(Key key)
 	{
 		int idx = GetGamepadIndex(key);
@@ -176,7 +176,7 @@ namespace Span
 	}
 	float Input::GetAxis(Axis axis) { return gamepadAxes[(int)axis]; }
 
-	// --- WindowProc‚©‚ç‚ÌƒCƒxƒ“ƒg ---
+	// --- WindowProcã‹ã‚‰ã®ã‚¤ãƒ™ãƒ³ãƒˆ ---
 	void Input::OnKeyDown(uint32 key) { if (key < 256) keyStates[key] = true; }
 	void Input::OnKeyUp(uint32 key) { if (key < 256) keyStates[key] = false; }
 	void Input::OnMouseDown(uint32 btn)
@@ -196,7 +196,7 @@ namespace Span
 		mousePosition = { (float)x, (float)y };
 	}
 
-	// ƒJ[ƒ\ƒ‹§Œä
+	// ã‚«ãƒ¼ã‚½ãƒ«åˆ¶å¾¡
 	void Input::SetCursorVisible(bool visible)
 	{
 		ShowCursor(visible ? TRUE : FALSE);
@@ -208,7 +208,7 @@ namespace Span
 		{
 			SetCursorVisible(false);
 
-			// ƒJ[ƒ\ƒ‹‚ğ’†‰›‚ÖˆÚ“®
+			// ã‚«ãƒ¼ã‚½ãƒ«ã‚’ä¸­å¤®ã¸ç§»å‹•
 			ResetCursorToCenter();
 			ignoreNextDelta = true;
 			mouseDelta = { 0, 0 };

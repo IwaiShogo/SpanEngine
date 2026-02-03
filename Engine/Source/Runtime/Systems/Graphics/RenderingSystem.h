@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "ECS/Kernel/System.h"
 #include "ECS/Kernel/World.h"
 #include "Runtime/Application.h"
@@ -16,13 +16,13 @@ namespace Span
 	public:
 		void OnUpdate() override
 		{
-			// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚©‚çƒŒƒ“ƒ_ƒ‰[‚ðŽæ“¾
+			// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‹ã‚‰ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ã‚’å–å¾—
 			Renderer& renderer = Application::Get().GetRenderer();
 			auto world = GetWorld();
 
 			// --------------------------------------------------------
-			// ƒpƒX1: •s“§–¾ (Opaque) ‚Ì•`‰æ
-			// æ‚É‰œ‚É‚ ‚é•s“§–¾‚È•¨‘Ì‚ð•`‰æ‚µ‚ÄA[“xƒoƒbƒtƒ@‚ð–„‚ß‚Ü‚·B
+			// ãƒ‘ã‚¹1: ä¸é€æ˜Ž (Opaque) ã®æç”»
+			// å…ˆã«å¥¥ã«ã‚ã‚‹ä¸é€æ˜Žãªç‰©ä½“ã‚’æç”»ã—ã¦ã€æ·±åº¦ãƒãƒƒãƒ•ã‚¡ã‚’åŸ‹ã‚ã¾ã™ã€‚
 			// --------------------------------------------------------
 			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
 				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
@@ -37,8 +37,8 @@ namespace Span
 			);
 
 			// --------------------------------------------------------
-			// ƒpƒX2: “§–¾ (Transparent) ‚Ì•`‰æ
-			// •s“§–¾‚È•¨‘Ì‚Ìã‚Éd‚Ë‚Ä•`‰æ‚µ‚Ü‚·i[“x‘‚«ž‚Ý‚È‚µjB
+			// ãƒ‘ã‚¹2: é€æ˜Ž (Transparent) ã®æç”»
+			// ä¸é€æ˜Žãªç‰©ä½“ã®ä¸Šã«é‡ã­ã¦æç”»ã—ã¾ã™ï¼ˆæ·±åº¦æ›¸ãè¾¼ã¿ãªã—ï¼‰ã€‚
 			// --------------------------------------------------------
 			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
 				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
@@ -54,3 +54,4 @@ namespace Span
 		}
 	};
 }
+

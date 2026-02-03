@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Core/Math/SpanMath.h"
 
@@ -17,10 +17,10 @@ namespace Span
 		bool Initialize(ID3D12Device* device, const std::vector<Vertex>& vertices);
 		void Shutdown();
 
-		// •`‰æƒRƒ}ƒ“ƒh‚ğ”­s
+		// æç”»ã‚³ãƒãƒ³ãƒ‰ã‚’ç™ºè¡Œ
 		void Draw(ID3D12GraphicsCommandList* commandList);
 
-		// ƒvƒŠƒZƒbƒgì¬ƒwƒ‹ƒp[
+		// ãƒ—ãƒªã‚»ãƒƒãƒˆä½œæˆãƒ˜ãƒ«ãƒ‘ãƒ¼
 		static Mesh* CreateCube(ID3D12Device* device);
 		static Mesh* CreateSphere(ID3D12Device* device, int slices = 16, int stacks = 16);
 		static Mesh* CreatePlane(ID3D12Device* device, float width = 10.0f, float depth = 10.0f);

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Graphics/Resources/Mesh.h"
 
@@ -12,3 +12,4 @@ namespace Span
 		MeshFilter(Mesh* m) : mesh(m) {}
 	};
 }
+

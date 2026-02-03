@@ -1,18 +1,18 @@
-#pragma once
+ï»¿#pragma once
 #include "Application.h"
 
-// ƒ†[ƒU[‚Ì‘ã‚í‚è‚É main ŠÖ”‚ğ’è‹`‚µ‚Ä‚µ‚Ü‚¤
+// ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ä»£ã‚ã‚Šã« main é–¢æ•°ã‚’å®šç¾©ã—ã¦ã—ã¾ã†
 extern Span::Application* Span::CreateApplication();
 
 int main(int argc, char** argv)
 {
-	// ƒ†[ƒU[‚ªì‚Á‚½ƒAƒvƒŠ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‚à‚ç‚¤
+	// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒä½œã£ãŸã‚¢ãƒ—ãƒªã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ã‚‚ã‚‰ã†
 	auto app = Span::CreateApplication();
 
-	// Às
+	// å®Ÿè¡Œ
 	app->Run();
 
-	// íœ
+	// å‰Šé™¤
 	delete app;
 
 	return 0;

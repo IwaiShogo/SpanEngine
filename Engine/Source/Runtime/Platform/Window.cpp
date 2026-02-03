@@ -1,9 +1,9 @@
-#include "Window.h"
+ï»¿#include "Window.h"
 #include "Core/Input/Input.h"
 
 #include <imgui.h>
 
-// ImGui‚ÌWin32ƒnƒ“ƒhƒ‰’è‹`
+// ImGuiã®Win32ãƒãƒ³ãƒ‰ãƒ©å®šç¾©
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 namespace Span
@@ -18,7 +18,7 @@ namespace Span
 		width = desc.Width;
 		height = desc.Height;
 
-		// 1. ƒEƒBƒ“ƒhƒEƒNƒ‰ƒX‚Ì“o˜^
+		// 1. ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¯ãƒ©ã‚¹ã®ç™»éŒ²
 		WNDCLASSEX wc = { 0 };
 		wc.cbSize = sizeof(WNDCLASSEX);
 		wc.style = CS_HREDRAW | CS_VREDRAW;
@@ -29,11 +29,11 @@ namespace Span
 
 		RegisterClassEx(&wc);
 
-		// 2. ƒEƒBƒ“ƒhƒEƒTƒCƒY‚Ì’²®
+		// 2. ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚µã‚¤ã‚ºã®èª¿æ•´
 		RECT windowRect = { 0, 0, width, height };
 		AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, FALSE);
 
-		// 3. ƒEƒBƒ“ƒhƒEì¬
+		// 3. ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ä½œæˆ
 		hWnd = CreateWindowEx(
 			0,
 			L"SpanEngineWindowClass",
@@ -51,10 +51,10 @@ namespace Span
 			return false;
 		}
 
-		// ƒ†[ƒU[ƒf[ƒ^‚ğ‚±‚ÌƒNƒ‰ƒX‚Ìƒ|ƒCƒ“ƒ^‚É•R‚Ã‚¯‚é
+		// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚’ã“ã®ã‚¯ãƒ©ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ã«ç´ã¥ã‘ã‚‹
 		SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
 
-		// 4. •\¦
+		// 4. è¡¨ç¤º
 		ShowWindow(hWnd, SW_SHOW);
 		return true;
 	}
@@ -71,17 +71,17 @@ namespace Span
 	bool Window::PollEvents()
 	{
 		MSG msg = { 0 };
-		// ƒƒbƒZ[ƒW‚ª‚ ‚éŒÀ‚èˆ—‚·‚é
+		// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒã‚ã‚‹é™ã‚Šå‡¦ç†ã™ã‚‹
 		while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
 			if (msg.message == WM_QUIT)
 			{
-				return false; // ƒAƒvƒŠI—¹ƒVƒOƒiƒ‹
+				return false; // ã‚¢ãƒ—ãƒªçµ‚äº†ã‚·ã‚°ãƒŠãƒ«
 			}
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		return true; // Œp‘±
+		return true; // ç¶™ç¶š
 	}
 
 	LRESULT CALLBACK Window::WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -96,13 +96,13 @@ namespace Span
 			PostQuitMessage(0);
 			return 0;
 
-		// ƒŠƒTƒCƒYƒCƒxƒ“ƒg
+		// ãƒªã‚µã‚¤ã‚ºã‚¤ãƒ™ãƒ³ãƒˆ
 		case WM_SIZE:
 			if (window && window->onResize)
 			{
 				uint32 w = LOWORD(lParam);
 				uint32 h = HIWORD(lParam);
-				// 0ƒTƒCƒY‚Í–³‹
+				// 0ã‚µã‚¤ã‚ºã¯ç„¡è¦–
 				if (w > 0 && h > 0)
 				{
 					window->width = w;
@@ -112,7 +112,7 @@ namespace Span
 			}
 			return 0;
 
-		// --- ƒL[ƒ{[ƒh“ü—Í ---
+		// --- ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰å…¥åŠ› ---
 		case WM_KEYDOWN:
 			Input::OnKeyDown((uint32)wParam);
 			return 0;
@@ -120,7 +120,7 @@ namespace Span
 			Input::OnKeyUp((uint32)wParam);
 			return 0;
 
-		// --- ƒ}ƒEƒX“ü—Í ---
+		// --- ãƒã‚¦ã‚¹å…¥åŠ› ---
 		case WM_LBUTTONDOWN: Input::OnMouseDown(0); return 0;
 		case WM_RBUTTONDOWN: Input::OnMouseDown(1); return 0;
 		case WM_MBUTTONDOWN: Input::OnMouseDown(2); return 0;
@@ -130,7 +130,7 @@ namespace Span
 		case WM_MBUTTONUP: Input::OnMouseUp(2); return 0;
 
 		case WM_MOUSEMOVE:
-			// ƒNƒ‰ƒCƒAƒ“ƒg—Ìˆæ“à‚ÌÀ•W‚ğæ“¾
+			// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆé ˜åŸŸå†…ã®åº§æ¨™ã‚’å–å¾—
 			Input::OnMouseMove(LOWORD(lParam), HIWORD(lParam));
 			return 0;
 		}
@@ -138,3 +138,4 @@ namespace Span
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 }
+

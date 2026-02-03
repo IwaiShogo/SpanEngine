@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include <imgui.h>
 
@@ -10,10 +10,10 @@ namespace Span
 		EditorPanel(const std::string& title) : title(title) {}
 		virtual ~EditorPanel() = default;
 
-		// –ˆƒtƒŒ[ƒ€ŒÄ‚Î‚ê‚é•`‰æŠÖ”
+		// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å‘¼ã°ã‚Œã‚‹æç”»é–¢æ•°
 		virtual void OnImGuiRender() = 0;
 
-		// •\¦E”ñ•\¦
+		// è¡¨ç¤ºãƒ»éè¡¨ç¤º
 		bool IsOpen() const { return isOpen; }
 		void Open() { isOpen = true; }
 		void Close() { isOpen = false; }
@@ -23,3 +23,4 @@ namespace Span
 		bool isOpen = true;
 	};
 }
+

@@ -1,6 +1,6 @@
-#include "Texture.h"
+ï»¿#include "Texture.h"
 
-// ‰æ‘œ“Ç‚İ‚İƒ‰ƒCƒuƒ‰ƒŠ‚ÌÀ‘•‚ğ’è‹`
+// ç”»åƒèª­ã¿è¾¼ã¿ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®å®Ÿè£…ã‚’å®šç¾©
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
@@ -12,7 +12,7 @@ namespace Span
     void Texture::Shutdown()
     {
         resource.Reset();
-        uploadBuffer.Reset(); // ƒAƒbƒvƒ[ƒh‚ªI‚í‚ê‚Î‰ğ•ú‚µ‚Ä—Ç‚¢‚ªA¡‰ñ‚Í•Û
+        uploadBuffer.Reset(); // ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãŒçµ‚ã‚ã‚Œã°è§£æ”¾ã—ã¦è‰¯ã„ãŒã€ä»Šå›ã¯ä¿æŒ
         srvHeap.Reset();
     }
 
@@ -20,9 +20,9 @@ namespace Span
     {
         SPAN_LOG("Loading Texture: %s", filepath.c_str());
 
-        // 1. stb_image ‚Å‰æ‘œ“Ç‚İ‚İ
+        // 1. stb_image ã§ç”»åƒèª­ã¿è¾¼ã¿
         int w, h, channels;
-        // RGBA (4ƒ`ƒƒƒ“ƒlƒ‹) ‚Å‹­§“I‚É“Ç‚İ‚Ş
+        // RGBA (4ãƒãƒ£ãƒ³ãƒãƒ«) ã§å¼·åˆ¶çš„ã«èª­ã¿è¾¼ã‚€
         unsigned char* data = stbi_load(filepath.c_str(), &w, &h, &channels, 4);
 
         if (!data)
@@ -34,22 +34,22 @@ namespace Span
         width = static_cast<uint32_t>(w);
         height = static_cast<uint32_t>(h);
 
-        // 2. GPU‚ÖƒAƒbƒvƒ[ƒh
+        // 2. GPUã¸ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰
         if (!UploadTexture(device, commandQueue, data, width, height, 4))
         {
             stbi_image_free(data);
             return false;
         }
 
-        // ƒƒ‚ƒŠ‰ğ•ú
+        // ãƒ¡ãƒ¢ãƒªè§£æ”¾
         stbi_image_free(data);
 
-        // 3. SRV (Shader Resource View) ƒq[ƒv‚Ìì¬
-        // ƒeƒNƒXƒ`ƒƒ1–‡‚É‚Â‚«1‚Â‚Ìƒq[ƒv‚ğì‚éiŒø—¦‚Íˆ«‚¢‚ªˆê”ÔŠÈ’Pj
+        // 3. SRV (Shader Resource View) ãƒ’ãƒ¼ãƒ—ã®ä½œæˆ
+        // ãƒ†ã‚¯ã‚¹ãƒãƒ£1æšã«ã¤ã1ã¤ã®ãƒ’ãƒ¼ãƒ—ã‚’ä½œã‚‹ï¼ˆåŠ¹ç‡ã¯æ‚ªã„ãŒä¸€ç•ªç°¡å˜ï¼‰
         D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
         srvHeapDesc.NumDescriptors = 1;
         srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE; // ƒVƒF[ƒ_[‚©‚çŒ©‚¦‚é‚æ‚¤‚É
+        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE; // ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‹ã‚‰è¦‹ãˆã‚‹ã‚ˆã†ã«
 
         if (FAILED(device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap))))
         {
@@ -57,7 +57,7 @@ namespace Span
             return false;
         }
 
-        // 4. SRV (ƒrƒ…[) ‚Ìì¬
+        // 4. SRV (ãƒ“ãƒ¥ãƒ¼) ã®ä½œæˆ
         D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
         srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
         srvDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -73,7 +73,7 @@ namespace Span
     bool Texture::UploadTexture(ID3D12Device* device, ID3D12CommandQueue* commandQueue,
         const void* initialData, uint64_t w, uint64_t h, uint64_t bytesPerPixel)
     {
-        // ƒŠƒ\[ƒX‹Lq
+        // ãƒªã‚½ãƒ¼ã‚¹è¨˜è¿°
         D3D12_RESOURCE_DESC textureDesc = {};
         textureDesc.MipLevels = 1;
         textureDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -85,8 +85,8 @@ namespace Span
         textureDesc.SampleDesc.Quality = 0;
         textureDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
 
-        // 1. ƒfƒtƒHƒ‹ƒgƒq[ƒviVRAMj‚ÉƒeƒNƒXƒ`ƒƒƒŠƒ\[ƒX‚ğì¬
-        // ‰Šúó‘Ô‚Í COPY_DEST (ƒRƒs[æ) ‚É‚·‚é
+        // 1. ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ’ãƒ¼ãƒ—ï¼ˆVRAMï¼‰ã«ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒªã‚½ãƒ¼ã‚¹ã‚’ä½œæˆ
+        // åˆæœŸçŠ¶æ…‹ã¯ COPY_DEST (ã‚³ãƒ”ãƒ¼å…ˆ) ã«ã™ã‚‹
         D3D12_HEAP_PROPERTIES defaultHeap = { D3D12_HEAP_TYPE_DEFAULT };
 
         if (FAILED(device->CreateCommittedResource(
@@ -100,7 +100,7 @@ namespace Span
             return false;
         }
 
-        // 2. ƒAƒbƒvƒ[ƒh—pƒoƒbƒtƒ@‚ÌƒTƒCƒYŒvZ
+        // 2. ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ç”¨ãƒãƒƒãƒ•ã‚¡ã®ã‚µã‚¤ã‚ºè¨ˆç®—
         uint64_t uploadBufferSize = 0;
         D3D12_PLACED_SUBRESOURCE_FOOTPRINT footprint;
         UINT64 rowSizeInBytes;
@@ -108,7 +108,7 @@ namespace Span
 
         device->GetCopyableFootprints(&textureDesc, 0, 1, 0, &footprint, &numRows, &rowSizeInBytes, &uploadBufferSize);
 
-        // 3. ƒAƒbƒvƒ[ƒhƒq[ƒviCPU‘‚«‚İ‰Âj‚ÌƒŠƒ\[ƒXì¬
+        // 3. ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒ’ãƒ¼ãƒ—ï¼ˆCPUæ›¸ãè¾¼ã¿å¯ï¼‰ã®ãƒªã‚½ãƒ¼ã‚¹ä½œæˆ
         D3D12_HEAP_PROPERTIES uploadHeap = { D3D12_HEAP_TYPE_UPLOAD };
         D3D12_RESOURCE_DESC bufferDesc = {};
         bufferDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;
@@ -133,7 +133,7 @@ namespace Span
             return false;
         }
 
-        // 4. ƒf[ƒ^‚ğƒAƒbƒvƒ[ƒhƒoƒbƒtƒ@‚ÉƒRƒs[
+        // 4. ãƒ‡ãƒ¼ã‚¿ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒãƒƒãƒ•ã‚¡ã«ã‚³ãƒ”ãƒ¼
         void* mappedData = nullptr;
         uploadBuffer->Map(0, nullptr, &mappedData);
 
@@ -148,8 +148,8 @@ namespace Span
         }
         uploadBuffer->Unmap(0, nullptr);
 
-        // 5. ƒRƒ}ƒ“ƒhƒŠƒXƒg‚ğì‚Á‚ÄƒRƒs[–½—ß‚ğ”­s
-        // (–{—ˆ‚ÍRenderer‚ÌƒRƒ}ƒ“ƒhƒŠƒXƒg‚ğg‚¤‚×‚«‚¾‚ªA‰Šú‰»—p‚Æ‚µ‚Äˆê“I‚Éì¬)
+        // 5. ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œã£ã¦ã‚³ãƒ”ãƒ¼å‘½ä»¤ã‚’ç™ºè¡Œ
+        // (æœ¬æ¥ã¯Rendererã®ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½¿ã†ã¹ãã ãŒã€åˆæœŸåŒ–ç”¨ã¨ã—ã¦ä¸€æ™‚çš„ã«ä½œæˆ)
         ComPtr<ID3D12CommandAllocator> cmdAlloc;
         ComPtr<ID3D12GraphicsCommandList> cmdList;
         device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&cmdAlloc));
@@ -167,7 +167,7 @@ namespace Span
 
         cmdList->CopyTextureRegion(&dstLoc, 0, 0, 0, &srcLoc, nullptr);
 
-        // ƒŠƒ\[ƒXƒoƒŠƒA (ƒRƒs[æ -> ƒVƒF[ƒ_[ƒŠƒ\[ƒX“Ç‚İæ‚è)
+        // ãƒªã‚½ãƒ¼ã‚¹ãƒãƒªã‚¢ (ã‚³ãƒ”ãƒ¼å…ˆ -> ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ãƒªã‚½ãƒ¼ã‚¹èª­ã¿å–ã‚Š)
         D3D12_RESOURCE_BARRIER barrier = {};
         barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
         barrier.Transition.pResource = resource.Get();
@@ -178,11 +178,11 @@ namespace Span
 
         cmdList->Close();
 
-        // Às‚µ‚Ä‘Ò‹@ (ŠÈˆÕ“¯Šú)
+        // å®Ÿè¡Œã—ã¦å¾…æ©Ÿ (ç°¡æ˜“åŒæœŸ)
         ID3D12CommandList* ppCommandLists[] = { cmdList.Get() };
         commandQueue->ExecuteCommandLists(1, ppCommandLists);
 
-        // ƒtƒFƒ“ƒX“¯Šú (‘Ò‹@)
+        // ãƒ•ã‚§ãƒ³ã‚¹åŒæœŸ (å¾…æ©Ÿ)
         ComPtr<ID3D12Fence> fence;
         device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence));
         commandQueue->Signal(fence.Get(), 1);

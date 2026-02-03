@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Editor/Panels/EditorPanel.h"
 #include "ECS/Kernel/Entity.h"
 
@@ -12,16 +12,17 @@ namespace Span
 		void OnImGuiRender() override;
 
 	private:
-		// ƒcƒŠ[•`‰æ‚ÌÄ‹AŠÖ”
+		// ãƒ„ãƒªãƒ¼æç”»ã®å†å¸°é–¢æ•°
 		void DrawEntityNode(Entity entity);
 
-		// ‰EƒNƒŠƒbƒNƒƒjƒ…[
+		// å³ã‚¯ãƒªãƒƒã‚¯ãƒ¡ãƒ‹ãƒ¥ãƒ¼
 		void DrawContextMenu(Entity entity);
 
-		// ƒ‹[ƒgŠK‘w (e–³‚µ) ‚Ì‰EƒNƒŠƒbƒNƒƒjƒ…[
+		// ãƒ«ãƒ¼ãƒˆéšå±¤ (è¦ªç„¡ã—) ã®å³ã‚¯ãƒªãƒƒã‚¯ãƒ¡ãƒ‹ãƒ¥ãƒ¼
 		void DrawEmptySpaceContextMenu();
 
-		// ƒhƒ‰ƒbƒO & ƒhƒƒbƒvˆ—
+		// ãƒ‰ãƒ©ãƒƒã‚° & ãƒ‰ãƒ­ãƒƒãƒ—å‡¦ç†
 		void HandleDragDrop(Entity targetEntity);
 	};
 }
+

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "ECS/Kernel/System.h"
 #include "Application.h"
 #include "Components/Core/Transform.h"
@@ -18,10 +18,10 @@ namespace Span
 			GetWorld()->ForEach<Camera, LocalToWorld>(
 				[&](Entity, Camera& cam, LocalToWorld& ltw)
 				{
-					// 1. Views—ñ
+					// 1. Viewè¡Œåˆ—
 					Matrix4x4 viewMatrix = ltw.Value.Invert();
 
-					// 2. Projections—ñ
+					// 2. Projectionè¡Œåˆ—
 					float aspectRatio = static_cast<float>(window.GetWidth()) / static_cast<float>(window.GetHeight());
 					if (aspectRatio <= 0.0f) aspectRatio = 1.0f;
 
@@ -32,10 +32,11 @@ namespace Span
 						cam.FarClip
 					);
 
-					// 3. ƒŒƒ“ƒ_ƒ‰[‚É“K—p
+					// 3. ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ã«é©ç”¨
 					renderer.SetCamera(viewMatrix, projMatrix);
 				}
 			);
 		}
 	};
 }
+

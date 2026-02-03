@@ -1,4 +1,4 @@
-#include "Application.h"
+ï»¿#include "Application.h"
 #include "Core/Time/Time.h"
 #include "Core/Input/Input.h"
 #include "Editor/GuiManager.h"
@@ -11,14 +11,14 @@ namespace Span
 
 	Application::Application()
 	{
-		assert(!s_instance && "Application already exists!");	// “ñd‹N“®–h~
+		assert(!s_instance && "Application already exists!");	// äºŒé‡èµ·å‹•é˜²æ­¢
 		s_instance = this;
 
-		// 1. ƒƒK[‰Šú‰»
+		// 1. ãƒ­ã‚¬ãƒ¼åˆæœŸåŒ–
 		Logger::Initialize();
 		SPAN_LOG("--- Span Engine Initializing ---");
 
-		// 2. ƒEƒBƒ“ƒhƒE‰Šú‰»
+		// 2. ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦åˆæœŸåŒ–
 		WindowDesc desc;
 		desc.Title = L"Span Engine App";
 		desc.Width = 1280;
@@ -31,7 +31,7 @@ namespace Span
 			return;
 		}
 
-		// 3. graphicsContext‰Šú‰»
+		// 3. graphicsContextåˆæœŸåŒ–
 		if (!graphicsContext.Initialize(window))
 		{
 			SPAN_FATAL("GraphicsContext Initialization Failed!");
@@ -39,7 +39,7 @@ namespace Span
 			return;
 		}
 
-		// 4. ƒŒƒ“ƒ_ƒ‰[‰Šú‰»
+		// 4. ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼åˆæœŸåŒ–
 		if (!renderer.Initialize(&graphicsContext))
 		{
 			SPAN_FATAL("Render Initialization Failed!");
@@ -47,20 +47,20 @@ namespace Span
 			return;
 		}
 
-		// 4-b. ƒV[ƒ“ƒoƒbƒtƒ@‚Ì‰Šú‰»
+		// 4-b. ã‚·ãƒ¼ãƒ³ãƒãƒƒãƒ•ã‚¡ã®åˆæœŸåŒ–
 		if (!sceneBuffer.Initialize(renderer.GetDevice(), window.GetWidth(), window.GetHeight()))
 		{
 			SPAN_FATAL("SceneBuffer Initialization Failed!");
 			isRunning = false;
 		}
 
-		// ƒEƒBƒ“ƒhƒEƒŠƒTƒCƒY‚ÉƒŒƒ“ƒ_ƒ‰[‚Ö’Ê’m
+		// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒªã‚µã‚¤ã‚ºæ™‚ã«ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ã¸é€šçŸ¥
 		window.SetOnResize([this](uint32 w, uint32 h) {
 			renderer.OnResize(w, h);
 			sceneBuffer.Resize(renderer.GetDevice(), w, h);
 			});
 
-		// 5. ŠÔE“ü—ÍEGUIŠÇ—‰Šú‰»
+		// 5. æ™‚é–“ãƒ»å…¥åŠ›ãƒ»GUIç®¡ç†åˆæœŸåŒ–
 		Time::Initialize();
 		Input::Initialize(window.GetHandle());
 		GuiManager::Initialize(window.GetHandle(), renderer.GetDevice(), renderer.GetCommandQueue(), renderer.GetFrameCount());
@@ -79,19 +79,19 @@ namespace Span
 
 	void Application::Run()
 	{
-		// ƒ†[ƒU[’è‹`‚ÌŠJnˆ—
+		// ãƒ¦ãƒ¼ã‚¶ãƒ¼å®šç¾©ã®é–‹å§‹å‡¦ç†
 		OnStart();
 
 		while (isRunning)
 		{
-			// ƒEƒBƒ“ƒhƒEƒCƒxƒ“ƒgˆ—
+			// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
 			if (!window.PollEvents())
 			{
 				isRunning = false;
 				break;
 			}
 
-			// ƒtƒŒ[ƒ€ŠJn‘O‚ÉƒV[ƒ“ƒrƒ…[‚ÌƒŠƒTƒCƒY
+			// ãƒ•ãƒ¬ãƒ¼ãƒ é–‹å§‹å‰ã«ã‚·ãƒ¼ãƒ³ãƒ“ãƒ¥ãƒ¼ã®ãƒªã‚µã‚¤ã‚º
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
 			{
 				Vector2 viewSize = scenePanel->GetTargetResolution();
@@ -106,7 +106,7 @@ namespace Span
 				}
 			}
 
-			// --- 1. ƒV[ƒ“•`‰æ (Render to Texture) ---
+			// --- 1. ã‚·ãƒ¼ãƒ³æç”» (Render to Texture) ---
 
 			ID3D12GraphicsCommandList* cmd = renderer.BeginFrame();
 
@@ -118,7 +118,7 @@ namespace Span
 			cmd->OMSetRenderTargets(1, &rtv, FALSE, &dsv);
 			sceneBuffer.Clear(cmd);
 
-			// ƒrƒ…[ƒ|[ƒgİ’è
+			// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆè¨­å®š
 			D3D12_VIEWPORT viewport = { 0.0f, 0.0f, (float)sceneBuffer.GetWidth(), (float)sceneBuffer.GetHeight(), 0.0f, 1.0f };
 			D3D12_RECT scissor = { 0, 0, (LONG)sceneBuffer.GetWidth(), (LONG)sceneBuffer.GetHeight() };
 			cmd->RSSetViewports(1, &viewport);
@@ -131,14 +131,14 @@ namespace Span
 
 			sceneBuffer.TransitionToShaderResource(cmd);
 
-			// --- 2. ƒGƒfƒBƒ^•`‰æ (Back Buffer) ---
+			// --- 2. ã‚¨ãƒ‡ã‚£ã‚¿æç”» (Back Buffer) ---
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
 			{
 				D3D12_GPU_DESCRIPTOR_HANDLE imGuiTexture = GuiManager::RegisterTexture(sceneBuffer.GetSRV());
 				scenePanel->SetTexture(imGuiTexture);
 			}
 
-			// ImGui—p‚ÉƒoƒbƒNƒoƒbƒtƒ@‚Ö–ß‚· (GraphicsContext‚É’Ç‰Á‚µ‚½ŠÖ”‚ğg‚¤)
+			// ImGuiç”¨ã«ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã¸æˆ»ã™ (GraphicsContextã«è¿½åŠ ã—ãŸé–¢æ•°ã‚’ä½¿ã†)
 			graphicsContext.SetRenderTargetToBackBuffer(cmd);
 
 			GuiManager::BeginFrame();
@@ -152,3 +152,4 @@ namespace Span
 		world.ShutdownSystem();
 	}
 }
+

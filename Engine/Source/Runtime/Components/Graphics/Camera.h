@@ -1,13 +1,13 @@
-#pragma once
+ï»¿#pragma once
 #include "Reflection/SpanReflection.h"
 
 namespace Span
 {
 	struct Camera
 	{
-		float Fov = 45.0f;		// ‰æŠpi“x”–@j
-		float NearClip = 0.1;	// ‚±‚ê‚æ‚èè‘O‚Í•`‰æ‚µ‚È‚¢
-		float FarClip = 1000.0f;	// ‚±‚ê‚æ‚è‰œ‚Í•`‰æ‚µ‚È‚¢
+		float Fov = 45.0f;		// ç”»è§’ï¼ˆåº¦æ•°æ³•ï¼‰
+		float NearClip = 0.1;	// ã“ã‚Œã‚ˆã‚Šæ‰‹å‰ã¯æç”»ã—ãªã„
+		float FarClip = 1000.0f;	// ã“ã‚Œã‚ˆã‚Šå¥¥ã¯æç”»ã—ãªã„
 
 		Camera() = default;
 		Camera(float fov) : Fov(fov) {}
@@ -19,3 +19,4 @@ namespace Span
 		SPAN_INSPECTOR_END()
 	};
 }
+

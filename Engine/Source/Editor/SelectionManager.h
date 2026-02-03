@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "ECS/Kernel/Entity.h"
 
 namespace Span
@@ -6,7 +6,7 @@ namespace Span
 	class SelectionManager
 	{
 	public:
-		// ‘I‘ğ‚Ì’Ç‰Á
+		// é¸æŠã®è¿½åŠ 
 		static void Add(Entity entity)
 		{
 			if (std::find(selections.begin(), selections.end(), entity) == selections.end())
@@ -15,7 +15,7 @@ namespace Span
 			}
 		}
 
-		// ’Pˆê‘I‘ğ
+		// å˜ä¸€é¸æŠ
 		static void Select(Entity entity)
 		{
 			selections.clear();
@@ -33,13 +33,13 @@ namespace Span
 			selections.clear();
 		}
 
-		// ƒƒCƒ“‚Ì‘I‘ğ‘ÎÛ
+		// ãƒ¡ã‚¤ãƒ³ã®é¸æŠå¯¾è±¡
 		static Entity GetPrimary()
 		{
 			return selections.empty() ? Entity::Null : selections.back();
 		}
 
-		// ‘S‘I‘ğƒŠƒXƒg
+		// å…¨é¸æŠãƒªã‚¹ãƒˆ
 		static const std::vector<Entity>& GetSelections() { return selections; }
 
 		static bool IsSelected(Entity entity)
@@ -51,3 +51,4 @@ namespace Span
 		inline static std::vector<Entity> selections;
 	};
 }
+

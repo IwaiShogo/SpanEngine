@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Core/Math/SpanMath.h"
 #include "Graphics/Core/ConstantBuffer.h"
@@ -6,16 +6,16 @@
 
 namespace Span
 {
-	// ƒVƒF[ƒ_[‚É‘—‚éƒf[ƒ^\‘¢
+	// ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã«é€ã‚‹ãƒ‡ãƒ¼ã‚¿æ§‹é€ 
 	struct MaterialData
 	{
-		Vector3 Albedo = { 1.0f, 1.0f, 1.0f };	// ƒx[ƒXƒJƒ‰[
-		float Roughness = 0.5f;					// ‘e‚³ (0 = ƒcƒ‹ƒcƒ‹, 1 = ƒUƒ‰ƒUƒ‰)
+		Vector3 Albedo = { 1.0f, 1.0f, 1.0f };	// ãƒ™ãƒ¼ã‚¹ã‚«ãƒ©ãƒ¼
+		float Roughness = 0.5f;					// ç²—ã• (0 = ãƒ„ãƒ«ãƒ„ãƒ«, 1 = ã‚¶ãƒ©ã‚¶ãƒ©)
 
-		float Metallic = 0.0f;					// ‹à‘®“x (0 = ”ñ‹à‘®, 1 = ‹à‘®)
-		float Opacity = 1.0f;					// “§–¾“x (1 = •s“§–¾, 0 = “§–¾)
-		float useTexture = 0.0f;				// 1.0f‚È‚çƒeƒNƒXƒ`ƒƒg—p
-		float Padding;						// ƒoƒCƒg”‡‚í‚¹
+		float Metallic = 0.0f;					// é‡‘å±åº¦ (0 = éé‡‘å±, 1 = é‡‘å±)
+		float Opacity = 1.0f;					// é€æ˜åº¦ (1 = ä¸é€æ˜, 0 = é€æ˜)
+		float useTexture = 0.0f;				// 1.0fãªã‚‰ãƒ†ã‚¯ã‚¹ãƒãƒ£ä½¿ç”¨
+		float Padding;						// ãƒã‚¤ãƒˆæ•°åˆã‚ã›
 	};
 
 	class Material
@@ -24,16 +24,16 @@ namespace Span
 		Material();
 		~Material();
 
-		// ‰Šú‰»
+		// åˆæœŸåŒ–
 		bool Initialize(ID3D12Device* device);
 
-		// I—¹
+		// çµ‚äº†
 		void Shutdown();
 
-		// ƒf[ƒ^‚ğGPU‚É“]‘—
+		// ãƒ‡ãƒ¼ã‚¿ã‚’GPUã«è»¢é€
 		void Update();
 
-		// --- ƒvƒƒpƒeƒB ---
+		// --- ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ---
 		void SetAlbedo(const Vector3& color) { data.Albedo = color; isDirty = true; }
 		void SetRoughness(float roughness) { data.Roughness = roughness; isDirty = true; }
 		void SetMetallic(float metallic) { data.Metallic = metallic; isDirty = true; }
@@ -42,7 +42,7 @@ namespace Span
 		{
 			data.Opacity = opacity;
 			isDirty = true;
-			// 1.0–¢–‚È‚ç©“®“I‚É“§–¾ƒ‚[ƒh‚Æ‚İ‚È‚·ƒtƒ‰ƒO
+			// 1.0æœªæº€ãªã‚‰è‡ªå‹•çš„ã«é€æ˜ãƒ¢ãƒ¼ãƒ‰ã¨ã¿ãªã™ãƒ•ãƒ©ã‚°
 			isTransparent = (opacity < 1.0f);
 		}
 
@@ -54,10 +54,10 @@ namespace Span
 		}
 		Texture* GetTexture() const { return texture; }
 
-		// ƒ}ƒeƒŠƒAƒ‹‚ª“§–¾‚©
+		// ãƒãƒ†ãƒªã‚¢ãƒ«ãŒé€æ˜ã‹
 		bool IsTransparent() const { return isTransparent; }
 
-		// GPUƒAƒhƒŒƒXæ“¾
+		// GPUã‚¢ãƒ‰ãƒ¬ã‚¹å–å¾—
 		D3D12_GPU_VIRTUAL_ADDRESS GetGPUVirtualAddress() const;
 
 	private:
@@ -68,3 +68,4 @@ namespace Span
 		Texture* texture = nullptr;
 	};
 }
+

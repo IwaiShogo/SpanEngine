@@ -1,4 +1,4 @@
-#include "InspectorPanel.h"
+ï»¿#include "InspectorPanel.h"
 #include "Editor/SelectionManager.h"
 #include "Runtime/Application.h"
 #include "Runtime/Reflection/ComponentRegistry.h"
@@ -6,7 +6,7 @@
 #include "Editor/PanelManager.h"
 #include "Editor/ImGui/ImGuiUI.h"
 
-// Šî–{ƒRƒ“ƒ|[ƒlƒ“ƒg
+// åŸºæœ¬ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 #include "Runtime/Components/Core/Name.h"
 #include "Runtime/Components/Core/Tag.h"
 #include "Runtime/Components/Core/Layer.h"
@@ -38,7 +38,7 @@ namespace Span
 		ImGui::Separator();
 		ImGui::Spacing();
 
-		// 1. ƒAƒCƒRƒ“‚ÆƒAƒNƒeƒBƒuƒ`ƒFƒbƒNƒ{ƒbƒNƒX
+		// 1. ã‚¢ã‚¤ã‚³ãƒ³ã¨ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹
 		bool isActive = true;
 		if (Active* a = world.GetComponentPtr<Active>(selected))
 		{
@@ -56,18 +56,18 @@ namespace Span
 
 		ImGui::SameLine();
 
-		// 2. ƒGƒ“ƒeƒBƒeƒB–¼
+		// 2. ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£å
 		ImGui::PushItemWidth(ImGui::GetContentRegionAvail().x * 0.6f);
 		if (Name* nameComp = world.GetComponentPtr<Name>(selected))
 		{
 			if (ImGui::InputText("##Name", nameComp->Value, sizeof(nameComp->Value)))
 			{
-				// –¼‘O•ÏX‚Ìˆ—
+				// åå‰å¤‰æ›´æ™‚ã®å‡¦ç†
 			}
 		}
 		else
 		{
-			// NameƒRƒ“ƒ|[ƒlƒ“ƒg‚ª–³‚¢ê‡‚Í’Ç‰Áƒ{ƒ^ƒ“‚©Aƒ_ƒ~[•\¦
+			// Nameã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒç„¡ã„å ´åˆã¯è¿½åŠ ãƒœã‚¿ãƒ³ã‹ã€ãƒ€ãƒŸãƒ¼è¡¨ç¤º
 			char buf[64];
 			sprintf_s(buf, "Entity %d", selected.ID.Index);
 			if (ImGui::InputText("##Name", buf, sizeof(buf), ImGuiInputTextFlags_EnterReturnsTrue))
@@ -79,15 +79,15 @@ namespace Span
 		}
 		ImGui::PopItemWidth();
 
-		// 3. Staticƒtƒ‰ƒO
+		// 3. Staticãƒ•ãƒ©ã‚°
 		ImGui::SameLine();
 		ImGui::TextDisabled("Static");
-		// ƒhƒƒbƒvƒ_ƒEƒ“‚Å (Nothing, Everything, etc) ‚È‚Ç
+		// ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ã§ (Nothing, Everything, etc) ãªã©
 
 		ImGui::Spacing();
 		ImGui::Separator();
 
-		// 4. Tag & Layer s
+		// 4. Tag & Layer è¡Œ
 		{
 			float labelWidth = 50.0f;
 
@@ -95,11 +95,11 @@ namespace Span
 			ImGui::Text("Tag"); ImGui::SameLine(labelWidth);
 			ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x * 0.5f - 10);
 
-			// ƒ^ƒOƒŠƒXƒg («—ˆ“I‚É‚ÍTagManager‚©‚çæ“¾)
+			// ã‚¿ã‚°ãƒªã‚¹ãƒˆ (å°†æ¥çš„ã«ã¯TagManagerã‹ã‚‰å–å¾—)
 			const char* tags[] = { "Untagged", "Player", "Enemy", "MainCamera" };
 			int currentTagIndex = 0;
 
-			// Œ»İ‚Ìƒ^ƒO‚ğæ“¾
+			// ç¾åœ¨ã®ã‚¿ã‚°ã‚’å–å¾—
 			if (Tag* t = world.GetComponentPtr<Tag>(selected))
 			{
 				for (int i = 0; i < IM_ARRAYSIZE(tags); i++) {
@@ -108,13 +108,13 @@ namespace Span
 			}
 			else
 			{
-				// ‚Á‚Ä‚¢‚È‚¯‚ê‚Î’Ç‰Á‚µ‚ÄUntagged‚É‚·‚é
+				// æŒã£ã¦ã„ãªã‘ã‚Œã°è¿½åŠ ã—ã¦Untaggedã«ã™ã‚‹
 				world.AddComponent<Tag>(selected, Tag("Untagged"));
 			}
 
 			if (ImGui::Combo("##Tag", &currentTagIndex, tags, IM_ARRAYSIZE(tags)))
 			{
-				// •ÏX‚ğ“K—p
+				// å¤‰æ›´ã‚’é©ç”¨
 				if (Tag* t = world.GetComponentPtr<Tag>(selected)) {
 					t->Value = tags[currentTagIndex];
 				}
@@ -153,10 +153,10 @@ namespace Span
 
 		// --- Component List ---
 
-		// ƒŒƒWƒXƒgƒŠ‚©‚çƒŠƒXƒg‚ğƒRƒs[
+		// ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‹ã‚‰ãƒªã‚¹ãƒˆã‚’ã‚³ãƒ”ãƒ¼
 		auto& components = ComponentRegistry::GetAll();
 
-		// ƒ\[ƒg (Transform‚ğÅ—DæA‚ ‚Æ‚Í–¼‘O‡)
+		// ã‚½ãƒ¼ãƒˆ (Transformã‚’æœ€å„ªå…ˆã€ã‚ã¨ã¯åå‰é †)
 		std::sort(components.begin(), components.end(), [](const ComponentMetadata& a, const ComponentMetadata& b)
 		{
 			if (a.Name == "Transform") return true;
@@ -165,25 +165,25 @@ namespace Span
 			return a.Order < b.Order;
 		});
 
-		// •`‰æƒ‹[ƒv
+		// æç”»ãƒ«ãƒ¼ãƒ—
 		for (size_t i = 0; i < components.size(); ++i)
 		{
 			auto& meta = components[i];
 
 			bool isRemove = false;
 
-			// Šî–{ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÍƒŠƒXƒg‚Éo‚³‚È‚¢
+			// åŸºæœ¬ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯ãƒªã‚¹ãƒˆã«å‡ºã•ãªã„
 			if (meta.Name == "Name" || meta.Name == "Tag" || meta.Name == "Layer" || meta.Name == "Active") continue;
 
 			ImGui::PushID(i);
 
-			// •`‰æÀs
+			// æç”»å®Ÿè¡Œ
 			meta.DrawFunc(selected, world);
 
 			ImGui::PopID();
 		}
 
-		// ’Ç‰Áƒ{ƒ^ƒ“
+		// è¿½åŠ ãƒœã‚¿ãƒ³
 		ImGui::Spacing();
 		ImGui::Separator();
 		if (ImGui::Button("Add Component", ImVec2(-1, 0)))
@@ -193,7 +193,7 @@ namespace Span
 
 		if (ImGui::BeginPopup("AddComponentPopup"))
 		{
-			// ƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğƒ\[ƒg‚µ‚Ä•\¦
+			// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’ã‚½ãƒ¼ãƒˆã—ã¦è¡¨ç¤º
 			std::vector<const ComponentMetadata*> sortedMetas;
 			for (const auto& meta : components) sortedMetas.push_back(&meta);
 			std::sort(sortedMetas.begin(), sortedMetas.end(), [](const auto* a, const auto* b) { return a->Name < b->Name; });

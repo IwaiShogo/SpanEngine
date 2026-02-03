@@ -1,8 +1,9 @@
-#pragma once
+ï»¿#pragma once
 #include "ECS/Kernel/Entity.h"
 
 namespace Span
 {
-	// ƒGƒfƒBƒ^[ƒJƒƒ‰‚ğ¯•Ê‚·‚é‚½‚ß‚Ìƒ^ƒOƒRƒ“ƒ|[ƒlƒ“ƒg
+	// ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã‚«ãƒ¡ãƒ©ã‚’è­˜åˆ¥ã™ã‚‹ãŸã‚ã®ã‚¿ã‚°ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 	struct EditorCamera {};
 }
+

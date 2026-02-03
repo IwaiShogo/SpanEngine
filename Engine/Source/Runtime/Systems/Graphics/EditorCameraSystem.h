@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "ECS/Kernel/System.h"
 #include "Core/Input/Input.h"
 #include "Components/Core/Transform.h"
@@ -24,20 +24,20 @@ namespace Span
 			GetWorld()->ForEach<EditorCamera, Camera, Transform>(
 				[&](Entity e, EditorCamera&,Camera& cam, Transform& trans)
 				{
-					// --- ‰EƒNƒŠƒbƒNŠJn‚Ìˆ— ---
+					// --- å³ã‚¯ãƒªãƒƒã‚¯é–‹å§‹æ™‚ã®å‡¦ç† ---
 					if (Input::GetKeyDown(Key::MouseRight))
 					{
-						// ƒJ[ƒ\ƒ‹‚ğƒƒbƒN‚µ‚Ä–³ŒÀ‰ñ“]ƒ‚[ƒh
+						// ã‚«ãƒ¼ã‚½ãƒ«ã‚’ãƒ­ãƒƒã‚¯ã—ã¦ç„¡é™å›è»¢ãƒ¢ãƒ¼ãƒ‰
 						Input::SetLockCursor(true);
 						m_controlling = true;
 
-						// Œ»İ‚ÌQuaternion‚©‚çYaw/Pitch‚ğ‹tZ‚µ‚Ä“¯Šú‚³‚¹‚é
+						// ç¾åœ¨ã®Quaternionã‹ã‚‰Yaw/Pitchã‚’é€†ç®—ã—ã¦åŒæœŸã•ã›ã‚‹
 						Vector3 euler = trans.Rotation.ToEuler();
 						m_pitch = euler.x;
 						m_yaw = euler.y;
 					}
 
-					// --- ‰EƒNƒŠƒbƒNI—¹‚Ìˆ— ---
+					// --- å³ã‚¯ãƒªãƒƒã‚¯çµ‚äº†æ™‚ã®å‡¦ç† ---
 					if (Input::GetKeyUp(Key::MouseRight))
 					{
 						Input::SetLockCursor(false);
@@ -46,41 +46,41 @@ namespace Span
 
 					float dt = Time::GetDeltaTime();
 
-					// --- 1. ‰ñ“] (‰EƒNƒŠƒbƒN’†‚Ì‚İ) ---
+					// --- 1. å›è»¢ (å³ã‚¯ãƒªãƒƒã‚¯ä¸­ã®ã¿) ---
 					if (Input::GetKey(Key::MouseRight))
 					{
 						Vector2 delta = Input::GetMouseDelta();
 						float sensitivity = 0.002f;
 
-						// ’l‚ğ‰ÁZ
+						// å€¤ã‚’åŠ ç®—
 						m_yaw += delta.x * sensitivity;
 						m_pitch += delta.y * sensitivity;
 
-						// ã‰º‚ÌŠp“x§ŒÀ (^ãE^‰º•t‹ß‚Å~‚ß‚é: -89“x ~ 89“x)
+						// ä¸Šä¸‹ã®è§’åº¦åˆ¶é™ (çœŸä¸Šãƒ»çœŸä¸‹ä»˜è¿‘ã§æ­¢ã‚ã‚‹: -89åº¦ ~ 89åº¦)
 						float limit = ToRadians(89.0f);
 						m_pitch = Clamp(m_pitch, -limit, limit);
 
-						// ‰ñ“]‚ğÄ\’z (Roll‚ğŠÜ‚Ü‚È‚¢)
-						// ‡˜: Pitch(X) -> Yaw(Y) -> Roll(Z=0)
+						// å›è»¢ã‚’å†æ§‹ç¯‰ (Rollã‚’å«ã¾ãªã„)
+						// é †åº: Pitch(X) -> Yaw(Y) -> Roll(Z=0)
 						trans.Rotation = Quaternion::FromEuler(m_pitch, m_yaw, 0.0f);
 					}
 
-					// --- 2. ˆÚ“® (ƒ[ƒJƒ‹À•WŠî€) ---
+					// --- 2. ç§»å‹• (ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™åŸºæº–) ---
 					if (m_controlling)
 					{
-						float speed = 10.0f * dt; // ­‚µ‘¬‚­‚µ‚Ü‚µ‚½
+						float speed = 10.0f * dt; // å°‘ã—é€Ÿãã—ã¾ã—ãŸ
 						if (Input::GetKey(Key::LeftShift)) speed *= 4.0f;
 
 						Vector3 moveDir = Vector3::Zero;
 
-						// ƒJƒƒ‰‚ÌŒ»İ‚ÌŒü‚«‚É‡‚í‚¹‚ÄˆÚ“®ƒxƒNƒgƒ‹‚ğì¬
-						// Forward/Right‚ÍŒ»İ‚ÌRotation‚©‚çŒvZ‚³‚ê‚é‚½‚ßA‹ü•ûŒü‚É³‚µ‚­i‚İ‚Ü‚·
+						// ã‚«ãƒ¡ãƒ©ã®ç¾åœ¨ã®å‘ãã«åˆã‚ã›ã¦ç§»å‹•ãƒ™ã‚¯ãƒˆãƒ«ã‚’ä½œæˆ
+						// Forward/Rightã¯ç¾åœ¨ã®Rotationã‹ã‚‰è¨ˆç®—ã•ã‚Œã‚‹ãŸã‚ã€è¦–ç·šæ–¹å‘ã«æ­£ã—ãé€²ã¿ã¾ã™
 						if (Input::GetKey(Key::W)) moveDir += trans.GetForward();
 						if (Input::GetKey(Key::S)) moveDir -= trans.GetForward();
 						if (Input::GetKey(Key::D)) moveDir += trans.GetRight();
 						if (Input::GetKey(Key::A)) moveDir -= trans.GetRight();
 
-						// ã¸E‰º~ (ƒ[ƒ‹ƒhY²)
+						// ä¸Šæ˜‡ãƒ»ä¸‹é™ (ãƒ¯ãƒ¼ãƒ«ãƒ‰Yè»¸)
 						if (Input::GetKey(Key::E)) moveDir += Vector3::Up;
 						if (Input::GetKey(Key::Q)) moveDir -= Vector3::Up;
 

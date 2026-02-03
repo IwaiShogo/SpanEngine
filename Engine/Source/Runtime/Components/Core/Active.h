@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 namespace Span
 {
@@ -10,3 +10,4 @@ namespace Span
 		Active(bool isActive) : Value(isActive) {}
 	};
 }
+

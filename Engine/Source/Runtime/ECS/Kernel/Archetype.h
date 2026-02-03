@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "ECS/Internal/ComponentType.h"
 #include "Chunk.h"
@@ -6,9 +6,9 @@
 namespace Span
 {
 	/**
-	 * @brief	ƒA[ƒLƒ^ƒCƒv–¼ (Signature)
-	 * ƒRƒ“ƒ|[ƒlƒ“ƒgID‚ÌƒŠƒXƒg‚ğƒ\[ƒg‚µ‚Ä•Û‚µ‚½‚à‚ÌB
-	 * ‚±‚ê‚ªˆê’v‚·‚ê‚Îu“¯‚¶ƒA[ƒLƒ^ƒCƒvv‚Æ‚İ‚È‚·B
+	 * @brief	ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ç½²å (Signature)
+	 * ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆIDã®ãƒªã‚¹ãƒˆã‚’ã‚½ãƒ¼ãƒˆã—ã¦ä¿æŒã—ãŸã‚‚ã®ã€‚
+	 * ã“ã‚ŒãŒä¸€è‡´ã™ã‚Œã°ã€ŒåŒã˜ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã€ã¨ã¿ãªã™ã€‚
 	 */
 	class ArchetypeSignature
 	{
@@ -34,7 +34,7 @@ namespace Span
 			return std::binary_search(componentTypes.begin(), componentTypes.end(), typeID);
 		}
 
-		// ƒ}ƒbƒv‚ÌƒL[‚É‚·‚é‚½‚ß‚É”äŠr‰‰Zq
+		// ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ã«ã™ã‚‹ãŸã‚ã«æ¯”è¼ƒæ¼”ç®—å­
 		bool operator<(const ArchetypeSignature& other) const
 		{
 			return componentTypes < other.componentTypes;
@@ -51,14 +51,14 @@ namespace Span
 	};
 
 	/**
-	 * @brief ƒA[ƒLƒ^ƒCƒv
-	 * “¯‚¶ƒRƒ“ƒ|[ƒlƒ“ƒg\¬‚ğ‚ÂEntityŒQ‚ğŠÇ—‚·‚éB
-	 * ƒf[ƒ^‚ÌuŒ^v‚¾‚¯‚Å‚È‚­AÀÛ‚Ìuƒƒ‚ƒŠ(Chunk)v‚àŠÇ—‚·‚éB
+	 * @brief ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—
+	 * åŒã˜ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæ§‹æˆã‚’æŒã¤Entityç¾¤ã‚’ç®¡ç†ã™ã‚‹ã€‚
+	 * ãƒ‡ãƒ¼ã‚¿ã®ã€Œå‹ã€ã ã‘ã§ãªãã€å®Ÿéš›ã®ã€Œãƒ¡ãƒ¢ãƒª(Chunk)ã€ã‚‚ç®¡ç†ã™ã‚‹ã€‚
 	 */
 	class Archetype
 	{
 	public:
-		// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅƒŒƒCƒAƒEƒg‚ğŒvZ‚·‚é
+		// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã‚’è¨ˆç®—ã™ã‚‹
 		Archetype(const std::vector<ComponentTypeID>& types,
 			const std::vector<size_t>& sizes,
 			const std::vector<size_t>& alignments);
@@ -67,16 +67,16 @@ namespace Span
 
 		SPAN_NON_COPYABLE(Archetype);
 
-		// ‚±‚ÌƒA[ƒLƒ^ƒCƒv‚Í“Á’è‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg
+		// ã“ã®ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã¯ç‰¹å®šã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 		bool HasComponent(ComponentTypeID typeID) const
 		{
 			return signature.Has(typeID);
 		}
 
-		// •¡”‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘S‚Ä‚Á‚Ä‚¢‚é‚©”»’è
+		// è¤‡æ•°ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å…¨ã¦æŒã£ã¦ã„ã‚‹ã‹åˆ¤å®š
 		bool HasAllComponents(const std::vector<ComponentTypeID>& queryTypes) const
 		{
-			// –¼‚Æ”äŠr‚µ‚ÄAqueryTypes‚ª‘S•”ŠÜ‚Ü‚ê‚Ä‚¢‚é‚©Šm”F
+			// ç½²åã¨æ¯”è¼ƒã—ã¦ã€queryTypesãŒå…¨éƒ¨å«ã¾ã‚Œã¦ã„ã‚‹ã‹ç¢ºèª
 			for (ComponentTypeID id : queryTypes)
 			{
 				if (!signature.Has(id)) return false;
@@ -84,41 +84,41 @@ namespace Span
 			return true;
 		}
 
-		// V‚µ‚¢Entity•ª‚ÌƒXƒy[ƒX‚ğŠm•Û‚µA‚»‚ÌƒCƒ“ƒfƒbƒNƒX‚ğ•Ô‚·
+		// æ–°ã—ã„Entityåˆ†ã®ã‚¹ãƒšãƒ¼ã‚¹ã‚’ç¢ºä¿ã—ã€ãã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¿”ã™
 		uint32 AllocateEntity(EntityID entityID);
 
-		// ƒRƒ“ƒ|[ƒlƒ“ƒgID‚©‚çA‚»‚Ì”z—ñ‚Ìuƒ`ƒƒƒ“ƒN“àƒIƒtƒZƒbƒgv‚ğæ“¾
+		// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆIDã‹ã‚‰ã€ãã®é…åˆ—ã®ã€Œãƒãƒ£ãƒ³ã‚¯å†…ã‚ªãƒ•ã‚»ãƒƒãƒˆã€ã‚’å–å¾—
 		size_t GetComponentOffset(ComponentTypeID typeID) const;
 
-		// ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒTƒCƒY‚ğæ“¾
+		// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚µã‚¤ã‚ºã‚’å–å¾—
 		size_t GetComponentSize(ComponentTypeID typeID) const;
 
 		size_t GetComponentAlignment(ComponentTypeID typeID) const;
 
-		// ‚±‚ÌƒA[ƒLƒ^ƒCƒv‚ª‚Â‘Sƒ`ƒƒƒ“ƒN
+		// ã“ã®ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ãŒæŒã¤å…¨ãƒãƒ£ãƒ³ã‚¯
 		const std::vector<Chunk*>& GetChunks() const { return chunks; }
 
-		// 1ƒ`ƒƒƒ“ƒN‚ ‚½‚è‚Ìû—e”
+		// 1ãƒãƒ£ãƒ³ã‚¯ã‚ãŸã‚Šã®åå®¹æ•°
 		uint32 GetChunkCapacity() const { return chunkCapacity; }
 
-		// Œ^ƒŠƒXƒg‚ğæ“¾
+		// å‹ãƒªã‚¹ãƒˆã‚’å–å¾—
 		const std::vector<ComponentTypeID>& GetTypes() const { return typeIDs; }
 
 	private:
 		ArchetypeSignature signature;
 
-		// \¬—v‘f
+		// æ§‹æˆè¦ç´ 
 		std::vector<ComponentTypeID> typeIDs;
 
-		// ƒƒ‚ƒŠƒŒƒCƒAƒEƒgî•ñ
-		std::unordered_map<ComponentTypeID, size_t> typeOffsets;	// TypeID -> Chunk“àƒIƒtƒZƒbƒg
-		std::unordered_map<ComponentTypeID, size_t> typeSizes;		// TypeID -> ƒTƒCƒY (ƒoƒCƒg)
-		std::unordered_map<ComponentTypeID, size_t> typeAlignments;	// TypeID -> ƒAƒ‰ƒCƒƒ“ƒg
+		// ãƒ¡ãƒ¢ãƒªãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆæƒ…å ±
+		std::unordered_map<ComponentTypeID, size_t> typeOffsets;	// TypeID -> Chunkå†…ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+		std::unordered_map<ComponentTypeID, size_t> typeSizes;		// TypeID -> ã‚µã‚¤ã‚º (ãƒã‚¤ãƒˆ)
+		std::unordered_map<ComponentTypeID, size_t> typeAlignments;	// TypeID -> ã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆ
 
-		size_t entitySize = 0;										// Entity1‘Ì‚ ‚½‚è‚Ì‡ŒvƒTƒCƒY (ƒoƒCƒg)
-		uint32 chunkCapacity = 0;									// 1ƒ`ƒƒƒ“ƒN‚É‰½‘Ì“ü‚é‚©
+		size_t entitySize = 0;										// Entity1ä½“ã‚ãŸã‚Šã®åˆè¨ˆã‚µã‚¤ã‚º (ãƒã‚¤ãƒˆ)
+		uint32 chunkCapacity = 0;									// 1ãƒãƒ£ãƒ³ã‚¯ã«ä½•ä½“å…¥ã‚‹ã‹
 
-		// ƒf[ƒ^‚ÌÀ‘Ì
+		// ãƒ‡ãƒ¼ã‚¿ã®å®Ÿä½“
 		std::vector<Chunk*> chunks;
 	};
 }

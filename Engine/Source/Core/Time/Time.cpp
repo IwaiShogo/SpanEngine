@@ -1,4 +1,4 @@
-#include "Time.h"
+ï»¿#include "Time.h"
 
 namespace Span
 {
@@ -19,14 +19,15 @@ namespace Span
 	{
 		auto current = std::chrono::high_resolution_clock::now();
 
-		// Œo‰ßŠÔ‚ğŒvZ (•b’PˆÊ)
+		// çµŒéæ™‚é–“ã‚’è¨ˆç®— (ç§’å˜ä½)
 		std::chrono::duration<float> diff = current - lastFrameTime;
 		deltaTime = diff.count();
 
-		// ‘ŠÔ‚ğXV
+		// ç·æ™‚é–“ã‚’æ›´æ–°
 		std::chrono::duration<float> total = current - startTime;
 		totalTime = total.count();
 
 		lastFrameTime = current;
 	}
 }
+

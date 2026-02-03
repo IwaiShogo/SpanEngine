@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Runtime/Platform/Window.h"
 
@@ -13,19 +13,19 @@ namespace Span
 		bool Initialize(Window& window);
 		void Shutdown();
 
-		// ƒtƒŒ[ƒ€ŠJnˆ— (ƒRƒ}ƒ“ƒhƒŠƒXƒg‚ÌƒŠƒZƒbƒgA‰æ–ÊƒNƒŠƒAARTVƒZƒbƒg)
-		// –ß‚è’l: •`‰æ‚Ég—p‚·‚éƒRƒ}ƒ“ƒhƒŠƒXƒg
+		// ãƒ•ãƒ¬ãƒ¼ãƒ é–‹å§‹å‡¦ç† (ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã®ãƒªã‚»ãƒƒãƒˆã€ç”»é¢ã‚¯ãƒªã‚¢ã€RTVã‚»ãƒƒãƒˆ)
+		// æˆ»ã‚Šå€¤: æç”»ã«ä½¿ç”¨ã™ã‚‹ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆ
 		ID3D12GraphicsCommandList* BeginFrame();
 
-		// ƒtƒŒ[ƒ€I—¹ˆ— (ƒoƒŠƒA‘JˆÚAƒRƒ}ƒ“ƒhÀsAPresentA“¯Šú)
+		// ãƒ•ãƒ¬ãƒ¼ãƒ çµ‚äº†å‡¦ç† (ãƒãƒªã‚¢é·ç§»ã€ã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œã€Presentã€åŒæœŸ)
 		void EndFrame();
 
-		// ƒEƒBƒ“ƒhƒEƒŠƒTƒCƒY‚Ìˆ—
+		// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒªã‚µã‚¤ã‚ºæ™‚ã®å‡¦ç†
 		void OnResize(uint32 width, uint32 height);
 
 		void SetRenderTargetToBackBuffer(ID3D12GraphicsCommandList* commandList);
 
-		// ƒQƒbƒ^[
+		// ã‚²ãƒƒã‚¿ãƒ¼
 		D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentBackBufferRTV() const;
 		ID3D12Device* GetDevice() const { return device.Get(); }
 		ID3D12CommandQueue* GetCommandQueue() const { return commandQueue.Get(); }
@@ -33,11 +33,11 @@ namespace Span
 		uint32 GetFrameCount() const { return FrameCount; }
 		uint32 GetCurrentFrameIndex() const { return frameIndex; }
 
-		// ƒRƒ}ƒ“ƒhƒŠƒXƒgÀsŠ®—¹‚ğ‘Ò‹@ (ƒŠƒTƒCƒY‚âI—¹‚Ég—p)
+		// ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆå®Ÿè¡Œå®Œäº†ã‚’å¾…æ©Ÿ (ãƒªã‚µã‚¤ã‚ºæ™‚ã‚„çµ‚äº†æ™‚ã«ä½¿ç”¨)
 		void WaitForGpu();
 
 	private:
-		// “à•”ƒwƒ‹ƒp[
+		// å†…éƒ¨ãƒ˜ãƒ«ãƒ‘ãƒ¼
 		void CreateDevice();
 		void CreateCommandQueue();
 		void CreateSwapChain(Window& window);
@@ -50,7 +50,7 @@ namespace Span
 	private:
 		static const uint32 FrameCount = 2;
 
-		// DirectX ƒIƒuƒWƒFƒNƒg
+		// DirectX ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 		ComPtr<IDXGIFactory4> factory;
 		ComPtr<ID3D12Device> device;
 		ComPtr<ID3D12CommandQueue> commandQueue;
@@ -58,18 +58,18 @@ namespace Span
 		ComPtr<ID3D12DescriptorHeap> rtvHeap;
 		ComPtr<ID3D12DescriptorHeap> dsvHeap;
 
-		// ƒŠƒ\[ƒX
+		// ãƒªã‚½ãƒ¼ã‚¹
 		ComPtr<ID3D12Resource> renderTargets[FrameCount];
 		ComPtr<ID3D12Resource> depthBuffer;
 		ComPtr<ID3D12CommandAllocator> commandAllocator;
 		ComPtr<ID3D12GraphicsCommandList> commandList;
 
-		// “¯Šú
+		// åŒæœŸ
 		ComPtr<ID3D12Fence> fence;
 		uint64 fenceValue = 0;
 		HANDLE fenceEvent = nullptr;
 
-		// ó‘Ô
+		// çŠ¶æ…‹
 		uint32 frameIndex = 0;
 		uint32 rtvDescriptorSize = 0;
 		D3D12_VIEWPORT viewport = {};
@@ -79,3 +79,4 @@ namespace Span
 		uint32 height = 0;
 	};
 }
+

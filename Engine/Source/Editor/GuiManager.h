@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include "Panels/EditorPanel.h"
 #include "Panels/SceneView/SceneViewPanel.h"
@@ -21,10 +21,10 @@ namespace Span
 		static void BeginFrame();
 		static void EndFrame(ID3D12GraphicsCommandList* commandList);
 
-		// ƒpƒlƒ‹ŠÇ—
+		// ãƒ‘ãƒãƒ«ç®¡ç†
 		static void AddPanel(std::shared_ptr<EditorPanel> panel);
 
-		// “Á’è‚Ìƒpƒlƒ‹‚ğæ“¾‚·‚éƒwƒ‹ƒp[
+		// ç‰¹å®šã®ãƒ‘ãƒãƒ«ã‚’å–å¾—ã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼
 		template<typename T>
 		static std::shared_ptr<T> GetPanel()
 		{
@@ -46,3 +46,4 @@ namespace Span
 		static ID3D12Device* m_device;
 	};
 }
+

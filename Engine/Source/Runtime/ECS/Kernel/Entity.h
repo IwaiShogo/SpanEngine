@@ -1,15 +1,15 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
 {
-	// ID‚Ì“à•”\‘¢i‡Œv64bitj
+	// IDã®å†…éƒ¨æ§‹é€ ï¼ˆåˆè¨ˆ64bitï¼‰
 	struct EntityID
 	{
-		uint32 Index;		// ”z—ñ‚ÌƒCƒ“ƒfƒbƒNƒX
-		uint32 Generation;	// ¢‘ã”Ô†iÄ—˜—p‘Îôj
+		uint32 Index;		// é…åˆ—ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+		uint32 Generation;	// ä¸–ä»£ç•ªå·ï¼ˆå†åˆ©ç”¨å¯¾ç­–ï¼‰
 
-		// ”äŠr‰‰Zq
+		// æ¯”è¼ƒæ¼”ç®—å­
 		bool operator==(const EntityID& other) const { return Index == other.Index && Generation == other.Generation; }
 		bool operator!=(const EntityID& other) const { return !(*this == other); }
 
@@ -20,12 +20,12 @@ namespace Span
 		}
 	};
 
-	// null‚Æ‚µ‚Äˆµ‚¤‚½‚ß‚Ì’è”
+	// nullã¨ã—ã¦æ‰±ã†ãŸã‚ã®å®šæ•°
 	static const EntityID NullEntityID = { UINT32_MAX, 0 };
 
 	/**
-	 * @brief	Entityƒnƒ“ƒhƒ‹
-	 * ƒ†[ƒU[‚ªˆµ‚¤‚Ì‚Í‚±‚ÌƒNƒ‰ƒXBÀ‘Ì‚ÍID‚Ì‚İ‚ğ‚ÂŒy—ÊƒIƒuƒWƒFƒNƒg
+	 * @brief	Entityãƒãƒ³ãƒ‰ãƒ«
+	 * ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒæ‰±ã†ã®ã¯ã“ã®ã‚¯ãƒ©ã‚¹ã€‚å®Ÿä½“ã¯IDã®ã¿ã‚’æŒã¤è»½é‡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	struct Entity
 	{
@@ -33,32 +33,33 @@ namespace Span
 
 		static const Entity Null;
 
-		// –³Œø‚ÈEntity‚©‚Ç‚¤‚©
+		// ç„¡åŠ¹ãªEntityã‹ã©ã†ã‹
 		bool IsNull() const { return ID.Index == UINT32_MAX; }
 
-		// ”äŠr‰‰Zq
+		// æ¯”è¼ƒæ¼”ç®—å­
 		bool operator==(const Entity& other) const { return ID == other.ID; }
 		bool operator!=(const Entity& other) const { return ID != other.ID; }
 		bool operator<(const Entity& other) const { return ID < other.ID; }
 
-		// ƒƒOo—Í‚È‚Ç‚Å”š‚Æ‚µ‚Ä‚Ù‚µ‚¢—p
+		// ãƒ­ã‚°å‡ºåŠ›ãªã©ã§æ•°å­—ã¨ã—ã¦ã»ã—ã„æ™‚ç”¨
 		uint64 ToUInt64() const { return (static_cast<uint64>(ID.Generation) << 32) | ID.Index; }
 	};
 
-	// À‘Ì’è‹`
+	// å®Ÿä½“å®šç¾©
 	inline const Entity Entity::Null = { NullEntityID };
 }
 
 namespace std
 {
-	// EntityID‚ğƒL[‚Æ‚µ‚Äg‚¦‚é‚æ‚¤‚ÉƒnƒbƒVƒ…‰»‚ğ’è‹`
+	// EntityIDã‚’ã‚­ãƒ¼ã¨ã—ã¦ä½¿ãˆã‚‹ã‚ˆã†ã«ãƒãƒƒã‚·ãƒ¥åŒ–ã‚’å®šç¾©
 	template <>
 	struct hash<Span::EntityID>
 	{
 		std::size_t operator()(const Span::EntityID& id) const
 		{
-			// Index‚ÆGeneration‚ğ¬‚º‚ÄƒnƒbƒVƒ…’l‚ğì‚é
+			// Indexã¨Generationã‚’æ··ãœã¦ãƒãƒƒã‚·ãƒ¥å€¤ã‚’ä½œã‚‹
 			return hash<uint32_t>()(id.Index) ^ (hash<uint32_t>()(id.Generation) << 1);
 		}
 	};
 }
+

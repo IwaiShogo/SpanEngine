@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 namespace Span
 {
@@ -9,3 +9,4 @@ namespace Span
 		Tag(const std::string& tag) : Value(tag) {}
 	};
 }
+

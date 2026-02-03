@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <DirectXMath.h>
 #include <cmath>
 #include <algorithm>
@@ -7,14 +7,14 @@ namespace Span
 {
 	using namespace DirectX;
 
-	// ‘O•ûéŒ¾
+	// å‰æ–¹å®£è¨€
 	struct Vector2;
 	struct Vector3;
 	struct Vector4;
 	struct Quaternion;
 	struct Matrix4x4;
 
-	// --- ’è”‚Æƒwƒ‹ƒp[ŠÖ” ---
+	// --- å®šæ•°ã¨ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•° ---
 	constexpr float PI = 3.1415926535f;
 	constexpr float TwoPI = PI * 2.0f;
 	constexpr float HalfPI = PI / 2.0f;
@@ -37,11 +37,11 @@ namespace Span
 		Vector2(float _x, float _y) : x(_x), y(_y) {}
 		explicit Vector2(float v) : x(v), y(v) {}
 
-		// DirectXMath •ÏŠ·
+		// DirectXMath å¤‰æ›
 		XMVECTOR ToXM() const { return XMLoadFloat2(reinterpret_cast<const XMFLOAT2*>(this)); }
 		void FromXM(XMVECTOR v) { XMStoreFloat2(reinterpret_cast<XMFLOAT2*>(this), v); }
 
-		// ‰‰Zq
+		// æ¼”ç®—å­
 		Vector2 operator+(const Vector2& v) const { return Vector2(x + v.x, y + v.y); }
 		Vector2 operator-(const Vector2& v) const { return Vector2(x - v.x, y - v.y); }
 		Vector2 operator*(float s) const { return Vector2(x * s, y * s); }
@@ -49,7 +49,7 @@ namespace Span
 		Vector2& operator+=(const Vector2& v) { x += v.x; y += v.y; return *this; }
 		Vector2& operator-=(const Vector2& v) { x -= v.x; y -= v.y; return *this; }
 
-		// ‹@”\
+		// æ©Ÿèƒ½
 		float Length() const { return std::sqrt(x * x + y * y); }
 		float LengthSquared() const { return x * x + y * y; }
 		Vector2 Normalized() const
@@ -71,11 +71,11 @@ namespace Span
 		Vector3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
 		explicit Vector3(float v) : x(v), y(v), z(v) {}
 
-		// DirectXMath •ÏŠ·
+		// DirectXMath å¤‰æ›
 		XMVECTOR ToXM() const { return XMLoadFloat3(reinterpret_cast<const XMFLOAT3*>(this)); }
 		void FromXM(XMVECTOR v) { XMStoreFloat3(reinterpret_cast<XMFLOAT3*>(this), v); }
 
-		// ‰‰Zq
+		// æ¼”ç®—å­
 		Vector3 operator+(const Vector3& v) const { return Vector3(x + v.x, y + v.y, z + v.z); }
 		Vector3 operator-(const Vector3& v) const { return Vector3(x - v.x, y - v.y, z - v.z); }
 		Vector3 operator*(float s) const { return Vector3(x * s, y * s, z * s); }
@@ -83,7 +83,7 @@ namespace Span
 		Vector3& operator+=(const Vector3& v) { x += v.x; y += v.y; z += v.z; return *this; }
 		Vector3& operator-=(const Vector3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
 
-		// ŠOÏE“àÏ
+		// å¤–ç©ãƒ»å†…ç©
 		static float Dot(const Vector3& a, const Vector3& b)
 		{
 			return XMVectorGetX(XMVector3Dot(a.ToXM(), b.ToXM()));
@@ -94,7 +94,7 @@ namespace Span
 			Vector3 r; r.FromXM(XMVector3Cross(a.ToXM(), b.ToXM())); return r;
 		}
 
-		// ‹@”\
+		// æ©Ÿèƒ½
 		float Length() const { return std::sqrt(x * x + y * y + z * z); }
 
 		Vector3 Normalized() const
@@ -107,7 +107,7 @@ namespace Span
 			Vector3 r; r.FromXM(XMVectorLerp(a.ToXM(), b.ToXM(), t)); return r;
 		}
 
-		// ’è” (Unityƒ‰ƒCƒN‚ÈÀ•WŒn: Y-Up, Z-Forward)
+		// å®šæ•° (Unityãƒ©ã‚¤ã‚¯ãªåº§æ¨™ç³»: Y-Up, Z-Forward)
 		static const Vector3 Zero;
 		static const Vector3 One;
 		static const Vector3 Up;	  // (0, 1, 0)
@@ -133,7 +133,7 @@ namespace Span
 		Vector4 operator*(float s) const { return Vector4(x * s, y * s, z * s, w * s); }
 	};
 
-	// --- Quaternion (‰ñ“]) ---
+	// --- Quaternion (å›è»¢) ---
 	struct Quaternion
 	{
 		float x, y, z, w;
@@ -144,7 +144,7 @@ namespace Span
 		XMVECTOR ToXM() const { return XMLoadFloat4(reinterpret_cast<const XMFLOAT4*>(this)); }
 		void FromXM(XMVECTOR v) { XMStoreFloat4(reinterpret_cast<XMFLOAT4*>(this), v); }
 
-		// EulerŠp(Pitch, Yaw, Roll)‚©‚çì¬ (ƒ‰ƒWƒAƒ“)
+		// Eulerè§’(Pitch, Yaw, Roll)ã‹ã‚‰ä½œæˆ (ãƒ©ã‚¸ã‚¢ãƒ³)
 		static Quaternion FromEuler(float pitch, float yaw, float roll)
 		{
 			Quaternion q;
@@ -157,7 +157,7 @@ namespace Span
 			return FromEuler(euler.x, euler.y, euler.z);
 		}
 
-		// Œ»İ‚ÌQuaternion‚ğEulerŠp (Pitch, Yaw, Roll) ‚É•ÏŠ·
+		// ç¾åœ¨ã®Quaternionã‚’Eulerè§’ (Pitch, Yaw, Roll) ã«å¤‰æ›
 		Vector3 ToEuler() const;
 
 		static Quaternion AngleAxis(const Vector3& axis, float angle)
@@ -167,10 +167,10 @@ namespace Span
 			return q;
 		}
 
-		// ‰ñ“]s—ñ‚©‚çƒNƒH[ƒ^ƒjƒIƒ“‚ğì¬
+		// å›è»¢è¡Œåˆ—ã‹ã‚‰ã‚¯ã‚©ãƒ¼ã‚¿ãƒ‹ã‚ªãƒ³ã‚’ä½œæˆ
 		static Quaternion FromRotationMatrix(const Matrix4x4& m);
 
-		// ‰ñ“]‚ÌŠ|‚¯‡‚í‚¹
+		// å›è»¢ã®æ›ã‘åˆã‚ã›
 		Quaternion operator*(const Quaternion& other) const
 		{
 			Quaternion r;
@@ -178,7 +178,7 @@ namespace Span
 			return r;
 		}
 
-		// ‹…–ÊüŒ`•âŠÔ (Slerp) - ƒAƒjƒ[ƒVƒ‡ƒ“—p
+		// çƒé¢ç·šå½¢è£œé–“ (Slerp) - ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ç”¨
 		static Quaternion Slerp(const Quaternion& a, const Quaternion& b, float t)
 		{
 			Quaternion r;
@@ -210,27 +210,27 @@ namespace Span
 		XMMATRIX ToXM() const { return XMLoadFloat4x4(reinterpret_cast<const XMFLOAT4X4*>(this)); }
 		void FromXM(XMMATRIX mat) { XMStoreFloat4x4(reinterpret_cast<XMFLOAT4X4*>(this), mat); }
 
-		// --- Ã“Iì¬ƒƒ\ƒbƒh (‚±‚ê‚ç‚ğ‘ã“ü‚Ég—p‚µ‚Ü‚·) ---
+		// --- é™çš„ä½œæˆãƒ¡ã‚½ãƒƒãƒ‰ (ã“ã‚Œã‚‰ã‚’ä»£å…¥ã«ä½¿ç”¨ã—ã¾ã™) ---
 
-		// ’PˆÊs—ñ
+		// å˜ä½è¡Œåˆ—
 		static Matrix4x4 Identity()
 		{
 			return Matrix4x4();
 		}
 
-		// ˆÚ“®s—ñ
+		// ç§»å‹•è¡Œåˆ—
 		static Matrix4x4 Translation(const Vector3& position)
 		{
 			Matrix4x4 r; r.FromXM(XMMatrixTranslation(position.x, position.y, position.z)); return r;
 		}
 
-		// ‰ñ“]s—ñ (Quaternion‚©‚ç)
+		// å›è»¢è¡Œåˆ— (Quaternionã‹ã‚‰)
 		static Matrix4x4 Rotation(const Quaternion& rotation)
 		{
 			Matrix4x4 r; r.FromXM(XMMatrixRotationQuaternion(rotation.ToXM())); return r;
 		}
 
-		// Šg‘åk¬s—ñ
+		// æ‹¡å¤§ç¸®å°è¡Œåˆ—
 		static Matrix4x4 Scale(const Vector3& scale)
 		{
 			Matrix4x4 r; r.FromXM(XMMatrixScaling(scale.x, scale.y, scale.z)); return r;
@@ -240,7 +240,7 @@ namespace Span
 		static Matrix4x4 TRS(const Vector3& t, const Quaternion& r, const Vector3& s)
 		{
 			Matrix4x4 mat;
-			// Scale -> Rotate -> Translate ‚Ì‡ (DirectXMath‚Ís—Dæ‚È‚Ì‚Å S * R * T)
+			// Scale -> Rotate -> Translate ã®é † (DirectXMathã¯è¡Œå„ªå…ˆãªã®ã§ S * R * T)
 			XMMATRIX ms = XMMatrixScaling(s.x, s.y, s.z);
 			XMMATRIX mr = XMMatrixRotationQuaternion(r.ToXM());
 			XMMATRIX mt = XMMatrixTranslation(t.x, t.y, t.z);
@@ -248,7 +248,7 @@ namespace Span
 			return mat;
 		}
 
-		// ƒrƒ…[s—ñì¬ (¶èŒn: Z+‚ª‰œ)
+		// ãƒ“ãƒ¥ãƒ¼è¡Œåˆ—ä½œæˆ (å·¦æ‰‹ç³»: Z+ãŒå¥¥)
 		static Matrix4x4 LookAtLH(const Vector3& eye, const Vector3& focus, const Vector3& up)
 		{
 			Matrix4x4 r;
@@ -256,7 +256,7 @@ namespace Span
 			return r;
 		}
 
-		// “§‹“Š‰es—ñì¬ (¶èŒn)
+		// é€è¦–æŠ•å½±è¡Œåˆ—ä½œæˆ (å·¦æ‰‹ç³»)
 		static Matrix4x4 PerspectiveFovLH(float fovAngleY, float aspectRatio, float nearZ, float farZ)
 		{
 			Matrix4x4 r;
@@ -264,9 +264,9 @@ namespace Span
 			return r;
 		}
 
-		// --- ƒƒ“ƒoŠÖ” ---
+		// --- ãƒ¡ãƒ³ãƒé–¢æ•° ---
 
-		// ‹ts—ñ
+		// é€†è¡Œåˆ—
 		Matrix4x4 Invert() const
 		{
 			Matrix4x4 r;
@@ -275,15 +275,15 @@ namespace Span
 			return r;
 		}
 
-		// “]’us—ñ
+		// è»¢ç½®è¡Œåˆ—
 		Matrix4x4 Transpose() const
 		{
 			Matrix4x4 r; r.FromXM(XMMatrixTranspose(ToXM())); return r;
 		}
 
-		// --- ‰‰Zq ---
+		// --- æ¼”ç®—å­ ---
 
-		// s—ñ“¯m‚ÌŠ|‚¯Z
+		// è¡Œåˆ—åŒå£«ã®æ›ã‘ç®—
 		Matrix4x4 operator*(const Matrix4x4& other) const
 		{
 			Matrix4x4 r;
@@ -292,7 +292,7 @@ namespace Span
 		}
 	};
 
-	// ’x‰„À‘•
+	// é…å»¶å®Ÿè£…
 	inline Quaternion Quaternion::FromRotationMatrix(const Matrix4x4& m)
 	{
 		Quaternion q;
@@ -302,17 +302,17 @@ namespace Span
 
 	inline Vector3 Quaternion::ToEuler() const
 	{
-		// Matrix‚ğŒo—R‚µ‚Ä³Šm‚ÉEulerŠp‚ğæ‚èo‚·
+		// Matrixã‚’çµŒç”±ã—ã¦æ­£ç¢ºã«Eulerè§’ã‚’å–ã‚Šå‡ºã™
 		Matrix4x4 m = Matrix4x4::Rotation(*this);
 
 		float pitch, yaw, roll;
 
-		// Pitch (X²‰ñ“])
+		// Pitch (Xè»¸å›è»¢)
 		if (m._32 < -0.999f) pitch = HalfPI;
 		else if (m._32 > 0.999f) pitch = -HalfPI;
 		else pitch = asin(-m._32);
 
-		// Yaw (Y²‰ñ“]) & Roll (Z²‰ñ“])
+		// Yaw (Yè»¸å›è»¢) & Roll (Zè»¸å›è»¢)
 		if (abs(m._32) < 0.999f)
 		{
 			yaw = atan2(m._31, m._33);
@@ -327,7 +327,7 @@ namespace Span
 		return Vector3(pitch, yaw, roll);
 	}
 
-	// Ã“Iƒƒ“ƒo‚ÌÀ‘Ì’è‹` (ƒwƒbƒ_“à‹Lq‚Ì‚½‚ß inline ‚ğg—p)
+	// é™çš„ãƒ¡ãƒ³ãƒã®å®Ÿä½“å®šç¾© (ãƒ˜ãƒƒãƒ€å†…è¨˜è¿°ã®ãŸã‚ inline ã‚’ä½¿ç”¨)
 	inline const Vector2 Vector2::Zero(0, 0);
 	inline const Vector2 Vector2::One(1, 1);
 

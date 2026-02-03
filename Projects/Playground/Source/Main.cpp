@@ -1,4 +1,4 @@
-#include "Runtime/EntryPoint.h"
+ï»¿#include "Runtime/EntryPoint.h"
 #include "Runtime/Application.h"
 #include "Core/Log/Logger.h"
 #include "Core/Math/SpanMath.h"
@@ -8,12 +8,12 @@
 #include "Runtime/Systems/Graphics/CameraSystem.h"
 #include "Runtime/Systems/Graphics/RenderingSystem.h"
 #include "Runtime/Systems/Graphics/EditorCameraSystem.h"
-#include "Runtime/Systems/Core/RelationshipSystem.h" // š’Ç‰Á
+#include "Runtime/Systems/Core/RelationshipSystem.h" // â˜…è¿½åŠ 
 
 // --- Components ---
 #include "Runtime/Components/Core/Transform.h"
 #include "Runtime/Components/Core/LocalToWorld.h"
-#include "Runtime/Components/Core/Relationship.h" // šParent -> Relationship
+#include "Runtime/Components/Core/Relationship.h" // â˜…Parent -> Relationship
 #include "Runtime/Components/Graphics/MeshFilter.h"
 #include "Runtime/Components/Graphics/MeshRenderer.h"
 #include "Runtime/Components/Graphics/Camera.h"
@@ -28,7 +28,7 @@
 // --- Editor & Tools ---
 #include "Editor/GuiManager.h"
 #include "Editor/PanelManager.h"
-#include "Runtime/ECS/Kernel/EntityBuilder.h" // š’Ç‰Á: ƒrƒ‹ƒ_[‚ğg‚¤
+#include "Runtime/ECS/Kernel/EntityBuilder.h" // â˜…è¿½åŠ : ãƒ“ãƒ«ãƒ€ãƒ¼ã‚’ä½¿ã†
 #include "Editor/SelectionManager.h"
 
 using namespace Span;
@@ -46,12 +46,12 @@ public:
 	{
 		SPAN_LOG("--- Playground App Started ---");
 
-		// ƒVƒXƒeƒ€“o˜^ (TransformSystem‚ÍRelationshipSystem‚ÌŒã‚É“®‚­‚æ‚¤‚É‚·‚é‚©AˆË‘¶ŠÖŒW‚É’ˆÓ)
-		// ¦TransformSystem‚Ííœ‚µ‚ÄRelationshipSystem‚É“‡‚µ‚½ê‡‚Í“o˜^•s—v
+		// ã‚·ã‚¹ãƒ†ãƒ ç™»éŒ² (TransformSystemã¯RelationshipSystemã®å¾Œã«å‹•ãã‚ˆã†ã«ã™ã‚‹ã‹ã€ä¾å­˜é–¢ä¿‚ã«æ³¨æ„)
+		// â€»TransformSystemã¯å‰Šé™¤ã—ã¦RelationshipSystemã«çµ±åˆã—ãŸå ´åˆã¯ç™»éŒ²ä¸è¦
 		GetWorld().AddSystem<EditorCameraSystem>();
 
-		// šRelationshipSystem‚ÆTransformSystem‚Ì“o˜^
-		// ¡‰ñ‚ÌC³‚ÅRelationshipSystem‚Í\‘¢•ÏX‚Ì‚İATransformSystem‚ªs—ñŒvZ‚ğs‚¤‚æ‚¤‚É‚È‚Á‚½‚Ì‚Å—¼•û•K—v‚Å‚·
+		// â˜…RelationshipSystemã¨TransformSystemã®ç™»éŒ²
+		// ä»Šå›ã®ä¿®æ­£ã§RelationshipSystemã¯æ§‹é€ å¤‰æ›´ã®ã¿ã€TransformSystemãŒè¡Œåˆ—è¨ˆç®—ã‚’è¡Œã†ã‚ˆã†ã«ãªã£ãŸã®ã§ä¸¡æ–¹å¿…è¦ã§ã™
 		GetWorld().AddSystem<RelationshipSystem>();
 		GetWorld().AddSystem<TransformSystem>();
 
@@ -60,7 +60,7 @@ public:
 
 		ID3D12Device* device = GetRenderer().GetDevice();
 
-		// --- ƒ}ƒeƒŠƒAƒ‹ì¬ ---
+		// --- ãƒãƒ†ãƒªã‚¢ãƒ«ä½œæˆ ---
 		{
 			Material* gray = new Material(); gray->Initialize(device); gray->SetAlbedo(Vector3(0.5f, 0.5f, 0.5f)); gray->SetRoughness(0.8f);
 			materials.push_back(gray);
@@ -69,32 +69,32 @@ public:
 			materials.push_back(white);
 		}
 
-		// --- °‚Ìì¬ (Builderg—p) ---
+		// --- åºŠã®ä½œæˆ (Builderä½¿ç”¨) ---
 		{
 			builtInMeshes.push_back(Mesh::CreatePlane(device, 20.0f, 20.0f));
 
-			// šC³: EntityBuilder‚Åì¬
+			// â˜…ä¿®æ­£: EntityBuilderã§ä½œæˆ
 			EntityBuilder(&GetWorld(), "Floor")
 				.Add(MeshFilter(builtInMeshes[0]))
 				.Add(MeshRenderer(materials[0]))
-				.Add(LocalToWorld{}) // •`‰æ‚É•K—v
+				.Add(LocalToWorld{}) // æç”»ã«å¿…è¦
 				.Build();
 		}
 
-		// --- FBXƒ‚ƒfƒ‹‚Ìƒ[ƒh ---
+		// --- FBXãƒ¢ãƒ‡ãƒ«ã®ãƒ­ãƒ¼ãƒ‰ ---
 		loadedMeshes = ModelLoader::Load(device, "Assets/Y Bot.fbx");
 
 		if (!loadedMeshes.empty())
 		{
-			// ƒ‚ƒfƒ‹‚Ìƒ‹[ƒgEntity (Builderg—p)
+			// ãƒ¢ãƒ‡ãƒ«ã®ãƒ«ãƒ¼ãƒˆEntity (Builderä½¿ç”¨)
 			modelRoot = EntityBuilder(&GetWorld(), "Y Bot Model")
 				.Add(LocalToWorld{})
 				.With<Transform>([](Transform& t) {
-				t.Scale = Vector3(0.01f, 0.01f, 0.01f); // ¬‚³‚­‚·‚é
+				t.Scale = Vector3(0.01f, 0.01f, 0.01f); // å°ã•ãã™ã‚‹
 					})
 				.Build();
 
-			// ƒƒbƒVƒ…ƒp[ƒc‚Ìì¬
+			// ãƒ¡ãƒƒã‚·ãƒ¥ãƒ‘ãƒ¼ãƒ„ã®ä½œæˆ
 			for (size_t i = 0; i < loadedMeshes.size(); i++)
 			{
 				std::string partName = "Part_" + std::to_string(i);
@@ -108,11 +108,11 @@ public:
 				Entity a = part;
 				Entity ab = part;
 				
-				// šC³: RelationshipSystem‚ğg‚Á‚Äeq•t‚¯
+				// â˜…ä¿®æ­£: RelationshipSystemã‚’ä½¿ã£ã¦è¦ªå­ä»˜ã‘
 				RelationshipSystem::SetParent(&GetWorld(), part, modelRoot);
 			}
 
-			// ‰Šú‘I‘ğ
+			// åˆæœŸé¸æŠ
 			SelectionManager::Select(modelRoot);
 		}
 		else
@@ -120,32 +120,32 @@ public:
 			SPAN_ERROR("Failed to load model! Please check 'Assets/Y Bot.fbx' exists.");
 		}
 
-		// --- Camera (Builderg—p) ---
+		// --- Camera (Builderä½¿ç”¨) ---
 		{
 			EntityBuilder(&GetWorld(), "Main Camera")
 				.Add(Camera(60.0f))
-				.Add(EditorCamera{}) // ‘€ì—p
-				.Add(LocalToWorld{}) // ƒJƒƒ‰ƒVƒXƒeƒ€‚Å•K—v
+				.Add(EditorCamera{}) // æ“ä½œç”¨
+				.Add(LocalToWorld{}) // ã‚«ãƒ¡ãƒ©ã‚·ã‚¹ãƒ†ãƒ ã§å¿…è¦
 				.With<Transform>([](Transform& t) {
 				t.Position = Vector3(0.0f, 2.0f, -5.0f);
 				t.LookAt(Vector3(0.0f, 1.0f, 0.0f));
 					})
 				.With<Tag>([](Tag& t) {
-				t.Value = "MainCamera"; // ƒ^ƒOİ’è
+				t.Value = "MainCamera"; // ã‚¿ã‚°è¨­å®š
 					})
 				.Build();
 		}
 
-		// --- ƒpƒlƒ‹‚ÍGuiManager‚Å©“®¶¬‚³‚ê‚é‚½‚ß“o˜^ƒR[ƒh‚Í•s—v ---
+		// --- ãƒ‘ãƒãƒ«ã¯GuiManagerã§è‡ªå‹•ç”Ÿæˆã•ã‚Œã‚‹ãŸã‚ç™»éŒ²ã‚³ãƒ¼ãƒ‰ã¯ä¸è¦ ---
 	}
 
 	void OnUpdate() override
 	{
-		// ƒ‚ƒfƒ‹‰ñ“] (ƒfƒ‚—p)
-		// RelationshipSystem‚É‚È‚Á‚½‚Ì‚ÅTransform‚ğ’¼Ú‚¢‚¶‚ê‚ÎOK
+		// ãƒ¢ãƒ‡ãƒ«å›è»¢ (ãƒ‡ãƒ¢ç”¨)
+		// RelationshipSystemã«ãªã£ãŸã®ã§Transformã‚’ç›´æ¥ã„ã˜ã‚Œã°OK
 		if (GetWorld().IsAlive(modelRoot))
 		{
-			// ‰ñ“]‚³‚¹‚½‚¢ê‡‚ÍƒRƒƒ“ƒgƒAƒEƒg‚ğŠO‚·
+			// å›è»¢ã•ã›ãŸã„å ´åˆã¯ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã‚’å¤–ã™
 			// Transform& t = GetWorld().GetComponent<Transform>(modelRoot);
 			// t.Rotation = t.Rotation * Quaternion::AngleAxis(Vector3::Up, Time::GetDeltaTime() * 0.5f);
 		}

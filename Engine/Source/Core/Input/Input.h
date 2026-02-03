@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Core/Math/SpanMath.h"
 
 namespace Span
 {
-	// ƒL[ƒR[ƒh’è‹`
+	// ã‚­ãƒ¼ã‚³ãƒ¼ãƒ‰å®šç¾©
 	enum class Key
 	{
 		None = 0,
@@ -28,7 +28,7 @@ namespace Span
 		Gamepad_DPad_Up, Gamepad_DPad_Down, Gamepad_DPad_Left, Gamepad_DPad_Right
 	};
 
-	// ƒAƒiƒƒOƒXƒeƒBƒbƒN
+	// ã‚¢ãƒŠãƒ­ã‚°ã‚¹ãƒ†ã‚£ãƒƒã‚¯
 	enum class Axis
 	{
 		LeftStickX, LeftStickY,
@@ -43,50 +43,50 @@ namespace Span
 		static void Update();
 		static void EndFrame();
 
-		// --- ƒ†[ƒU[Œü‚¯API ---
-		static bool GetKey(Key key);		// ‰Ÿ‚µ‚Á‚Ï‚È‚µ
-		static bool GetKeyDown(Key key);	// ‰Ÿ‚µ‚½uŠÔ
-		static bool GetKeyUp(Key key);		// —£‚µ‚½
+		// --- ãƒ¦ãƒ¼ã‚¶ãƒ¼å‘ã‘API ---
+		static bool GetKey(Key key);		// æŠ¼ã—ã£ã±ãªã—
+		static bool GetKeyDown(Key key);	// æŠ¼ã—ãŸç¬é–“
+		static bool GetKeyUp(Key key);		// é›¢ã—ãŸ
 
-		static Vector2 GetMousePosition();	// ƒ}ƒEƒX‚ÌˆÊ’u
-		static Vector2 GetMouseDelta();		// ƒ}ƒEƒX‚ÌˆÚ“®—Ê
+		static Vector2 GetMousePosition();	// ãƒã‚¦ã‚¹ã®ä½ç½®
+		static Vector2 GetMouseDelta();		// ãƒã‚¦ã‚¹ã®ç§»å‹•é‡
 
-		// ƒJ[ƒ\ƒ‹§Œä
+		// ã‚«ãƒ¼ã‚½ãƒ«åˆ¶å¾¡
 		static void SetCursorVisible(bool visible);
-		static void SetLockCursor(bool lock);		// FPSƒXƒ^ƒCƒ‹‚ÌƒƒbƒN
+		static void SetLockCursor(bool lock);		// FPSã‚¹ã‚¿ã‚¤ãƒ«ã®ãƒ­ãƒƒã‚¯
 
-		// ƒRƒ“ƒgƒ[ƒ‰[—pŠÖ”
-		static bool GetButton(Key key);		// ƒ{ƒ^ƒ“‰Ÿ‚µ‚Á‚Ï‚È‚µ
-		static bool GetButtonDown(Key key);	// ‰Ÿ‚µ‚½uŠÔ
-		static float GetAxis(Axis axis);	// ƒXƒeƒBƒbƒN‚ÌŒX‚« (-1.0 ~ 1.0)
+		// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ç”¨é–¢æ•°
+		static bool GetButton(Key key);		// ãƒœã‚¿ãƒ³æŠ¼ã—ã£ã±ãªã—
+		static bool GetButtonDown(Key key);	// æŠ¼ã—ãŸç¬é–“
+		static float GetAxis(Axis axis);	// ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã®å‚¾ã (-1.0 ~ 1.0)
 
-		// --- “à•”—p (WindowProc‚©‚çŒÄ‚Ô) ---
+		// --- å†…éƒ¨ç”¨ (WindowProcã‹ã‚‰å‘¼ã¶) ---
 		static void OnKeyDown(uint32 key);
 		static void OnKeyUp(uint32 key);
 		static void OnMouseDown(uint32 btn);
 		static void OnMouseUp(uint32 btn);
 		static void OnMouseMove(int x, int y);
 
-		// ImGui‚ªƒ}ƒEƒX‚ğè—L‚µ‚Ä‚¢‚é‚©İ’è‚·‚é
+		// ImGuiãŒãƒã‚¦ã‚¹ã‚’å æœ‰ã—ã¦ã„ã‚‹ã‹è¨­å®šã™ã‚‹
 		static void SetImGuiWantCapture(bool wantCapture) { imGuiWantCaptureMouse = wantCapture; }
-		// ƒQ[ƒ€‘¤‚Å“ü—Í‚ğó‚¯•t‚¯‚Ä—Ç‚¢‚©
+		// ã‚²ãƒ¼ãƒ å´ã§å…¥åŠ›ã‚’å—ã‘ä»˜ã‘ã¦è‰¯ã„ã‹
 		static bool IsInputAvailable() { return !imGuiWantCaptureMouse; }
 
 	private:
-		// Œ»İ‚ÌƒtƒŒ[ƒ€‚ÌƒL[ó‘Ô
+		// ç¾åœ¨ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®ã‚­ãƒ¼çŠ¶æ…‹
 		static bool keyStates[256];
-		// ‘OƒtƒŒ[ƒ€‚ÌƒL[ó‘Ô (Down / Up”»’è—p)
+		// å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã®ã‚­ãƒ¼çŠ¶æ…‹ (Down / Upåˆ¤å®šç”¨)
 		static bool prevKeyStates[256];
 
 		static Vector2 mousePosition;
 		static Vector2 prevMousePosition;
 		static Vector2 mouseDelta;
 
-		// ƒRƒ“ƒgƒ[ƒ‰[“à•”ó‘Ô
-		static bool gamepadStates[20];		// ƒ{ƒ^ƒ“ó‘Ô
-		static bool prevGamepadStates[20];	// ‘OƒtƒŒ[ƒ€
-		static float gamepadAxes[6];		// ƒXƒeƒBƒbƒN/ƒgƒŠƒK[’l
-		static bool isConnected;			// Ú‘±‚³‚ê‚Ä‚¢‚é‚©
+		// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼å†…éƒ¨çŠ¶æ…‹
+		static bool gamepadStates[20];		// ãƒœã‚¿ãƒ³çŠ¶æ…‹
+		static bool prevGamepadStates[20];	// å‰ãƒ•ãƒ¬ãƒ¼ãƒ 
+		static float gamepadAxes[6];		// ã‚¹ãƒ†ã‚£ãƒƒã‚¯/ãƒˆãƒªã‚¬ãƒ¼å€¤
+		static bool isConnected;			// æ¥ç¶šã•ã‚Œã¦ã„ã‚‹ã‹
 
 		static HWND hWnd;
 		static bool isCursorLocked;
@@ -96,3 +96,4 @@ namespace Span
 		static bool imGuiWantCaptureMouse;
 	};
 }
+

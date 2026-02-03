@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Runtime/Reflection/SpanReflection.h"
 
 namespace Span
@@ -13,6 +13,7 @@ namespace Span
 
 		std::string ToString() const { return std::string(Value); }
 
-		// uƒwƒbƒ_[•”•ªv‚Å“Á•Ê•\¦‚·‚é‚½‚ßA’è‹`‚È‚µ
+		// ã€Œãƒ˜ãƒƒãƒ€ãƒ¼éƒ¨åˆ†ã€ã§ç‰¹åˆ¥è¡¨ç¤ºã™ã‚‹ãŸã‚ã€å®šç¾©ãªã—
 	};
 }
+

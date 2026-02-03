@@ -1,4 +1,4 @@
-#include "Chunk.h"
+ï»¿#include "Chunk.h"
 #include "Archetype.h"
 #include "Entity.h"
 
@@ -7,7 +7,7 @@ namespace Span
 	Chunk::Chunk(uint32 capacity)
 		: Count(0), Capacity(capacity)
 	{
-		// 16KB‚Ìƒƒ‚ƒŠ‚ğŠm•Û
+		// 16KBã®ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿
 		Memory = static_cast<uint8*>(std::malloc(CHUNK_SIZE));
 	}
 
@@ -24,11 +24,11 @@ namespace Span
 	{
 		if (srcIndex == destIndex) return;
 
-		// 1. EntityID‚ÌˆÚ“®
+		// 1. EntityIDã®ç§»å‹•
 		EntityID* ids = reinterpret_cast<EntityID*>(Memory);
 		ids[destIndex] = ids[srcIndex];
 
-		// 2. ŠeƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌˆÚ“®
+		// 2. å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ç§»å‹•
 		for (ComponentTypeID typeID : arch->GetTypes())
 		{
 			size_t offset = arch->GetComponentOffset(typeID);

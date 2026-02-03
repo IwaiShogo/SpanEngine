@@ -1,5 +1,5 @@
-#include "ModelLoader.h"
-#include "Core/CoreMinimal.h" // ƒƒO—p
+ï»¿#include "ModelLoader.h"
+#include "Core/CoreMinimal.h" // ãƒ­ã‚°ç”¨
 
 namespace Span
 {
@@ -10,10 +10,10 @@ namespace Span
 
         SPAN_LOG("Loading Model: %s", filepath.c_str());
 
-        // “Ç‚İ‚İƒIƒvƒVƒ‡ƒ“
-        // - Triangulate: ‘½ŠpŒ`‚ğOŠpŒ`‚É•ªŠ„
-        // - ConvertToLeftHanded: DirectXÀ•WŒn(¶èŒn)‚É•ÏŠ·
-        // - GenNormals: –@ü‚ª‚È‚¢ê‡‚ÍŒvZ
+        // èª­ã¿è¾¼ã¿ã‚ªãƒ—ã‚·ãƒ§ãƒ³
+        // - Triangulate: å¤šè§’å½¢ã‚’ä¸‰è§’å½¢ã«åˆ†å‰²
+        // - ConvertToLeftHanded: DirectXåº§æ¨™ç³»(å·¦æ‰‹ç³»)ã«å¤‰æ›
+        // - GenNormals: æ³•ç·šãŒãªã„å ´åˆã¯è¨ˆç®—
         const aiScene* scene = importer.ReadFile(filepath,
             aiProcess_Triangulate |
             aiProcess_ConvertToLeftHanded |
@@ -27,7 +27,7 @@ namespace Span
             return meshes;
         }
 
-        // ƒV[ƒ““à‚Ì‘SƒƒbƒVƒ…‚ğˆ—
+        // ã‚·ãƒ¼ãƒ³å†…ã®å…¨ãƒ¡ãƒƒã‚·ãƒ¥ã‚’å‡¦ç†
         for (unsigned int i = 0; i < scene->mNumMeshes; i++)
         {
             aiMesh* mesh = scene->mMeshes[i];
@@ -42,33 +42,33 @@ namespace Span
     {
         std::vector<Vertex> vertices;
 
-        // Œ»İ‚Ì Mesh ƒNƒ‰ƒX‚ÍƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚ğg‚Á‚Ä‚¢‚È‚¢‚½‚ßA
-        // ƒCƒ“ƒfƒbƒNƒX‚ğQÆ‚µ‚Ä’¸“_‚ğu“WŠJ (Flatten)v‚µ‚Ü‚·B
+        // ç¾åœ¨ã® Mesh ã‚¯ãƒ©ã‚¹ã¯ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒãƒƒãƒ•ã‚¡ã‚’ä½¿ã£ã¦ã„ãªã„ãŸã‚ã€
+        // ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å‚ç…§ã—ã¦é ‚ç‚¹ã‚’ã€Œå±•é–‹ (Flatten)ã€ã—ã¾ã™ã€‚
 
-        // ƒ|ƒŠƒSƒ“i–Êj‚Ì”‚¾‚¯ƒ‹[ƒv
+        // ãƒãƒªã‚´ãƒ³ï¼ˆé¢ï¼‰ã®æ•°ã ã‘ãƒ«ãƒ¼ãƒ—
         for (unsigned int i = 0; i < mesh->mNumFaces; i++)
         {
             aiFace face = mesh->mFaces[i];
 
-            // 1‚Â‚Ì–Ê‚ğ\¬‚·‚é’¸“_i’Êí‚Í3‚Âj
+            // 1ã¤ã®é¢ã‚’æ§‹æˆã™ã‚‹é ‚ç‚¹ï¼ˆé€šå¸¸ã¯3ã¤ï¼‰
             for (unsigned int j = 0; j < face.mNumIndices; j++)
             {
                 unsigned int index = face.mIndices[j];
                 Vertex v;
 
-                // 1. ˆÊ’u
+                // 1. ä½ç½®
                 if (mesh->HasPositions()) {
                     v.position = { mesh->mVertices[index].x, mesh->mVertices[index].y, mesh->mVertices[index].z };
                 }
 
-                // 2. –@ü
+                // 2. æ³•ç·š
                 if (mesh->HasNormals()) {
                     v.normal = { mesh->mNormals[index].x, mesh->mNormals[index].y, mesh->mNormals[index].z };
                 }
 
-                // 3. UVÀ•W
+                // 3. UVåº§æ¨™
                 if (mesh->HasTextureCoords(0)) {
-                    // Assimp‚Í3ŸŒ³(u,v,w)‚Å‚Á‚Ä‚¢‚é‚ªA’Êí‚Í2ŸŒ³(u,v)‚µ‚©g‚í‚È‚¢
+                    // Assimpã¯3æ¬¡å…ƒ(u,v,w)ã§æŒã£ã¦ã„ã‚‹ãŒã€é€šå¸¸ã¯2æ¬¡å…ƒ(u,v)ã—ã‹ä½¿ã‚ãªã„
                     v.uv = { mesh->mTextureCoords[0][index].x, mesh->mTextureCoords[0][index].y };
                 }
                 else {

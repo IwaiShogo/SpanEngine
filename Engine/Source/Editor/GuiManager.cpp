@@ -1,4 +1,4 @@
-#include "GuiManager.h"
+ï»¿#include "GuiManager.h"
 #include "PanelManager.h"
 #include "Input/Input.h"
 
@@ -19,7 +19,7 @@ namespace Span
 
 		m_device = device;
 
-		// 1. ImGuiƒRƒ“ƒeƒLƒXƒgì¬
+		// 1. ImGuiã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä½œæˆ
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO(); (void)io;
@@ -28,10 +28,10 @@ namespace Span
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 		io.ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
 
-		// 2. ƒXƒ^ƒCƒ‹“K—p
+		// 2. ã‚¹ã‚¿ã‚¤ãƒ«é©ç”¨
 		ApplyStyle();
 
-		// 3. SRVƒq[ƒvì¬
+		// 3. SRVãƒ’ãƒ¼ãƒ—ä½œæˆ
 		srvHeap.Reset();
 
 		D3D12_DESCRIPTOR_HEAP_DESC desc = {};
@@ -46,22 +46,22 @@ namespace Span
 			return;
 		}
 
-		// 4. ƒvƒ‰ƒbƒgƒtƒH[ƒ€‰Šú‰»
+		// 4. ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ åˆæœŸåŒ–
 		if (!ImGui_ImplWin32_Init(hWnd))
 		{
 			SPAN_ERROR("[GuiManager] ImGui_ImplWin32_Init failed!");
 			return;
 		}
 
-		// InitInfo\‘¢‘Ì‚ğg‚Á‚Ä‰Šú‰»‚µAƒRƒ}ƒ“ƒhƒLƒ…[‚ğ“n‚·
+		// InitInfoæ§‹é€ ä½“ã‚’ä½¿ã£ã¦åˆæœŸåŒ–ã—ã€ã‚³ãƒãƒ³ãƒ‰ã‚­ãƒ¥ãƒ¼ã‚’æ¸¡ã™
 		ImGui_ImplDX12_InitInfo init_info = {};
 		init_info.Device = device;
 		init_info.CommandQueue = commandQueue;
 		init_info.NumFramesInFlight = numFrames;
 		init_info.RTVFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
-		init_info.DSVFormat = DXGI_FORMAT_D32_FLOAT; // Renderer‚Ìİ’è‚É‡‚í‚¹‚é
+		init_info.DSVFormat = DXGI_FORMAT_D32_FLOAT; // Rendererã®è¨­å®šã«åˆã‚ã›ã‚‹
 
-		// ƒ†[ƒU[’è‹`‚Ìƒq[ƒv‚ğg‚¤ê‡‚Ìİ’è
+		// ãƒ¦ãƒ¼ã‚¶ãƒ¼å®šç¾©ã®ãƒ’ãƒ¼ãƒ—ã‚’ä½¿ã†å ´åˆã®è¨­å®š
 		init_info.SrvDescriptorHeap = srvHeap.Get();
 		init_info.LegacySingleSrvCpuDescriptor = srvHeap->GetCPUDescriptorHandleForHeapStart();
 		init_info.LegacySingleSrvGpuDescriptor = srvHeap->GetGPUDescriptorHandleForHeapStart();
@@ -72,13 +72,13 @@ namespace Span
 			return;
 		}
 
-		// ƒtƒHƒ“ƒgì¬‚ğ–¾¦“I‚ÉŒÄ‚Ño‚µi”CˆÓ‚¾‚ªA‰Šú‰»Šm”F‚Ì‚½‚ß‚É„§j
+		// ãƒ•ã‚©ãƒ³ãƒˆä½œæˆã‚’æ˜ç¤ºçš„ã«å‘¼ã³å‡ºã—ï¼ˆä»»æ„ã ãŒã€åˆæœŸåŒ–ç¢ºèªã®ãŸã‚ã«æ¨å¥¨ï¼‰
 		if (!ImGui_ImplDX12_CreateDeviceObjects())
 		{
 			SPAN_ERROR("[GuiManager] CreateDeviceObjects failed! Check Debug Layer output.");
 		}
 
-		// ‘Sƒpƒlƒ‹‚ğˆêŠ‡¶¬
+		// å…¨ãƒ‘ãƒãƒ«ã‚’ä¸€æ‹¬ç”Ÿæˆ
 		auto autoPanels = PanelManager::CreateAllPanels();
 		for (auto& p : autoPanels)
 		{
@@ -108,7 +108,7 @@ namespace Span
 
 	void GuiManager::EndFrame(ID3D12GraphicsCommandList* commandList)
 	{
-		// “o˜^‚³‚ê‚½‘Sƒpƒlƒ‹‚ğ•`‰æ
+		// ç™»éŒ²ã•ã‚ŒãŸå…¨ãƒ‘ãƒãƒ«ã‚’æç”»
 		for (auto& panel : panels)
 		{
 			if (panel->IsOpen())
@@ -119,12 +119,12 @@ namespace Span
 
 		ImGui::Render();
 
-		// ƒq[ƒv‚ğƒZƒbƒg‚µ‚Ä•`‰æ
+		// ãƒ’ãƒ¼ãƒ—ã‚’ã‚»ãƒƒãƒˆã—ã¦æç”»
 		ID3D12DescriptorHeap* heaps[] = { srvHeap.Get() };
 		commandList->SetDescriptorHeaps(1, heaps);
 		ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), commandList);
 
-		// ƒ}ƒ‹ƒ`ƒrƒ…[ƒ|[ƒg
+		// ãƒãƒ«ãƒãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆ
 		ImGuiIO& io = ImGui::GetIO();
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 		{
@@ -142,20 +142,20 @@ namespace Span
 	{
 		if (!m_device || !srvHeap) return { 0 };
 
-		// SRVƒq[ƒv‚Ìæ“ªƒnƒ“ƒhƒ‹‚ğæ“¾
+		// SRVãƒ’ãƒ¼ãƒ—ã®å…ˆé ­ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—
 		D3D12_CPU_DESCRIPTOR_HANDLE destHandleCPU = srvHeap->GetCPUDescriptorHandleForHeapStart();
 		D3D12_GPU_DESCRIPTOR_HANDLE destHandleGPU = srvHeap->GetGPUDescriptorHandleForHeapStart();
 
-		// ƒCƒ“ƒNƒŠƒƒ“ƒgƒTƒCƒY‚ğæ“¾
+		// ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’å–å¾—
 		UINT handleIncrementSize = m_device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
-		// ƒCƒ“ƒfƒbƒNƒX1”Ô–Ú‚ğg—p‚·‚é (0”Ô–Ú‚ÍImGui‚ÌƒtƒHƒ“ƒg—p‚Ég‚í‚ê‚Ä‚¢‚é‚½‚ß)
+		// ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹1ç•ªç›®ã‚’ä½¿ç”¨ã™ã‚‹ (0ç•ªç›®ã¯ImGuiã®ãƒ•ã‚©ãƒ³ãƒˆç”¨ã«ä½¿ã‚ã‚Œã¦ã„ã‚‹ãŸã‚)
 		int index = 1;
 
 		destHandleCPU.ptr += (UINT64)index * handleIncrementSize;
 		destHandleGPU.ptr += (UINT64)index * handleIncrementSize;
 
-		// ƒfƒoƒCƒX‚ğg‚Á‚ÄƒRƒs[‚ğÀs
+		// ãƒ‡ãƒã‚¤ã‚¹ã‚’ä½¿ã£ã¦ã‚³ãƒ”ãƒ¼ã‚’å®Ÿè¡Œ
 		m_device->CopyDescriptorsSimple(1, destHandleCPU, srcHandle, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
 		return destHandleGPU;
@@ -163,12 +163,12 @@ namespace Span
 
 	void GuiManager::ApplyStyle()
 	{
-		// ƒx[ƒX‚Íƒ_[ƒNƒe[ƒ}
+		// ãƒ™ãƒ¼ã‚¹ã¯ãƒ€ãƒ¼ã‚¯ãƒ†ãƒ¼ãƒ
 		ImGui::StyleColorsDark();
 
 		ImGuiStyle& style = ImGui::GetStyle();
 
-		// ŠÛ‚İ‚ğ‚½‚¹‚é
+		// ä¸¸ã¿ã‚’æŒãŸã›ã‚‹
 		style.WindowRounding = 4.0f;
 		style.ChildRounding = 4.0f;
 		style.FrameRounding = 4.0f;
@@ -177,37 +177,38 @@ namespace Span
 		style.ScrollbarRounding = 4.0f;
 		style.TabRounding = 4.0f;
 
-		// F‚ÌƒJƒXƒ^ƒ}ƒCƒY (Unity 2021+ Dark Theme•—)
+		// è‰²ã®ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚º (Unity 2021+ Dark Themeé¢¨)
 		ImVec4* colors = style.Colors;
 
-		// ”wŒiF: ­‚µƒ}ƒbƒg‚Èƒ_[ƒNƒOƒŒ[
+		// èƒŒæ™¯è‰²: å°‘ã—ãƒãƒƒãƒˆãªãƒ€ãƒ¼ã‚¯ã‚°ãƒ¬ãƒ¼
 		colors[ImGuiCol_WindowBg] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);
 
-		// ƒwƒbƒ_[ (ƒ^ƒCƒgƒ‹ƒo[‚È‚Ç)
+		// ãƒ˜ãƒƒãƒ€ãƒ¼ (ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼ãªã©)
 		colors[ImGuiCol_Header] = ImVec4(0.20f, 0.20f, 0.20f, 1.00f);
 		colors[ImGuiCol_HeaderHovered] = ImVec4(0.30f, 0.30f, 0.30f, 1.00f);
 		colors[ImGuiCol_HeaderActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);
 
-		// ƒ{ƒ^ƒ“
+		// ãƒœã‚¿ãƒ³
 		colors[ImGuiCol_Button] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
 		colors[ImGuiCol_ButtonHovered] = ImVec4(0.35f, 0.35f, 0.35f, 1.00f);
 		colors[ImGuiCol_ButtonActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);
 
-		// ƒtƒŒ[ƒ€ (“ü—Í—“‚È‚Ç)
+		// ãƒ•ãƒ¬ãƒ¼ãƒ  (å…¥åŠ›æ¬„ãªã©)
 		colors[ImGuiCol_FrameBg] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);
 		colors[ImGuiCol_FrameBgHovered] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);
 		colors[ImGuiCol_FrameBgActive] = ImVec4(0.20f, 0.20f, 0.20f, 1.00f);
 
-		// ƒ^ƒu
+		// ã‚¿ãƒ–
 		colors[ImGuiCol_Tab] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);
 		colors[ImGuiCol_TabHovered] = ImVec4(0.38f, 0.38f, 0.38f, 1.00f);
 		colors[ImGuiCol_TabActive] = ImVec4(0.28f, 0.28f, 0.28f, 1.00f);
 		colors[ImGuiCol_TabUnfocused] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);
 		colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.20f, 0.20f, 0.20f, 1.00f);
 
-		// ƒ^ƒCƒgƒ‹ƒo[
+		// ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼
 		colors[ImGuiCol_TitleBg] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);
 		colors[ImGuiCol_TitleBgActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);
 		colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);
 	}
 }
+

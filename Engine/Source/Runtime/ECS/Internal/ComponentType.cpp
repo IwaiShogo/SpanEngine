@@ -1,6 +1,7 @@
-#include "ComponentType.h"
+ï»¿#include "ComponentType.h"
 
 namespace Span
 {
-	// ƒJƒEƒ“ƒ^[‚ğ 0 ‚Å‰Šú‰»
+	// ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ã‚’ 0 ã§åˆæœŸåŒ–
 }
+

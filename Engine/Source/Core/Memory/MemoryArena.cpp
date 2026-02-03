@@ -1,4 +1,4 @@
-#include "MemoryArena.h"
+ï»¿#include "MemoryArena.h"
 
 namespace Span
 {
@@ -9,13 +9,13 @@ namespace Span
 
 	void MemoryArena::Initialize(size_t sizeInBytes)
 	{
-		// Šù‚ÉŠm•ÛÏ‚İ‚È‚çˆê’UÌ‚Ä‚é
+		// æ—¢ã«ç¢ºä¿æ¸ˆã¿ãªã‚‰ä¸€æ—¦æ¨ã¦ã‚‹
 		if (memoryBlock != nullptr)
 		{
 			Shutdown();
 		}
 
-		// malloc‚ÅOS‚©‚ç¶ƒƒ‚ƒŠ‚ğ‚à‚ç‚¤
+		// mallocã§OSã‹ã‚‰ç”Ÿãƒ¡ãƒ¢ãƒªã‚’ã‚‚ã‚‰ã†
 		memoryBlock = static_cast<uint8*>(std::malloc(sizeInBytes));
 		totalSize = sizeInBytes;
 		usedOffset - 0;
@@ -36,11 +36,11 @@ namespace Span
 
 	void* MemoryArena::AllocateRaw(size_t size, size_t alignment)
 	{
-		// Œ»İ‚Ìƒ|ƒCƒ“ƒ^ˆÊ’u
+		// ç¾åœ¨ã®ãƒã‚¤ãƒ³ã‚¿ä½ç½®
 		size_t currentAddress = reinterpret_cast<size_t>(memoryBlock) + usedOffset;
 
-		// ƒAƒ‰ƒCƒAƒƒ“ƒg’²®: ƒAƒhƒŒƒX‚ª alignment ‚Ì”{”‚É‚È‚é‚æ‚¤‚É’²®‚·‚é
-		// —á: 4ƒoƒCƒg‹«ŠE -> ƒAƒhƒŒƒX––”ö‚ª 00, 04, 08, 0C ‚É‚È‚é‚æ‚¤‚É‚¸‚ç‚·
+		// ã‚¢ãƒ©ã‚¤ã‚¢ãƒ¡ãƒ³ãƒˆèª¿æ•´: ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒ alignment ã®å€æ•°ã«ãªã‚‹ã‚ˆã†ã«èª¿æ•´ã™ã‚‹
+		// ä¾‹: 4ãƒã‚¤ãƒˆå¢ƒç•Œ -> ã‚¢ãƒ‰ãƒ¬ã‚¹æœ«å°¾ãŒ 00, 04, 08, 0C ã«ãªã‚‹ã‚ˆã†ã«ãšã‚‰ã™
 		size_t padding = 0;
 		size_t mask = alignment - 1;
 		if ((currentAddress & mask) != 0)
@@ -48,20 +48,20 @@ namespace Span
 			padding = alignment - (currentAddress & mask);
 		}
 
-		// •K—v‚È‡ŒvƒTƒCƒYi–{‘Ì + ƒpƒfƒBƒ“ƒOj
+		// å¿…è¦ãªåˆè¨ˆã‚µã‚¤ã‚ºï¼ˆæœ¬ä½“ + ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ï¼‰
 		size_t totalNeeded = size + padding;
 
-		// ƒƒ‚ƒŠ•s‘«ƒ`ƒFƒbƒN
+		// ãƒ¡ãƒ¢ãƒªä¸è¶³ãƒã‚§ãƒƒã‚¯
 		if (usedOffset + totalNeeded > totalSize)
 		{
 			SPAN_ERROR("MemoryArena Overflow! Need: %zu, Left: %zu", totalNeeded, totalSize - usedOffset);
 			return nullptr;
 		}
 
-		// ƒ|ƒCƒ“ƒ^ŒvZ
+		// ãƒã‚¤ãƒ³ã‚¿è¨ˆç®—
 		size_t alignedAddress = currentAddress + padding;
 
-		// ƒIƒtƒZƒbƒg‚ği‚ß‚é
+		// ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’é€²ã‚ã‚‹
 		usedOffset += totalNeeded;
 
 		return reinterpret_cast<void*>(alignedAddress);
@@ -72,3 +72,4 @@ namespace Span
 		usedOffset = 0;
 	}
 }
+

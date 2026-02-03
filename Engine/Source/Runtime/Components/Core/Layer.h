@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
 namespace Span
 {
-	// 32ƒrƒbƒgƒrƒbƒgƒ}ƒXƒN—p (0-31)
+	// 32ãƒ“ãƒƒãƒˆãƒ“ãƒƒãƒˆãƒžã‚¹ã‚¯ç”¨ (0-31)
 	enum class LayerType
 	{
 		Default = 0,
@@ -20,3 +20,4 @@ namespace Span
 		Layer(int layerIndex) : Value(layerIndex) {}
 	};
 }
+

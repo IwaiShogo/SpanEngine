@@ -1,4 +1,4 @@
-#include "Mesh.h"
+ï»¿#include "Mesh.h"
 
 namespace Span
 {
@@ -7,8 +7,8 @@ namespace Span
 		vertexCount = static_cast<uint32>(vertices.size());
 		uint32 sizeInBytes = vertexCount * sizeof(Vertex);
 
-		// 1. ƒAƒbƒvƒ[ƒhƒq[ƒv‚ÌƒvƒƒpƒeƒB
-		// CPU‚©‚ç‘‚«‚ß‚ÄAGPU‚ª“Ç‚ß‚éêŠ
+		// 1. ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒ’ãƒ¼ãƒ—ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+		// CPUã‹ã‚‰æ›¸ãè¾¼ã‚ã¦ã€GPUãŒèª­ã‚ã‚‹å ´æ‰€
 		D3D12_HEAP_PROPERTIES heapProps = {};
 		heapProps.Type = D3D12_HEAP_TYPE_UPLOAD;
 		heapProps.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
@@ -16,7 +16,7 @@ namespace Span
 		heapProps.CreationNodeMask = 1;
 		heapProps.VisibleNodeMask = 1;
 
-		// 2. ƒŠƒ\[ƒX‚Ìİ’è (ƒoƒbƒtƒ@)
+		// 2. ãƒªã‚½ãƒ¼ã‚¹ã®è¨­å®š (ãƒãƒƒãƒ•ã‚¡)
 		D3D12_RESOURCE_DESC resourceDesc = {};
 		resourceDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;
 		resourceDesc.Alignment = 0;
@@ -29,7 +29,7 @@ namespace Span
 		resourceDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
 		resourceDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 
-		// 3. ƒoƒbƒtƒ@ì¬
+		// 3. ãƒãƒƒãƒ•ã‚¡ä½œæˆ
 		if (FAILED(device->CreateCommittedResource(
 			&heapProps,
 			D3D12_HEAP_FLAG_NONE,
@@ -42,16 +42,16 @@ namespace Span
 			return false;
 		}
 
-		// 4. ƒf[ƒ^‚ğƒRƒs[ (Map -> memcpy -> Unmap)
+		// 4. ãƒ‡ãƒ¼ã‚¿ã‚’ã‚³ãƒ”ãƒ¼ (Map -> memcpy -> Unmap)
 		void* pData;
-		D3D12_RANGE readRange = { 0, 0 }; // CPU‚Í“Ç‚Ü‚È‚¢
+		D3D12_RANGE readRange = { 0, 0 }; // CPUã¯èª­ã¾ãªã„
 		if (SUCCEEDED(vertexBuffer->Map(0, &readRange, &pData)))
 		{
 			memcpy(pData, vertices.data(), sizeInBytes);
 			vertexBuffer->Unmap(0, nullptr);
 		}
 
-		// 5. ƒrƒ…[‚Ìì¬
+		// 5. ãƒ“ãƒ¥ãƒ¼ã®ä½œæˆ
 		vertexBufferView.BufferLocation = vertexBuffer->GetGPUVirtualAddress();
 		vertexBufferView.StrideInBytes = sizeof(Vertex);
 		vertexBufferView.SizeInBytes = sizeInBytes;
@@ -66,13 +66,13 @@ namespace Span
 
 	void Mesh::Draw(ID3D12GraphicsCommandList* commandList)
 	{
-		// ’¸“_ƒoƒbƒtƒ@‚ğƒZƒbƒg‚µ‚Ä•`‰æ
+		// é ‚ç‚¹ãƒãƒƒãƒ•ã‚¡ã‚’ã‚»ãƒƒãƒˆã—ã¦æç”»
 		commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		commandList->IASetVertexBuffers(0, 1, &vertexBufferView);
 		commandList->DrawInstanced(vertexCount, 1, 0, 0);
 	}
 
-	// --- ƒvƒŠƒZƒbƒgÀ‘• ---
+	// --- ãƒ—ãƒªã‚»ãƒƒãƒˆå®Ÿè£… ---
 	Mesh* Mesh::CreateCube(ID3D12Device* device)
 	{
 		const float w = 0.5f;
@@ -105,21 +105,21 @@ namespace Span
 		std::vector<Vertex> vertices;
 		float radius = 0.5f;
 
-		// ˆÜ“xEŒo“x‚Åƒ‹[ƒv
+		// ç·¯åº¦ãƒ»çµŒåº¦ã§ãƒ«ãƒ¼ãƒ—
 		for (int i = 0; i < stacks; ++i)
 		{
-			// ˆÜ“x (0 ` PI)
+			// ç·¯åº¦ (0 ï½ PI)
 			float phi1 = Span::PI * static_cast<float>(i) / stacks;
 			float phi2 = Span::PI * static_cast<float>(i + 1) / stacks;
 
 			for (int j = 0; j < slices; ++j)
 			{
-				// Œo“x (0 ` 2PI)
+				// çµŒåº¦ (0 ï½ 2PI)
 				float theta1 = 2.0f * Span::PI * static_cast<float>(j) / slices;
 				float theta2 = 2.0f * Span::PI * static_cast<float>(j + 1) / slices;
 
-				// lŠpŒ`‚Ì4“_‚ÌÀ•W‚Æ–@ü‚ğŒvZ
-				// ƒwƒ‹ƒp[ƒ‰ƒ€ƒ_®: ‹…–Êã‚Ì“_(p, t)‚Ìî•ñ‚ğŒvZ‚µ‚ÄVertex‚ğ•Ô‚·
+				// å››è§’å½¢ã®4ç‚¹ã®åº§æ¨™ã¨æ³•ç·šã‚’è¨ˆç®—
+				// ãƒ˜ãƒ«ãƒ‘ãƒ¼ãƒ©ãƒ ãƒ€å¼: çƒé¢ä¸Šã®ç‚¹(p, t)ã®æƒ…å ±ã‚’è¨ˆç®—ã—ã¦Vertexã‚’è¿”ã™
 				auto GetV = [&](float p, float t, float u, float v) -> Vertex
 					{
 						float r = radius * std::sin(p);
@@ -141,13 +141,13 @@ namespace Span
 		return mesh;
 	}
 
-	// --- •½–Ê (Plane/Quad) ---
+	// --- å¹³é¢ (Plane/Quad) ---
 	Mesh* Mesh::CreatePlane(ID3D12Device* device, float width, float depth)
 	{
 		float w = width * 0.5f;
 		float d = depth * 0.5f;
 
-		// ãŒü‚«(0,1,0)‚Ì‘å‚«‚ÈlŠpŒ`
+		// ä¸Šå‘ã(0,1,0)ã®å¤§ããªå››è§’å½¢
 		std::vector<Vertex> vertices = {
 			{ {-w, 0, d}, {0,1,0}, {0,0} }, { {w, 0, d}, {0,1,0}, {1,0} }, { {-w, 0, -d}, {0,1,0}, {0,1} },
 			{ {-w, 0, -d}, {0,1,0}, {0,1} }, { {w, 0, d}, {0,1,0}, {1,0} }, { {w, 0, -d}, {0,1,0}, {1,1} }
@@ -158,13 +158,13 @@ namespace Span
 		return mesh;
 	}
 
-	// --- ‰~’Œ (Cylinder) ---
+	// --- å††æŸ± (Cylinder) ---
 	Mesh* Mesh::CreateCylinder(ID3D12Device* device, float radius, float height, int slices)
 	{
 		std::vector<Vertex> vertices;
 		float h2 = height * 0.5f;
 
-		// ‘¤–Ê (Side)
+		// å´é¢ (Side)
 		for (int i = 0; i < slices; ++i)
 		{
 			float t1 = 2.0f * Span::PI * i / slices;
@@ -172,13 +172,13 @@ namespace Span
 			float u1 = (float)i / slices;
 			float u2 = (float)(i + 1) / slices;
 
-			// ’¸“_ˆÊ’uŒvZ
+			// é ‚ç‚¹ä½ç½®è¨ˆç®—
 			float x1 = radius * std::cos(t1);
 			float z1 = radius * std::sin(t1);
 			float x2 = radius * std::cos(t2);
 			float z2 = radius * std::sin(t2);
 
-			// –@ü (‘¤–Ê‚È‚Ì‚ÅXZ•½–Ê‚ÌŠOŒü‚«)
+			// æ³•ç·š (å´é¢ãªã®ã§XZå¹³é¢ã®å¤–å‘ã)
 			Vector3 n1(x1 / radius, 0, z1 / radius);
 			Vector3 n2(x2 / radius, 0, z2 / radius);
 
@@ -204,7 +204,7 @@ namespace Span
 		return mesh;
 	}
 
-	// --- ‰~ (Cone) ---
+	// --- å††éŒ (Cone) ---
 	Mesh* Mesh::CreateCone(ID3D12Device* device, float radius, float height, int slices)
 	{
 		std::vector<Vertex> vertices;
@@ -220,7 +220,7 @@ namespace Span
 			float x2 = radius * std::cos(t2);
 			float z2 = radius * std::sin(t2);
 
-			// –@ü‚ÌŒvZ (ŒX‚«‚ğl—¶)
+			// æ³•ç·šã®è¨ˆç®— (å‚¾ãã‚’è€ƒæ…®)
 			Vector3 n1 = Vector3(x1, radius, z1) * (1.0f / sqrt(x1 * x1 + radius * radius + z1 * z1));
 			Vector3 n2 = Vector3(x2, radius, z2) * (1.0f / sqrt(x2 * x2 + radius * radius + z2 * z2));
 
@@ -237,7 +237,7 @@ namespace Span
 		return mesh;
 	}
 
-	// --- ƒh[ƒiƒcŒ^ (Torus) ---
+	// --- ãƒ‰ãƒ¼ãƒŠãƒ„å‹ (Torus) ---
 	Mesh* Mesh::CreateTorus(ID3D12Device* device, float radius, float tubeRadius, int segments, int tubeSegments)
 	{
 		std::vector<Vertex> vertices;
@@ -287,29 +287,29 @@ namespace Span
 	{
 		std::vector<Vertex> vertices;
 
-		// ‰~’Œ•”•ª‚Ì‚‚³ (‘S’· - ã‰º‚Ì”¼Œa)
-		// ¦ height ‚ª 2*radius ‚æ‚è¬‚³‚¢ê‡‚Í‹…‘Ì‚É‚È‚è‚Ü‚·
+		// å††æŸ±éƒ¨åˆ†ã®é«˜ã• (å…¨é•· - ä¸Šä¸‹ã®åŠå¾„)
+		// â€» height ãŒ 2*radius ã‚ˆã‚Šå°ã•ã„å ´åˆã¯çƒä½“ã«ãªã‚Šã¾ã™
 		float cylinderHeight = std::max(0.0f, height - 2.0f * radius);
 		float halfHeight = cylinderHeight * 0.5f;
 
-		// UVƒ}ƒbƒsƒ“ƒO‚Ì‚½‚ß‚Ì‘S‘Ì’·‚³‚ğŒvZi‹…•”•ª‚Í‰~ü‚Ì’·‚³‚Å‹ß—j
-		// ‚±‚ê‚É‚æ‚èƒeƒNƒXƒ`ƒƒ‚ªL‚Ñk‚İ‚¹‚¸‹Ïˆê‚É“\‚ê‚Ü‚·
-		float sphereArcLen = radius * Span::PI * 0.5f; // ”¼‹…‚ÌŒÊ’·
+		// UVãƒãƒƒãƒ”ãƒ³ã‚°ã®ãŸã‚ã®å…¨ä½“é•·ã•ã‚’è¨ˆç®—ï¼ˆçƒéƒ¨åˆ†ã¯å††å‘¨ã®é•·ã•ã§è¿‘ä¼¼ï¼‰
+		// ã“ã‚Œã«ã‚ˆã‚Šãƒ†ã‚¯ã‚¹ãƒãƒ£ãŒä¼¸ã³ç¸®ã¿ã›ãšå‡ä¸€ã«è²¼ã‚Œã¾ã™
+		float sphereArcLen = radius * Span::PI * 0.5f; // åŠçƒã®å¼§é•·
 		float totalLen = cylinderHeight + 2.0f * sphereArcLen;
 
-		// VÀ•W‚Ì‹«ŠE’l
-		float vTopEnd = sphereArcLen / totalLen;		   // ã”¼‹…‚ÌI‚í‚è
-		float vBottomStart = (sphereArcLen + cylinderHeight) / totalLen; // ‰º”¼‹…‚Ìn‚Ü‚è
+		// Våº§æ¨™ã®å¢ƒç•Œå€¤
+		float vTopEnd = sphereArcLen / totalLen;		   // ä¸ŠåŠçƒã®çµ‚ã‚ã‚Š
+		float vBottomStart = (sphereArcLen + cylinderHeight) / totalLen; // ä¸‹åŠçƒã®å§‹ã¾ã‚Š
 
-		// ƒwƒ‹ƒp[: ’¸“_î•ñ‚ğ¶¬‚·‚éƒ‰ƒ€ƒ_®
+		// ãƒ˜ãƒ«ãƒ‘ãƒ¼: é ‚ç‚¹æƒ…å ±ã‚’ç”Ÿæˆã™ã‚‹ãƒ©ãƒ ãƒ€å¼
 		auto GetVertex = [&](float x, float y, float z, float u, float v, float nY_offset) -> Vertex
 			{
 				Vector3 pos(x, y, z);
-				// –@ü‚ÌŒvZ: ‰~’Œ•”•ª‚ÍXZ•½–ÊA‹…•”•ª‚Í’†S‚©‚ç‚Ì•ûŒü
-				// ‚±‚±‚Å‚Í‹…‚Ì’†SƒIƒtƒZƒbƒg‚ğˆø‚¢‚Ä³‹K‰»‚·‚é‚±‚Æ‚Å”Ä—p“I‚ÉŒvZ
+				// æ³•ç·šã®è¨ˆç®—: å††æŸ±éƒ¨åˆ†ã¯XZå¹³é¢ã€çƒéƒ¨åˆ†ã¯ä¸­å¿ƒã‹ã‚‰ã®æ–¹å‘
+				// ã“ã“ã§ã¯çƒã®ä¸­å¿ƒã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’å¼•ã„ã¦æ­£è¦åŒ–ã™ã‚‹ã“ã¨ã§æ±ç”¨çš„ã«è¨ˆç®—
 				Vector3 center(0, nY_offset, 0);
 				Vector3 normal = pos - center;
-				// ³‹K‰» (è“®)
+				// æ­£è¦åŒ– (æ‰‹å‹•)
 				float len = std::sqrt(normal.x * normal.x + normal.y * normal.y + normal.z * normal.z);
 				if (len > 0.0f) normal = normal * (1.0f / len);
 
@@ -317,7 +317,7 @@ namespace Span
 			};
 
 		// --------------------------------------------------------
-		// 1. ã”¼‹… (Top Hemisphere)
+		// 1. ä¸ŠåŠçƒ (Top Hemisphere)
 		// --------------------------------------------------------
 		for (int i = 0; i < stacks; ++i)
 		{
@@ -332,11 +332,11 @@ namespace Span
 				float u1 = (float)j / slices;
 				float u2 = (float)(j + 1) / slices;
 
-				// VÀ•W‚Í 0.0 ` vTopEnd ‚Éƒ}ƒbƒsƒ“ƒO
+				// Våº§æ¨™ã¯ 0.0 ï½ vTopEnd ã«ãƒãƒƒãƒ”ãƒ³ã‚°
 				float v1 = (float)i / stacks * vTopEnd;
 				float v2 = (float)(i + 1) / stacks * vTopEnd;
 
-				// lŠpŒ`‚Ì4“_ŒvZ
+				// å››è§’å½¢ã®4ç‚¹è¨ˆç®—
 				auto CalcSpherePoint = [&](float phi, float theta) -> Vector3 {
 					float r = radius * std::sin(phi);
 					return Vector3(r * std::cos(theta), radius * std::cos(phi) + halfHeight, r * std::sin(theta));
@@ -347,7 +347,7 @@ namespace Span
 				Vector3 p3 = CalcSpherePoint(phi2, theta1);
 				Vector3 p4 = CalcSpherePoint(phi2, theta2);
 
-				// ’†SƒIƒtƒZƒbƒg‚Í halfHeight
+				// ä¸­å¿ƒã‚ªãƒ•ã‚»ãƒƒãƒˆã¯ halfHeight
 				Vertex v_tl = GetVertex(p1.x, p1.y, p1.z, u1, v1, halfHeight);
 				Vertex v_tr = GetVertex(p2.x, p2.y, p2.z, u2, v1, halfHeight);
 				Vertex v_bl = GetVertex(p3.x, p3.y, p3.z, u1, v2, halfHeight);
@@ -359,7 +359,7 @@ namespace Span
 		}
 
 		// --------------------------------------------------------
-		// 2. ‰~’Œ•”•ª (Cylinder Body)
+		// 2. å††æŸ±éƒ¨åˆ† (Cylinder Body)
 		// --------------------------------------------------------
 		if (cylinderHeight > 0.0f)
 		{
@@ -371,7 +371,7 @@ namespace Span
 				float u1 = (float)j / slices;
 				float u2 = (float)(j + 1) / slices;
 
-				// VÀ•W‚Í vTopEnd ` vBottomStart
+				// Våº§æ¨™ã¯ vTopEnd ï½ vBottomStart
 				float v1 = vTopEnd;
 				float v2 = vBottomStart;
 
@@ -380,8 +380,8 @@ namespace Span
 				float x2 = radius * std::cos(theta2);
 				float z2 = radius * std::sin(theta2);
 
-				// ã‚Ì‰ (y = +halfHeight), –@ü’†SY = y
-				// ‰~’Œ‘¤–Ê‚Ì–@ü‚Í (x, 0, z) ‚È‚Ì‚ÅAYƒIƒtƒZƒbƒg‚ğ‚»‚Ì“_‚ÌY‚É‚·‚ê‚Î‚æ‚¢
+				// ä¸Šã®ç¸ (y = +halfHeight), æ³•ç·šä¸­å¿ƒY = y
+				// å††æŸ±å´é¢ã®æ³•ç·šã¯ (x, 0, z) ãªã®ã§ã€Yã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’ãã®ç‚¹ã®Yã«ã™ã‚Œã°ã‚ˆã„
 				Vertex v_tl = GetVertex(x1, halfHeight, z1, u1, v1, halfHeight);
 				Vertex v_tr = GetVertex(x2, halfHeight, z2, u2, v1, halfHeight);
 				Vertex v_bl = GetVertex(x1, -halfHeight, z1, u1, v2, -halfHeight);
@@ -393,11 +393,11 @@ namespace Span
 		}
 
 		// --------------------------------------------------------
-		// 3. ‰º”¼‹… (Bottom Hemisphere)
+		// 3. ä¸‹åŠçƒ (Bottom Hemisphere)
 		// --------------------------------------------------------
 		for (int i = 0; i < stacks; ++i)
 		{
-			// ˆÜ“x: PI/2 ` PI
+			// ç·¯åº¦: PI/2 ï½ PI
 			float phi1 = (Span::PI * 0.5f) + (Span::PI * 0.5f) * i / stacks;
 			float phi2 = (Span::PI * 0.5f) + (Span::PI * 0.5f) * (i + 1) / stacks;
 
@@ -409,13 +409,13 @@ namespace Span
 				float u1 = (float)j / slices;
 				float u2 = (float)(j + 1) / slices;
 
-				// VÀ•W: vBottomStart ` 1.0
+				// Våº§æ¨™: vBottomStart ï½ 1.0
 				float v1 = vBottomStart + (float)i / stacks * (1.0f - vBottomStart);
 				float v2 = vBottomStart + (float)(i + 1) / stacks * (1.0f - vBottomStart);
 
 				auto CalcSpherePoint = [&](float phi, float theta) -> Vector3 {
 					float r = radius * std::sin(phi);
-					// ‰º”¼‹…‚È‚Ì‚ÅƒIƒtƒZƒbƒg‚Í -halfHeight
+					// ä¸‹åŠçƒãªã®ã§ã‚ªãƒ•ã‚»ãƒƒãƒˆã¯ -halfHeight
 					return Vector3(r * std::cos(theta), radius * std::cos(phi) - halfHeight, r * std::sin(theta));
 					};
 
@@ -424,7 +424,7 @@ namespace Span
 				Vector3 p3 = CalcSpherePoint(phi2, theta1);
 				Vector3 p4 = CalcSpherePoint(phi2, theta2);
 
-				// ’†SƒIƒtƒZƒbƒg‚Í -halfHeight
+				// ä¸­å¿ƒã‚ªãƒ•ã‚»ãƒƒãƒˆã¯ -halfHeight
 				Vertex v_tl = GetVertex(p1.x, p1.y, p1.z, u1, v1, -halfHeight);
 				Vertex v_tr = GetVertex(p2.x, p2.y, p2.z, u2, v1, -halfHeight);
 				Vertex v_bl = GetVertex(p3.x, p3.y, p3.z, u1, v2, -halfHeight);

@@ -1,4 +1,4 @@
-#include "GraphicsContext.h"
+ï»¿#include "GraphicsContext.h"
 
 namespace Span
 {
@@ -16,7 +16,7 @@ namespace Span
 		width = window.GetWidth();
 		height = window.GetHeight();
 
-		// ƒrƒ…[ƒ|[ƒgİ’è
+		// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆè¨­å®š
 		viewport = { 0.0f, 0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f, 1.0f };
 		scissorRect = { 0, 0, static_cast<long>(width), static_cast<long>(height) };
 
@@ -164,7 +164,7 @@ namespace Span
 		commandAllocator->Reset();
 		commandList->Reset(commandAllocator.Get(), nullptr);
 
-		// ƒoƒbƒNƒoƒbƒtƒ@‚ğ‘‚«‚İ‰Â”\‚É‘JˆÚ
+		// ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã‚’æ›¸ãè¾¼ã¿å¯èƒ½ã«é·ç§»
 		D3D12_RESOURCE_BARRIER barrier = {};
 		barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
 		barrier.Transition.pResource = renderTargets[frameIndex].Get();
@@ -172,16 +172,16 @@ namespace Span
 		barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_RENDER_TARGET;
 		commandList->ResourceBarrier(1, &barrier);
 
-		// ƒrƒ…[ƒ|[ƒgİ’è
+		// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆè¨­å®š
 		commandList->RSSetViewports(1, &viewport);
 		commandList->RSSetScissorRects(1, &scissorRect);
 
-		// ƒ^[ƒQƒbƒgƒZƒbƒg & ƒNƒŠƒA
+		// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚»ãƒƒãƒˆ & ã‚¯ãƒªã‚¢
 		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = rtvHeap->GetCPUDescriptorHandleForHeapStart();
 		rtvHandle.ptr += frameIndex * rtvDescriptorSize;
 		D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = dsvHeap->GetCPUDescriptorHandleForHeapStart();
 
-		// ”wŒiƒNƒŠƒAF (Cornflower Blue)
+		// èƒŒæ™¯ã‚¯ãƒªã‚¢è‰² (Cornflower Blue)
 		const float clearColor[] = { 0.39f, 0.58f, 0.93f, 1.0f };
 		commandList->OMSetRenderTargets(1, &rtvHandle, FALSE, &dsvHandle);
 		commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
@@ -192,7 +192,7 @@ namespace Span
 
 	void GraphicsContext::EndFrame()
 	{
-		// •\¦—p‚É‘JˆÚ
+		// è¡¨ç¤ºç”¨ã«é·ç§»
 		D3D12_RESOURCE_BARRIER barrier = {};
 		barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
 		barrier.Transition.pResource = renderTargets[frameIndex].Get();
@@ -202,14 +202,14 @@ namespace Span
 
 		commandList->Close();
 
-		// Às
+		// å®Ÿè¡Œ
 		ID3D12CommandList* ppCommandLists[] = { commandList.Get() };
 		commandQueue->ExecuteCommandLists(1, ppCommandLists);
 
-		// •\¦
+		// è¡¨ç¤º
 		swapChain->Present(1, 0);
 
-		// “¯Šú
+		// åŒæœŸ
 		const uint64 fenceVal = fenceValue;
 		commandQueue->Signal(fence.Get(), fenceVal);
 		fenceValue++;
@@ -262,7 +262,7 @@ namespace Span
 
 	void GraphicsContext::SetRenderTargetToBackBuffer(ID3D12GraphicsCommandList* commandList)
 	{
-		// ƒ^[ƒQƒbƒg‚ğƒoƒbƒNƒoƒbƒtƒ@‚É–ß‚·
+		// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã«æˆ»ã™
 		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = rtvHeap->GetCPUDescriptorHandleForHeapStart();
 		rtvHandle.ptr += frameIndex * rtvDescriptorSize;
 
@@ -270,7 +270,7 @@ namespace Span
 
 		commandList->OMSetRenderTargets(1, &rtvHandle, FALSE, &dsvHandle);
 
-		// ƒrƒ…[ƒ|[ƒg‚à‰æ–Ê‘S‘Ì‚É–ß‚·
+		// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆã‚‚ç”»é¢å…¨ä½“ã«æˆ»ã™
 		commandList->RSSetViewports(1, &viewport);
 		commandList->RSSetScissorRects(1, &scissorRect);
 	}

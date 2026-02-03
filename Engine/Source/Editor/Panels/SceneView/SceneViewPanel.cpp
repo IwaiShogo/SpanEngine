@@ -1,4 +1,4 @@
-#include "SceneViewPanel.h"
+ï»¿#include "SceneViewPanel.h"
 #include "Runtime/Application.h"
 #include "Editor/SelectionManager.h"
 #include "Editor/PanelManager.h"
@@ -20,14 +20,14 @@ namespace Span
 	SceneViewPanel::SceneViewPanel()
 		: EditorPanel("Scene View")
 	{
-		// ‰Šúİ’è: ˆÚ“®ƒ‚[ƒh, ƒ[ƒJƒ‹À•W
+		// åˆæœŸè¨­å®š: ç§»å‹•ãƒ¢ãƒ¼ãƒ‰, ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™
 		m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
 		m_GizmoType = ImGuizmo::MODE::LOCAL;
 	}
 
 	void SceneViewPanel::OnImGuiRender()
 	{
-		// —]”’–³‚µ‚Å‰æ‘œ‚ğ•\¦
+		// ä½™ç™½ç„¡ã—ã§ç”»åƒã‚’è¡¨ç¤º
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
 
 		bool isOpenTmp = isOpen;
@@ -35,39 +35,39 @@ namespace Span
 		{
 			isOpen = isOpenTmp;
 
-			// --- 1. ƒrƒ…[ƒ|[ƒg‰ğ‘œ“xŠÇ— ---
+			// --- 1. ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆè§£åƒåº¦ç®¡ç† ---
 			ImVec2 avail = ImGui::GetContentRegionAvail();
 
-			// šC³: ƒhƒbƒLƒ“ƒO’†‚È‚Ç‚ÅƒTƒCƒY‚ª‹É’[‚É¬‚³‚¢ê‡‚Íˆ—‚µ‚È‚¢ (ƒNƒ‰ƒbƒVƒ…/ƒoƒO‘Îô)
+			// â˜…ä¿®æ­£: ãƒ‰ãƒƒã‚­ãƒ³ã‚°ä¸­ãªã©ã§ã‚µã‚¤ã‚ºãŒæ¥µç«¯ã«å°ã•ã„å ´åˆã¯å‡¦ç†ã—ãªã„ (ã‚¯ãƒ©ãƒƒã‚·ãƒ¥/ãƒã‚°å¯¾ç­–)
 			if (avail.x > 1.0f && avail.y > 1.0f)
 			{
 				m_PanelSize = { avail.x, avail.y };
 
-				// ƒAƒXƒyƒNƒg”ä‚ÉŠî‚Ã‚¢‚ÄAÀÛ‚É‰æ‘œ‚ğ•`‰æ‚·‚éˆÊ’u‚ÆƒTƒCƒY‚ğŒvZ (ƒŒƒ^[ƒ{ƒbƒNƒXˆ—)
+				// ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”ã«åŸºã¥ã„ã¦ã€å®Ÿéš›ã«ç”»åƒã‚’æç”»ã™ã‚‹ä½ç½®ã¨ã‚µã‚¤ã‚ºã‚’è¨ˆç®— (ãƒ¬ã‚¿ãƒ¼ãƒœãƒƒã‚¯ã‚¹å‡¦ç†)
 				Vector2 imagePos, imageSize;
 				CalculateImageArea(m_PanelSize, imagePos, imageSize);
 
-				// Ÿ‚ÌƒtƒŒ[ƒ€‚ÅApplication‚ªƒŠƒTƒCƒY‚·‚é‚×‚«‰ğ‘œ“x‚ğ•Û‘¶
+				// æ¬¡ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã§ApplicationãŒãƒªã‚µã‚¤ã‚ºã™ã‚‹ã¹ãè§£åƒåº¦ã‚’ä¿å­˜
 				m_TargetResolution = imageSize;
 
-				// --- ‰æ‘œ‚Ì•`‰æ ---
-				// ƒJ[ƒ\ƒ‹ˆÊ’u‚ğŒvZ‚µ‚½ŠJnˆÊ’u‚ÉˆÚ“® (‚±‚ê‚Å’†‰›Šñ‚¹‚³‚ê‚é)
-				ImVec2 cursorPos = ImGui::GetCursorPos(); // Œ»İ‚ÌƒJ[ƒ\ƒ‹i¶ãj
+				// --- ç”»åƒã®æç”» ---
+				// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’è¨ˆç®—ã—ãŸé–‹å§‹ä½ç½®ã«ç§»å‹• (ã“ã‚Œã§ä¸­å¤®å¯„ã›ã•ã‚Œã‚‹)
+				ImVec2 cursorPos = ImGui::GetCursorPos(); // ç¾åœ¨ã®ã‚«ãƒ¼ã‚½ãƒ«ï¼ˆå·¦ä¸Šï¼‰
 				ImGui::SetCursorPos(ImVec2(cursorPos.x + imagePos.x, cursorPos.y + imagePos.y));
 
 				if (textureHandle.ptr != 0)
 				{
-					// ImGui::Image ‚ÍŒ»İ‚ÌƒJ[ƒ\ƒ‹ˆÊ’u‚©‚ç•`‰æ‚·‚é
+					// ImGui::Image ã¯ç¾åœ¨ã®ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‹ã‚‰æç”»ã™ã‚‹
 					ImGui::Image((ImTextureID)textureHandle.ptr, ImVec2(imageSize.x, imageSize.y));
 				}
 
-				// --- ƒMƒYƒ‚‚Ì•`‰æ ---
-				// ‰æ‘œ‚ÌƒXƒNƒŠ[ƒ“À•Wiƒ‚ƒjƒ^[¶ã‚©‚ç‚Ìâ‘ÎÀ•Wj‚ğæ“¾
-				// ‚±‚ê‚Í ImGui::Image ‚Ì’¼‘O‚É SetCursorPos ‚µ‚½êŠ‚É‘Î‰‚·‚é
+				// --- ã‚®ã‚ºãƒ¢ã®æç”» ---
+				// ç”»åƒã®ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ï¼ˆãƒ¢ãƒ‹ã‚¿ãƒ¼å·¦ä¸Šã‹ã‚‰ã®çµ¶å¯¾åº§æ¨™ï¼‰ã‚’å–å¾—
+				// ã“ã‚Œã¯ ImGui::Image ã®ç›´å‰ã« SetCursorPos ã—ãŸå ´æ‰€ã«å¯¾å¿œã™ã‚‹
 				ImVec2 imageScreenPos = ImGui::GetItemRectMin();
 
-				// ImGuizmo‚Ì•`‰æ”ÍˆÍ‚ğu‰æ‘œ‚Ì•`‰æ”ÍˆÍv‚ÉŠ®‘S‚Éˆê’v‚³‚¹‚é
-				// ‚±‚ê‚Åƒ}ƒEƒX”»’è‚ÌƒYƒŒiG‚ê‚È‚¢–â‘èj‚ª’¼‚è‚Ü‚·
+				// ImGuizmoã®æç”»ç¯„å›²ã‚’ã€Œç”»åƒã®æç”»ç¯„å›²ã€ã«å®Œå…¨ã«ä¸€è‡´ã•ã›ã‚‹
+				// ã“ã‚Œã§ãƒã‚¦ã‚¹åˆ¤å®šã®ã‚ºãƒ¬ï¼ˆè§¦ã‚Œãªã„å•é¡Œï¼‰ãŒç›´ã‚Šã¾ã™
 				ImGuizmo::SetDrawlist();
 				ImGuizmo::SetRect(imageScreenPos.x, imageScreenPos.y, imageSize.x, imageSize.y);
 
@@ -84,21 +84,21 @@ namespace Span
 	{
 		World& world = Application::Get().GetWorld();
 
-		// ƒJƒƒ‰î•ñ‚Ìæ“¾
+		// ã‚«ãƒ¡ãƒ©æƒ…å ±ã®å–å¾—
 		Entity cameraEntity = Entity::Null;
 		Matrix4x4 cameraView = Matrix4x4::Identity();
 		Matrix4x4 cameraProj = Matrix4x4::Identity();
 
-		// ƒV[ƒ““à‚ÌƒAƒNƒeƒBƒu‚ÈƒJƒƒ‰(EditorCamera—Dæ)‚ğ’T‚·
+		// ã‚·ãƒ¼ãƒ³å†…ã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚«ãƒ¡ãƒ©(EditorCameraå„ªå…ˆ)ã‚’æ¢ã™
 		world.ForEach<Camera, LocalToWorld>([&](Entity e, Camera& cam, LocalToWorld& ltw)
 		{
-			// EditorCameraƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‚Á‚Ä‚¢‚ê‚Î‚»‚ê‚ğ—DæÌ—p
+			// EditorCameraã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æŒã£ã¦ã„ã‚Œã°ãã‚Œã‚’å„ªå…ˆæ¡ç”¨
 			if (world.HasComponent<EditorCamera>(e) || cameraEntity.IsNull())
 			{
 				cameraEntity = e;
 				cameraView = ltw.Value.Invert();
 
-				// ƒAƒXƒyƒNƒg”ä‚ğŒ»İ‚Ìƒrƒ…[ƒ|[ƒg‚É‡‚í‚¹‚é
+				// ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”ã‚’ç¾åœ¨ã®ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆã«åˆã‚ã›ã‚‹
 				float aspect = size.x / size.y;
 				if (aspect <= 0.0f) aspect = 1.0f;
 
@@ -110,8 +110,8 @@ namespace Span
 
 		ImGuizmo::SetOrthographic(false);
 
-		// --- View Cube (ƒV[ƒ“ƒMƒYƒ‚) ---
-		// ‰Eã‚É•\¦
+		// --- View Cube (ã‚·ãƒ¼ãƒ³ã‚®ã‚ºãƒ¢) ---
+		// å³ä¸Šã«è¡¨ç¤º
 		{
 			Matrix4x4 viewManipulateMatrix = cameraView;
 			float viewSize = 128.0f;
@@ -124,26 +124,26 @@ namespace Span
 				0x10101010
 			);
 
-			// ViewManipulate‚Å‘€ì‚³‚ê‚½ê‡AƒJƒƒ‰‚Ìs—ñ‚ğXV‚·‚é•K—v‚ª‚ ‚é
+			// ViewManipulateã§æ“ä½œã•ã‚ŒãŸå ´åˆã€ã‚«ãƒ¡ãƒ©ã®è¡Œåˆ—ã‚’æ›´æ–°ã™ã‚‹å¿…è¦ãŒã‚ã‚‹
 		}
 
-		// --- ‘I‘ğƒIƒuƒWƒFƒNƒg‚Ì‘€ìƒMƒYƒ‚ ---
+		// --- é¸æŠã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ“ä½œã‚®ã‚ºãƒ¢ ---
 		Entity selectedEntity = SelectionManager::GetPrimary();
 		if (!selectedEntity.IsNull() && world.IsAlive(selectedEntity) && m_GizmoType != -1)
 		{
 			Transform* tc = world.GetComponentPtr<Transform>(selectedEntity);
 			if (tc)
 			{
-				// ƒOƒŠƒbƒh•`‰æ
+				// ã‚°ãƒªãƒƒãƒ‰æç”»
 				if (m_GizmoType == ImGuizmo::OPERATION::TRANSLATE)
 				{
 					// ImGuizmo::DrawGrid((float*)&cameraView, (float*)&cameraProj, (float*)&Matrix4x4::Identity(), 100.0f);
 				}
 
-				// Œ»İ‚ÌTransforms—ñ
+				// ç¾åœ¨ã®Transformè¡Œåˆ—
 				Matrix4x4 transformMatrix = Matrix4x4::TRS(tc->Position, tc->Rotation, tc->Scale);
 
-				// ƒXƒiƒbƒvİ’è
+				// ã‚¹ãƒŠãƒƒãƒ—è¨­å®š
 				float snapValue = 0.5f;
 				if (m_GizmoType == ImGuizmo::OPERATION::ROTATE) snapValue = m_SnapValueRotate;
 				else if (m_GizmoType == ImGuizmo::OPERATION::SCALE) snapValue = m_SnapValueScale;
@@ -151,7 +151,7 @@ namespace Span
 
 				float snapValues[3] = { snapValue, snapValue, snapValue };
 
-				// ƒMƒYƒ‚‘€ìÀs
+				// ã‚®ã‚ºãƒ¢æ“ä½œå®Ÿè¡Œ
 				ImGuizmo::Manipulate(
 					(float*)&cameraView,
 					(float*)&cameraProj,
@@ -162,7 +162,7 @@ namespace Span
 					m_UseSnap ? snapValues : nullptr
 				);
 
-				// ‘€ì‚³‚ê‚½ê‡A’l‚ğ‘‚«–ß‚·
+				// æ“ä½œã•ã‚ŒãŸå ´åˆã€å€¤ã‚’æ›¸ãæˆ»ã™
 				if (ImGuizmo::IsUsing())
 				{
 					Vector3 translation, rotation, scale;
@@ -175,11 +175,11 @@ namespace Span
 			}
 		}
 
-		// --- ƒVƒ‡[ƒgƒJƒbƒgƒL[ˆ— ---
-		// ƒV[ƒ“ƒrƒ…[‚ÉƒtƒH[ƒJƒX‚ª‚ ‚é‚Ì‚İ
+		// --- ã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆã‚­ãƒ¼å‡¦ç† ---
+		// ã‚·ãƒ¼ãƒ³ãƒ“ãƒ¥ãƒ¼ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ãŒã‚ã‚‹æ™‚ã®ã¿
 		if (ImGui::IsWindowFocused() && !ImGuizmo::IsUsing())
 		{
-			if (Input::GetKeyDown(Key::Q)) m_GizmoType = -1;	// ‚È‚µ (‘I‘ğƒ‚[ƒh)
+			if (Input::GetKeyDown(Key::Q)) m_GizmoType = -1;	// ãªã— (é¸æŠãƒ¢ãƒ¼ãƒ‰)
 			if (Input::GetKeyDown(Key::W)) m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
 			if (Input::GetKeyDown(Key::E)) m_GizmoType = ImGuizmo::OPERATION::ROTATE;
 			if (Input::GetKeyDown(Key::R)) m_GizmoType = ImGuizmo::OPERATION::SCALE;
@@ -189,19 +189,19 @@ namespace Span
 	void SceneViewPanel::DrawToolbarOverlay()
 	{
 		ImVec2 windowPos = ImGui::GetWindowPos();
-		// ƒ^ƒCƒgƒ‹ƒo[‚Ì‚‚³‚ğl—¶
+		// ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼ã®é«˜ã•ã‚’è€ƒæ…®
 		float titleBarHeight = ImGui::GetFontSize() + ImGui::GetStyle().FramePadding.y * 2.0f;
 		ImVec2 overlayPos = { windowPos.x + 10.0f, windowPos.y + titleBarHeight + 10.0f };
 
 		ImGui::SetNextWindowPos(overlayPos);
 		ImGui::SetNextWindowBgAlpha(0.35f);
 
-		// ƒc[ƒ‹ƒo[—p‚ÌƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹
+		// ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ç”¨ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¹ã‚¿ã‚¤ãƒ«
 		ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav;
 
 		if (ImGui::Begin("##SceneToolbar", nullptr, window_flags))
 		{
-			// ƒ{ƒ^ƒ“‚ÌFİ’èƒwƒ‹ƒp[
+			// ãƒœã‚¿ãƒ³ã®è‰²è¨­å®šãƒ˜ãƒ«ãƒ‘ãƒ¼
 			auto ToolbarButton = [&](const char* label, bool active) -> bool
 			{
 				if (active) ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(1, 0.6f, 0, 1));
@@ -226,7 +226,7 @@ namespace Span
 			ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
 			ImGui::SameLine();
 
-			// À•WŒn (Local / World)
+			// åº§æ¨™ç³» (Local / World)
 			if (ImGui::Button(m_GizmoMode == ImGuizmo::MODE::LOCAL ? "Local" : "World"))
 			{
 				m_GizmoMode = (m_GizmoMode == ImGuizmo::MODE::LOCAL) ? ImGuizmo::MODE::WORLD : ImGuizmo::MODE::LOCAL;
@@ -237,8 +237,8 @@ namespace Span
 			ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
 			ImGui::SameLine();
 
-			// ƒXƒiƒbƒv
-			// ƒAƒCƒRƒ“‚Ì‘ã‚í‚è‚ÉƒeƒLƒXƒg‚ÅŠÈˆÕ•\¦
+			// ã‚¹ãƒŠãƒƒãƒ—
+			// ã‚¢ã‚¤ã‚³ãƒ³ã®ä»£ã‚ã‚Šã«ãƒ†ã‚­ã‚¹ãƒˆã§ç°¡æ˜“è¡¨ç¤º
 			if (ToolbarButton("S", m_UseSnap)) m_UseSnap = !m_UseSnap;
 			if (ImGui::IsItemHovered()) ImGui::SetTooltip("Toggle Snap (Hold Ctrl)");
 
@@ -246,7 +246,7 @@ namespace Span
 			ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
 			ImGui::SameLine();
 
-			// ƒAƒXƒyƒNƒg”äƒRƒ“ƒ{ƒ{ƒbƒNƒX
+			// ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹
 			const char* aspectItems[] = { "Free", "16:9", "16:10", "4:3", "21:9" };
 			int currentItem = (int)m_AspectRatio;
 			ImGui::PushItemWidth(80);
@@ -262,7 +262,7 @@ namespace Span
 
 	void SceneViewPanel::CalculateImageArea(const Vector2& avail, Vector2& outPos, Vector2& outSize)
 	{
-		// ƒAƒXƒyƒNƒg”ä‚Ì”{—¦ŒvZ (W / H)
+		// ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”ã®å€ç‡è¨ˆç®— (W / H)
 		float targetAspect = 0.0f;
 		switch (m_AspectRatio)
 		{
@@ -280,7 +280,7 @@ namespace Span
 
 		if (currentAspect > targetAspect)
 		{
-			// ‰¡‚É’·‚¢ -> ¶‰E‚É•‘Ñ (Pillarbox)
+			// æ¨ªã«é•·ã„ -> å·¦å³ã«é»’å¸¯ (Pillarbox)
 			outSize.y = avail.y;
 			outSize.x = outSize.y * targetAspect;
 			outPos.y = 0.0f;
@@ -288,7 +288,7 @@ namespace Span
 		}
 		else
 		{
-			// c‚É’·‚¢ -> ã‰º‚É•‘Ñ (Letterbox)
+			// ç¸¦ã«é•·ã„ -> ä¸Šä¸‹ã«é»’å¸¯ (Letterbox)
 			outSize.x = avail.x;
 			outSize.y = outSize.x / targetAspect;
 			outPos.x = 0.0f;

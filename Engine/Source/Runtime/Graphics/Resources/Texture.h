@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
@@ -9,27 +9,27 @@ namespace Span
         Texture();
         ~Texture();
 
-        // ‰æ‘œƒtƒ@ƒCƒ‹‚©‚çƒeƒNƒXƒ`ƒƒ‚ğì¬
+        // ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’ä½œæˆ
         bool Initialize(ID3D12Device* device, ID3D12CommandQueue* commandQueue, const std::string& filepath);
 
-        // I—¹ˆ—
+        // çµ‚äº†å‡¦ç†
         void Shutdown();
 
-        // ƒfƒBƒXƒNƒŠƒvƒ^ƒq[ƒvã‚ÌˆÊ’u (CPUƒnƒ“ƒhƒ‹) ‚ğ•Ô‚·
+        // ãƒ‡ã‚£ã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ’ãƒ¼ãƒ—ä¸Šã®ä½ç½® (CPUãƒãƒ³ãƒ‰ãƒ«) ã‚’è¿”ã™
         D3D12_CPU_DESCRIPTOR_HANDLE GetCPUDescriptorHandle() const { return srvHandleCPU; }
 
-        // ƒVƒF[ƒ_[ƒŠƒ\[ƒXƒrƒ…[ (SRV) ‚Ìì¬
+        // ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ãƒªã‚½ãƒ¼ã‚¹ãƒ“ãƒ¥ãƒ¼ (SRV) ã®ä½œæˆ
         ID3D12DescriptorHeap* GetSRVHeap() const { return srvHeap.Get(); }
 
     private:
-        // ‰æ‘œƒf[ƒ^‚ğGPUƒoƒbƒtƒ@‚ÖƒAƒbƒvƒ[ƒh‚·‚éƒwƒ‹ƒp[ŠÖ”
+        // ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’GPUãƒãƒƒãƒ•ã‚¡ã¸ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•°
         bool UploadTexture(ID3D12Device* device, ID3D12CommandQueue* commandQueue,
             const void* initialData, uint64_t width, uint64_t height, uint64_t bytesPerPixel);
 
     private:
-        ComPtr<ID3D12Resource> resource;       // ƒeƒNƒXƒ`ƒƒ–{‘Ì (VRAM)
-        ComPtr<ID3D12Resource> uploadBuffer;   // ƒAƒbƒvƒ[ƒh—p‚Ìˆêƒoƒbƒtƒ@ (Upload Heap)
-        ComPtr<ID3D12DescriptorHeap> srvHeap;  // SRV—pƒfƒXƒNƒŠƒvƒ^ƒq[ƒv (‚±‚ÌƒeƒNƒXƒ`ƒƒê—p)
+        ComPtr<ID3D12Resource> resource;       // ãƒ†ã‚¯ã‚¹ãƒãƒ£æœ¬ä½“ (VRAM)
+        ComPtr<ID3D12Resource> uploadBuffer;   // ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ç”¨ã®ä¸€æ™‚ãƒãƒƒãƒ•ã‚¡ (Upload Heap)
+        ComPtr<ID3D12DescriptorHeap> srvHeap;  // SRVç”¨ãƒ‡ã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ’ãƒ¼ãƒ— (ã“ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£å°‚ç”¨)
 
         D3D12_CPU_DESCRIPTOR_HANDLE srvHandleCPU = {};
 

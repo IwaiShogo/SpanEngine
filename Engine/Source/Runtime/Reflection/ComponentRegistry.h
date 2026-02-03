@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 #include "ECS/Kernel/Entity.h"
 #include <functional>
 #include <vector>
 #include <string>
 
-// WorldƒNƒ‰ƒX‚Ì‘O•ûéŒ¾‚¾‚¯‚ğs‚¤
+// Worldã‚¯ãƒ©ã‚¹ã®å‰æ–¹å®£è¨€ã ã‘ã‚’è¡Œã†
 namespace Span { class World; }
 
 #include "ECS/Kernel/World.h"
@@ -20,7 +20,7 @@ namespace Span
 		DrawComponentFunc DrawFunc;
 		RemoveComponentFunc RemoveFunc;
 
-		// ƒ\[ƒg—p
+		// ã‚½ãƒ¼ãƒˆç”¨
 		int Order = 0;
 	};
 
@@ -32,9 +32,9 @@ namespace Span
 		{
 			ComponentMetadata meta;
 			meta.Name = name;
-			meta.Order = (int)GetRegistry().size(); // “o˜^‡‚ğ‰Šú’l‚É
+			meta.Order = (int)GetRegistry().size(); // ç™»éŒ²é †ã‚’åˆæœŸå€¤ã«
 
-			// •`‰æŠÖ”
+			// æç”»é–¢æ•°
 			meta.DrawFunc = [onGui](Entity entity, World& world)
 			{
 				if (T* component = world.GetComponentPtr<T>(entity))
@@ -43,7 +43,7 @@ namespace Span
 				}
 			};
 
-			// íœŠÖ”
+			// å‰Šé™¤é–¢æ•°
 			meta.RemoveFunc = [](Entity entity, World& world)
 			{
 				world.RemoveComponent<T>(entity);
@@ -55,7 +55,7 @@ namespace Span
 		static std::vector<ComponentMetadata>& GetAll() { return GetRegistry(); }
 
 	private:
-		// Ã“I‰Šú‰»‡˜–â‘èiSIOFj‰ñ”ğ‚Ì‚½‚ßŠÖ”“àstatic•Ï”‚É‚·‚é
+		// é™çš„åˆæœŸåŒ–é †åºå•é¡Œï¼ˆSIOFï¼‰å›é¿ã®ãŸã‚é–¢æ•°å†…staticå¤‰æ•°ã«ã™ã‚‹
 		static std::vector<ComponentMetadata>& GetRegistry()
 		{
 			static std::vector<ComponentMetadata> registry;

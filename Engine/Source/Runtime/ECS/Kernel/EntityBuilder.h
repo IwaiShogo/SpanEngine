@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "World.h"
 #include "Components/Core/Name.h"
 #include "Components/Core/Tag.h"
@@ -15,18 +15,18 @@ namespace Span
 		EntityBuilder(World* world, const std::string& name = "GameObject")
 			: m_world(world)
 		{
-			// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒZƒbƒg‚Åì¬
+			// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ã‚»ãƒƒãƒˆã§ä½œæˆ
 			m_entity = m_world->CreateEntity<Name, Tag, Layer, Transform, Relationship, Active>();
 
-			// ‰Šú’lİ’è
+			// åˆæœŸå€¤è¨­å®š
 			Name& nameComp = m_world->GetComponent<Name>(m_entity);
 			strcpy_s(nameComp.Value, name.c_str());
 
-			// ƒ^ƒO‚Ì‰Šú‰»
+			// ã‚¿ã‚°ã®åˆæœŸåŒ–
 			m_world->GetComponent<Tag>(m_entity).Value = "Untagged";
 		}
 
-		// ƒRƒ“ƒ|[ƒlƒ“ƒg’Ç‰Á & ’lİ’è
+		// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè¿½åŠ  & å€¤è¨­å®š
 		template <typename T>
 		EntityBuilder& Add(const T& componentValue)
 		{
@@ -34,7 +34,7 @@ namespace Span
 			return *this;
 		}
 
-		// ƒRƒ“ƒ|[ƒlƒ“ƒg’Ç‰Á (ƒfƒtƒHƒ‹ƒg’l)
+		// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè¿½åŠ  (ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤)
 		template <typename T>
 		EntityBuilder& Add()
 		{
@@ -42,7 +42,7 @@ namespace Span
 			return *this;
 		}
 
-		// “Á’è‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘€ì
+		// ç‰¹å®šã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æ“ä½œ
 		template <typename T>
 		EntityBuilder& With(std::function<void(T&)> func)
 		{
@@ -63,3 +63,4 @@ namespace Span
 		Entity m_entity;
 	};
 }
+

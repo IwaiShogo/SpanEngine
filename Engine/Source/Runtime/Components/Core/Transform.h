@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/Math/SpanMath.h"
 #include "Runtime/Reflection/SpanReflection.h"
 
@@ -10,7 +10,7 @@ namespace Span
 		Quaternion Rotation;
 		Vector3 Scale;
 
-		// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		Transform()
 			: Position(Vector3::Zero)
 			, Rotation(Quaternion::Identity)
@@ -32,80 +32,80 @@ namespace Span
 		{
 		}
 
-		// --- Ã“Iì¬ƒwƒ‹ƒp[ ---
+		// --- é™çš„ä½œæˆãƒ˜ãƒ«ãƒ‘ãƒ¼ ---
 
 		static Transform Identity()
 		{
 			return Transform();
 		}
 
-		// --- ŒvŽZƒwƒ‹ƒp[ (Ž©g‚Ìƒf[ƒ^‚Í•ÏX‚¹‚¸AŒvŽZŒ‹‰Ê‚ð•Ô‚·) ---
+		// --- è¨ˆç®—ãƒ˜ãƒ«ãƒ‘ãƒ¼ (è‡ªèº«ã®ãƒ‡ãƒ¼ã‚¿ã¯å¤‰æ›´ã›ãšã€è¨ˆç®—çµæžœã‚’è¿”ã™) ---
 
-		// ƒ[ƒJƒ‹s—ñ (T * R * S) ‚ðŽæ“¾
+		// ãƒ­ãƒ¼ã‚«ãƒ«è¡Œåˆ— (T * R * S) ã‚’å–å¾—
 		Matrix4x4 GetLocalMatrix() const
 		{
 			return Matrix4x4::TRS(Position, Rotation, Scale);
 		}
 
-		// --- •ûŒüƒxƒNƒgƒ‹Žæ“¾ ---
+		// --- æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«å–å¾— ---
 
-		// ‘O•û (Z+)
+		// å‰æ–¹ (Z+)
 		Vector3 GetForward() const
 		{
-			// ‰ñ“]ƒNƒH[ƒ^ƒjƒIƒ“‚É‚æ‚Á‚Ä (0,0,1) ‚ð‰ñ“]‚³‚¹‚é
+			// å›žè»¢ã‚¯ã‚©ãƒ¼ã‚¿ãƒ‹ã‚ªãƒ³ã«ã‚ˆã£ã¦ (0,0,1) ã‚’å›žè»¢ã•ã›ã‚‹
 			Matrix4x4 mat = Matrix4x4::Rotation(Rotation);
-			// ‰ñ“]s—ñ‚Ì3s–Ú(ZŽ²)‚ðŽæ‚èo‚·‚Ì‚Æ“¯‹`
+			// å›žè»¢è¡Œåˆ—ã®3è¡Œç›®(Zè»¸)ã‚’å–ã‚Šå‡ºã™ã®ã¨åŒç¾©
 			return Vector3(mat._31, mat._32, mat._33).Normalized();
 		}
 
-		// ã•û (Y+)
+		// ä¸Šæ–¹ (Y+)
 		Vector3 GetUp() const
 		{
 			Matrix4x4 mat = Matrix4x4::Rotation(Rotation);
 			return Vector3(mat._21, mat._22, mat._23).Normalized();
 		}
 
-		// ‰E•û (X+)
+		// å³æ–¹ (X+)
 		Vector3 GetRight() const
 		{
 			Matrix4x4 mat = Matrix4x4::Rotation(Rotation);
 			return Vector3(mat._11, mat._12, mat._13).Normalized();
 		}
 
-		// --- ‘€ìƒwƒ‹ƒp[ ---
+		// --- æ“ä½œãƒ˜ãƒ«ãƒ‘ãƒ¼ ---
 
-		// Žw’èÀ•W‚ðŒü‚­‰ñ“]‚ðÝ’è
+		// æŒ‡å®šåº§æ¨™ã‚’å‘ãå›žè»¢ã‚’è¨­å®š
 		void LookAt(const Vector3& target, const Vector3& worldUp = Vector3::Up)
 		{
-			// 1. •ûŒüƒxƒNƒgƒ‹ŒvŽZ (Ž©•ª -> ƒ^[ƒQƒbƒg)
+			// 1. æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«è¨ˆç®— (è‡ªåˆ† -> ã‚¿ãƒ¼ã‚²ãƒƒãƒˆ)
 			Vector3 forward = (target - Position).Normalized();
 
-			// ƒ^[ƒQƒbƒg‚ª‹ß‚·‚¬‚ÄŒvŽZ‚Å‚«‚È‚¢ê‡‚Í‰½‚à‚µ‚È‚¢
+			// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãŒè¿‘ã™ãŽã¦è¨ˆç®—ã§ããªã„å ´åˆã¯ä½•ã‚‚ã—ãªã„
 			if (Vector3::Dot(forward, forward) < 0.001f) return;
 
-			// 2. Šî’êƒxƒNƒgƒ‹‚ÌŽZo (ŠOÏ)
+			// 2. åŸºåº•ãƒ™ã‚¯ãƒˆãƒ«ã®ç®—å‡º (å¤–ç©)
 			Vector3 right = Vector3::Cross(worldUp, forward).Normalized();
 
-			// ^ã‚â^‰º‚ðŒü‚¢‚½ê‡‚Ì“ÁˆÙ“_‘Îô
+			// çœŸä¸Šã‚„çœŸä¸‹ã‚’å‘ã„ãŸå ´åˆã®ç‰¹ç•°ç‚¹å¯¾ç­–
 			if (Vector3::Dot(right, right) < 0.001f)
 			{
-				// worldUp‚Æforward‚ª•½s‚É‹ß‚¢ -> Right‚ð“K“–‚ÉŒˆ‚ß‚é
+				// worldUpã¨forwardãŒå¹³è¡Œã«è¿‘ã„ -> Rightã‚’é©å½“ã«æ±ºã‚ã‚‹
 				right = Vector3::Cross(Vector3::Right, forward).Normalized();
 			}
 
 			Vector3 up = Vector3::Cross(forward, right).Normalized();
 
-			// 3. ‰ñ“]s—ñ‚Ì\’z
+			// 3. å›žè»¢è¡Œåˆ—ã®æ§‹ç¯‰
 			Matrix4x4 rotMat = Matrix4x4::Identity();
 
-			// XŽ² (Right)
+			// Xè»¸ (Right)
 			rotMat._11 = right.x; rotMat._12 = right.y; rotMat._13 = right.z;
-			// YŽ² (Up)
+			// Yè»¸ (Up)
 			rotMat._21 = up.x;	  rotMat._22 = up.y;	rotMat._23 = up.z;
-			// ZŽ² (Forward)
+			// Zè»¸ (Forward)
 			rotMat._31 = forward.x; rotMat._32 = forward.y; rotMat._33 = forward.z;
 
-			// 4. s—ñ -> ƒNƒH[ƒ^ƒjƒIƒ“•ÏŠ·‚µ‚Ä“K—p
+			// 4. è¡Œåˆ— -> ã‚¯ã‚©ãƒ¼ã‚¿ãƒ‹ã‚ªãƒ³å¤‰æ›ã—ã¦é©ç”¨
 			Rotation = Quaternion::FromRotationMatrix(rotMat);
 		}
 

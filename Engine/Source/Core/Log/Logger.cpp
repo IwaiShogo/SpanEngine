@@ -1,16 +1,16 @@
-#include "Logger.h"
+ï»¿#include "Logger.h"
 
 namespace Span
 {
-	// ƒƒOƒtƒ@ƒCƒ‹‚Ìƒ|ƒCƒ“ƒ^
+	// ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒã‚¤ãƒ³ã‚¿
 	static FILE* s_LogFile = nullptr;
-	
+
 	void Logger::Initialize()
 	{
-		// ƒƒOƒtƒHƒ‹ƒ_‚Ìì¬ (Bin/Logs)
+		// ãƒ­ã‚°ãƒ•ã‚©ãƒ«ãƒ€ã®ä½œæˆ (Bin/Logs)
 		std::filesystem::create_directories("Logs");
 
-		// ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“
+		// ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³
 		errno_t err = fopen_s(&s_LogFile, "Logs/SpanEngine.log", "w");
 		if (err != 0)
 		{
@@ -29,7 +29,7 @@ namespace Span
 
 	void Logger::Log(LogLevel level, const char* file, int line, const char* format, ...)
 	{
-		// 1. ƒƒbƒZ[ƒW‚ÌƒtƒH[ƒ}ƒbƒg
+		// 1. ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
 		const int bufferSize = 1024;
 		char messageBuffer[bufferSize];
 
@@ -38,7 +38,7 @@ namespace Span
 		vsnprintf(messageBuffer, bufferSize, format, args);
 		va_end(args);
 
-		// 2. ƒvƒŒƒtƒBƒbƒNƒX‚Ìì¬i‚âƒŒƒxƒ‹Aƒtƒ@ƒCƒ‹–¼j
+		// 2. ãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹ã®ä½œæˆï¼ˆæ™‚åˆ»ã‚„ãƒ¬ãƒ™ãƒ«ã€ãƒ•ã‚¡ã‚¤ãƒ«åï¼‰
 		const char* levelStr = "";
 		switch (level)
 		{
@@ -48,32 +48,32 @@ namespace Span
 		case LogLevel::Fatal:	levelStr = "[FATAL]"; break;
 		}
 
-		// ƒtƒ@ƒCƒ‹–¼‚Ì‚İ’Šo
+		// ãƒ•ã‚¡ã‚¤ãƒ«åã®ã¿æŠ½å‡º
 		std::string fileName = std::filesystem::path(file).filename().string();
 
 		char finalBuffer[2048];
 		snprintf(finalBuffer, sizeof(finalBuffer), "%s%s (%s:%d)\n", levelStr, messageBuffer, fileName.c_str(), line);
 
-		// 3. ƒRƒ“ƒ\[ƒ‹o—Í
+		// 3. ã‚³ãƒ³ã‚½ãƒ¼ãƒ«å‡ºåŠ›
 		SetConsoleColor(level);
 		printf("%s", finalBuffer);
 		ResetConsoleColor();
 
-		// 4. Visual Studio‚Ìo—ÍƒEƒBƒ“ƒhƒE‚Ö‚Ìo—Í
+		// 4. Visual Studioã®å‡ºåŠ›ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¸ã®å‡ºåŠ›
 		OutputDebugStringA(finalBuffer);
 
-		// 5. ƒtƒ@ƒCƒ‹o—Í
+		// 5. ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›
 		if (s_LogFile)
 		{
 			fprintf(s_LogFile, "%s", finalBuffer);
 			fflush(s_LogFile);
 		}
 
-		// Fatal‚È‚ç‹­§I—¹
+		// Fatalãªã‚‰å¼·åˆ¶çµ‚äº†
 		if (level == LogLevel::Fatal)
 		{
 			MessageBoxA(nullptr, finalBuffer, "Span Engine Fatal Error", MB_OK | MB_ICONERROR);
-			__debugbreak();	// ƒfƒoƒbƒK‚Å~‚ß‚é
+			__debugbreak();	// ãƒ‡ãƒãƒƒã‚¬ã§æ­¢ã‚ã‚‹
 		}
 	}
 
@@ -82,10 +82,10 @@ namespace Span
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		switch (level)
 		{
-		case LogLevel::Info:	SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); break;		// ”’
-		case LogLevel::Warning:	SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY); break;	// ‰©F
-		case LogLevel::Error:	SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY); break;					// Ô
-		case LogLevel::Fatal:	SetConsoleTextAttribute(hConsole, BACKGROUND_RED | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY); break;	// Ô”wŒi
+		case LogLevel::Info:	SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); break;		// ç™½
+		case LogLevel::Warning:	SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY); break;	// é»„è‰²
+		case LogLevel::Error:	SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY); break;					// èµ¤
+		case LogLevel::Fatal:	SetConsoleTextAttribute(hConsole, BACKGROUND_RED | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY); break;	// èµ¤èƒŒæ™¯
 		}
 	}
 
@@ -95,3 +95,4 @@ namespace Span
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 	}
 }
+

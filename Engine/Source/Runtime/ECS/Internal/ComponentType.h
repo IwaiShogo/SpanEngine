@@ -1,16 +1,16 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include <string_view>
 
 namespace Span
 {
-	// ƒRƒ“ƒ|[ƒlƒ“ƒgID‚ÌŒ^
+	// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆIDã®å‹
 	using ComponentTypeID = uint32;
 
 	/**
-	 * @brief	Œ^(T)‚©‚çˆêˆÓ‚ÌID‚ğæ“¾‚·‚éƒeƒ“ƒvƒŒ[ƒgƒNƒ‰ƒX
-	 * ƒ†[ƒU[‚ª struct Position ‚ğ’è‹`‚·‚é‚ÆA
-	 * ComponentType<Position>::GetID() ‚Å©“®“I‚Éƒ†ƒj[ƒN‚È”Ô†‚ª”­s‚³‚ê‚éB
+	 * @brief	å‹(T)ã‹ã‚‰ä¸€æ„ã®IDã‚’å–å¾—ã™ã‚‹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚¯ãƒ©ã‚¹
+	 * ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒ struct Position ã‚’å®šç¾©ã™ã‚‹ã¨ã€
+	 * ComponentType<Position>::GetID() ã§è‡ªå‹•çš„ã«ãƒ¦ãƒ‹ãƒ¼ã‚¯ãªç•ªå·ãŒç™ºè¡Œã•ã‚Œã‚‹ã€‚
 	 */
 	template <typename T>
 	class ComponentType
@@ -18,10 +18,10 @@ namespace Span
 	public:
 		static ComponentTypeID GetID()
 		{
-			// Œ^‚Ì–¼‘O‚ğæ“¾
+			// å‹ã®åå‰ã‚’å–å¾—
 			const char* typeName = typeid(T).name();
 
-			// •¶š—ñ‚ğƒnƒbƒVƒ…‰»‚µ‚ÄID‚É‚·‚é
+			// æ–‡å­—åˆ—ã‚’ãƒãƒƒã‚·ãƒ¥åŒ–ã—ã¦IDã«ã™ã‚‹
 			static const ComponentTypeID id = static_cast<ComponentTypeID>(
 				std::hash<std::string_view>()(typeName)
 			);
@@ -29,9 +29,10 @@ namespace Span
 			return id;
 		}
 
-		// ƒTƒCƒY‚âƒAƒ‰ƒCƒAƒƒ“ƒg‚È‚Ç‚Ìƒƒ^î•ñ‚à‚±‚±‚Åæ“¾‚Å‚«‚é‚æ‚¤‚É‚·‚é
+		// ã‚µã‚¤ã‚ºã‚„ã‚¢ãƒ©ã‚¤ã‚¢ãƒ¡ãƒ³ãƒˆãªã©ã®ãƒ¡ã‚¿æƒ…å ±ã‚‚ã“ã“ã§å–å¾—ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
 		static size_t GetSize() { return sizeof(T); }
 		static size_t GetAlignment() { return alignof(T); }
-		static const char* GetName() { return typeid(T).name(); }	// ƒfƒoƒbƒO—p
+		static const char* GetName() { return typeid(T).name(); }	// ãƒ‡ãƒãƒƒã‚°ç”¨
 	};
 }
+

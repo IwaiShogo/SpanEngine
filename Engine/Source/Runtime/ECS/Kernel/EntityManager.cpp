@@ -1,4 +1,4 @@
-#include "EntityManager.h"
+ï»¿#include "EntityManager.h"
 
 namespace Span
 {
@@ -6,7 +6,7 @@ namespace Span
 	{
 		uint32 idx;
 
-		// 1. Ä—˜—p‚Å‚«‚éID‚ª‚ ‚é‚©Šm”F
+		// 1. å†åˆ©ç”¨ã§ãã‚‹IDãŒã‚ã‚‹ã‹ç¢ºèª
 		if (freeIndices.size() > MINIMUM_FREE_INDICES)
 		{
 			idx = freeIndices.front();
@@ -14,14 +14,14 @@ namespace Span
 		}
 		else
 		{
-			// 2. –³‚¯‚ê‚ÎV‹Kì¬
+			// 2. ç„¡ã‘ã‚Œã°æ–°è¦ä½œæˆ
 			generations.push_back(0);
 			idx = static_cast<uint32>(generations.size() - 1);
 		}
 
 		activeCount++;
 
-		// EntityID‚ğì¬‚µ‚Ä•Ô‚·
+		// EntityIDã‚’ä½œæˆã—ã¦è¿”ã™
 		return Entity{ { idx, generations[idx] } };
 	}
 
@@ -29,33 +29,33 @@ namespace Span
 	{
 		const uint32 idx = entity.ID.Index;
 
-		// ”ÍˆÍŠOƒ`ƒFƒbƒN or Šù‚É¢‘ã‚ª•Ï‚í‚Á‚Ä‚¢‚é(“ñdíœ‚È‚Ç)‚È‚ç–³‹
+		// ç¯„å›²å¤–ãƒã‚§ãƒƒã‚¯ or æ—¢ã«ä¸–ä»£ãŒå¤‰ã‚ã£ã¦ã„ã‚‹(äºŒé‡å‰Šé™¤ãªã©)ãªã‚‰ç„¡è¦–
 		if (idx >= generations.size() || generations[idx] != entity.ID.Generation)
 		{
 			SPAN_WARN("Attempted to destroy an invalid or already destroyed entity: Index %d", idx);
 			return;
 		}
 
-		// ¢‘ã‚ği‚ß‚é
+		// ä¸–ä»£ã‚’é€²ã‚ã‚‹
 		generations[idx]++;
 
-		// ƒtƒŠ[ƒŠƒXƒg‚É’Ç‰Á
+		// ãƒ•ãƒªãƒ¼ãƒªã‚¹ãƒˆã«è¿½åŠ 
 		freeIndices.push_back(idx);
 		activeCount--;
 
-		// ŠJ”­—pƒƒO
+		// é–‹ç™ºç”¨ãƒ­ã‚°
 		// SPAN_LOG("Entity Destroyed: Index %d, Next Gen %d", idx, generations[idx]);
 	}
 
 	bool EntityManager::IsAlive(Entity entity) const
 	{
-		// 1. ƒCƒ“ƒfƒbƒNƒX‚ª”ÍˆÍ“à‚©
+		// 1. ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒç¯„å›²å†…ã‹
 		if (entity.ID.Index >= generations.size())
 		{
 			return false;
 		}
 
-		// 2. ¢‘ã‚ªˆê’v‚µ‚Ä‚¢‚é‚©
+		// 2. ä¸–ä»£ãŒä¸€è‡´ã—ã¦ã„ã‚‹ã‹
 		return generations[entity.ID.Index] == entity.ID.Generation;
 	}
 }

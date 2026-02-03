@@ -1,4 +1,4 @@
-#include "Archetype.h"
+ï»¿#include "Archetype.h"
 
 namespace Span
 {
@@ -7,50 +7,50 @@ namespace Span
 		const std::vector<size_t>& alignments)
 		: typeIDs(types)
 	{
-		// 1. ƒŒƒCƒAƒEƒgŒvZ
-		// Chunk\‘¢: [EntityID”z—ñ] [CompA”z—ñ] [CompB”z—ñ] ...
+		// 1. ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆè¨ˆç®—
+		// Chunkæ§‹é€ : [EntityIDé…åˆ—] [CompAé…åˆ—] [CompBé…åˆ—] ...
 
-		// signature ‚É‚àID‚ğ“o˜^‚·‚é
+		// signature ã«ã‚‚IDã‚’ç™»éŒ²ã™ã‚‹
 		for (ComponentTypeID id : types)
 		{
 			signature.Add(id);
 		}
 
-		// ‚Ü‚¸EntityID‚Ì•ª‚ğŠm•Û
+		// ã¾ãšEntityIDã®åˆ†ã‚’ç¢ºä¿
 		size_t totalBytesPerEntity = sizeof(EntityID);
 
-		// ŠeƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒTƒCƒY‚ğ‘«‚µ‚Ä‚¢‚­
+		// å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚µã‚¤ã‚ºã‚’è¶³ã—ã¦ã„ã
 		for (size_t size : sizes)
 		{
 			totalBytesPerEntity += size;
 		}
 		entitySize = totalBytesPerEntity;
 
-		// 1ƒ`ƒƒƒ“ƒN(16KB)‚É‰½‘Ì“ü‚é‚©ŒvZ
+		// 1ãƒãƒ£ãƒ³ã‚¯(16KB)ã«ä½•ä½“å…¥ã‚‹ã‹è¨ˆç®—
 		chunkCapacity = static_cast<uint32>(CHUNK_SIZE / entitySize);
 
-		// Å’á1‘Ì‚Í“ü‚é‚æ‚¤‚É•ÛØ
+		// æœ€ä½1ä½“ã¯å…¥ã‚‹ã‚ˆã†ã«ä¿è¨¼
 		if (chunkCapacity == 0) chunkCapacity = 1;
 
-		// 2. ƒIƒtƒZƒbƒgŒvZ (SoA”z’u) & ƒTƒCƒY•Û‘¶
-		// Memory: [EntityIDs (CapŒÂ)] [CompA (CapŒÂ)] [CompB (CapŒÂ)] ...
+		// 2. ã‚ªãƒ•ã‚»ãƒƒãƒˆè¨ˆç®— (SoAé…ç½®) & ã‚µã‚¤ã‚ºä¿å­˜
+		// Memory: [EntityIDs (Capå€‹)] [CompA (Capå€‹)] [CompB (Capå€‹)] ...
 
 		size_t currentOffset = 0;
 
-		// æ“ª‚ÍEntityID‚Ì”z—ñ
+		// å…ˆé ­ã¯EntityIDã®é…åˆ—
 		currentOffset += sizeof(EntityID) * chunkCapacity;
 
-		// ƒRƒ“ƒ|[ƒlƒ“ƒg‚²‚Æ‚Ì”z—ñŠJnˆÊ’u‚ğŒˆ’è
+		// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã”ã¨ã®é…åˆ—é–‹å§‹ä½ç½®ã‚’æ±ºå®š
 		for (size_t i = 0; i < types.size(); ++i)
 		{
-			// –{—ˆ‚Í‚±‚±‚ÅƒAƒ‰ƒCƒƒ“ƒg’²®(Padding)‚ğ“ü‚ê‚é‚×‚«‚¾‚ªAŠÈˆÕÀ‘•
+			// æœ¬æ¥ã¯ã“ã“ã§ã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆèª¿æ•´(Padding)ã‚’å…¥ã‚Œã‚‹ã¹ãã ãŒã€ç°¡æ˜“å®Ÿè£…
 			typeOffsets[types[i]] = currentOffset;
-			// ƒTƒCƒY‚ğ•Û‘¶
+			// ã‚µã‚¤ã‚ºã‚’ä¿å­˜
 			typeSizes[types[i]] = sizes[i];
-			// ƒAƒ‰ƒCƒƒ“ƒg
+			// ã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆ
 			typeAlignments[types[i]] = alignments[i];
 
-			// Ÿ‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‚½‚ß‚ÉƒIƒtƒZƒbƒg‚ği‚ß‚é (ƒTƒCƒY * ƒLƒƒƒpƒVƒeƒB)
+			// æ¬¡ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãŸã‚ã«ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’é€²ã‚ã‚‹ (ã‚µã‚¤ã‚º * ã‚­ãƒ£ãƒ‘ã‚·ãƒ†ã‚£)
 			currentOffset += sizes[i] * chunkCapacity;
 		}
 	}
@@ -68,7 +68,7 @@ namespace Span
 	{
 		Chunk* targetChunk = nullptr;
 
-		// ‹ó‚«‚ª‚ ‚éƒ`ƒƒƒ“ƒN‚ğ’T‚·i‚Ü‚½‚Í––”ö‚ğŒ©‚éj
+		// ç©ºããŒã‚ã‚‹ãƒãƒ£ãƒ³ã‚¯ã‚’æ¢ã™ï¼ˆã¾ãŸã¯æœ«å°¾ã‚’è¦‹ã‚‹ï¼‰
 		if (!chunks.empty())
 		{
 			Chunk* lastChunk = chunks.back();
@@ -78,7 +78,7 @@ namespace Span
 			}
 		}
 
-		// ‹ó‚«‚ª‚È‚¯‚ê‚ÎV‹Kì¬
+		// ç©ºããŒãªã‘ã‚Œã°æ–°è¦ä½œæˆ
 		if (!targetChunk)
 		{
 			targetChunk = new Chunk(chunkCapacity);
@@ -86,10 +86,10 @@ namespace Span
 			chunks.push_back(targetChunk);
 		}
 
-		// EntityID‚ğ‘‚«‚Ş
+		// EntityIDã‚’æ›¸ãè¾¼ã‚€
 		uint32 index = targetChunk->Count;
 
-		// ƒ`ƒƒƒ“ƒN‚Ìæ“ª‚ÍEntityID”z—ñ‚ÆŒˆ‚Ü‚Á‚Ä‚¢‚é
+		// ãƒãƒ£ãƒ³ã‚¯ã®å…ˆé ­ã¯EntityIDé…åˆ—ã¨æ±ºã¾ã£ã¦ã„ã‚‹
 		EntityID* ids = reinterpret_cast<EntityID*>(targetChunk->Memory);
 		ids[index] = entityID;
 

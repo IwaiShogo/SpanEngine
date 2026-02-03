@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Core/CoreMinimal.h"
 #include "Archetype.h"
 
@@ -16,24 +16,24 @@ namespace Span
 			archetypes.clear();
 		}
 
-		// Œ^ƒŠƒXƒg T... (—á: Position, Velocity) ‚É‘Î‰‚·‚éƒA[ƒLƒ^ƒCƒv‚ğæ“¾‚Ü‚½‚Íì¬‚·‚é
+		// å‹ãƒªã‚¹ãƒˆ T... (ä¾‹: Position, Velocity) ã«å¯¾å¿œã™ã‚‹ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã‚’å–å¾—ã¾ãŸã¯ä½œæˆã™ã‚‹
 		template <typename... ComponentTypes>
 		Archetype* GetOrCreateArchetype()
 		{
-			// 1. —v‹‚³‚ê‚ÄƒRƒ“ƒ|[ƒlƒ“ƒg\¬‚Ì–¼(Signature)‚ğì‚é
+			// 1. è¦æ±‚ã•ã‚Œã¦ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæ§‹æˆã®ç½²å(Signature)ã‚’ä½œã‚‹
 			ArchetypeSignature signature;
-			// C++17 Fold Expression: ˆø”ƒpƒbƒN‚ğ“WŠJ‚µ‚Ä‘S•”Add‚·‚é
+			// C++17 Fold Expression: å¼•æ•°ãƒ‘ãƒƒã‚¯ã‚’å±•é–‹ã—ã¦å…¨éƒ¨Addã™ã‚‹
 			(signature.Add(ComponentType<ComponentTypes>::GetID()), ...);
 
-			// 2. Šù‚É‘¶İ‚·‚ê‚Î‚»‚ê‚ğ•Ô‚·
+			// 2. æ—¢ã«å­˜åœ¨ã™ã‚Œã°ãã‚Œã‚’è¿”ã™
 			auto it = archetypes.find(signature);
 			if (it != archetypes.end())
 			{
 				return it->second;
 			}
 
-			// 3. ‚È‚¯‚ê‚ÎV‹Kì¬
-			// Œ^IDAƒTƒCƒYAƒAƒ‰ƒCƒƒ“ƒg‚ÌƒŠƒXƒg‚ğì¬
+			// 3. ãªã‘ã‚Œã°æ–°è¦ä½œæˆ
+			// å‹IDã€ã‚µã‚¤ã‚ºã€ã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆã®ãƒªã‚¹ãƒˆã‚’ä½œæˆ
 			std::vector<ComponentTypeID> typeIDs = { ComponentType<ComponentTypes>::GetID()... };
 			std::vector<size_t> sizes = { sizeof(ComponentTypes)... };
 			std::vector<size_t> alignments = { alignof(ComponentTypes)... };
@@ -70,7 +70,8 @@ namespace Span
 		const std::map<ArchetypeSignature, Archetype*>& GetAllArchetypes() const { return archetypes; }
 
 	private:
-		// –¼‚ğƒL[‚É‚µ‚ÄƒA[ƒLƒ^ƒCƒv‚ğ•Û‘¶
+		// ç½²åã‚’ã‚­ãƒ¼ã«ã—ã¦ã‚¢ãƒ¼ã‚­ã‚¿ã‚¤ãƒ—ã‚’ä¿å­˜
 		std::map<ArchetypeSignature, Archetype*> archetypes;
 	};
 }
+
