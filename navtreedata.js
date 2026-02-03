@@ -25,33 +25,33 @@
 var NAVTREE =
 [
   [ "Span Engine", "index.html", [
-    [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
-      [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ]
+    [ "名前空間", "namespaces.html", [
+      [ "名前空間一覧", "namespaces.html", "namespaces_dup" ],
+      [ "名前空間メンバ", "namespacemembers.html", [
+        [ "全て", "namespacemembers.html", null ],
+        [ "関数", "namespacemembers_func.html", null ],
+        [ "変数", "namespacemembers_vars.html", null ],
+        [ "型定義", "namespacemembers_type.html", null ],
+        [ "列挙型", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
-    [ "Classes", "annotated.html", [
-      [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ],
-        [ "Typedefs", "functions_type.html", null ]
+    [ "クラス", "annotated.html", [
+      [ "クラス一覧", "annotated.html", "annotated_dup" ],
+      [ "クラス索引", "classes.html", null ],
+      [ "クラス階層", "hierarchy.html", "hierarchy" ],
+      [ "クラスメンバ", "functions.html", [
+        [ "全て", "functions.html", "functions_dup" ],
+        [ "関数", "functions_func.html", "functions_func" ],
+        [ "変数", "functions_vars.html", "functions_vars" ],
+        [ "型定義", "functions_type.html", null ]
       ] ]
     ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+    [ "ファイル", "files.html", [
+      [ "ファイル一覧", "files.html", "files_dup" ],
+      [ "ファイルメンバ", "globals.html", [
+        [ "全て", "globals.html", null ],
+        [ "関数", "globals_func.html", null ],
+        [ "マクロ定義", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -68,6 +68,6 @@ var NAVTREEINDEX =
 "structSpan_1_1Name.html#af534a81dc3670e4fd74564eb92e602a0"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronization';
-var SYNCOFFMSG = 'click to enable panel synchronization';
-var LISTOFALLMEMBERS = 'List of all members';
+var SYNCONMSG = 'クリックで同期表示が無効になります';
+var SYNCOFFMSG = 'クリックで同期表示が有効になります';
+var LISTOFALLMEMBERS = '全メンバ一覧';
