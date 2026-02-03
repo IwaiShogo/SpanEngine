@@ -105,6 +105,9 @@ public:
 					.Add(LocalToWorld{})
 					.Build();
 
+				Entity a = part;
+				Entity ab = part;
+				
 				// ★修正: RelationshipSystemを使って親子付け
 				RelationshipSystem::SetParent(&GetWorld(), part, modelRoot);
 			}

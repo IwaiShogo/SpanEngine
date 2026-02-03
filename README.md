@@ -48,3 +48,11 @@ Unityの優れたUXと、DOTS (Data-Oriented Technology Stack) を凌駕する�
 - Visual Assist
 - Git Diff Margin
 - CodeMaid
+- Viasfora
+- Code Alignment
+- Trailing Whitespace Visualizer
+- Editor Guidelines
+- File Icons
+- SwitchStartupProject
+- VSColorOutput64
+- One Dark Pro
