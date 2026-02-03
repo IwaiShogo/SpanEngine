@@ -6,12 +6,15 @@
 
 namespace Span
 {
-	// エンティティのデータの「住所」を示す構造体
+	/**
+	 * @brief	エンティティのデータが格納されている物理的なメモリ位置を示す構造体。
+	 * * エンティティIDから実際のコンポーネントデータへアクセスするために使用されます。
+	 */
 	struct EntityLocation
 	{
-		Archetype* PtrArchetype;	// どのアーキタイプか
-		Chunk* PtrChunk;			// どのチャンクか
-		uint32 IndexInChunk;		// チャンク内の何番目か
+		Archetype* PtrArchetype;	///< 所属しているアーキタイプへのポインタ
+		Chunk* PtrChunk;			///< データが格納されているチャンクへのポインタ
+		uint32 IndexInChunk;		///< チャンク内でのインデックス (0 ~ ChunkCapacity)
 	};
 
 	class World
