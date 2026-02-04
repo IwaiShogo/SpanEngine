@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Span Engine: Span::World クラス</title>
+<title>Span Engine: Span::World 構造体</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,9 +89,12 @@ $(function(){initNavTree('classSpan_1_1World.html','','classSpan_1_1World-member
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Span::World クラス</div></div>
+  <div class="headertitle"><div class="title">Span::World 構造体</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。  
+ <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="World_8h_source.html">World.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -107,28 +110,39 @@ Span::World 連携図</div>
 <tr class="memitem:afc424728b51fe97a14dec7fcdb6f9d06" id="r_afc424728b51fe97a14dec7fcdb6f9d06"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#afc424728b51fe97a14dec7fcdb6f9d06">SPAN_NON_COPYABLE</a> (<a class="el" href="#aba3445185cce62ba69ea55949875a74f">World</a>)</td></tr>
 <tr class="memitem:a5e8a64b9e0f3715d21c43f92591e7d88" id="r_a5e8a64b9e0f3715d21c43f92591e7d88"><td class="memTemplParams" colspan="2">template&lt;typename... ComponentTypes&gt; </td></tr>
 <tr class="memitem:a5e8a64b9e0f3715d21c43f92591e7d88 template"><td class="memItemLeft"><a class="el" href="structSpan_1_1Entity.html">Entity</a>&#160;</td><td class="memItemRight"><a class="el" href="#a5e8a64b9e0f3715d21c43f92591e7d88">CreateEntity</a> ()</td></tr>
+<tr class="memdesc:a5e8a64b9e0f3715d21c43f92591e7d88"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定されたコンポーネントを持つ新しいエンティティを作成します。  <br /></td></tr>
 <tr class="memitem:a1f597fc6f7555036c746fac5e9ba9039" id="r_a1f597fc6f7555036c746fac5e9ba9039"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1f597fc6f7555036c746fac5e9ba9039">DestroyEntity</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity)</td></tr>
+<tr class="memdesc:a1f597fc6f7555036c746fac5e9ba9039"><td class="mdescLeft">&#160;</td><td class="mdescRight">エンティティを削除します。  <br /></td></tr>
+<tr class="memitem:a5e0da52990e6715e2cc31a0d85913748" id="r_a5e0da52990e6715e2cc31a0d85913748"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a5e0da52990e6715e2cc31a0d85913748">IsAlive</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity) const</td></tr>
+<tr class="memdesc:a5e0da52990e6715e2cc31a0d85913748"><td class="mdescLeft">&#160;</td><td class="mdescRight">エンティティが現在有効かどうかを確認します。  <br /></td></tr>
 <tr class="memitem:a555e11829d3833ce35f444779c4c2369" id="r_a555e11829d3833ce35f444779c4c2369"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a555e11829d3833ce35f444779c4c2369 template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a555e11829d3833ce35f444779c4c2369">AddComponent</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity, const T &amp;initialValue=T())</td></tr>
-<tr class="memdesc:a555e11829d3833ce35f444779c4c2369"><td class="mdescLeft">&#160;</td><td class="mdescRight">既存のEntityに新しいコンポーネントを追加する  <br /></td></tr>
+<tr class="memdesc:a555e11829d3833ce35f444779c4c2369"><td class="mdescLeft">&#160;</td><td class="mdescRight">既存のEntityに新しいコンポーネントを追加します。  <br /></td></tr>
 <tr class="memitem:a5d815ca319bd1f2756394cc107818c46" id="r_a5d815ca319bd1f2756394cc107818c46"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a5d815ca319bd1f2756394cc107818c46 template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5d815ca319bd1f2756394cc107818c46">RemoveComponent</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity)</td></tr>
+<tr class="memdesc:a5d815ca319bd1f2756394cc107818c46"><td class="mdescLeft">&#160;</td><td class="mdescRight">エンティティから指定したコンポーネントを削除します。  <br /></td></tr>
 <tr class="memitem:a059bbe879fcaf0a57d1b935be05810f0" id="r_a059bbe879fcaf0a57d1b935be05810f0"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a059bbe879fcaf0a57d1b935be05810f0 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a059bbe879fcaf0a57d1b935be05810f0">HasComponent</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity)</td></tr>
+<tr class="memdesc:a059bbe879fcaf0a57d1b935be05810f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定したコンポーネントを持っているか確認します。  <br /></td></tr>
 <tr class="memitem:a0cebb4506e5366293854cde16a208677" id="r_a0cebb4506e5366293854cde16a208677"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a0cebb4506e5366293854cde16a208677 template"><td class="memItemLeft">T &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a0cebb4506e5366293854cde16a208677">GetComponent</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity)</td></tr>
+<tr class="memdesc:a0cebb4506e5366293854cde16a208677"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネントへの参照を取得します。  <br /></td></tr>
 <tr class="memitem:a637d963c8538b8ca6535bd1c6b88115c" id="r_a637d963c8538b8ca6535bd1c6b88115c"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a637d963c8538b8ca6535bd1c6b88115c template"><td class="memItemLeft">T *&#160;</td><td class="memItemRight"><a class="el" href="#a637d963c8538b8ca6535bd1c6b88115c">GetComponentPtr</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity)</td></tr>
+<tr class="memdesc:a637d963c8538b8ca6535bd1c6b88115c"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネントへのポインタを取得します。  <br /></td></tr>
 <tr class="memitem:aac890f32963826b3c749dc47b5d21f9a" id="r_aac890f32963826b3c749dc47b5d21f9a"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:aac890f32963826b3c749dc47b5d21f9a template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aac890f32963826b3c749dc47b5d21f9a">SetComponent</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity, const T &amp;value)</td></tr>
-<tr class="memitem:a5e0da52990e6715e2cc31a0d85913748" id="r_a5e0da52990e6715e2cc31a0d85913748"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a5e0da52990e6715e2cc31a0d85913748">IsAlive</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity) const</td></tr>
+<tr class="memdesc:aac890f32963826b3c749dc47b5d21f9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネントの値を設定 (上書き) します。  <br /></td></tr>
 <tr class="memitem:a2ce7b57943bcc0d19a89e7be1d36b80a" id="r_a2ce7b57943bcc0d19a89e7be1d36b80a"><td class="memTemplParams" colspan="2">template&lt;typename T, typename... Args&gt; </td></tr>
 <tr class="memitem:a2ce7b57943bcc0d19a89e7be1d36b80a template"><td class="memItemLeft">T *&#160;</td><td class="memItemRight"><a class="el" href="#a2ce7b57943bcc0d19a89e7be1d36b80a">AddSystem</a> (Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:a2ce7b57943bcc0d19a89e7be1d36b80a"><td class="mdescLeft">&#160;</td><td class="mdescRight">システムをワールドに登録します。  <br /></td></tr>
 <tr class="memitem:a0cf3c16fe3672409ea7d34226220111c" id="r_a0cf3c16fe3672409ea7d34226220111c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0cf3c16fe3672409ea7d34226220111c">UpdateSystems</a> ()</td></tr>
+<tr class="memdesc:a0cf3c16fe3672409ea7d34226220111c"><td class="mdescLeft">&#160;</td><td class="mdescRight">全システムのアクティブな <span class="tt">OnUpdate</span> を呼び出します。  <br /></td></tr>
 <tr class="memitem:a0ec1ad24ac92795d56c309637531e803" id="r_a0ec1ad24ac92795d56c309637531e803"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0ec1ad24ac92795d56c309637531e803">ShutdownSystem</a> ()</td></tr>
+<tr class="memdesc:a0ec1ad24ac92795d56c309637531e803"><td class="mdescLeft">&#160;</td><td class="mdescRight">全システムの終了処理を行い、リストをクリアします。  <br /></td></tr>
 <tr class="memitem:afd6041d6b68f1964882d1941fc0fddaf" id="r_afd6041d6b68f1964882d1941fc0fddaf"><td class="memTemplParams" colspan="2">template&lt;typename... ComponentTypes, typename Func&gt; </td></tr>
 <tr class="memitem:afd6041d6b68f1964882d1941fc0fddaf template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afd6041d6b68f1964882d1941fc0fddaf">ForEach</a> (Func &amp;&amp;func)</td></tr>
-<tr class="memdesc:afd6041d6b68f1964882d1941fc0fddaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定したコンポーネントを持つすべてのEntityに対して関数を実行する  <br /></td></tr>
+<tr class="memdesc:afd6041d6b68f1964882d1941fc0fddaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定したコンポーネントを持つ全てのEntityに対して関数を実行します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 非公開メンバ関数</h2></td></tr>
@@ -150,10 +164,32 @@ Span::World 連携図</div>
 <tr class="memitem:a5af4a9f07d803a8be677b59842bdadb0" id="r_a5af4a9f07d803a8be677b59842bdadb0"><td class="memItemLeft"><a class="el" href="classSpan_1_1ArchetypeManager.html">ArchetypeManager</a>&#160;</td><td class="memItemRight"><a class="el" href="#a5af4a9f07d803a8be677b59842bdadb0">archetypeManager</a></td></tr>
 <tr class="memitem:a06376d99845102a74f28840fe0e2812f" id="r_a06376d99845102a74f28840fe0e2812f"><td class="memItemLeft">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classSpan_1_1System.html">System</a> &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a06376d99845102a74f28840fe0e2812f">systems</a></td></tr>
 <tr class="memitem:aa4900466246de55e1285617e82da3db5" id="r_aa4900466246de55e1285617e82da3db5"><td class="memItemLeft">std::unordered_map&lt; <a class="el" href="structSpan_1_1EntityID.html">EntityID</a>, <a class="el" href="structSpan_1_1EntityLocation.html">EntityLocation</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa4900466246de55e1285617e82da3db5">entityLocationMap</a></td></tr>
+<tr class="memdesc:aa4900466246de55e1285617e82da3db5"><td class="mdescLeft">&#160;</td><td class="mdescRight">IDからメモリ位置への高速ルックアップテーブル  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00020">20</a> 行目に定義があります。</p>
+<div class="textblock"><p>🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。 </p>
+<p>WorldはECSパターンのコンテナであり、以下の役割を持ちます。 </p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+🏗️ アーキテクチャ (Architecture)</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Module  </th><th class="markdownTableHeadLeft">Description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><b><a class="el" href="classSpan_1_1EntityManager.html">EntityManager</a></b>  </td><td class="markdownTableBodyLeft"><a class="el" href="structSpan_1_1Entity.html" title="📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。">Entity</a> IDの発行、生存管理 (生死判定) を行います。  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><b><a class="el" href="classSpan_1_1ArchetypeManager.html">ArchetypeManager</a></b>  </td><td class="markdownTableBodyLeft">コンポーネントの組み合わせ (型) 毎にデータを分類・管理します。  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><b><a class="el" href="classSpan_1_1System.html">System</a> Manager</b>  </td><td class="markdownTableBodyLeft">登録されたシステムの更新順序を制御し、実行します。  </td></tr>
+</table>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+🔄 メモリフロー (Memory Flow)</h3>
+<ol type="1">
+<li><span class="tt"><a class="el" href="#a5e8a64b9e0f3715d21c43f92591e7d88" title="指定されたコンポーネントを持つ新しいエンティティを作成します。">CreateEntity</a></span> でエンティティを生成</li>
+<li>コンポーネント構成に基づいて適切な <span class="tt"><a class="el" href="classSpan_1_1Archetype.html" title="アーキタイプ 同じコンポーネント構成を持つEntity群を管理する。 データの「型」だけでなく、実際の「メモリ(Chunk)」も管理する。">Archetype</a></span> が選択される。</li>
+<li>その中の <span class="tt"><a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a></span> (16KBブロック) にメモリが確保され、データが配置される。 </li>
+</ol>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00055">55</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="aba3445185cce62ba69ea55949875a74f" name="aba3445185cce62ba69ea55949875a74f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba3445185cce62ba69ea55949875a74f">&#9670;&#160;</a></span>World()</h2>
@@ -240,9 +276,23 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>既存のEntityに新しいコンポーネントを追加する </p>
+<p>既存のEntityに新しいコンポーネントを追加します。 </p>
+<p>構造的変更 (Structural Change) が発生し、エンティティのメモリ移動が伴います。</p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>追加するコンポーネントの型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>対象エンティティ </td></tr>
+    <tr><td class="paramname">initialValue</td><td>初期値 </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00090">90</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00164">164</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -281,7 +331,22 @@ template&lt;typename T, typename... Args&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00226">226</a> 行目に定義があります。</p>
+<p>システムをワールドに登録します。 </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Systemクラス (Systemを継承していること) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>システムのコンストラクタに渡す引数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>登録されたシステムへの生ポインタ </dd></dl>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00323">323</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -310,7 +375,21 @@ template&lt;typename... ComponentTypes&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00030">30</a> 行目に定義があります。</p>
+<p>指定されたコンポーネントを持つ新しいエンティティを作成します。 </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">ComponentTypes</td><td>初期状態で持たせるコンポーネントのリスト </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>作成されたEntityハンドル</dd></dl>
+<div class="fragment"><div class="line"><span class="comment">// TransformとMeshRendererを持つEntityを作成</span></div>
+<div class="line"><a class="code hl_class" href="structSpan_1_1Entity.html">Entity</a> e = world.CreateEntity&lt;<a class="code hl_struct" href="structSpan_1_1Transform.html">Transform</a>, <a class="code hl_struct" href="structSpan_1_1MeshRenderer.html">MeshRenderer</a>&gt;();</div>
+<div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。</div><div class="ttdef"><b>Definition</b> <a href="Entity_8h_source.html#l00070">Entity.h:71</a></div></div>
+<div class="ttc" id="astructSpan_1_1MeshRenderer_html"><div class="ttname"><a href="structSpan_1_1MeshRenderer.html">Span::MeshRenderer</a></div><div class="ttdef"><b>Definition</b> <a href="MeshRenderer_8h_source.html#l00007">MeshRenderer.h:8</a></div></div>
+<div class="ttc" id="astructSpan_1_1Transform_html"><div class="ttname"><a href="structSpan_1_1Transform.html">Span::Transform</a></div><div class="ttdef"><b>Definition</b> <a href="Transform_8h_source.html#l00007">Transform.h:8</a></div></div>
+</div><!-- fragment --> 
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00077">77</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -342,7 +421,16 @@ template&lt;typename... ComponentTypes&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00051">51</a> 行目に定義があります。</p>
+<p>エンティティを削除します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>削除対象 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>覚え書き</dt><dd>削除は <b>Swap-back (末尾入れ替え)</b> 方式が行われます。 対象データを削除した後、空いた穴に配列の末尾要素を移動させることで、 常にメモリの連続性を保ちます (0(1) コスト)。 </dd></dl>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00105">105</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -381,21 +469,27 @@ template&lt;typename... ComponentTypes, typename Func&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>指定したコンポーネントを持つすべてのEntityに対して関数を実行する </p>
+<p>指定したコンポーネントを持つ全てのEntityに対して関数を実行します。 </p>
+<p>アーキタイプごとに整理されたメモリ (<a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a>) をシーケンシャルにアクセスするため、 非常にキャッシュ効率が良く、高速に動作します。</p>
 <dl class="tparams"><dt>テンプレート引数</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname"><a class="el" href="classSpan_1_1ComponentType.html" title="型(T)から一意のIDを取得するテンプレートクラス ユーザーが struct Position を定義すると、 ComponentType&lt;Position&gt;::GetID() で自動的にユニークな番号...">ComponentType</a></td><td>要求するコンポーネント (例: <a class="el" href="structSpan_1_1Transform.html">Transform</a>, <a class="el" href="structSpan_1_1LocalToWorld.html">LocalToWorld</a>) </td></tr>
+    <tr><td class="paramname">ComponentTypes</td><td>要求するコンポーネントの型リスト </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">func実行するラムダ式</td><td>[](<a class="el" href="structSpan_1_1Transform.html">Transform</a>&amp; t, <a class="el" href="structSpan_1_1LocalToWorld.html">LocalToWorld</a>&amp; ltw) { ... } </td></tr>
+    <tr><td class="paramname">func</td><td>実行するラムダ式 <span class="tt">[](<a class="el" href="structSpan_1_1Entity.html" title="📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。">Entity</a> e, <a class="el" href="classSpan_1_1ComponentType.html" title="型(T)から一意のIDを取得するテンプレートクラス ユーザーが struct Position を定義すると、 ComponentType&lt;Position&gt;::GetID() で自動的にユニークな番号...">ComponentType</a>&amp;... comps) { ... }</span></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00269">269</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><span class="comment">// 全てのTransformを持つエンティティの位置を更新</span></div>
+<div class="line">world.ForEach&lt;<a class="code hl_struct" href="structSpan_1_1Transform.html">Transform</a>, Velocity&gt;([](<a class="code hl_class" href="structSpan_1_1Entity.html">Entity</a> e, <a class="code hl_struct" href="structSpan_1_1Transform.html">Transform</a>&amp; t, Velocity&amp; v)</div>
+<div class="line">{</div>
+<div class="line">    t.Position += v.Value * DeltaTime;</div>
+<div class="line">});</div>
+</div><!-- fragment --> 
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00384">384</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -434,7 +528,22 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00179">179</a> 行目に定義があります。</p>
+<p>コンポーネントへの参照を取得します。 </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>取得したいコンポーネントの型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>対象エンティティ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>コンポーネントへの参照。持っていない場合は <span class="tt">nullptr</span>。 </dd></dl>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00267">267</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -473,7 +582,22 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00192">192</a> 行目に定義があります。</p>
+<p>コンポーネントへのポインタを取得します。 </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>取得したいコンポーネントの型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>対象エンティティ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>コンポーネントへのポインタ。持っていない場合は <span class="tt">nullptr</span>。 </dd></dl>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00286">286</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -512,7 +636,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00355">355</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00472">472</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -551,7 +675,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00167">167</a> 行目に定義があります。</p>
+<p>指定したコンポーネントを持っているか確認します。 </p>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00249">249</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -590,7 +716,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00371">371</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00488">488</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -629,7 +755,7 @@ template&lt;typename... Ts&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00365">365</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00482">482</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -666,7 +792,22 @@ template&lt;typename... Ts&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00216">216</a> 行目に定義があります。</p>
+<p>エンティティが現在有効かどうかを確認します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>確認対象 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>生存している </td></tr>
+    <tr><td class="paramname">false</td><td>既に破棄されている </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00144">144</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -702,7 +843,7 @@ template&lt;typename... Ts&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00311">311</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00428">428</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -755,7 +896,7 @@ template&lt;typename... ComponentTypes, typename Func&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00400">400</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00517">517</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -813,7 +954,7 @@ template&lt;typename... ComponentTypes, typename Func, size_t... Indices&gt; </d
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00379">379</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00496">496</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -847,7 +988,22 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00128">128</a> 行目に定義があります。</p>
+<p>エンティティから指定したコンポーネントを削除します。 </p>
+<p>構造体変更が発生します。</p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>削除するコンポーネントの型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>対象エンティティ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00210">210</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -885,7 +1041,10 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00207">207</a> 行目に定義があります。</p>
+<p>コンポーネントの値を設定 (上書き) します。 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>エンティティがそのコンポーネントを持っていない場合、処理はスキップされます。 </dd></dl>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00304">304</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -917,7 +1076,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00252">252</a> 行目に定義があります。</p>
+<p>全システムの終了処理を行い、リストをクリアします。 </p>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00354">354</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -966,7 +1127,10 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00240">240</a> 行目に定義があります。</p>
+<p>全システムのアクティブな <span class="tt">OnUpdate</span> を呼び出します。 </p>
+<p>通常、ゲームループの毎フレームで呼び出されます。 </p>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00340">340</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -991,7 +1155,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00302">302</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00417">417</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1015,7 +1179,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00308">308</a> 行目に定義があります。</p>
+<p>IDからメモリ位置への高速ルックアップテーブル </p>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00423">423</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1039,7 +1205,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00301">301</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00416">416</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1063,11 +1229,11 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00305">305</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00420">420</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<hr/>この構造体詳解は次のファイルから抽出されました:<ul>
 <li>Engine/Source/Runtime/ECS/Kernel/<a class="el" href="World_8h_source.html">World.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ビットレイアウト_0',['📊 ビットレイアウト',['../structSpan_1_1EntityID.html#autotoc_md2',1,'']]]
+  ['architecture_0',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md6',1,'']]]
 ];

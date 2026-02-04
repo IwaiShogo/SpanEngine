@@ -127,21 +127,22 @@ Span::Entity 連携図</div>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。 </p>
-<p>Entity自体はデータを持たず、単なる <b>64bitのID</b> です。<br  />
- 実際のデータ (コンポーネント) は <span class="tt"><a class="el" href="classSpan_1_1World.html">World</a></span> クラスが管理する <span class="tt"><a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a></span> 内に存在します。</p>
+<p>Entity自体はデータを持たず、単なる <b>64bitのID</b> です 実際のデータ (コンポーネント) は <span class="tt"><a class="el" href="classSpan_1_1World.html" title="🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。">World</a></span> クラスが管理する <span class="tt"><a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a></span> 内に存在します。</p>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
 📝 使い方</h3>
-<div class="fragment"><div class="line"><a class="code hl_function" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> e = world.CreateEntity&lt;<a class="code hl_struct" href="structSpan_1_1Transform.html">Transform</a>, <a class="code hl_struct" href="structSpan_1_1MeshRenderer.html">MeshRenderer</a>&gt;();</div>
+<div class="fragment"><div class="line"><span class="comment">// Entityを作成</span></div>
+<div class="line"><a class="code hl_function" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> e = world.CreateEntity&lt;<a class="code hl_struct" href="structSpan_1_1Transform.html">Transform</a>, <a class="code hl_struct" href="structSpan_1_1MeshRenderer.html">MeshRenderer</a>&gt;();</div>
+<div class="line"><span class="comment">// 有効チェック</span></div>
 <div class="line"><span class="keywordflow">if</span> (e != <a class="code hl_variable" href="#a3bc29e7cdb8d6012f8be1de9f0da5687">Entity::Null</a>)</div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// ...</span></div>
 <div class="line">}</div>
 <div class="ttc" id="astructSpan_1_1Entity_html_a23ab2fecbbf9cbe9038d074bf442bb04"><div class="ttname"><a href="#a23ab2fecbbf9cbe9038d074bf442bb04">Span::Entity::Entity</a></div><div class="ttdeci">Entity()=default</div></div>
-<div class="ttc" id="astructSpan_1_1Entity_html_a3bc29e7cdb8d6012f8be1de9f0da5687"><div class="ttname"><a href="#a3bc29e7cdb8d6012f8be1de9f0da5687">Span::Entity::Null</a></div><div class="ttdeci">static const Entity Null</div><div class="ttdoc">無効なエンティティを表す静的変数</div><div class="ttdef"><b>Definition</b> <a href="Entity_8h_source.html#l00073">Entity.h:73</a></div></div>
+<div class="ttc" id="astructSpan_1_1Entity_html_a3bc29e7cdb8d6012f8be1de9f0da5687"><div class="ttname"><a href="#a3bc29e7cdb8d6012f8be1de9f0da5687">Span::Entity::Null</a></div><div class="ttdeci">static const Entity Null</div><div class="ttdoc">無効なエンティティを表す静的変数</div><div class="ttdef"><b>Definition</b> <a href="Entity_8h_source.html#l00076">Entity.h:76</a></div></div>
 <div class="ttc" id="astructSpan_1_1MeshRenderer_html"><div class="ttname"><a href="structSpan_1_1MeshRenderer.html">Span::MeshRenderer</a></div><div class="ttdef"><b>Definition</b> <a href="MeshRenderer_8h_source.html#l00007">MeshRenderer.h:8</a></div></div>
 <div class="ttc" id="astructSpan_1_1Transform_html"><div class="ttname"><a href="structSpan_1_1Transform.html">Span::Transform</a></div><div class="ttdef"><b>Definition</b> <a href="Transform_8h_source.html#l00007">Transform.h:8</a></div></div>
 </div><!-- fragment --> 
-<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00067">67</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00070">70</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="a23ab2fecbbf9cbe9038d074bf442bb04" name="a23ab2fecbbf9cbe9038d074bf442bb04"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23ab2fecbbf9cbe9038d074bf442bb04">&#9670;&#160;</a></span>Entity() <span class="overload">[1/2]</span></h2>
@@ -196,7 +197,7 @@ Span::Entity 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00079">79</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00082">82</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -233,7 +234,7 @@ Span::Entity 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00089">89</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00092">92</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -265,7 +266,7 @@ Span::Entity 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00101">101</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00104">104</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -297,7 +298,7 @@ Span::Entity 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00102">102</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00105">105</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -329,7 +330,7 @@ Span::Entity 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00100">100</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00103">103</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -364,7 +365,7 @@ Span::Entity 連携図</div>
 <p>ログ出力用などで数値としてIDを取得したい場合に使用します。 </p>
 <dl class="section return"><dt>戻り値</dt><dd>64bit整数にパックされたID </dd></dl>
 
-<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00095">95</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00098">98</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -383,7 +384,7 @@ Span::Entity 連携図</div>
 
 <p>内部ID </p>
 
-<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00070">70</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00073">73</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -409,7 +410,7 @@ Span::Entity 連携図</div>
 
 <p>無効なエンティティを表す静的変数 </p>
 
-<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00073">73</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00076">76</a> 行目に定義があります。</p>
 
 </div>
 </div>

@@ -25,9 +25,10 @@ var searchData=
   ['archetypemanager_2eh_22',['ArchetypeManager.h',['../ArchetypeManager_8h.html',1,'']]],
   ['archetypes_23',['archetypes',['../classSpan_1_1ArchetypeManager.html#a645659a380e6e245fa76b29caf5e2a64',1,'Span::ArchetypeManager']]],
   ['archetypesignature_24',['ArchetypeSignature',['../classSpan_1_1ArchetypeSignature.html',1,'Span']]],
-  ['aspectratiotype_25',['AspectRatioType',['../namespaceSpan.html#a12c7c5c268a27e26bd54df1f069ed577',1,'Span']]],
-  ['attribute_26',['Attribute',['../structSpan_1_1Attribute.html',1,'Span::Attribute'],['../structSpan_1_1Attribute.html#aa27cc6c99166f9c479afbdf01ee0f781',1,'Span::Attribute::Attribute()']]],
-  ['attributetype_27',['AttributeType',['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257',1,'Span']]],
-  ['autoregisterpanel_28',['AutoRegisterPanel',['../structSpan_1_1AutoRegisterPanel.html',1,'Span::AutoRegisterPanel&lt; T &gt;'],['../structSpan_1_1AutoRegisterPanel.html#aedbb84d49a06f20b24c3f7c951b26e2d',1,'Span::AutoRegisterPanel::AutoRegisterPanel()']]],
-  ['axis_29',['Axis',['../namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803d',1,'Span']]]
+  ['architecture_25',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md6',1,'']]],
+  ['aspectratiotype_26',['AspectRatioType',['../namespaceSpan.html#a12c7c5c268a27e26bd54df1f069ed577',1,'Span']]],
+  ['attribute_27',['Attribute',['../structSpan_1_1Attribute.html',1,'Span::Attribute'],['../structSpan_1_1Attribute.html#aa27cc6c99166f9c479afbdf01ee0f781',1,'Span::Attribute::Attribute()']]],
+  ['attributetype_28',['AttributeType',['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257',1,'Span']]],
+  ['autoregisterpanel_29',['AutoRegisterPanel',['../structSpan_1_1AutoRegisterPanel.html',1,'Span::AutoRegisterPanel&lt; T &gt;'],['../structSpan_1_1AutoRegisterPanel.html#aedbb84d49a06f20b24c3f7c951b26e2d',1,'Span::AutoRegisterPanel::AutoRegisterPanel()']]],
+  ['axis_30',['Axis',['../namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803d',1,'Span']]]
 ];
