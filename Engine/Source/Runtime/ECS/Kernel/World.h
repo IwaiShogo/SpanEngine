@@ -1,4 +1,17 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	World.h
+ * @brief	ECSワールド (シーン) の管理クラス。
+ *
+ * @details
+ * エンティティの生成、コンポーネントの操作、システム実行の統括を行います。
+ * 通常、1つのシーンにつき1つのWorldインスタンスが存在します。
+ *
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "Core/CoreMinimal.h"
 #include "EntityManager.h"
 #include "ArchetypeManager.h"
@@ -7,8 +20,12 @@
 namespace Span
 {
 	/**
-	 * @brief	エンティティのデータが格納されている物理的なメモリ位置を示す構造体。
-	 * * エンティティIDから実際のコンポーネントデータへアクセスするために使用されます。
+	 * @struct	EntityLocation
+	 * @brief	📍 エンティティのデータ格納場所を示すポインタ。
+	 *
+	 * @details
+	 * エンティティIDから実際のコンポーネントデータへアクセスするための「住所」です。
+	 * これにより 0(1) でのコンポーネントアクセスが可能になります。
 	 */
 	struct EntityLocation
 	{
@@ -17,6 +34,24 @@ namespace Span
 		uint32 IndexInChunk;		///< チャンク内でのインデックス (0 ~ ChunkCapacity)
 	};
 
+	/**
+	 * @struct	World
+	 * @brief	🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。
+	 *
+	 * @details
+	 * WorldはECSパターンのコンテナであり、以下の役割を持ちます。
+	 * ### 🏗️ アーキテクチャ (Architecture)
+	 * | Module               | Description |
+	 * | :---                 | :--- |
+	 * | **EntityManager**    | Entity IDの発行、生存管理 (生死判定) を行います。 |
+	 * | **ArchetypeManager** | コンポーネントの組み合わせ (型) 毎にデータを分類・管理します。 |
+	 * | **System Manager**   | 登録されたシステムの更新順序を制御し、実行します。 |
+	 *
+	 * ### 🔄 メモリフロー (Memory Flow)
+	 * 1. `CreateEntity` でエンティティを生成
+	 * 2. コンポーネント構成に基づいて適切な `Archetype` が選択される。
+	 * 3. その中の `Chunk` (16KBブロック) にメモリが確保され、データが配置される。
+	 */
 	class World
 	{
 	public:
@@ -25,7 +60,19 @@ namespace Span
 
 		SPAN_NON_COPYABLE(World);
 
-		// --- Entity作成 ---
+		// 🏭 Entity Management
+		// ============================================================
+
+		/**
+		 * @brief	指定されたコンポーネントを持つ新しいエンティティを作成します。
+		 * @tparam	ComponentTypes 初期状態で持たせるコンポーネントのリスト
+		 * @return	作成されたEntityハンドル
+		 *
+		 * @code	{.cpp}
+		 * // TransformとMeshRendererを持つEntityを作成
+		 * Entity e = world.CreateEntity<Transform, MeshRenderer>();
+		 * @endcode
+		 */
 		template <typename... ComponentTypes>
 		Entity CreateEntity()
 		{
@@ -47,7 +94,14 @@ namespace Span
 			return entity;
 		}
 
-		// --- Entity削除 ---
+		/**
+		 * @brief	エンティティを削除します。
+		 * @param	entity 削除対象
+		 * @note
+		 * 削除は **Swap-back (末尾入れ替え)** 方式が行われます。
+		 * 対象データを削除した後、空いた穴に配列の末尾要素を移動させることで、
+		 * 常にメモリの連続性を保ちます (0(1) コスト)。
+		 */
 		void DestroyEntity(Entity entity)
 		{
 			if (!IsAlive(entity)) return;
@@ -81,10 +135,30 @@ namespace Span
 			entityManager.DestroyEntity(entity);
 		}
 
-		// --- コンポーネント操作 ---
+		/**
+		 * @brief	エンティティが現在有効かどうかを確認します。
+		 * @param	entity 確認対象
+		 * @retval	true 生存している
+		 * @retval	false 既に破棄されている
+		 */
+		bool IsAlive(Entity entity) const
+		{
+			return entityManager.IsAlive(entity);
+		}
+
+		// ============================================================
+		// 🧩 Component Management
+		// ============================================================
 
 		/**
-		 * @brief	既存のEntityに新しいコンポーネントを追加する
+		 * @brief	既存のEntityに新しいコンポーネントを追加します。
+		 *
+		 * @details
+		 * 構造的変更 (Structural Change) が発生し、エンティティのメモリ移動が伴います。
+		 *
+		 * @tparam	T 追加するコンポーネントの型
+		 * @param	entity 対象エンティティ
+		 * @param	initialValue 初期値
 		 */
 		template <typename T>
 		void AddComponent(Entity entity, const T& initialValue = T())
@@ -124,6 +198,14 @@ namespace Span
 			}
 		}
 
+		/**
+		 * @brief	エンティティから指定したコンポーネントを削除します。
+		 *
+		 * @details	構造体変更が発生します。
+		 *
+		 * @tparam	T 削除するコンポーネントの型
+		 * @param	entity 対象エンティティ
+		 */
 		template <typename T>
 		void RemoveComponent(Entity entity)
 		{
@@ -160,9 +242,9 @@ namespace Span
 			MigrateEntity(entity, newArchetype);
 		}
 
-		// --- コンポーネント操作 ---
-
-		// 存在確認
+		/**
+		 * @brief	指定したコンポーネントを持っているか確認します。
+		 */
 		template <typename T>
 		bool HasComponent(Entity entity)
 		{
@@ -174,7 +256,13 @@ namespace Span
 			return it->second.PtrArchetype->HasComponent(ComponentType<T>::GetID());
 		}
 
-		// 参照取得
+		/**
+		 * @brief	コンポーネントへの参照を取得します。
+		 *
+		 * @tparam	T 取得したいコンポーネントの型
+		 * @param	entity 対象エンティティ
+		 * @return	コンポーネントへの参照。持っていない場合は `nullptr`。
+		 */
 		template <typename T>
 		T& GetComponent(Entity entity)
 		{
@@ -187,7 +275,13 @@ namespace Span
 			return GetComponentUnsafe<T>(entityLocationMap[entity.ID]);
 		}
 
-		// ポインタ取得
+		/**
+		 * @brief	コンポーネントへのポインタを取得します。
+		 *
+		 * @tparam	T 取得したいコンポーネントの型
+		 * @param	entity 対象エンティティ
+		 * @return	コンポーネントへのポインタ。持っていない場合は `nullptr`。
+		 */
 		template <typename T>
 		T* GetComponentPtr(Entity entity)
 		{
@@ -202,7 +296,10 @@ namespace Span
 			return &GetComponentUnsafe<T>(it->second);
 		}
 
-		// --- コンポーネント設定 (値渡し) ---
+		/**
+		 * @brief	コンポーネントの値を設定 (上書き) します。
+		 * @note	エンティティがそのコンポーネントを持っていない場合、処理はスキップされます。
+		 */
 		template <typename T>
 		void SetComponent(Entity entity, const T& value)
 		{
@@ -212,16 +309,16 @@ namespace Span
 			}
 		}
 
-		// 生存確認
-		bool IsAlive(Entity entity) const
-		{
-			return entityManager.IsAlive(entity);
-		}
+		// ⚙ System Management
+		// ============================================================
 
-		// --- System Management ---
-
-		// システムを登録する
-		// world.AddSystem<MovementSystem>();
+		/**
+		 * @brief	システムをワールドに登録します。
+		 *
+		 * @tparam	T Systemクラス (Systemを継承していること)
+		 * @param	args システムのコンストラクタに渡す引数
+		 * @return	登録されたシステムへの生ポインタ
+		 */
 		template <typename T, typename... Args>
 		T* AddSystem(Args&&... args)
 		{
@@ -236,7 +333,10 @@ namespace Span
 			return rawPtr;
 		}
 
-		// 全システムの更新
+		/**
+		 * @brief	全システムのアクティブな `OnUpdate` を呼び出します。
+		 * @details	通常、ゲームループの毎フレームで呼び出されます。
+		 */
 		void UpdateSystems()
 		{
 			for (auto& sys : systems)
@@ -248,7 +348,9 @@ namespace Span
 			}
 		}
 
-		// 全システムの終了処理
+		/**
+		 * @brief	全システムの終了処理を行い、リストをクリアします。
+		 */
 		void ShutdownSystem()
 		{
 			for (auto& sys : systems)
@@ -258,12 +360,25 @@ namespace Span
 			systems.clear();
 		}
 
-		// --- ForEach ---
+		// 🔄 Query / Iteration
+		// ============================================================
 
 		/**
-		 * @brief	指定したコンポーネントを持つすべてのEntityに対して関数を実行する
-		 * @tparam	ComponentType 要求するコンポーネント (例: Transform, LocalToWorld)
-		 * @param	func実行するラムダ式 [](Transform& t, LocalToWorld& ltw) { ... }
+		 * @brief	指定したコンポーネントを持つ全てのEntityに対して関数を実行します。
+		 * @details
+		 * アーキタイプごとに整理されたメモリ (Chunk) をシーケンシャルにアクセスするため、
+		 * 非常にキャッシュ効率が良く、高速に動作します。
+		 *
+		 * @tparam	ComponentTypes 要求するコンポーネントの型リスト
+		 * @param	func 実行するラムダ式 `[](Entity e, ComponentType&... comps) { ... }`
+		 *
+		 * @code	{.cpp}
+		 * // 全てのTransformを持つエンティティの位置を更新
+		 * world.ForEach<Transform, Velocity>([](Entity e, Transform& t, Velocity& v)
+		 * {
+		 *     t.Position += v.Value * DeltaTime;
+		 * });
+		 * @endcode
 		 */
 		template <typename... ComponentTypes, typename Func>
 		void ForEach(Func&& func)
@@ -305,7 +420,9 @@ namespace Span
 		std::vector<std::unique_ptr<System>> systems;
 
 		// ID -> 住所 の高速検索マップ
-		std::unordered_map<EntityID, EntityLocation> entityLocationMap;
+		std::unordered_map<EntityID, EntityLocation> entityLocationMap;	///< IDからメモリ位置への高速ルックアップテーブル
+
+		// --- Internal Helper Methods ---
 
 		// アーキタイプ間の移動
 		void MigrateEntity(Entity entity, Archetype* newArchetype)

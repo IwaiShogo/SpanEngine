@@ -15,12 +15,13 @@
 namespace Span
 {
 	/**
+	 * @struct	EntityID
 	 * @brief	エンティティの内部ID構造 (64-bit)。
 	 *
 	 * @details
 	 * エンティティIDは、配列インデックスと再利用世代 (Generation) を組み合わせたものです。
 	 *
-	 * ### 📊 ビットレイアウト
+	 * ### 📊 ビットレイアウト (Bit Layout)
 	 * | Bit Range | Name         | Description |
 	 * | :---      | :---         | :--- |
 	 * | 0-31      | **Index**    | エンティティ配列へのアクセサ。高速なルックアップに使用。 |
@@ -52,12 +53,14 @@ namespace Span
 	 * @brief	📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。
 	 *
 	 * @details
-	 * Entity自体はデータを持たず、単なる **64bitのID** です。\n
+	 * Entity自体はデータを持たず、単なる **64bitのID** です
 	 * 実際のデータ (コンポーネント) は `World` クラスが管理する `Chunk` 内に存在します。
 	 *
 	 * ### 📝 使い方
 	 * ```cpp
+	 * // Entityを作成
 	 * Entity e = world.CreateEntity<Transform, MeshRenderer>();
+	 * // 有効チェック
 	 * if (e != Entity::Null)
 	 * {
 	 *     // ...
