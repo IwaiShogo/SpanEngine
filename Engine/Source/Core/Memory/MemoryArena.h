@@ -1,12 +1,27 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	MemoryArena.h
+ * @brief	線形メモリ割り当て (Linear Allocator)。
+ * 
+ * @details	
+ * 
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
 {
 	/**
-	 * @brief	線形メモリ割り当てクラス（Linear Allocator）
-	 * 事前に巨大なブロックを確保し、ポインタを進めるだけで割り当てる。
-	 * 解放は「全リセット」のみ対応することで、極限の速度を実現する。
+	 * @class	MemoryArena
+	 * @brief	🧠 高速なメモリ割り当てを行うアリーナクラス。
+	 * 
+	 * @details
+	 * 初期化時に巨大なメモリブロックを一度だけ確保し、`Allocate` 呼び出し時にはポインタを進めるだけでメモリを返します。
+	 * 個別の解放はサポートせず、`Reset`で全体を一括解放します。
+	 * 一時的な作業用メモリや、フレームごとのデータ生成に最適です。
 	 */
 	class MemoryArena
 	{
@@ -17,28 +32,37 @@ namespace Span
 		// コピー禁止
 		SPAN_NON_COPYABLE(MemoryArena);
 
-		// 初期化: 指定したサイズ(byte)のメモリブロックをOSから確保する
+		/// @brief	指定サイズ(byte)のメモリブロックを確保します。
 		void Initialize(size_t sizeInBytes);
 
-		// 解放: OSにメモリを返却する
+		/// @brief	確保したメモリをOSに返却します。
 		void Shutdown();
 
-		// 割り当て: Arenaからメモリを切り出して返す
+		/**
+		 * @brief	型 `T` のオブジェクト用メモリを割り当てます。
+		 * @tparam	T 確保する型
+		 * @param	count 配列要素数 (Default: 1)
+		 * @return	確保されたメモリへのポインタ
+		 */
 		template <typename T>
 		T* Allocate(size_t count = 1)
 		{
 			return reinterpret_cast<T*>(AllocateRaw(sizeof(T) * count, alignof(T)));
 		}
 
-		// 割り当て: 生のバイト数指定
+		/**
+		 * @brief	生のバイト数を指定してメモリを割り当てます。
+		 * @param	size 必要バイト数
+		 * @param	alignment アライメント要件
+		 */
 		void* AllocateRaw(size_t size, size_t alignment);
 
-		// リセット: ポインタを先頭に戻す
+		/// @brief	ポインタを先頭に戻し、全メモリを「解放済み」とみなします。
 		void Reset();
 
-		// 現在の使用量を取得
+		/// @brief	現在の使用量を取得
 		size_t GetUsedMemory() const { return usedOffset; }
-		// 全体の容量を取得
+		/// @brief	全体の容量を取得
 		size_t GetTotalSize() const { return totalSize; }
 
 	private:

@@ -1,18 +1,29 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	Input.h
+ * @brief	入力管理システム (キーボード、マウス、ゲームパッド)。
+ * 
+ * @details	
+ * 
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "Core/CoreMinimal.h"
 #include "Core/Math/SpanMath.h"
 
 namespace Span
 {
-	// キーコード定義
+	/// @brief	仮想キーコード (Virtual Key Codes)
 	enum class Key
 	{
 		None = 0,
 
-		// Mouse
+		// --- Mouse ---
 		MouseLeft, MouseRight, MouseMiddle,
 
-		// Keyboard
+		// --- Keyboard ---
 		Space = 32,
 		A = 65, B, C, D, E, F, G, H, I, J, K, L, M,
 		N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
@@ -21,14 +32,14 @@ namespace Span
 		LeftControl, RightControl,
 		Escape = 27,
 
-		// Controller
+		// --- Gamepad (XInput) ---
 		Gamepad_A, Gamepad_B, Gamepad_X, Gamepad_Y,
 		Gamepad_Start, Gamepad_Back,
 		Gamepad_LeftShoulder, Gamepad_RightShoulder,
 		Gamepad_DPad_Up, Gamepad_DPad_Down, Gamepad_DPad_Left, Gamepad_DPad_Right
 	};
 
-	// アナログスティック
+	/// @brief	アナログ軸
 	enum class Axis
 	{
 		LeftStickX, LeftStickY,
@@ -36,6 +47,19 @@ namespace Span
 		LeftTrigger, RightTrigger
 	};
 
+	/**
+	 * @class	Input
+	 * @brief	🎮 入力状態をポーリングする静的クラス。
+	 * 
+	 * @details
+	 * `Update()` を毎フレーム呼び出すことで、マイフレームとの差分 (Down/Up) を計算します。
+	 * 
+	 * ### 📝 Usage
+	 * ```cpp
+	 * if (Input::GetKeyDown(Key::Space)) { Jump(); }
+	 * flaot move = Input::GetAxis(Axis::LeftStickX);
+	 * ```
+	 */
 	class Input
 	{
 	public:
@@ -43,22 +67,40 @@ namespace Span
 		static void Update();
 		static void EndFrame();
 
-		// --- ユーザー向けAPI ---
-		static bool GetKey(Key key);		// 押しっぱなし
-		static bool GetKeyDown(Key key);	// 押した瞬間
-		static bool GetKeyUp(Key key);		// 離した
+		// 🔍 Polling API
+		// ============================================================
 
-		static Vector2 GetMousePosition();	// マウスの位置
-		static Vector2 GetMouseDelta();		// マウスの移動量
+		/// @brief	指定したキーが現在押されているか
+		static bool GetKey(Key key);
 
-		// カーソル制御
+		/// @brief	指定したキーが「このフレームで」押されたか
+		static bool GetKeyDown(Key key);
+
+		/// @brief	指定したキーが「このフレームで」離されたか
+		static bool GetKeyUp(Key key);
+
+		// --- Mouse ---
+		/// @brief	マウスの位置を取得します。
+		static Vector2 GetMousePosition();
+
+		/// @brief	マウスの移動量を取得します。
+		static Vector2 GetMouseDelta();
+
+		/// @brief	カーソルの表示を設定します。
 		static void SetCursorVisible(bool visible);
-		static void SetLockCursor(bool lock);		// FPSスタイルのロック
 
-		// コントローラー用関数
-		static bool GetButton(Key key);		// ボタン押しっぱなし
-		static bool GetButtonDown(Key key);	// 押した瞬間
-		static float GetAxis(Axis axis);	// スティックの傾き (-1.0 ~ 1.0)
+		/// @brief	カーソルを画面中央にロックし、非表示にします (FPS視点用)
+		static void SetLockCursor(bool lock);
+
+		// --- Gamepad ---
+		/// @brief	指定したボタンが現在押されているか
+		static bool GetButton(Key key);
+
+		/// @brief	指定したボタンが「このフレームで」押されたか
+		static bool GetButtonDown(Key key);
+
+		/// @brief 指定したスティックの傾きを取得します。 (-1.0 ~ 1.0)
+		static float GetAxis(Axis axis);
 
 		// --- 内部用 (WindowProcから呼ぶ) ---
 		static void OnKeyDown(uint32 key);
@@ -67,12 +109,13 @@ namespace Span
 		static void OnMouseUp(uint32 btn);
 		static void OnMouseMove(int x, int y);
 
-		// ImGuiがマウスを占有しているか設定する
+		/// @brief	ImGuiがマウスを占有しているか設定する
 		static void SetImGuiWantCapture(bool wantCapture) { imGuiWantCaptureMouse = wantCapture; }
-		// ゲーム側で入力を受け付けて良いか
+		/// @brief	UIが入力を奪っていないか
 		static bool IsInputAvailable() { return !imGuiWantCaptureMouse; }
 
 	private:
+		// State
 		// 現在のフレームのキー状態
 		static bool keyStates[256];
 		// 前フレームのキー状態 (Down / Up判定用)
@@ -82,15 +125,16 @@ namespace Span
 		static Vector2 prevMousePosition;
 		static Vector2 mouseDelta;
 
+		static HWND hWnd;
+		static bool isCursorLocked;
+		static bool ignoreNextDelta;
+
+		// Gamepad
 		// コントローラー内部状態
 		static bool gamepadStates[20];		// ボタン状態
 		static bool prevGamepadStates[20];	// 前フレーム
 		static float gamepadAxes[6];		// スティック/トリガー値
 		static bool isConnected;			// 接続されているか
-
-		static HWND hWnd;
-		static bool isCursorLocked;
-		static bool ignoreNextDelta;
 		static void ResetCursorToCenter();
 
 		static bool imGuiWantCaptureMouse;

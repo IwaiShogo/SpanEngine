@@ -28,6 +28,12 @@ namespace Span
 		totalTime = total.count();
 
 		lastFrameTime = current;
+
+		// DeltaTimeが大きすぎる場合の補正
+		if (deltaTime > 1.0f)
+		{
+			deltaTime = 1.0f / 60.0f;
+		}
 	}
 }
 

@@ -1,6 +1,21 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	CoreMinimal.h
+ * @brief	エンジンの標準インクルードファイル。
+ * 
+ * @details
+ * ほぼ全てのソースファイルでインクルードされる前提の軽量ヘッダーです。
+ * 基本的な型定義、STL、Windows APIの設定、DirectXの参照を含みます。
+ * 
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
 
-// 1. Windows API 設定
+#pragma once
+
+// 1. Platform Settings
+// ============================================================
+
 // マクロの衝突を防ぐための定義
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
@@ -9,10 +24,14 @@
 #define NOMINMAX
 #endif
 
+// Windows API
 #include <Windows.h>
+#include <wrl.h>
 #include <wrl/client.h>
 
-// 2. 標準ライブラリ (Standard Library)
+// 2. Standard Library (STL)
+// ============================================================
+
 #include <cstdint>
 #include <iostream>
 #include <string>
@@ -30,27 +49,35 @@
 #include <filesystem>
 #include <set>
 
-// 3. DirectX 12 & WRL (Windows Runtime Library)
+// 3. DirectX 12 & Math
+// ============================================================
+
 #include <d3d12.h>
 #include <dxgi1_6.h>
 #include <d3dcompiler.h>
-#include <wrl.h>
 #include <DirectXMath.h>
 
+// リンクライブラリ
+#pragma (lib, "d3d12.lib")
+#pragma (lib, "dxgi.lib")
+#pragma (lib, "d3dcompiler.lib")
+
 // 4. Assimp
+// ============================================================
+
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-// 5. ImgGui
+// 5. Common Aliases & Macros
+// ============================================================
 
-// 6. 共通の名前空間の省略
 using namespace Microsoft::WRL; // ComPtr用
 using namespace DirectX;		// XMMATRIX, XMFLOAT3等用
 
 namespace Span
 {
-	// 7. 基本型のエイリアス (RustやC#風の型定義)
+	// Rust/C#風の型エイリアス
 	using int8	 = int8_t;
 	using int16	 = int16_t;
 	using int32	 = int32_t;

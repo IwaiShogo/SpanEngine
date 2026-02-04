@@ -5,7 +5,7 @@
 
 namespace Span
 {
-	// 静的メンバの定義
+	// Static Member Initialization
 	bool Input::keyStates[256] = { false };
 	bool Input::prevKeyStates[256] = { false };
 	Vector2 Input::mousePosition = { 0, 0 };
