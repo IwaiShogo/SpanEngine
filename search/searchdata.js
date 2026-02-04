@@ -1,6 +1,6 @@
 var indexSectionsWithContent =
 {
-  0: "1_abcdefghijklmnopqrstuvwxyz~⚠アパビメラ使注🏗📁📊📏📝🔄🖼🧠",
+  0: "1_abcdefghijklmnopqrstuvwxyz~⚠アパビメラ使座注🏗📁📊📏📝🔄🖼🧠",
   1: "aceghilmnpqrstvw",
   2: "s",
   3: "aceghilmnprstw",
@@ -10,7 +10,7 @@ var indexSectionsWithContent =
   7: "akls",
   8: "abcdefghijklmnopqrstuvwxyz",
   9: "insw",
-  10: "1abcdfilmprsu⚠アパビメラ使注🏗📁📊📏📝🔄🖼🧠"
+  10: "1abcdfilmprsu⚠アパビメラ使座注🏗📁📊📏📝🔄🖼🧠"
 };
 
 var indexSectionNames =

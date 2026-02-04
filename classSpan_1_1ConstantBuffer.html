@@ -132,10 +132,10 @@ Span::ConstantBuffer&lt; T &gt; 連携図</div>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
 class Span::ConstantBuffer&lt; T &gt;</div><p>📦 CPUからGPUへデータを送信するための定数バッファ。 </p>
 <p>シェーダーで使用する <span class="tt">cbuffer</span> に対応します。 内部で <b>Upload Heap</b> を確保し、CPUからの書き込みを即座にGPUに反映させます。</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md44"></a>
 ⚠ 注意点</h3>
 <p>構造体 <span class="tt">T</span> のメンバ変数は、HLSLのパッキングルール (16バイト境界) に注意して配置してください。</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md45"></a>
 📝 Usage</h3>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>SceneData { <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> ViewProj; };</div>
 <div class="line"><a class="code hl_class" href="classSpan_1_1ConstantBuffer.html">ConstantBuffer&lt;SceneData&gt;</a> cb;</div>
@@ -145,7 +145,7 @@ class Span::ConstantBuffer&lt; T &gt;</div><p>📦 CPUからGPUへデータを�
 <div class="ttc" id="aclassSpan_1_1ConstantBuffer_html"><div class="ttname"><a href="classSpan_1_1ConstantBuffer.html">Span::ConstantBuffer</a></div><div class="ttdoc">📦 CPUからGPUへデータを送信するための定数バッファ。</div><div class="ttdef"><b>Definition</b> <a href="ConstantBuffer_8h_source.html#l00055">ConstantBuffer.h:56</a></div></div>
 <div class="ttc" id="aclassSpan_1_1ConstantBuffer_html_a63487527b7a1664a0bf11cc78411a48f"><div class="ttname"><a href="#a63487527b7a1664a0bf11cc78411a48f">Span::ConstantBuffer::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device)</div><div class="ttdoc">定数バッファリソースを作成します。</div><div class="ttdef"><b>Definition</b> <a href="ConstantBuffer_8h_source.html#l00073">ConstantBuffer.h:73</a></div></div>
 <div class="ttc" id="aclassSpan_1_1ConstantBuffer_html_aa1c7be6da0a8ff97112292708d8cab0c"><div class="ttname"><a href="#aa1c7be6da0a8ff97112292708d8cab0c">Span::ConstantBuffer::Data</a></div><div class="ttdeci">T Data</div><div class="ttdoc">GPUに転送される実データへの参照。これに書き込むだけで反映されます。</div><div class="ttdef"><b>Definition</b> <a href="ConstantBuffer_8h_source.html#l00059">ConstantBuffer.h:59</a></div></div>
-<div class="ttc" id="astructSpan_1_1Matrix4x4_html"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html">Span::Matrix4x4</a></div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00193">SpanMath.h:194</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html">Span::Matrix4x4</a></div><div class="ttdoc">4x4 行列 (Row-Major)</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00293">SpanMath.h:294</a></div></div>
 </div><!-- fragment --> <dl class="tparams"><dt>テンプレート引数</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>バッファに格納する構造体の型 </td></tr>

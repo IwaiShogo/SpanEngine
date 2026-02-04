@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1Time.html','','classSpan_1_1Time-members'
 </div><!--header-->
 <div class="contents">
 
+<p>⏱ 時間経過 (Delta <a class="el" href="classSpan_1_1Time.html" title="⏱ 時間経過 (Delta Time) と総時間を管理する静的クラス。">Time</a>) と総時間を管理する静的クラス。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="Time_8h_source.html">Time.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::Time 連携図</div>
@@ -103,9 +106,13 @@ Span::Time 連携図</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静的公開メンバ関数</h2></td></tr>
 <tr class="memitem:ae9e018cd0d5a3b34b773e80c750860e7" id="r_ae9e018cd0d5a3b34b773e80c750860e7"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ae9e018cd0d5a3b34b773e80c750860e7">Initialize</a> ()</td></tr>
+<tr class="memdesc:ae9e018cd0d5a3b34b773e80c750860e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化（エンジン起動時）  <br /></td></tr>
 <tr class="memitem:a990876cca93479473bd4e5e9aa5c8dfc" id="r_a990876cca93479473bd4e5e9aa5c8dfc"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a990876cca93479473bd4e5e9aa5c8dfc">Update</a> ()</td></tr>
+<tr class="memdesc:a990876cca93479473bd4e5e9aa5c8dfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">フレーム開始時に呼ぶ（時間を進める）  <br /></td></tr>
 <tr class="memitem:a5932270bec9773ce9ba84e08c075b15b" id="r_a5932270bec9773ce9ba84e08c075b15b"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a5932270bec9773ce9ba84e08c075b15b">GetDeltaTime</a> ()</td></tr>
+<tr class="memdesc:a5932270bec9773ce9ba84e08c075b15b"><td class="mdescLeft">&#160;</td><td class="mdescRight">前のフレームからの経過時間 (秒) を取得します。  <br /></td></tr>
 <tr class="memitem:ab2ffa90a14f92985655406e02158efd7" id="r_ab2ffa90a14f92985655406e02158efd7"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#ab2ffa90a14f92985655406e02158efd7">GetTotalTime</a> ()</td></tr>
+<tr class="memdesc:ab2ffa90a14f92985655406e02158efd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム開始時からの総経過時間 (秒) を取得します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 静的非公開変数類</h2></td></tr>
@@ -115,8 +122,10 @@ Span::Time 連携図</div>
 <tr class="memitem:a3a5da90656f8b01cd0ba0e01fc780a98" id="r_a3a5da90656f8b01cd0ba0e01fc780a98"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a3a5da90656f8b01cd0ba0e01fc780a98">totalTime</a> = 0.0f</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00006">6</a> 行目に定義があります。</p>
+<div class="textblock"><p>⏱ 時間経過 (Delta <a class="el" href="classSpan_1_1Time.html" title="⏱ 時間経過 (Delta Time) と総時間を管理する静的クラス。">Time</a>) と総時間を管理する静的クラス。 </p>
+<p><span class="tt">std::chrono::high_resolution_clock</span> を使用してナノ秒制度の計測を行います。 <span class="tt"><a class="el" href="#a990876cca93479473bd4e5e9aa5c8dfc" title="フレーム開始時に呼ぶ（時間を進める）">Update()</a></span> はメインループの先頭で必ず呼び出す必要があります。 </p>
+
+<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00025">25</a> 行目に定義があります。</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a5932270bec9773ce9ba84e08c075b15b" name="a5932270bec9773ce9ba84e08c075b15b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5932270bec9773ce9ba84e08c075b15b">&#9670;&#160;</a></span>GetDeltaTime()</h2>
@@ -141,7 +150,10 @@ Span::Time 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00017">17</a> 行目に定義があります。</p>
+<p>前のフレームからの経過時間 (秒) を取得します。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>例: 60FPSなら約 0.01666... </dd></dl>
+
+<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00037">37</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -173,7 +185,9 @@ Span::Time 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00020">20</a> 行目に定義があります。</p>
+<p>ゲーム開始時からの総経過時間 (秒) を取得します。 </p>
+
+<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00040">40</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -199,6 +213,8 @@ Span::Time 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>初期化（エンジン起動時） </p>
 
 <p class="definition"> <a class="el" href="Time_8cpp_source.html">Time.cpp</a> の <a class="el" href="Time_8cpp_source.html#l00010">10</a> 行目に定義があります。</p>
 <div class="dynheader">
@@ -232,6 +248,8 @@ Span::Time 連携図</div>
 </table>
 </div><div class="memdoc">
 
+<p>フレーム開始時に呼ぶ（時間を進める） </p>
+
 <p class="definition"> <a class="el" href="Time_8cpp_source.html">Time.cpp</a> の <a class="el" href="Time_8cpp_source.html#l00018">18</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
@@ -262,7 +280,7 @@ Span::Time 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00025">25</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00045">45</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -286,7 +304,7 @@ Span::Time 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00024">24</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00044">44</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -310,7 +328,7 @@ Span::Time 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00023">23</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00043">43</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -334,7 +352,7 @@ Span::Time 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00026">26</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Time_8h_source.html">Time.h</a> の <a class="el" href="Time_8h_source.html#l00046">46</a> 行目に定義があります。</p>
 
 </div>
 </div>
