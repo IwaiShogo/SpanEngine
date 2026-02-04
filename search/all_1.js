@@ -16,6 +16,6 @@ var searchData=
   ['_5f42_13',['_42',['../structSpan_1_1Matrix4x4.html#a5d080b9871d995732da02dc677a3bf63',1,'Span::Matrix4x4']]],
   ['_5f43_14',['_43',['../structSpan_1_1Matrix4x4.html#ad861c1a797bf191ef74bcab6c9eba399',1,'Span::Matrix4x4']]],
   ['_5f44_15',['_44',['../structSpan_1_1Matrix4x4.html#a9ecf1a36c4447bea2afc75c2cd8c8b1d',1,'Span::Matrix4x4']]],
-  ['_5freg_16',['_reg',['../namespaceSpan.html#a09a142f7c7e3e8d3bce953a7708df856',1,'Span::_reg'],['../namespaceSpan.html#af398cbc10fb9b8a1ce5df3e312466376',1,'Span::_reg']]],
-  ['_5freg_5fhierarchy_17',['_reg_hierarchy',['../namespaceSpan.html#aa2e1f3b43c2155d429bde4b7126053e3',1,'Span']]]
+  ['_5freg_16',['_reg',['../namespaceSpan.html#a2ffd67e5c0ae55d0918e1924de043da2',1,'Span::_reg(&quot;Inspector&quot;)'],['../namespaceSpan.html#aacd65e503c27c8b9ac1d74cc035daa11',1,'Span::_reg(&quot;Scene&quot;)']]],
+  ['_5freg_5fhierarchy_17',['_reg_hierarchy',['../namespaceSpan.html#ab70254134b06676ef075109a54d3c433',1,'Span']]]
 ];

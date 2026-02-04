@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1ImGuiUI.html','','classSpan_1_1ImGuiUI-me
 </div><!--header-->
 <div class="contents">
 
+<p>🎛️ エディタ独自のUIパーツを提供する静的クラス。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="ImGuiUI_8h_source.html">ImGuiUI.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::ImGuiUI 連携図</div>
@@ -103,11 +106,15 @@ Span::ImGuiUI 連携図</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静的公開メンバ関数</h2></td></tr>
 <tr class="memitem:a82e31b59f1f904100b23729fbe79655b" id="r_a82e31b59f1f904100b23729fbe79655b"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a82e31b59f1f904100b23729fbe79655b">DrawVec3Control</a> (const std::string &amp;label, <a class="el" href="structSpan_1_1Vector3.html">Vector3</a> &amp;values, float resetValue=0.0f, float columnWidth=100.0f)</td></tr>
+<tr class="memdesc:a82e31b59f1f904100b23729fbe79655b"><td class="mdescLeft">&#160;</td><td class="mdescRight">UnityスタイルのVector3コントロールを描画します。  <br /></td></tr>
 <tr class="memitem:a52bfa8cd974637ba2dd51cba44415a11" id="r_a52bfa8cd974637ba2dd51cba44415a11"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a52bfa8cd974637ba2dd51cba44415a11">DrawComponentHeader</a> (const std::string &amp;name, bool &amp;isRemoved, bool defaultOpen=true)</td></tr>
+<tr class="memdesc:a52bfa8cd974637ba2dd51cba44415a11"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネント用の折り畳みヘッダーを描画します。  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="ImGuiUI_8h_source.html">ImGuiUI.h</a> の <a class="el" href="ImGuiUI_8h_source.html#l00008">8</a> 行目に定義があります。</p>
+<div class="textblock"><p>🎛️ エディタ独自のUIパーツを提供する静的クラス。 </p>
+<p>UnityやUnreal Engineのような、使いやすく整ったUIコントロールを提供します。 </p>
+
+<p class="definition"> <a class="el" href="ImGuiUI_8h_source.html">ImGuiUI.h</a> の <a class="el" href="ImGuiUI_8h_source.html#l00026">26</a> 行目に定義があります。</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a52bfa8cd974637ba2dd51cba44415a11" name="a52bfa8cd974637ba2dd51cba44415a11"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a52bfa8cd974637ba2dd51cba44415a11">&#9670;&#160;</a></span>DrawComponentHeader()</h2>
@@ -141,7 +148,19 @@ Span::ImGuiUI 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ImGuiUI_8h_source.html">ImGuiUI.h</a> の <a class="el" href="ImGuiUI_8h_source.html#l00079">79</a> 行目に定義があります。</p>
+<p>コンポーネント用の折り畳みヘッダーを描画します。 </p>
+<p>枠線付きの <span class="tt">TreeNode</span> を描画し、右クリックメニューで「コンポーネント削除」機能を提供します。</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">name</td><td>ヘッダーに表示するコンポーネント名 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">isRemoved</td><td>「Remove Component」が選択された場合 true がセットされる </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">defaultOpen</td><td>初期状態で開いているか </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ヘッダが開いている場合 true </dd></dl>
+
+<p class="definition"> <a class="el" href="ImGuiUI_8h_source.html">ImGuiUI.h</a> の <a class="el" href="ImGuiUI_8h_source.html#l00122">122</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -182,7 +201,24 @@ Span::ImGuiUI 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ImGuiUI_8h_source.html">ImGuiUI.h</a> の <a class="el" href="ImGuiUI_8h_source.html#l00012">12</a> 行目に定義があります。</p>
+<p>UnityスタイルのVector3コントロールを描画します。 </p>
+<p>左側にラベル、右側に X, Y, Z の各フィールドを表示します。 各軸のラベル(X, Y, Z)をクリックすると、値をリセットできます。</p><ul>
+<li><b>X</b>: 赤色</li>
+<li><b>Y</b>: 緑色</li>
+<li><b>Z</b>: 青色</li>
+</ul>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">label</td><td>左側に表示するラベル文字列 </td></tr>
+    <tr><td class="paramname">values</td><td>編集対象のVector3参照 </td></tr>
+    <tr><td class="paramname">resetValue</td><td>軸ラベルをクリックした際のリセット値 (Default: 0.0f) </td></tr>
+    <tr><td class="paramname">columnWidth</td><td>ラベルカラムの幅 (Default: 100.0f) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>値が変更された場合 true </dd></dl>
+
+<p class="definition"> <a class="el" href="ImGuiUI_8h_source.html">ImGuiUI.h</a> の <a class="el" href="ImGuiUI_8h_source.html#l00045">45</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">

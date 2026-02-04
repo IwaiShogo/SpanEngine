@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['waitforgpu_0',['WaitForGpu',['../classSpan_1_1GraphicsContext.html#a2b668849f44321ef8ff8b944e4e786e2',1,'Span::GraphicsContext']]],
-  ['window_1',['Window',['../classSpan_1_1Window.html#a37a75d2d3ff4e663a94df8e1c41958e3',1,'Span::Window']]],
-  ['windowproc_2',['WindowProc',['../classSpan_1_1Window.html#a24635208c038c943fedace7500f9ba18',1,'Span::Window']]],
-  ['with_3',['With',['../classSpan_1_1EntityBuilder.html#ab28545e60edea3e91a3606552f952614',1,'Span::EntityBuilder']]],
-  ['world_4',['World',['../classSpan_1_1World.html#aba3445185cce62ba69ea55949875a74f',1,'Span::World']]]
+  ['vector2_0',['Vector2',['../structSpan_1_1Vector2.html#a3e74d032b6631247d62acb7add2cab44',1,'Span::Vector2::Vector2()'],['../structSpan_1_1Vector2.html#a6a3c22ec6144ead9287b9cb20f4374c5',1,'Span::Vector2::Vector2(float _x, float _y)'],['../structSpan_1_1Vector2.html#ae4fc220bb9f07a0abbb2ec3482e9461f',1,'Span::Vector2::Vector2(float v)']]],
+  ['vector3_1',['Vector3',['../structSpan_1_1Vector3.html#a5b73d20c05747047ff35465dd3af4634',1,'Span::Vector3::Vector3()'],['../structSpan_1_1Vector3.html#aeb5789c19211db815d7fb391ebb47480',1,'Span::Vector3::Vector3(float _x, float _y, float _z)'],['../structSpan_1_1Vector3.html#a68450768a263d12d8190a8a157d29d96',1,'Span::Vector3::Vector3(float v)']]],
+  ['vector4_2',['Vector4',['../structSpan_1_1Vector4.html#a47ee7b30ca2bde2445994cb2e735b6b4',1,'Span::Vector4::Vector4()'],['../structSpan_1_1Vector4.html#a6de528f98f9c26f3bd3b54849ea8ec62',1,'Span::Vector4::Vector4(float _x, float _y, float _z, float _w)'],['../structSpan_1_1Vector4.html#af34c08bb49c48ba67f7330d601fd666b',1,'Span::Vector4::Vector4(const Vector3 &amp;v, float _w)']]]
 ];

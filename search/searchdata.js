@@ -1,12 +1,12 @@
 var indexSectionsWithContent =
 {
   0: "1_abcdefghijklmnopqrstuvwxyz~⚠アパビメラ使座注🏗📁📊📏📝🔄🖼🧠",
-  1: "aceghilmnpqrstvw",
+  1: "aceghilmnqrstvw",
   2: "s",
   3: "aceghilmnprstw",
-  4: "abcdefghilmnopqrstuvw~",
+  4: "_abcdefghilmnopqrstuvw~",
   5: "_abcdefghiklmnoprstuvwxyz",
-  6: "cdipru",
+  6: "cdiru",
   7: "akls",
   8: "abcdefghijklmnopqrstuvwxyz",
   9: "insw",

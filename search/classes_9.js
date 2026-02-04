@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['panelmanager_0',['PanelManager',['../classSpan_1_1PanelManager.html',1,'Span']]]
+  ['quaternion_0',['Quaternion',['../structSpan_1_1Quaternion.html',1,'Span']]]
 ];

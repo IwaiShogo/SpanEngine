@@ -61,7 +61,7 @@ var searchData=
   ['getorcreatearchetype_58',['GetOrCreateArchetype',['../classSpan_1_1ArchetypeManager.html#a564c9a4257793650ff74628b3410dc0f',1,'Span::ArchetypeManager::GetOrCreateArchetype()'],['../classSpan_1_1ArchetypeManager.html#acf6d4b0eea7c9770ffd92bc103992a17',1,'Span::ArchetypeManager::GetOrCreateArchetype(const std::vector&lt; ComponentTypeID &gt; &amp;typeIDs, const std::vector&lt; size_t &gt; &amp;sizes, const std::vector&lt; size_t &gt; &amp;alignments)']]],
   ['getpanel_59',['GetPanel',['../classSpan_1_1GuiManager.html#a1b9ad1d7595409b13c41950822c0b58f',1,'Span::GuiManager']]],
   ['getprimary_60',['GetPrimary',['../classSpan_1_1SelectionManager.html#ab8b9b7e17346f5fb71277549ad085bc4',1,'Span::SelectionManager']]],
-  ['getregistry_61',['GetRegistry',['../classSpan_1_1PanelManager.html#a42dcfb9527ac74e0af561d8f1dbfe833',1,'Span::PanelManager::GetRegistry()'],['../classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd',1,'Span::ComponentRegistry::GetRegistry()']]],
+  ['getregistry_61',['GetRegistry',['../classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd',1,'Span::ComponentRegistry']]],
   ['getrenderer_62',['GetRenderer',['../classSpan_1_1Application.html#a405d83887371210b9a67e940727689da',1,'Span::Application']]],
   ['getresource_63',['GetResource',['../classSpan_1_1RenderTarget.html#af7ea58758e6016e4015554913d7fabfb',1,'Span::RenderTarget']]],
   ['getright_64',['GetRight',['../structSpan_1_1Transform.html#a201045237f4cff825ff023848c5967fa',1,'Span::Transform']]],

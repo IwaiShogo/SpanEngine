@@ -12,8 +12,6 @@ var annotated_dup =
       [ "Time", "classSpan_1_1Time.html", "classSpan_1_1Time" ],
       [ "GuiManager", "classSpan_1_1GuiManager.html", "classSpan_1_1GuiManager" ],
       [ "ImGuiUI", "classSpan_1_1ImGuiUI.html", "classSpan_1_1ImGuiUI" ],
-      [ "PanelManager", "classSpan_1_1PanelManager.html", "classSpan_1_1PanelManager" ],
-      [ "AutoRegisterPanel", "structSpan_1_1AutoRegisterPanel.html", "structSpan_1_1AutoRegisterPanel" ],
       [ "EditorPanel", "classSpan_1_1EditorPanel.html", "classSpan_1_1EditorPanel" ],
       [ "HierarchyPanel", "classSpan_1_1HierarchyPanel.html", "classSpan_1_1HierarchyPanel" ],
       [ "InspectorPanel", "classSpan_1_1InspectorPanel.html", "classSpan_1_1InspectorPanel" ],

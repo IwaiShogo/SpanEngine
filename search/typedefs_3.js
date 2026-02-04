@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['panelfactory_0',['PanelFactory',['../classSpan_1_1PanelManager.html#a9a8ef9fa736cd3bcb1dca466179d7223',1,'Span::PanelManager']]]
+  ['removecomponentfunc_0',['RemoveComponentFunc',['../namespaceSpan.html#a936509841abf3411c6dae4ca675b811e',1,'Span']]]
 ];

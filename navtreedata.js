@@ -42,8 +42,7 @@ var NAVTREE =
       [ "クラスメンバ", "functions.html", [
         [ "全て", "functions.html", "functions_dup" ],
         [ "関数", "functions_func.html", "functions_func" ],
-        [ "変数", "functions_vars.html", "functions_vars" ],
-        [ "型定義", "functions_type.html", null ]
+        [ "変数", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "ファイル", "files.html", [
@@ -62,11 +61,11 @@ var NAVTREEINDEX =
 "Active_8h.html",
 "classSpan_1_1Archetype.html#ae33408fe9890919e0210052bb8d38019",
 "classSpan_1_1GuiManager.html#ab78e1a284f6d5aced7912c00ab43c559",
-"classSpan_1_1RenderTarget.html#a3fca570c795e6b3d4a5704b0f8863a32",
-"classSpan_1_1TransformSystem.html#abeba491503870f332716f4ca75444ca4",
-"namespaceSpan.html#a706679730aeab52031ed8774240027f2a882384ec38ce8d9582b57e70861730e4",
-"structSpan_1_1Matrix4x4.html#a3d6efc191cb0237aad003bbe2f531bcf",
-"structSpan_1_1Vector3.html#aeb5789c19211db815d7fb391ebb47480"
+"classSpan_1_1RenderTarget.html#a6565669f186c92debef9d162e7b9c14c",
+"classSpan_1_1Window.html#a26623b5142073096423d4c6c6b67dfc9",
+"namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa02129bb861061d1a052c592e2dc6b383",
+"structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa",
+"structSpan_1_1Vector4.html#a28e3e6c3a2555fe4cd3a90367bc4cfc2"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

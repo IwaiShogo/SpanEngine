@@ -13,7 +13,7 @@ var searchData=
   ['device_10',['device',['../classSpan_1_1GraphicsContext.html#a3c16daba9944015d6b67fbe31111175a',1,'Span::GraphicsContext']]],
   ['disconnect_11',['Disconnect',['../classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26',1,'Span::RelationshipSystem']]],
   ['dot_12',['Dot',['../structSpan_1_1Vector3.html#afd00ea2d739d71571828e2d44b41c0c6',1,'Span::Vector3']]],
-  ['double_20buffering_13',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md48',1,'']]],
+  ['double_20buffering_13',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md58',1,'']]],
   ['down_14',['Down',['../structSpan_1_1Vector3.html#a174d5e36f77185f411c98c3cb05def5d',1,'Span::Vector3']]],
   ['draw_15',['Draw',['../classSpan_1_1Mesh.html#a778cd9c09642759f91c6f0cbe53503a1',1,'Span::Mesh']]],
   ['drawcomponentfunc_16',['DrawComponentFunc',['../namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7',1,'Span']]],

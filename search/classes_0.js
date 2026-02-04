@@ -5,6 +5,5 @@ var searchData=
   ['archetype_2',['Archetype',['../classSpan_1_1Archetype.html',1,'Span']]],
   ['archetypemanager_3',['ArchetypeManager',['../classSpan_1_1ArchetypeManager.html',1,'Span']]],
   ['archetypesignature_4',['ArchetypeSignature',['../classSpan_1_1ArchetypeSignature.html',1,'Span']]],
-  ['attribute_5',['Attribute',['../structSpan_1_1Attribute.html',1,'Span']]],
-  ['autoregisterpanel_6',['AutoRegisterPanel',['../structSpan_1_1AutoRegisterPanel.html',1,'Span']]]
+  ['attribute_5',['Attribute',['../structSpan_1_1Attribute.html',1,'Span']]]
 ];
