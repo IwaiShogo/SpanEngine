@@ -1,14 +1,47 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	ImGuiUI.h
+ * @brief	ImGui用のカスタムウィジェットヘルパー。
+ *
+ * @details
+ *
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "Core/Math/SpanMath.h"
 #include <imgui.h>
 #include <imgui_internal.h>
 
 namespace Span
 {
+	/**
+	 * @class	ImGuiUI
+	 * @brief	🎛️ エディタ独自のUIパーツを提供する静的クラス。
+	 *
+	 * @details
+	 * UnityやUnreal Engineのような、使いやすく整ったUIコントロールを提供します。
+	 */
 	class ImGuiUI
 	{
 	public:
-		// XYZカラー付きベクトル編集 (Table API版)
+		/**
+		 * @brief	UnityスタイルのVector3コントロールを描画します。
+		 *
+		 * @details
+		 * 左側にラベル、右側に X, Y, Z の各フィールドを表示します。
+		 * 各軸のラベル(X, Y, Z)をクリックすると、値をリセットできます。
+		 * - **X**: 赤色
+		 * - **Y**: 緑色
+		 * - **Z**: 青色
+		 * 
+		 * @param	label 左側に表示するラベル文字列
+		 * @param	values 編集対象のVector3参照
+		 * @param	resetValue 軸ラベルをクリックした際のリセット値 (Default: 0.0f)
+		 * @param	columnWidth ラベルカラムの幅 (Default: 100.0f)
+		 * @return	値が変更された場合 true
+		 */
 		static bool DrawVec3Control(const std::string& label, Vector3& values, float resetValue = 0.0f, float columnWidth = 100.0f)
 		{
 			bool changed = false;
@@ -75,7 +108,17 @@ namespace Span
 			return changed;
 		}
 
-		// コンポーネント用のヘッダー描画
+		/**
+		 * @brief	コンポーネント用の折り畳みヘッダーを描画します。
+		 * 
+		 * @details
+		 * 枠線付きの `TreeNode` を描画し、右クリックメニューで「コンポーネント削除」機能を提供します。
+		 * 
+		 * @param	name ヘッダーに表示するコンポーネント名
+		 * @param[out] isRemoved 「Remove Component」が選択された場合 true がセットされる
+		 * @param	defaultOpen 初期状態で開いているか
+		 * @returnヘッダが開いている場合 true
+		 */
 		static bool DrawComponentHeader(const std::string& name, bool& isRemoved, bool defaultOpen = true)
 		{
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4, 4));
