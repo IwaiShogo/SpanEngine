@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install Graphviz
+        run: sudo apt-get install -y graphviz
+
       - name: Setup Doxygen
         uses: ssciwr/doxygen-install@v1
 

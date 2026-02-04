@@ -1,19 +1,66 @@
-PROJECT_NAME			= "Span Engine"
-PROJECT_NUMBER			= "0.1.0"
-PROJECT_BRIEF			= "Editor First, Data Oriented, Native Performance Game Engine"
-OUTPUT_DIRECTORY		= docs
-INPUT					= Engine/Source
-RECURSIVE				= YES
-EXTRACT_ALL				= YES
-EXTRACT_PRIVATE			= YES
-EXTRACT_STATIC			= YES
-GENERATE_HTML			= YES
-GENERATE_LATEX			= NO
-HAVE_DOT				= NO
-# �R�����g�X�^�C���ݒ�
-JAVADOC_AUTOBRIEF		= YES
-QT_AUTOBRIEF			= YES
-# ����ݒ�
-OUTPUT_LANGUAGE			= Japanese
-# ���̓R�[�f�B���O
-INPUT_ENCODING			= UTF-8
+﻿# =============================================================================
+# Project Information
+# =============================================================================
+PROJECT_NAME           = "Span Engine"
+PROJECT_NUMBER         = "0.1.0"
+PROJECT_BRIEF          = "⚡ Editor First, Data Oriented, Native Performance Game Engine"
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = Japanese
+INPUT                  = Engine/Source Technical\ Specification.md
+RECURSIVE              = YES
+USE_MDFILE_AS_MAINPAGE = Technical\ Specification.md
+INPUT_ENCODING         = UTF-8
+
+# =============================================================================
+# Visual Style & Layout (Modern Look)
+# =============================================================================
+# サイドバーを表示してナビゲーションしやすくする
+GENERATE_TREEVIEW      = YES
+# 検索エンジンを有効化 (クライアントサイドJS)
+SEARCHENGINE           = YES
+# ソースコードを閲覧可能にする
+SOURCE_BROWSER         = YES
+# コードの色分けをリッチにする
+STRIP_CODE_COMMENTS    = NO
+# メンバーのグループ分けを賢く行う
+DISTRIBUTE_GROUP_DOC   = YES
+
+# =============================================================================
+# Extraction Mode (Perfect Refactoring)
+# =============================================================================
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+# 未ドキュメントの要素に警告を出す (リファクタリングの進捗管理用)
+WARN_IF_UNDOCUMENTED   = NO
+
+# =============================================================================
+# Diagrams & Graphs (Requires Graphviz) 📊
+# =============================================================================
+# 図解生成エンジンを有効化
+HAVE_DOT               = YES
+# UMLスタイルの見た目にする
+UML_LOOK               = YES
+# クラス継承図、コラボレーション図を作成
+CLASS_DIAGRAMS         = YES
+COLLABORATION_GRAPH    = YES
+# インクルード関係を図示 (依存関係が一目瞭然に)
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+# 関数呼び出しグラフ (誰が誰を呼んでいるか)
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+# グラフの最大深度 (深すぎると見づらいので制限)
+DOT_GRAPH_MAX_NODES    = 50
+# グラフをSVG形式で出力 (ズームしても綺麗)
+DOT_IMAGE_FORMAT       = svg
+# ツールチップを有効化
+INTERACTIVE_SVG        = YES
+
+# =============================================================================
+# Comments
+# =============================================================================
+JAVADOC_AUTOBRIEF      = YES
+QT_AUTOBRIEF           = YES
+MARKDOWN_SUPPORT       = YES
