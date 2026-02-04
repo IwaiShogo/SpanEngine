@@ -1,40 +1,78 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	RenderTarget.h
+ * @brief	レンダリングターゲット (RTV) とシェーダーリソース (SRV) の管理。
+ * 
+ * @details	
+ * 
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
 {
+	/**
+	 * @class	RenderTarget
+	 * @brief	🎯 描画対象となるテクスチャリソース。
+	 * 
+	 * @details
+	 * 「描画先 (RTV)」としても、「テクスチャ (SRV)」としても使用できるリソースを管理します。
+	 * ImGui経由でテクスチャとして表示することで実現されています。
+	 * 
+	 * ### 🔄 Resource Barrier State Flow
+	 * 1. **RT State**: 描画中 (`D3D12_RESOURCE_STATE_RENDER_TARGET`)
+	 * 2. **Barrier**: `TransitionToShaderResource()`
+	 * 3. **SRV State**: ImGui表示中 (`D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE`)
+	 * 4. **Barrier**: `TransitionToRenderTarget()`
+	 * 5. (Loop)
+	 */
 	class RenderTarget
 	{
 	public:
 		RenderTarget();
 		~RenderTarget();
 
-		// テクスチャリソースとビューを作成
-		// width, height: 解像度
-		// format: テクスチャフォーマット (通常は R8G8B8A8_UNORM)
-		// clearColor: クリア時の色
+		/**
+		 * @brief	レンダーターゲットリソースを作成します。
+		 * @param	device D3D12デバイス
+		 * @param	width 幅
+		 * @param	height 高さ
+		 * @param	format ピクセルフォーマット (Default: R8G8B8A8_UNORM)
+		 */
 		bool Initialize(ID3D12Device* device, uint32 width, uint32 height, DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM);
 
-		// 解像度変更（ウィンドウリサイズ時に呼ぶ）
+		/// @brief	解像度を変更し、リソースを作り直します。
 		bool Resize(ID3D12Device* device, uint32 width, uint32 height);
 
-		// リソース解放
+		/// @brief	リソースを解放
 		void Shutdown();
 
-		// 描画開始前にバリアを設定（SRV -> RTV）
+		/**
+		 * @brief	リソースの状態を「描画先 (Render Target)」に変更します。
+		 * 描画コマンドを発行する前に必ず呼んでください。
+		 */
 		void TransitionToRenderTarget(ID3D12GraphicsCommandList* commandList);
 
-		// 描画終了後にバリアを設定（RTV -> SRV: ImGuiで表示するため）
+		/**
+		 * @brief	リソースの状態を「読み取り専用テクスチャ (Shader Resource)」に変更します。
+		 * ImGuiなどで表示する前に読んでください。
+		 */
 		void TransitionToShaderResource(ID3D12GraphicsCommandList* commandList);
 
-		// 画面クリア
+		/// @brief	画面を指定色でクリアします。
 		void Clear(ID3D12GraphicsCommandList* commandList);
 
-		// Getters
+		// 📊 Getters
+		// ============================================================
+
 		ID3D12Resource* GetResource() const { return resource.Get(); }
 		D3D12_CPU_DESCRIPTOR_HANDLE GetRTV() const { return rtvHandle; }
 		D3D12_CPU_DESCRIPTOR_HANDLE GetSRV() const { return srvHandle; }
 		D3D12_CPU_DESCRIPTOR_HANDLE GetDSV() const { return dsvHandle; }
+		/// @brief	シェーダーから参照するためのGPUハンドル (ImGui用)
 		D3D12_GPU_DESCRIPTOR_HANDLE GetSRV_GPU() const { return srvHandleGpu; }
 
 		uint32 GetWidth() const { return width; }

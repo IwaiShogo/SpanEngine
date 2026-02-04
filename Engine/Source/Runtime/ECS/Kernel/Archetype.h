@@ -1,4 +1,17 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	Archetype.h
+ * @brief	ECSのメモリレイアウト定義 (アーキタイプ) を行うクラス。
+ * 
+ * @details	
+ * アーキタイプは、「同じコンポーネントの組み合わせ」を持つエンティティのグループです。
+ * データの物理的な配置 (メモリレイアウト) を決定する設計図の役割を果たします。
+ * 
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "Core/CoreMinimal.h"
 #include "ECS/Internal/ComponentType.h"
 #include "Chunk.h"
@@ -6,19 +19,28 @@
 namespace Span
 {
 	/**
-	 * @brief	アーキタイプ署名 (Signature)
-	 * コンポーネントIDのリストをソートして保持したもの。
-	 * これが一致すれば「同じアーキタイプ」とみなす。
+	 * @class	ArchetypeSignature
+	 * @brief	🔑 アーキタイプを識別するための署名キー
+	 * 
+	 * @details
+	 * 持っているコンポーネントIDのリストをソートして保持します。
+	 * これにより、追加順序に関わらず「構成が同じなら同じ署名」とみなされます。
 	 */
 	class ArchetypeSignature
 	{
 	public:
+		/**
+		 * @brief	コンポーネントIDを追加して再ソートします。
+		 */
 		void Add(ComponentTypeID typeID)
 		{
 			componentTypes.push_back(typeID);
 			std::sort(componentTypes.begin(), componentTypes.end());
 		}
 
+		/**
+		 * @brief	指定したコンポーネントIDを削除します。
+		 */
 		void Remove(ComponentTypeID typeID)
 		{
 			// erase-remove idiom
@@ -29,12 +51,16 @@ namespace Span
 			}
 		}
 
+		/**
+		 * @brief	指定したコンポーネントが含まれているか判定します。
+		 */
 		bool Has(ComponentTypeID typeID) const
 		{
 			return std::binary_search(componentTypes.begin(), componentTypes.end(), typeID);
 		}
 
-		// マップのキーにするために比較演算子
+		/// @brief Operators
+		/// @{
 		bool operator<(const ArchetypeSignature& other) const
 		{
 			return componentTypes < other.componentTypes;
@@ -43,6 +69,7 @@ namespace Span
 		{
 			return componentTypes == other.componentTypes;
 		}
+		/// @}
 
 		const std::vector<ComponentTypeID>& GetTypes() const { return componentTypes; }
 
@@ -51,14 +78,30 @@ namespace Span
 	};
 
 	/**
-	 * @brief アーキタイプ
-	 * 同じコンポーネント構成を持つEntity群を管理する。
-	 * データの「型」だけでなく、実際の「メモリ(Chunk)」も管理する。
+	 * @class	Archetype
+	 * @brief	🏢 エンティティのコンテナクラス。メモリレイアウトを管理します。
+	 * 
+	 * @details
+	 * 1つのアーキタイプは複数の `Chunk` (16KBブロック) を持ち、
+	 * コンポーネントデータを **SoA (Structure of Arrays)** 形式で格納します。
+	 * 
+	 * ### 🧠 メモリレイアウト (Chunk Memory Layout)
+	 * 例: `Transform` (Vec3) と `Velocity` (Vec3) を持つアーキタイプの場合
+	 * | Header | EntityIDs[]    | Transform[]          | Velocity[]           | Padding |
+	 * | :---:  | :---           | :---                 | :---                 | :--- |
+	 * | ...    | `[0][1][2]...` | `[Pos][Pos][Pos]...` | `[Vel][Vel][Vel]...` | ... |
+	 * 
+	 * これにより、同じコンポーネントへの連続アクセスがキャッシュフレンドリーになります。
 	 */
 	class Archetype
 	{
 	public:
-		// コンストラクタでレイアウトを計算する
+		/**
+		 * @brief	コンストラクタ。メモリレイアウトを計算します。
+		 * @param	types コンポーネント型IDのリスト
+		 * @param	sizes 各コンポーネントのサイズ
+		 * @param	alignments 各コンポーネントのアライメント要件
+		 */
 		Archetype(const std::vector<ComponentTypeID>& types,
 			const std::vector<size_t>& sizes,
 			const std::vector<size_t>& alignments);
@@ -67,13 +110,22 @@ namespace Span
 
 		SPAN_NON_COPYABLE(Archetype);
 
-		// このアーキタイプは特定のコンポーネント
+		// 🔍 Queries
+		// ============================================================
+
+		/**
+		 * @brief	指定したコンポーネントを持っているか確認します。
+		 */
 		bool HasComponent(ComponentTypeID typeID) const
 		{
 			return signature.Has(typeID);
 		}
 
-		// 複数のコンポーネントを全て持っているか判定
+		/**
+		 * @brief	要求された全てのコンポーネントを持っているか確認します。
+		 * @param	queryTypes 要求するコンポーネントIDリスト
+		 * @return	全て持っていれば true
+		 */
 		bool HasAllComponents(const std::vector<ComponentTypeID>& queryTypes) const
 		{
 			// 署名と比較して、queryTypesが全部含まれているか確認
@@ -84,41 +136,67 @@ namespace Span
 			return true;
 		}
 
-		// 新しいEntity分のスペースを確保し、そのインデックスを返す
+		// 💾 Memory Management
+		// ============================================================
+
+		/**
+		 * @brief	新しいEntity用のスペースを確保します。
+		 * 
+		 * @details
+		 * 空きのあるChunkを探し、なければ新しいChunkを確保します。
+		 * @param	entityID 割り当てるエンティティID
+		 * @return	Chunk内でのインデックス
+		 */
 		uint32 AllocateEntity(EntityID entityID);
 
-		// コンポーネントIDから、その配列の「チャンク内オフセット」を取得
+		/**
+		 * @brief	コンポーネント配列の「チャンク内オフセット」を取得します。
+		 * @param	typeID コンポーネント型ID
+		 * @return	チャンク先頭からのバイトオフセット
+		 */
 		size_t GetComponentOffset(ComponentTypeID typeID) const;
 
-		// コンポーネントのサイズを取得
+		/**
+		 * @brief	コンポーネントの単体サイズを取得します。
+		 */
 		size_t GetComponentSize(ComponentTypeID typeID) const;
 
+		/**
+		 * @brief	コンポーネントのアライメントを取得します。
+		 */
 		size_t GetComponentAlignment(ComponentTypeID typeID) const;
 
-		// このアーキタイプが持つ全チャンク
+		// 📊 Getters
+		// ============================================================
+
+		/**
+		 * @brief	このアーキタイプが管理している全チャンクのリスト
+		 */
 		const std::vector<Chunk*>& GetChunks() const { return chunks; }
 
-		// 1チャンクあたりの収容数
+		/**
+		 * @brief	1つのチャンクに格納できるエンティティ最大数
+		 */
 		uint32 GetChunkCapacity() const { return chunkCapacity; }
 
-		// 型リストを取得
+		/**
+		 * @brief	構成コンポーネントの型リスト
+		 */
 		const std::vector<ComponentTypeID>& GetTypes() const { return typeIDs; }
 
 	private:
-		ArchetypeSignature signature;
+		ArchetypeSignature signature;	///< コンポーネントの構成の署名
 
-		// 構成要素
-		std::vector<ComponentTypeID> typeIDs;
+		// --- Layout Info ---
+		std::vector<ComponentTypeID> typeIDs;						///< TypeIDリスト
+		std::unordered_map<ComponentTypeID, size_t> typeOffsets;	///< TypeID -> Chunk内オフセット
+		std::unordered_map<ComponentTypeID, size_t> typeSizes;		///< TypeID -> サイズ (バイト)
+		std::unordered_map<ComponentTypeID, size_t> typeAlignments;	///< TypeID -> アライメント
 
-		// メモリレイアウト情報
-		std::unordered_map<ComponentTypeID, size_t> typeOffsets;	// TypeID -> Chunk内オフセット
-		std::unordered_map<ComponentTypeID, size_t> typeSizes;		// TypeID -> サイズ (バイト)
-		std::unordered_map<ComponentTypeID, size_t> typeAlignments;	// TypeID -> アライメント
+		size_t entitySize = 0;										///< Entity1体あたりの合計サイズ (バイト)
+		uint32 chunkCapacity = 0;									///< 1チャンクに何体入るか
 
-		size_t entitySize = 0;										// Entity1体あたりの合計サイズ (バイト)
-		uint32 chunkCapacity = 0;									// 1チャンクに何体入るか
-
-		// データの実体
-		std::vector<Chunk*> chunks;
+		// --- Storage ---
+		std::vector<Chunk*> chunks;									///< 確保されたメモリブロック群
 	};
 }

@@ -16,18 +16,27 @@ namespace Span
 		width = window.GetWidth();
 		height = window.GetHeight();
 
-		// ビューポート設定
+		// ビューポート設定 & シザー矩形の設定
 		viewport = { 0.0f, 0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f, 1.0f };
 		scissorRect = { 0, 0, static_cast<long>(width), static_cast<long>(height) };
 
-		CreateDevice();
-		CreateCommandQueue();
-		CreateSwapChain(window);
-		CreateRtvHeap();
-		CreateRenderTargets();
-		CreateDepthStencil();
-		CreateCommandResources();
-		CreateSyncObjects();
+		// DX12 パイプライン構築
+		try
+		{
+			CreateDevice();				// 1. デバイス作成 (論理GPU)
+			CreateCommandQueue();		// 2. コマンドキュー作成
+			CreateSwapChain(window);	// 3. スワップチェーン作成 (ウィンドウとの紐づけ)
+			CreateRtvHeap();			// 4. RTVヒープ (ディスクリプタ置き場)
+			CreateRenderTargets();		// 5. バックバッファの取得
+			CreateDepthStencil();		// 6. 深度バッファ
+			CreateCommandResources();	// 7. コマンドリスト作成
+			CreateSyncObjects();		// 8. フェンス作成
+		}
+		catch (...)
+		{
+			SPAN_ERROR("DirectX 12 Initialization Failed.");
+			return false;
+		}
 
 		SPAN_LOG("GraphicsContext Initialized Successfully (DirectX 12)");
 		return true;
@@ -35,9 +44,11 @@ namespace Span
 
 	void GraphicsContext::Shutdown()
 	{
+		// GPUがまだ処理中かもしれないので、完全に終わるまで待つ
+		WaitForGpu();
+
 		if (fenceEvent == nullptr) return;
 
-		WaitForGpu();
 		CloseHandle(fenceEvent);
 		fenceEvent = nullptr;
 	}

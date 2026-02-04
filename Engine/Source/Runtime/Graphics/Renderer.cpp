@@ -24,18 +24,20 @@ namespace Span
 			return false;
 		}
 
-		SPAN_LOG("Initializing Renderer (PSO & Resources)...");
-
+		// 1. Root Signature (入力レイアウト定義)
 		if (!CreateRootSignature()) return false;
 
-		// シェーダーロード
+		// 2. Shader Load
 		vs = new Shader();
 		if (!vs->Load(L"Basic.hlsl", ShaderType::Vertex, "VSMain")) return false;
 
 		ps = new Shader();
 		if (!ps->Load(L"Basic.hlsl", ShaderType::Pixel, "PSMain")) return false;
 
+		// 3. PSO (描画設定)
 		if (!CreatePipelineState()) return false;
+
+		// 4. 定数バッファ (動的書き換え用)
 		if (!CreateConstantBuffer()) return false;
 
 		SPAN_LOG("Renderer Initialized Successfully!");
@@ -44,9 +46,6 @@ namespace Span
 
 	void Renderer::Shutdown()
 	{
-		// ContextのGPU待ち合わせはApplication側で行う想定だが、
-		// 念のためここでも待てると安全（今回はContext任せにする）
-
 		SAFE_DELETE(vs);
 		SAFE_DELETE(ps);
 
@@ -62,8 +61,14 @@ namespace Span
 	{
 		if (!context) return nullptr;
 
-		// Contextに「準備開始」を依頼し、コマンドリストを受け取る
 		commandList = context->BeginFrame();
+
+		// 共通設定: RootSignature, PSO, Viewport, Topology
+		commandList->SetGraphicsRootSignature(rootSignature.Get());
+		commandList->SetPipelineState(pipelineState.Get());
+		commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		// インデックスのリセット
 		constantBufferIndex = 0;
 
 		return commandList;

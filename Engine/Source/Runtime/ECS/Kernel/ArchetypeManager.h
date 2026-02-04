@@ -1,9 +1,29 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	ArchetypeManager.h
+ * @brief	アーキタイプの生成と管理を行うクラス
+ *
+ * @details
+ *
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "Core/CoreMinimal.h"
 #include "Archetype.h"
 
 namespace Span
 {
+	/**
+	 * @class	ArchetypeManager
+	 * @brief	🏭 アーキタイプファクトリー&キャッシュ。
+	 *
+	 * @details
+	 * コンポーネントの組み合わせごとに一意の `Archetype` インスタンスを管理します。
+	 * 同じ組み合わせ (例: Transform + Velocity) が要求された場合、
+	 * 新しく作成せず、既存のキャッシュされたアーキタイプを返します。
+	 */
 	class ArchetypeManager
 	{
 	public:
@@ -16,12 +36,22 @@ namespace Span
 			archetypes.clear();
 		}
 
-		// 型リスト T... (例: Position, Velocity) に対応するアーキタイプを取得または作成する
+		/**
+		 * @brief	テンプレート引数からアーキタイプを取得または作成します。
+		 *
+		 * @tparam	ComponentTypes コンポーネントの型リスト (可変長)
+		 * @return	対象のArchetypeポインタ
+		 *
+		 * @code	{.cpp}
+		 * Archetype* arch = manager.GetOrCreateArchetype<Transform, MeshRenderer>();
+		 * @endcode
+		 */
 		template <typename... ComponentTypes>
 		Archetype* GetOrCreateArchetype()
 		{
 			// 1. 要求されてコンポーネント構成の署名(Signature)を作る
 			ArchetypeSignature signature;
+
 			// C++17 Fold Expression: 引数パックを展開して全部Addする
 			(signature.Add(ComponentType<ComponentTypes>::GetID()), ...);
 
@@ -46,6 +76,10 @@ namespace Span
 			return newArchetype;
 		}
 
+		/**
+		 * @brief	動的なIDリストからアーキタイプを取得または作成します。
+		 * @details	AddComponent/RemoveComponentなど、型情報が動的に変わる場合に使用します。
+		 */
 		Archetype* GetOrCreateArchetype(
 			const std::vector<ComponentTypeID>& typeIDs,
 			const std::vector<size_t>& sizes,
@@ -67,6 +101,7 @@ namespace Span
 			return newArchetype;
 		}
 
+		/// @brief	管理している全アーキタイプを取得 (イテレーション用)
 		const std::map<ArchetypeSignature, Archetype*>& GetAllArchetypes() const { return archetypes; }
 
 	private:

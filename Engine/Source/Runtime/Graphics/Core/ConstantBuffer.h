@@ -1,24 +1,81 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	ConstantBuffer.h
+ * @brief	DirectX 12 定数バッファ (CBV) のラッパークラス
+ * 
+ * @details	
+ * 
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "Core/CoreMinimal.h"
 
 namespace Span
 {
-	// 256バイトアライメント計算用ヘルパー
+	/**
+	 * @brief	🔢 定数バッファのバイトサイズ計算ヘルパー。
+	 * 
+	 * @details
+	 * DirectX 12の定数バッファサイズは **256バイトの倍数** である必要があります。
+	 * この関数は、入力サイズを切り上げます。
+	 * 
+	 * Example:
+	 * - Input: 12 bytes -> Output: 256 bytes
+	 * - Input: 256 bytes -> Output: 512 bytes
+	 */
 	inline uint32 CalcConstantBufferByteSize(uint32 byteSize)
 	{
 		return (byteSize + 255) & ~255;
 	}
 
+	/**
+	 * @class	ConstantBuffer
+	 * @brief	📦 CPUからGPUへデータを送信するための定数バッファ。
+	 * 
+	 * @details
+	 * シェーダーで使用する `cbuffer` に対応します。
+	 * 内部で **Upload Heap** を確保し、CPUからの書き込みを即座にGPUに反映させます。
+	 * 
+	 * ### ⚠ 注意点
+	 * 構造体 `T` のメンバ変数は、HLSLのパッキングルール (16バイト境界) に注意して配置してください。
+	 * 
+	 * ### 📝 Usage
+	 * ```cpp
+	 * struct SceneData { Matrix4x4 ViewProj; };
+	 * ConstantBuffer<SceneData> cb;
+	 * cb.Initialize(device);
+	 * cb.Data.ViewProj = camera.GetViewProj();	// データを書き込む
+	 * // 自動的にGPUメモリへマップされているため、明示的な転送関数は不要
+	 * ```
+	 * @tparam	T バッファに格納する構造体の型
+	 */ 
 	template <typename T>
 	class ConstantBuffer
 	{
 	public:
-		// 初期化
+		/// @brief	GPUに転送される実データへの参照。これに書き込むだけで反映されます。
+		T Data;
+
+		ConstantBuffer() = default;
+
+		~ConstantBuffer()
+		{
+			Shutdown();
+		}
+
+		/**
+		 * @brief	定数バッファリソースを作成します。
+		 * @param	device D3D12デバイス
+		 * @return	成功なら true
+		 */
 		bool Initialize(ID3D12Device* device)
 		{
+			// 256バイトアライメント計算
 			uint32 sizeInBytes = CalcConstantBufferByteSize(sizeof(T));
 
-			// アップロードヒープを作成 (CPUから書き込む用)
+			// 1. アップロードヒープを作成 (CPUから書き込む用)
 			D3D12_HEAP_PROPERTIES heapProps = {};
 			heapProps.Type = D3D12_HEAP_TYPE_UPLOAD;
 			heapProps.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
@@ -26,6 +83,7 @@ namespace Span
 			heapProps.CreationNodeMask = 1;
 			heapProps.VisibleNodeMask = 1;
 
+			// 2. リソース記述子の設定
 			D3D12_RESOURCE_DESC resourceDesc = {};
 			resourceDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;
 			resourceDesc.Alignment = 0;
@@ -38,6 +96,7 @@ namespace Span
 			resourceDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
 			resourceDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 
+			// 3. リソース生成
 			if (FAILED(device->CreateCommittedResource(
 				&heapProps,
 				D3D12_HEAP_FLAG_NONE,
@@ -50,7 +109,7 @@ namespace Span
 				return false;
 			}
 
-			// マップしてポインタを取得しておく (毎回Map/Unmapしなくて良い)
+			// 4. メモリマッピング (永続マップ)
 			D3D12_RANGE readRange = { 0, 0 };
 			if (FAILED(resource->Map(0, &readRange, reinterpret_cast<void**>(&mappedData))))
 			{
@@ -58,9 +117,13 @@ namespace Span
 				return false;
 			}
 
+			// 初期化
+			// ZeroMemory(mappedData, sizeInBytes);
+
 			return true;
 		}
 
+		/// @brief	リソースを解放します。
 		void Shutdown()
 		{
 			if (resource)
@@ -71,7 +134,10 @@ namespace Span
 			}
 		}
 
-		// データをGPUメモリに書き込む
+		/**
+		 * @brief	現在の `Data` の内容をGPUバッファへコピーします。
+		 * @note	毎フレーム描画前に呼び出してください。
+		 */
 		void Update(const T& data)
 		{
 			if (mappedData)
@@ -80,15 +146,15 @@ namespace Span
 			}
 		}
 
-		// GPU上のアドレスを取得
+		/// @brief	GPU仮想アドレスを取得 (SetGraphicsRootConstantBufferView用)
 		D3D12_GPU_VIRTUAL_ADDRESS GetGPUVirtualAddress() const
 		{
 			return resource->GetGPUVirtualAddress();
 		}
 
 	private:
-		ComPtr<ID3D12Resource> resource;
-		T* mappedData = nullptr;
+		ComPtr<ID3D12Resource> resource;	///< GPUリソース
+		T* mappedData = nullptr;			///< CPU側から見れるメモリアドレス
 	};
 }
 

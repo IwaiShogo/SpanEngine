@@ -1,26 +1,62 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	Mesh.h
+ * @brief	3Dモデルの形状データ (頂点バッファ) 管理。
+ * 
+ * @details	
+ * 
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "Core/CoreMinimal.h"
 #include "Core/Math/SpanMath.h"
 
 namespace Span
 {
+	/**
+	 * @struct	Vertex
+	 * @brief	頂点フォーマット。
+	 * @note	InputLayoutで指定するセマンティクスと一致している必要があります。
+	 */
 	struct Vertex
 	{
-		Vector3 position;
-		Vector3 normal;
-		Vector2 uv;
+		Vector3 position;	///< POSITION
+		Vector3 normal;		///< NORMAL
+		Vector2 uv;			///< TEXCOORD
 	};
 
+	/**
+	 * @class	Mesh
+	 * @brief	📦 頂点データをGPUメモリ (Vertex Buffer) に保持するクラス。
+	 * 
+	 * @details
+	 * - **VertexBufferView (VBV)** を通じて描画コマンドにバインドされます。
+	 * - 現時点ではインデックスバッファを使用しない実装になっています (将来的に拡張推奨)。
+	 */
 	class Mesh
 	{
 	public:
+		/**
+		 * @brief	頂点配列からメッシュを初期化します。
+		 * @param	device D3D12デバイス
+		 * @param	vertices 頂点データのリスト
+		 */
 		bool Initialize(ID3D12Device* device, const std::vector<Vertex>& vertices);
+
 		void Shutdown();
 
-		// 描画コマンドを発行
+		/**
+		 * @brief	描画コマンドを発行します。
+		 * @param	commandList 記録中のコマンドリスト
+		 * @note	事前に `IASetPrimitiveTopology` 等の設定が必要です。
+		 */
 		void Draw(ID3D12GraphicsCommandList* commandList);
 
-		// プリセット作成ヘルパー
+		// 🔨 Procedural Generation Helpers
+		// ============================================================
+
 		static Mesh* CreateCube(ID3D12Device* device);
 		static Mesh* CreateSphere(ID3D12Device* device, int slices = 16, int stacks = 16);
 		static Mesh* CreatePlane(ID3D12Device* device, float width = 10.0f, float depth = 10.0f);
