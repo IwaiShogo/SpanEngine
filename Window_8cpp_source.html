@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Platform/Window.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('Window_8cpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Window.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="Window_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="Window_8h.html">Window.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="Input_8h.html">Core/Input/Input.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;imgui.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">// ImGuiのWin32ハンドラ定義</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="Window_8cpp.html#a87a3f9652a75339308cf5fd5699ef1fd">    7</a></span><span class="keyword">extern</span> IMGUI_IMPL_API LRESULT <a class="code hl_function" href="Window_8cpp.html#a87a3f9652a75339308cf5fd5699ef1fd">ImGui_ImplWin32_WndProcHandler</a>(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classSpan_1_1Window.html#ab6565dd0bab59c4be208e1d5264dd21a">   11</a></span>    <a class="code hl_function" href="classSpan_1_1Window.html#ab6565dd0bab59c4be208e1d5264dd21a">Window::~Window</a>()</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <a class="code hl_function" href="classSpan_1_1Window.html#ac0b6dcb3df03d09a4667b183e6621ab0">Shutdown</a>();</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    }</div>
+</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classSpan_1_1Window.html#a77733f63cf98420637c73589f11ff888">   16</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1Window.html#a77733f63cf98420637c73589f11ff888">Window::Initialize</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1WindowDesc.html">WindowDesc</a>&amp; desc)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_variable" href="classSpan_1_1Window.html#aa0ea22e00d585f4ddf405264723f52bc">width</a> = desc.<a class="code hl_variable" href="structSpan_1_1WindowDesc.html#ac36034e45401ef5c779a7cd41eaf8ba0">Width</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_variable" href="classSpan_1_1Window.html#a235ef7aea03644d4d837583c3a3802c1">height</a> = desc.<a class="code hl_variable" href="structSpan_1_1WindowDesc.html#aac08d89553d3b8035353fccaec19c9d9">Height</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="comment">// 1. ウィンドウクラスの登録</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        WNDCLASSEX wc = { 0 };</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        wc.cbSize = <span class="keyword">sizeof</span>(WNDCLASSEX);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        wc.style = CS_HREDRAW | CS_VREDRAW;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        wc.lpfnWndProc = <a class="code hl_function" href="classSpan_1_1Window.html#a24635208c038c943fedace7500f9ba18">WindowProc</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        wc.hInstance = GetModuleHandle(<span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        wc.hCursor = LoadCursor(<span class="keyword">nullptr</span>, IDC_ARROW);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        wc.lpszClassName = <a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587">L</a><span class="stringliteral">&quot;SpanEngineWindowClass&quot;</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        RegisterClassEx(&amp;wc);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="comment">// 2. ウィンドウサイズの調整</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        RECT windowRect = { 0, 0, <a class="code hl_variable" href="classSpan_1_1Window.html#aa0ea22e00d585f4ddf405264723f52bc">width</a>, <a class="code hl_variable" href="classSpan_1_1Window.html#a235ef7aea03644d4d837583c3a3802c1">height</a> };</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        AdjustWindowRect(&amp;windowRect, WS_OVERLAPPEDWINDOW, FALSE);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="comment">// 3. ウィンドウ作成</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a> = CreateWindowEx(</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            0,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587">L</a><span class="stringliteral">&quot;SpanEngineWindowClass&quot;</span>,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            desc.<a class="code hl_variable" href="structSpan_1_1WindowDesc.html#af5fc48e03fc9e58d76cfef70f9075eed">Title</a>.c_str(),</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            WS_OVERLAPPEDWINDOW,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            CW_USEDEFAULT, CW_USEDEFAULT,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            windowRect.right - windowRect.left,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            windowRect.bottom - windowRect.top,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>, GetModuleHandle(<span class="keyword">nullptr</span>), <span class="keyword">nullptr</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        );</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a>)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <a class="code hl_define" href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a>(<span class="stringliteral">&quot;Failed to create window!&quot;</span>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="comment">// ユーザーデータをこのクラスのポインタに紐づける</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        SetWindowLongPtr(<a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a>, GWLP_USERDATA, <span class="keyword">reinterpret_cast&lt;</span>LONG_PTR<span class="keyword">&gt;</span>(<span class="keyword">this</span>));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="comment">// 4. 表示</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        ShowWindow(<a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a>, SW_SHOW);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classSpan_1_1Window.html#ac0b6dcb3df03d09a4667b183e6621ab0">   62</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1Window.html#ac0b6dcb3df03d09a4667b183e6621ab0">Window::Shutdown</a>()</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a>)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            DestroyWindow(<a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
+</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classSpan_1_1Window.html#a7fd2dc04719fbe836e533c5ee97c0d50">   71</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1Window.html#a7fd2dc04719fbe836e533c5ee97c0d50">Window::PollEvents</a>()</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        MSG msg = { 0 };</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="comment">// メッセージがある限り処理する</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">while</span> (PeekMessage(&amp;msg, <span class="keyword">nullptr</span>, 0, 0, PM_REMOVE))</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <span class="keywordflow">if</span> (msg.message == WM_QUIT)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// アプリ終了シグナル</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            TranslateMessage(&amp;msg);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            DispatchMessage(&amp;msg);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// 継続</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classSpan_1_1Window.html#a24635208c038c943fedace7500f9ba18">   87</a></span>    LRESULT CALLBACK <a class="code hl_function" href="classSpan_1_1Window.html#a24635208c038c943fedace7500f9ba18">Window::WindowProc</a>(HWND <a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a>, UINT message, WPARAM wParam, LPARAM lParam)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="Window_8cpp.html#a87a3f9652a75339308cf5fd5699ef1fd">ImGui_ImplWin32_WndProcHandler</a>(<a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a>, message, wParam, lParam)) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_function" href="classSpan_1_1Window.html#a37a75d2d3ff4e663a94df8e1c41958e3">Window</a>* window = <span class="keyword">reinterpret_cast&lt;</span><a class="code hl_function" href="classSpan_1_1Window.html#a37a75d2d3ff4e663a94df8e1c41958e3">Window</a>*<span class="keyword">&gt;</span>(GetWindowLongPtr(<a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a>, GWLP_USERDATA));</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">switch</span> (message)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">case</span> WM_DESTROY:</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            PostQuitMessage(0);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="comment">// リサイズイベント</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">case</span> WM_SIZE:</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">if</span> (window &amp;&amp; window-&gt;<a class="code hl_variable" href="classSpan_1_1Window.html#a0b28300340e12f536e1621fdf26bfddc">onResize</a>)</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> w = LOWORD(lParam);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> h = HIWORD(lParam);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                <span class="comment">// 0サイズは無視</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                <span class="keywordflow">if</span> (w &gt; 0 &amp;&amp; h &gt; 0)</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                    window-&gt;<a class="code hl_variable" href="classSpan_1_1Window.html#aa0ea22e00d585f4ddf405264723f52bc">width</a> = w;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                    window-&gt;<a class="code hl_variable" href="classSpan_1_1Window.html#a235ef7aea03644d4d837583c3a3802c1">height</a> = h;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                    window-&gt;<a class="code hl_variable" href="classSpan_1_1Window.html#a0b28300340e12f536e1621fdf26bfddc">onResize</a>(w, h);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="comment">// --- キーボード入力 ---</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">case</span> WM_KEYDOWN:</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            <a class="code hl_function" href="classSpan_1_1Input.html#a5ed9bcf628b54c37662b4eacc29ce2c9">Input::OnKeyDown</a>((<a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>)wParam);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordflow">case</span> WM_KEYUP:</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            <a class="code hl_function" href="classSpan_1_1Input.html#aa9395bd5dc15032ab02454bd361c1fe0">Input::OnKeyUp</a>((<a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>)wParam);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">// --- マウス入力 ---</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">case</span> WM_LBUTTONDOWN: <a class="code hl_function" href="classSpan_1_1Input.html#a2626b1c530d57400b5fbeff22f310581">Input::OnMouseDown</a>(0); <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">case</span> WM_RBUTTONDOWN: <a class="code hl_function" href="classSpan_1_1Input.html#a2626b1c530d57400b5fbeff22f310581">Input::OnMouseDown</a>(1); <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">case</span> WM_MBUTTONDOWN: <a class="code hl_function" href="classSpan_1_1Input.html#a2626b1c530d57400b5fbeff22f310581">Input::OnMouseDown</a>(2); <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordflow">case</span> WM_LBUTTONUP: <a class="code hl_function" href="classSpan_1_1Input.html#abd7e2e35b25679a12d4b0ec56c8aee19">Input::OnMouseUp</a>(0); <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keywordflow">case</span> WM_RBUTTONUP: <a class="code hl_function" href="classSpan_1_1Input.html#abd7e2e35b25679a12d4b0ec56c8aee19">Input::OnMouseUp</a>(1); <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordflow">case</span> WM_MBUTTONUP: <a class="code hl_function" href="classSpan_1_1Input.html#abd7e2e35b25679a12d4b0ec56c8aee19">Input::OnMouseUp</a>(2); <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">case</span> WM_MOUSEMOVE:</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <span class="comment">// クライアント領域内の座標を取得</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            <a class="code hl_function" href="classSpan_1_1Input.html#aba0b9fe928139c25ca3215dcbeb17e83">Input::OnMouseMove</a>(LOWORD(lParam), HIWORD(lParam));</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        }</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keywordflow">return</span> DefWindowProc(<a class="code hl_variable" href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">hWnd</a>, message, wParam, lParam);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    }</div>
+</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>}</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="ttc" id="aInput_8h_html"><div class="ttname"><a href="Input_8h.html">Input.h</a></div></div>
+<div class="ttc" id="aLogger_8h_html_a64e6317fa96d76ed26e6c4c79ec2d9b6"><div class="ttname"><a href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a></div><div class="ttdeci">#define SPAN_ERROR(Format,...)</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00038">Logger.h:38</a></div></div>
+<div class="ttc" id="aWindow_8cpp_html_a87a3f9652a75339308cf5fd5699ef1fd"><div class="ttname"><a href="Window_8cpp.html#a87a3f9652a75339308cf5fd5699ef1fd">ImGui_ImplWin32_WndProcHandler</a></div><div class="ttdeci">IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)</div></div>
+<div class="ttc" id="aWindow_8h_html"><div class="ttname"><a href="Window_8h.html">Window.h</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Input_html_a2626b1c530d57400b5fbeff22f310581"><div class="ttname"><a href="classSpan_1_1Input.html#a2626b1c530d57400b5fbeff22f310581">Span::Input::OnMouseDown</a></div><div class="ttdeci">static void OnMouseDown(uint32 btn)</div><div class="ttdef"><b>Definition</b> <a href="Input_8cpp_source.html#l00182">Input.cpp:182</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Input_html_a5ed9bcf628b54c37662b4eacc29ce2c9"><div class="ttname"><a href="classSpan_1_1Input.html#a5ed9bcf628b54c37662b4eacc29ce2c9">Span::Input::OnKeyDown</a></div><div class="ttdeci">static void OnKeyDown(uint32 key)</div><div class="ttdef"><b>Definition</b> <a href="Input_8cpp_source.html#l00180">Input.cpp:180</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Input_html_aa9395bd5dc15032ab02454bd361c1fe0"><div class="ttname"><a href="classSpan_1_1Input.html#aa9395bd5dc15032ab02454bd361c1fe0">Span::Input::OnKeyUp</a></div><div class="ttdeci">static void OnKeyUp(uint32 key)</div><div class="ttdef"><b>Definition</b> <a href="Input_8cpp_source.html#l00181">Input.cpp:181</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Input_html_aba0b9fe928139c25ca3215dcbeb17e83"><div class="ttname"><a href="classSpan_1_1Input.html#aba0b9fe928139c25ca3215dcbeb17e83">Span::Input::OnMouseMove</a></div><div class="ttdeci">static void OnMouseMove(int x, int y)</div><div class="ttdef"><b>Definition</b> <a href="Input_8cpp_source.html#l00194">Input.cpp:194</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Input_html_abd7e2e35b25679a12d4b0ec56c8aee19"><div class="ttname"><a href="classSpan_1_1Input.html#abd7e2e35b25679a12d4b0ec56c8aee19">Span::Input::OnMouseUp</a></div><div class="ttdeci">static void OnMouseUp(uint32 btn)</div><div class="ttdef"><b>Definition</b> <a href="Input_8cpp_source.html#l00188">Input.cpp:188</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Window_html_a0b28300340e12f536e1621fdf26bfddc"><div class="ttname"><a href="classSpan_1_1Window.html#a0b28300340e12f536e1621fdf26bfddc">Span::Window::onResize</a></div><div class="ttdeci">std::function&lt; void(uint32, uint32)&gt; onResize</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00041">Window.h:41</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Window_html_a235ef7aea03644d4d837583c3a3802c1"><div class="ttname"><a href="classSpan_1_1Window.html#a235ef7aea03644d4d837583c3a3802c1">Span::Window::height</a></div><div class="ttdeci">int height</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00039">Window.h:39</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Window_html_a24635208c038c943fedace7500f9ba18"><div class="ttname"><a href="classSpan_1_1Window.html#a24635208c038c943fedace7500f9ba18">Span::Window::WindowProc</a></div><div class="ttdeci">static LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)</div><div class="ttdef"><b>Definition</b> <a href="#l00087">Window.cpp:87</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Window_html_a37a75d2d3ff4e663a94df8e1c41958e3"><div class="ttname"><a href="classSpan_1_1Window.html#a37a75d2d3ff4e663a94df8e1c41958e3">Span::Window::Window</a></div><div class="ttdeci">Window()=default</div></div>
+<div class="ttc" id="aclassSpan_1_1Window_html_a77733f63cf98420637c73589f11ff888"><div class="ttname"><a href="classSpan_1_1Window.html#a77733f63cf98420637c73589f11ff888">Span::Window::Initialize</a></div><div class="ttdeci">bool Initialize(const WindowDesc &amp;desc)</div><div class="ttdef"><b>Definition</b> <a href="#l00016">Window.cpp:16</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Window_html_a7fd2dc04719fbe836e533c5ee97c0d50"><div class="ttname"><a href="classSpan_1_1Window.html#a7fd2dc04719fbe836e533c5ee97c0d50">Span::Window::PollEvents</a></div><div class="ttdeci">bool PollEvents()</div><div class="ttdef"><b>Definition</b> <a href="#l00071">Window.cpp:71</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Window_html_aa0ea22e00d585f4ddf405264723f52bc"><div class="ttname"><a href="classSpan_1_1Window.html#aa0ea22e00d585f4ddf405264723f52bc">Span::Window::width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00038">Window.h:38</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Window_html_aa2fb9e56e345f56bed7e66812e199515"><div class="ttname"><a href="classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515">Span::Window::hWnd</a></div><div class="ttdeci">HWND hWnd</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00037">Window.h:37</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Window_html_ab6565dd0bab59c4be208e1d5264dd21a"><div class="ttname"><a href="classSpan_1_1Window.html#ab6565dd0bab59c4be208e1d5264dd21a">Span::Window::~Window</a></div><div class="ttdeci">~Window()</div><div class="ttdef"><b>Definition</b> <a href="#l00011">Window.cpp:11</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Window_html_ac0b6dcb3df03d09a4667b183e6621ab0"><div class="ttname"><a href="classSpan_1_1Window.html#ac0b6dcb3df03d09a4667b183e6621ab0">Span::Window::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="#l00062">Window.cpp:62</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00051">CoreMinimal.h:52</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00061">CoreMinimal.h:61</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587"><div class="ttname"><a href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587">Span::Key::L</a></div><div class="ttdeci">@ L</div><div class="ttdef"><b>Definition</b> <a href="Input_8h_source.html#l00017">Input.h:17</a></div></div>
+<div class="ttc" id="astructSpan_1_1WindowDesc_html"><div class="ttname"><a href="structSpan_1_1WindowDesc.html">Span::WindowDesc</a></div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00006">Window.h:7</a></div></div>
+<div class="ttc" id="astructSpan_1_1WindowDesc_html_aac08d89553d3b8035353fccaec19c9d9"><div class="ttname"><a href="structSpan_1_1WindowDesc.html#aac08d89553d3b8035353fccaec19c9d9">Span::WindowDesc::Height</a></div><div class="ttdeci">int Height</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00010">Window.h:10</a></div></div>
+<div class="ttc" id="astructSpan_1_1WindowDesc_html_ac36034e45401ef5c779a7cd41eaf8ba0"><div class="ttname"><a href="structSpan_1_1WindowDesc.html#ac36034e45401ef5c779a7cd41eaf8ba0">Span::WindowDesc::Width</a></div><div class="ttdeci">int Width</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00009">Window.h:9</a></div></div>
+<div class="ttc" id="astructSpan_1_1WindowDesc_html_af5fc48e03fc9e58d76cfef70f9075eed"><div class="ttname"><a href="structSpan_1_1WindowDesc.html#af5fc48e03fc9e58d76cfef70f9075eed">Span::WindowDesc::Title</a></div><div class="ttdeci">std::wstring Title</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00008">Window.h:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_07f2be210ff6c371c35315ee7129d1a6.html">Platform</a></li><li class="navelem"><a href="Window_8cpp.html">Window.cpp</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

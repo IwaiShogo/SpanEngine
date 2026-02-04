@@ -8,7 +8,7 @@ var searchData=
   ['editorpanel_5',['EditorPanel',['../classSpan_1_1EditorPanel.html',1,'Span::EditorPanel'],['../classSpan_1_1EditorPanel.html#a53c2cb1d331dca6a442575055d09a515',1,'Span::EditorPanel::EditorPanel()']]],
   ['editorpanel_2eh_6',['EditorPanel.h',['../EditorPanel_8h.html',1,'']]],
   ['endframe_7',['EndFrame',['../classSpan_1_1Input.html#a1be9ee5fee394c7fe2c6e3d7bfa6ee77',1,'Span::Input::EndFrame()'],['../classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec',1,'Span::GuiManager::EndFrame()'],['../classSpan_1_1GraphicsContext.html#a003ab67b72f1c4f582ade1d8e335a1f8',1,'Span::GraphicsContext::EndFrame()'],['../classSpan_1_1Renderer.html#a677d1565f7c6df08b393f328801ca419',1,'Span::Renderer::EndFrame()']]],
-  ['entity_8',['Entity',['../structSpan_1_1Entity.html',1,'Span']]],
+  ['entity_8',['Entity',['../structSpan_1_1Entity.html',1,'Span::Entity'],['../structSpan_1_1Entity.html#a23ab2fecbbf9cbe9038d074bf442bb04',1,'Span::Entity::Entity()=default'],['../structSpan_1_1Entity.html#acfcb503b4305999b74e7856ffb269581',1,'Span::Entity::Entity(EntityID id)']]],
   ['entity_2eh_9',['Entity.h',['../Entity_8h.html',1,'']]],
   ['entitybuilder_10',['EntityBuilder',['../classSpan_1_1EntityBuilder.html',1,'Span::EntityBuilder'],['../classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2',1,'Span::EntityBuilder::EntityBuilder()']]],
   ['entitybuilder_2eh_11',['EntityBuilder.h',['../EntityBuilder_8h.html',1,'']]],

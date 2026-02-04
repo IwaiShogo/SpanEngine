@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Span Engine: Span::Entity 構造体</title>
+<title>Span Engine: Span::Entity クラス</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
    </div>
-   <div id="projectbrief">Editor First, Data Oriented, Native Performance Game Engine</div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -89,34 +89,118 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Span::Entity 構造体</div></div>
+  <div class="headertitle"><div class="title">Span::Entity クラス</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Entityハンドル ユーザーが扱うのはこのクラス。実体はIDのみを持つ軽量オブジェクト  
+<p>📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。  
  <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="Entity_8h_source.html">Entity.h</a>&gt;</code></p>
+<div class="dynheader">
+Span::Entity 連携図</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Entity__coll__graph.svg" width="196" height="452"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
+<tr class="memitem:a23ab2fecbbf9cbe9038d074bf442bb04" id="r_a23ab2fecbbf9cbe9038d074bf442bb04"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> ()=default</td></tr>
+<tr class="memitem:acfcb503b4305999b74e7856ffb269581" id="r_acfcb503b4305999b74e7856ffb269581"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#acfcb503b4305999b74e7856ffb269581">Entity</a> (<a class="el" href="structSpan_1_1EntityID.html">EntityID</a> id)</td></tr>
 <tr class="memitem:a2ccdecba28a3d0bd98174e83b573bbe3" id="r_a2ccdecba28a3d0bd98174e83b573bbe3"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2ccdecba28a3d0bd98174e83b573bbe3">IsNull</a> () const</td></tr>
-<tr class="memitem:a40428d22b52e45806091d2b30611ff4b" id="r_a40428d22b52e45806091d2b30611ff4b"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a40428d22b52e45806091d2b30611ff4b">operator==</a> (const <a class="el" href="structSpan_1_1Entity.html">Entity</a> &amp;other) const</td></tr>
-<tr class="memitem:ad786028d54fd44bdc35914c7e29f0799" id="r_ad786028d54fd44bdc35914c7e29f0799"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ad786028d54fd44bdc35914c7e29f0799">operator!=</a> (const <a class="el" href="structSpan_1_1Entity.html">Entity</a> &amp;other) const</td></tr>
-<tr class="memitem:a84a03148c68cfeb3a7936496ecf1b2ba" id="r_a84a03148c68cfeb3a7936496ecf1b2ba"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a84a03148c68cfeb3a7936496ecf1b2ba">operator&lt;</a> (const <a class="el" href="structSpan_1_1Entity.html">Entity</a> &amp;other) const</td></tr>
+<tr class="memdesc:a2ccdecba28a3d0bd98174e83b573bbe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">このエンティティが無効 (Null) かどうかを判定します。  <br /></td></tr>
 <tr class="memitem:a85c8edb953c1f0723497085c974020dd" id="r_a85c8edb953c1f0723497085c974020dd"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">uint64</a>&#160;</td><td class="memItemRight"><a class="el" href="#a85c8edb953c1f0723497085c974020dd">ToUInt64</a> () const</td></tr>
+<tr class="memdesc:a85c8edb953c1f0723497085c974020dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">ログ出力用などで数値としてIDを取得したい場合に使用します。  <br /></td></tr>
+<tr class="memitem:a40428d22b52e45806091d2b30611ff4b" id="r_a40428d22b52e45806091d2b30611ff4b"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a40428d22b52e45806091d2b30611ff4b">operator==</a> (const <a class="el" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> &amp;other) const</td></tr>
+<tr class="memitem:ad786028d54fd44bdc35914c7e29f0799" id="r_ad786028d54fd44bdc35914c7e29f0799"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ad786028d54fd44bdc35914c7e29f0799">operator!=</a> (const <a class="el" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> &amp;other) const</td></tr>
+<tr class="memitem:a84a03148c68cfeb3a7936496ecf1b2ba" id="r_a84a03148c68cfeb3a7936496ecf1b2ba"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a84a03148c68cfeb3a7936496ecf1b2ba">operator&lt;</a> (const <a class="el" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> &amp;other) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
 <tr class="memitem:acd6d59e160a7b514d0ca760c8bdca32f" id="r_acd6d59e160a7b514d0ca760c8bdca32f"><td class="memItemLeft"><a class="el" href="structSpan_1_1EntityID.html">EntityID</a>&#160;</td><td class="memItemRight"><a class="el" href="#acd6d59e160a7b514d0ca760c8bdca32f">ID</a> = <a class="el" href="namespaceSpan.html#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a></td></tr>
+<tr class="memdesc:acd6d59e160a7b514d0ca760c8bdca32f"><td class="mdescLeft">&#160;</td><td class="mdescRight">内部ID  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静的公開変数類</h2></td></tr>
-<tr class="memitem:a3bc29e7cdb8d6012f8be1de9f0da5687" id="r_a3bc29e7cdb8d6012f8be1de9f0da5687"><td class="memItemLeft">static const <a class="el" href="structSpan_1_1Entity.html">Entity</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3bc29e7cdb8d6012f8be1de9f0da5687">Null</a> = { <a class="el" href="namespaceSpan.html#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a> }</td></tr>
+<tr class="memitem:a3bc29e7cdb8d6012f8be1de9f0da5687" id="r_a3bc29e7cdb8d6012f8be1de9f0da5687"><td class="memItemLeft">static const <a class="el" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3bc29e7cdb8d6012f8be1de9f0da5687">Null</a> = { <a class="el" href="namespaceSpan.html#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a> }</td></tr>
+<tr class="memdesc:a3bc29e7cdb8d6012f8be1de9f0da5687"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効なエンティティを表す静的変数  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock"><p>Entityハンドル ユーザーが扱うのはこのクラス。実体はIDのみを持つ軽量オブジェクト </p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<div class="textblock"><p>📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。 </p>
+<p>Entity自体はデータを持たず、単なる <b>64bitのID</b> です。<br  />
+ 実際のデータ (コンポーネント) は <span class="tt"><a class="el" href="classSpan_1_1World.html">World</a></span> クラスが管理する <span class="tt"><a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a></span> 内に存在します。</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+📝 使い方</h3>
+<div class="fragment"><div class="line"><a class="code hl_function" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> e = world.CreateEntity&lt;<a class="code hl_struct" href="structSpan_1_1Transform.html">Transform</a>, <a class="code hl_struct" href="structSpan_1_1MeshRenderer.html">MeshRenderer</a>&gt;();</div>
+<div class="line"><span class="keywordflow">if</span> (e != <a class="code hl_variable" href="#a3bc29e7cdb8d6012f8be1de9f0da5687">Entity::Null</a>)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">}</div>
+<div class="ttc" id="astructSpan_1_1Entity_html_a23ab2fecbbf9cbe9038d074bf442bb04"><div class="ttname"><a href="#a23ab2fecbbf9cbe9038d074bf442bb04">Span::Entity::Entity</a></div><div class="ttdeci">Entity()=default</div></div>
+<div class="ttc" id="astructSpan_1_1Entity_html_a3bc29e7cdb8d6012f8be1de9f0da5687"><div class="ttname"><a href="#a3bc29e7cdb8d6012f8be1de9f0da5687">Span::Entity::Null</a></div><div class="ttdeci">static const Entity Null</div><div class="ttdoc">無効なエンティティを表す静的変数</div><div class="ttdef"><b>Definition</b> <a href="Entity_8h_source.html#l00073">Entity.h:73</a></div></div>
+<div class="ttc" id="astructSpan_1_1MeshRenderer_html"><div class="ttname"><a href="structSpan_1_1MeshRenderer.html">Span::MeshRenderer</a></div><div class="ttdef"><b>Definition</b> <a href="MeshRenderer_8h_source.html#l00007">MeshRenderer.h:8</a></div></div>
+<div class="ttc" id="astructSpan_1_1Transform_html"><div class="ttname"><a href="structSpan_1_1Transform.html">Span::Transform</a></div><div class="ttdef"><b>Definition</b> <a href="Transform_8h_source.html#l00007">Transform.h:8</a></div></div>
+</div><!-- fragment --> 
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00067">67</a> 行目に定義があります。</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
+<a id="a23ab2fecbbf9cbe9038d074bf442bb04" name="a23ab2fecbbf9cbe9038d074bf442bb04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ab2fecbbf9cbe9038d074bf442bb04">&#9670;&#160;</a></span>Entity() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::Entity::Entity </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Entity_a23ab2fecbbf9cbe9038d074bf442bb04_icgraph.svg" width="388" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="acfcb503b4305999b74e7856ffb269581" name="acfcb503b4305999b74e7856ffb269581"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfcb503b4305999b74e7856ffb269581">&#9670;&#160;</a></span>Entity() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::Entity::Entity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSpan_1_1EntityID.html">EntityID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00079">79</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a2ccdecba28a3d0bd98174e83b573bbe3" name="a2ccdecba28a3d0bd98174e83b573bbe3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ccdecba28a3d0bd98174e83b573bbe3">&#9670;&#160;</a></span>IsNull()</h2>
 
@@ -140,6 +224,22 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
 </table>
 </div><div class="memdoc">
 
+<p>このエンティティが無効 (Null) かどうかを判定します。 </p>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>無効なエンティティ </td></tr>
+    <tr><td class="paramname">false</td><td>有効なエンティティ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00089">89</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Entity_a2ccdecba28a3d0bd98174e83b573bbe3_icgraph.svg" width="100%" height="595"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
 </div>
 </div>
 <a id="ad786028d54fd44bdc35914c7e29f0799" name="ad786028d54fd44bdc35914c7e29f0799"></a>
@@ -154,7 +254,7 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
         <tr>
           <td class="memname">bool Span::Entity::operator!= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structSpan_1_1Entity.html">Entity</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -164,6 +264,13 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00101">101</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Entity_ad786028d54fd44bdc35914c7e29f0799_cgraph.svg" width="383" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -179,7 +286,7 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
         <tr>
           <td class="memname">bool Span::Entity::operator&lt; </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structSpan_1_1Entity.html">Entity</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -189,6 +296,13 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00102">102</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Entity_a84a03148c68cfeb3a7936496ecf1b2ba_cgraph.svg" width="378" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -204,7 +318,7 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
         <tr>
           <td class="memname">bool Span::Entity::operator== </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structSpan_1_1Entity.html">Entity</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -214,6 +328,13 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00100">100</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Entity_a40428d22b52e45806091d2b30611ff4b_cgraph.svg" width="388" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -240,6 +361,11 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
 </table>
 </div><div class="memdoc">
 
+<p>ログ出力用などで数値としてIDを取得したい場合に使用します。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>64bit整数にパックされたID </dd></dl>
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00095">95</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
@@ -255,6 +381,10 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
       </table>
 </div><div class="memdoc">
 
+<p>内部ID </p>
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00070">70</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a3bc29e7cdb8d6012f8be1de9f0da5687" name="a3bc29e7cdb8d6012f8be1de9f0da5687"></a>
@@ -267,7 +397,7 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="structSpan_1_1Entity.html">Entity</a> Span::Entity::Null = { <a class="el" href="namespaceSpan.html#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a> }</td>
+          <td class="memname">const <a class="el" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> Span::Entity::Null = { <a class="el" href="namespaceSpan.html#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a> }</td>
         </tr>
       </table>
   </td>
@@ -277,9 +407,13 @@ $(function(){initNavTree('structSpan_1_1Entity.html','','structSpan_1_1Entity-me
 </table>
 </div><div class="memdoc">
 
+<p>無効なエンティティを表す静的変数 </p>
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00073">73</a> 行目に定義があります。</p>
+
 </div>
 </div>
-<hr/>この構造体詳解は次のファイルから抽出されました:<ul>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
 <li>Engine/Source/Runtime/ECS/Kernel/<a class="el" href="Entity_8h_source.html">Entity.h</a></li>
 </ul>
 </div><!-- contents -->

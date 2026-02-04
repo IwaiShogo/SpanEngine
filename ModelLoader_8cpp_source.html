@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Graphics/ModelLoader.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('ModelLoader_8cpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ModelLoader.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ModelLoader_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="ModelLoader_8h.html">ModelLoader.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span> <span class="comment">// ログ用</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
+<div class="foldopen" id="foldopen00006" data-start="{" data-end="}">
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1">    6</a></span>    std::vector&lt;Mesh*&gt; <a class="code hl_function" href="classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1">ModelLoader::Load</a>(ID3D12Device* device, <span class="keyword">const</span> std::string&amp; filepath)</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        std::vector&lt;Mesh*&gt; meshes;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        Assimp::Importer importer;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <a class="code hl_define" href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a>(<span class="stringliteral">&quot;Loading Model: %s&quot;</span>, filepath.c_str());</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="comment">// 読み込みオプション</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="comment">// - Triangulate: 多角形を三角形に分割</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="comment">// - ConvertToLeftHanded: DirectX座標系(左手系)に変換</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="comment">// - GenNormals: 法線がない場合は計算</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">const</span> aiScene* scene = importer.ReadFile(filepath,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            aiProcess_Triangulate |</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            aiProcess_ConvertToLeftHanded |</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            aiProcess_GenNormals |</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            aiProcess_CalcTangentSpace</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        );</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">if</span> (!scene || scene-&gt;mFlags &amp; AI_SCENE_FLAGS_INCOMPLETE || !scene-&gt;mRootNode)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <a class="code hl_define" href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a>(<span class="stringliteral">&quot;Assimp Error: %s&quot;</span>, importer.GetErrorString());</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="keywordflow">return</span> meshes;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="comment">// シーン内の全メッシュを処理</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; scene-&gt;mNumMeshes; i++)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            aiMesh* mesh = scene-&gt;mMeshes[i];</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            meshes.push_back(<a class="code hl_function" href="classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a">ProcessMesh</a>(device, mesh, scene));</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_define" href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a>(<span class="stringliteral">&quot;-&gt; Loaded %d meshes.&quot;</span>, meshes.size());</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">return</span> meshes;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
+</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a">   41</a></span>    <a class="code hl_class" href="classSpan_1_1Mesh.html">Mesh</a>* <a class="code hl_function" href="classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a">ModelLoader::ProcessMesh</a>(ID3D12Device* device, aiMesh* mesh, <span class="keyword">const</span> aiScene* scene)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        std::vector&lt;Vertex&gt; vertices;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="comment">// 現在の Mesh クラスはインデックスバッファを使っていないため、</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="comment">// インデックスを参照して頂点を「展開 (Flatten)」します。</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="comment">// ポリゴン（面）の数だけループ</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; mesh-&gt;mNumFaces; i++)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            aiFace face = mesh-&gt;mFaces[i];</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="comment">// 1つの面を構成する頂点（通常は3つ）</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0; j &lt; face.mNumIndices; j++)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = face.mIndices[j];</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <a class="code hl_struct" href="structSpan_1_1Vertex.html">Vertex</a> v;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <span class="comment">// 1. 位置</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="keywordflow">if</span> (mesh-&gt;HasPositions()) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                    v.<a class="code hl_variable" href="structSpan_1_1Vertex.html#a8494e55dfa8086fdce795d93cbbb1214">position</a> = { mesh-&gt;mVertices[index].x, mesh-&gt;mVertices[index].y, mesh-&gt;mVertices[index].z };</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                <span class="comment">// 2. 法線</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <span class="keywordflow">if</span> (mesh-&gt;HasNormals()) {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                    v.<a class="code hl_variable" href="structSpan_1_1Vertex.html#a44736040b875692f9a6c28de54747500">normal</a> = { mesh-&gt;mNormals[index].x, mesh-&gt;mNormals[index].y, mesh-&gt;mNormals[index].z };</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                <span class="comment">// 3. UV座標</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                <span class="keywordflow">if</span> (mesh-&gt;HasTextureCoords(0)) {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                    <span class="comment">// Assimpは3次元(u,v,w)で持っているが、通常は2次元(u,v)しか使わない</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                    v.<a class="code hl_variable" href="structSpan_1_1Vertex.html#abac13f64d1c801dba33ee5ffac17474c">uv</a> = { mesh-&gt;mTextureCoords[0][index].x, mesh-&gt;mTextureCoords[0][index].y };</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                    v.<a class="code hl_variable" href="structSpan_1_1Vertex.html#abac13f64d1c801dba33ee5ffac17474c">uv</a> = { 0.0f, 0.0f };</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                vertices.push_back(v);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_class" href="classSpan_1_1Mesh.html">Mesh</a>* newMesh = <span class="keyword">new</span> <a class="code hl_class" href="classSpan_1_1Mesh.html">Mesh</a>();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        newMesh-&gt;<a class="code hl_function" href="classSpan_1_1Mesh.html#ae731b2ee0cf4e9bbfd30b70285a6688f">Initialize</a>(device, vertices);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span> newMesh;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div></div>
+<div class="ttc" id="aLogger_8h_html_a1b7ff4efe93a9030e55f7598d493448c"><div class="ttname"><a href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a></div><div class="ttdeci">#define SPAN_LOG(Format,...)</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00036">Logger.h:36</a></div></div>
+<div class="ttc" id="aLogger_8h_html_a64e6317fa96d76ed26e6c4c79ec2d9b6"><div class="ttname"><a href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a></div><div class="ttdeci">#define SPAN_ERROR(Format,...)</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00038">Logger.h:38</a></div></div>
+<div class="ttc" id="aModelLoader_8h_html"><div class="ttname"><a href="ModelLoader_8h.html">ModelLoader.h</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Mesh_html"><div class="ttname"><a href="classSpan_1_1Mesh.html">Span::Mesh</a></div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00014">Mesh.h:15</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Mesh_html_ae731b2ee0cf4e9bbfd30b70285a6688f"><div class="ttname"><a href="classSpan_1_1Mesh.html#ae731b2ee0cf4e9bbfd30b70285a6688f">Span::Mesh::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device, const std::vector&lt; Vertex &gt; &amp;vertices)</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00005">Mesh.cpp:5</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ModelLoader_html_a06a5d6e12254629efcd0d56c7a3c21c1"><div class="ttname"><a href="classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1">Span::ModelLoader::Load</a></div><div class="ttdeci">static std::vector&lt; Mesh * &gt; Load(ID3D12Device *device, const std::string &amp;filepath)</div><div class="ttdef"><b>Definition</b> <a href="#l00006">ModelLoader.cpp:6</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ModelLoader_html_a97659b329036caa77725af517d48f25a"><div class="ttname"><a href="classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a">Span::ModelLoader::ProcessMesh</a></div><div class="ttdeci">static Mesh * ProcessMesh(ID3D12Device *device, aiMesh *mesh, const aiScene *scene)</div><div class="ttdef"><b>Definition</b> <a href="#l00041">ModelLoader.cpp:41</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00051">CoreMinimal.h:52</a></div></div>
+<div class="ttc" id="astructSpan_1_1Vertex_html"><div class="ttname"><a href="structSpan_1_1Vertex.html">Span::Vertex</a></div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00007">Mesh.h:8</a></div></div>
+<div class="ttc" id="astructSpan_1_1Vertex_html_a44736040b875692f9a6c28de54747500"><div class="ttname"><a href="structSpan_1_1Vertex.html#a44736040b875692f9a6c28de54747500">Span::Vertex::normal</a></div><div class="ttdeci">Vector3 normal</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00010">Mesh.h:10</a></div></div>
+<div class="ttc" id="astructSpan_1_1Vertex_html_a8494e55dfa8086fdce795d93cbbb1214"><div class="ttname"><a href="structSpan_1_1Vertex.html#a8494e55dfa8086fdce795d93cbbb1214">Span::Vertex::position</a></div><div class="ttdeci">Vector3 position</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00009">Mesh.h:9</a></div></div>
+<div class="ttc" id="astructSpan_1_1Vertex_html_abac13f64d1c801dba33ee5ffac17474c"><div class="ttname"><a href="structSpan_1_1Vertex.html#abac13f64d1c801dba33ee5ffac17474c">Span::Vertex::uv</a></div><div class="ttdeci">Vector2 uv</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00011">Mesh.h:11</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_6091cbee3e268cbb682ad3d3f55cf8b5.html">Graphics</a></li><li class="navelem"><a href="ModelLoader_8cpp.html">ModelLoader.cpp</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

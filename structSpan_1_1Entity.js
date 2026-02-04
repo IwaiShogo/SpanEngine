@@ -1,5 +1,7 @@
 var structSpan_1_1Entity =
 [
+    [ "Entity", "structSpan_1_1Entity.html#a23ab2fecbbf9cbe9038d074bf442bb04", null ],
+    [ "Entity", "structSpan_1_1Entity.html#acfcb503b4305999b74e7856ffb269581", null ],
     [ "IsNull", "structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3", null ],
     [ "operator!=", "structSpan_1_1Entity.html#ad786028d54fd44bdc35914c7e29f0799", null ],
     [ "operator<", "structSpan_1_1Entity.html#a84a03148c68cfeb3a7936496ecf1b2ba", null ],

@@ -51,7 +51,7 @@ var menudata={children:[
 {text:"クラス",url:"annotated.html",children:[
 {text:"クラス一覧",url:"annotated.html"},
 {text:"クラス索引",url:"classes.html"},
-{text:"クラス階層",url:"hierarchy.html"},
+{text:"クラス階層",url:"inherits.html"},
 {text:"クラスメンバ",url:"functions.html",children:[
 {text:"全て",url:"functions.html",children:[
 {text:"_",url:"functions.html#index__5F"},

@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
    </div>
-   <div id="projectbrief">Editor First, Data Oriented, Native Performance Game Engine</div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -100,7 +100,12 @@ $(function(){initNavTree('ComponentType_8h_source.html','',''); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="comment">// コンポーネントIDの型</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">    8</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> = <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"></span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">     * @brief   型(T)から一意のIDを取得するテンプレートクラス</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">     * ユーザーが struct Position を定義すると、</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">     * ComponentType&lt;Position&gt;::GetID() で自動的にユニークな番号が発行される。</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">     */</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classSpan_1_1ComponentType.html">   16</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1ComponentType.html">ComponentType</a></div>
@@ -130,15 +135,15 @@ $(function(){initNavTree('ComponentType_8h_source.html','',''); });
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div></div>
-<div class="ttc" id="aclassSpan_1_1ComponentType_html"><div class="ttname"><a href="classSpan_1_1ComponentType.html">Span::ComponentType</a></div><div class="ttdoc">型(T)から一意のIDを取得するテンプレートクラス ユーザーが struct Position を定義すると、 ComponentType&lt;Position&gt;::GetID() で自動的にユニークな番号...</div><div class="ttdef"><b>Definition</b> ComponentType.h:17</div></div>
-<div class="ttc" id="aclassSpan_1_1ComponentType_html_a08eb3686c23d2fb479c1e4a6d0677c4a"><div class="ttname"><a href="classSpan_1_1ComponentType.html#a08eb3686c23d2fb479c1e4a6d0677c4a">Span::ComponentType::GetAlignment</a></div><div class="ttdeci">static size_t GetAlignment()</div><div class="ttdef"><b>Definition</b> ComponentType.h:34</div></div>
-<div class="ttc" id="aclassSpan_1_1ComponentType_html_a76581368e39c57cf4c4bf89e30a02ba9"><div class="ttname"><a href="classSpan_1_1ComponentType.html#a76581368e39c57cf4c4bf89e30a02ba9">Span::ComponentType::GetSize</a></div><div class="ttdeci">static size_t GetSize()</div><div class="ttdef"><b>Definition</b> ComponentType.h:33</div></div>
-<div class="ttc" id="aclassSpan_1_1ComponentType_html_aa561932b92eabbe74390cb7b0cef0de6"><div class="ttname"><a href="classSpan_1_1ComponentType.html#aa561932b92eabbe74390cb7b0cef0de6">Span::ComponentType::GetID</a></div><div class="ttdeci">static ComponentTypeID GetID()</div><div class="ttdef"><b>Definition</b> ComponentType.h:19</div></div>
-<div class="ttc" id="aclassSpan_1_1ComponentType_html_acfe4b00076e91443e18ed3ca46f27dbc"><div class="ttname"><a href="classSpan_1_1ComponentType.html#acfe4b00076e91443e18ed3ca46f27dbc">Span::ComponentType::GetName</a></div><div class="ttdeci">static const char * GetName()</div><div class="ttdef"><b>Definition</b> ComponentType.h:35</div></div>
-<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> CoreMinimal.h:52</div></div>
-<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> CoreMinimal.h:61</div></div>
-<div class="ttc" id="anamespaceSpan_html_aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">Span::Key::T</a></div><div class="ttdeci">@ T</div><div class="ttdef"><b>Definition</b> Input.h:18</div></div>
-<div class="ttc" id="anamespaceSpan_html_ae77c638651cd73c71b05dd273dad05dd"><div class="ttname"><a href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">Span::ComponentTypeID</a></div><div class="ttdeci">uint32 ComponentTypeID</div><div class="ttdef"><b>Definition</b> ComponentType.h:8</div></div>
+<div class="ttc" id="aclassSpan_1_1ComponentType_html"><div class="ttname"><a href="classSpan_1_1ComponentType.html">Span::ComponentType</a></div><div class="ttdoc">型(T)から一意のIDを取得するテンプレートクラス ユーザーが struct Position を定義すると、 ComponentType&lt;Position&gt;::GetID() で自動的にユニークな番号...</div><div class="ttdef"><b>Definition</b> <a href="#l00016">ComponentType.h:17</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ComponentType_html_a08eb3686c23d2fb479c1e4a6d0677c4a"><div class="ttname"><a href="classSpan_1_1ComponentType.html#a08eb3686c23d2fb479c1e4a6d0677c4a">Span::ComponentType::GetAlignment</a></div><div class="ttdeci">static size_t GetAlignment()</div><div class="ttdef"><b>Definition</b> <a href="#l00034">ComponentType.h:34</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ComponentType_html_a76581368e39c57cf4c4bf89e30a02ba9"><div class="ttname"><a href="classSpan_1_1ComponentType.html#a76581368e39c57cf4c4bf89e30a02ba9">Span::ComponentType::GetSize</a></div><div class="ttdeci">static size_t GetSize()</div><div class="ttdef"><b>Definition</b> <a href="#l00033">ComponentType.h:33</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ComponentType_html_aa561932b92eabbe74390cb7b0cef0de6"><div class="ttname"><a href="classSpan_1_1ComponentType.html#aa561932b92eabbe74390cb7b0cef0de6">Span::ComponentType::GetID</a></div><div class="ttdeci">static ComponentTypeID GetID()</div><div class="ttdef"><b>Definition</b> <a href="#l00019">ComponentType.h:19</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ComponentType_html_acfe4b00076e91443e18ed3ca46f27dbc"><div class="ttname"><a href="classSpan_1_1ComponentType.html#acfe4b00076e91443e18ed3ca46f27dbc">Span::ComponentType::GetName</a></div><div class="ttdeci">static const char * GetName()</div><div class="ttdef"><b>Definition</b> <a href="#l00035">ComponentType.h:35</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00051">CoreMinimal.h:52</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00061">CoreMinimal.h:61</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">Span::Key::T</a></div><div class="ttdeci">@ T</div><div class="ttdef"><b>Definition</b> <a href="Input_8h_source.html#l00018">Input.h:18</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_ae77c638651cd73c71b05dd273dad05dd"><div class="ttname"><a href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">Span::ComponentTypeID</a></div><div class="ttdeci">uint32 ComponentTypeID</div><div class="ttdef"><b>Definition</b> <a href="#l00008">ComponentType.h:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

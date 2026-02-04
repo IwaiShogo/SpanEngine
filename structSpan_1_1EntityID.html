@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
    </div>
-   <div id="projectbrief">Editor First, Data Oriented, Native Performance Game Engine</div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -93,10 +93,19 @@ $(function(){initNavTree('structSpan_1_1EntityID.html','','structSpan_1_1EntityI
 </div><!--header-->
 <div class="contents">
 
+<p>エンティティの内部ID構造 (64-bit)。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="Entity_8h_source.html">Entity.h</a>&gt;</code></p>
+<div class="dynheader">
+Span::EntityID 連携図</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1EntityID__coll__graph.svg" width="127" height="196"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
+<tr id="pub-methods-0" class="groupHeader"><td colspan="2"><div class="groupHeader">比較演算子</div></td></tr>
 <tr class="memitem:ab85d1afe08db97b080cc39eecba9d366" id="r_ab85d1afe08db97b080cc39eecba9d366"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ab85d1afe08db97b080cc39eecba9d366">operator==</a> (const <a class="el" href="structSpan_1_1EntityID.html">EntityID</a> &amp;other) const</td></tr>
 <tr class="memitem:aef4a7c03e55274d1b8c827f5a9244f63" id="r_aef4a7c03e55274d1b8c827f5a9244f63"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aef4a7c03e55274d1b8c827f5a9244f63">operator!=</a> (const <a class="el" href="structSpan_1_1EntityID.html">EntityID</a> &amp;other) const</td></tr>
 <tr class="memitem:a8cf255540a647427cbf55e7d0e8fbf9c" id="r_a8cf255540a647427cbf55e7d0e8fbf9c"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a8cf255540a647427cbf55e7d0e8fbf9c">operator&lt;</a> (const <a class="el" href="structSpan_1_1EntityID.html">EntityID</a> &amp;other) const</td></tr>
@@ -104,9 +113,26 @@ $(function(){initNavTree('structSpan_1_1EntityID.html','','structSpan_1_1EntityI
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
 <tr class="memitem:a5f5fc1c1934e149030ade20670d890bc" id="r_a5f5fc1c1934e149030ade20670d890bc"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a5f5fc1c1934e149030ade20670d890bc">Index</a></td></tr>
+<tr class="memdesc:a5f5fc1c1934e149030ade20670d890bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">配列のインデックス  <br /></td></tr>
 <tr class="memitem:ab11878d611ac365aefe169312d4475f2" id="r_ab11878d611ac365aefe169312d4475f2"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#ab11878d611ac365aefe169312d4475f2">Generation</a></td></tr>
+<tr class="memdesc:ab11878d611ac365aefe169312d4475f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">世代番号（再利用対策）  <br /></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>エンティティの内部ID構造 (64-bit)。 </p>
+<p>エンティティIDは、配列インデックスと再利用世代 (Generation) を組み合わせたものです。</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+📊 ビットレイアウト</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Bit Range  </th><th class="markdownTableHeadLeft"><a class="el" href="structSpan_1_1Name.html">Name</a>  </th><th class="markdownTableHeadLeft">Description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">0-31  </td><td class="markdownTableBodyLeft"><b>Index</b>  </td><td class="markdownTableBodyLeft">エンティティ配列へのアクセサ。高速なルックアップに使用。  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">32-63  </td><td class="markdownTableBodyLeft">**Generation  </td><td class="markdownTableBodyLeft">IDの再利用カウンタ。古い参照が無効なEntityにアクセスするのを防ぐ。  </td></tr>
+</table>
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00029">29</a> 行目に定義があります。</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="aef4a7c03e55274d1b8c827f5a9244f63" name="aef4a7c03e55274d1b8c827f5a9244f63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aef4a7c03e55274d1b8c827f5a9244f63">&#9670;&#160;</a></span>operator!=()</h2>
 
@@ -129,6 +155,8 @@ $(function(){initNavTree('structSpan_1_1EntityID.html','','structSpan_1_1EntityI
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00037">37</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -155,6 +183,8 @@ $(function(){initNavTree('structSpan_1_1EntityID.html','','structSpan_1_1EntityI
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00039">39</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="ab85d1afe08db97b080cc39eecba9d366" name="ab85d1afe08db97b080cc39eecba9d366"></a>
@@ -180,6 +210,8 @@ $(function(){initNavTree('structSpan_1_1EntityID.html','','structSpan_1_1EntityI
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00036">36</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
@@ -195,6 +227,10 @@ $(function(){initNavTree('structSpan_1_1EntityID.html','','structSpan_1_1EntityI
       </table>
 </div><div class="memdoc">
 
+<p>世代番号（再利用対策） </p>
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00032">32</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a5f5fc1c1934e149030ade20670d890bc" name="a5f5fc1c1934e149030ade20670d890bc"></a>
@@ -208,6 +244,10 @@ $(function(){initNavTree('structSpan_1_1EntityID.html','','structSpan_1_1EntityI
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>配列のインデックス </p>
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00031">31</a> 行目に定義があります。</p>
 
 </div>
 </div>

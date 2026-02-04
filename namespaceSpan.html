@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
    </div>
-   <div id="projectbrief">Editor First, Data Oriented, Native Performance Game Engine</div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -140,8 +140,9 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:Chunk" id="r_Chunk"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Chunk.html">Chunk</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">チャンク (<a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a>) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。  <a href="structSpan_1_1Chunk.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:EntityID" id="r_EntityID"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1EntityID.html">EntityID</a></td></tr>
-<tr class="memitem:Entity" id="r_Entity"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Entity.html">Entity</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entityハンドル ユーザーが扱うのはこのクラス。実体はIDのみを持つ軽量オブジェクト  <a href="structSpan_1_1Entity.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">エンティティの内部ID構造 (64-bit)。  <a href="structSpan_1_1EntityID.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Entity" id="r_Entity"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Entity.html">Entity</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。  <a href="structSpan_1_1Entity.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:EntityBuilder" id="r_EntityBuilder"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1EntityBuilder.html">EntityBuilder</a></td></tr>
 <tr class="memitem:EntityManager" id="r_EntityManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1EntityManager.html">EntityManager</a></td></tr>
 <tr class="memitem:System" id="r_System"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1System.html">System</a></td></tr>
@@ -336,6 +337,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:af398cbc10fb9b8a1ce5df3e312466376" id="r_af398cbc10fb9b8a1ce5df3e312466376"><td class="memItemLeft">static <a class="el" href="structSpan_1_1AutoRegisterPanel.html">AutoRegisterPanel</a>&lt; <a class="el" href="classSpan_1_1SceneViewPanel.html">SceneViewPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af398cbc10fb9b8a1ce5df3e312466376">_reg</a> (&quot;Scene&quot;)</td></tr>
 <tr class="memitem:a51dc0b6d0daae8cf8e6841254d8dc062" id="r_a51dc0b6d0daae8cf8e6841254d8dc062"><td class="memItemLeft">constexpr size_t&#160;</td><td class="memItemRight"><a class="el" href="#a51dc0b6d0daae8cf8e6841254d8dc062">CHUNK_SIZE</a> = 16 * 1024</td></tr>
 <tr class="memitem:a20540fd2e2d58f1722c48a6f1c6d1af5" id="r_a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="memItemLeft">static const <a class="el" href="structSpan_1_1EntityID.html">EntityID</a>&#160;</td><td class="memItemRight"><a class="el" href="#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a> = { UINT32_MAX, 0 }</td></tr>
+<tr class="memdesc:a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Null (無効) として扱うための定数ID  <br /></td></tr>
 </table>
 <a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">型定義詳解</h2>
 <a id="ae77c638651cd73c71b05dd273dad05dd" name="ae77c638651cd73c71b05dd273dad05dd"></a>
@@ -349,6 +351,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00008">8</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -364,6 +368,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
       </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00014">14</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a5dcbce7d5da8a4232c7603685b85b391" name="a5dcbce7d5da8a4232c7603685b85b391"></a>
@@ -377,6 +383,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00055">55</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -392,6 +400,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
       </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00056">56</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="aca56f7fb12365f1c73d650b4b5f84091" name="aca56f7fb12365f1c73d650b4b5f84091"></a>
@@ -405,6 +415,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00057">57</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -420,6 +432,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
       </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00054">54</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a936509841abf3411c6dae4ca675b811e" name="a936509841abf3411c6dae4ca675b811e"></a>
@@ -433,6 +447,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00015">15</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -448,6 +464,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
       </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00060">60</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a536f8f186b1a3b11b8eb44b74c5bfea9" name="a536f8f186b1a3b11b8eb44b74c5bfea9"></a>
@@ -461,6 +479,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00061">61</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -476,6 +496,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
       </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00062">62</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="adab5acbc8bcb80306a5e0c86c7e8ecbd" name="adab5acbc8bcb80306a5e0c86c7e8ecbd"></a>
@@ -489,6 +511,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00059">59</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -519,6 +543,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr><td class="fieldname"><a id="a12c7c5c268a27e26bd54df1f069ed577a2249910b87640ba46f5344802d56c0e3" name="a12c7c5c268a27e26bd54df1f069ed577a2249910b87640ba46f5344802d56c0e3"></a>Ratio_4_3&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a12c7c5c268a27e26bd54df1f069ed577aaeae148490921d9d4e259e5d3224aca7" name="a12c7c5c268a27e26bd54df1f069ed577aaeae148490921d9d4e259e5d3224aca7"></a>Ratio_21_9&#160;</td><td class="fielddoc"></td></tr>
 </table>
+
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00007">7</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -553,6 +579,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr><td class="fieldname"><a id="a00c320c889b6c836e32c17b01071d257ad16a748b5543974384bc43d392f1e566" name="a00c320c889b6c836e32c17b01071d257ad16a748b5543974384bc43d392f1e566"></a>MultiLine&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00005">5</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a51b25b4cd8ab95471e6318a07609803d" name="a51b25b4cd8ab95471e6318a07609803d"></a>
@@ -582,6 +610,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr><td class="fieldname"><a id="a51b25b4cd8ab95471e6318a07609803dac412c6d19da2afaf2dc8891f5bcb8901" name="a51b25b4cd8ab95471e6318a07609803dac412c6d19da2afaf2dc8891f5bcb8901"></a>LeftTrigger&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a51b25b4cd8ab95471e6318a07609803da837ed99a897594cef0d37403a18f0df0" name="a51b25b4cd8ab95471e6318a07609803da837ed99a897594cef0d37403a18f0df0"></a>RightTrigger&#160;</td><td class="fielddoc"></td></tr>
 </table>
+
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00032">32</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -655,6 +685,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr><td class="fieldname"><a id="aa350a9ffb8abcc7152b348bf09b86d8fade1c390ad12eb3380658ccf9d89cf91b" name="aa350a9ffb8abcc7152b348bf09b86d8fade1c390ad12eb3380658ccf9d89cf91b"></a>Gamepad_DPad_Right&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00008">8</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a0218d3201263d090d434e06833479948" name="a0218d3201263d090d434e06833479948"></a>
@@ -684,6 +716,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr><td class="fieldname"><a id="a0218d3201263d090d434e06833479948a71ff71526d15db86eb50fcac245d183b" name="a0218d3201263d090d434e06833479948a71ff71526d15db86eb50fcac245d183b"></a>UI&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
+<p class="definition"> <a class="el" href="Layer_8h_source.html">Layer.h</a> の <a class="el" href="Layer_8h_source.html#l00006">6</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a706679730aeab52031ed8774240027f2" name="a706679730aeab52031ed8774240027f2"></a>
@@ -712,6 +746,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr><td class="fieldname"><a id="a706679730aeab52031ed8774240027f2a882384ec38ce8d9582b57e70861730e4" name="a706679730aeab52031ed8774240027f2a882384ec38ce8d9582b57e70861730e4"></a>Fatal&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
+<p class="definition"> <a class="el" href="Logger_8h_source.html">Logger.h</a> の <a class="el" href="Logger_8h_source.html#l00007">7</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="ac6d174c183a792e0102f9c0ca931920d" name="ac6d174c183a792e0102f9c0ca931920d"></a>
@@ -738,6 +774,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr><td class="fieldname"><a id="ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0" name="ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0"></a>Pixel&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
+<p class="definition"> <a class="el" href="Shader_8h_source.html">Shader.h</a> の <a class="el" href="Shader_8h_source.html#l00006">6</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
@@ -763,6 +801,13 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00007">7</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a4fe00a2b184d928db9704896aa281ee9_icgraph.svg" width="404" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -800,6 +845,13 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00026">26</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a8cdcfa1b4931700b369b8017666cd36a_icgraph.svg" width="363" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
 </div>
 </div>
 <a id="a1f3752f6a0fd409523c07eff247645bf" name="a1f3752f6a0fd409523c07eff247645bf"></a>
@@ -816,6 +868,11 @@ template&lt;typename T&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a1f3752f6a0fd409523c07eff247645bf_icgraph.svg" width="292" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -833,6 +890,13 @@ template&lt;typename T&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00028">28</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_ae79449040cc75c359f5829b808fb2a57_icgraph.svg" width="450" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -859,6 +923,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00047">47</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a6c44cae3bf938ea21881939d2a2f04ea" name="a6c44cae3bf938ea21881939d2a2f04ea"></a>
@@ -883,6 +949,8 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00057">57</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -920,6 +988,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00029">29</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a9822105b4bb016e1c0c580e617bd925a" name="a9822105b4bb016e1c0c580e617bd925a"></a>
@@ -944,6 +1014,8 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00037">37</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -974,6 +1046,13 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00032">32</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a32a1ef503ab803ad2c45c621d77445a0_icgraph.svg" width="100%" height="379"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
 </div>
 </div>
 <a id="ae2c4e4f20e3caf156005d479cfc4b392" name="ae2c4e4f20e3caf156005d479cfc4b392"></a>
@@ -998,6 +1077,13 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00062">62</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_ae2c4e4f20e3caf156005d479cfc4b392_icgraph.svg" width="352" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1026,6 +1112,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00068">68</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a247e3d3dd552cb352584f6b968a21bd1" name="a247e3d3dd552cb352584f6b968a21bd1"></a>
@@ -1053,6 +1141,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00078">78</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="ac4fda9227bb1ab31d0d5e2026ed86d53" name="ac4fda9227bb1ab31d0d5e2026ed86d53"></a>
@@ -1077,6 +1167,8 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00068">68</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1103,6 +1195,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00052">52</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a089223d28981f1dcf214d34a44771067" name="a089223d28981f1dcf214d34a44771067"></a>
@@ -1127,6 +1221,8 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00073">73</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1153,6 +1249,13 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00023">23</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a6d290667947dd9fb137877008986c724_icgraph.svg" width="359" height="75"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
 </div>
 </div>
 <a id="a3a9bfa653e8f9e248d4313ed0939db77" name="a3a9bfa653e8f9e248d4313ed0939db77"></a>
@@ -1178,6 +1281,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00042">42</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="a2e4930a806963e7ab8c6c60031c41fe8" name="a2e4930a806963e7ab8c6c60031c41fe8"></a>
@@ -1202,6 +1307,13 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00022">22</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a2e4930a806963e7ab8c6c60031c41fe8_icgraph.svg" width="603" height="267"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1301,6 +1413,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00008">8</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="aab3b565f31423405c3fdb453380bc937" name="aab3b565f31423405c3fdb453380bc937"></a>
@@ -1322,6 +1436,8 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00020">20</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1345,6 +1461,10 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Null (無効) として扱うための定数ID </p>
+
+<p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00048">48</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="af4fc42a9402477b7586237d036530a3d" name="af4fc42a9402477b7586237d036530a3d"></a>
@@ -1366,6 +1486,8 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00018">18</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1389,6 +1511,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="Logger_8cpp_source.html">Logger.cpp</a> の <a class="el" href="Logger_8cpp_source.html#l00006">6</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <a id="abc577250df3b868bd5b5d433f4c5632b" name="abc577250df3b868bd5b5d433f4c5632b"></a>
@@ -1410,6 +1534,8 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00019">19</a> 行目に定義があります。</p>
 
 </div>
 </div>
