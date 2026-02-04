@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1ModelLoader.html','','classSpan_1_1ModelL
 </div><!--header-->
 <div class="contents">
 
+<p>🏗️ Assimpライブラリを使用したモデルローダー。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="ModelLoader_8h_source.html">ModelLoader.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::ModelLoader 連携図</div>
@@ -103,14 +106,17 @@ Span::ModelLoader 連携図</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静的公開メンバ関数</h2></td></tr>
 <tr class="memitem:a06a5d6e12254629efcd0d56c7a3c21c1" id="r_a06a5d6e12254629efcd0d56c7a3c21c1"><td class="memItemLeft">static std::vector&lt; <a class="el" href="classSpan_1_1Mesh.html">Mesh</a> * &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a06a5d6e12254629efcd0d56c7a3c21c1">Load</a> (ID3D12Device *device, const std::string &amp;filepath)</td></tr>
+<tr class="memdesc:a06a5d6e12254629efcd0d56c7a3c21c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">モデルファイルをロードし、メッシュリストを返します  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 静的非公開メンバ関数</h2></td></tr>
 <tr class="memitem:a97659b329036caa77725af517d48f25a" id="r_a97659b329036caa77725af517d48f25a"><td class="memItemLeft">static <a class="el" href="classSpan_1_1Mesh.html">Mesh</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a97659b329036caa77725af517d48f25a">ProcessMesh</a> (ID3D12Device *device, aiMesh *mesh, const aiScene *scene)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="ModelLoader_8h_source.html">ModelLoader.h</a> の <a class="el" href="ModelLoader_8h_source.html#l00006">6</a> 行目に定義があります。</p>
+<div class="textblock"><p>🏗️ Assimpライブラリを使用したモデルローダー。 </p>
+<p>外部形式のファイル読み込み、エンジンの <span class="tt"><a class="el" href="classSpan_1_1Mesh.html" title="📦 頂点データをGPUメモリ (Vertex Buffer) に保持するクラス。">Mesh</a></span> 形式に変換します。 将来的には、読み込み時間を短縮するために独自バイナリ形式(.spanmesh)へのキャッシュ機能を実装予定。 </p>
+
+<p class="definition"> <a class="el" href="ModelLoader_8h_source.html">ModelLoader.h</a> の <a class="el" href="ModelLoader_8h_source.html#l00025">25</a> 行目に定義があります。</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a06a5d6e12254629efcd0d56c7a3c21c1" name="a06a5d6e12254629efcd0d56c7a3c21c1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a06a5d6e12254629efcd0d56c7a3c21c1">&#9670;&#160;</a></span>Load()</h2>
@@ -138,6 +144,16 @@ Span::ModelLoader 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>モデルファイルをロードし、メッシュリストを返します </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>メッシュ生成用のデバイス </td></tr>
+    <tr><td class="paramname">filepath</td><td>ファイルパス </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>生成されたメッシュのポインタ配列 </dd></dl>
 
 <p class="definition"> <a class="el" href="ModelLoader_8cpp_source.html">ModelLoader.cpp</a> の <a class="el" href="ModelLoader_8cpp_source.html#l00006">6</a> 行目に定義があります。</p>
 <div class="dynheader">

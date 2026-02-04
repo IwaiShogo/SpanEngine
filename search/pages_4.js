@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['memory_20flow_0',['🔄 メモリフロー (Memory Flow)',['../classSpan_1_1World.html#autotoc_md7',1,'']]]
+  ['double_20buffering_0',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md34',1,'']]]
 ];

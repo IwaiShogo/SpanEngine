@@ -93,30 +93,130 @@ $(function(){initNavTree('classSpan_1_1ConstantBuffer.html','','classSpan_1_1Con
 </div><!--header-->
 <div class="contents">
 
+<p>📦 CPUからGPUへデータを送信するための定数バッファ。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::ConstantBuffer&lt; T &gt; 連携図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ConstantBuffer__coll__graph.svg" width="200" height="156"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ConstantBuffer__coll__graph.svg" width="200" height="216"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
+<tr class="memitem:ade6799f6298e0252e67c72ffadfb1866" id="r_ade6799f6298e0252e67c72ffadfb1866"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ade6799f6298e0252e67c72ffadfb1866">ConstantBuffer</a> ()=default</td></tr>
+<tr class="memitem:a03b78f79ee6abb49559bb90fd7bbcced" id="r_a03b78f79ee6abb49559bb90fd7bbcced"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a03b78f79ee6abb49559bb90fd7bbcced">~ConstantBuffer</a> ()</td></tr>
 <tr class="memitem:a63487527b7a1664a0bf11cc78411a48f" id="r_a63487527b7a1664a0bf11cc78411a48f"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a63487527b7a1664a0bf11cc78411a48f">Initialize</a> (ID3D12Device *device)</td></tr>
+<tr class="memdesc:a63487527b7a1664a0bf11cc78411a48f"><td class="mdescLeft">&#160;</td><td class="mdescRight">定数バッファリソースを作成します。  <br /></td></tr>
 <tr class="memitem:aac12bc17c50980fa113409040ab02e0c" id="r_aac12bc17c50980fa113409040ab02e0c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aac12bc17c50980fa113409040ab02e0c">Shutdown</a> ()</td></tr>
+<tr class="memdesc:aac12bc17c50980fa113409040ab02e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">リソースを解放します。  <br /></td></tr>
 <tr class="memitem:ab85d99301f8c8372ce2d1b4765ee6345" id="r_ab85d99301f8c8372ce2d1b4765ee6345"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab85d99301f8c8372ce2d1b4765ee6345">Update</a> (const T &amp;data)</td></tr>
+<tr class="memdesc:ab85d99301f8c8372ce2d1b4765ee6345"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在の <span class="tt"><a class="el" href="#aa1c7be6da0a8ff97112292708d8cab0c" title="GPUに転送される実データへの参照。これに書き込むだけで反映されます。">Data</a></span> の内容をGPUバッファへコピーします。  <br /></td></tr>
 <tr class="memitem:aa882eb7a504f5ad31f43d6728a641dc4" id="r_aa882eb7a504f5ad31f43d6728a641dc4"><td class="memItemLeft">D3D12_GPU_VIRTUAL_ADDRESS&#160;</td><td class="memItemRight"><a class="el" href="#aa882eb7a504f5ad31f43d6728a641dc4">GetGPUVirtualAddress</a> () const</td></tr>
+<tr class="memdesc:aa882eb7a504f5ad31f43d6728a641dc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPU仮想アドレスを取得 (SetGraphicsRootConstantBufferView用)  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+公開変数類</h2></td></tr>
+<tr class="memitem:aa1c7be6da0a8ff97112292708d8cab0c" id="r_aa1c7be6da0a8ff97112292708d8cab0c"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="#aa1c7be6da0a8ff97112292708d8cab0c">Data</a></td></tr>
+<tr class="memdesc:aa1c7be6da0a8ff97112292708d8cab0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPUに転送される実データへの参照。これに書き込むだけで反映されます。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
 <tr class="memitem:a49d50882eddee173d07a680b3fecca97" id="r_a49d50882eddee173d07a680b3fecca97"><td class="memItemLeft">ComPtr&lt; ID3D12Resource &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a49d50882eddee173d07a680b3fecca97">resource</a></td></tr>
+<tr class="memdesc:a49d50882eddee173d07a680b3fecca97"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPUリソース  <br /></td></tr>
 <tr class="memitem:a7bd7fa3a2274f9404b60ff6c2250ed03" id="r_a7bd7fa3a2274f9404b60ff6c2250ed03"><td class="memItemLeft">T *&#160;</td><td class="memItemRight"><a class="el" href="#a7bd7fa3a2274f9404b60ff6c2250ed03">mappedData</a> = nullptr</td></tr>
+<tr class="memdesc:a7bd7fa3a2274f9404b60ff6c2250ed03"><td class="mdescLeft">&#160;</td><td class="mdescRight">CPU側から見れるメモリアドレス  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
-class Span::ConstantBuffer&lt; T &gt;</div>
-<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00013">13</a> 行目に定義があります。</p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+class Span::ConstantBuffer&lt; T &gt;</div><p>📦 CPUからGPUへデータを送信するための定数バッファ。 </p>
+<p>シェーダーで使用する <span class="tt">cbuffer</span> に対応します。 内部で <b>Upload Heap</b> を確保し、CPUからの書き込みを即座にGPUに反映させます。</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+⚠ 注意点</h3>
+<p>構造体 <span class="tt">T</span> のメンバ変数は、HLSLのパッキングルール (16バイト境界) に注意して配置してください。</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+📝 Usage</h3>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>SceneData { <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> ViewProj; };</div>
+<div class="line"><a class="code hl_class" href="classSpan_1_1ConstantBuffer.html">ConstantBuffer&lt;SceneData&gt;</a> cb;</div>
+<div class="line">cb.<a class="code hl_function" href="#a63487527b7a1664a0bf11cc78411a48f">Initialize</a>(device);</div>
+<div class="line">cb.<a class="code hl_variable" href="#aa1c7be6da0a8ff97112292708d8cab0c">Data</a>.ViewProj = camera.GetViewProj(); <span class="comment">// データを書き込む</span></div>
+<div class="line"><span class="comment">// 自動的にGPUメモリへマップされているため、明示的な転送関数は不要</span></div>
+<div class="ttc" id="aclassSpan_1_1ConstantBuffer_html"><div class="ttname"><a href="classSpan_1_1ConstantBuffer.html">Span::ConstantBuffer</a></div><div class="ttdoc">📦 CPUからGPUへデータを送信するための定数バッファ。</div><div class="ttdef"><b>Definition</b> <a href="ConstantBuffer_8h_source.html#l00055">ConstantBuffer.h:56</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ConstantBuffer_html_a63487527b7a1664a0bf11cc78411a48f"><div class="ttname"><a href="#a63487527b7a1664a0bf11cc78411a48f">Span::ConstantBuffer::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device)</div><div class="ttdoc">定数バッファリソースを作成します。</div><div class="ttdef"><b>Definition</b> <a href="ConstantBuffer_8h_source.html#l00073">ConstantBuffer.h:73</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ConstantBuffer_html_aa1c7be6da0a8ff97112292708d8cab0c"><div class="ttname"><a href="#aa1c7be6da0a8ff97112292708d8cab0c">Span::ConstantBuffer::Data</a></div><div class="ttdeci">T Data</div><div class="ttdoc">GPUに転送される実データへの参照。これに書き込むだけで反映されます。</div><div class="ttdef"><b>Definition</b> <a href="ConstantBuffer_8h_source.html#l00059">ConstantBuffer.h:59</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html">Span::Matrix4x4</a></div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00193">SpanMath.h:194</a></div></div>
+</div><!-- fragment --> <dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>バッファに格納する構造体の型 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00055">55</a> 行目に定義があります。</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
+<a id="ade6799f6298e0252e67c72ffadfb1866" name="ade6799f6298e0252e67c72ffadfb1866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade6799f6298e0252e67c72ffadfb1866">&#9670;&#160;</a></span>ConstantBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1ConstantBuffer.html">Span::ConstantBuffer</a>&lt; T &gt;::ConstantBuffer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a03b78f79ee6abb49559bb90fd7bbcced" name="a03b78f79ee6abb49559bb90fd7bbcced"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03b78f79ee6abb49559bb90fd7bbcced">&#9670;&#160;</a></span>~ConstantBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1ConstantBuffer.html">Span::ConstantBuffer</a>&lt; T &gt;::~<a class="el" href="#ade6799f6298e0252e67c72ffadfb1866">ConstantBuffer</a> </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00063">63</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ConstantBuffer_a03b78f79ee6abb49559bb90fd7bbcced_cgraph.svg" width="376" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="aa882eb7a504f5ad31f43d6728a641dc4" name="aa882eb7a504f5ad31f43d6728a641dc4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa882eb7a504f5ad31f43d6728a641dc4">&#9670;&#160;</a></span>GetGPUVirtualAddress()</h2>
 
@@ -142,7 +242,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00084">84</a> 行目に定義があります。</p>
+<p>GPU仮想アドレスを取得 (SetGraphicsRootConstantBufferView用) </p>
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00150">150</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -171,7 +273,16 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00017">17</a> 行目に定義があります。</p>
+<p>定数バッファリソースを作成します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>D3D12デバイス </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功なら true </dd></dl>
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00073">73</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -205,7 +316,14 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00064">64</a> 行目に定義があります。</p>
+<p>リソースを解放します。 </p>
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00127">127</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ConstantBuffer_aac12bc17c50980fa113409040ab02e0c_icgraph.svg" width="376" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -234,11 +352,34 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00075">75</a> 行目に定義があります。</p>
+<p>現在の <span class="tt"><a class="el" href="#aa1c7be6da0a8ff97112292708d8cab0c" title="GPUに転送される実データへの参照。これに書き込むだけで反映されます。">Data</a></span> の内容をGPUバッファへコピーします。 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>毎フレーム描画前に呼び出してください。 </dd></dl>
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00141">141</a> 行目に定義があります。</p>
 
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
+<a id="aa1c7be6da0a8ff97112292708d8cab0c" name="aa1c7be6da0a8ff97112292708d8cab0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1c7be6da0a8ff97112292708d8cab0c">&#9670;&#160;</a></span>Data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="classSpan_1_1ConstantBuffer.html">Span::ConstantBuffer</a>&lt; T &gt;::Data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>GPUに転送される実データへの参照。これに書き込むだけで反映されます。 </p>
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00059">59</a> 行目に定義があります。</p>
+
+</div>
+</div>
 <a id="a7bd7fa3a2274f9404b60ff6c2250ed03" name="a7bd7fa3a2274f9404b60ff6c2250ed03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7bd7fa3a2274f9404b60ff6c2250ed03">&#9670;&#160;</a></span>mappedData</h2>
 
@@ -261,7 +402,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00091">91</a> 行目に定義があります。</p>
+<p>CPU側から見れるメモリアドレス </p>
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00157">157</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -287,7 +430,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00090">90</a> 行目に定義があります。</p>
+<p>GPUリソース </p>
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00156">156</a> 行目に定義があります。</p>
 
 </div>
 </div>

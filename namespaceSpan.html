@@ -131,37 +131,53 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:MeshFilter" id="r_MeshFilter"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1MeshFilter.html">MeshFilter</a></td></tr>
 <tr class="memitem:MeshRenderer" id="r_MeshRenderer"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1MeshRenderer.html">MeshRenderer</a></td></tr>
 <tr class="memitem:ComponentType" id="r_ComponentType"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ComponentType.html">ComponentType</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">型(T)から一意のIDを取得するテンプレートクラス ユーザーが struct Position を定義すると、 <a class="el" href="classSpan_1_1ComponentType.html#aa561932b92eabbe74390cb7b0cef0de6">ComponentType&lt;Position&gt;::GetID()</a> で自動的にユニークな番号が発行される。  <a href="classSpan_1_1ComponentType.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🏷️ C++の型(T)をランタイムIDに変換する静的ヘルパークラス。  <a href="classSpan_1_1ComponentType.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:ArchetypeSignature" id="r_ArchetypeSignature"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ArchetypeSignature.html">ArchetypeSignature</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーキタイプ署名 (Signature) コンポーネントIDのリストをソートして保持したもの。 これが一致すれば「同じアーキタイプ」とみなす。  <a href="classSpan_1_1ArchetypeSignature.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🔑 アーキタイプを識別するための署名キー  <a href="classSpan_1_1ArchetypeSignature.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Archetype" id="r_Archetype"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Archetype.html">Archetype</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーキタイプ 同じコンポーネント構成を持つEntity群を管理する。 データの「型」だけでなく、実際の「メモリ(Chunk)」も管理する。  <a href="classSpan_1_1Archetype.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🏢 エンティティのコンテナクラス。メモリレイアウトを管理します。  <a href="classSpan_1_1Archetype.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:ArchetypeManager" id="r_ArchetypeManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ArchetypeManager.html">ArchetypeManager</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🏭 アーキタイプファクトリー&amp;キャッシュ。  <a href="classSpan_1_1ArchetypeManager.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Chunk" id="r_Chunk"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Chunk.html">Chunk</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">チャンク (<a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a>) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。  <a href="structSpan_1_1Chunk.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🧱 コンポーネントデータを格納する固定サイズのメモリブロック。  <a href="structSpan_1_1Chunk.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:EntityID" id="r_EntityID"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1EntityID.html">EntityID</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">エンティティの内部ID構造 (64-bit)。  <a href="structSpan_1_1EntityID.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Entity" id="r_Entity"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Entity.html">Entity</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。  <a href="structSpan_1_1Entity.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:EntityBuilder" id="r_EntityBuilder"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1EntityBuilder.html">EntityBuilder</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🔨 メソッドチェーンを利用して直感的にEntityを構築するビルダークラス。  <a href="classSpan_1_1EntityBuilder.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:EntityManager" id="r_EntityManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1EntityManager.html">EntityManager</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🆔 <a class="el" href="structSpan_1_1Entity.html" title="📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。">Entity</a> IDの発行、破棄、有効性チェックを行う管理クラス。  <a href="classSpan_1_1EntityManager.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:System" id="r_System"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1System.html">System</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🧠 ゲームロジックを実装するための基底クラス。  <a href="classSpan_1_1System.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:EntityLocation" id="r_EntityLocation"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1EntityLocation.html">EntityLocation</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📍 エンティティのデータ格納場所を示すポインタ。  <a href="structSpan_1_1EntityLocation.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:World" id="r_World"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1World.html">World</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。  <a href="classSpan_1_1World.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:ConstantBuffer" id="r_ConstantBuffer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ConstantBuffer.html">ConstantBuffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 CPUからGPUへデータを送信するための定数バッファ。  <a href="classSpan_1_1ConstantBuffer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:GraphicsContext" id="r_GraphicsContext"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1GraphicsContext.html">GraphicsContext</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎮 GPUコンテキストのラッパー。描画パイプラインの基盤。  <a href="classSpan_1_1GraphicsContext.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:RenderTarget" id="r_RenderTarget"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎯 描画対象となるテクスチャリソース。  <a href="classSpan_1_1RenderTarget.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Shader" id="r_Shader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Shader.html">Shader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。  <a href="classSpan_1_1Shader.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:ModelLoader" id="r_ModelLoader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ModelLoader.html">ModelLoader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🏗️ Assimpライブラリを使用したモデルローダー。  <a href="classSpan_1_1ModelLoader.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:TransformData" id="r_TransformData"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1TransformData.html">TransformData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトごとの変換行列データ  <a href="structSpan_1_1TransformData.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Renderer" id="r_Renderer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Renderer.html">Renderer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🖌 描画コマンドの発行を担うクラス。  <a href="classSpan_1_1Renderer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:MaterialData" id="r_MaterialData"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ構造体。  <a href="structSpan_1_1MaterialData.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Material" id="r_Material"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Material.html">Material</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎨 サーフェスの質感を定義するクラス。  <a href="classSpan_1_1Material.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Vertex" id="r_Vertex"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Vertex.html">Vertex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">頂点フォーマット。  <a href="structSpan_1_1Vertex.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Mesh" id="r_Mesh"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Mesh.html">Mesh</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 頂点データをGPUメモリ (<a class="el" href="structSpan_1_1Vertex.html" title="頂点フォーマット。">Vertex</a> Buffer) に保持するクラス。  <a href="classSpan_1_1Mesh.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Texture" id="r_Texture"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Texture.html">Texture</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🖼 GPUテクスチャリソース。  <a href="classSpan_1_1Texture.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:WindowDesc" id="r_WindowDesc"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1WindowDesc.html">WindowDesc</a></td></tr>
 <tr class="memitem:Window" id="r_Window"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Window.html">Window</a></td></tr>
 <tr class="memitem:ComponentMetadata" id="r_ComponentMetadata"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1ComponentMetadata.html">ComponentMetadata</a></td></tr>
@@ -184,6 +200,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:a536f8f186b1a3b11b8eb44b74c5bfea9" id="r_a536f8f186b1a3b11b8eb44b74c5bfea9"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> = uint32_t</td></tr>
 <tr class="memitem:a1d75ef2516efeab4c895dfc40640e11d" id="r_a1d75ef2516efeab4c895dfc40640e11d"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a1d75ef2516efeab4c895dfc40640e11d">uint64</a> = uint64_t</td></tr>
 <tr class="memitem:ae77c638651cd73c71b05dd273dad05dd" id="r_ae77c638651cd73c71b05dd273dad05dd"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> = <a class="el" href="#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td></tr>
+<tr class="memdesc:ae77c638651cd73c71b05dd273dad05dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネントを識別するための一意なID型 (32bit整数)  <br /></td></tr>
 <tr class="memitem:a093013dab8d39277e04bac7cc500fde7" id="r_a093013dab8d39277e04bac7cc500fde7"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a093013dab8d39277e04bac7cc500fde7">DrawComponentFunc</a> = std::function&lt;void(<a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a>&amp;)&gt;</td></tr>
 <tr class="memitem:a936509841abf3411c6dae4ca675b811e" id="r_a936509841abf3411c6dae4ca675b811e"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a936509841abf3411c6dae4ca675b811e">RemoveComponentFunc</a> = std::function&lt;void(<a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a>&amp;)&gt;</td></tr>
 </table><table class="memberdecls">
@@ -287,6 +304,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:ac6d174c183a792e0102f9c0ca931920d" id="r_ac6d174c183a792e0102f9c0ca931920d"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#ac6d174c183a792e0102f9c0ca931920d">ShaderType</a> { <a class="el" href="#ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6">Vertex</a>
 , <a class="el" href="#ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0">Pixel</a>
  }</td></tr>
+<tr class="memdesc:ac6d174c183a792e0102f9c0ca931920d"><td class="mdescLeft">&#160;</td><td class="mdescRight">シェーダーの種類  <a href="#ac6d174c183a792e0102f9c0ca931920d">[詳解]</a><br /></td></tr>
 <tr class="memitem:a00c320c889b6c836e32c17b01071d257" id="r_a00c320c889b6c836e32c17b01071d257"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#a00c320c889b6c836e32c17b01071d257">AttributeType</a> { <br />
 &#160;&#160;<a class="el" href="#a00c320c889b6c836e32c17b01071d257a6adf97f83acf6453d4a6a4b1070f3754">None</a>
 , <a class="el" href="#a00c320c889b6c836e32c17b01071d257a87ba2ecc8b6915e8bd6f5089918229fd">Range</a>
@@ -317,6 +335,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:abf375e5ec19260895ab2601db710d861 template"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="#abf375e5ec19260895ab2601db710d861">Lerp</a> (T a, T b, float t)</td></tr>
 <tr class="memitem:a1f3752f6a0fd409523c07eff247645bf" id="r_a1f3752f6a0fd409523c07eff247645bf"><td class="memItemLeft"><a class="el" href="classSpan_1_1Application.html">Application</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a1f3752f6a0fd409523c07eff247645bf">CreateApplication</a> ()</td></tr>
 <tr class="memitem:a4fe00a2b184d928db9704896aa281ee9" id="r_a4fe00a2b184d928db9704896aa281ee9"><td class="memItemLeft"><a class="el" href="#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4fe00a2b184d928db9704896aa281ee9">CalcConstantBufferByteSize</a> (<a class="el" href="#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> byteSize)</td></tr>
+<tr class="memdesc:a4fe00a2b184d928db9704896aa281ee9"><td class="mdescLeft">&#160;</td><td class="mdescRight">🔢 定数バッファのバイトサイズ計算ヘルパー。  <br /></td></tr>
 <tr class="memitem:a32a1ef503ab803ad2c45c621d77445a0" id="r_a32a1ef503ab803ad2c45c621d77445a0"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="#a32a1ef503ab803ad2c45c621d77445a0">Range</a> (float min, float max)</td></tr>
 <tr class="memitem:a9822105b4bb016e1c0c580e617bd925a" id="r_a9822105b4bb016e1c0c580e617bd925a"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9822105b4bb016e1c0c580e617bd925a">Min</a> (float min)</td></tr>
 <tr class="memitem:a3a9bfa653e8f9e248d4313ed0939db77" id="r_a3a9bfa653e8f9e248d4313ed0939db77"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3a9bfa653e8f9e248d4313ed0939db77">Tooltip</a> (const char *text)</td></tr>
@@ -337,6 +356,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:a09a142f7c7e3e8d3bce953a7708df856" id="r_a09a142f7c7e3e8d3bce953a7708df856"><td class="memItemLeft">static <a class="el" href="structSpan_1_1AutoRegisterPanel.html">AutoRegisterPanel</a>&lt; <a class="el" href="classSpan_1_1InspectorPanel.html">InspectorPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a09a142f7c7e3e8d3bce953a7708df856">_reg</a> (&quot;Inspector&quot;)</td></tr>
 <tr class="memitem:af398cbc10fb9b8a1ce5df3e312466376" id="r_af398cbc10fb9b8a1ce5df3e312466376"><td class="memItemLeft">static <a class="el" href="structSpan_1_1AutoRegisterPanel.html">AutoRegisterPanel</a>&lt; <a class="el" href="classSpan_1_1SceneViewPanel.html">SceneViewPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af398cbc10fb9b8a1ce5df3e312466376">_reg</a> (&quot;Scene&quot;)</td></tr>
 <tr class="memitem:a51dc0b6d0daae8cf8e6841254d8dc062" id="r_a51dc0b6d0daae8cf8e6841254d8dc062"><td class="memItemLeft">constexpr size_t&#160;</td><td class="memItemRight"><a class="el" href="#a51dc0b6d0daae8cf8e6841254d8dc062">CHUNK_SIZE</a> = 16 * 1024</td></tr>
+<tr class="memdesc:a51dc0b6d0daae8cf8e6841254d8dc062"><td class="mdescLeft">&#160;</td><td class="mdescRight">1つのチャンクが確保する固定メモリサイズ (16KB)  <br /></td></tr>
 <tr class="memitem:a20540fd2e2d58f1722c48a6f1c6d1af5" id="r_a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="memItemLeft">static const <a class="el" href="structSpan_1_1EntityID.html">EntityID</a>&#160;</td><td class="memItemRight"><a class="el" href="#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a> = { UINT32_MAX, 0 }</td></tr>
 <tr class="memdesc:a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Null (無効) として扱うための定数ID  <br /></td></tr>
 </table>
@@ -353,7 +373,9 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00008">8</a> 行目に定義があります。</p>
+<p>コンポーネントを識別するための一意なID型 (32bit整数) </p>
+
+<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00019">19</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -770,12 +792,16 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>シェーダーの種類 </p>
 <table class="fieldtable">
-<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6" name="ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6"></a>Vertex&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0" name="ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0"></a>Pixel&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6" name="ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6"></a>Vertex&#160;</td><td class="fielddoc"><p>頂点シェーダー (vs_5_0) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0" name="ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0"></a>Pixel&#160;</td><td class="fielddoc"><p>ピクセルシェーダー (vs_5_0) </p>
+</td></tr>
 </table>
 
-<p class="definition"> <a class="el" href="Shader_8h_source.html">Shader.h</a> の <a class="el" href="Shader_8h_source.html#l00006">6</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Shader_8h_source.html">Shader.h</a> の <a class="el" href="Shader_8h_source.html#l00018">18</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -803,7 +829,14 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00007">7</a> 行目に定義があります。</p>
+<p>🔢 定数バッファのバイトサイズ計算ヘルパー。 </p>
+<p>DirectX 12の定数バッファサイズは <b>256バイトの倍数</b> である必要があります。 この関数は、入力サイズを切り上げます。</p>
+<p>Example:</p><ul>
+<li><a class="el" href="classSpan_1_1Input.html">Input</a>: 12 bytes -&gt; Output: 256 bytes</li>
+<li><a class="el" href="classSpan_1_1Input.html">Input</a>: 256 bytes -&gt; Output: 512 bytes </li>
+</ul>
+
+<p class="definition"> <a class="el" href="ConstantBuffer_8h_source.html">ConstantBuffer.h</a> の <a class="el" href="ConstantBuffer_8h_source.html#l00028">28</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1414,7 +1447,10 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00008">8</a> 行目に定義があります。</p>
+<p>1つのチャンクが確保する固定メモリサイズ (16KB) </p>
+<p>L1/L2キャッシュへの適合率を高めるために設定されています。 </p>
+
+<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00020">20</a> 行目に定義があります。</p>
 
 </div>
 </div>

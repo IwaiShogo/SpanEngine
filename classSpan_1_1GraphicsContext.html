@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1GraphicsContext.html','','classSpan_1_1Gr
 </div><!--header-->
 <div class="contents">
 
+<p>🎮 GPUコンテキストのラッパー。描画パイプラインの基盤。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::GraphicsContext 連携図</div>
@@ -105,11 +108,17 @@ Span::GraphicsContext 連携図</div>
 <tr class="memitem:a8be8bf60243c473cd1b7fda332c5c2df" id="r_a8be8bf60243c473cd1b7fda332c5c2df"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a8be8bf60243c473cd1b7fda332c5c2df">GraphicsContext</a> ()</td></tr>
 <tr class="memitem:a528fcfee58e416dd387742f3c474f0ae" id="r_a528fcfee58e416dd387742f3c474f0ae"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a528fcfee58e416dd387742f3c474f0ae">~GraphicsContext</a> ()</td></tr>
 <tr class="memitem:a2d9afc9f1fbc0a0222ac906178ef18b4" id="r_a2d9afc9f1fbc0a0222ac906178ef18b4"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2d9afc9f1fbc0a0222ac906178ef18b4">Initialize</a> (<a class="el" href="classSpan_1_1Window.html">Window</a> &amp;window)</td></tr>
+<tr class="memdesc:a2d9afc9f1fbc0a0222ac906178ef18b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">DX12デバイスとスワップチェーンを初期化します。  <br /></td></tr>
 <tr class="memitem:a729f016e96fb6f3a2da88c445bfef911" id="r_a729f016e96fb6f3a2da88c445bfef911"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a729f016e96fb6f3a2da88c445bfef911">Shutdown</a> ()</td></tr>
+<tr class="memdesc:a729f016e96fb6f3a2da88c445bfef911"><td class="mdescLeft">&#160;</td><td class="mdescRight">全リソースを解放し、GPU処理の完了を待機して終了します。  <br /></td></tr>
 <tr class="memitem:a31c19d8990c3bbcd795aa3100d260c27" id="r_a31c19d8990c3bbcd795aa3100d260c27"><td class="memItemLeft">ID3D12GraphicsCommandList *&#160;</td><td class="memItemRight"><a class="el" href="#a31c19d8990c3bbcd795aa3100d260c27">BeginFrame</a> ()</td></tr>
+<tr class="memdesc:a31c19d8990c3bbcd795aa3100d260c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">フレーム描画の開始処理。 コマンドアロケータのリセット、バックバッファのクリア、RTVの設定を行います。  <br /></td></tr>
 <tr class="memitem:a003ab67b72f1c4f582ade1d8e335a1f8" id="r_a003ab67b72f1c4f582ade1d8e335a1f8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a003ab67b72f1c4f582ade1d8e335a1f8">EndFrame</a> ()</td></tr>
+<tr class="memdesc:a003ab67b72f1c4f582ade1d8e335a1f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">フレーム描画の終了処理。 リソースバリアの遷移、コマンドリストの実行、Present(画面更新)、次フレームへの待機を行います。  <br /></td></tr>
 <tr class="memitem:aa19d67466685650668752fc61e762f20" id="r_aa19d67466685650668752fc61e762f20"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa19d67466685650668752fc61e762f20">OnResize</a> (<a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="el" href="#a3b9bf0727cc7aea7de42f9afe82e0c46">width</a>, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="el" href="#aaaddcb875742327d39925d6663e51b3a">height</a>)</td></tr>
+<tr class="memdesc:aa19d67466685650668752fc61e762f20"><td class="mdescLeft">&#160;</td><td class="mdescRight">ウィンドウサイズ時のバッファ再生成処理  <br /></td></tr>
 <tr class="memitem:a30d20086e646e5db11d178a8d549d20d" id="r_a30d20086e646e5db11d178a8d549d20d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a30d20086e646e5db11d178a8d549d20d">SetRenderTargetToBackBuffer</a> (ID3D12GraphicsCommandList *<a class="el" href="#aec6ac7aebd9ee118bcc910bb43cd1254">commandList</a>)</td></tr>
+<tr class="memdesc:a30d20086e646e5db11d178a8d549d20d"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在のレンダーターゲットをバックバッファ (スワップチェーン) に戻します。 オフスクリーン描画からメイン描画に戻る際に使用します。  <br /></td></tr>
 <tr class="memitem:a995c3dd5599652f2604040a37a1908fa" id="r_a995c3dd5599652f2604040a37a1908fa"><td class="memItemLeft">D3D12_CPU_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight"><a class="el" href="#a995c3dd5599652f2604040a37a1908fa">GetCurrentBackBufferRTV</a> () const</td></tr>
 <tr class="memitem:a71cf9aead8f4ce3392101e27127b9131" id="r_a71cf9aead8f4ce3392101e27127b9131"><td class="memItemLeft">ID3D12Device *&#160;</td><td class="memItemRight"><a class="el" href="#a71cf9aead8f4ce3392101e27127b9131">GetDevice</a> () const</td></tr>
 <tr class="memitem:a1f2f79d92e287bfc4f45625111ea7b00" id="r_a1f2f79d92e287bfc4f45625111ea7b00"><td class="memItemLeft">ID3D12CommandQueue *&#160;</td><td class="memItemRight"><a class="el" href="#a1f2f79d92e287bfc4f45625111ea7b00">GetCommandQueue</a> () const</td></tr>
@@ -117,6 +126,7 @@ Span::GraphicsContext 連携図</div>
 <tr class="memitem:abbd3b9f918fbe1fa47626b359c617731" id="r_abbd3b9f918fbe1fa47626b359c617731"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#abbd3b9f918fbe1fa47626b359c617731">GetFrameCount</a> () const</td></tr>
 <tr class="memitem:a1410857e1e43fe24489b863e60a08124" id="r_a1410857e1e43fe24489b863e60a08124"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a1410857e1e43fe24489b863e60a08124">GetCurrentFrameIndex</a> () const</td></tr>
 <tr class="memitem:a2b668849f44321ef8ff8b944e4e786e2" id="r_a2b668849f44321ef8ff8b944e4e786e2"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2b668849f44321ef8ff8b944e4e786e2">WaitForGpu</a> ()</td></tr>
+<tr class="memdesc:a2b668849f44321ef8ff8b944e4e786e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPUの処理完了をCPU側で待機します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 非公開メンバ関数</h2></td></tr>
@@ -146,18 +156,30 @@ Span::GraphicsContext 連携図</div>
 <tr class="memitem:a24306636eb15f007de4d3bb51a5ee2f9" id="r_a24306636eb15f007de4d3bb51a5ee2f9"><td class="memItemLeft">HANDLE&#160;</td><td class="memItemRight"><a class="el" href="#a24306636eb15f007de4d3bb51a5ee2f9">fenceEvent</a> = nullptr</td></tr>
 <tr class="memitem:af0391d2043abbe9c150ad5b699b8e759" id="r_af0391d2043abbe9c150ad5b699b8e759"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#af0391d2043abbe9c150ad5b699b8e759">frameIndex</a> = 0</td></tr>
 <tr class="memitem:abde099b31325f4627beb3112463ec504" id="r_abde099b31325f4627beb3112463ec504"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#abde099b31325f4627beb3112463ec504">rtvDescriptorSize</a> = 0</td></tr>
-<tr class="memitem:a05b5966d30bb15770e8104d7d0183f1b" id="r_a05b5966d30bb15770e8104d7d0183f1b"><td class="memItemLeft">D3D12_VIEWPORT&#160;</td><td class="memItemRight"><a class="el" href="#a05b5966d30bb15770e8104d7d0183f1b">viewport</a> = {}</td></tr>
-<tr class="memitem:a679cbfc1bcf66f0c58a21580a411bd2e" id="r_a679cbfc1bcf66f0c58a21580a411bd2e"><td class="memItemLeft">D3D12_RECT&#160;</td><td class="memItemRight"><a class="el" href="#a679cbfc1bcf66f0c58a21580a411bd2e">scissorRect</a> = {}</td></tr>
 <tr class="memitem:a3b9bf0727cc7aea7de42f9afe82e0c46" id="r_a3b9bf0727cc7aea7de42f9afe82e0c46"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3b9bf0727cc7aea7de42f9afe82e0c46">width</a> = 0</td></tr>
 <tr class="memitem:aaaddcb875742327d39925d6663e51b3a" id="r_aaaddcb875742327d39925d6663e51b3a"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#aaaddcb875742327d39925d6663e51b3a">height</a> = 0</td></tr>
+<tr class="memitem:a05b5966d30bb15770e8104d7d0183f1b" id="r_a05b5966d30bb15770e8104d7d0183f1b"><td class="memItemLeft">D3D12_VIEWPORT&#160;</td><td class="memItemRight"><a class="el" href="#a05b5966d30bb15770e8104d7d0183f1b">viewport</a> = {}</td></tr>
+<tr class="memitem:a679cbfc1bcf66f0c58a21580a411bd2e" id="r_a679cbfc1bcf66f0c58a21580a411bd2e"><td class="memItemLeft">D3D12_RECT&#160;</td><td class="memItemRight"><a class="el" href="#a679cbfc1bcf66f0c58a21580a411bd2e">scissorRect</a> = {}</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 静的非公開変数類</h2></td></tr>
 <tr class="memitem:adf4a20ee58ee39fe2565e06f2f691177" id="r_adf4a20ee58ee39fe2565e06f2f691177"><td class="memItemLeft">static const <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#adf4a20ee58ee39fe2565e06f2f691177">FrameCount</a> = 2</td></tr>
+<tr class="memdesc:adf4a20ee58ee39fe2565e06f2f691177"><td class="mdescLeft">&#160;</td><td class="mdescRight">ダブルバッファリング用のフレーム数  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00007">7</a> 行目に定義があります。</p>
+<div class="textblock"><p>🎮 GPUコンテキストのラッパー。描画パイプラインの基盤。 </p>
+<p>Device, CommandQueue, SwapChain など主要なDX12オブジェクトを管理します。 また、フレームの開始(Begin)・終了(End)処理や、GPUとの同期(Fence)も担当します。</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+🖼 Swap Chain (Double Buffering)</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">Buffer 0 (Font)  </th><th class="markdownTableHeadCenter">Buffer 1 (Back)  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">Displaying 📺  </td><td class="markdownTableBodyCenter">Rendering 🖌  </td></tr>
+</table>
+<p>VSyncに合わせてフリップすることでティアリングを防ぎます。 </p>
+
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00033">33</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="a8be8bf60243c473cd1b7fda332c5c2df" name="a8be8bf60243c473cd1b7fda332c5c2df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8be8bf60243c473cd1b7fda332c5c2df">&#9670;&#160;</a></span>GraphicsContext()</h2>
@@ -218,7 +240,10 @@ Span::GraphicsContext 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00162">162</a> 行目に定義があります。</p>
+<p>フレーム描画の開始処理。 コマンドアロケータのリセット、バックバッファのクリア、RTVの設定を行います。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>描画コマンドを積むための CommandList </dd></dl>
+
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00173">173</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -245,7 +270,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00060">60</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00071">71</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -277,7 +302,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00147">147</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00158">158</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -309,7 +334,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00113">113</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00124">124</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -341,7 +366,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00045">45</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00056">56</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -373,7 +398,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00102">102</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00113">113</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -405,7 +430,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00092">92</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00103">103</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -437,7 +462,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00068">68</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00079">79</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -474,7 +499,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00154">154</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00165">165</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -503,7 +528,9 @@ Span::GraphicsContext 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00193">193</a> 行目に定義があります。</p>
+<p>フレーム描画の終了処理。 リソースバリアの遷移、コマンドリストの実行、Present(画面更新)、次フレームへの待機を行います。 </p>
+
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00204">204</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -530,7 +557,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00032">32</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00079">79</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -557,7 +584,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00031">31</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00078">78</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -576,7 +603,7 @@ Span::GraphicsContext 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00278">278</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00289">289</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -603,7 +630,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00034">34</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00081">81</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -630,7 +657,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00030">30</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00077">77</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -657,7 +684,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00033">33</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00080">80</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -675,6 +702,15 @@ Span::GraphicsContext 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>DX12デバイスとスワップチェーンを初期化します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>描画対象のウィンドウ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功なら true </dd></dl>
 
 <p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00014">14</a> 行目に定義があります。</p>
 <div class="dynheader">
@@ -704,7 +740,9 @@ Span::GraphicsContext 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00239">239</a> 行目に定義があります。</p>
+<p>ウィンドウサイズ時のバッファ再生成処理 </p>
+
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00250">250</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -728,7 +766,9 @@ Span::GraphicsContext 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00263">263</a> 行目に定義があります。</p>
+<p>現在のレンダーターゲットをバックバッファ (スワップチェーン) に戻します。 オフスクリーン描画からメイン描画に戻る際に使用します。 </p>
+
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00274">274</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -747,7 +787,9 @@ Span::GraphicsContext 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00036">36</a> 行目に定義があります。</p>
+<p>全リソースを解放し、GPU処理の完了を待機して終了します。 </p>
+
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00045">45</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -776,7 +818,10 @@ Span::GraphicsContext 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00226">226</a> 行目に定義があります。</p>
+<p>GPUの処理完了をCPU側で待機します。 </p>
+<dl class="section warning"><dt>警告</dt><dd>パフォーマンス定価の原因になるため、初期化・終了・リサイズ時のみ使用してください。 </dd></dl>
+
+<p class="definition"> <a class="el" href="GraphicsContext_8cpp_source.html">GraphicsContext.cpp</a> の <a class="el" href="GraphicsContext_8cpp_source.html#l00237">237</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -806,7 +851,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00064">64</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00117">117</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -830,7 +875,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00065">65</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00118">118</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -854,7 +899,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00056">56</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00107">107</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -878,7 +923,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00063">63</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00114">114</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -902,7 +947,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00055">55</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00106">106</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -926,7 +971,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00059">59</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00110">110</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -950,7 +995,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00054">54</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00105">105</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -974,7 +1019,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00068">68</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00121">121</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -998,7 +1043,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00070">70</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00123">123</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1022,7 +1067,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00069">69</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00122">122</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1046,7 +1091,9 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00051">51</a> 行目に定義があります。</p>
+<p>ダブルバッファリング用のフレーム数 </p>
+
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00102">102</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1070,7 +1117,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00073">73</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00126">126</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1094,7 +1141,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00079">79</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00130">130</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1118,7 +1165,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00062">62</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00113">113</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1142,7 +1189,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00074">74</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00127">127</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1166,7 +1213,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00058">58</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00109">109</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1190,7 +1237,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00076">76</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00132">132</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1214,7 +1261,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00057">57</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00108">108</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1238,7 +1285,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00075">75</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00131">131</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1262,7 +1309,7 @@ Span::GraphicsContext 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00078">78</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GraphicsContext_8h_source.html">GraphicsContext.h</a> の <a class="el" href="GraphicsContext_8h_source.html#l00129">129</a> 行目に定義があります。</p>
 
 </div>
 </div>

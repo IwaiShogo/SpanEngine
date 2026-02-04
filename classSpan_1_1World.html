@@ -169,24 +169,24 @@ Span::World 連携図</div>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。 </p>
 <p>WorldはECSパターンのコンテナであり、以下の役割を持ちます。 </p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
 🏗️ アーキテクチャ (Architecture)</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Module  </th><th class="markdownTableHeadLeft">Description  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><b><a class="el" href="classSpan_1_1EntityManager.html">EntityManager</a></b>  </td><td class="markdownTableBodyLeft"><a class="el" href="structSpan_1_1Entity.html" title="📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。">Entity</a> IDの発行、生存管理 (生死判定) を行います。  </td></tr>
+<td class="markdownTableBodyLeft"><b><a class="el" href="classSpan_1_1EntityManager.html" title="🆔 Entity IDの発行、破棄、有効性チェックを行う管理クラス。">EntityManager</a></b>  </td><td class="markdownTableBodyLeft"><a class="el" href="structSpan_1_1Entity.html" title="📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。">Entity</a> IDの発行、生存管理 (生死判定) を行います。  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft"><b><a class="el" href="classSpan_1_1ArchetypeManager.html">ArchetypeManager</a></b>  </td><td class="markdownTableBodyLeft">コンポーネントの組み合わせ (型) 毎にデータを分類・管理します。  </td></tr>
+<td class="markdownTableBodyLeft"><b><a class="el" href="classSpan_1_1ArchetypeManager.html" title="🏭 アーキタイプファクトリー&amp;キャッシュ。">ArchetypeManager</a></b>  </td><td class="markdownTableBodyLeft">コンポーネントの組み合わせ (型) 毎にデータを分類・管理します。  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><b><a class="el" href="classSpan_1_1System.html">System</a> Manager</b>  </td><td class="markdownTableBodyLeft">登録されたシステムの更新順序を制御し、実行します。  </td></tr>
+<td class="markdownTableBodyLeft"><b><a class="el" href="classSpan_1_1System.html" title="🧠 ゲームロジックを実装するための基底クラス。">System</a> Manager</b>  </td><td class="markdownTableBodyLeft">登録されたシステムの更新順序を制御し、実行します。  </td></tr>
 </table>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
 🔄 メモリフロー (Memory Flow)</h3>
 <ol type="1">
 <li><span class="tt"><a class="el" href="#a5e8a64b9e0f3715d21c43f92591e7d88" title="指定されたコンポーネントを持つ新しいエンティティを作成します。">CreateEntity</a></span> でエンティティを生成</li>
-<li>コンポーネント構成に基づいて適切な <span class="tt"><a class="el" href="classSpan_1_1Archetype.html" title="アーキタイプ 同じコンポーネント構成を持つEntity群を管理する。 データの「型」だけでなく、実際の「メモリ(Chunk)」も管理する。">Archetype</a></span> が選択される。</li>
-<li>その中の <span class="tt"><a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a></span> (16KBブロック) にメモリが確保され、データが配置される。 </li>
+<li>コンポーネント構成に基づいて適切な <span class="tt"><a class="el" href="classSpan_1_1Archetype.html" title="🏢 エンティティのコンテナクラス。メモリレイアウトを管理します。">Archetype</a></span> が選択される。</li>
+<li>その中の <span class="tt"><a class="el" href="structSpan_1_1Chunk.html" title="🧱 コンポーネントデータを格納する固定サイズのメモリブロック。">Chunk</a></span> (16KBブロック) にメモリが確保され、データが配置される。 </li>
 </ol>
 
 <p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00055">55</a> 行目に定義があります。</p>
@@ -292,7 +292,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00164">164</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00163">163</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -346,7 +346,7 @@ template&lt;typename T, typename... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>登録されたシステムへの生ポインタ </dd></dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00323">323</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00322">322</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -470,7 +470,7 @@ template&lt;typename... ComponentTypes, typename Func&gt; </div>
 </div><div class="memdoc">
 
 <p>指定したコンポーネントを持つ全てのEntityに対して関数を実行します。 </p>
-<p>アーキタイプごとに整理されたメモリ (<a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a>) をシーケンシャルにアクセスするため、 非常にキャッシュ効率が良く、高速に動作します。</p>
+<p>アーキタイプごとに整理されたメモリ (<a class="el" href="structSpan_1_1Chunk.html" title="🧱 コンポーネントデータを格納する固定サイズのメモリブロック。">Chunk</a>) をシーケンシャルにアクセスするため、 非常にキャッシュ効率が良く、高速に動作します。</p>
 <dl class="tparams"><dt>テンプレート引数</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">ComponentTypes</td><td>要求するコンポーネントの型リスト </td></tr>
@@ -479,7 +479,7 @@ template&lt;typename... ComponentTypes, typename Func&gt; </div>
 </dl>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">func</td><td>実行するラムダ式 <span class="tt">[](<a class="el" href="structSpan_1_1Entity.html" title="📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。">Entity</a> e, <a class="el" href="classSpan_1_1ComponentType.html" title="型(T)から一意のIDを取得するテンプレートクラス ユーザーが struct Position を定義すると、 ComponentType&lt;Position&gt;::GetID() で自動的にユニークな番号...">ComponentType</a>&amp;... comps) { ... }</span></td></tr>
+    <tr><td class="paramname">func</td><td>実行するラムダ式 <span class="tt">[](<a class="el" href="structSpan_1_1Entity.html" title="📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。">Entity</a> e, <a class="el" href="classSpan_1_1ComponentType.html" title="🏷️ C++の型(T)をランタイムIDに変換する静的ヘルパークラス。">ComponentType</a>&amp;... comps) { ... }</span></td></tr>
   </table>
   </dd>
 </dl>
@@ -489,7 +489,7 @@ template&lt;typename... ComponentTypes, typename Func&gt; </div>
 <div class="line">    t.Position += v.Value * DeltaTime;</div>
 <div class="line">});</div>
 </div><!-- fragment --> 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00384">384</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00383">383</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -543,7 +543,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>コンポーネントへの参照。持っていない場合は <span class="tt">nullptr</span>。 </dd></dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00267">267</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00266">266</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -597,7 +597,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>コンポーネントへのポインタ。持っていない場合は <span class="tt">nullptr</span>。 </dd></dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00286">286</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00285">285</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -636,7 +636,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00472">472</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00471">471</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -677,7 +677,7 @@ template&lt;typename T&gt; </div>
 
 <p>指定したコンポーネントを持っているか確認します。 </p>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00249">249</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00248">248</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -716,7 +716,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00488">488</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00487">487</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -755,7 +755,7 @@ template&lt;typename... Ts&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00482">482</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00481">481</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -843,7 +843,7 @@ template&lt;typename... Ts&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00428">428</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00427">427</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -896,7 +896,7 @@ template&lt;typename... ComponentTypes, typename Func&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00517">517</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00516">516</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -954,7 +954,7 @@ template&lt;typename... ComponentTypes, typename Func, size_t... Indices&gt; </d
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00496">496</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00495">495</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1003,7 +1003,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00210">210</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00209">209</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1044,7 +1044,7 @@ template&lt;typename T&gt; </div>
 <p>コンポーネントの値を設定 (上書き) します。 </p>
 <dl class="section note"><dt>覚え書き</dt><dd>エンティティがそのコンポーネントを持っていない場合、処理はスキップされます。 </dd></dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00304">304</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00303">303</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1078,7 +1078,7 @@ template&lt;typename T&gt; </div>
 
 <p>全システムの終了処理を行い、リストをクリアします。 </p>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00354">354</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00353">353</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1130,7 +1130,7 @@ template&lt;typename T&gt; </div>
 <p>全システムのアクティブな <span class="tt">OnUpdate</span> を呼び出します。 </p>
 <p>通常、ゲームループの毎フレームで呼び出されます。 </p>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00340">340</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00339">339</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1155,7 +1155,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00417">417</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00416">416</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1181,7 +1181,7 @@ template&lt;typename T&gt; </div>
 
 <p>IDからメモリ位置への高速ルックアップテーブル </p>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00423">423</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00422">422</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1205,7 +1205,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00416">416</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00415">415</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1229,7 +1229,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00420">420</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00419">419</a> 行目に定義があります。</p>
 
 </div>
 </div>

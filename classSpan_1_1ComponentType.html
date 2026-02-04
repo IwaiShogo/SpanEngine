@@ -93,7 +93,7 @@ $(function(){initNavTree('classSpan_1_1ComponentType.html','','classSpan_1_1Comp
 </div><!--header-->
 <div class="contents">
 
-<p>型(T)から一意のIDを取得するテンプレートクラス ユーザーが struct Position を定義すると、 <a class="el" href="#aa561932b92eabbe74390cb7b0cef0de6">ComponentType&lt;Position&gt;::GetID()</a> で自動的にユニークな番号が発行される。  
+<p>🏷️ C++の型(T)をランタイムIDに変換する静的ヘルパークラス。  
  <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="ComponentType_8h_source.html">ComponentType.h</a>&gt;</code></p>
@@ -106,15 +106,33 @@ Span::ComponentType&lt; T &gt; 連携図</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静的公開メンバ関数</h2></td></tr>
 <tr class="memitem:aa561932b92eabbe74390cb7b0cef0de6" id="r_aa561932b92eabbe74390cb7b0cef0de6"><td class="memItemLeft">static <a class="el" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a>&#160;</td><td class="memItemRight"><a class="el" href="#aa561932b92eabbe74390cb7b0cef0de6">GetID</a> ()</td></tr>
+<tr class="memdesc:aa561932b92eabbe74390cb7b0cef0de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">型 <span class="tt">T</span> に対応する一意のIDを取得します。  <br /></td></tr>
 <tr class="memitem:a76581368e39c57cf4c4bf89e30a02ba9" id="r_a76581368e39c57cf4c4bf89e30a02ba9"><td class="memItemLeft">static size_t&#160;</td><td class="memItemRight"><a class="el" href="#a76581368e39c57cf4c4bf89e30a02ba9">GetSize</a> ()</td></tr>
+<tr class="memdesc:a76581368e39c57cf4c4bf89e30a02ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネントのメモリサイズ (バイト)  <br /></td></tr>
 <tr class="memitem:a08eb3686c23d2fb479c1e4a6d0677c4a" id="r_a08eb3686c23d2fb479c1e4a6d0677c4a"><td class="memItemLeft">static size_t&#160;</td><td class="memItemRight"><a class="el" href="#a08eb3686c23d2fb479c1e4a6d0677c4a">GetAlignment</a> ()</td></tr>
+<tr class="memdesc:a08eb3686c23d2fb479c1e4a6d0677c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネントのメモリアライメント要件  <br /></td></tr>
 <tr class="memitem:acfe4b00076e91443e18ed3ca46f27dbc" id="r_acfe4b00076e91443e18ed3ca46f27dbc"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#acfe4b00076e91443e18ed3ca46f27dbc">GetName</a> ()</td></tr>
+<tr class="memdesc:acfe4b00076e91443e18ed3ca46f27dbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">デバッグ用の型名取得  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
-class Span::ComponentType&lt; T &gt;</div><p>型(T)から一意のIDを取得するテンプレートクラス ユーザーが struct Position を定義すると、 <a class="el" href="#aa561932b92eabbe74390cb7b0cef0de6">ComponentType&lt;Position&gt;::GetID()</a> で自動的にユニークな番号が発行される。 </p>
+class Span::ComponentType&lt; T &gt;</div><p>🏷️ C++の型(T)をランタイムIDに変換する静的ヘルパークラス。 </p>
+<p>ユーザーが新しい構造体 (コンポーネント) を定義した際、手動でIDを割り当てる必要はありません。 このクラスが型名からハッシュ値を計算し、自動的に一意のIDを発行します。</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+🔄 ID生成フロー</h3>
+<ol type="1">
+<li><span class="tt">typeid(T).name()</span> で型名文字列を取得 (例: "struct Span::Transform")</li>
+<li><span class="tt">std::hash</span> で文字列を 32bit 整数にハッシュ化</li>
+<li>静的ローカル変数としてキャッシュし、次回以降は計算無しで返す</li>
+</ol>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>対象となるコンポーネント構造体 </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00016">16</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00037">37</a> 行目に定義があります。</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a08eb3686c23d2fb479c1e4a6d0677c4a" name="a08eb3686c23d2fb479c1e4a6d0677c4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08eb3686c23d2fb479c1e4a6d0677c4a">&#9670;&#160;</a></span>GetAlignment()</h2>
@@ -141,7 +159,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00034">34</a> 行目に定義があります。</p>
+<p>コンポーネントのメモリアライメント要件 </p>
+
+<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00062">62</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -170,7 +190,11 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00019">19</a> 行目に定義があります。</p>
+<p>型 <span class="tt">T</span> に対応する一意のIDを取得します。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>ハッシュ化されたコンポーネントID </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>プログラム実行中、常に同じ値が返ることが保証されます。 </dd></dl>
+
+<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00045">45</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -204,7 +228,10 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00035">35</a> 行目に定義があります。</p>
+<p>デバッグ用の型名取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>コンパイラ依存の型名文字列 (MSVCの場合は可読性が高い) </dd></dl>
+
+<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00068">68</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -233,7 +260,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00033">33</a> 行目に定義があります。</p>
+<p>コンポーネントのメモリサイズ (バイト) </p>
+
+<p class="definition"> <a class="el" href="ComponentType_8h_source.html">ComponentType.h</a> の <a class="el" href="ComponentType_8h_source.html#l00059">59</a> 行目に定義があります。</p>
 
 </div>
 </div>

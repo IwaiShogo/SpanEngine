@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1Mesh.html','','classSpan_1_1Mesh-members'
 </div><!--header-->
 <div class="contents">
 
+<p>📦 頂点データをGPUメモリ (<a class="el" href="structSpan_1_1Vertex.html" title="頂点フォーマット。">Vertex</a> Buffer) に保持するクラス。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="Mesh_8h_source.html">Mesh.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::Mesh 連携図</div>
@@ -103,8 +106,10 @@ Span::Mesh 連携図</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:ae731b2ee0cf4e9bbfd30b70285a6688f" id="r_ae731b2ee0cf4e9bbfd30b70285a6688f"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ae731b2ee0cf4e9bbfd30b70285a6688f">Initialize</a> (ID3D12Device *device, const std::vector&lt; <a class="el" href="structSpan_1_1Vertex.html">Vertex</a> &gt; &amp;vertices)</td></tr>
+<tr class="memdesc:ae731b2ee0cf4e9bbfd30b70285a6688f"><td class="mdescLeft">&#160;</td><td class="mdescRight">頂点配列からメッシュを初期化します。  <br /></td></tr>
 <tr class="memitem:aca0bddbe8557e777c6cbb1a519e360af" id="r_aca0bddbe8557e777c6cbb1a519e360af"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aca0bddbe8557e777c6cbb1a519e360af">Shutdown</a> ()</td></tr>
 <tr class="memitem:a778cd9c09642759f91c6f0cbe53503a1" id="r_a778cd9c09642759f91c6f0cbe53503a1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a778cd9c09642759f91c6f0cbe53503a1">Draw</a> (ID3D12GraphicsCommandList *commandList)</td></tr>
+<tr class="memdesc:a778cd9c09642759f91c6f0cbe53503a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">描画コマンドを発行します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静的公開メンバ関数</h2></td></tr>
@@ -123,8 +128,13 @@ Span::Mesh 連携図</div>
 <tr class="memitem:a7a4a75126636a829da28adff5d416a50" id="r_a7a4a75126636a829da28adff5d416a50"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a7a4a75126636a829da28adff5d416a50">vertexCount</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00014">14</a> 行目に定義があります。</p>
+<div class="textblock"><p>📦 頂点データをGPUメモリ (<a class="el" href="structSpan_1_1Vertex.html" title="頂点フォーマット。">Vertex</a> Buffer) に保持するクラス。 </p>
+<ul>
+<li><b>VertexBufferView (VBV)</b> を通じて描画コマンドにバインドされます。</li>
+<li>現時点ではインデックスバッファを使用しない実装になっています (将来的に拡張推奨)。 </li>
+</ul>
+
+<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00038">38</a> 行目に定義があります。</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a404f6d191f55c833509a3ccfe410ca80" name="a404f6d191f55c833509a3ccfe410ca80"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a404f6d191f55c833509a3ccfe410ca80">&#9670;&#160;</a></span>CreateCapsule()</h2>
@@ -449,6 +459,15 @@ Span::Mesh 連携図</div>
       </table>
 </div><div class="memdoc">
 
+<p>描画コマンドを発行します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">commandList</td><td>記録中のコマンドリスト </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>覚え書き</dt><dd>事前に <span class="tt">IASetPrimitiveTopology</span> 等の設定が必要です。 </dd></dl>
+
 <p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00067">67</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
@@ -476,6 +495,15 @@ Span::Mesh 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>頂点配列からメッシュを初期化します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>D3D12デバイス </td></tr>
+    <tr><td class="paramname">vertices</td><td>頂点データのリスト </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00005">5</a> 行目に定義があります。</p>
 <div class="dynheader">
@@ -526,7 +554,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00033">33</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00069">69</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -550,7 +578,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00034">34</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00070">70</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -574,7 +602,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00035">35</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00071">71</a> 行目に定義があります。</p>
 
 </div>
 </div>

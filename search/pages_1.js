@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['bit_20layout_0',['📊 ビットレイアウト (Bit Layout)',['../structSpan_1_1EntityID.html#autotoc_md2',1,'']]]
+  ['alignment_0',['📏 Memory Layout (16-byte alignment)',['../structSpan_1_1MaterialData.html#autotoc_md47',1,'']]],
+  ['architecture_1',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md26',1,'']]]
 ];

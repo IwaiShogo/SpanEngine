@@ -1,5 +1,15 @@
 var NAVTREEINDEX7 =
 {
+"structSpan_1_1Vector3.html#aeb5789c19211db815d7fb391ebb47480":[1,0,0,3,1],
+"structSpan_1_1Vector3.html#af88324745a94c795f6b1190d5a7e7247":[0,0,0,4,3],
+"structSpan_1_1Vector3.html#af88324745a94c795f6b1190d5a7e7247":[1,0,0,3,3],
+"structSpan_1_1Vector3.html#afbc86249a7f3e1ce9c96938fb7e02d67":[0,0,0,4,26],
+"structSpan_1_1Vector3.html#afbc86249a7f3e1ce9c96938fb7e02d67":[1,0,0,3,26],
+"structSpan_1_1Vector3.html#afd00ea2d739d71571828e2d44b41c0c6":[0,0,0,4,4],
+"structSpan_1_1Vector3.html#afd00ea2d739d71571828e2d44b41c0c6":[1,0,0,3,4],
+"structSpan_1_1Vector4.html":[0,0,0,5],
+"structSpan_1_1Vector4.html":[1,0,0,4],
+"structSpan_1_1Vector4.html#a0e0c61bf4170a4b19ddbb9f29d95fc48":[0,0,0,5,5],
 "structSpan_1_1Vector4.html#a0e0c61bf4170a4b19ddbb9f29d95fc48":[1,0,0,4,5],
 "structSpan_1_1Vector4.html#a1446aa2df739d33a6a708e3f5b6c27a0":[0,0,0,5,7],
 "structSpan_1_1Vector4.html#a1446aa2df739d33a6a708e3f5b6c27a0":[1,0,0,4,7],

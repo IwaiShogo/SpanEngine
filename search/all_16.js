@@ -1,15 +1,19 @@
 var searchData=
 [
-  ['v_0',['V',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa5206560a306a2e085a437fd258eb57ce',1,'Span']]],
-  ['value_1',['Value',['../structSpan_1_1Active.html#a5dcb94616d53c7e220a27254e9005248',1,'Span::Active::Value'],['../structSpan_1_1Layer.html#a693754f9d82b39c68a000678618a9904',1,'Span::Layer::Value'],['../structSpan_1_1LocalToWorld.html#a2b5844413fcf24ef8eabecc9c0e4c568',1,'Span::LocalToWorld::Value'],['../structSpan_1_1Name.html#acdd7b0d9049c91d08576bc5b533c8939',1,'Span::Name::Value'],['../structSpan_1_1Tag.html#a7869bcecde88e836fe2b1ad4dfba5a28',1,'Span::Tag::Value']]],
-  ['vector2_2',['Vector2',['../structSpan_1_1Vector2.html',1,'Span::Vector2'],['../structSpan_1_1Vector2.html#a3e74d032b6631247d62acb7add2cab44',1,'Span::Vector2::Vector2()'],['../structSpan_1_1Vector2.html#a6a3c22ec6144ead9287b9cb20f4374c5',1,'Span::Vector2::Vector2(float _x, float _y)'],['../structSpan_1_1Vector2.html#ae4fc220bb9f07a0abbb2ec3482e9461f',1,'Span::Vector2::Vector2(float v)']]],
-  ['vector3_3',['Vector3',['../structSpan_1_1Vector3.html',1,'Span::Vector3'],['../structSpan_1_1Vector3.html#a5b73d20c05747047ff35465dd3af4634',1,'Span::Vector3::Vector3()'],['../structSpan_1_1Vector3.html#aeb5789c19211db815d7fb391ebb47480',1,'Span::Vector3::Vector3(float _x, float _y, float _z)'],['../structSpan_1_1Vector3.html#a68450768a263d12d8190a8a157d29d96',1,'Span::Vector3::Vector3(float v)']]],
-  ['vector4_4',['Vector4',['../structSpan_1_1Vector4.html',1,'Span::Vector4'],['../structSpan_1_1Vector4.html#a47ee7b30ca2bde2445994cb2e735b6b4',1,'Span::Vector4::Vector4()'],['../structSpan_1_1Vector4.html#a6de528f98f9c26f3bd3b54849ea8ec62',1,'Span::Vector4::Vector4(float _x, float _y, float _z, float _w)'],['../structSpan_1_1Vector4.html#af34c08bb49c48ba67f7330d601fd666b',1,'Span::Vector4::Vector4(const Vector3 &amp;v, float _w)']]],
-  ['vertex_5',['Vertex',['../structSpan_1_1Vertex.html',1,'Span::Vertex'],['../namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6',1,'Span::Vertex']]],
-  ['vertexbuffer_6',['vertexBuffer',['../classSpan_1_1Mesh.html#ab5326828b5a500cf38a357fcfeee3381',1,'Span::Mesh']]],
-  ['vertexbufferview_7',['vertexBufferView',['../classSpan_1_1Mesh.html#a2b9c77cd3fe0c597c5c32d950a92f56d',1,'Span::Mesh']]],
-  ['vertexcount_8',['vertexCount',['../classSpan_1_1Mesh.html#a7a4a75126636a829da28adff5d416a50',1,'Span::Mesh']]],
-  ['viewmatrix_9',['viewMatrix',['../classSpan_1_1Renderer.html#af03a4b1bbb7c73258554f363991196c5',1,'Span::Renderer']]],
-  ['viewport_10',['viewport',['../classSpan_1_1GraphicsContext.html#a05b5966d30bb15770e8104d7d0183f1b',1,'Span::GraphicsContext']]],
-  ['vs_11',['vs',['../classSpan_1_1Renderer.html#ab1be30cd3501208577f218d42903df76',1,'Span::Renderer']]]
+  ['u_0',['U',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa4c614360da93c0a041b22e537de151eb',1,'Span']]],
+  ['ui_1',['UI',['../namespaceSpan.html#a0218d3201263d090d434e06833479948a71ff71526d15db86eb50fcac245d183b',1,'Span']]],
+  ['uint16_2',['uint16',['../namespaceSpan.html#a7e9a8de14762ae0ab1c4343b8326fea8',1,'Span']]],
+  ['uint32_3',['uint32',['../namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9',1,'Span']]],
+  ['uint64_4',['uint64',['../namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d',1,'Span']]],
+  ['uint8_5',['uint8',['../namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd',1,'Span']]],
+  ['up_6',['Up',['../structSpan_1_1Vector3.html#a6b74299445713044602688c5c14aa6d2',1,'Span::Vector3']]],
+  ['update_7',['Update',['../classSpan_1_1Input.html#a3487299cd56899d0ddfad97dc6497e4c',1,'Span::Input::Update()'],['../classSpan_1_1Time.html#a990876cca93479473bd4e5e9aa5c8dfc',1,'Span::Time::Update()'],['../classSpan_1_1ConstantBuffer.html#ab85d99301f8c8372ce2d1b4765ee6345',1,'Span::ConstantBuffer::Update()'],['../classSpan_1_1Material.html#a879a957f83f3a9a274b3415614ffe18f',1,'Span::Material::Update()']]],
+  ['updatesystems_8',['UpdateSystems',['../classSpan_1_1World.html#a0cf3c16fe3672409ea7d34226220111c',1,'Span::World']]],
+  ['upload_20process_9',['🔄 Upload Process',['../classSpan_1_1Texture.html#autotoc_md52',1,'']]],
+  ['uploadbuffer_10',['uploadBuffer',['../classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a',1,'Span::Texture']]],
+  ['uploadtexture_11',['UploadTexture',['../classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749',1,'Span::Texture']]],
+  ['usage_12',['Usage',['../classSpan_1_1EntityBuilder.html#autotoc_md17',1,'📝 Usage'],['../classSpan_1_1ConstantBuffer.html#autotoc_md31',1,'📝 Usage']]],
+  ['usedoffset_13',['usedOffset',['../classSpan_1_1MemoryArena.html#a029c90126f890269c315d7c8f34af0bd',1,'Span::MemoryArena']]],
+  ['usetexture_14',['useTexture',['../structSpan_1_1MaterialData.html#a9d1bff25941d1bddd389c32dc8c44f1d',1,'Span::MaterialData']]],
+  ['uv_15',['uv',['../structSpan_1_1Vertex.html#abac13f64d1c801dba33ee5ffac17474c',1,'Span::Vertex']]]
 ];

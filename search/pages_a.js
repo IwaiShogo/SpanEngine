@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📊_20ビットレイアウト_20bit_20layout_0',['📊 ビットレイアウト (Bit Layout)',['../structSpan_1_1EntityID.html#autotoc_md2',1,'']]]
+  ['resource_20barrier_20state_20flow_0',['🔄 Resource Barrier State Flow',['../classSpan_1_1RenderTarget.html#autotoc_md37',1,'']]]
 ];

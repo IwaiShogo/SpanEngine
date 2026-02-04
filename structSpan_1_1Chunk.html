@@ -93,7 +93,7 @@ $(function(){initNavTree('structSpan_1_1Chunk.html','','structSpan_1_1Chunk-memb
 </div><!--header-->
 <div class="contents">
 
-<p>チャンク (<a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a>) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。  
+<p>🧱 コンポーネントデータを格納する固定サイズのメモリブロック。  
  <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="Chunk_8h_source.html">Chunk.h</a>&gt;</code></p>
@@ -108,19 +108,35 @@ Span::Chunk 連携図</div>
 <tr class="memitem:aa1c814331a30276427362db4d60998e3" id="r_aa1c814331a30276427362db4d60998e3"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aa1c814331a30276427362db4d60998e3">Chunk</a> (<a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> capacity)</td></tr>
 <tr class="memitem:acaca19fc7989fccf95ffcd409168f09a" id="r_acaca19fc7989fccf95ffcd409168f09a"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#acaca19fc7989fccf95ffcd409168f09a">~Chunk</a> ()</td></tr>
 <tr class="memitem:ae23efbf1b12c669b408f2324f4b21c7e" id="r_ae23efbf1b12c669b408f2324f4b21c7e"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#ae23efbf1b12c669b408f2324f4b21c7e">GetBuffer</a> (size_t offset) const</td></tr>
+<tr class="memdesc:ae23efbf1b12c669b408f2324f4b21c7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定したオフセット位置にあるバッファの先頭アドレスを取得します。  <br /></td></tr>
 <tr class="memitem:a6bd9e470ec1f88ff4d5e7481a6608ccf" id="r_a6bd9e470ec1f88ff4d5e7481a6608ccf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6bd9e470ec1f88ff4d5e7481a6608ccf">MoveEntityData</a> (<a class="el" href="classSpan_1_1Archetype.html">Archetype</a> *arch, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> srcIndex, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> destIndex)</td></tr>
+<tr class="memdesc:a6bd9e470ec1f88ff4d5e7481a6608ccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">チャンク内のエンティティデータを移動 (コピー) します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
 <tr class="memitem:a9c06b41981e0694f79894e16a6c92bdb" id="r_a9c06b41981e0694f79894e16a6c92bdb"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a9c06b41981e0694f79894e16a6c92bdb">Memory</a> = nullptr</td></tr>
+<tr class="memdesc:a9c06b41981e0694f79894e16a6c92bdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">生メモリブロック (16KB)  <br /></td></tr>
 <tr class="memitem:aedc5274d60df70ca8a41d9298168781d" id="r_aedc5274d60df70ca8a41d9298168781d"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#aedc5274d60df70ca8a41d9298168781d">Count</a> = 0</td></tr>
+<tr class="memdesc:aedc5274d60df70ca8a41d9298168781d"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在格納されているEntity数  <br /></td></tr>
 <tr class="memitem:a191a5a7d054efc388aa95de168e31706" id="r_a191a5a7d054efc388aa95de168e31706"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a191a5a7d054efc388aa95de168e31706">Capacity</a> = 0</td></tr>
+<tr class="memdesc:a191a5a7d054efc388aa95de168e31706"><td class="mdescLeft">&#160;</td><td class="mdescRight">このチャンクに格納できる最大数  <br /></td></tr>
 <tr class="memitem:a5f085ad45cb9c83847d4c712ae8dc026" id="r_a5f085ad45cb9c83847d4c712ae8dc026"><td class="memItemLeft">class <a class="el" href="classSpan_1_1Archetype.html">Archetype</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a5f085ad45cb9c83847d4c712ae8dc026">OwnerArchetype</a> = nullptr</td></tr>
+<tr class="memdesc:a5f085ad45cb9c83847d4c712ae8dc026"><td class="mdescLeft">&#160;</td><td class="mdescRight">所属するアーキタイプへのポインタ  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock"><p>チャンク (<a class="el" href="structSpan_1_1Chunk.html" title="チャンク (Chunk) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。">Chunk</a>) コンポーネントデータを格納する固定サイズのメモリブロック。 1つのチャンクには、同じアーキタイプのEntityデータだけが入ります。 </p>
+<div class="textblock"><p>🧱 コンポーネントデータを格納する固定サイズのメモリブロック。 </p>
+<p><a class="el" href="namespaceSpan.html">Span</a> EngineのECSにおけるメモリ割り当ての最小単位です。 1つのチャンクには、**同じアーキタイプ** (同じコンポーネント構成) のエンティティデータのみが格納されます。</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+🧠 メモリ構造 (Memory Layout)</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">Header  </th><th class="markdownTableHeadLeft">EntityIDs[]  </th><th class="markdownTableHeadLeft">ComponentA[]  </th><th class="markdownTableHeadLeft">ComponentB[]  </th><th class="markdownTableHeadLeft">...  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">(N/A)  </td><td class="markdownTableBodyLeft"><span class="tt">[ID][ID]...</span>  </td><td class="markdownTableBodyLeft"><span class="tt">[Data][Data]...</span>  </td><td class="markdownTableBodyLeft"><span class="tt">[Data][Data]...</span>  </td><td class="markdownTableBodyLeft">...  </td></tr>
+</table>
+<p>このSoA (Structure of Arrays) 配置により、SIMDによる並列処理やキャッシュプリフェッチが最適化されます。 </p>
 
-<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00015">15</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00037">37</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="aa1c814331a30276427362db4d60998e3" name="aa1c814331a30276427362db4d60998e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa1c814331a30276427362db4d60998e3">&#9670;&#160;</a></span>Chunk()</h2>
@@ -184,7 +200,16 @@ Span::Chunk 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00033">33</a> 行目に定義があります。</p>
+<p>指定したオフセット位置にあるバッファの先頭アドレスを取得します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>チャンク先頭からのバイトオフセット </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>バッファへのポインタ </dd></dl>
+
+<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00059">59</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -211,6 +236,16 @@ Span::Chunk 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>チャンク内のエンティティデータを移動 (コピー) します。 </p>
+<p>配列の穴埋め (Swap-back削除) などに使用されます。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arch</td><td>データのレイアウト情報を持つアーキタイプ </td></tr>
+    <tr><td class="paramname">srcIndex</td><td>移動元のインデックス </td></tr>
+    <tr><td class="paramname">destIndex</td><td>移動先のインデックス </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"> <a class="el" href="Chunk_8cpp_source.html">Chunk.cpp</a> の <a class="el" href="Chunk_8cpp_source.html#l00023">23</a> 行目に定義があります。</p>
 <div class="dynheader">
@@ -239,7 +274,9 @@ Span::Chunk 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00024">24</a> 行目に定義があります。</p>
+<p>このチャンクに格納できる最大数 </p>
+
+<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00046">46</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -255,7 +292,9 @@ Span::Chunk 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00021">21</a> 行目に定義があります。</p>
+<p>現在格納されているEntity数 </p>
+
+<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00043">43</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -271,7 +310,9 @@ Span::Chunk 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00018">18</a> 行目に定義があります。</p>
+<p>生メモリブロック (16KB) </p>
+
+<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00040">40</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -287,7 +328,9 @@ Span::Chunk 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00027">27</a> 行目に定義があります。</p>
+<p>所属するアーキタイプへのポインタ </p>
+
+<p class="definition"> <a class="el" href="Chunk_8h_source.html">Chunk.h</a> の <a class="el" href="Chunk_8h_source.html#l00049">49</a> 行目に定義があります。</p>
 
 </div>
 </div>

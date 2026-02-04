@@ -92,27 +92,52 @@ $(function(){initNavTree('ModelLoader_8h_source.html','',''); });
   <div class="headertitle"><div class="title">ModelLoader.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="ModelLoader_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="Mesh_8h.html">Resources/Mesh.h</a>&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classSpan_1_1ModelLoader.html">    6</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1ModelLoader.html">ModelLoader</a></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keyword">static</span> std::vector&lt;Mesh*&gt; <a class="code hl_function" href="classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1">Load</a>(ID3D12Device* device, <span class="keyword">const</span> std::string&amp; filepath);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keyword">static</span> <a class="code hl_class" href="classSpan_1_1Mesh.html">Mesh</a>* <a class="code hl_function" href="classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a">ProcessMesh</a>(ID3D12Device* device, aiMesh* mesh, <span class="keyword">const</span> aiScene* scene);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    };</div>
+<a href="ModelLoader_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    ModelLoader.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   3Dモデルファイル(.fbx, .obj)のインポート処理。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="Mesh_8h.html">Resources/Mesh.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">     * @class   ModelLoader</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">     * @brief   🏗️ Assimpライブラリを使用したモデルローダー。</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * </span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     * @details</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">     * 外部形式のファイル読み込み、エンジンの `Mesh` 形式に変換します。</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">     * 将来的には、読み込み時間を短縮するために独自バイナリ形式(.spanmesh)へのキャッシュ機能を実装予定。</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classSpan_1_1ModelLoader.html">   25</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1ModelLoader.html">ModelLoader</a></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">         * @brief   モデルファイルをロードし、メッシュリストを返します</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">         * @param   device メッシュ生成用のデバイス</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">         * @param   filepath ファイルパス</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">         * @return  生成されたメッシュのポインタ配列</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keyword">static</span> std::vector&lt;Mesh*&gt; <a class="code hl_function" href="classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1">Load</a>(ID3D12Device* device, <span class="keyword">const</span> std::string&amp; filepath);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">static</span> <a class="code hl_class" href="classSpan_1_1Mesh.html">Mesh</a>* <a class="code hl_function" href="classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a">ProcessMesh</a>(ID3D12Device* device, aiMesh* mesh, <span class="keyword">const</span> aiScene* scene);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    };</div>
 </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="ttc" id="aMesh_8h_html"><div class="ttname"><a href="Mesh_8h.html">Mesh.h</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Mesh_html"><div class="ttname"><a href="classSpan_1_1Mesh.html">Span::Mesh</a></div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00014">Mesh.h:15</a></div></div>
-<div class="ttc" id="aclassSpan_1_1ModelLoader_html"><div class="ttname"><a href="classSpan_1_1ModelLoader.html">Span::ModelLoader</a></div><div class="ttdef"><b>Definition</b> <a href="#l00006">ModelLoader.h:7</a></div></div>
-<div class="ttc" id="aclassSpan_1_1ModelLoader_html_a06a5d6e12254629efcd0d56c7a3c21c1"><div class="ttname"><a href="classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1">Span::ModelLoader::Load</a></div><div class="ttdeci">static std::vector&lt; Mesh * &gt; Load(ID3D12Device *device, const std::string &amp;filepath)</div><div class="ttdef"><b>Definition</b> <a href="ModelLoader_8cpp_source.html#l00006">ModelLoader.cpp:6</a></div></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="ttc" id="aMesh_8h_html"><div class="ttname"><a href="Mesh_8h.html">Mesh.h</a></div><div class="ttdoc">3Dモデルの形状データ (頂点バッファ) 管理。</div></div>
+<div class="ttc" id="aclassSpan_1_1Mesh_html"><div class="ttname"><a href="classSpan_1_1Mesh.html">Span::Mesh</a></div><div class="ttdoc">📦 頂点データをGPUメモリ (Vertex Buffer) に保持するクラス。</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00038">Mesh.h:39</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ModelLoader_html"><div class="ttname"><a href="classSpan_1_1ModelLoader.html">Span::ModelLoader</a></div><div class="ttdoc">🏗️ Assimpライブラリを使用したモデルローダー。</div><div class="ttdef"><b>Definition</b> <a href="#l00025">ModelLoader.h:26</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ModelLoader_html_a06a5d6e12254629efcd0d56c7a3c21c1"><div class="ttname"><a href="classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1">Span::ModelLoader::Load</a></div><div class="ttdeci">static std::vector&lt; Mesh * &gt; Load(ID3D12Device *device, const std::string &amp;filepath)</div><div class="ttdoc">モデルファイルをロードし、メッシュリストを返します</div><div class="ttdef"><b>Definition</b> <a href="ModelLoader_8cpp_source.html#l00006">ModelLoader.cpp:6</a></div></div>
 <div class="ttc" id="aclassSpan_1_1ModelLoader_html_a97659b329036caa77725af517d48f25a"><div class="ttname"><a href="classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a">Span::ModelLoader::ProcessMesh</a></div><div class="ttdeci">static Mesh * ProcessMesh(ID3D12Device *device, aiMesh *mesh, const aiScene *scene)</div><div class="ttdef"><b>Definition</b> <a href="ModelLoader_8cpp_source.html#l00041">ModelLoader.cpp:41</a></div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00051">CoreMinimal.h:52</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

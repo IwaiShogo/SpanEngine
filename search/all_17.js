@@ -1,21 +1,15 @@
 var searchData=
 [
-  ['w_0',['W',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa61e9c06ea9a85a5088a499df6458d276',1,'Span']]],
-  ['w_1',['w',['../structSpan_1_1Vector4.html#afa3a55fc2cd9a6cada8e168b798efa8e',1,'Span::Vector4::w'],['../structSpan_1_1Quaternion.html#ab931b3dac6a116cff7470ffdcd1a64db',1,'Span::Quaternion::w']]],
-  ['waitforgpu_2',['WaitForGpu',['../classSpan_1_1GraphicsContext.html#a2b668849f44321ef8ff8b944e4e786e2',1,'Span::GraphicsContext']]],
-  ['warning_3',['Warning',['../namespaceSpan.html#a706679730aeab52031ed8774240027f2a0eaadb4fcb48a0a0ed7bc9868be9fbaa',1,'Span']]],
-  ['water_4',['Water',['../namespaceSpan.html#a0218d3201263d090d434e06833479948a27634ff8002b12e75d98e07ccd005d18',1,'Span']]],
-  ['width_5',['Width',['../structSpan_1_1WindowDesc.html#ac36034e45401ef5c779a7cd41eaf8ba0',1,'Span::WindowDesc']]],
-  ['width_6',['width',['../classSpan_1_1GraphicsContext.html#a3b9bf0727cc7aea7de42f9afe82e0c46',1,'Span::GraphicsContext::width'],['../classSpan_1_1RenderTarget.html#a78a0f4f8fa246f9e2deee9b1092bb6f9',1,'Span::RenderTarget::width'],['../classSpan_1_1Texture.html#ad4bffa9fb2e8830770ed4209ba6d362b',1,'Span::Texture::width'],['../classSpan_1_1Window.html#aa0ea22e00d585f4ddf405264723f52bc',1,'Span::Window::width']]],
-  ['win32_5flean_5fand_5fmean_7',['WIN32_LEAN_AND_MEAN',['../CoreMinimal_8h.html#ac7bef5d85e3dcd73eef56ad39ffc84a9',1,'CoreMinimal.h']]],
-  ['window_8',['Window',['../classSpan_1_1Window.html',1,'Span::Window'],['../classSpan_1_1Window.html#a37a75d2d3ff4e663a94df8e1c41958e3',1,'Span::Window::Window()']]],
-  ['window_9',['window',['../classSpan_1_1Application.html#acac29b85acb51a2c94f9febfa9427bc1',1,'Span::Application']]],
-  ['window_2ecpp_10',['Window.cpp',['../Window_8cpp.html',1,'']]],
-  ['window_2eh_11',['Window.h',['../Window_8h.html',1,'']]],
-  ['windowdesc_12',['WindowDesc',['../structSpan_1_1WindowDesc.html',1,'Span']]],
-  ['windowproc_13',['WindowProc',['../classSpan_1_1Window.html#a24635208c038c943fedace7500f9ba18',1,'Span::Window']]],
-  ['with_14',['With',['../classSpan_1_1EntityBuilder.html#ab28545e60edea3e91a3606552f952614',1,'Span::EntityBuilder']]],
-  ['world_15',['World',['../classSpan_1_1World.html',1,'Span::World'],['../structSpan_1_1TransformData.html#af5eb0294b4a8dc4080305b4c20c9bdfb',1,'Span::TransformData::World'],['../classSpan_1_1World.html#aba3445185cce62ba69ea55949875a74f',1,'Span::World::World()']]],
-  ['world_16',['world',['../classSpan_1_1Application.html#a6b218a6b6618fa3fff11183802b81f66',1,'Span::Application']]],
-  ['world_2eh_17',['World.h',['../World_8h.html',1,'']]]
+  ['v_0',['V',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa5206560a306a2e085a437fd258eb57ce',1,'Span']]],
+  ['value_1',['Value',['../structSpan_1_1Active.html#a5dcb94616d53c7e220a27254e9005248',1,'Span::Active::Value'],['../structSpan_1_1Layer.html#a693754f9d82b39c68a000678618a9904',1,'Span::Layer::Value'],['../structSpan_1_1LocalToWorld.html#a2b5844413fcf24ef8eabecc9c0e4c568',1,'Span::LocalToWorld::Value'],['../structSpan_1_1Name.html#acdd7b0d9049c91d08576bc5b533c8939',1,'Span::Name::Value'],['../structSpan_1_1Tag.html#a7869bcecde88e836fe2b1ad4dfba5a28',1,'Span::Tag::Value']]],
+  ['vector2_2',['Vector2',['../structSpan_1_1Vector2.html',1,'Span::Vector2'],['../structSpan_1_1Vector2.html#a3e74d032b6631247d62acb7add2cab44',1,'Span::Vector2::Vector2()'],['../structSpan_1_1Vector2.html#a6a3c22ec6144ead9287b9cb20f4374c5',1,'Span::Vector2::Vector2(float _x, float _y)'],['../structSpan_1_1Vector2.html#ae4fc220bb9f07a0abbb2ec3482e9461f',1,'Span::Vector2::Vector2(float v)']]],
+  ['vector3_3',['Vector3',['../structSpan_1_1Vector3.html',1,'Span::Vector3'],['../structSpan_1_1Vector3.html#a5b73d20c05747047ff35465dd3af4634',1,'Span::Vector3::Vector3()'],['../structSpan_1_1Vector3.html#aeb5789c19211db815d7fb391ebb47480',1,'Span::Vector3::Vector3(float _x, float _y, float _z)'],['../structSpan_1_1Vector3.html#a68450768a263d12d8190a8a157d29d96',1,'Span::Vector3::Vector3(float v)']]],
+  ['vector4_4',['Vector4',['../structSpan_1_1Vector4.html',1,'Span::Vector4'],['../structSpan_1_1Vector4.html#a47ee7b30ca2bde2445994cb2e735b6b4',1,'Span::Vector4::Vector4()'],['../structSpan_1_1Vector4.html#a6de528f98f9c26f3bd3b54849ea8ec62',1,'Span::Vector4::Vector4(float _x, float _y, float _z, float _w)'],['../structSpan_1_1Vector4.html#af34c08bb49c48ba67f7330d601fd666b',1,'Span::Vector4::Vector4(const Vector3 &amp;v, float _w)']]],
+  ['vertex_5',['Vertex',['../structSpan_1_1Vertex.html',1,'Span::Vertex'],['../namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6',1,'Span::Vertex']]],
+  ['vertexbuffer_6',['vertexBuffer',['../classSpan_1_1Mesh.html#ab5326828b5a500cf38a357fcfeee3381',1,'Span::Mesh']]],
+  ['vertexbufferview_7',['vertexBufferView',['../classSpan_1_1Mesh.html#a2b9c77cd3fe0c597c5c32d950a92f56d',1,'Span::Mesh']]],
+  ['vertexcount_8',['vertexCount',['../classSpan_1_1Mesh.html#a7a4a75126636a829da28adff5d416a50',1,'Span::Mesh']]],
+  ['viewmatrix_9',['viewMatrix',['../classSpan_1_1Renderer.html#af03a4b1bbb7c73258554f363991196c5',1,'Span::Renderer']]],
+  ['viewport_10',['viewport',['../classSpan_1_1GraphicsContext.html#a05b5966d30bb15770e8104d7d0183f1b',1,'Span::GraphicsContext']]],
+  ['vs_11',['vs',['../classSpan_1_1Renderer.html#ab1be30cd3501208577f218d42903df76',1,'Span::Renderer']]]
 ];

@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1EntityManager.html','','classSpan_1_1Enti
 </div><!--header-->
 <div class="contents">
 
+<p>🆔 <a class="el" href="structSpan_1_1Entity.html" title="📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。">Entity</a> IDの発行、破棄、有効性チェックを行う管理クラス。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="EntityManager_8h_source.html">EntityManager.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::EntityManager 連携図</div>
@@ -106,23 +109,40 @@ Span::EntityManager 連携図</div>
 <tr class="memitem:a35cfec2814f7f652f10f8bddcf0610d6" id="r_a35cfec2814f7f652f10f8bddcf0610d6"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a35cfec2814f7f652f10f8bddcf0610d6">~EntityManager</a> ()=default</td></tr>
 <tr class="memitem:aab73c13b4f611bda136baaf9369e195e" id="r_aab73c13b4f611bda136baaf9369e195e"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aab73c13b4f611bda136baaf9369e195e">SPAN_NON_COPYABLE</a> (<a class="el" href="#aad5d6c6482443077bc8a95dd66ab0ee9">EntityManager</a>)</td></tr>
 <tr class="memitem:ab12d01434f128cc0b3b90dd202809602" id="r_ab12d01434f128cc0b3b90dd202809602"><td class="memItemLeft"><a class="el" href="structSpan_1_1Entity.html">Entity</a>&#160;</td><td class="memItemRight"><a class="el" href="#ab12d01434f128cc0b3b90dd202809602">CreateEntity</a> ()</td></tr>
+<tr class="memdesc:ab12d01434f128cc0b3b90dd202809602"><td class="mdescLeft">&#160;</td><td class="mdescRight">新しいEntityを作成して返す  <br /></td></tr>
 <tr class="memitem:a2a18e908149d19569922e088b953723c" id="r_a2a18e908149d19569922e088b953723c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2a18e908149d19569922e088b953723c">DestroyEntity</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity)</td></tr>
+<tr class="memdesc:a2a18e908149d19569922e088b953723c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entityを削除する  <br /></td></tr>
 <tr class="memitem:a3056c638e46d14b21123cbec5b76ee39" id="r_a3056c638e46d14b21123cbec5b76ee39"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a3056c638e46d14b21123cbec5b76ee39">IsAlive</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity) const</td></tr>
+<tr class="memdesc:a3056c638e46d14b21123cbec5b76ee39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entityが現在も有効 (生存している) かを確認します。  <br /></td></tr>
 <tr class="memitem:aeb46cc4ea8bf7323b18647587fa2feac" id="r_aeb46cc4ea8bf7323b18647587fa2feac"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#aeb46cc4ea8bf7323b18647587fa2feac">GetActiveEntityCount</a> () const</td></tr>
+<tr class="memdesc:aeb46cc4ea8bf7323b18647587fa2feac"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在アクティブな (生きている) エンティティの総数  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
 <tr class="memitem:a99924e112cb35af95c5c9394c3ed3a59" id="r_a99924e112cb35af95c5c9394c3ed3a59"><td class="memItemLeft">std::vector&lt; <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a99924e112cb35af95c5c9394c3ed3a59">generations</a></td></tr>
+<tr class="memdesc:a99924e112cb35af95c5c9394c3ed3a59"><td class="mdescLeft">&#160;</td><td class="mdescRight">各スロットの現在の世代番号を管理する配列  <br /></td></tr>
 <tr class="memitem:a78f8f460559f740d2fd8d2e236b4dff1" id="r_a78f8f460559f740d2fd8d2e236b4dff1"><td class="memItemLeft">std::deque&lt; <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a78f8f460559f740d2fd8d2e236b4dff1">freeIndices</a></td></tr>
+<tr class="memdesc:a78f8f460559f740d2fd8d2e236b4dff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">再利用待ちのインデックスリスト  <br /></td></tr>
 <tr class="memitem:a683a39bece0bfd4ceec80a32ad70063a" id="r_a683a39bece0bfd4ceec80a32ad70063a"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#a683a39bece0bfd4ceec80a32ad70063a">activeCount</a> = 0</td></tr>
+<tr class="memdesc:a683a39bece0bfd4ceec80a32ad70063a"><td class="mdescLeft">&#160;</td><td class="mdescRight">生存数  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 静的非公開変数類</h2></td></tr>
 <tr class="memitem:a4cf692d0564677367a1b6192a2639cba" id="r_a4cf692d0564677367a1b6192a2639cba"><td class="memItemLeft">static constexpr <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4cf692d0564677367a1b6192a2639cba">MINIMUM_FREE_INDICES</a> = 1024</td></tr>
+<tr class="memdesc:a4cf692d0564677367a1b6192a2639cba"><td class="mdescLeft">&#160;</td><td class="mdescRight">最低限のインデックス管理数  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00006">6</a> 行目に定義があります。</p>
+<div class="textblock"><p>🆔 <a class="el" href="structSpan_1_1Entity.html" title="📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。">Entity</a> IDの発行、破棄、有効性チェックを行う管理クラス。 </p>
+<p>配列のインデックスと「世代番号(Generation)」を組み合わせることで、 削除されたIDが再利用された際に、古い参照が無効であることを正しく検出できるようにします (ABA問題の回避)。</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+🔄 ライフサイクル</h3>
+<ol type="1">
+<li><b>Create</b>: 空きインデックスがあれば再利用し、なければ新規発行。</li>
+<li><b>Destroy</b>: 世代番号をインクリメントし、インデックスを空きリストへ返却。</li>
+<li><b>IsAlive</b>: 現在の世代番号と、IDの世代番号が一致するかチェック。 </li>
+</ol>
+
+<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00030">30</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="aad5d6c6482443077bc8a95dd66ab0ee9" name="aad5d6c6482443077bc8a95dd66ab0ee9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad5d6c6482443077bc8a95dd66ab0ee9">&#9670;&#160;</a></span>EntityManager()</h2>
@@ -195,6 +215,8 @@ Span::EntityManager 連携図</div>
       </table>
 </div><div class="memdoc">
 
+<p>新しいEntityを作成して返す </p>
+
 <p class="definition"> <a class="el" href="EntityManager_8cpp_source.html">EntityManager.cpp</a> の <a class="el" href="EntityManager_8cpp_source.html#l00005">5</a> 行目に定義があります。</p>
 
 </div>
@@ -213,6 +235,8 @@ Span::EntityManager 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Entityを削除する </p>
 
 <p class="definition"> <a class="el" href="EntityManager_8cpp_source.html">EntityManager.cpp</a> の <a class="el" href="EntityManager_8cpp_source.html#l00028">28</a> 行目に定義があります。</p>
 
@@ -241,7 +265,9 @@ Span::EntityManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00024">24</a> 行目に定義があります。</p>
+<p>現在アクティブな (生きている) エンティティの総数 </p>
+
+<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00052">52</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -259,6 +285,15 @@ Span::EntityManager 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Entityが現在も有効 (生存している) かを確認します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>確認対象のハンドル </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>true: 生存 / false: 破棄済み </dd></dl>
 
 <p class="definition"> <a class="el" href="EntityManager_8cpp_source.html">EntityManager.cpp</a> の <a class="el" href="EntityManager_8cpp_source.html#l00050">50</a> 行目に定義があります。</p>
 
@@ -307,7 +342,9 @@ Span::EntityManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00034">34</a> 行目に定義があります。</p>
+<p>生存数 </p>
+
+<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00062">62</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -331,7 +368,9 @@ Span::EntityManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00031">31</a> 行目に定義があります。</p>
+<p>再利用待ちのインデックスリスト </p>
+
+<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00059">59</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -355,7 +394,9 @@ Span::EntityManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00028">28</a> 行目に定義があります。</p>
+<p>各スロットの現在の世代番号を管理する配列 </p>
+
+<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00056">56</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -379,7 +420,9 @@ Span::EntityManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00037">37</a> 行目に定義があります。</p>
+<p>最低限のインデックス管理数 </p>
+
+<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00065">65</a> 行目に定義があります。</p>
 
 </div>
 </div>

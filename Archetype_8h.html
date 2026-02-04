@@ -92,6 +92,9 @@ $(function(){initNavTree('Archetype_8h.html','',''); });
   <div class="headertitle"><div class="title">Archetype.h ファイル</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>ECSのメモリレイアウト定義 (アーキタイプ) を行うクラス。  
+<a href="#details">[詳解]</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="CoreMinimal_8h_source.html">Core/CoreMinimal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ComponentType_8h_source.html">ECS/Internal/ComponentType.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Chunk_8h_source.html">Chunk.h</a>&quot;</code><br />
@@ -111,15 +114,25 @@ Archetype.h の依存先関係図:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 クラス</h2></td></tr>
 <tr class="memitem:Span_3A_3AArchetypeSignature" id="r_Span_3A_3AArchetypeSignature"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ArchetypeSignature.html">Span::ArchetypeSignature</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーキタイプ署名 (Signature) コンポーネントIDのリストをソートして保持したもの。 これが一致すれば「同じアーキタイプ」とみなす。  <a href="classSpan_1_1ArchetypeSignature.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🔑 アーキタイプを識別するための署名キー  <a href="classSpan_1_1ArchetypeSignature.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Span_3A_3AArchetype" id="r_Span_3A_3AArchetype"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Archetype.html">Span::Archetype</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーキタイプ 同じコンポーネント構成を持つEntity群を管理する。 データの「型」だけでなく、実際の「メモリ(Chunk)」も管理する。  <a href="classSpan_1_1Archetype.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🏢 エンティティのコンテナクラス。メモリレイアウトを管理します。  <a href="classSpan_1_1Archetype.html#details">[詳解]</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 名前空間</h2></td></tr>
 <tr class="memitem:Span" id="r_Span"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html">Span</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>ECSのメモリレイアウト定義 (アーキタイプ) を行うクラス。 </p>
+<p><br  />
+ アーキタイプは、「同じコンポーネントの組み合わせ」を持つエンティティのグループです。 データの物理的な配置 (メモリレイアウト) を決定する設計図の役割を果たします。</p>
+<hr  />
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+autotoc_md4</h2>
+<dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
+
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> に定義があります。</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

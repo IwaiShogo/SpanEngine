@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['📝_20使い方_0',['📝 使い方',['../structSpan_1_1Entity.html#autotoc_md3',1,'']]]
+  ['state_20flow_0',['🔄 Resource Barrier State Flow',['../classSpan_1_1RenderTarget.html#autotoc_md37',1,'']]],
+  ['swap_20chain_20double_20buffering_1',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md34',1,'']]]
 ];
