@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1CameraSystem.html','','classSpan_1_1Camer
 </div><!--header-->
 <div class="contents">
 
+<p>📷 アクティブなカメラのView/Projection行列を計算するシステム。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="CameraSystem_8h_source.html">CameraSystem.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::CameraSystem の継承関係図</div>
@@ -129,8 +132,10 @@ Span::CameraSystem 連携図</div>
 <tr class="memdesc:adda3b04cc8e931689a3e86a5cf91b16e inherit pro_methods_classSpan_1_1System"><td class="mdescLeft">&#160;</td><td class="mdescRight">所属しているワールドを取得します。  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="CameraSystem_8h_source.html">CameraSystem.h</a> の <a class="el" href="CameraSystem_8h_source.html#l00010">10</a> 行目に定義があります。</p>
+<div class="textblock"><p>📷 アクティブなカメラのView/Projection行列を計算するシステム。 </p>
+<p><span class="tt"><a class="el" href="structSpan_1_1Camera.html" title="📷 シーンを撮影するための投影設定を保持するコンポーネント。">Camera</a></span> コンポーネントを持つエンティティの <span class="tt"><a class="el" href="structSpan_1_1LocalToWorld.html" title="🌏 ローカル座標からワールド座標への変換行列キャッシュ。">LocalToWorld</a></span> を元にビュー行列 (逆行列) を作成し、 ウィンドウのアスペクト比に合わせて投影行列を作成します。 計算結果は <span class="tt"><a class="el" href="classSpan_1_1Renderer.html" title="🖌 描画コマンドの発行を担うクラス。">Renderer</a></span> に送信されます。 </p>
+
+<p class="definition"> <a class="el" href="CameraSystem_8h_source.html">CameraSystem.h</a> の <a class="el" href="CameraSystem_8h_source.html#l00030">30</a> 行目に定義があります。</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a7f4bf0245dedd7a6245ef352246f7391" name="a7f4bf0245dedd7a6245ef352246f7391"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7f4bf0245dedd7a6245ef352246f7391">&#9670;&#160;</a></span>OnUpdate()</h2>
@@ -159,7 +164,7 @@ Span::CameraSystem 連携図</div>
 
 <p><a class="el" href="classSpan_1_1System.html#a0e925d42240cc67a0f63bc04568644fc">Span::System</a>を再実装しています。</p>
 
-<p class="definition"> <a class="el" href="CameraSystem_8h_source.html">CameraSystem.h</a> の <a class="el" href="CameraSystem_8h_source.html#l00013">13</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CameraSystem_8h_source.html">CameraSystem.h</a> の <a class="el" href="CameraSystem_8h_source.html#l00033">33</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
