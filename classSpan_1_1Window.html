@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1Window.html','','classSpan_1_1Window-memb
 </div><!--header-->
 <div class="contents">
 
+<p>🪟 OSネイティブウィンドウを管理するクラス。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="Window_8h_source.html">Window.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::Window 連携図</div>
@@ -105,16 +108,23 @@ Span::Window 連携図</div>
 <tr class="memitem:a37a75d2d3ff4e663a94df8e1c41958e3" id="r_a37a75d2d3ff4e663a94df8e1c41958e3"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a37a75d2d3ff4e663a94df8e1c41958e3">Window</a> ()=default</td></tr>
 <tr class="memitem:ab6565dd0bab59c4be208e1d5264dd21a" id="r_ab6565dd0bab59c4be208e1d5264dd21a"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ab6565dd0bab59c4be208e1d5264dd21a">~Window</a> ()</td></tr>
 <tr class="memitem:a77733f63cf98420637c73589f11ff888" id="r_a77733f63cf98420637c73589f11ff888"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a77733f63cf98420637c73589f11ff888">Initialize</a> (const <a class="el" href="structSpan_1_1WindowDesc.html">WindowDesc</a> &amp;desc)</td></tr>
+<tr class="memdesc:a77733f63cf98420637c73589f11ff888"><td class="mdescLeft">&#160;</td><td class="mdescRight">ウィンドウクラスの登録とウィンドウ作成を行います。  <br /></td></tr>
 <tr class="memitem:ac0b6dcb3df03d09a4667b183e6621ab0" id="r_ac0b6dcb3df03d09a4667b183e6621ab0"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac0b6dcb3df03d09a4667b183e6621ab0">Shutdown</a> ()</td></tr>
+<tr class="memdesc:ac0b6dcb3df03d09a4667b183e6621ab0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ウィンドウを破棄します。  <br /></td></tr>
 <tr class="memitem:a7fd2dc04719fbe836e533c5ee97c0d50" id="r_a7fd2dc04719fbe836e533c5ee97c0d50"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a7fd2dc04719fbe836e533c5ee97c0d50">PollEvents</a> ()</td></tr>
+<tr class="memdesc:a7fd2dc04719fbe836e533c5ee97c0d50"><td class="mdescLeft">&#160;</td><td class="mdescRight">OS空のイベントメッセージを処理します (Message Pump)。  <br /></td></tr>
 <tr class="memitem:a4ae0d3bb1ca507bbf4c8d82e922a6f6a" id="r_a4ae0d3bb1ca507bbf4c8d82e922a6f6a"><td class="memItemLeft">HWND&#160;</td><td class="memItemRight"><a class="el" href="#a4ae0d3bb1ca507bbf4c8d82e922a6f6a">GetHandle</a> () const</td></tr>
 <tr class="memitem:ab241cca9643bb67391cd09877050440c" id="r_ab241cca9643bb67391cd09877050440c"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ab241cca9643bb67391cd09877050440c">GetWidth</a> () const</td></tr>
+<tr class="memdesc:ab241cca9643bb67391cd09877050440c"><td class="mdescLeft">&#160;</td><td class="mdescRight">画面サイズ取得 (Width)  <br /></td></tr>
 <tr class="memitem:adf78cb81544e591996ccadba07953c81" id="r_adf78cb81544e591996ccadba07953c81"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#adf78cb81544e591996ccadba07953c81">GetHeight</a> () const</td></tr>
+<tr class="memdesc:adf78cb81544e591996ccadba07953c81"><td class="mdescLeft">&#160;</td><td class="mdescRight">画面サイズ取得 (Height)  <br /></td></tr>
 <tr class="memitem:a26623b5142073096423d4c6c6b67dfc9" id="r_a26623b5142073096423d4c6c6b67dfc9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a26623b5142073096423d4c6c6b67dfc9">SetOnResize</a> (std::function&lt; void(<a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>)&gt; callback)</td></tr>
+<tr class="memdesc:a26623b5142073096423d4c6c6b67dfc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">ウィンドウサイズ変更時に呼ばれるコールバックを登録します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 静的非公開メンバ関数</h2></td></tr>
 <tr class="memitem:a24635208c038c943fedace7500f9ba18" id="r_a24635208c038c943fedace7500f9ba18"><td class="memItemLeft">static LRESULT CALLBACK&#160;</td><td class="memItemRight"><a class="el" href="#a24635208c038c943fedace7500f9ba18">WindowProc</a> (HWND <a class="el" href="#aa2fb9e56e345f56bed7e66812e199515">hWnd</a>, UINT message, WPARAM wParam, LPARAM lParam)</td></tr>
+<tr class="memdesc:a24635208c038c943fedace7500f9ba18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Win32 API用の静的コールバック関数  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
@@ -124,8 +134,10 @@ Span::Window 連携図</div>
 <tr class="memitem:a0b28300340e12f536e1621fdf26bfddc" id="r_a0b28300340e12f536e1621fdf26bfddc"><td class="memItemLeft">std::function&lt; void(<a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>)&gt;&#160;</td><td class="memItemRight"><a class="el" href="#a0b28300340e12f536e1621fdf26bfddc">onResize</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00013">13</a> 行目に定義があります。</p>
+<div class="textblock"><p>🪟 OSネイティブウィンドウを管理するクラス。 </p>
+<p>Win32 API の <span class="tt">CreateWindowEx</span> やメッセージポンプ(<span class="tt">PeekMessage</span>) を隠蔽します。 また、<span class="tt">GWLP_USERDATA</span> を使用して、静的な <span class="tt"><a class="el" href="#a24635208c038c943fedace7500f9ba18" title="Win32 API用の静的コールバック関数">WindowProc</a></span> からインスタンスのメンバ関数へ イベントを転送する仕組みを持っています。 </p>
+
+<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00034">34</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="a37a75d2d3ff4e663a94df8e1c41958e3" name="a37a75d2d3ff4e663a94df8e1c41958e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37a75d2d3ff4e663a94df8e1c41958e3">&#9670;&#160;</a></span>Window()</h2>
@@ -205,7 +217,7 @@ Span::Window 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00027">27</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00059">59</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -237,7 +249,9 @@ Span::Window 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00031">31</a> 行目に定義があります。</p>
+<p>画面サイズ取得 (Height) </p>
+
+<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00065">65</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -269,7 +283,9 @@ Span::Window 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00030">30</a> 行目に定義があります。</p>
+<p>画面サイズ取得 (Width) </p>
+
+<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00062">62</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -292,6 +308,15 @@ Span::Window 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>ウィンドウクラスの登録とウィンドウ作成を行います。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">desc</td><td>設定データ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功なら true </dd></dl>
 
 <p class="definition"> <a class="el" href="Window_8cpp_source.html">Window.cpp</a> の <a class="el" href="Window_8cpp_source.html#l00016">16</a> 行目に定義があります。</p>
 <div class="dynheader">
@@ -316,6 +341,9 @@ Span::Window 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>OS空のイベントメッセージを処理します (Message Pump)。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>アプリケーションを継続すべきなら true、終了(WM_QUIT)なら false </dd></dl>
 
 <p class="definition"> <a class="el" href="Window_8cpp_source.html">Window.cpp</a> の <a class="el" href="Window_8cpp_source.html#l00071">71</a> 行目に定義があります。</p>
 
@@ -344,7 +372,9 @@ Span::Window 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00034">34</a> 行目に定義があります。</p>
+<p>ウィンドウサイズ変更時に呼ばれるコールバックを登録します。 </p>
+
+<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00068">68</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -362,6 +392,8 @@ Span::Window 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>ウィンドウを破棄します。 </p>
 
 <p class="definition"> <a class="el" href="Window_8cpp_source.html">Window.cpp</a> の <a class="el" href="Window_8cpp_source.html#l00062">62</a> 行目に定義があります。</p>
 <div class="dynheader">
@@ -409,6 +441,9 @@ Span::Window 連携図</div>
 </table>
 </div><div class="memdoc">
 
+<p>Win32 API用の静的コールバック関数 </p>
+<p>最初の <span class="tt">WM_NCCREATE</span> メッセージで <span class="tt">this</span> ポインタを <span class="tt">GWLP_USERDATA</span> に保存し、 以降のメッセージではそれを取り出してインスタンスメンバにアクセスします。 </p>
+
 <p class="definition"> <a class="el" href="Window_8cpp_source.html">Window.cpp</a> の <a class="el" href="Window_8cpp_source.html#l00087">87</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
@@ -444,7 +479,7 @@ Span::Window 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00039">39</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00083">83</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -468,7 +503,7 @@ Span::Window 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00037">37</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00081">81</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -492,7 +527,7 @@ Span::Window 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00041">41</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00085">85</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -516,7 +551,7 @@ Span::Window 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00038">38</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Window_8h_source.html">Window.h</a> の <a class="el" href="Window_8h_source.html#l00082">82</a> 行目に定義があります。</p>
 
 </div>
 </div>

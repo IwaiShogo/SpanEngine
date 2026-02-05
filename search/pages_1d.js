@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['🧠_20メモリレイアウト_20chunk_20memory_20layout_0',['🧠 メモリレイアウト (Chunk Memory Layout)',['../classSpan_1_1Archetype.html#autotoc_md29',1,'']]],
-  ['🧠_20メモリ構造_20memory_20layout_1',['🧠 メモリ構造 (Memory Layout)',['../structSpan_1_1Chunk.html#autotoc_md34',1,'']]]
+  ['📏_20座標系と仕様_20coordinate_20system_0',['📏 座標系と仕様 (Coordinate System)',['../SpanMath_8h.html#autotoc_md7',1,'']]],
+  ['📏_20memory_20layout_2016_20byte_20alignment_1',['📏 Memory Layout (16-byte alignment)',['../structSpan_1_1MaterialData.html#autotoc_md104',1,'']]]
 ];

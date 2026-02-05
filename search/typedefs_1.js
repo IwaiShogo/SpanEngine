@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['drawcomponentfunc_0',['DrawComponentFunc',['../namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7',1,'Span']]]
+  ['componenttypeid_0',['ComponentTypeID',['../namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd',1,'Span']]]
 ];

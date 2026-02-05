@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📊_20ビットレイアウト_20bit_20layout_0',['📊 ビットレイアウト (Bit Layout)',['../structSpan_1_1EntityID.html#autotoc_md37',1,'']]]
+  ['計算式_0',['🧮 計算式',['../classSpan_1_1TransformSystem.html#autotoc_md123',1,'']]]
 ];

@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1InspectorPanel.html','','classSpan_1_1Ins
 </div><!--header-->
 <div class="contents">
 
+<p>🕵️ 選択中のEntityが持つコンポーネントを列挙し、編集UIを提供するパネル。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="InspectorPanel_8h_source.html">InspectorPanel.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::InspectorPanel の継承関係図</div>
@@ -130,8 +133,10 @@ Span::InspectorPanel 連携図</div>
 <tr class="memdesc:a3c42b2ab17e0708eaeff54afc8058b4a inherit pub_attribs_classSpan_1_1EditorPanel"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示フラグ  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="InspectorPanel_8h_source.html">InspectorPanel.h</a> の <a class="el" href="InspectorPanel_8h_source.html#l00007">7</a> 行目に定義があります。</p>
+<div class="textblock"><p>🕵️ 選択中のEntityが持つコンポーネントを列挙し、編集UIを提供するパネル。 </p>
+<p><span class="tt"><a class="el" href="classSpan_1_1SelectionManager.html" title="👆 選択されたEntityをグローバルに管理するクラス。">SelectionManager</a></span> から選択中のEntityを取得し、 <span class="tt"><a class="el" href="classSpan_1_1ComponentRegistry.html" title="📚 全コンポーネントのメタデータを管理する静的レジストリ。">ComponentRegistry</a></span> (リフレクションシステム) を使用し、 そのEntityが持つ全てのコンポーネントを動的に描画します。 </p>
+
+<p class="definition"> <a class="el" href="InspectorPanel_8h_source.html">InspectorPanel.h</a> の <a class="el" href="InspectorPanel_8h_source.html#l00027">27</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="a2c067589801cb71a36c33e142aed6eff" name="a2c067589801cb71a36c33e142aed6eff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c067589801cb71a36c33e142aed6eff">&#9670;&#160;</a></span>InspectorPanel()</h2>
@@ -156,7 +161,7 @@ Span::InspectorPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="InspectorPanel_8h_source.html">InspectorPanel.h</a> の <a class="el" href="InspectorPanel_8h_source.html#l00010">10</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="InspectorPanel_8h_source.html">InspectorPanel.h</a> の <a class="el" href="InspectorPanel_8h_source.html#l00030">30</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">

@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1RelationshipSystem.html','','classSpan_1_
 </div><!--header-->
 <div class="contents">
 
+<p>🔗 階層構造 (リンクリスト) の操作ロジックを提供する静的ヘルパークラス。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="RelationshipSystem_8h_source.html">RelationshipSystem.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::RelationshipSystem の継承関係図</div>
@@ -108,8 +111,11 @@ Span::RelationshipSystem 連携図</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静的公開メンバ関数</h2></td></tr>
 <tr class="memitem:a67cd257ab95cd2a44e3c8830ccd4cf26" id="r_a67cd257ab95cd2a44e3c8830ccd4cf26"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a67cd257ab95cd2a44e3c8830ccd4cf26">Disconnect</a> (<a class="el" href="classSpan_1_1World.html">World</a> *world, <a class="el" href="structSpan_1_1Entity.html">Entity</a> entity)</td></tr>
+<tr class="memdesc:a67cd257ab95cd2a44e3c8830ccd4cf26"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定したエンティティを現在の親から切断し、孤立させます。  <br /></td></tr>
 <tr class="memitem:a22d8d93f263f586db5a1aa6de46711a0" id="r_a22d8d93f263f586db5a1aa6de46711a0"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a22d8d93f263f586db5a1aa6de46711a0">SetParent</a> (<a class="el" href="classSpan_1_1World.html">World</a> *world, <a class="el" href="structSpan_1_1Entity.html">Entity</a> child, <a class="el" href="structSpan_1_1Entity.html">Entity</a> parent)</td></tr>
+<tr class="memdesc:a22d8d93f263f586db5a1aa6de46711a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">親子関係を設定します (末尾に追加)。  <br /></td></tr>
 <tr class="memitem:aa4b5cd977689e1b6689786315d0fa6e6" id="r_aa4b5cd977689e1b6689786315d0fa6e6"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aa4b5cd977689e1b6689786315d0fa6e6">InsertBefore</a> (<a class="el" href="classSpan_1_1World.html">World</a> *world, <a class="el" href="structSpan_1_1Entity.html">Entity</a> child, <a class="el" href="structSpan_1_1Entity.html">Entity</a> targetSibling, <a class="el" href="structSpan_1_1Entity.html">Entity</a> parentIfTargetIsNull=<a class="el" href="structSpan_1_1Entity.html#a3bc29e7cdb8d6012f8be1de9f0da5687">Entity::Null</a>)</td></tr>
+<tr class="memdesc:aa4b5cd977689e1b6689786315d0fa6e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定の兄弟の「直前」に挿入します (順序変更用)。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 その他の継承メンバ</h2></td></tr>
@@ -132,8 +138,17 @@ Span::RelationshipSystem 連携図</div>
 <tr class="memdesc:adda3b04cc8e931689a3e86a5cf91b16e inherit pro_methods_classSpan_1_1System"><td class="mdescLeft">&#160;</td><td class="mdescRight">所属しているワールドを取得します。  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="RelationshipSystem_8h_source.html">RelationshipSystem.h</a> の <a class="el" href="RelationshipSystem_8h_source.html#l00009">9</a> 行目に定義があります。</p>
+<div class="textblock"><p>🔗 階層構造 (リンクリスト) の操作ロジックを提供する静的ヘルパークラス。 </p>
+<p>Entity自体はデータを持たないため、このクラスの静的関数を通じて <span class="tt"><a class="el" href="structSpan_1_1Relationship.html" title="🔗 エンティティ間の親子関係を管理するリンクリスト。">Relationship</a></span> コンポーネントを操作し、 親子付けや切り離しを行います。</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md120"></a>
+🌳 リンクリスト構造</h3>
+<div class="fragment"><div class="line">[Parent]</div>
+<div class="line">| FirstChild</div>
+<div class="line">v</div>
+<div class="line">[Child A] &lt;-&gt; [Child B] &lt;-&gt; [Child C] ...</div>
+<div class="line">(Prev/Next)   (Prev/Next)</div>
+</div><!-- fragment --> 
+<p class="definition"> <a class="el" href="RelationshipSystem_8h_source.html">RelationshipSystem.h</a> の <a class="el" href="RelationshipSystem_8h_source.html#l00045">45</a> 行目に定義があります。</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a67cd257ab95cd2a44e3c8830ccd4cf26" name="a67cd257ab95cd2a44e3c8830ccd4cf26"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67cd257ab95cd2a44e3c8830ccd4cf26">&#9670;&#160;</a></span>Disconnect()</h2>
@@ -162,7 +177,17 @@ Span::RelationshipSystem 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="RelationshipSystem_8h_source.html">RelationshipSystem.h</a> の <a class="el" href="RelationshipSystem_8h_source.html#l00013">13</a> 行目に定義があります。</p>
+<p>指定したエンティティを現在の親から切断し、孤立させます。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">world</td><td>ワールドポインタ </td></tr>
+    <tr><td class="paramname">entity</td><td>接続対象のエンティティ</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>兄弟間のリンク (Prev/Next) を繋ぎ直し、親の <span class="tt">FirstChild</span> が自分だった場合は次の兄弟に更新します。 実行後はルート階層 (親なし) になります。 </p>
+
+<p class="definition"> <a class="el" href="RelationshipSystem_8h_source.html">RelationshipSystem.h</a> の <a class="el" href="RelationshipSystem_8h_source.html#l00057">57</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -213,7 +238,16 @@ Span::RelationshipSystem 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="RelationshipSystem_8h_source.html">RelationshipSystem.h</a> の <a class="el" href="RelationshipSystem_8h_source.html#l00087">87</a> 行目に定義があります。</p>
+<p>特定の兄弟の「直前」に挿入します (順序変更用)。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">world</td><td>ワールドポインタ </td></tr>
+    <tr><td class="paramname">child</td><td>移動させるエンティティ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="RelationshipSystem_8h_source.html">RelationshipSystem.h</a> の <a class="el" href="RelationshipSystem_8h_source.html#l00140">140</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -259,7 +293,17 @@ Span::RelationshipSystem 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="RelationshipSystem_8h_source.html">RelationshipSystem.h</a> の <a class="el" href="RelationshipSystem_8h_source.html#l00044">44</a> 行目に定義があります。</p>
+<p>親子関係を設定します (末尾に追加)。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">world</td><td>ワールドポインタ </td></tr>
+    <tr><td class="paramname">child</td><td>子にするエンティティ </td></tr>
+    <tr><td class="paramname">parent</td><td>親にするエンティティ (Nullの場合はルート化) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="RelationshipSystem_8h_source.html">RelationshipSystem.h</a> の <a class="el" href="RelationshipSystem_8h_source.html#l00093">93</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">

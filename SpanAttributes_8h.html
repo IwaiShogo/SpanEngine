@@ -92,6 +92,9 @@ $(function(){initNavTree('SpanAttributes_8h.html','',''); });
   <div class="headertitle"><div class="title">SpanAttributes.h ファイル</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>インスペクタ表示用の属性 (Attribute) 定義。  
+<a href="#details">[詳解]</a></p>
 <div class="textblock"><div class="dynheader">
 被依存関係図:</div>
 <div class="dyncontent">
@@ -103,6 +106,7 @@ $(function(){initNavTree('SpanAttributes_8h.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 クラス</h2></td></tr>
 <tr class="memitem:Span_3A_3AAttribute" id="r_Span_3A_3AAttribute"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Attribute.html">Span::Attribute</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🏷️ 変数に付与するメタデータ。  <a href="structSpan_1_1Attribute.html#details">[詳解]</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 名前空間</h2></td></tr>
@@ -124,20 +128,38 @@ $(function(){initNavTree('SpanAttributes_8h.html','',''); });
 &#160;&#160;<a class="el" href="namespaceSpan.html#a00c320c889b6c836e32c17b01071d257ad16a748b5543974384bc43d392f1e566">Span::MultiLine</a>
 <br />
  }</td></tr>
+<tr class="memdesc:a00c320c889b6c836e32c17b01071d257"><td class="mdescLeft">&#160;</td><td class="mdescRight">属性の種類  <a href="namespaceSpan.html#a00c320c889b6c836e32c17b01071d257">[詳解]</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
 <tr class="memitem:a32a1ef503ab803ad2c45c621d77445a0" id="r_a32a1ef503ab803ad2c45c621d77445a0"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a32a1ef503ab803ad2c45c621d77445a0">Span::Range</a> (float min, float max)</td></tr>
+<tr class="memdesc:a32a1ef503ab803ad2c45c621d77445a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">変数をスライダーで編集できるようにします。  <br /></td></tr>
 <tr class="memitem:a9822105b4bb016e1c0c580e617bd925a" id="r_a9822105b4bb016e1c0c580e617bd925a"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a9822105b4bb016e1c0c580e617bd925a">Span::Min</a> (float min)</td></tr>
+<tr class="memdesc:a9822105b4bb016e1c0c580e617bd925a"><td class="mdescLeft">&#160;</td><td class="mdescRight">変数の最小値を制限します。  <br /></td></tr>
 <tr class="memitem:a3a9bfa653e8f9e248d4313ed0939db77" id="r_a3a9bfa653e8f9e248d4313ed0939db77"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a3a9bfa653e8f9e248d4313ed0939db77">Span::Tooltip</a> (const char *text)</td></tr>
+<tr class="memdesc:a3a9bfa653e8f9e248d4313ed0939db77"><td class="mdescLeft">&#160;</td><td class="mdescRight">変数にツールチップ (説明文) を追加します。  <br /></td></tr>
 <tr class="memitem:ad91faa614dc451a8508f2113cc2cb22d" id="r_ad91faa614dc451a8508f2113cc2cb22d"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#ad91faa614dc451a8508f2113cc2cb22d">Span::Header</a> (const char *header)</td></tr>
+<tr class="memdesc:ad91faa614dc451a8508f2113cc2cb22d"><td class="mdescLeft">&#160;</td><td class="mdescRight">変数の上にヘッダー文字を表示します。  <br /></td></tr>
 <tr class="memitem:a7bacb65f8630776d46220ef4ce0c7421" id="r_a7bacb65f8630776d46220ef4ce0c7421"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a7bacb65f8630776d46220ef4ce0c7421">Span::Space</a> ()</td></tr>
+<tr class="memdesc:a7bacb65f8630776d46220ef4ce0c7421"><td class="mdescLeft">&#160;</td><td class="mdescRight">変数の上にスペース (余白) を追加します。  <br /></td></tr>
 <tr class="memitem:a6c44cae3bf938ea21881939d2a2f04ea" id="r_a6c44cae3bf938ea21881939d2a2f04ea"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a6c44cae3bf938ea21881939d2a2f04ea">Span::HideInInspector</a> ()</td></tr>
+<tr class="memdesc:a6c44cae3bf938ea21881939d2a2f04ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">インスペクターに表示しません (シリアライズのみしたい場合など)。  <br /></td></tr>
 <tr class="memitem:ae2c4e4f20e3caf156005d479cfc4b392" id="r_ae2c4e4f20e3caf156005d479cfc4b392"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#ae2c4e4f20e3caf156005d479cfc4b392">Span::ReadOnly</a> ()</td></tr>
+<tr class="memdesc:ae2c4e4f20e3caf156005d479cfc4b392"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を表示しますが、編集は出来ないようにします。  <br /></td></tr>
 <tr class="memitem:ac4fda9227bb1ab31d0d5e2026ed86d53" id="r_ac4fda9227bb1ab31d0d5e2026ed86d53"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#ac4fda9227bb1ab31d0d5e2026ed86d53">Span::SerializeField</a> ()</td></tr>
 <tr class="memitem:a089223d28981f1dcf214d34a44771067" id="r_a089223d28981f1dcf214d34a44771067"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a089223d28981f1dcf214d34a44771067">Span::TextArea</a> ()</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>インスペクタ表示用の属性 (Attribute) 定義。 </p>
+<p><br  />
+</p>
+<hr  />
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md115"></a>
+autotoc_md115</h2>
+<dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
+
+<p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> に定義があります。</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

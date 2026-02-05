@@ -92,6 +92,9 @@ $(function(){initNavTree('EntryPoint_8h.html','',''); });
   <div class="headertitle"><div class="title">EntryPoint.h ファイル</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>アプリケーションのエントリーポイント (main関数)。  
+<a href="#details">[詳解]</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="Application_8h_source.html">Application.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 EntryPoint.h の依存先関係図:</div>
@@ -104,8 +107,19 @@ EntryPoint.h の依存先関係図:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627" id="r_a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">メイン関数。  <br /></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>アプリケーションのエントリーポイント (main関数)。 </p>
+<p><br  />
+</p>
+<hr  />
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md84"></a>
+autotoc_md84</h2>
+<dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
+
+<p class="definition"> <a class="el" href="EntryPoint_8h_source.html">EntryPoint.h</a> に定義があります。</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a3c04138a5bfe5d72780bb7e82a18e627" name="a3c04138a5bfe5d72780bb7e82a18e627"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&#160;</a></span>main()</h2>
 
@@ -125,7 +139,10 @@ EntryPoint.h の依存先関係図:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="EntryPoint_8h_source.html">EntryPoint.h</a> の <a class="el" href="EntryPoint_8h_source.html#l00007">7</a> 行目に定義があります。</p>
+<p>メイン関数。 </p>
+<p>Windowsアプリケーションのエントリーポイントです。 ユーザーが定義した <span class="tt">CreateApplication</span> を呼び出し、ゲームループを開始します。 コンソールウィンドウを表示しない設定にする場合は、リンカー設定で <span class="tt">SubSystem:Windows</span> に変更してください。 </p>
+
+<p class="definition"> <a class="el" href="EntryPoint_8h_source.html">EntryPoint.h</a> の <a class="el" href="EntryPoint_8h_source.html#l00026">26</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">

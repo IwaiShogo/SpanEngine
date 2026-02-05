@@ -92,23 +92,48 @@ $(function(){initNavTree('Tag_8h_source.html','',''); });
   <div class="headertitle"><div class="title">Tag.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="Tag_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>{</div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="structSpan_1_1Tag.html">    5</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="structSpan_1_1Tag.html#afa262810d23513d7db06b8f515504a44">Tag</a></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="structSpan_1_1Tag.html#a7869bcecde88e836fe2b1ad4dfba5a28">    7</a></span>        std::string <a class="code hl_variable" href="structSpan_1_1Tag.html#a7869bcecde88e836fe2b1ad4dfba5a28">Value</a> = <span class="stringliteral">&quot;Untagged&quot;</span>;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="structSpan_1_1Tag.html#afa262810d23513d7db06b8f515504a44">    8</a></span>        <a class="code hl_function" href="structSpan_1_1Tag.html#afa262810d23513d7db06b8f515504a44">Tag</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="structSpan_1_1Tag.html#ad2d5f17eb35e854688f5e6a6f663b740">    9</a></span>        <a class="code hl_function" href="structSpan_1_1Tag.html#ad2d5f17eb35e854688f5e6a6f663b740">Tag</a>(<span class="keyword">const</span> std::string&amp; tag) : <a class="code hl_variable" href="structSpan_1_1Tag.html#a7869bcecde88e836fe2b1ad4dfba5a28">Value</a>(tag) {}</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    };</div>
+<a href="Tag_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    Tag.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   エンティティのタグ分類</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="SpanReflection_8h.html">Runtime/Reflection/SpanReflection.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">     * @struct  Tag</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">     * @brief   🔖 エンティティを検索・分類するための文字列タグ。</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * @details &quot;Player&quot;, &quot;Enemy&quot;, &quot;MainCamera&quot; などの文字列を設定します。</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structSpan_1_1Tag.html">   22</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="structSpan_1_1Tag.html#afa262810d23513d7db06b8f515504a44">Tag</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structSpan_1_1Tag.html#a7869bcecde88e836fe2b1ad4dfba5a28">   24</a></span>        std::string <a class="code hl_variable" href="structSpan_1_1Tag.html#a7869bcecde88e836fe2b1ad4dfba5a28">Value</a> = <span class="stringliteral">&quot;Untagged&quot;</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structSpan_1_1Tag.html#afa262810d23513d7db06b8f515504a44">   26</a></span>        <a class="code hl_function" href="structSpan_1_1Tag.html#afa262810d23513d7db06b8f515504a44">Tag</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structSpan_1_1Tag.html#ad2d5f17eb35e854688f5e6a6f663b740">   27</a></span>        <a class="code hl_function" href="structSpan_1_1Tag.html#ad2d5f17eb35e854688f5e6a6f663b740">Tag</a>(<span class="keyword">const</span> std::string&amp; tag) : <a class="code hl_variable" href="structSpan_1_1Tag.html#a7869bcecde88e836fe2b1ad4dfba5a28">Value</a>(tag) {}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_define" href="SpanReflection_8h.html#a73d73b391d2c696aa97e2f555064a4ad">SPAN_INSPECTOR_BEGIN</a>(<a class="code hl_struct" href="structSpan_1_1Tag.html">Tag</a>)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_define" href="SpanReflection_8h.html#a03c56469341230c856b122f920371494">SPAN_INSPECTOR_END</a>()</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    };</div>
 </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>}</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="ttc" id="aSpanReflection_8h_html"><div class="ttname"><a href="SpanReflection_8h.html">SpanReflection.h</a></div><div class="ttdoc">コンポーネント定義用のリフレクションマクロ。</div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a03c56469341230c856b122f920371494"><div class="ttname"><a href="SpanReflection_8h.html#a03c56469341230c856b122f920371494">SPAN_INSPECTOR_END</a></div><div class="ttdeci">#define SPAN_INSPECTOR_END()</div><div class="ttdoc">インスペクターUI定義の終了マクロ。</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00060">SpanReflection.h:60</a></div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a73d73b391d2c696aa97e2f555064a4ad"><div class="ttname"><a href="SpanReflection_8h.html#a73d73b391d2c696aa97e2f555064a4ad">SPAN_INSPECTOR_BEGIN</a></div><div class="ttdeci">#define SPAN_INSPECTOR_BEGIN(ComponentType)</div><div class="ttdoc">インスペクターUI定義の開始マクロ</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00032">SpanReflection.h:32</a></div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00078">CoreMinimal.h:79</a></div></div>
-<div class="ttc" id="astructSpan_1_1Tag_html_a7869bcecde88e836fe2b1ad4dfba5a28"><div class="ttname"><a href="structSpan_1_1Tag.html#a7869bcecde88e836fe2b1ad4dfba5a28">Span::Tag::Value</a></div><div class="ttdeci">std::string Value</div><div class="ttdef"><b>Definition</b> <a href="#l00007">Tag.h:7</a></div></div>
-<div class="ttc" id="astructSpan_1_1Tag_html_ad2d5f17eb35e854688f5e6a6f663b740"><div class="ttname"><a href="structSpan_1_1Tag.html#ad2d5f17eb35e854688f5e6a6f663b740">Span::Tag::Tag</a></div><div class="ttdeci">Tag(const std::string &amp;tag)</div><div class="ttdef"><b>Definition</b> <a href="#l00009">Tag.h:9</a></div></div>
+<div class="ttc" id="astructSpan_1_1Tag_html"><div class="ttname"><a href="structSpan_1_1Tag.html">Span::Tag</a></div><div class="ttdoc">🔖 エンティティを検索・分類するための文字列タグ。</div><div class="ttdef"><b>Definition</b> <a href="#l00022">Tag.h:23</a></div></div>
+<div class="ttc" id="astructSpan_1_1Tag_html_a7869bcecde88e836fe2b1ad4dfba5a28"><div class="ttname"><a href="structSpan_1_1Tag.html#a7869bcecde88e836fe2b1ad4dfba5a28">Span::Tag::Value</a></div><div class="ttdeci">std::string Value</div><div class="ttdef"><b>Definition</b> <a href="#l00024">Tag.h:24</a></div></div>
+<div class="ttc" id="astructSpan_1_1Tag_html_ad2d5f17eb35e854688f5e6a6f663b740"><div class="ttname"><a href="structSpan_1_1Tag.html#ad2d5f17eb35e854688f5e6a6f663b740">Span::Tag::Tag</a></div><div class="ttdeci">Tag(const std::string &amp;tag)</div><div class="ttdef"><b>Definition</b> <a href="#l00027">Tag.h:27</a></div></div>
 <div class="ttc" id="astructSpan_1_1Tag_html_afa262810d23513d7db06b8f515504a44"><div class="ttname"><a href="structSpan_1_1Tag.html#afa262810d23513d7db06b8f515504a44">Span::Tag::Tag</a></div><div class="ttdeci">Tag()=default</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,12 +1,12 @@
 <map id="Span::HierarchyPanel::DrawContextMenu" name="Span::HierarchyPanel::DrawContextMenu">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,213,165,253"/>
+<area shape="rect" id="Node000001" title="エンティティ上での右クリックメニューを描画します。" alt="" coords="5,213,165,253"/>
 <area shape="rect" id="Node000002" href="$classSpan_1_1EntityBuilder.html#ac4c98235d0c84a0e376062638163134b" title="構築したエンティティハンドルを取得します。" alt="" coords="236,5,383,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,212,111,178,137,136,171,93,212,55,222,48,225,53,215,59,175,96,142,139,116,181,98,215"/>
 <area shape="rect" id="Node000003" href="$classSpan_1_1SelectionManager.html#acccb37ec1649ef94d6ef3b58b4f966d9" title="全ての選択を解除します。" alt="" coords="220,69,399,109"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="105,211,152,169,212,126,237,113,239,117,215,130,155,173,108,215"/>
 <area shape="rect" id="Node000004" href="$classSpan_1_1World.html#a1f597fc6f7555036c746fac5e9ba9039" title="エンティティを削除します。" alt="" coords="698,134,894,159"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="117,211,161,188,213,169,337,146,464,135,583,133,685,136,684,141,583,138,465,140,338,152,214,175,164,193,120,216"/>
-<area shape="rect" id="Node000010" href="$classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e" title=" " alt="" coords="226,249,393,274"/>
+<area shape="rect" id="Node000010" href="$classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e" title="シングルトンインスタンスの取得" alt="" coords="226,249,393,274"/>
 <area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="166,241,213,247,212,252,166,246"/>
 <area shape="rect" id="Node000018" href="$classSpan_1_1SelectionManager.html#ab8b9b7e17346f5fb71277549ad085bc4" title="メインの選択対象 (最後に選択されたもの) を取得します。" alt="" coords="220,299,399,339"/>
 <area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="135,251,214,283,237,291,235,296,212,288,133,256"/>
@@ -14,7 +14,7 @@
 <area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="105,252,152,300,182,326,215,348,226,355,224,359,212,353,179,330,148,304,102,255"/>
 <area shape="rect" id="Node000020" href="$classSpan_1_1SelectionManager.html#ab8b65d4a89427d47afa3e6c4ab68159a" title="選択リストをクリアし、指定したEntityのみを選択状態にします (Click相当)。" alt="" coords="220,427,399,467"/>
 <area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="98,252,115,287,141,330,174,374,215,413,223,418,220,422,212,417,170,378,136,333,110,289,93,255"/>
-<area shape="rect" id="Node000021" href="$classSpan_1_1RelationshipSystem.html#a22d8d93f263f586db5a1aa6de46711a0" title=" " alt="" coords="213,184,405,224"/>
+<area shape="rect" id="Node000021" href="$classSpan_1_1RelationshipSystem.html#a22d8d93f263f586db5a1aa6de46711a0" title="親子関係を設定します (末尾に追加)。" alt="" coords="213,184,405,224"/>
 <area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="166,220,199,216,200,221,166,225"/>
 <area shape="rect" id="Node000005" href="$classSpan_1_1World.html#a5e0da52990e6715e2cc31a0d85913748" title="エンティティが現在有効かどうかを確認します。" alt="" coords="1269,239,1419,265"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="869,157,1166,213,1214,224,1263,234,1262,239,1213,229,1165,219,868,162"/>
@@ -40,7 +40,7 @@
 <area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="899,357,938,357,938,362,899,362"/>
 <area shape="rect" id="Node000014" href="$classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0" title="フォントや配色などのスタイル設定を適用します。" alt="" coords="947,395,1165,421"/>
 <area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="866,370,973,390,972,395,865,375"/>
-<area shape="rect" id="Node000022" href="$classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26" title=" " alt="" coords="453,235,645,275"/>
+<area shape="rect" id="Node000022" href="$classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26" title="指定したエンティティを現在の親から切断し、孤立させます。" alt="" coords="453,235,645,275"/>
 <area shape="poly" id="edge21_Node000021_Node000022" title=" " alt="" coords="405,221,442,229,440,234,404,227"/>
 <area shape="rect" id="Node000023" href="$classSpan_1_1World.html#a0cebb4506e5366293854cde16a208677" title="コンポーネントへの参照を取得します。" alt="" coords="693,245,899,270"/>
 <area shape="poly" id="edge30_Node000021_Node000023" title=" " alt="" coords="384,222,407,234,422,248,431,262,439,274,454,284,505,299,547,300,645,284,730,270,730,276,646,289,547,305,504,305,452,289,436,278,426,264,418,251,404,238,381,227"/>

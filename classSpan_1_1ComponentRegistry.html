@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1ComponentRegistry.html','','classSpan_1_1
 </div><!--header-->
 <div class="contents">
 
+<p>📚 全コンポーネントのメタデータを管理する静的レジストリ。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::ComponentRegistry 連携図</div>
@@ -104,15 +107,19 @@ Span::ComponentRegistry 連携図</div>
 静的公開メンバ関数</h2></td></tr>
 <tr class="memitem:a424b5381bdd9dec493f85ca3a31600ae" id="r_a424b5381bdd9dec493f85ca3a31600ae"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a424b5381bdd9dec493f85ca3a31600ae template"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a424b5381bdd9dec493f85ca3a31600ae">Register</a> (const std::string &amp;name, std::function&lt; void(T &amp;, <a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a> &amp;)&gt; onGui)</td></tr>
+<tr class="memdesc:a424b5381bdd9dec493f85ca3a31600ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネント型を登録します。  <br /></td></tr>
 <tr class="memitem:a8449d84d0096e3a92e226e510f0accb0" id="r_a8449d84d0096e3a92e226e510f0accb0"><td class="memItemLeft">static std::vector&lt; <a class="el" href="structSpan_1_1ComponentMetadata.html">ComponentMetadata</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a8449d84d0096e3a92e226e510f0accb0">GetAll</a> ()</td></tr>
+<tr class="memdesc:a8449d84d0096e3a92e226e510f0accb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">登録済みの全コンポーネント情報を取得します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 静的非公開メンバ関数</h2></td></tr>
 <tr class="memitem:a888dafb7173154120394d2382b74e6bd" id="r_a888dafb7173154120394d2382b74e6bd"><td class="memItemLeft">static std::vector&lt; <a class="el" href="structSpan_1_1ComponentMetadata.html">ComponentMetadata</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a888dafb7173154120394d2382b74e6bd">GetRegistry</a> ()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00027">27</a> 行目に定義があります。</p>
+<div class="textblock"><p>📚 全コンポーネントのメタデータを管理する静的レジストリ。 </p>
+<p><span class="tt">SpanReflection</span> マクロによって、アプリ起動時に自動的に各コンポーネントの情報が登録されます。 Inspectorパネルは、このレジストリを参照してUIを構築します。 </p>
+
+<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00054">54</a> 行目に定義があります。</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a8449d84d0096e3a92e226e510f0accb0" name="a8449d84d0096e3a92e226e510f0accb0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8449d84d0096e3a92e226e510f0accb0">&#9670;&#160;</a></span>GetAll()</h2>
@@ -137,7 +144,9 @@ Span::ComponentRegistry 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00055">55</a> 行目に定義があります。</p>
+<p>登録済みの全コンポーネント情報を取得します。 </p>
+
+<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00098">98</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -174,7 +183,7 @@ Span::ComponentRegistry 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00059">59</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00105">105</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -212,7 +221,22 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00031">31</a> 行目に定義があります。</p>
+<p>コンポーネント型を登録します。 </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>コンポーネント型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>表示名 ("Transform" 等) </td></tr>
+    <tr><td class="paramname">onGui</td><td>UI描画ロジック (ラムダ式) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00064">64</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">

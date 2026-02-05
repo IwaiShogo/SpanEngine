@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🖼_20swap_20chain_20double_20buffering_0',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md58',1,'']]]
+  ['📊_20ビットレイアウト_20bit_20layout_0',['📊 ビットレイアウト (Bit Layout)',['../structSpan_1_1EntityID.html#autotoc_md68',1,'']]]
 ];

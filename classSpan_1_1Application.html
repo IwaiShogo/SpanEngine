@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1Application.html','','classSpan_1_1Applic
 </div><!--header-->
 <div class="contents">
 
+<p>🚀 アプリケーションの基底クラス (シングルトン)。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="Application_8h_source.html">Application.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::Application 連携図</div>
@@ -105,17 +108,23 @@ Span::Application 連携図</div>
 <tr class="memitem:a0c44e973ca5db1d23a02a2cee66f5c11" id="r_a0c44e973ca5db1d23a02a2cee66f5c11"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a0c44e973ca5db1d23a02a2cee66f5c11">Application</a> ()</td></tr>
 <tr class="memitem:ac1df33fbe70ef856f94f83225bb02fb7" id="r_ac1df33fbe70ef856f94f83225bb02fb7"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="#ac1df33fbe70ef856f94f83225bb02fb7">~Application</a> ()</td></tr>
 <tr class="memitem:a9dc7321cf43512eac3757a83fbefbaa9" id="r_a9dc7321cf43512eac3757a83fbefbaa9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9dc7321cf43512eac3757a83fbefbaa9">Run</a> ()</td></tr>
+<tr class="memdesc:a9dc7321cf43512eac3757a83fbefbaa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">アプリケーションを実行します (ブロック関数)。  <br /></td></tr>
 <tr class="memitem:ac63d2626e1c9fcd6780ea38f0ce5cc9f" id="r_ac63d2626e1c9fcd6780ea38f0ce5cc9f"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ac63d2626e1c9fcd6780ea38f0ce5cc9f">OnStart</a> ()</td></tr>
+<tr class="memdesc:ac63d2626e1c9fcd6780ea38f0ce5cc9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">起動時 (ループ開始前) に一度だけ呼ばれます。  <br /></td></tr>
 <tr class="memitem:a874e2f98f78745d0c786d7bb03db6ddd" id="r_a874e2f98f78745d0c786d7bb03db6ddd"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a874e2f98f78745d0c786d7bb03db6ddd">OnUpdate</a> ()</td></tr>
+<tr class="memdesc:a874e2f98f78745d0c786d7bb03db6ddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレーム呼ばれます。ゲームロジックをここに記述します。  <br /></td></tr>
 <tr class="memitem:af29c3c6b93d1e06ac0a82ad0544dcb4c" id="r_af29c3c6b93d1e06ac0a82ad0544dcb4c"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#af29c3c6b93d1e06ac0a82ad0544dcb4c">OnShutdown</a> ()</td></tr>
+<tr class="memdesc:af29c3c6b93d1e06ac0a82ad0544dcb4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">終了時に呼ばれます。  <br /></td></tr>
 <tr class="memitem:a90cfcdb2cad09285b6142360f3262f1f" id="r_a90cfcdb2cad09285b6142360f3262f1f"><td class="memItemLeft"><a class="el" href="classSpan_1_1Window.html">Window</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a90cfcdb2cad09285b6142360f3262f1f">GetWindow</a> ()</td></tr>
 <tr class="memitem:a405d83887371210b9a67e940727689da" id="r_a405d83887371210b9a67e940727689da"><td class="memItemLeft"><a class="el" href="classSpan_1_1Renderer.html">Renderer</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a405d83887371210b9a67e940727689da">GetRenderer</a> ()</td></tr>
 <tr class="memitem:a42e065e188c6e225983aad97d576865c" id="r_a42e065e188c6e225983aad97d576865c"><td class="memItemLeft"><a class="el" href="classSpan_1_1World.html">World</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a42e065e188c6e225983aad97d576865c">GetWorld</a> ()</td></tr>
 <tr class="memitem:a1b54630b6a121e07555f020042a121cc" id="r_a1b54630b6a121e07555f020042a121cc"><td class="memItemLeft"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a1b54630b6a121e07555f020042a121cc">GetSceneBuffer</a> ()</td></tr>
+<tr class="memdesc:a1b54630b6a121e07555f020042a121cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">エディタ表示用のシーン描画ターゲットを取得  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静的公開メンバ関数</h2></td></tr>
 <tr class="memitem:ae2e9eaebe90ffdf55cfef9d74ccbce3e" id="r_ae2e9eaebe90ffdf55cfef9d74ccbce3e"><td class="memItemLeft">static <a class="el" href="#a0c44e973ca5db1d23a02a2cee66f5c11">Application</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ae2e9eaebe90ffdf55cfef9d74ccbce3e">Get</a> ()</td></tr>
+<tr class="memdesc:ae2e9eaebe90ffdf55cfef9d74ccbce3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">シングルトンインスタンスの取得  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
@@ -123,16 +132,19 @@ Span::Application 連携図</div>
 <tr class="memitem:acac29b85acb51a2c94f9febfa9427bc1" id="r_acac29b85acb51a2c94f9febfa9427bc1"><td class="memItemLeft"><a class="el" href="classSpan_1_1Window.html">Window</a>&#160;</td><td class="memItemRight"><a class="el" href="#acac29b85acb51a2c94f9febfa9427bc1">window</a></td></tr>
 <tr class="memitem:a90d28617b1780ccc246c6b9341f1fdd9" id="r_a90d28617b1780ccc246c6b9341f1fdd9"><td class="memItemLeft"><a class="el" href="classSpan_1_1GraphicsContext.html">GraphicsContext</a>&#160;</td><td class="memItemRight"><a class="el" href="#a90d28617b1780ccc246c6b9341f1fdd9">graphicsContext</a></td></tr>
 <tr class="memitem:a38177cabc8c37a3be8cb19c4bfd13b17" id="r_a38177cabc8c37a3be8cb19c4bfd13b17"><td class="memItemLeft"><a class="el" href="classSpan_1_1Renderer.html">Renderer</a>&#160;</td><td class="memItemRight"><a class="el" href="#a38177cabc8c37a3be8cb19c4bfd13b17">renderer</a></td></tr>
-<tr class="memitem:a20fcfd95e71f9aad3f84d68811cb6711" id="r_a20fcfd95e71f9aad3f84d68811cb6711"><td class="memItemLeft"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a>&#160;</td><td class="memItemRight"><a class="el" href="#a20fcfd95e71f9aad3f84d68811cb6711">sceneBuffer</a></td></tr>
 <tr class="memitem:a6b218a6b6618fa3fff11183802b81f66" id="r_a6b218a6b6618fa3fff11183802b81f66"><td class="memItemLeft"><a class="el" href="classSpan_1_1World.html">World</a>&#160;</td><td class="memItemRight"><a class="el" href="#a6b218a6b6618fa3fff11183802b81f66">world</a></td></tr>
+<tr class="memitem:a20fcfd95e71f9aad3f84d68811cb6711" id="r_a20fcfd95e71f9aad3f84d68811cb6711"><td class="memItemLeft"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a>&#160;</td><td class="memItemRight"><a class="el" href="#a20fcfd95e71f9aad3f84d68811cb6711">sceneBuffer</a></td></tr>
+<tr class="memdesc:a20fcfd95e71f9aad3f84d68811cb6711"><td class="mdescLeft">&#160;</td><td class="mdescRight">シーン描画用オフスクリーンバッファ  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 静的非公開変数類</h2></td></tr>
 <tr class="memitem:ad11362b1cf76eb9f2c48a3497e67c450" id="r_ad11362b1cf76eb9f2c48a3497e67c450"><td class="memItemLeft">static <a class="el" href="#a0c44e973ca5db1d23a02a2cee66f5c11">Application</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ad11362b1cf76eb9f2c48a3497e67c450">s_instance</a> = nullptr</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00011">11</a> 行目に定義があります。</p>
+<div class="textblock"><p>🚀 アプリケーションの基底クラス (シングルトン)。 </p>
+<p>WinMainから呼び出され、ウィンドウ作成、レンダラー初期化、メインループ(<span class="tt"><a class="el" href="#a9dc7321cf43512eac3757a83fbefbaa9" title="アプリケーションを実行します (ブロック関数)。">Run</a></span>)の実行を行います。 ユーザーはこれを継承して <span class="tt">MyGame</span> クラスを作成します。 </p>
+
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00030">30</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="a0c44e973ca5db1d23a02a2cee66f5c11" name="a0c44e973ca5db1d23a02a2cee66f5c11"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c44e973ca5db1d23a02a2cee66f5c11">&#9670;&#160;</a></span>Application()</h2>
@@ -186,7 +198,7 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8cpp_source.html">Application.cpp</a> の <a class="el" href="Application_8cpp_source.html#l00069">69</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Application_8cpp_source.html">Application.cpp</a> の <a class="el" href="Application_8cpp_source.html#l00077">77</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -219,7 +231,9 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00017">17</a> 行目に定義があります。</p>
+<p>シングルトンインスタンスの取得 </p>
+
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00037">37</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -256,7 +270,7 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00029">29</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00061">61</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -288,7 +302,9 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00031">31</a> 行目に定義があります。</p>
+<p>エディタ表示用のシーン描画ターゲットを取得 </p>
+
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00065">65</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -315,7 +331,7 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00028">28</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00060">60</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -347,7 +363,7 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00030">30</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00062">62</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -379,7 +395,9 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00025">25</a> 行目に定義があります。</p>
+<p>終了時に呼ばれます。 </p>
+
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00055">55</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -411,7 +429,9 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00023">23</a> 行目に定義があります。</p>
+<p>起動時 (ループ開始前) に一度だけ呼ばれます。 </p>
+
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00049">49</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -443,7 +463,9 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00024">24</a> 行目に定義があります。</p>
+<p>毎フレーム呼ばれます。ゲームロジックをここに記述します。 </p>
+
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00052">52</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -467,7 +489,10 @@ Span::Application 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8cpp_source.html">Application.cpp</a> の <a class="el" href="Application_8cpp_source.html#l00080">80</a> 行目に定義があります。</p>
+<p>アプリケーションを実行します (ブロック関数)。 </p>
+<p>ウィンドウが閉じられるまで無限ループします。 </p>
+
+<p class="definition"> <a class="el" href="Application_8cpp_source.html">Application.cpp</a> の <a class="el" href="Application_8cpp_source.html#l00092">92</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -497,7 +522,7 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00041">41</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00076">76</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -521,7 +546,7 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00038">38</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00072">72</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -545,7 +570,7 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00042">42</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00077">77</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -569,7 +594,7 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00037">37</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00071">71</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -593,7 +618,9 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00043">43</a> 行目に定義があります。</p>
+<p>シーン描画用オフスクリーンバッファ </p>
+
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00081">81</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -617,7 +644,7 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00040">40</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00075">75</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -641,7 +668,7 @@ Span::Application 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00044">44</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> の <a class="el" href="Application_8h_source.html#l00078">78</a> 行目に定義があります。</p>
 
 </div>
 </div>

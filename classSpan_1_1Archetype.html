@@ -150,11 +150,11 @@ Span::Archetype 連携図</div>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>🏢 エンティティのコンテナクラス。メモリレイアウトを管理します。 </p>
 <p>1つのアーキタイプは複数の <span class="tt"><a class="el" href="structSpan_1_1Chunk.html" title="🧱 コンポーネントデータを格納する固定サイズのメモリブロック。">Chunk</a></span> (16KBブロック) を持ち、 コンポーネントデータを <b>SoA (Structure of Arrays)</b> 形式で格納します。</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md60"></a>
 🧠 メモリレイアウト (Chunk Memory Layout)</h3>
-<p>例: <span class="tt"><a class="el" href="structSpan_1_1Transform.html">Transform</a></span> (Vec3) と <span class="tt">Velocity</span> (Vec3) を持つアーキタイプの場合 </p><table class="markdownTable">
+<p>例: <span class="tt"><a class="el" href="structSpan_1_1Transform.html" title="📍 オブジェクトの3次元的な位置情報を保持するコンポーネント。">Transform</a></span> (Vec3) と <span class="tt">Velocity</span> (Vec3) を持つアーキタイプの場合 </p><table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadCenter">Header  </th><th class="markdownTableHeadLeft">EntityIDs[]  </th><th class="markdownTableHeadLeft"><a class="el" href="structSpan_1_1Transform.html">Transform</a>[]  </th><th class="markdownTableHeadLeft">Velocity[]  </th><th class="markdownTableHeadLeft">Padding  </th></tr>
+<th class="markdownTableHeadCenter">Header  </th><th class="markdownTableHeadLeft">EntityIDs[]  </th><th class="markdownTableHeadLeft"><a class="el" href="structSpan_1_1Transform.html" title="📍 オブジェクトの3次元的な位置情報を保持するコンポーネント。">Transform</a>[]  </th><th class="markdownTableHeadLeft">Velocity[]  </th><th class="markdownTableHeadLeft">Padding  </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">...  </td><td class="markdownTableBodyLeft"><span class="tt">[0][1][2]...</span>  </td><td class="markdownTableBodyLeft"><span class="tt">[Pos][Pos][Pos]...</span>  </td><td class="markdownTableBodyLeft"><span class="tt">[Vel][Vel][Vel]...</span>  </td><td class="markdownTableBodyLeft">...  </td></tr>
 </table>

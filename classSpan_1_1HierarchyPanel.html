@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1HierarchyPanel.html','','classSpan_1_1Hie
 </div><!--header-->
 <div class="contents">
 
+<p>🌳 シーン上の全エンティティをツリー形式で表示するパネル。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="HierarchyPanel_8h_source.html">HierarchyPanel.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::HierarchyPanel の継承関係図</div>
@@ -124,9 +127,13 @@ Span::HierarchyPanel 連携図</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 非公開メンバ関数</h2></td></tr>
 <tr class="memitem:a2c08f8c6e0cafaed96f7846d76ff2b09" id="r_a2c08f8c6e0cafaed96f7846d76ff2b09"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2c08f8c6e0cafaed96f7846d76ff2b09">DrawEntityNode</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity)</td></tr>
+<tr class="memdesc:a2c08f8c6e0cafaed96f7846d76ff2b09"><td class="mdescLeft">&#160;</td><td class="mdescRight">1つのエンティティとその子孫を再帰的に描画します。  <br /></td></tr>
 <tr class="memitem:a331d846c46df5f3346cfc7bb8c7a8e76" id="r_a331d846c46df5f3346cfc7bb8c7a8e76"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a331d846c46df5f3346cfc7bb8c7a8e76">DrawContextMenu</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity)</td></tr>
+<tr class="memdesc:a331d846c46df5f3346cfc7bb8c7a8e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">エンティティ上での右クリックメニューを描画します。  <br /></td></tr>
 <tr class="memitem:a04888145be2266ef8385e234b79ec53a" id="r_a04888145be2266ef8385e234b79ec53a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a04888145be2266ef8385e234b79ec53a">DrawEmptySpaceContextMenu</a> ()</td></tr>
+<tr class="memdesc:a04888145be2266ef8385e234b79ec53a"><td class="mdescLeft">&#160;</td><td class="mdescRight">何もない場所での右クリックメニュー (新規作成など) を描画します。  <br /></td></tr>
 <tr class="memitem:af958ff25d0ba0576ae4848bbd01b2031" id="r_af958ff25d0ba0576ae4848bbd01b2031"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af958ff25d0ba0576ae4848bbd01b2031">HandleDragDrop</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> targetEntity)</td></tr>
+<tr class="memdesc:af958ff25d0ba0576ae4848bbd01b2031"><td class="mdescLeft">&#160;</td><td class="mdescRight">ドラッグ&amp;ドロップの受け入れ処理 (親子付け替え・並び替え)。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 その他の継承メンバ</h2></td></tr>
@@ -137,8 +144,15 @@ Span::HierarchyPanel 連携図</div>
 <tr class="memdesc:a3c42b2ab17e0708eaeff54afc8058b4a inherit pub_attribs_classSpan_1_1EditorPanel"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示フラグ  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="HierarchyPanel_8h_source.html">HierarchyPanel.h</a> の <a class="el" href="HierarchyPanel_8h_source.html#l00007">7</a> 行目に定義があります。</p>
+<div class="textblock"><p>🌳 シーン上の全エンティティをツリー形式で表示するパネル。 </p>
+<ul>
+<li><b>Tree View</b>: 親子関係 (<span class="tt"><a class="el" href="structSpan_1_1Relationship.html" title="🔗 エンティティ間の親子関係を管理するリンクリスト。">Relationship</a></span> コンポーネント) に基づいて再帰的にノードを表示します。</li>
+<li><b>Selection</b>: クリックで選択、Ctrlクリックで複数選択、Shiftクリックで範囲選択に対応。</li>
+<li><b>Drag &amp; Drop</b>: エンティティをドラッグして他のエンティティの子にしたり、順序を入れ替えたりできます。</li>
+<li><b>Context Menu</b>: 右クリックでエンティティの作成・削除・複製が行えます。 </li>
+</ul>
+
+<p class="definition"> <a class="el" href="HierarchyPanel_8h_source.html">HierarchyPanel.h</a> の <a class="el" href="HierarchyPanel_8h_source.html#l00029">29</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="a545fc24e0e7a780ea2f4a73e2e5778d0" name="a545fc24e0e7a780ea2f4a73e2e5778d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a545fc24e0e7a780ea2f4a73e2e5778d0">&#9670;&#160;</a></span>HierarchyPanel()</h2>
@@ -163,7 +177,7 @@ Span::HierarchyPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="HierarchyPanel_8h_source.html">HierarchyPanel.h</a> の <a class="el" href="HierarchyPanel_8h_source.html#l00010">10</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="HierarchyPanel_8h_source.html">HierarchyPanel.h</a> の <a class="el" href="HierarchyPanel_8h_source.html#l00032">32</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -195,6 +209,8 @@ Span::HierarchyPanel 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>エンティティ上での右クリックメニューを描画します。 </p>
 
 <p class="definition"> <a class="el" href="HierarchyPanel_8cpp_source.html">HierarchyPanel.cpp</a> の <a class="el" href="HierarchyPanel_8cpp_source.html#l00178">178</a> 行目に定義があります。</p>
 <div class="dynheader">
@@ -233,6 +249,8 @@ Span::HierarchyPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
+<p>何もない場所での右クリックメニュー (新規作成など) を描画します。 </p>
+
 <p class="definition"> <a class="el" href="HierarchyPanel_8cpp_source.html">HierarchyPanel.cpp</a> の <a class="el" href="HierarchyPanel_8cpp_source.html#l00217">217</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
@@ -270,6 +288,14 @@ Span::HierarchyPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
+<p>1つのエンティティとその子孫を再帰的に描画します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>描画対象のエンティティ </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition"> <a class="el" href="HierarchyPanel_8cpp_source.html">HierarchyPanel.cpp</a> の <a class="el" href="HierarchyPanel_8cpp_source.html#l00078">78</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
@@ -306,6 +332,14 @@ Span::HierarchyPanel 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>ドラッグ&amp;ドロップの受け入れ処理 (親子付け替え・並び替え)。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">targetEntity</td><td>ドロップ先のエンティティ </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"> <a class="el" href="HierarchyPanel_8cpp_source.html">HierarchyPanel.cpp</a> の <a class="el" href="HierarchyPanel_8cpp_source.html#l00228">228</a> 行目に定義があります。</p>
 <div class="dynheader">

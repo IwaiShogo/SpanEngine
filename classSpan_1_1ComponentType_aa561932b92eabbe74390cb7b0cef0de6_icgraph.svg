@@ -196,7 +196,7 @@ var sectionId = 'dynsection-1';
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classSpan_1_1HierarchyPanel.html#a2c08f8c6e0cafaed96f7846d76ff2b09" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="classSpan_1_1HierarchyPanel.html#a2c08f8c6e0cafaed96f7846d76ff2b09" target="_top" xlink:title="1つのエンティティとその子孫を再帰的に描画します。">
 <polygon fill="white" stroke="#666666" points="276,-588.66 156,-588.66 156,-558.66 276,-558.66 276,-588.66"/>
 <text text-anchor="start" x="164" y="-576.66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::HierarchyPanel</text>
 <text text-anchor="middle" x="216" y="-565.66" font-family="Helvetica,sans-Serif" font-size="10.00">::DrawEntityNode</text>
@@ -271,7 +271,7 @@ var sectionId = 'dynsection-1';
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" target="_top" xlink:title=" ">
+<g id="a_Node000007"><a xlink:href="classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" target="_top" xlink:title="選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。">
 <polygon fill="white" stroke="#666666" points="983,-237.66 857,-237.66 857,-207.66 983,-207.66 983,-237.66"/>
 <text text-anchor="start" x="865" y="-225.66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::SceneViewPanel</text>
 <text text-anchor="middle" x="920" y="-214.66" font-family="Helvetica,sans-Serif" font-size="10.00">::DrawGizmo</text>
@@ -347,7 +347,7 @@ var sectionId = 'dynsection-1';
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="classSpan_1_1SceneViewPanel.html#aab2935de58bd68267a680cabd3656c9f" target="_top" xlink:title="毎フレーム呼ばれる描画関数。">
+<g id="a_Node000008"><a xlink:href="classSpan_1_1SceneViewPanel.html#aab2935de58bd68267a680cabd3656c9f" target="_top" xlink:title="毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。">
 <polygon fill="white" stroke="#666666" points="783,-261.66 657,-261.66 657,-231.66 783,-231.66 783,-261.66"/>
 <text text-anchor="start" x="665" y="-249.66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::SceneViewPanel</text>
 <text text-anchor="middle" x="720" y="-238.66" font-family="Helvetica,sans-Serif" font-size="10.00">::OnImGuiRender</text>
@@ -402,7 +402,7 @@ var sectionId = 'dynsection-1';
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="classSpan_1_1TransformSystem.html#aa2cf376ecd2d44d89515eca90aea04e1" target="_top" xlink:title=" ">
+<g id="a_Node000013"><a xlink:href="classSpan_1_1TransformSystem.html#aa2cf376ecd2d44d89515eca90aea04e1" target="_top" xlink:title="再帰的に親のワールド行列を取得し、自信のローカル行列と合成します。">
 <polygon fill="white" stroke="#666666" points="986,-285.66 854,-285.66 854,-255.66 986,-255.66 986,-285.66"/>
 <text text-anchor="start" x="862" y="-273.66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::TransformSystem</text>
 <text text-anchor="middle" x="920" y="-262.66" font-family="Helvetica,sans-Serif" font-size="10.00">::ComputeWorldMatrix</text>
@@ -538,7 +538,7 @@ var sectionId = 'dynsection-1';
 <!-- Node18 -->
 <g id="Node000018" class="node">
 <title>Node18</title>
-<g id="a_Node000018"><a xlink:href="classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26" target="_top" xlink:title=" ">
+<g id="a_Node000018"><a xlink:href="classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26" target="_top" xlink:title="指定したエンティティを現在の親から切断し、孤立させます。">
 <polygon fill="white" stroke="#666666" points="992,-617.66 848,-617.66 848,-587.66 992,-587.66 992,-617.66"/>
 <text text-anchor="start" x="856" y="-605.66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::RelationshipSystem</text>
 <text text-anchor="middle" x="920" y="-594.66" font-family="Helvetica,sans-Serif" font-size="10.00">::Disconnect</text>
@@ -557,7 +557,7 @@ var sectionId = 'dynsection-1';
 <!-- Node19 -->
 <g id="Node000019" class="node">
 <title>Node19</title>
-<g id="a_Node000019"><a xlink:href="classSpan_1_1RelationshipSystem.html#aa4b5cd977689e1b6689786315d0fa6e6" target="_top" xlink:title=" ">
+<g id="a_Node000019"><a xlink:href="classSpan_1_1RelationshipSystem.html#aa4b5cd977689e1b6689786315d0fa6e6" target="_top" xlink:title="特定の兄弟の「直前」に挿入します (順序変更用)。">
 <polygon fill="white" stroke="#666666" points="612,-655.66 468,-655.66 468,-625.66 612,-625.66 612,-655.66"/>
 <text text-anchor="start" x="476" y="-643.66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::RelationshipSystem</text>
 <text text-anchor="middle" x="540" y="-632.66" font-family="Helvetica,sans-Serif" font-size="10.00">::InsertBefore</text>
@@ -576,7 +576,7 @@ var sectionId = 'dynsection-1';
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="classSpan_1_1HierarchyPanel.html#af958ff25d0ba0576ae4848bbd01b2031" target="_top" xlink:title=" ">
+<g id="a_Node000020"><a xlink:href="classSpan_1_1HierarchyPanel.html#af958ff25d0ba0576ae4848bbd01b2031" target="_top" xlink:title="ドラッグ&amp;ドロップの受け入れ処理 (親子付け替え・並び替え)。">
 <polygon fill="white" stroke="#666666" points="432,-655.66 312,-655.66 312,-625.66 432,-625.66 432,-655.66"/>
 <text text-anchor="start" x="320" y="-643.66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::HierarchyPanel</text>
 <text text-anchor="middle" x="372" y="-632.66" font-family="Helvetica,sans-Serif" font-size="10.00">::HandleDragDrop</text>
@@ -595,7 +595,7 @@ var sectionId = 'dynsection-1';
 <!-- Node21 -->
 <g id="Node000021" class="node">
 <title>Node21</title>
-<g id="a_Node000021"><a xlink:href="classSpan_1_1RelationshipSystem.html#a22d8d93f263f586db5a1aa6de46711a0" target="_top" xlink:title=" ">
+<g id="a_Node000021"><a xlink:href="classSpan_1_1RelationshipSystem.html#a22d8d93f263f586db5a1aa6de46711a0" target="_top" xlink:title="親子関係を設定します (末尾に追加)。">
 <polygon fill="white" stroke="#666666" points="792,-579.66 648,-579.66 648,-549.66 792,-549.66 792,-579.66"/>
 <text text-anchor="start" x="656" y="-567.66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::RelationshipSystem</text>
 <text text-anchor="middle" x="720" y="-556.66" font-family="Helvetica,sans-Serif" font-size="10.00">::SetParent</text>
@@ -677,7 +677,7 @@ var sectionId = 'dynsection-1';
 <!-- Node22 -->
 <g id="Node000022" class="node">
 <title>Node22</title>
-<g id="a_Node000022"><a xlink:href="classSpan_1_1HierarchyPanel.html#a331d846c46df5f3346cfc7bb8c7a8e76" target="_top" xlink:title=" ">
+<g id="a_Node000022"><a xlink:href="classSpan_1_1HierarchyPanel.html#a331d846c46df5f3346cfc7bb8c7a8e76" target="_top" xlink:title="エンティティ上での右クリックメニューを描画します。">
 <polygon fill="white" stroke="#666666" points="432,-607.66 312,-607.66 312,-577.66 432,-577.66 432,-607.66"/>
 <text text-anchor="start" x="320" y="-595.66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::HierarchyPanel</text>
 <text text-anchor="middle" x="372" y="-584.66" font-family="Helvetica,sans-Serif" font-size="10.00">::DrawContextMenu</text>

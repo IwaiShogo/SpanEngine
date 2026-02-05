@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['使い方_0',['📝 使い方',['../structSpan_1_1Entity.html#autotoc_md38',1,'']]]
+  ['リンクリスト構造_0',['🌳 リンクリスト構造',['../classSpan_1_1RelationshipSystem.html#autotoc_md120',1,'']]]
 ];

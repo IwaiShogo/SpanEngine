@@ -93,6 +93,9 @@ $(function(){initNavTree('classSpan_1_1SceneViewPanel.html','','classSpan_1_1Sce
 </div><!--header-->
 <div class="contents">
 
+<p>🎥 ゲームの描画結果を表示し、オブジェクト操作(Gizmo)を提供するクラス。  
+ <a href="#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a>&gt;</code></p>
 <div class="dynheader">
 Span::SceneViewPanel の継承関係図</div>
@@ -109,9 +112,11 @@ Span::SceneViewPanel 連携図</div>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:a7ad03f3f00cf3f55ef43e368b58e7df6" id="r_a7ad03f3f00cf3f55ef43e368b58e7df6"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a7ad03f3f00cf3f55ef43e368b58e7df6">SceneViewPanel</a> ()</td></tr>
 <tr class="memitem:aab2935de58bd68267a680cabd3656c9f" id="r_aab2935de58bd68267a680cabd3656c9f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aab2935de58bd68267a680cabd3656c9f">OnImGuiRender</a> () override</td></tr>
-<tr class="memdesc:aab2935de58bd68267a680cabd3656c9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレーム呼ばれる描画関数。  <br /></td></tr>
+<tr class="memdesc:aab2935de58bd68267a680cabd3656c9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。  <br /></td></tr>
 <tr class="memitem:a9e99adc4e12ddae10ecfed859e6b60f5" id="r_a9e99adc4e12ddae10ecfed859e6b60f5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9e99adc4e12ddae10ecfed859e6b60f5">SetTexture</a> (D3D12_GPU_DESCRIPTOR_HANDLE handle)</td></tr>
+<tr class="memdesc:a9e99adc4e12ddae10ecfed859e6b60f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">描画するテクスチャ (レンダリング) を設定します。  <br /></td></tr>
 <tr class="memitem:a01c2dd4019659759f880f3a0eb354171" id="r_a01c2dd4019659759f880f3a0eb354171"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a01c2dd4019659759f880f3a0eb354171">GetTargetResolution</a> () const</td></tr>
+<tr class="memdesc:a01c2dd4019659759f880f3a0eb354171"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在のパネルサイズに基づいた、レンダリング推奨解像度を取得します。  <br /></td></tr>
 <tr class="inherit_header pub_methods_classSpan_1_1EditorPanel"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classSpan_1_1EditorPanel')"><span class="dynarrow"><span class="arrowhead closed"></span></span>基底クラス <a class="el" href="classSpan_1_1EditorPanel.html">Span::EditorPanel</a> に属する継承公開メンバ関数</td></tr>
 <tr class="memitem:a53c2cb1d331dca6a442575055d09a515 inherit pub_methods_classSpan_1_1EditorPanel" id="r_a53c2cb1d331dca6a442575055d09a515"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1EditorPanel.html#a53c2cb1d331dca6a442575055d09a515">EditorPanel</a> (const std::string &amp;<a class="el" href="classSpan_1_1EditorPanel.html#ae47b5777434e86ea69207a5249ec52c3">title</a>)</td></tr>
 <tr class="memdesc:a53c2cb1d331dca6a442575055d09a515 inherit pub_methods_classSpan_1_1EditorPanel"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ。  <br /></td></tr>
@@ -126,8 +131,11 @@ Span::SceneViewPanel 連携図</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 非公開メンバ関数</h2></td></tr>
 <tr class="memitem:a351d465df5c38b07b6e74bcdfeee97bc" id="r_a351d465df5c38b07b6e74bcdfeee97bc"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a351d465df5c38b07b6e74bcdfeee97bc">DrawToolbarOverlay</a> ()</td></tr>
+<tr class="memdesc:a351d465df5c38b07b6e74bcdfeee97bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">パネル上部にツールバー (ギズモ操作ボタン等) を重ねて表示します。  <br /></td></tr>
 <tr class="memitem:ad83a4a55f083c75371d0873322808796" id="r_ad83a4a55f083c75371d0873322808796"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad83a4a55f083c75371d0873322808796">DrawGizmo</a> (const <a class="el" href="structSpan_1_1Vector2.html">Vector2</a> &amp;pos, const <a class="el" href="structSpan_1_1Vector2.html">Vector2</a> &amp;size)</td></tr>
+<tr class="memdesc:ad83a4a55f083c75371d0873322808796"><td class="mdescLeft">&#160;</td><td class="mdescRight">選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。  <br /></td></tr>
 <tr class="memitem:a7b7d10b9fdd6d03aa9096f5326a8eb73" id="r_a7b7d10b9fdd6d03aa9096f5326a8eb73"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7b7d10b9fdd6d03aa9096f5326a8eb73">CalculateImageArea</a> (const <a class="el" href="structSpan_1_1Vector2.html">Vector2</a> &amp;availableSize, <a class="el" href="structSpan_1_1Vector2.html">Vector2</a> &amp;outPos, <a class="el" href="structSpan_1_1Vector2.html">Vector2</a> &amp;outSize)</td></tr>
+<tr class="memdesc:a7b7d10b9fdd6d03aa9096f5326a8eb73"><td class="mdescLeft">&#160;</td><td class="mdescRight">アスペクト比設定に基づいて、画像を表示すべき領域を計算します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
@@ -151,8 +159,17 @@ Span::SceneViewPanel 連携図</div>
 <tr class="memdesc:a3c42b2ab17e0708eaeff54afc8058b4a inherit pub_attribs_classSpan_1_1EditorPanel"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示フラグ  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00016">16</a> 行目に定義があります。</p>
+<div class="textblock"><p>🎥 ゲームの描画結果を表示し、オブジェクト操作(Gizmo)を提供するクラス。 </p>
+<p><span class="tt"><a class="el" href="classSpan_1_1Renderer.html" title="🖌 描画コマンドの発行を担うクラス。">Renderer</a></span> が描画したテクスチャ(SRV)を受け取り、ImGuiのウィンドウ内に画像として表示します。 その上に <span class="tt">ImGuizmo</span> を重ねることで、選択中のオブジェクトを直接操作できるようにしています。</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+🖱 操作</h3>
+<ul>
+<li><b>右クリック</b>: カメラ視点移動 (WASD)</li>
+<li><b>W / E / R</b>: 移動 / 回転 / 拡大縮小 モード切り替え</li>
+<li><b>Q</b>: ローカル / ワールド 座標系切り替え </li>
+</ul>
+
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00041">41</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="a7ad03f3f00cf3f55ef43e368b58e7df6" name="a7ad03f3f00cf3f55ef43e368b58e7df6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7ad03f3f00cf3f55ef43e368b58e7df6">&#9670;&#160;</a></span>SceneViewPanel()</h2>
@@ -211,6 +228,8 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
+<p>アスペクト比設定に基づいて、画像を表示すべき領域を計算します。 </p>
+
 <p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00263">263</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
@@ -246,6 +265,8 @@ Span::SceneViewPanel 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。 </p>
 
 <p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00083">83</a> 行目に定義があります。</p>
 <div class="dynheader">
@@ -284,6 +305,8 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
+<p>パネル上部にツールバー (ギズモ操作ボタン等) を重ねて表示します。 </p>
+
 <p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00189">189</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
@@ -316,7 +339,10 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00027">27</a> 行目に定義があります。</p>
+<p>現在のパネルサイズに基づいた、レンダリング推奨解像度を取得します。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>Resizingが必要なサイズ </dd></dl>
+
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00062">62</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -343,8 +369,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p>毎フレーム呼ばれる描画関数。 </p>
-<p>ここに <span class="tt">ImGui::Begin()</span>, UIウィジット, <span class="tt">ImGui::End()</span> を記述します。 </p>
+<p>毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。 </p>
 
 <p><a class="el" href="classSpan_1_1EditorPanel.html#a95362399147c9087c18e5ec22ec432a6">Span::EditorPanel</a>を実装しています。</p>
 
@@ -380,7 +405,15 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00024">24</a> 行目に定義があります。</p>
+<p>描画するテクスチャ (レンダリング) を設定します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>GPU上のディスクリプタハンドル (SRV) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00056">56</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -405,7 +438,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00055">55</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00094">94</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -429,7 +462,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00048">48</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00087">87</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -453,7 +486,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00047">47</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00086">86</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -477,7 +510,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00041">41</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00080">80</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -501,7 +534,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00050">50</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00089">89</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -525,7 +558,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00051">51</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00090">90</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -549,7 +582,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00052">52</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00091">91</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -573,7 +606,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00044">44</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00083">83</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -597,7 +630,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00049">49</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00088">88</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -621,7 +654,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00038">38</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00077">77</a> 行目に定義があります。</p>
 
 </div>
 </div>

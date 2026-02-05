@@ -128,7 +128,7 @@ Span::Entity 連携図</div>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。 </p>
 <p>Entity自体はデータを持たず、単なる <b>64bitのID</b> です 実際のデータ (コンポーネント) は <span class="tt"><a class="el" href="classSpan_1_1World.html" title="🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。">World</a></span> クラスが管理する <span class="tt"><a class="el" href="structSpan_1_1Chunk.html" title="🧱 コンポーネントデータを格納する固定サイズのメモリブロック。">Chunk</a></span> 内に存在します。</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md69"></a>
 📝 使い方</h3>
 <div class="fragment"><div class="line"><span class="comment">// Entityを作成</span></div>
 <div class="line"><a class="code hl_function" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> e = world.CreateEntity&lt;<a class="code hl_struct" href="structSpan_1_1Transform.html">Transform</a>, <a class="code hl_struct" href="structSpan_1_1MeshRenderer.html">MeshRenderer</a>&gt;();</div>
@@ -139,8 +139,8 @@ Span::Entity 連携図</div>
 <div class="line">}</div>
 <div class="ttc" id="astructSpan_1_1Entity_html_a23ab2fecbbf9cbe9038d074bf442bb04"><div class="ttname"><a href="#a23ab2fecbbf9cbe9038d074bf442bb04">Span::Entity::Entity</a></div><div class="ttdeci">Entity()=default</div></div>
 <div class="ttc" id="astructSpan_1_1Entity_html_a3bc29e7cdb8d6012f8be1de9f0da5687"><div class="ttname"><a href="#a3bc29e7cdb8d6012f8be1de9f0da5687">Span::Entity::Null</a></div><div class="ttdeci">static const Entity Null</div><div class="ttdoc">無効なエンティティを表す静的変数</div><div class="ttdef"><b>Definition</b> <a href="Entity_8h_source.html#l00076">Entity.h:76</a></div></div>
-<div class="ttc" id="astructSpan_1_1MeshRenderer_html"><div class="ttname"><a href="structSpan_1_1MeshRenderer.html">Span::MeshRenderer</a></div><div class="ttdef"><b>Definition</b> <a href="MeshRenderer_8h_source.html#l00007">MeshRenderer.h:8</a></div></div>
-<div class="ttc" id="astructSpan_1_1Transform_html"><div class="ttname"><a href="structSpan_1_1Transform.html">Span::Transform</a></div><div class="ttdef"><b>Definition</b> <a href="Transform_8h_source.html#l00007">Transform.h:8</a></div></div>
+<div class="ttc" id="astructSpan_1_1MeshRenderer_html"><div class="ttname"><a href="structSpan_1_1MeshRenderer.html">Span::MeshRenderer</a></div><div class="ttdoc">🖌 オブジェクトを画面に描画するための設定コンポーネント。</div><div class="ttdef"><b>Definition</b> <a href="MeshRenderer_8h_source.html#l00027">MeshRenderer.h:28</a></div></div>
+<div class="ttc" id="astructSpan_1_1Transform_html"><div class="ttname"><a href="structSpan_1_1Transform.html">Span::Transform</a></div><div class="ttdoc">📍 オブジェクトの3次元的な位置情報を保持するコンポーネント。</div><div class="ttdef"><b>Definition</b> <a href="Transform_8h_source.html#l00026">Transform.h:27</a></div></div>
 </div><!-- fragment --> 
 <p class="definition"> <a class="el" href="Entity_8h_source.html">Entity.h</a> の <a class="el" href="Entity_8h_source.html#l00070">70</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['注意点_0',['⚠ 注意点',['../classSpan_1_1ConstantBuffer.html#autotoc_md54',1,'']]]
+  ['座標系と仕様_20coordinate_20system_0',['📏 座標系と仕様 (Coordinate System)',['../SpanMath_8h.html#autotoc_md7',1,'']]]
 ];

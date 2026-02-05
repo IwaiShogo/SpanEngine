@@ -65,6 +65,7 @@ var namespaceSpan =
     [ "CameraSystem", "classSpan_1_1CameraSystem.html", "classSpan_1_1CameraSystem" ],
     [ "EditorCameraSystem", "classSpan_1_1EditorCameraSystem.html", "classSpan_1_1EditorCameraSystem" ],
     [ "RenderingSystem", "classSpan_1_1RenderingSystem.html", "classSpan_1_1RenderingSystem" ],
+    [ "AddComponentFunc", "namespaceSpan.html#a6af56d259d0ccdc218e0cadc2dcd8e08", null ],
     [ "ComponentTypeID", "namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd", null ],
     [ "DrawComponentFunc", "namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7", null ],
     [ "int16", "namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391", null ],

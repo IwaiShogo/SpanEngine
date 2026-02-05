@@ -33,7 +33,7 @@ var searchData=
   ['resetcursortocenter_30',['ResetCursorToCenter',['../classSpan_1_1Input.html#af45cd4df00ba60ee6d0e03c85dc6ba80',1,'Span::Input']]],
   ['resize_31',['Resize',['../classSpan_1_1RenderTarget.html#afb0bd3f571dc96eb95653295a8fab320',1,'Span::RenderTarget']]],
   ['resource_32',['resource',['../classSpan_1_1ConstantBuffer.html#a49d50882eddee173d07a680b3fecca97',1,'Span::ConstantBuffer::resource'],['../classSpan_1_1RenderTarget.html#a8fc923d13a57c3733de5f8935d898b2d',1,'Span::RenderTarget::resource'],['../classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab',1,'Span::Texture::resource']]],
-  ['resource_20barrier_20state_20flow_33',['🔄 Resource Barrier State Flow',['../classSpan_1_1RenderTarget.html#autotoc_md61',1,'']]],
+  ['resource_20barrier_20state_20flow_33',['🔄 Resource Barrier State Flow',['../classSpan_1_1RenderTarget.html#autotoc_md94',1,'']]],
   ['right_34',['Right',['../structSpan_1_1Vector3.html#a91d58c181afda160b2e8bf5929e2d2a9',1,'Span::Vector3']]],
   ['rightcontrol_35',['RightControl',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa857bb13bb233ca520283eb9886509b65',1,'Span']]],
   ['rightshift_36',['RightShift',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa317d4a7487ee62605713987d4a037f83',1,'Span']]],

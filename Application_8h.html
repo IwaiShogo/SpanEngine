@@ -92,6 +92,9 @@ $(function(){initNavTree('Application_8h.html','',''); });
   <div class="headertitle"><div class="title">Application.h ファイル</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>エンジンのメインループとライフサイクル管理。  
+<a href="#details">[詳解]</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="CoreMinimal_8h_source.html">Core/CoreMinimal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Window_8h_source.html">Platform/Window.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Renderer_8h_source.html">Graphics/Renderer.h</a>&quot;</code><br />
@@ -114,6 +117,7 @@ Application.h の依存先関係図:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 クラス</h2></td></tr>
 <tr class="memitem:Span_3A_3AApplication" id="r_Span_3A_3AApplication"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Application.html">Span::Application</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🚀 アプリケーションの基底クラス (シングルトン)。  <a href="classSpan_1_1Application.html#details">[詳解]</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 名前空間</h2></td></tr>
@@ -122,8 +126,19 @@ Application.h の依存先関係図:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
 <tr class="memitem:a1f3752f6a0fd409523c07eff247645bf" id="r_a1f3752f6a0fd409523c07eff247645bf"><td class="memItemLeft"><a class="el" href="classSpan_1_1Application.html">Application</a> *&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a1f3752f6a0fd409523c07eff247645bf">Span::CreateApplication</a> ()</td></tr>
+<tr class="memdesc:a1f3752f6a0fd409523c07eff247645bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">ユーザー側で定義すべきファクトリー関数  <br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>エンジンのメインループとライフサイクル管理。 </p>
+<p><br  />
+</p>
+<hr  />
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+autotoc_md32</h2>
+<dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
+
+<p class="definition"> <a class="el" href="Application_8h_source.html">Application.h</a> に定義があります。</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

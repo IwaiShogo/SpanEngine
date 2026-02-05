@@ -285,7 +285,7 @@ var sectionId = 'dynsection-4';
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" target="_top" xlink:title="選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。">
 <polygon fill="white" stroke="#666666" points="310,-368.5 184,-368.5 184,-338.5 310,-338.5 310,-368.5"/>
 <text text-anchor="start" x="192" y="-356.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::SceneViewPanel</text>
 <text text-anchor="middle" x="247" y="-345.5" font-family="Helvetica,sans-Serif" font-size="10.00">::DrawGizmo</text>
@@ -323,7 +323,7 @@ var sectionId = 'dynsection-4';
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="classSpan_1_1SceneViewPanel.html#aab2935de58bd68267a680cabd3656c9f" target="_top" xlink:title="毎フレーム呼ばれる描画関数。">
+<g id="a_Node000006"><a xlink:href="classSpan_1_1SceneViewPanel.html#aab2935de58bd68267a680cabd3656c9f" target="_top" xlink:title="毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。">
 <polygon fill="white" stroke="#666666" points="129,-368.5 3,-368.5 3,-338.5 129,-338.5 129,-368.5"/>
 <text text-anchor="start" x="11" y="-356.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::SceneViewPanel</text>
 <text text-anchor="middle" x="66" y="-345.5" font-family="Helvetica,sans-Serif" font-size="10.00">::OnImGuiRender</text>
@@ -468,7 +468,7 @@ var sectionId = 'dynsection-4';
 <!-- Node11 -->
 <g id="Node000011" class="node">
 <title>Node11</title>
-<g id="a_Node000011"><a xlink:href="classSpan_1_1TransformSystem.html#aa2cf376ecd2d44d89515eca90aea04e1" target="_top" xlink:title=" ">
+<g id="a_Node000011"><a xlink:href="classSpan_1_1TransformSystem.html#aa2cf376ecd2d44d89515eca90aea04e1" target="_top" xlink:title="再帰的に親のワールド行列を取得し、自信のローカル行列と合成します。">
 <polygon fill="white" stroke="#666666" points="313,-254.5 181,-254.5 181,-224.5 313,-224.5 313,-254.5"/>
 <text text-anchor="start" x="189" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::TransformSystem</text>
 <text text-anchor="middle" x="247" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ComputeWorldMatrix</text>
@@ -487,7 +487,7 @@ var sectionId = 'dynsection-4';
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="structSpan_1_1Transform.html#a22e91c428e57737b16a5e9281a28a610" target="_top" xlink:title=" ">
+<g id="a_Node000013"><a xlink:href="structSpan_1_1Transform.html#a22e91c428e57737b16a5e9281a28a610" target="_top" xlink:title="指定したターゲット座標を向くように回転を設定します。">
 <polygon fill="white" stroke="#666666" points="314.5,-206 179.5,-206 179.5,-187 314.5,-187 314.5,-206"/>
 <text text-anchor="middle" x="247" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Transform::LookAt</text>
 </a>
@@ -569,7 +569,7 @@ var sectionId = 'dynsection-4';
 <!-- Node19 -->
 <g id="Node000019" class="node">
 <title>Node19</title>
-<g id="a_Node000019"><a xlink:href="structSpan_1_1Transform.html#a132f40241af247849e79067db6ad62b4" target="_top" xlink:title=" ">
+<g id="a_Node000019"><a xlink:href="structSpan_1_1Transform.html#a132f40241af247849e79067db6ad62b4" target="_top" xlink:title="前方ベクトル (Local Forward / Z+) を取得します。">
 <polygon fill="white" stroke="#666666" points="326,-58 168,-58 168,-39 326,-39 326,-58"/>
 <text text-anchor="middle" x="247" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Transform::GetForward</text>
 </a>
@@ -587,7 +587,7 @@ var sectionId = 'dynsection-4';
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="structSpan_1_1Transform.html#a201045237f4cff825ff023848c5967fa" target="_top" xlink:title=" ">
+<g id="a_Node000020"><a xlink:href="structSpan_1_1Transform.html#a201045237f4cff825ff023848c5967fa" target="_top" xlink:title="右方向ベクトル (Local Right / X+) を取得します。">
 <polygon fill="white" stroke="#666666" points="319,-21 175,-21 175,-2 319,-2 319,-21"/>
 <text text-anchor="middle" x="247" y="-9" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Transform::GetRight</text>
 </a>
@@ -605,7 +605,7 @@ var sectionId = 'dynsection-4';
 <!-- Node21 -->
 <g id="Node000021" class="node">
 <title>Node21</title>
-<g id="a_Node000021"><a xlink:href="structSpan_1_1Transform.html#a4251fb155ba185e11247bd5b8044a003" target="_top" xlink:title=" ">
+<g id="a_Node000021"><a xlink:href="structSpan_1_1Transform.html#a4251fb155ba185e11247bd5b8044a003" target="_top" xlink:title="上方向ベクトル (Local Up / Y+) を取得します。">
 <polygon fill="white" stroke="#666666" points="313,-132 181,-132 181,-113 313,-113 313,-132"/>
 <text text-anchor="middle" x="247" y="-120" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Transform::GetUp</text>
 </a>
@@ -659,7 +659,7 @@ var sectionId = 'dynsection-4';
 <!-- Node27 -->
 <g id="Node000027" class="node">
 <title>Node27</title>
-<g id="a_Node000027"><a xlink:href="structSpan_1_1Transform.html#a8c473eec3b8f9c655db1804b88947e93" target="_top" xlink:title=" ">
+<g id="a_Node000027"><a xlink:href="structSpan_1_1Transform.html#a8c473eec3b8f9c655db1804b88947e93" target="_top" xlink:title="ローカル変換行列 (T * R * S) を計算して取得します。">
 <polygon fill="white" stroke="#666666" points="319,-320.5 175,-320.5 175,-290.5 319,-290.5 319,-320.5"/>
 <text text-anchor="start" x="183" y="-308.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Transform::GetLocal</text>
 <text text-anchor="middle" x="247" y="-297.5" font-family="Helvetica,sans-Serif" font-size="10.00">Matrix</text>
