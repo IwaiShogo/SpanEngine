@@ -1,55 +1,71 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	Transform.h
+ * @brief	位置、回転、拡大縮小を管理するコンポーネント。
+ * 
+ * @details	
+ * 
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "Core/Math/SpanMath.h"
 #include "Runtime/Reflection/SpanReflection.h"
 
 namespace Span
 {
+	/**
+	 * @struct	Transform
+	 * @brief	📍 オブジェクトの3次元的な位置情報を保持するコンポーネント。
+	 * 
+	 * @details
+	 * 全てのオブジェクトの基本となるコンポーネントです。
+	 * 階層構造 (親子関係) がある場合、この値は「親からの相対座標(Local)」として扱われます。
+	 */
 	struct Transform
 	{
-		Vector3 Position;
-		Quaternion Rotation;
-		Vector3 Scale;
+		Vector3 Position;		///< 位置 (Local)
+		Quaternion Rotation;	///< 回転 (Local Quaternion)
+		Vector3 Scale;			///< スケール (Local)
 
-		// コンストラクタ
+		// Constructors
+		// ============================================================
+
 		Transform()
 			: Position(Vector3::Zero)
 			, Rotation(Quaternion::Identity)
 			, Scale(Vector3::One)
-		{
-		}
+		{}
 
 		Transform(const Vector3& position, const Quaternion& rotation, const Vector3& scale)
 			: Position(position)
 			, Rotation(rotation)
 			, Scale(scale)
-		{
-		}
+		{}
 
 		explicit Transform(const Vector3& position)
 			: Position(position)
 			, Rotation(Quaternion::Identity)
 			, Scale(Vector3::One)
-		{
-		}
+		{}
 
-		// --- 静的作成ヘルパー ---
+		// Helpers
+		// ============================================================
 
+		/// @brief	単位行列 (初期値) を持つTransformを返します。
 		static Transform Identity()
 		{
 			return Transform();
 		}
 
-		// --- 計算ヘルパー (自身のデータは変更せず、計算結果を返す) ---
-
-		// ローカル行列 (T * R * S) を取得
+		/// @brief	ローカル変換行列 (T * R * S) を計算して取得します。
 		Matrix4x4 GetLocalMatrix() const
 		{
 			return Matrix4x4::TRS(Position, Rotation, Scale);
 		}
 
-		// --- 方向ベクトル取得 ---
-
-		// 前方 (Z+)
+		/// @brief	前方ベクトル (Local Forward / Z+) を取得します。
 		Vector3 GetForward() const
 		{
 			// 回転クォータニオンによって (0,0,1) を回転させる
@@ -58,23 +74,25 @@ namespace Span
 			return Vector3(mat._31, mat._32, mat._33).Normalized();
 		}
 
-		// 上方 (Y+)
-		Vector3 GetUp() const
-		{
-			Matrix4x4 mat = Matrix4x4::Rotation(Rotation);
-			return Vector3(mat._21, mat._22, mat._23).Normalized();
-		}
-
-		// 右方 (X+)
+		/// @brief	右方向ベクトル (Local Right / X+) を取得します。
 		Vector3 GetRight() const
 		{
 			Matrix4x4 mat = Matrix4x4::Rotation(Rotation);
 			return Vector3(mat._11, mat._12, mat._13).Normalized();
 		}
 
-		// --- 操作ヘルパー ---
+		/// @brief	上方向ベクトル (Local Up / Y+) を取得します。
+		Vector3 GetUp() const
+		{
+			Matrix4x4 mat = Matrix4x4::Rotation(Rotation);
+			return Vector3(mat._21, mat._22, mat._23).Normalized();
+		}
 
-		// 指定座標を向く回転を設定
+		/**
+		 * @brief	指定したターゲット座標を向くように回転を設定します。
+		 * @param	target 向きたいワールド座標
+		 * @param	worldUp 世界の上方向 (通常は Y+)
+		 */
 		void LookAt(const Vector3& target, const Vector3& worldUp = Vector3::Up)
 		{
 			// 1. 方向ベクトル計算 (自分 -> ターゲット)
@@ -109,17 +127,26 @@ namespace Span
 			Rotation = Quaternion::FromRotationMatrix(rotMat);
 		}
 
+		// Reflection (Editor UI)
+		// ============================================================
 		SPAN_INSPECTOR_BEGIN(Transform)
-			SPAN_FIELD(Position)
+
+		// 1. Position
+		SPAN_FIELD(Position)
+
+		// 2. Rotaion (Custom Handling: Quaternion <-> Euler Degree)
+		{
+			Vector3 euler = Rotation.ToEuler();
+			Vector3 deg = { ToDegrees(euler.x), ToDegrees(euler.y), ToDegrees(euler.z) };
+			if (ImGuiUI::DrawVec3Control("Rotation", deg))
 			{
-				Vector3 euler = Rotation.ToEuler();
-				Vector3 deg = { ToDegrees(euler.x), ToDegrees(euler.y), ToDegrees(euler.z) };
-				if (ImGuiUI::DrawVec3Control("Rotation", deg))
-				{
-					Rotation = Quaternion::FromEuler(ToRadians(deg.x), ToRadians(deg.y), ToRadians(deg.z));
-				}
+				Rotation = Quaternion::FromEuler(ToRadians(deg.x), ToRadians(deg.y), ToRadians(deg.z));
 			}
+		}
+
+		// 3. Scale
 		SPAN_FIELD(Scale)
+
 		SPAN_INSPECTOR_END()
 	};
 }

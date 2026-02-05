@@ -24,9 +24,11 @@ namespace Span
 	{
 		ImGui::Begin("Inspector", &isOpen);
 
+		// 1. 選択ターゲットの取得
 		Entity selected = SelectionManager::GetPrimary();
 		World& world = Application::Get().GetWorld();
 
+		// 未選択または無効なEntityの場合はここで終了
 		if (selected.IsNull() || !world.IsAlive(selected))
 		{
 			ImGui::Text("No Entity Selected");
@@ -34,15 +36,16 @@ namespace Span
 			return;
 		}
 
+		// 2. ヘッダー情報
 		ImGui::TextDisabled("ID: %d | Gen: %d", selected.ID.Index, selected.ID.Generation);
 		ImGui::Separator();
 		ImGui::Spacing();
 
-		// 1. アイコンとアクティブチェックボックス
+		// 3. 基本情報 (Name, Active, Tag)
 		bool isActive = true;
 		if (Active* a = world.GetComponentPtr<Active>(selected))
 		{
-			isActive = a->Value;
+			isActive = a->IsActive;
 		}
 		else
 		{
@@ -51,12 +54,11 @@ namespace Span
 
 		if (ImGui::Checkbox("##Active", &isActive))
 		{
-			if (Active* a = world.GetComponentPtr<Active>(selected)) a->Value = isActive;
+			if (Active* a = world.GetComponentPtr<Active>(selected)) a->IsActive = isActive;
 		}
 
 		ImGui::SameLine();
 
-		// 2. エンティティ名
 		ImGui::PushItemWidth(ImGui::GetContentRegionAvail().x * 0.6f);
 		if (Name* nameComp = world.GetComponentPtr<Name>(selected))
 		{
@@ -79,15 +81,12 @@ namespace Span
 		}
 		ImGui::PopItemWidth();
 
-		// 3. Staticフラグ
 		ImGui::SameLine();
 		ImGui::TextDisabled("Static");
-		// ドロップダウンで (Nothing, Everything, etc) など
 
 		ImGui::Spacing();
 		ImGui::Separator();
 
-		// 4. Tag & Layer 行
 		{
 			float labelWidth = 50.0f;
 
@@ -151,9 +150,8 @@ namespace Span
 		ImGui::Separator();
 		ImGui::Spacing();
 
-		// --- Component List ---
-
-		// レジストリからリストをコピー
+		// 4. コンポーネントリストの描画 (Reflection)
+		// 登録されている全コンポーネントメタデータを取得
 		auto& components = ComponentRegistry::GetAll();
 
 		// ソート (Transformを最優先、あとは名前順)
@@ -183,14 +181,16 @@ namespace Span
 			ImGui::PopID();
 		}
 
-		// 追加ボタン
+		// 5. コンポーネント追加ボタン (Add Component)
 		ImGui::Spacing();
 		ImGui::Separator();
+
 		if (ImGui::Button("Add Component", ImVec2(-1, 0)))
 		{
 			ImGui::OpenPopup("AddComponentPopup");
 		}
 
+		// 追加ポップアップ
 		if (ImGui::BeginPopup("AddComponentPopup"))
 		{
 			// コンポーネント名をソートして表示

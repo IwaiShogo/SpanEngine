@@ -87,7 +87,7 @@ namespace Span
 		bool isActive = true;
 		if (Active* a = world.GetComponentPtr<Active>(entity))
 		{
-			isActive = a->Value;
+			isActive = a->IsActive;
 		}
 		else
 		{
@@ -102,7 +102,7 @@ namespace Span
 		// チェックボックスを描画
 		if (ImGui::Checkbox("##Active", &isActive))
 		{
-			if (Active* a = world.GetComponentPtr<Active>(entity)) a->Value = isActive;
+			if (Active* a = world.GetComponentPtr<Active>(entity)) a->IsActive = isActive;
 		}
 
 		ImGui::SameLine();

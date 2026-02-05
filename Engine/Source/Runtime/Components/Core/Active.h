@@ -1,13 +1,30 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	Active.h
+ * @brief	エンティティの有効/無効フラグ。
+ *
+ * @details
+ *
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 
 namespace Span
 {
+	/**
+	 * @struct	Active
+	 * @brief	✅ エンティティの活動状態を制御するコンポーネント。
+	 * @details
+	 * false の場合、このエンティティに関連するシステム (描画、物理、更新処理) はスキップされます。
+	 */
 	struct Active
 	{
-		bool Value = true;
+		bool IsActive = true;
 
 		Active() = default;
-		Active(bool isActive) : Value(isActive) {}
+		Active(bool isActive) : IsActive(isActive) {}
 	};
 }
 

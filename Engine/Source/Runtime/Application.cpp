@@ -14,11 +14,13 @@ namespace Span
 		assert(!s_instance && "Application already exists!");	// 二重起動防止
 		s_instance = this;
 
-		// 1. ロガー初期化
+		// 1. システム初期化 (System Initialization)
+		// ------------------------------------------------------------
+
 		Logger::Initialize();
 		SPAN_LOG("--- Span Engine Initializing ---");
 
-		// 2. ウィンドウ初期化
+		// Window
 		WindowDesc desc;
 		desc.Title = L"Span Engine App";
 		desc.Width = 1280;
@@ -31,7 +33,7 @@ namespace Span
 			return;
 		}
 
-		// 3. graphicsContext初期化
+		// Graphics Context (DX12)
 		if (!graphicsContext.Initialize(window))
 		{
 			SPAN_FATAL("GraphicsContext Initialization Failed!");
@@ -39,7 +41,7 @@ namespace Span
 			return;
 		}
 
-		// 4. レンダラー初期化
+		// Renderer
 		if (!renderer.Initialize(&graphicsContext))
 		{
 			SPAN_FATAL("Render Initialization Failed!");
@@ -47,51 +49,66 @@ namespace Span
 			return;
 		}
 
-		// 4-b. シーンバッファの初期化
+		// SceneBuffer (Render Target for Editor View)
 		if (!sceneBuffer.Initialize(renderer.GetDevice(), window.GetWidth(), window.GetHeight()))
 		{
 			SPAN_FATAL("SceneBuffer Initialization Failed!");
 			isRunning = false;
 		}
 
-		// ウィンドウリサイズ時にレンダラーへ通知
+		// Resize
 		window.SetOnResize([this](uint32 w, uint32 h) {
 			renderer.OnResize(w, h);
 			sceneBuffer.Resize(renderer.GetDevice(), w, h);
 			});
 
-		// 5. 時間・入力・GUI管理初期化
-		Time::Initialize();
-		Input::Initialize(window.GetHandle());
+		// Editor GUI (ImGui)
 		GuiManager::Initialize(window.GetHandle(), renderer.GetDevice(), renderer.GetCommandQueue(), renderer.GetFrameCount());
+
+		// Time
+		Time::Initialize();
+
+		// Input
+		Input::Initialize(window.GetHandle());
+
+		SPAN_LOG("--- Initialization Complete ---");
 	}
 
 	Application::~Application()
 	{
+		// 終了処理
 		OnShutdown();
+
 		GuiManager::Shutdown();
 		sceneBuffer.Shutdown();
 		renderer.Shutdown();
 		graphicsContext.Shutdown();
 		window.Shutdown();
 		Logger::Shutdown();
+
+		s_instance = nullptr;
 	}
 
 	void Application::Run()
 	{
+		if (!isRunning) return;
+
 		// ユーザー定義の開始処理
 		OnStart();
 
+		// Main Loop
+		// ------------------------------------------------------------
 		while (isRunning)
 		{
-			// ウィンドウイベント処理
+			// 1. OSイベント処理 (閉じるボタンなど)
 			if (!window.PollEvents())
 			{
 				isRunning = false;
 				break;
 			}
 
-			// フレーム開始前にシーンビューのリサイズ
+			// 2. リサイズ対応 (シーンバッファ)
+			// シーンビューパネルのサイズに合わせてRTをリサイズする
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
 			{
 				Vector2 viewSize = scenePanel->GetTargetResolution();
@@ -106,32 +123,40 @@ namespace Span
 				}
 			}
 
-			// --- 1. シーン描画 (Render to Texture) ---
+			// 🖌 Rendering Phase
+			// ============================================================
 
+			// コマンドリスト取得
 			ID3D12GraphicsCommandList* cmd = renderer.BeginFrame();
 
-			sceneBuffer.TransitionToRenderTarget(cmd);
+			// --- A. シーン描画 (Render to Texture) ---
+			{
+				// バリア: SRV -> RTV
+				sceneBuffer.TransitionToRenderTarget(cmd);
 
-			D3D12_CPU_DESCRIPTOR_HANDLE rtv = sceneBuffer.GetRTV();
-			D3D12_CPU_DESCRIPTOR_HANDLE dsv = sceneBuffer.GetDSV();
+				// レンダーターゲット設定
+				D3D12_CPU_DESCRIPTOR_HANDLE rtv = sceneBuffer.GetRTV();
+				D3D12_CPU_DESCRIPTOR_HANDLE dsv = sceneBuffer.GetDSV();
+				cmd->OMSetRenderTargets(1, &rtv, FALSE, &dsv);
 
-			cmd->OMSetRenderTargets(1, &rtv, FALSE, &dsv);
-			sceneBuffer.Clear(cmd);
+				// クリア & ビューポート
+				sceneBuffer.Clear(cmd);
+				D3D12_VIEWPORT viewport = { 0.0f, 0.0f, (float)sceneBuffer.GetWidth(), (float)sceneBuffer.GetHeight(), 0.0f, 1.0f };
+				D3D12_RECT scissor = { 0, 0, (LONG)sceneBuffer.GetWidth(), (LONG)sceneBuffer.GetHeight() };
+				cmd->RSSetViewports(1, &viewport);
+				cmd->RSSetScissorRects(1, &scissor);
 
-			// ビューポート設定
-			D3D12_VIEWPORT viewport = { 0.0f, 0.0f, (float)sceneBuffer.GetWidth(), (float)sceneBuffer.GetHeight(), 0.0f, 1.0f };
-			D3D12_RECT scissor = { 0, 0, (LONG)sceneBuffer.GetWidth(), (LONG)sceneBuffer.GetHeight() };
-			cmd->RSSetViewports(1, &viewport);
-			cmd->RSSetScissorRects(1, &scissor);
+				// Logic Update & ECS Draw
+				Time::Update();			// Time update
+				Input::Update();		// Input update
+				world.UpdateSystems();	// Systems update
+				OnUpdate();				// User update
 
-			Time::Update();
-			Input::Update();
-			world.UpdateSystems();
-			OnUpdate();
+				// バリア: RTV -> SRV
+				sceneBuffer.TransitionToShaderResource(cmd);
+			}
 
-			sceneBuffer.TransitionToShaderResource(cmd);
-
-			// --- 2. エディタ描画 (Back Buffer) ---
+			// --- B. エディタ描画 (Back Buffer) ---
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
 			{
 				D3D12_GPU_DESCRIPTOR_HANDLE imGuiTexture = GuiManager::RegisterTexture(sceneBuffer.GetSRV());

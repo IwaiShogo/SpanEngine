@@ -1,4 +1,23 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	RelationshipSystem.h
+ * @brief	エンティティ間の親子・兄弟関係 (階層構造) を操作するシステム。
+ *
+ * @details
+ *
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *
+ * @date   2026/02/05	初回作成日
+ * 			作業内容：	- 追加：
+ *
+ * @update	2026/xx/xx	最終更新日
+ * 			作業内容：	- XX：
+ *
+ * @note	（省略可）
+ *********************************************************************/
+
+#pragma once
 #include "ECS/Kernel/System.h"
 #include "Components/Core/Relationship.h"
 #include "Components/Core/Transform.h"
@@ -6,10 +25,35 @@
 
 namespace Span
 {
+	/**
+	 * @class	RelationshipSystem
+	 * @brief	🔗 階層構造 (リンクリスト) の操作ロジックを提供する静的ヘルパークラス。
+	 *
+	 * @details
+	 * Entity自体はデータを持たないため、このクラスの静的関数を通じて `Relationship` コンポーネントを操作し、
+	 * 親子付けや切り離しを行います。
+	 *
+	 * ### 🌳 リンクリスト構造
+	 * ```text
+	 * [Parent]
+	 * | FirstChild
+	 * v
+	 * [Child A] <-> [Child B] <-> [Child C] ...
+	 * (Prev/Next)   (Prev/Next)
+	 * ```
+	 */
 	class RelationshipSystem : public System
 	{
 	public:
-		// 親から切断する (孤立させる)
+		/**
+		 * @brief	指定したエンティティを現在の親から切断し、孤立させます。
+		 * @param	world ワールドポインタ
+		 * @param	entity 接続対象のエンティティ
+		 *
+		 * @details
+		 * 兄弟間のリンク (Prev/Next) を繋ぎ直し、親の `FirstChild` が自分だった場合は次の兄弟に更新します。
+		 * 実行後はルート階層 (親なし) になります。
+		 */
 		static void Disconnect(World* world, Entity entity)
 		{
 			Relationship& rel = world->GetComponent<Relationship>(entity);
@@ -40,7 +84,12 @@ namespace Span
 			rel.NextSibling = Entity::Null;
 		}
 
-		// 末尾に親子付け替え
+		/**
+		 * @brief	親子関係を設定します (末尾に追加)。
+		 * @param	world ワールドポインタ
+		 * @param	child 子にするエンティティ
+		 * @param	parent 親にするエンティティ (Nullの場合はルート化)
+		 */
 		static void SetParent(World* world, Entity child, Entity parent)
 		{
 			Relationship& childRel = world->GetComponent<Relationship>(child);
@@ -83,7 +132,11 @@ namespace Span
 			}
 		}
 
-		// 特定の兄弟の「前」に挿入する (並び替え用)
+		/**
+		 * @brief	特定の兄弟の「直前」に挿入します (順序変更用)。
+		 * @param	world ワールドポインタ
+		 * @param	child 移動させるエンティティ
+		 */
 		static void InsertBefore(World* world, Entity child, Entity targetSibling, Entity parentIfTargetIsNull = Entity::Null)
 		{
 			if (child == targetSibling) return;

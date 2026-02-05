@@ -1,14 +1,36 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	TransformSystem.h
+ * @brief	ローカル座標からワールド座標への変換行列計算
+ *
+ * @details
+ *
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "ECS/Kernel/System.h"
 #include "ECS/Kernel/World.h"
 
-// Component
+// Components
 #include "Components/Core/Transform.h"
 #include "Components/Core/LocalToWorld.h"
 #include "Components/Core/Relationship.h"
 
 namespace Span
 {
+	/**
+	 * @class	TransformSystem
+	 * @brief	🌏 全エンティティのワールド変換行列を更新するシステム。
+	 *
+	 * @details
+	 * `Transform` (Local) と `Relationship` (親子関係) を読み取り、
+	 * 最終的な `LocalToWorld` 行列を計算して書き込みます。
+	 *
+	 * ### 🧮 計算式
+	 * \f$ M_{world} = M_{parent\_world} \times M_{local} \f$
+	 */
 	class TransformSystem : public System
 	{
 	public:
@@ -24,7 +46,13 @@ namespace Span
 		}
 
 	private:
-		// 再帰的にワールド行列を計算するヘルパー
+		/**
+		 * @brief	再帰的に親のワールド行列を取得し、自信のローカル行列と合成します。
+		 * @note
+		 * 現在の実装は単純な再帰呼び出しです。
+		 * 階層が深い場合やオブジェクト数が多い場合、計算結果のキャッシュや
+		 * 階層順のソート (Dirty Flag方式) による最適化が将来的に必要になります。
+		 */
 		Matrix4x4 ComputeWorldMatrix(Entity entity)
 		{
 			World* world = GetWorld();

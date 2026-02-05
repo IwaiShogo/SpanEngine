@@ -1,25 +1,62 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * @file	SpanReflection.h
+ * @brief	コンポーネント定義用のリフレクションマクロ。
+ * 
+ * @details	
+ * 
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
+
+#pragma once
 #include "SpanAttributes.h"
+#include "ComponentRegistry.h" 
 #include "Editor/ImGui/ImGuiUI.h"
 #include <vector>
 #include <string>
 #include <type_traits>
 #include <cfloat>
 
-#include "ComponentRegistry.h" 
 
-// -------------------------------------------------------------------------
-//	SPAN_INSPECTOR_BEGIN / END
-// -------------------------------------------------------------------------
+//	🪄 Reflection Macros
+// ============================================================
 
+/**
+ * @def		SPAN_INSPECTOR_BEGIN(ComponentType)
+ * @brief	インスペクターUI定義の開始マクロ
+ * 
+ * @details
+ * 構造体の中に `OnGui` 関数と、自動登録用の静的構造体 `_AutoReg_Inspector` を生成します。
+ */
 #define SPAN_INSPECTOR_BEGIN(ComponentType) \
 	public: \
 	using _InspectorSelfType = ComponentType; \
 	static const char* _GetInspectorName() { return #ComponentType; } \
+	/* UI描画関数 (InspectorPanelから呼ばれる) */ \
 	void OnGui(Span::Entity entity, Span::World& world) { \
 		bool isRemoved = false; \
+		/* ヘッダー描画 (折り畳み & 右クリックメニュー) */ \
 		if (Span::ImGuiUI::DrawComponentHeader(#ComponentType, isRemoved)) {
 
+/**
+ * @def		SPAN_FIELD(Variable, Label, ...)
+ * @brief	変数をインスペクターに表示します。
+ * @param	Variable メンバ変数名
+ * @param	Label UI上のラベル名
+ * @param	... 属性リスト (Range(0, 1), Tooltip("Help") 等)
+ */
+#define SPAN_FIELD(Variable, ...) \
+	{ \
+		using namespace Span; \
+		std::vector<Attribute> attrs = { __VA_ARGS__ }; \
+		Span::Internal::DrawField(#Variable, Variable, attrs); \
+	}
+
+/**
+ * @def		SPAN_INSPECTOR_END()
+ * @brief	インスペクターUI定義の終了マクロ。
+ */
 #define SPAN_INSPECTOR_END() \
 			ImGui::TreePop(); \
 		} \
@@ -27,6 +64,7 @@
 			world.RemoveComponent<_InspectorSelfType>(entity); \
 		} \
 	} \
+	/* 自動登録用構造体 (main前にコンストラクタが走る) */ \
 	struct _AutoReg_Inspector { \
 		_AutoReg_Inspector() { \
 			Span::ComponentRegistry::Register<_InspectorSelfType>( \
@@ -37,20 +75,11 @@
 	}; \
 	inline static _AutoReg_Inspector _autoreg_inspector;
 
-// -------------------------------------------------------------------------
-//	SPAN_FIELD
-// -------------------------------------------------------------------------
-
-#define SPAN_FIELD(Variable, ...) \
-	{ \
-		using namespace Span; \
-		std::vector<Attribute> attrs = { __VA_ARGS__ }; \
-		Span::Internal::DrawField(#Variable, Variable, attrs); \
-	}
-
 namespace Span::Internal
 {
-	// 汎用描画関数
+	/**
+	 * @brief	型に応じた描画ヘルパー関数
+	 */
 	template<typename T>
 	void DrawField(const char* label, T& value, const std::vector<Attribute>& attrs)
 	{
@@ -58,7 +87,7 @@ namespace Span::Internal
 		std::string tooltip;
 		float minV = -FLT_MAX, maxV = FLT_MAX;
 		bool hasRange = false;
-		bool hasMin = false; // ★追加
+		bool hasMin = false;
 		bool isReadOnly = false;
 
 		for (const auto& a : attrs) {
@@ -73,7 +102,7 @@ namespace Span::Internal
 			if (a.Type == AttributeType::ReadOnly) isReadOnly = true;
 
 			if (a.Type == AttributeType::Min) {
-				hasMin = true; // ★追加
+				hasMin = true;
 				minV = a.FloatValue1;
 				// 描画前の事前チェック
 				if constexpr (std::is_arithmetic_v<T>) {
