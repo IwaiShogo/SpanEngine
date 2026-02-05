@@ -136,6 +136,8 @@ namespace Span
 		 * @brief	特定の兄弟の「直前」に挿入します (順序変更用)。
 		 * @param	world ワールドポインタ
 		 * @param	child 移動させるエンティティ
+		 * @param	targetSibling 目標となる兄弟エンティティ
+		 * @param	parentIfTargetIsNull ターゲットがNullの場合の親 (末尾追加用)
 		 */
 		static void InsertBefore(World* world, Entity child, Entity targetSibling, Entity parentIfTargetIsNull = Entity::Null)
 		{
