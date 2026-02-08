@@ -76,12 +76,17 @@ namespace Span
 
 	Application::~Application()
 	{
-		// 終了処理
-		OnShutdown();
+		// GPUの完了を確実に待つ
+		graphicsContext.WaitForGpu();
+
+		// ワールド内のシステム終了処理
+		world.ShutdownSystem();
 
 		GuiManager::Shutdown();
 		sceneBuffer.Shutdown();
 		renderer.Shutdown();
+
+		// 全てのresourceが消えた後に Contextを消す
 		graphicsContext.Shutdown();
 		window.Shutdown();
 		Logger::Shutdown();
@@ -174,7 +179,7 @@ namespace Span
 			Input::EndFrame();
 		}
 
-		world.ShutdownSystem();
+		OnShutdown();
 	}
 }
 

@@ -1,15 +1,16 @@
 ﻿/*****************************************************************//**
  * @file	Name.h
  * @brief	エンティティの名前
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
  *********************************************************************/
 
 #pragma once
+#include "Core/Containers/FixedString.h"
 #include "Runtime/Reflection/SpanReflection.h"
 
 namespace Span
@@ -21,13 +22,15 @@ namespace Span
 	 */
 	struct Name
 	{
-		char Value[256];
+		String64 Value;
 
-		Name() { Value[0] = '\0'; }
-		Name(const char* name) { strcpy_s(Value, name); }
-		Name(const std::string& name) { strcpy_s(Value, name.c_str()); }
+		Name() = default;
+		Name(const char* name) : Value(name) {}
+		Name(const std::string& name) : Value(name) {}
 
 		std::string ToString() const { return std::string(Value); }
+
+		bool operator==(const Name& other) const { return Value == other.Value; }
 
 		// NameはInspectorPanelのヘッダー部分で特別扱いして表示するため、
 		// ここでは通常のフィールドとしては表示しない設定にする (二重表示防止)

@@ -113,7 +113,7 @@ namespace Span
 		std::string name = "Entity " + std::to_string(entity.ID.Index);
 		if (Name* n = world.GetComponentPtr<Name>(entity))
 		{
-			if (strlen(n->Value) > 0) name = n->Value;
+			if (strlen(n->Value.c_str()) > 0) name = n->Value;
 		}
 
 		// フラグ設定

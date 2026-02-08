@@ -60,12 +60,14 @@ namespace Span
 		ImGui::SameLine();
 
 		ImGui::PushItemWidth(ImGui::GetContentRegionAvail().x * 0.6f);
-		if (Name* nameComp = world.GetComponentPtr<Name>(selected))
+		if (world.HasComponent<Name>(selected))
 		{
-			if (ImGui::InputText("##Name", nameComp->Value, sizeof(nameComp->Value)))
-			{
-				// 名前変更時の処理
-			}
+			// 名前コンポーネントの参照を取得
+			auto& nameComponent = world.GetComponent<Name>(selected);
+
+			ImGui::PushItemWidth(-1);
+			ImGui::InputText("##Name", nameComponent.Value.data(), nameComponent.Value.Capacity());
+			ImGui::PopItemWidth();
 		}
 		else
 		{
@@ -76,7 +78,7 @@ namespace Span
 			{
 				world.AddComponent<Name>(selected);
 				Name& n = world.GetComponent<Name>(selected);
-				strcpy_s(n.Value, buf);
+				n.Value = buf;
 			}
 		}
 		ImGui::PopItemWidth();

@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	Tag.h
  * @brief	エンティティのタグ分類
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -21,10 +21,15 @@ namespace Span
 	 */
 	struct Tag
 	{
-		std::string Value = "Untagged";
+		String64 Value = "Untagged";
+
+		// Constructors
+		// ============================================================
 
 		Tag() = default;
 		Tag(const std::string& tag) : Value(tag) {}
+
+		bool operator==(const Tag& other) const { return Value == other.Value; }
 
 		SPAN_INSPECTOR_BEGIN(Tag)
 		SPAN_INSPECTOR_END()

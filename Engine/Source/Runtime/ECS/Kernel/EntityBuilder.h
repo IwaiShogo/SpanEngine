@@ -52,7 +52,7 @@ namespace Span
 
 			// 初期値設定
 			Name& nameComp = m_world->GetComponent<Name>(m_entity);
-			strcpy_s(nameComp.Value, name.c_str());
+			nameComp.Value = name;
 
 			// タグの初期化
 			m_world->GetComponent<Tag>(m_entity).Value = "Untagged";

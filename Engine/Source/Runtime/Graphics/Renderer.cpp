@@ -49,12 +49,13 @@ namespace Span
 		SAFE_DELETE(vs);
 		SAFE_DELETE(ps);
 
-		if (constantBuffer)
-		{
-			constantBuffer->Unmap(0, nullptr);
-			mappedConstantBuffer = nullptr;
-			constantBuffer.Reset();
-		}
+		rootSignature.Reset();
+		pipelineState.Reset();
+		pipelineStateTransparent.Reset();
+
+		constantBuffer.Reset();
+
+		context = nullptr;
 	}
 
 	ID3D12GraphicsCommandList* Renderer::BeginFrame()

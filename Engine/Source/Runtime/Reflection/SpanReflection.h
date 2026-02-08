@@ -13,6 +13,7 @@
 #include "SpanAttributes.h"
 #include "ComponentRegistry.h" 
 #include "Editor/ImGui/ImGuiUI.h"
+#include "Core/Containers/FixedString.h"
 #include <vector>
 #include <string>
 #include <type_traits>
@@ -75,6 +76,18 @@
 	}; \
 	inline static _AutoReg_Inspector _autoreg_inspector;
 
+namespace Span
+{
+	// テンプレートメタプログラミング用: TがFixedString<N>かどうか判定する。
+	template<typename T> struct is_fixed_string : std::false_type {};
+
+	template<size_t N>
+	struct is_fixed_string<FixedString<N>> : std::true_type {};
+
+	template<typename T>
+	inline constexpr bool is_fixed_string_v = is_fixed_string<T>::value;
+}
+
 namespace Span::Internal
 {
 	/**
@@ -126,6 +139,12 @@ namespace Span::Internal
 		}
 		else if constexpr (std::is_same_v<T, Vector3>) {
 			ImGuiUI::DrawVec3Control(label, value);
+		}
+		else if constexpr (Span::is_fixed_string_v<T>) {
+			ImGui::InputText(label, value.Data, value.Capacity());
+		}
+		else if constexpr (std::is_array_v<T> && std::is_same_v<std::remove_all_extents_t<T>, char>) {
+			ImGui::InputText(label, value, sizeof(T));
 		}
 
 		if (isReadOnly) ImGui::EndDisabled();

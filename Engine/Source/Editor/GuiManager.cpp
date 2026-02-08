@@ -91,10 +91,19 @@ namespace Span
 
 	void GuiManager::Shutdown()
 	{
-		ImGui_ImplDX12_Shutdown();
-		ImGui_ImplWin32_Shutdown();
-		ImGui::DestroyContext();
-		m_device = nullptr;
+		// Panels
+		panels.clear();
+
+		// ヒープも明示的にリセット
+		srvHeap.Reset();
+
+		if (m_device)
+		{
+			ImGui_ImplDX12_Shutdown();
+			ImGui_ImplWin32_Shutdown();
+			ImGui::DestroyContext();
+			m_device = nullptr;
+		}
 	}
 
 	void GuiManager::BeginFrame()

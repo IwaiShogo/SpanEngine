@@ -7,51 +7,101 @@ namespace Span
 		const std::vector<size_t>& alignments)
 		: typeIDs(types)
 	{
-		// 1. レイアウト計算
-		// Chunk構造: [EntityID配列] [CompA配列] [CompB配列] ...
-
 		// signature にもIDを登録する
 		for (ComponentTypeID id : types)
 		{
 			signature.Add(id);
 		}
 
-		// まずEntityIDの分を確保
-		size_t totalBytesPerEntity = sizeof(EntityID);
-
-		// 各コンポーネントのサイズを足していく
+		// 1. キャパシティの初期見積もり
+		// ------------------------------------------------------------
+		// 1エンティティ当たりの単純合計サイズを計算
+		size_t totalBytesSimple = sizeof(EntityID);
 		for (size_t size : sizes)
 		{
-			totalBytesPerEntity += size;
+			totalBytesSimple += size;
 		}
-		entitySize = totalBytesPerEntity;
+		entitySize = totalBytesSimple;
 
-		// 1チャンク(16KB)に何体入るか計算
-		chunkCapacity = static_cast<uint32>(CHUNK_SIZE / entitySize);
-
-		// 最低1体は入るように保証
+		// 余裕をもって少し少なめに見積もる
+		chunkCapacity = static_cast<uint32>((CHUNK_SIZE * 0.9f) / entitySize);
 		if (chunkCapacity == 0) chunkCapacity = 1;
 
-		// 2. オフセット計算 (SoA配置) & サイズ保存
-		// Memory: [EntityIDs (Cap個)] [CompA (Cap個)] [CompB (Cap個)] ...
+		// 2. パディング考慮のリサイズ (Safe Size Calculation)
+		// ------------------------------------------------------------
+		// アライメントによって必要なメモリが増えるため、16KBに収まるまでキャパシティを減らす
+		while (chunkCapacity > 0)
+		{
+			size_t currentOffset = 0;
 
-		size_t currentOffset = 0;
+			// EntityID配列 (先頭)
+			currentOffset += sizeof(EntityID) * chunkCapacity;
+
+			bool fits = true;
+
+			// 各コンポーネント配列
+			for (size_t i = 0; i < types.size(); ++i)
+			{
+				size_t align = alignments[i];
+				size_t size = sizes[i];
+
+				// パディング計算
+				if (currentOffset % align != 0)
+				{
+					currentOffset += align - (currentOffset % align);
+				}
+
+				// 配置後の末尾位置
+				size_t endOffset = currentOffset + (size * chunkCapacity);
+
+				// 16KBを超えたらアウト
+				if (endOffset > CHUNK_SIZE)
+				{
+					fits = false;
+					break;
+				}
+
+				// 次のコンポーネントの為にオフセットを進める
+				currentOffset = endOffset;
+			}
+
+			// 全て収まったらループ終了
+			if (fits)
+			{
+				break;
+			}
+
+			// 収まらないなら個数を減らして再計算
+			chunkCapacity--;
+		}
+
+		if (chunkCapacity == 0) chunkCapacity = 1;
+
+		// 3. 確定したキャパシティでオフセット計算
+		// ------------------------------------------------------------
+		size_t finalOffset = 0;
 
 		// 先頭はEntityIDの配列
-		currentOffset += sizeof(EntityID) * chunkCapacity;
+		finalOffset += sizeof(EntityID) * chunkCapacity;
 
 		// コンポーネントごとの配列開始位置を決定
 		for (size_t i = 0; i < types.size(); ++i)
 		{
+			size_t align = alignments[i];
+			if (finalOffset % align != 0)
+			{
+				finalOffset += align - (finalOffset % align);
+			}
+
 			// 本来はここでアライメント調整(Padding)を入れるべきだが、簡易実装
-			typeOffsets[types[i]] = currentOffset;
+			typeOffsets[types[i]] = finalOffset;
 			// サイズを保存
 			typeSizes[types[i]] = sizes[i];
 			// アライメント
 			typeAlignments[types[i]] = alignments[i];
 
 			// 次のコンポーネントのためにオフセットを進める (サイズ * キャパシティ)
-			currentOffset += sizes[i] * chunkCapacity;
+			finalOffset += sizes[i] * chunkCapacity;
 		}
 	}
 

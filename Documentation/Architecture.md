@@ -17,9 +17,26 @@ Span Engineは、メモリ効率とキャッシュヒット率を最大化する
 ## 2. Project Structure
 ```text
 Engine/
- ┣━━ Source/
- ┃    ┣━━ Core/           # Memory, Math, Input, Log
- ┃    ┣━━ Runtime/        # ECS, Physics, Render, Components
- ┃    ┣━━ Editor/         # ImGui Panels, Tools
- ┃    ┗━━ Developer/      # Tests, Profiler
- ┗━━ ThirdParty/          # JoltPhysics, ImGui, DXC, etc...
+ Root/
+├── Bin/                    # ビルド後の実行ファイル (Editor.exe, Game.exe)
+├── Build/                  # CMake中間ファイル (Git無視)
+├── Tools/                  # 開発用ツール
+│   └── ReflectionParser/   # Python script for code generation
+│
+├── Engine/                 # [CORE] ゲームエンジン本体
+│   ├── Source/
+│   │   ├── Core/           # Memory, Math, Container, Log
+│   │   ├── Runtime/        # ECS, Physics, Render, Audio, Script systems
+│   │   ├── Editor/         # ImGui wrapper, Window implementations
+│   │   └── Developer/      # Tests, Profiler
+│   ├── ThirdParty/         # JoltPhysics, ImGui, FreeType, DXC, etc.
+│   └── Shaders/            # HLSL Source codes
+│
+└── Projects/               # [USER] ユーザープロジェクト領域
+    ├── MyGameProject/      # ゲームごとのルート
+    │   ├── Assets/         # Raw assets (png, fbx, wav)
+    │   ├── Source/         # User Components & Systems (C++)
+    │   ├── Config/         # Engine/Input Settings
+    │   └── Cache/          # Imported assets (internal binary format)
+    └── ...
+```
