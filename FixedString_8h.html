@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Core/Containers/FixedString.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('FixedString_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">FixedString.h ファイル</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>固定長文字列ラッパー (POD)  
+<a href="#details">[詳解]</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="CoreMinimal_8h_source.html">Core/CoreMinimal.h</a>&quot;</code><br />
+<code>#include &lt;string_view&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+FixedString.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="FixedString_8h__incl.svg" width="100%" height="448"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="FixedString_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+</div>
+<p><a href="FixedString_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:Span_3A_3AFixedString_3C_20N_20_3E" id="r_Span_3A_3AFixedString_3C_20N_20_3E"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1FixedString.html">Span::FixedString&lt; N &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 固定長バッファを持つ文字列クラス。  <a href="structSpan_1_1FixedString.html#details">[詳解]</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+名前空間</h2></td></tr>
+<tr class="memitem:Span" id="r_Span"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html">Span</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:a3b6e367c9cc5f83dd664b2f937f5e75c" id="r_a3b6e367c9cc5f83dd664b2f937f5e75c"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a3b6e367c9cc5f83dd664b2f937f5e75c">Span::String32</a> = <a class="el" href="structSpan_1_1FixedString.html">FixedString</a>&lt;32&gt;</td></tr>
+<tr class="memitem:a1c9b49b553b2639b8e94564c39f9941d" id="r_a1c9b49b553b2639b8e94564c39f9941d"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a1c9b49b553b2639b8e94564c39f9941d">Span::String64</a> = <a class="el" href="structSpan_1_1FixedString.html">FixedString</a>&lt;64&gt;</td></tr>
+<tr class="memitem:a5599ed78c75cf520c87d4e1da62d7f09" id="r_a5599ed78c75cf520c87d4e1da62d7f09"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a5599ed78c75cf520c87d4e1da62d7f09">Span::String256</a> = <a class="el" href="structSpan_1_1FixedString.html">FixedString</a>&lt;256&gt;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>固定長文字列ラッパー (POD) </p>
+<hr  />
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+autotoc_md1</h2>
+<dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
+
+<p class="definition"> <a class="el" href="FixedString_8h_source.html">FixedString.h</a> に定義があります。</p>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_580d866cebc144d44931193ef5e2059b.html">Core</a></li><li class="navelem"><a href="dir_ce60ad3937eaced92a33dfa89ed6e54a.html">Containers</a></li><li class="navelem"><a href="FixedString_8h.html">FixedString.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

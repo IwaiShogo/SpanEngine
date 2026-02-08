@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Core/Containers/FixedString.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('FixedString_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">FixedString.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="FixedString_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    FixedString.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   固定長文字列ラッパー (POD)</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="namespaceSpan.html">   16</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">     * @struct  FixedString</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * @brief   📦 固定長バッファを持つ文字列クラス。</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">     * @details</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">     * - ヒープ割り当てを行わないため、ECSのコンポーネントとして安全に使用できます。</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">     * - std::string と互換性のあるインターフェースを提供します。</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">     * @tparam  N 最大文字数 (ヌル終端を含むバッファサイズ)</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> N&gt;</div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html">   28</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="structSpan_1_1FixedString.html#a35a0008b7836c8dfb4e35b71946a0f31">FixedString</a></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">   30</a></span>        <span class="keywordtype">char</span> <a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>[<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa8d9c307cb7f3c4a32822a51922d1ceaa">N</a>];</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="comment">// --- Constructors ---</span></div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a35a0008b7836c8dfb4e35b71946a0f31">   33</a></span>        <a class="code hl_function" href="structSpan_1_1FixedString.html#a35a0008b7836c8dfb4e35b71946a0f31">FixedString</a>()</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        }</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#aa6697718746372b8953a936363f8eb6b">   38</a></span>        <a class="code hl_function" href="structSpan_1_1FixedString.html#aa6697718746372b8953a936363f8eb6b">FixedString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* str)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <a class="code hl_function" href="structSpan_1_1FixedString.html#a99e18095fee5dd06cd766558f09c23e9">Set</a>(str);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a9c1f65add4730295509d79df0c52a334">   43</a></span>        <a class="code hl_function" href="structSpan_1_1FixedString.html#a9c1f65add4730295509d79df0c52a334">FixedString</a>(<span class="keyword">const</span> std::string&amp; str)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <a class="code hl_function" href="structSpan_1_1FixedString.html#a99e18095fee5dd06cd766558f09c23e9">Set</a>(str.c_str());</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        }</div>
+</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="comment">// --- Assignment ---</span></div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#afeb311c595d5a6d9a2c766d050c256be">   49</a></span>        <a class="code hl_function" href="structSpan_1_1FixedString.html#a35a0008b7836c8dfb4e35b71946a0f31">FixedString</a>&amp; <a class="code hl_function" href="structSpan_1_1FixedString.html#afeb311c595d5a6d9a2c766d050c256be">operator=</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* str)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <a class="code hl_function" href="structSpan_1_1FixedString.html#a99e18095fee5dd06cd766558f09c23e9">Set</a>(str);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        }</div>
+</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a748dabe9b35d0b6e31408ddbff6c27ca">   55</a></span>        <a class="code hl_function" href="structSpan_1_1FixedString.html#a35a0008b7836c8dfb4e35b71946a0f31">FixedString</a>&amp; <a class="code hl_function" href="structSpan_1_1FixedString.html#a748dabe9b35d0b6e31408ddbff6c27ca">operator=</a>(<span class="keyword">const</span> std::string&amp; str)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <a class="code hl_function" href="structSpan_1_1FixedString.html#a99e18095fee5dd06cd766558f09c23e9">Set</a>(str.c_str());</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="comment">// --- Accessors ---</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a34bb580e3cbb4c86085c0579bc8716a0">   62</a></span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="structSpan_1_1FixedString.html#a34bb580e3cbb4c86085c0579bc8716a0">c_str</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>; }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a782f2f09ae4f0211b0f4e12b724d0e1e">   63</a></span>        <span class="keywordtype">char</span>* <a class="code hl_function" href="structSpan_1_1FixedString.html#a782f2f09ae4f0211b0f4e12b724d0e1e">data</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>; }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#ad5e9613c004c88532a25a0bc289fb997">   65</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structSpan_1_1FixedString.html#ad5e9613c004c88532a25a0bc289fb997">Empty</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>[0] == <span class="charliteral">&#39;\0&#39;</span>; }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a2c03714f578e2ca1f71d60747a83eb9d">   66</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="structSpan_1_1FixedString.html#a2c03714f578e2ca1f71d60747a83eb9d">Capacity</a>() { <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa8d9c307cb7f3c4a32822a51922d1ceaa">N</a>; }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="comment">// --- Utilities ---</span></div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a99e18095fee5dd06cd766558f09c23e9">   69</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structSpan_1_1FixedString.html#a99e18095fee5dd06cd766558f09c23e9">Set</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* str)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">if</span> (str)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                strncpy_s(<a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>, <a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa8d9c307cb7f3c4a32822a51922d1ceaa">N</a>, str, _TRUNCATE);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                <a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        }</div>
+</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="comment">// --- Operators ---</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a0648496d9423d2d8587ffb5c813703e7">   82</a></span>        <span class="keyword">operator</span> std::string()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> std::string(<a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>); }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#ad5419fd3f886b6e0c3e03b452cbefd0a">   84</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structSpan_1_1FixedString.html#ad5419fd3f886b6e0c3e03b452cbefd0a">operator==</a>(<span class="keyword">const</span> <a class="code hl_function" href="structSpan_1_1FixedString.html#a35a0008b7836c8dfb4e35b71946a0f31">FixedString</a>&amp; other)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> strcmp(<a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>, other.<a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>) == 0; }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a105ccaef152c16d2c6ec907157146cfd">   85</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structSpan_1_1FixedString.html#a105ccaef152c16d2c6ec907157146cfd">operator==</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* other)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> strcmp(<a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>, other) == 0; }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#a31c4ebc18b1ec00e5e4467d253f08d04">   86</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structSpan_1_1FixedString.html#a31c4ebc18b1ec00e5e4467d253f08d04">operator==</a>(<span class="keyword">const</span> std::string&amp; other)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> other == <a class="code hl_variable" href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Data</a>; }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="structSpan_1_1FixedString.html#abc61291c56a764c588d90ecebffb446e">   88</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structSpan_1_1FixedString.html#abc61291c56a764c588d90ecebffb446e">operator!=</a>(<span class="keyword">const</span> <a class="code hl_function" href="structSpan_1_1FixedString.html#a35a0008b7836c8dfb4e35b71946a0f31">FixedString</a>&amp; other)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> !(*<span class="keyword">this</span> == other); }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    };</div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="comment">// よく使うサイズのエイリアス定義</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a3b6e367c9cc5f83dd664b2f937f5e75c">   92</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a3b6e367c9cc5f83dd664b2f937f5e75c">String32</a> = <a class="code hl_struct" href="structSpan_1_1FixedString.html">FixedString&lt;32&gt;</a>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a1c9b49b553b2639b8e94564c39f9941d">   93</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a1c9b49b553b2639b8e94564c39f9941d">String64</a> = <a class="code hl_struct" href="structSpan_1_1FixedString.html">FixedString&lt;64&gt;</a>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a5599ed78c75cf520c87d4e1da62d7f09">   94</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a5599ed78c75cf520c87d4e1da62d7f09">String256</a> = <a class="code hl_struct" href="structSpan_1_1FixedString.html">FixedString&lt;256&gt;</a>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a1c9b49b553b2639b8e94564c39f9941d"><div class="ttname"><a href="namespaceSpan.html#a1c9b49b553b2639b8e94564c39f9941d">Span::String64</a></div><div class="ttdeci">FixedString&lt; 64 &gt; String64</div><div class="ttdef"><b>Definition</b> <a href="#l00093">FixedString.h:93</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a3b6e367c9cc5f83dd664b2f937f5e75c"><div class="ttname"><a href="namespaceSpan.html#a3b6e367c9cc5f83dd664b2f937f5e75c">Span::String32</a></div><div class="ttdeci">FixedString&lt; 32 &gt; String32</div><div class="ttdef"><b>Definition</b> <a href="#l00092">FixedString.h:92</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a5599ed78c75cf520c87d4e1da62d7f09"><div class="ttname"><a href="namespaceSpan.html#a5599ed78c75cf520c87d4e1da62d7f09">Span::String256</a></div><div class="ttdeci">FixedString&lt; 256 &gt; String256</div><div class="ttdef"><b>Definition</b> <a href="#l00094">FixedString.h:94</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_aa350a9ffb8abcc7152b348bf09b86d8fa8d9c307cb7f3c4a32822a51922d1ceaa"><div class="ttname"><a href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa8d9c307cb7f3c4a32822a51922d1ceaa">Span::Key::N</a></div><div class="ttdeci">@ N</div><div class="ttdef"><b>Definition</b> <a href="Input_8h_source.html#l00029">Input.h:29</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html"><div class="ttname"><a href="structSpan_1_1FixedString.html">Span::FixedString</a></div><div class="ttdoc">📦 固定長バッファを持つ文字列クラス。</div><div class="ttdef"><b>Definition</b> <a href="#l00028">FixedString.h:29</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_a105ccaef152c16d2c6ec907157146cfd"><div class="ttname"><a href="structSpan_1_1FixedString.html#a105ccaef152c16d2c6ec907157146cfd">Span::FixedString::operator==</a></div><div class="ttdeci">bool operator==(const char *other) const</div><div class="ttdef"><b>Definition</b> <a href="#l00085">FixedString.h:85</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_a2c03714f578e2ca1f71d60747a83eb9d"><div class="ttname"><a href="structSpan_1_1FixedString.html#a2c03714f578e2ca1f71d60747a83eb9d">Span::FixedString::Capacity</a></div><div class="ttdeci">static constexpr size_t Capacity()</div><div class="ttdef"><b>Definition</b> <a href="#l00066">FixedString.h:66</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_a31c4ebc18b1ec00e5e4467d253f08d04"><div class="ttname"><a href="structSpan_1_1FixedString.html#a31c4ebc18b1ec00e5e4467d253f08d04">Span::FixedString::operator==</a></div><div class="ttdeci">bool operator==(const std::string &amp;other) const</div><div class="ttdef"><b>Definition</b> <a href="#l00086">FixedString.h:86</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_a34bb580e3cbb4c86085c0579bc8716a0"><div class="ttname"><a href="structSpan_1_1FixedString.html#a34bb580e3cbb4c86085c0579bc8716a0">Span::FixedString::c_str</a></div><div class="ttdeci">const char * c_str() const</div><div class="ttdef"><b>Definition</b> <a href="#l00062">FixedString.h:62</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_a35a0008b7836c8dfb4e35b71946a0f31"><div class="ttname"><a href="structSpan_1_1FixedString.html#a35a0008b7836c8dfb4e35b71946a0f31">Span::FixedString::FixedString</a></div><div class="ttdeci">FixedString()</div><div class="ttdef"><b>Definition</b> <a href="#l00033">FixedString.h:33</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_a41c6682e4637593fb5e2ba3c202b860e"><div class="ttname"><a href="structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e">Span::FixedString&lt; 32 &gt;::Data</a></div><div class="ttdeci">char Data[N]</div><div class="ttdef"><b>Definition</b> <a href="#l00030">FixedString.h:30</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_a748dabe9b35d0b6e31408ddbff6c27ca"><div class="ttname"><a href="structSpan_1_1FixedString.html#a748dabe9b35d0b6e31408ddbff6c27ca">Span::FixedString::operator=</a></div><div class="ttdeci">FixedString &amp; operator=(const std::string &amp;str)</div><div class="ttdef"><b>Definition</b> <a href="#l00055">FixedString.h:55</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_a782f2f09ae4f0211b0f4e12b724d0e1e"><div class="ttname"><a href="structSpan_1_1FixedString.html#a782f2f09ae4f0211b0f4e12b724d0e1e">Span::FixedString::data</a></div><div class="ttdeci">char * data()</div><div class="ttdef"><b>Definition</b> <a href="#l00063">FixedString.h:63</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_a99e18095fee5dd06cd766558f09c23e9"><div class="ttname"><a href="structSpan_1_1FixedString.html#a99e18095fee5dd06cd766558f09c23e9">Span::FixedString::Set</a></div><div class="ttdeci">void Set(const char *str)</div><div class="ttdef"><b>Definition</b> <a href="#l00069">FixedString.h:69</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_a9c1f65add4730295509d79df0c52a334"><div class="ttname"><a href="structSpan_1_1FixedString.html#a9c1f65add4730295509d79df0c52a334">Span::FixedString::FixedString</a></div><div class="ttdeci">FixedString(const std::string &amp;str)</div><div class="ttdef"><b>Definition</b> <a href="#l00043">FixedString.h:43</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_aa6697718746372b8953a936363f8eb6b"><div class="ttname"><a href="structSpan_1_1FixedString.html#aa6697718746372b8953a936363f8eb6b">Span::FixedString::FixedString</a></div><div class="ttdeci">FixedString(const char *str)</div><div class="ttdef"><b>Definition</b> <a href="#l00038">FixedString.h:38</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_abc61291c56a764c588d90ecebffb446e"><div class="ttname"><a href="structSpan_1_1FixedString.html#abc61291c56a764c588d90ecebffb446e">Span::FixedString::operator!=</a></div><div class="ttdeci">bool operator!=(const FixedString &amp;other) const</div><div class="ttdef"><b>Definition</b> <a href="#l00088">FixedString.h:88</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_ad5419fd3f886b6e0c3e03b452cbefd0a"><div class="ttname"><a href="structSpan_1_1FixedString.html#ad5419fd3f886b6e0c3e03b452cbefd0a">Span::FixedString::operator==</a></div><div class="ttdeci">bool operator==(const FixedString &amp;other) const</div><div class="ttdef"><b>Definition</b> <a href="#l00084">FixedString.h:84</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_ad5e9613c004c88532a25a0bc289fb997"><div class="ttname"><a href="structSpan_1_1FixedString.html#ad5e9613c004c88532a25a0bc289fb997">Span::FixedString::Empty</a></div><div class="ttdeci">bool Empty() const</div><div class="ttdef"><b>Definition</b> <a href="#l00065">FixedString.h:65</a></div></div>
+<div class="ttc" id="astructSpan_1_1FixedString_html_afeb311c595d5a6d9a2c766d050c256be"><div class="ttname"><a href="structSpan_1_1FixedString.html#afeb311c595d5a6d9a2c766d050c256be">Span::FixedString::operator=</a></div><div class="ttdeci">FixedString &amp; operator=(const char *str)</div><div class="ttdef"><b>Definition</b> <a href="#l00049">FixedString.h:49</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_580d866cebc144d44931193ef5e2059b.html">Core</a></li><li class="navelem"><a href="dir_ce60ad3937eaced92a33dfa89ed6e54a.html">Containers</a></li><li class="navelem"><a href="FixedString_8h.html">FixedString.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

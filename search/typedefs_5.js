@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['uint16_0',['uint16',['../namespaceSpan.html#a7e9a8de14762ae0ab1c4343b8326fea8',1,'Span']]],
-  ['uint32_1',['uint32',['../namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9',1,'Span']]],
-  ['uint64_2',['uint64',['../namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d',1,'Span']]],
-  ['uint8_3',['uint8',['../namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd',1,'Span']]]
+  ['string256_0',['String256',['../namespaceSpan.html#a5599ed78c75cf520c87d4e1da62d7f09',1,'Span']]],
+  ['string32_1',['String32',['../namespaceSpan.html#a3b6e367c9cc5f83dd664b2f937f5e75c',1,'Span']]],
+  ['string64_2',['String64',['../namespaceSpan.html#a1c9b49b553b2639b8e94564c39f9941d',1,'Span']]]
 ];

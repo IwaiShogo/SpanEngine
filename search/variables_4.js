@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data_0',['Data',['../classSpan_1_1ConstantBuffer.html#aa1c7be6da0a8ff97112292708d8cab0c',1,'Span::ConstantBuffer']]],
+  ['data_0',['Data',['../structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e',1,'Span::FixedString::Data'],['../classSpan_1_1ConstantBuffer.html#aa1c7be6da0a8ff97112292708d8cab0c',1,'Span::ConstantBuffer::Data']]],
   ['data_1',['data',['../classSpan_1_1Material.html#a780f39af36119c4dfcadb79eabfb1589',1,'Span::Material']]],
   ['deg_2',['deg',['../structSpan_1_1Transform.html#ad68b513f2dbc9ddbfbce95f03d749770',1,'Span::Transform']]],
   ['deltatime_3',['deltaTime',['../classSpan_1_1Time.html#a38115fdf67afaf9f2e8e2d352c2ef45e',1,'Span::Time']]],

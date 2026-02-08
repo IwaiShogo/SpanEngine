@@ -23,6 +23,11 @@ var hierarchy =
     [ "Span::EntityID", "structSpan_1_1EntityID.html", null ],
     [ "Span::EntityLocation", "structSpan_1_1EntityLocation.html", null ],
     [ "Span::EntityManager", "classSpan_1_1EntityManager.html", null ],
+    [ "std::false_type", null, [
+      [ "Span::is_fixed_string< FixedString< N > >", "structSpan_1_1is__fixed__string_3_01FixedString_3_01N_01_4_01_4.html", null ],
+      [ "Span::is_fixed_string< T >", "structSpan_1_1is__fixed__string.html", null ]
+    ] ],
+    [ "Span::FixedString&lt; N &gt;", "structSpan_1_1FixedString.html", null ],
     [ "Span::GraphicsContext", "classSpan_1_1GraphicsContext.html", null ],
     [ "Span::GuiManager", "classSpan_1_1GuiManager.html", null ],
     [ "std::hash&lt; Span::EntityID &gt;", "structstd_1_1hash_3_01Span_1_1EntityID_01_4.html", null ],
@@ -58,6 +63,9 @@ var hierarchy =
     [ "Span::Time", "classSpan_1_1Time.html", null ],
     [ "Span::Transform", "structSpan_1_1Transform.html", null ],
     [ "Span::TransformData", "structSpan_1_1TransformData.html", null ],
+    [ "std::true_type", null, [
+      [ "Span::is_fixed_string< FixedString< N > >", "structSpan_1_1is__fixed__string_3_01FixedString_3_01N_01_4_01_4.html", null ]
+    ] ],
     [ "Span::Vector2", "structSpan_1_1Vector2.html", null ],
     [ "Span::Vector3", "structSpan_1_1Vector3.html", null ],
     [ "Span::Vector4", "structSpan_1_1Vector4.html", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quaternion_0',['Quaternion',['../structSpan_1_1Quaternion.html',1,'Span']]]
+  ['name_0',['Name',['../structSpan_1_1Name.html',1,'Span']]]
 ];

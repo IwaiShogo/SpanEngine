@@ -1,8 +1,8 @@
 var searchData=
 [
   ['d_0',['D',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8faf623e75af30e62bbd73d6df5b50bb7b5',1,'Span']]],
-  ['data_1',['Data',['../classSpan_1_1ConstantBuffer.html#aa1c7be6da0a8ff97112292708d8cab0c',1,'Span::ConstantBuffer']]],
-  ['data_2',['data',['../classSpan_1_1Material.html#a780f39af36119c4dfcadb79eabfb1589',1,'Span::Material']]],
+  ['data_1',['Data',['../structSpan_1_1FixedString.html#a41c6682e4637593fb5e2ba3c202b860e',1,'Span::FixedString::Data'],['../classSpan_1_1ConstantBuffer.html#aa1c7be6da0a8ff97112292708d8cab0c',1,'Span::ConstantBuffer::Data']]],
+  ['data_2',['data',['../classSpan_1_1Material.html#a780f39af36119c4dfcadb79eabfb1589',1,'Span::Material::data'],['../structSpan_1_1FixedString.html#a782f2f09ae4f0211b0f4e12b724d0e1e',1,'Span::FixedString::data()']]],
   ['default_3',['Default',['../namespaceSpan.html#a0218d3201263d090d434e06833479948a7a1920d61156abc05a60135aefe8bc67',1,'Span']]],
   ['deg_4',['deg',['../structSpan_1_1Transform.html#ad68b513f2dbc9ddbfbce95f03d749770',1,'Span::Transform']]],
   ['deltatime_5',['deltaTime',['../classSpan_1_1Time.html#a38115fdf67afaf9f2e8e2d352c2ef45e',1,'Span::Time']]],
@@ -14,7 +14,7 @@ var searchData=
   ['device_11',['device',['../classSpan_1_1GraphicsContext.html#a3c16daba9944015d6b67fbe31111175a',1,'Span::GraphicsContext']]],
   ['disconnect_12',['Disconnect',['../classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26',1,'Span::RelationshipSystem']]],
   ['dot_13',['Dot',['../structSpan_1_1Vector3.html#afd00ea2d739d71571828e2d44b41c0c6',1,'Span::Vector3']]],
-  ['double_20buffering_14',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md91',1,'']]],
+  ['double_20buffering_14',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md93',1,'']]],
   ['down_15',['Down',['../structSpan_1_1Vector3.html#a174d5e36f77185f411c98c3cb05def5d',1,'Span::Vector3']]],
   ['draw_16',['Draw',['../classSpan_1_1Mesh.html#a778cd9c09642759f91c6f0cbe53503a1',1,'Span::Mesh']]],
   ['drawcomponentfunc_17',['DrawComponentFunc',['../namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7',1,'Span']]],

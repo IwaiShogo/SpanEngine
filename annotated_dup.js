@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "Span", "namespaceSpan.html", [
+      [ "FixedString", "structSpan_1_1FixedString.html", "structSpan_1_1FixedString" ],
       [ "Input", "classSpan_1_1Input.html", "classSpan_1_1Input" ],
       [ "Logger", "classSpan_1_1Logger.html", "classSpan_1_1Logger" ],
       [ "Vector2", "structSpan_1_1Vector2.html", "structSpan_1_1Vector2" ],
@@ -58,6 +59,8 @@ var annotated_dup =
       [ "ComponentMetadata", "structSpan_1_1ComponentMetadata.html", "structSpan_1_1ComponentMetadata" ],
       [ "ComponentRegistry", "classSpan_1_1ComponentRegistry.html", "classSpan_1_1ComponentRegistry" ],
       [ "Attribute", "structSpan_1_1Attribute.html", "structSpan_1_1Attribute" ],
+      [ "is_fixed_string", "structSpan_1_1is__fixed__string.html", null ],
+      [ "is_fixed_string&lt; FixedString&lt; N &gt; &gt;", "structSpan_1_1is__fixed__string_3_01FixedString_3_01N_01_4_01_4.html", null ],
       [ "RelationshipSystem", "classSpan_1_1RelationshipSystem.html", "classSpan_1_1RelationshipSystem" ],
       [ "TransformSystem", "classSpan_1_1TransformSystem.html", "classSpan_1_1TransformSystem" ],
       [ "CameraSystem", "classSpan_1_1CameraSystem.html", "classSpan_1_1CameraSystem" ],

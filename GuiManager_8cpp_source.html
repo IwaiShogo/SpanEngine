@@ -188,156 +188,165 @@ $(function(){initNavTree('GuiManager_8cpp_source.html','',''); });
 <div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#a766f97e260b5e00ddc9d6f6e8a593a67">   92</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1GuiManager.html#a766f97e260b5e00ddc9d6f6e8a593a67">GuiManager::Shutdown</a>()</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        ImGui_ImplDX12_Shutdown();</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        ImGui_ImplWin32_Shutdown();</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        ImGui::DestroyContext();</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a15a805d012a03175b41197c3f75cc391">m_device</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
-</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="comment">// Panels</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a2958abd2a5c96e0010580233350a8a38">panels</a>.clear();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="comment">// ヒープも明示的にリセット</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a">srvHeap</a>.Reset();</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#af6528ac5ab8ba075fd24a944d36e8f53">  100</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1GuiManager.html#af6528ac5ab8ba075fd24a944d36e8f53">GuiManager::BeginFrame</a>()</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        ImGui_ImplDX12_NewFrame();</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        ImGui_ImplWin32_NewFrame();</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        ImGui::NewFrame();</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        ImGuiIO&amp; io = ImGui::GetIO();</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_function" href="classSpan_1_1Input.html#ab4b75b835f5d27b47ce6033060ac3d65">Input::SetImGuiWantCapture</a>(io.WantCaptureMouse);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classSpan_1_1GuiManager.html#a15a805d012a03175b41197c3f75cc391">m_device</a>)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            ImGui_ImplDX12_Shutdown();</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            ImGui_ImplWin32_Shutdown();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            ImGui::DestroyContext();</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a15a805d012a03175b41197c3f75cc391">m_device</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
 </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="foldopen" id="foldopen00110" data-start="{" data-end="}">
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec">  110</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec">GuiManager::EndFrame</a>(ID3D12GraphicsCommandList* commandList)</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="comment">// 登録された全パネルを描画</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; panel : <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a2958abd2a5c96e0010580233350a8a38">panels</a>)</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        {</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keywordflow">if</span> (panel-&gt;IsOpen())</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            {</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                panel-&gt;OnImGuiRender();</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            }</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        }</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        ImGui::Render();</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">// ヒープをセットして描画</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        ID3D12DescriptorHeap* heaps[] = { <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a">srvHeap</a>.Get() };</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        commandList-&gt;SetDescriptorHeaps(1, heaps);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), commandList);</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="comment">// マルチビューポート</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        ImGuiIO&amp; io = ImGui::GetIO();</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordflow">if</span> (io.ConfigFlags &amp; ImGuiConfigFlags_ViewportsEnable)</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            ImGui::UpdatePlatformWindows();</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            ImGui::RenderPlatformWindowsDefault(<span class="keyword">nullptr</span>, (<span class="keywordtype">void</span>*)commandList);</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        }</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="foldopen" id="foldopen00109" data-start="{" data-end="}">
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#af6528ac5ab8ba075fd24a944d36e8f53">  109</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1GuiManager.html#af6528ac5ab8ba075fd24a944d36e8f53">GuiManager::BeginFrame</a>()</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        ImGui_ImplDX12_NewFrame();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        ImGui_ImplWin32_NewFrame();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        ImGui::NewFrame();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        ImGuiIO&amp; io = ImGui::GetIO();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <a class="code hl_function" href="classSpan_1_1Input.html#ab4b75b835f5d27b47ce6033060ac3d65">Input::SetImGuiWantCapture</a>(io.WantCaptureMouse);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
 </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="foldopen" id="foldopen00119" data-start="{" data-end="}">
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec">  119</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec">GuiManager::EndFrame</a>(ID3D12GraphicsCommandList* commandList)</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="comment">// 登録された全パネルを描画</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; panel : <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a2958abd2a5c96e0010580233350a8a38">panels</a>)</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            <span class="keywordflow">if</span> (panel-&gt;IsOpen())</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                panel-&gt;OnImGuiRender();</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            }</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        }</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        ImGui::Render();</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="comment">// ヒープをセットして描画</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        ID3D12DescriptorHeap* heaps[] = { <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a">srvHeap</a>.Get() };</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        commandList-&gt;SetDescriptorHeaps(1, heaps);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), commandList);</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="foldopen" id="foldopen00137" data-start="{" data-end="}">
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#a79fd10d93a58b741c10bd8c8477afc0a">  137</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1GuiManager.html#a79fd10d93a58b741c10bd8c8477afc0a">GuiManager::AddPanel</a>(std::shared_ptr&lt;EditorPanel&gt; panel)</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    {</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a2958abd2a5c96e0010580233350a8a38">panels</a>.push_back(panel);</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    }</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="comment">// マルチビューポート</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        ImGuiIO&amp; io = ImGui::GetIO();</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keywordflow">if</span> (io.ConfigFlags &amp; ImGuiConfigFlags_ViewportsEnable)</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            ImGui::UpdatePlatformWindows();</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            ImGui::RenderPlatformWindowsDefault(<span class="keyword">nullptr</span>, (<span class="keywordtype">void</span>*)commandList);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        }</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    }</div>
 </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#a0f7b43f95ca06cadd8b3d4436e4e5f18">  142</a></span>    D3D12_GPU_DESCRIPTOR_HANDLE <a class="code hl_function" href="classSpan_1_1GuiManager.html#a0f7b43f95ca06cadd8b3d4436e4e5f18">GuiManager::RegisterTexture</a>(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    {</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1GuiManager.html#a15a805d012a03175b41197c3f75cc391">m_device</a> || !<a class="code hl_variable" href="classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a">srvHeap</a>) <span class="keywordflow">return</span> { 0 };</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="comment">// SRVヒープの先頭ハンドルを取得</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        D3D12_CPU_DESCRIPTOR_HANDLE destHandleCPU = <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a">srvHeap</a>-&gt;GetCPUDescriptorHandleForHeapStart();</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        D3D12_GPU_DESCRIPTOR_HANDLE destHandleGPU = <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a">srvHeap</a>-&gt;GetGPUDescriptorHandleForHeapStart();</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="comment">// インクリメントサイズを取得</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        UINT handleIncrementSize = <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a15a805d012a03175b41197c3f75cc391">m_device</a>-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="comment">// インデックス1番目を使用する (0番目はImGuiのフォント用に使われているため)</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordtype">int</span> index = 1;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        destHandleCPU.ptr += (UINT64)index * handleIncrementSize;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        destHandleGPU.ptr += (UINT64)index * handleIncrementSize;</div>
+<div class="foldopen" id="foldopen00146" data-start="{" data-end="}">
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#a79fd10d93a58b741c10bd8c8477afc0a">  146</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1GuiManager.html#a79fd10d93a58b741c10bd8c8477afc0a">GuiManager::AddPanel</a>(std::shared_ptr&lt;EditorPanel&gt; panel)</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a2958abd2a5c96e0010580233350a8a38">panels</a>.push_back(panel);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    }</div>
+</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="foldopen" id="foldopen00151" data-start="{" data-end="}">
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#a0f7b43f95ca06cadd8b3d4436e4e5f18">  151</a></span>    D3D12_GPU_DESCRIPTOR_HANDLE <a class="code hl_function" href="classSpan_1_1GuiManager.html#a0f7b43f95ca06cadd8b3d4436e4e5f18">GuiManager::RegisterTexture</a>(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    {</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1GuiManager.html#a15a805d012a03175b41197c3f75cc391">m_device</a> || !<a class="code hl_variable" href="classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a">srvHeap</a>) <span class="keywordflow">return</span> { 0 };</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="comment">// SRVヒープの先頭ハンドルを取得</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        D3D12_CPU_DESCRIPTOR_HANDLE destHandleCPU = <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a">srvHeap</a>-&gt;GetCPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        D3D12_GPU_DESCRIPTOR_HANDLE destHandleGPU = <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a">srvHeap</a>-&gt;GetGPUDescriptorHandleForHeapStart();</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="comment">// デバイスを使ってコピーを実行</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a15a805d012a03175b41197c3f75cc391">m_device</a>-&gt;CopyDescriptorsSimple(1, destHandleCPU, srcHandle, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="comment">// インクリメントサイズを取得</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        UINT handleIncrementSize = <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a15a805d012a03175b41197c3f75cc391">m_device</a>-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="keywordflow">return</span> destHandleGPU;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    }</div>
-</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="comment">// インデックス1番目を使用する (0番目はImGuiのフォント用に使われているため)</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="keywordtype">int</span> index = 1;</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="foldopen" id="foldopen00165" data-start="{" data-end="}">
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0">  165</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0">GuiManager::ApplyStyle</a>()</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    {</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <span class="comment">// ベースはダークテーマ</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        ImGui::StyleColorsDark();</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        ImGuiStyle&amp; style = ImGui::GetStyle();</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="comment">// 丸みを持たせる</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        style.WindowRounding = 4.0f;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        style.ChildRounding = 4.0f;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        style.FrameRounding = 4.0f;</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        style.GrabRounding = 4.0f;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        style.PopupRounding = 4.0f;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        style.ScrollbarRounding = 4.0f;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        style.TabRounding = 4.0f;</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <span class="comment">// 色のカスタマイズ (Unity 2021+ Dark Theme風)</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        ImVec4* colors = style.Colors;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="comment">// 背景色: 少しマットなダークグレー</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        colors[ImGuiCol_WindowBg] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <span class="comment">// ヘッダー (タイトルバーなど)</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        colors[ImGuiCol_Header] = ImVec4(0.20f, 0.20f, 0.20f, 1.00f);</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        colors[ImGuiCol_HeaderHovered] = ImVec4(0.30f, 0.30f, 0.30f, 1.00f);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        colors[ImGuiCol_HeaderActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="comment">// ボタン</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        colors[ImGuiCol_Button] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        colors[ImGuiCol_ButtonHovered] = ImVec4(0.35f, 0.35f, 0.35f, 1.00f);</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        colors[ImGuiCol_ButtonActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="comment">// フレーム (入力欄など)</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        colors[ImGuiCol_FrameBg] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        colors[ImGuiCol_FrameBgHovered] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        colors[ImGuiCol_FrameBgActive] = ImVec4(0.20f, 0.20f, 0.20f, 1.00f);</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="comment">// タブ</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        colors[ImGuiCol_Tab] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        colors[ImGuiCol_TabHovered] = ImVec4(0.38f, 0.38f, 0.38f, 1.00f);</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        colors[ImGuiCol_TabActive] = ImVec4(0.28f, 0.28f, 0.28f, 1.00f);</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        colors[ImGuiCol_TabUnfocused] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.20f, 0.20f, 0.20f, 1.00f);</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="comment">// タイトルバー</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        colors[ImGuiCol_TitleBg] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        colors[ImGuiCol_TitleBgActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    }</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        destHandleCPU.ptr += (UINT64)index * handleIncrementSize;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        destHandleGPU.ptr += (UINT64)index * handleIncrementSize;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="comment">// デバイスを使ってコピーを実行</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <a class="code hl_variable" href="classSpan_1_1GuiManager.html#a15a805d012a03175b41197c3f75cc391">m_device</a>-&gt;CopyDescriptorsSimple(1, destHandleCPU, srcHandle, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordflow">return</span> destHandleGPU;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
 </div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>}</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="foldopen" id="foldopen00174" data-start="{" data-end="}">
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0">  174</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0">GuiManager::ApplyStyle</a>()</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    {</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        <span class="comment">// ベースはダークテーマ</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        ImGui::StyleColorsDark();</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        ImGuiStyle&amp; style = ImGui::GetStyle();</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <span class="comment">// 丸みを持たせる</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        style.WindowRounding = 4.0f;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        style.ChildRounding = 4.0f;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        style.FrameRounding = 4.0f;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        style.GrabRounding = 4.0f;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        style.PopupRounding = 4.0f;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        style.ScrollbarRounding = 4.0f;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        style.TabRounding = 4.0f;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="comment">// 色のカスタマイズ (Unity 2021+ Dark Theme風)</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        ImVec4* colors = style.Colors;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="comment">// 背景色: 少しマットなダークグレー</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        colors[ImGuiCol_WindowBg] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="comment">// ヘッダー (タイトルバーなど)</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        colors[ImGuiCol_Header] = ImVec4(0.20f, 0.20f, 0.20f, 1.00f);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        colors[ImGuiCol_HeaderHovered] = ImVec4(0.30f, 0.30f, 0.30f, 1.00f);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        colors[ImGuiCol_HeaderActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="comment">// ボタン</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        colors[ImGuiCol_Button] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        colors[ImGuiCol_ButtonHovered] = ImVec4(0.35f, 0.35f, 0.35f, 1.00f);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        colors[ImGuiCol_ButtonActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="comment">// フレーム (入力欄など)</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        colors[ImGuiCol_FrameBg] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        colors[ImGuiCol_FrameBgHovered] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        colors[ImGuiCol_FrameBgActive] = ImVec4(0.20f, 0.20f, 0.20f, 1.00f);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <span class="comment">// タブ</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        colors[ImGuiCol_Tab] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        colors[ImGuiCol_TabHovered] = ImVec4(0.38f, 0.38f, 0.38f, 1.00f);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        colors[ImGuiCol_TabActive] = ImVec4(0.28f, 0.28f, 0.28f, 1.00f);</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        colors[ImGuiCol_TabUnfocused] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.20f, 0.20f, 0.20f, 1.00f);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="comment">// タイトルバー</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        colors[ImGuiCol_TitleBg] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        colors[ImGuiCol_TitleBgActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    }</div>
+</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>}</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
 <div class="ttc" id="aGuiManager_8h_html"><div class="ttname"><a href="GuiManager_8h.html">GuiManager.h</a></div><div class="ttdoc">ImGuiのライフサイクルとレンダリング管理。</div></div>
 <div class="ttc" id="aInput_8h_html"><div class="ttname"><a href="Input_8h.html">Input.h</a></div><div class="ttdoc">入力管理システム (キーボード、マウス、ゲームパッド)。</div></div>
 <div class="ttc" id="aLogger_8h_html_a1b7ff4efe93a9030e55f7598d493448c"><div class="ttname"><a href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a></div><div class="ttdeci">#define SPAN_LOG(Format,...)</div><div class="ttdoc">通常ログを出力します。</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00069">Logger.h:69</a></div></div>
 <div class="ttc" id="aLogger_8h_html_a64e6317fa96d76ed26e6c4c79ec2d9b6"><div class="ttname"><a href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a></div><div class="ttdeci">#define SPAN_ERROR(Format,...)</div><div class="ttdoc">エラーログを出力します (赤色)。</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00075">Logger.h:75</a></div></div>
 <div class="ttc" id="aPanelManager_8h_html"><div class="ttname"><a href="PanelManager_8h.html">PanelManager.h</a></div><div class="ttdoc">エディタパネルのファクトリーと自動登録システム。</div></div>
-<div class="ttc" id="aclassSpan_1_1GuiManager_html_a0f7b43f95ca06cadd8b3d4436e4e5f18"><div class="ttname"><a href="classSpan_1_1GuiManager.html#a0f7b43f95ca06cadd8b3d4436e4e5f18">Span::GuiManager::RegisterTexture</a></div><div class="ttdeci">static D3D12_GPU_DESCRIPTOR_HANDLE RegisterTexture(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)</div><div class="ttdoc">テクスチャをImGuiで表示するために登録します。</div><div class="ttdef"><b>Definition</b> <a href="#l00142">GuiManager.cpp:142</a></div></div>
+<div class="ttc" id="aclassSpan_1_1GuiManager_html_a0f7b43f95ca06cadd8b3d4436e4e5f18"><div class="ttname"><a href="classSpan_1_1GuiManager.html#a0f7b43f95ca06cadd8b3d4436e4e5f18">Span::GuiManager::RegisterTexture</a></div><div class="ttdeci">static D3D12_GPU_DESCRIPTOR_HANDLE RegisterTexture(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)</div><div class="ttdoc">テクスチャをImGuiで表示するために登録します。</div><div class="ttdef"><b>Definition</b> <a href="#l00151">GuiManager.cpp:151</a></div></div>
 <div class="ttc" id="aclassSpan_1_1GuiManager_html_a15a805d012a03175b41197c3f75cc391"><div class="ttname"><a href="classSpan_1_1GuiManager.html#a15a805d012a03175b41197c3f75cc391">Span::GuiManager::m_device</a></div><div class="ttdeci">static ID3D12Device * m_device</div><div class="ttdef"><b>Definition</b> <a href="GuiManager_8h_source.html#l00108">GuiManager.h:108</a></div></div>
 <div class="ttc" id="aclassSpan_1_1GuiManager_html_a2958abd2a5c96e0010580233350a8a38"><div class="ttname"><a href="classSpan_1_1GuiManager.html#a2958abd2a5c96e0010580233350a8a38">Span::GuiManager::panels</a></div><div class="ttdeci">static std::vector&lt; std::shared_ptr&lt; EditorPanel &gt; &gt; panels</div><div class="ttdoc">管理中のパネルリスト</div><div class="ttdef"><b>Definition</b> <a href="GuiManager_8h_source.html#l00106">GuiManager.h:106</a></div></div>
 <div class="ttc" id="aclassSpan_1_1GuiManager_html_a56fee475a521225a6c94a1dcb17dc16a"><div class="ttname"><a href="classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a">Span::GuiManager::srvHeap</a></div><div class="ttdeci">static ComPtr&lt; ID3D12DescriptorHeap &gt; srvHeap</div><div class="ttdoc">ImGui専用のSRVヒープ</div><div class="ttdef"><b>Definition</b> <a href="GuiManager_8h_source.html#l00105">GuiManager.h:105</a></div></div>
-<div class="ttc" id="aclassSpan_1_1GuiManager_html_a66e894c749b02f869c0851b41fd23fec"><div class="ttname"><a href="classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec">Span::GuiManager::EndFrame</a></div><div class="ttdeci">static void EndFrame(ID3D12GraphicsCommandList *commandList)</div><div class="ttdoc">ImGuiの描画コマンドを発行し、フレームを終了します。</div><div class="ttdef"><b>Definition</b> <a href="#l00110">GuiManager.cpp:110</a></div></div>
+<div class="ttc" id="aclassSpan_1_1GuiManager_html_a66e894c749b02f869c0851b41fd23fec"><div class="ttname"><a href="classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec">Span::GuiManager::EndFrame</a></div><div class="ttdeci">static void EndFrame(ID3D12GraphicsCommandList *commandList)</div><div class="ttdoc">ImGuiの描画コマンドを発行し、フレームを終了します。</div><div class="ttdef"><b>Definition</b> <a href="#l00119">GuiManager.cpp:119</a></div></div>
 <div class="ttc" id="aclassSpan_1_1GuiManager_html_a766f97e260b5e00ddc9d6f6e8a593a67"><div class="ttname"><a href="classSpan_1_1GuiManager.html#a766f97e260b5e00ddc9d6f6e8a593a67">Span::GuiManager::Shutdown</a></div><div class="ttdeci">static void Shutdown()</div><div class="ttdoc">ImGuiのshutdown処理を行います。</div><div class="ttdef"><b>Definition</b> <a href="#l00092">GuiManager.cpp:92</a></div></div>
-<div class="ttc" id="aclassSpan_1_1GuiManager_html_a79fd10d93a58b741c10bd8c8477afc0a"><div class="ttname"><a href="classSpan_1_1GuiManager.html#a79fd10d93a58b741c10bd8c8477afc0a">Span::GuiManager::AddPanel</a></div><div class="ttdeci">static void AddPanel(std::shared_ptr&lt; EditorPanel &gt; panel)</div><div class="ttdoc">管理対象のエディタパネルを追加します。</div><div class="ttdef"><b>Definition</b> <a href="#l00137">GuiManager.cpp:137</a></div></div>
+<div class="ttc" id="aclassSpan_1_1GuiManager_html_a79fd10d93a58b741c10bd8c8477afc0a"><div class="ttname"><a href="classSpan_1_1GuiManager.html#a79fd10d93a58b741c10bd8c8477afc0a">Span::GuiManager::AddPanel</a></div><div class="ttdeci">static void AddPanel(std::shared_ptr&lt; EditorPanel &gt; panel)</div><div class="ttdoc">管理対象のエディタパネルを追加します。</div><div class="ttdef"><b>Definition</b> <a href="#l00146">GuiManager.cpp:146</a></div></div>
 <div class="ttc" id="aclassSpan_1_1GuiManager_html_ab78e1a284f6d5aced7912c00ab43c559"><div class="ttname"><a href="classSpan_1_1GuiManager.html#ab78e1a284f6d5aced7912c00ab43c559">Span::GuiManager::Initialize</a></div><div class="ttdeci">static void Initialize(HWND hWnd, ID3D12Device *device, ID3D12CommandQueue *commandQueue, int numFrames)</div><div class="ttdoc">ImGuiコンテキストとバックエンドを初期化します。</div><div class="ttdef"><b>Definition</b> <a href="#l00012">GuiManager.cpp:12</a></div></div>
-<div class="ttc" id="aclassSpan_1_1GuiManager_html_ad8ff21c11b12bff5ee5b454a4dae33d0"><div class="ttname"><a href="classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0">Span::GuiManager::ApplyStyle</a></div><div class="ttdeci">static void ApplyStyle()</div><div class="ttdoc">フォントや配色などのスタイル設定を適用します。</div><div class="ttdef"><b>Definition</b> <a href="#l00165">GuiManager.cpp:165</a></div></div>
-<div class="ttc" id="aclassSpan_1_1GuiManager_html_af6528ac5ab8ba075fd24a944d36e8f53"><div class="ttname"><a href="classSpan_1_1GuiManager.html#af6528ac5ab8ba075fd24a944d36e8f53">Span::GuiManager::BeginFrame</a></div><div class="ttdeci">static void BeginFrame()</div><div class="ttdoc">ImGuiのフレームを開始します。</div><div class="ttdef"><b>Definition</b> <a href="#l00100">GuiManager.cpp:100</a></div></div>
+<div class="ttc" id="aclassSpan_1_1GuiManager_html_ad8ff21c11b12bff5ee5b454a4dae33d0"><div class="ttname"><a href="classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0">Span::GuiManager::ApplyStyle</a></div><div class="ttdeci">static void ApplyStyle()</div><div class="ttdoc">フォントや配色などのスタイル設定を適用します。</div><div class="ttdef"><b>Definition</b> <a href="#l00174">GuiManager.cpp:174</a></div></div>
+<div class="ttc" id="aclassSpan_1_1GuiManager_html_af6528ac5ab8ba075fd24a944d36e8f53"><div class="ttname"><a href="classSpan_1_1GuiManager.html#af6528ac5ab8ba075fd24a944d36e8f53">Span::GuiManager::BeginFrame</a></div><div class="ttdeci">static void BeginFrame()</div><div class="ttdoc">ImGuiのフレームを開始します。</div><div class="ttdef"><b>Definition</b> <a href="#l00109">GuiManager.cpp:109</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Input_html_ab4b75b835f5d27b47ce6033060ac3d65"><div class="ttname"><a href="classSpan_1_1Input.html#ab4b75b835f5d27b47ce6033060ac3d65">Span::Input::SetImGuiWantCapture</a></div><div class="ttdeci">static void SetImGuiWantCapture(bool wantCapture)</div><div class="ttdoc">ImGuiがマウスを占有しているか設定する</div><div class="ttdef"><b>Definition</b> <a href="Input_8h_source.html#l00113">Input.h:113</a></div></div>
-<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00078">CoreMinimal.h:79</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
