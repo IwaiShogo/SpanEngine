@@ -1,55 +1,60 @@
 <map id="Span::Matrix4x4::Matrix4x4" name="Span::Matrix4x4::Matrix4x4">
-<area shape="rect" id="Node000001" title=" " alt="" coords="748,378,951,403"/>
-<area shape="rect" id="Node000002" href="$structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557" title="単位行列" alt="" coords="501,279,687,305"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="814,373,761,345,699,319,661,307,663,302,701,313,763,340,816,369"/>
-<area shape="rect" id="Node000009" href="$structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e" title="転置行列" alt="" coords="507,165,681,190"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="833,367,812,330,782,286,744,242,699,205,673,193,675,188,701,200,747,238,786,283,816,327,838,364"/>
-<area shape="rect" id="Node000011" href="$structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa" title="ビュー行列作成 (左手系: Z+が奥)" alt="" coords="495,329,693,354"/>
-<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="769,378,660,357,661,351,770,373"/>
-<area shape="rect" id="Node000012" href="$structSpan_1_1Matrix4x4.html#a060b4f7603dd0c3b5b8c37d11b1d93e1" title=" " alt="" coords="493,378,695,403"/>
-<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="734,393,695,393,695,388,734,388"/>
-<area shape="rect" id="Node000013" href="$structSpan_1_1Matrix4x4.html#a59c1e5b5dede7d7aa342e8938676e3cb" title="行列同士の掛け算" alt="" coords="495,427,693,453"/>
-<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="770,409,661,430,660,425,769,403"/>
-<area shape="rect" id="Node000014" href="$structSpan_1_1Matrix4x4.html#afe0101ccded226fc963d79f61111a6ed" title="透視投影行列作成 (左手系)" alt="" coords="488,215,700,255"/>
-<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="825,370,770,319,736,292,699,269,672,257,674,252,701,264,739,288,774,315,828,366"/>
-<area shape="rect" id="Node000015" href="$structSpan_1_1Matrix4x4.html#a14547be89d9d77aba82522e5180c80df" title="回転行列" alt="" coords="499,477,689,502"/>
-<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="816,412,763,440,701,467,659,479,657,474,699,461,760,435,813,408"/>
-<area shape="rect" id="Node000020" href="$structSpan_1_1Matrix4x4.html#ad408a695ef393eb21447241f44ff4d50" title="拡大縮小行列" alt="" coords="509,526,679,551"/>
-<area shape="poly" id="edge23_Node000001_Node000020" title=" " alt="" coords="829,416,775,467,739,494,701,517,672,528,670,523,699,512,736,490,771,463,826,412"/>
-<area shape="rect" id="Node000021" href="$structSpan_1_1Matrix4x4.html#ab7d064c16269a9201463b603c35793e6" title="移動行列" alt="" coords="491,575,697,601"/>
-<area shape="poly" id="edge24_Node000001_Node000021" title=" " alt="" coords="836,417,814,451,784,492,746,532,701,566,677,578,675,573,699,562,742,528,780,488,810,448,832,414"/>
-<area shape="rect" id="Node000022" href="$structSpan_1_1Matrix4x4.html#aa675a51f0f67753f22127641ca6da7d6" title="転置行列" alt="" coords="493,625,695,650"/>
-<area shape="poly" id="edge25_Node000001_Node000022" title=" " alt="" coords="841,418,821,461,792,515,752,570,728,594,701,616,680,627,677,622,699,611,724,590,748,566,787,512,817,459,836,415"/>
-<area shape="rect" id="Node000023" href="$structSpan_1_1Matrix4x4.html#a26c91de102eab3c6d4d45b5f7bf107fc" title="TRS行列 (Translation * Rotation * Scale) を作成" alt="" coords="513,107,675,133"/>
-<area shape="poly" id="edge26_Node000001_Node000023" title=" " alt="" coords="837,366,818,320,788,263,748,204,725,178,698,154,661,135,664,130,702,150,729,174,753,201,793,260,823,318,842,364"/>
-<area shape="rect" id="Node000003" href="$classSpan_1_1TransformSystem.html#aa2cf376ecd2d44d89515eca90aea04e1" title="再帰的に親のワールド行列を取得し、自信のローカル行列と合成します。" alt="" coords="247,93,423,133"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="495,275,486,269,473,254,465,238,461,207,457,176,450,162,438,147,421,135,424,131,442,143,455,159,462,175,466,206,471,236,477,251,490,265,498,271"/>
-<area shape="rect" id="Node000005" href="$classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" title="選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。" alt="" coords="251,157,419,197"/>
-<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="501,277,486,269,470,255,461,240,453,225,438,212,416,200,419,195,442,207,457,222,466,237,475,251,490,264,504,272"/>
-<area shape="rect" id="Node000007" href="$structSpan_1_1Transform.html#a22e91c428e57737b16a5e9281a28a610" title="指定したターゲット座標を向くように回転を設定します。" alt="" coords="245,286,425,311"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="487,297,425,299,425,294,487,292"/>
-<area shape="rect" id="Node000008" href="$classSpan_1_1Renderer.html#ad9b8a2800b6e801528fc3507162ef123" title=" " alt="" coords="241,335,429,361"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="522,310,395,338,394,333,521,305"/>
-<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="376,82,361,75,335,72,311,74,298,79,292,85,295,92,290,94,287,84,294,74,310,69,335,67,363,70,378,77"/>
-<area shape="rect" id="Node000004" href="$classSpan_1_1TransformSystem.html#abeba491503870f332716f4ca75444ca4" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="5,93,181,133"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="233,116,181,116,181,111,233,111"/>
-<area shape="rect" id="Node000006" href="$classSpan_1_1SceneViewPanel.html#aab2935de58bd68267a680cabd3656c9f" title="毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。" alt="" coords="9,157,177,197"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="237,180,178,180,178,175,237,175"/>
-<area shape="poly" id="edge10_Node000009_Node000005" title=" " alt="" coords="493,180,419,180,419,175,493,175"/>
-<area shape="rect" id="Node000010" href="$classSpan_1_1CameraSystem.html#a7f4bf0245dedd7a6245ef352246f7391" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="253,221,416,261"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="527,196,489,205,415,224,413,219,487,200,526,191"/>
-<area shape="poly" id="edge16_Node000014_Node000005" title=" " alt="" coords="489,214,418,198,419,193,490,209"/>
-<area shape="poly" id="edge17_Node000014_Node000010" title=" " alt="" coords="474,240,416,242,416,237,474,235"/>
-<area shape="rect" id="Node000016" href="$structSpan_1_1Transform.html#a132f40241af247849e79067db6ad62b4" title="前方ベクトル (Local Forward / Z+) を取得します。" alt="" coords="229,505,440,530"/>
-<area shape="poly" id="edge19_Node000015_Node000016" title=" " alt="" coords="485,504,440,509,440,503,485,498"/>
-<area shape="rect" id="Node000017" href="$structSpan_1_1Transform.html#a201045237f4cff825ff023848c5967fa" title="右方向ベクトル (Local Right / X+) を取得します。" alt="" coords="239,554,431,579"/>
-<area shape="poly" id="edge20_Node000015_Node000017" title=" " alt="" coords="515,508,489,517,465,531,441,545,405,556,404,551,439,540,463,526,487,512,513,503"/>
-<area shape="rect" id="Node000018" href="$structSpan_1_1Transform.html#a4251fb155ba185e11247bd5b8044a003" title="上方向ベクトル (Local Up / Y+) を取得します。" alt="" coords="247,406,423,431"/>
-<area shape="poly" id="edge21_Node000015_Node000018" title=" " alt="" coords="518,476,487,467,439,445,399,434,401,429,441,440,489,461,519,471"/>
-<area shape="rect" id="Node000019" href="$structSpan_1_1Quaternion.html#acfa147daa060ee83c95998431ea60e92" title="オイラー角 (Pitch, Yaw, Roll) に変換して返します" alt="" coords="240,455,429,481"/>
-<area shape="poly" id="edge22_Node000015_Node000019" title=" " alt="" coords="485,483,429,478,430,473,485,478"/>
-<area shape="poly" id="edge27_Node000023_Node000003" title=" " alt="" coords="500,120,423,118,423,113,500,115"/>
-<area shape="poly" id="edge28_Node000023_Node000005" title=" " alt="" coords="523,138,420,161,419,156,522,133"/>
-<area shape="rect" id="Node000024" href="$structSpan_1_1Transform.html#a8c473eec3b8f9c655db1804b88947e93" title="ローカル変換行列 (T * R * S) を計算して取得します。" alt="" coords="239,5,431,45"/>
-<area shape="poly" id="edge29_Node000023_Node000024" title=" " alt="" coords="550,104,439,60,404,48,405,43,441,55,552,99"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="967,451,1169,476"/>
+<area shape="rect" id="Node000002" href="$structSpan_1_1Matrix4x4.html#aea4a95a235a15e6ad3366fd07649d253" title="行列を 移動・回転・スケール に分解する" alt="" coords="445,207,659,232"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1045,442,990,388,955,359,917,334,844,298,767,270,693,249,629,235,630,229,695,244,769,265,846,293,920,329,958,355,994,384,1049,439"/>
+<area shape="rect" id="Node000005" href="$structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557" title="単位行列" alt="" coords="719,344,906,369"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1022,448,843,372,845,367,1024,443"/>
+<area shape="rect" id="Node000010" href="$structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e" title="転置行列" alt="" coords="725,107,900,132"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="1057,438,1039,385,1009,317,969,243,944,209,917,177,884,152,849,135,851,130,887,148,920,173,948,205,973,241,1014,314,1044,384,1062,437"/>
+<area shape="rect" id="Node000012" href="$structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa" title="ビュー行列作成 (左手系: Z+が奥)" alt="" coords="713,475,912,500"/>
+<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="953,477,912,481,912,475,953,472"/>
+<area shape="rect" id="Node000013" href="$structSpan_1_1Matrix4x4.html#a060b4f7603dd0c3b5b8c37d11b1d93e1" title=" " alt="" coords="711,524,914,549"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="1018,483,919,514,871,527,869,521,918,509,1016,478"/>
+<area shape="rect" id="Node000014" href="$structSpan_1_1Matrix4x4.html#a59c1e5b5dede7d7aa342e8938676e3cb" title="行列同士の掛け算" alt="" coords="713,573,912,599"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="1042,487,988,526,920,563,882,576,881,571,918,558,985,521,1039,482"/>
+<area shape="rect" id="Node000015" href="$structSpan_1_1Matrix4x4.html#afe0101ccded226fc963d79f61111a6ed" title="透視投影行列作成 (左手系)" alt="" coords="707,42,919,82"/>
+<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="1061,438,1050,369,1025,277,1006,228,982,180,952,135,917,96,900,84,903,80,920,92,957,132,987,177,1011,226,1030,276,1055,368,1066,437"/>
+<area shape="rect" id="Node000016" href="$structSpan_1_1Matrix4x4.html#a14547be89d9d77aba82522e5180c80df" title="回転行列" alt="" coords="717,623,908,648"/>
+<area shape="poly" id="edge21_Node000001_Node000016" title=" " alt="" coords="1052,489,998,551,961,584,920,612,890,625,888,620,917,608,958,580,994,547,1048,485"/>
+<area shape="rect" id="Node000021" href="$structSpan_1_1Matrix4x4.html#ad408a695ef393eb21447241f44ff4d50" title="拡大縮小行列" alt="" coords="727,672,898,697"/>
+<area shape="poly" id="edge26_Node000001_Node000021" title=" " alt="" coords="1057,490,1036,528,1006,575,967,622,920,662,894,674,892,669,917,657,963,618,1002,572,1032,525,1053,487"/>
+<area shape="rect" id="Node000022" href="$structSpan_1_1Matrix4x4.html#ab7d064c16269a9201463b603c35793e6" title="移動行列" alt="" coords="709,721,916,747"/>
+<area shape="poly" id="edge27_Node000001_Node000022" title=" " alt="" coords="1061,491,1043,538,1014,598,973,659,948,687,920,711,896,724,894,719,917,706,944,683,969,656,1009,595,1038,536,1056,489"/>
+<area shape="rect" id="Node000023" href="$structSpan_1_1Matrix4x4.html#aa675a51f0f67753f22127641ca6da7d6" title="転置行列" alt="" coords="451,157,653,183"/>
+<area shape="poly" id="edge28_Node000001_Node000023" title=" " alt="" coords="1052,440,1030,403,1000,358,962,313,917,275,853,239,784,213,716,195,653,183,654,178,717,190,786,208,856,234,920,271,966,310,1004,355,1035,400,1056,437"/>
+<area shape="rect" id="Node000024" href="$structSpan_1_1Matrix4x4.html#a26c91de102eab3c6d4d45b5f7bf107fc" title="TRS行列 (Translation * Rotation * Scale) を作成" alt="" coords="732,425,893,451"/>
+<area shape="poly" id="edge30_Node000001_Node000024" title=" " alt="" coords="952,455,893,449,894,443,953,449"/>
+<area shape="rect" id="Node000003" href="$classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" title="選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。" alt="" coords="225,175,393,215"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="431,210,393,206,394,201,432,205"/>
+<area shape="rect" id="Node000004" href="$classSpan_1_1SceneViewPanel.html#aab2935de58bd68267a680cabd3656c9f" title="毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。" alt="" coords="5,175,173,215"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="212,198,174,198,174,193,212,193"/>
+<area shape="poly" id="edge8_Node000005_Node000002" title=" " alt="" coords="754,341,729,329,705,313,689,295,681,277,673,261,657,246,635,234,637,230,660,241,677,258,686,275,694,292,708,309,731,325,756,337"/>
+<area shape="poly" id="edge9_Node000005_Node000003" title=" " alt="" coords="727,374,663,379,590,378,516,368,479,358,444,344,402,318,367,283,339,247,320,217,324,214,344,244,371,279,406,313,447,340,481,353,517,363,591,373,663,373,726,368"/>
+<area shape="rect" id="Node000006" href="$classSpan_1_1TransformSystem.html#aa2cf376ecd2d44d89515eca90aea04e1" title="再帰的に親のワールド行列を取得し、自信のローカル行列と合成します。" alt="" coords="464,430,640,470"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="764,377,610,432,608,427,762,372"/>
+<area shape="rect" id="Node000008" href="$structSpan_1_1Transform.html#a22e91c428e57737b16a5e9281a28a610" title="指定したターゲット座標を向くように回転を設定します。" alt="" coords="462,256,642,281"/>
+<area shape="poly" id="edge10_Node000005_Node000008" title=" " alt="" coords="768,341,658,295,617,284,618,279,660,290,770,336"/>
+<area shape="rect" id="Node000009" href="$classSpan_1_1Renderer.html#ad9b8a2800b6e801528fc3507162ef123" title=" " alt="" coords="458,305,646,331"/>
+<area shape="poly" id="edge11_Node000005_Node000009" title=" " alt="" coords="713,345,638,333,639,328,713,339"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="593,418,579,411,552,409,529,411,514,415,509,421,512,429,507,430,504,420,511,411,527,405,552,403,580,406,596,413"/>
+<area shape="rect" id="Node000007" href="$classSpan_1_1TransformSystem.html#abeba491503870f332716f4ca75444ca4" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="221,430,397,470"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="450,453,397,453,397,447,450,447"/>
+<area shape="poly" id="edge13_Node000010_Node000003" title=" " alt="" coords="712,121,584,127,514,135,446,147,399,161,356,178,354,173,397,156,445,142,514,130,584,122,712,116"/>
+<area shape="rect" id="Node000011" href="$classSpan_1_1CameraSystem.html#a7f4bf0245dedd7a6245ef352246f7391" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="471,42,633,82"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="740,106,633,82,634,77,741,101"/>
+<area shape="poly" id="edge19_Node000015_Node000003" title=" " alt="" coords="747,40,681,22,604,10,564,8,523,11,484,19,446,32,424,46,403,62,367,102,340,143,322,176,317,174,336,140,363,99,399,58,421,41,444,28,482,13,523,5,564,3,605,4,682,17,748,35"/>
+<area shape="poly" id="edge20_Node000015_Node000011" title=" " alt="" coords="693,65,634,65,634,59,693,59"/>
+<area shape="rect" id="Node000017" href="$structSpan_1_1Transform.html#a132f40241af247849e79067db6ad62b4" title="前方ベクトル (Local Forward / Z+) を取得します。" alt="" coords="447,659,657,684"/>
+<area shape="poly" id="edge22_Node000016_Node000017" title=" " alt="" coords="707,653,645,661,644,656,707,647"/>
+<area shape="rect" id="Node000018" href="$structSpan_1_1Transform.html#a201045237f4cff825ff023848c5967fa" title="右方向ベクトル (Local Right / X+) を取得します。" alt="" coords="456,708,648,733"/>
+<area shape="poly" id="edge23_Node000016_Node000018" title=" " alt="" coords="726,655,708,662,694,670,684,679,675,689,660,698,625,710,623,705,658,693,671,684,681,675,691,666,705,657,724,650"/>
+<area shape="rect" id="Node000019" href="$structSpan_1_1Transform.html#a4251fb155ba185e11247bd5b8044a003" title="上方向ベクトル (Local Up / Y+) を取得します。" alt="" coords="464,757,640,783"/>
+<area shape="poly" id="edge24_Node000016_Node000019" title=" " alt="" coords="716,656,708,661,692,682,685,703,678,726,660,748,640,760,638,755,657,744,674,724,680,702,687,679,705,657,713,652"/>
+<area shape="rect" id="Node000020" href="$structSpan_1_1Quaternion.html#acfa147daa060ee83c95998431ea60e92" title="オイラー角 (Pitch, Yaw, Roll) に変換して返します" alt="" coords="457,609,647,635"/>
+<area shape="poly" id="edge25_Node000016_Node000020" title=" " alt="" coords="703,632,647,630,647,624,704,627"/>
+<area shape="poly" id="edge29_Node000023_Node000003" title=" " alt="" coords="438,185,394,189,393,184,437,179"/>
+<area shape="poly" id="edge32_Node000024_Node000003" title=" " alt="" coords="736,457,708,465,684,475,659,485,598,500,548,511,523,512,499,509,473,500,444,484,424,466,405,437,368,361,336,279,314,216,320,215,341,277,372,359,410,434,429,462,447,480,475,495,500,503,524,507,547,505,597,494,658,479,682,471,706,460,734,451"/>
+<area shape="poly" id="edge31_Node000024_Node000006" title=" " alt="" coords="718,445,640,449,640,443,718,440"/>
+<area shape="rect" id="Node000025" href="$structSpan_1_1Transform.html#a8c473eec3b8f9c655db1804b88947e93" title="ローカル変換行列 (T * R * S) を計算して取得します。" alt="" coords="456,545,648,585"/>
+<area shape="poly" id="edge33_Node000024_Node000025" title=" " alt="" coords="720,457,708,464,693,479,685,495,676,511,660,528,627,547,624,542,657,524,672,508,680,492,688,476,705,460,718,453"/>
 </map>

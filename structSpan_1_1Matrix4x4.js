@@ -2,6 +2,7 @@ var structSpan_1_1Matrix4x4 =
 [
     [ "Matrix4x4", "structSpan_1_1Matrix4x4.html#a431bf3af613c1029e6de25d64cfda6b7", null ],
     [ "Matrix4x4", "structSpan_1_1Matrix4x4.html#a060b4f7603dd0c3b5b8c37d11b1d93e1", null ],
+    [ "Decompose", "structSpan_1_1Matrix4x4.html#aea4a95a235a15e6ad3366fd07649d253", null ],
     [ "FromXM", "structSpan_1_1Matrix4x4.html#a4adf277b2c441fe8d2ea295a0c0a2610", null ],
     [ "Identity", "structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557", null ],
     [ "Invert", "structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e", null ],

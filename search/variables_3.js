@@ -6,14 +6,13 @@ var searchData=
   ['chunk_5fsize_3',['CHUNK_SIZE',['../namespaceSpan.html#a51dc0b6d0daae8cf8e6841254d8dc062',1,'Span']]],
   ['chunkcapacity_4',['chunkCapacity',['../classSpan_1_1Archetype.html#a3bf3be2bac8f239b385af773698f50d5',1,'Span::Archetype']]],
   ['chunks_5',['chunks',['../classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838',1,'Span::Archetype']]],
-  ['clearcolor_6',['clearColor',['../classSpan_1_1RenderTarget.html#a668d8791978f55e55609e71ee268ce1f',1,'Span::RenderTarget']]],
-  ['commandallocator_7',['commandAllocator',['../classSpan_1_1GraphicsContext.html#a764f06f874e34575d3326889d4bdd63f',1,'Span::GraphicsContext']]],
-  ['commandlist_8',['commandList',['../classSpan_1_1GraphicsContext.html#aec6ac7aebd9ee118bcc910bb43cd1254',1,'Span::GraphicsContext::commandList'],['../classSpan_1_1Renderer.html#a7133eab1945ed9179bf98c2379e990dc',1,'Span::Renderer::commandList']]],
-  ['commandqueue_9',['commandQueue',['../classSpan_1_1GraphicsContext.html#a843eb7403a2e6f8f799224ba084b0226',1,'Span::GraphicsContext']]],
-  ['componenttypes_10',['componentTypes',['../classSpan_1_1ArchetypeSignature.html#a67d99e9308a77f8c938ecbeff42a6cbb',1,'Span::ArchetypeSignature']]],
-  ['constantbuffer_11',['constantBuffer',['../classSpan_1_1Renderer.html#a318e6efeb9dcf3761072a97103a9b54f',1,'Span::Renderer::constantBuffer'],['../classSpan_1_1Material.html#a07a69a39285482670c3f6da308e849b9',1,'Span::Material::constantBuffer']]],
-  ['constantbufferindex_12',['constantBufferIndex',['../classSpan_1_1Renderer.html#af593a2174b046ad060ad6fe70af71f36',1,'Span::Renderer']]],
-  ['context_13',['context',['../classSpan_1_1Renderer.html#a104c859dbad9750fc0848280c7d271ec',1,'Span::Renderer']]],
-  ['count_14',['Count',['../structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d',1,'Span::Chunk']]],
-  ['currentstate_15',['currentState',['../classSpan_1_1RenderTarget.html#a573a1102c9303b7c67fd99bc0e7489d0',1,'Span::RenderTarget']]]
+  ['commandallocator_6',['commandAllocator',['../classSpan_1_1GraphicsContext.html#a764f06f874e34575d3326889d4bdd63f',1,'Span::GraphicsContext']]],
+  ['commandlist_7',['commandList',['../classSpan_1_1GraphicsContext.html#aec6ac7aebd9ee118bcc910bb43cd1254',1,'Span::GraphicsContext::commandList'],['../classSpan_1_1Renderer.html#a7133eab1945ed9179bf98c2379e990dc',1,'Span::Renderer::commandList']]],
+  ['commandqueue_8',['commandQueue',['../classSpan_1_1GraphicsContext.html#a843eb7403a2e6f8f799224ba084b0226',1,'Span::GraphicsContext']]],
+  ['componenttypes_9',['componentTypes',['../classSpan_1_1ArchetypeSignature.html#a67d99e9308a77f8c938ecbeff42a6cbb',1,'Span::ArchetypeSignature']]],
+  ['constantbuffer_10',['constantBuffer',['../classSpan_1_1Renderer.html#a318e6efeb9dcf3761072a97103a9b54f',1,'Span::Renderer::constantBuffer'],['../classSpan_1_1Material.html#a07a69a39285482670c3f6da308e849b9',1,'Span::Material::constantBuffer']]],
+  ['constantbufferindex_11',['constantBufferIndex',['../classSpan_1_1Renderer.html#af593a2174b046ad060ad6fe70af71f36',1,'Span::Renderer']]],
+  ['context_12',['context',['../classSpan_1_1Renderer.html#a104c859dbad9750fc0848280c7d271ec',1,'Span::Renderer']]],
+  ['count_13',['Count',['../structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d',1,'Span::Chunk']]],
+  ['currentstate_14',['currentState',['../classSpan_1_1RenderTarget.html#a573a1102c9303b7c67fd99bc0e7489d0',1,'Span::RenderTarget']]]
 ];
