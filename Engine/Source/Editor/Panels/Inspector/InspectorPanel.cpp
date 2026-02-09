@@ -1,10 +1,7 @@
 ﻿#include "InspectorPanel.h"
 
 #include <SpanEngine.h>
-
-#include "Editor/SelectionManager.h"
-#include "Editor/PanelManager.h"
-#include "Editor/ImGui/ImGuiUI.h"
+#include <SpanEditor.h>
 
 #include <imgui.h>
 #include <imgui_internal.h>

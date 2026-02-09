@@ -3,13 +3,8 @@
 #include <crtdbg.h>
 
 #include <SpanEngine.h>
-
+#include <SpanEditor.h>
 #include "Runtime/EntryPoint.h"
-
-// --- Editor & Tools ---
-#include "Editor/GuiManager.h"
-#include "Editor/PanelManager.h"
-#include "Editor/SelectionManager.h"
 
 using namespace Span;
 

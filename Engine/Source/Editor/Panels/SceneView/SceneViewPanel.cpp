@@ -1,9 +1,7 @@
 ﻿#include "SceneViewPanel.h"
 
 #include <SpanEngine.h>
-
-#include "Editor/SelectionManager.h"
-#include "Editor/PanelManager.h"
+#include <SpanEditor.h>
 
 #include <imgui.h>
 #include <ImGuizmo.h>

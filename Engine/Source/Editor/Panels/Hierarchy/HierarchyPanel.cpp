@@ -1,9 +1,7 @@
 ﻿#include "HierarchyPanel.h"
 
 #include <SpanEngine.h>
-
-#include "Editor/SelectionManager.h"
-#include "Editor/PanelManager.h"
+#include <SpanEditor.h>
 
 #include <imgui.h>
 
