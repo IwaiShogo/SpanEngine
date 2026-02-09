@@ -143,6 +143,8 @@ var NAVTREEINDEX0 =
 "Shader_8h_source.html":[2,0,0,0,2,2,0,6],
 "SpanAttributes_8h.html":[2,0,0,0,2,4,1],
 "SpanAttributes_8h_source.html":[2,0,0,0,2,4,1],
+"SpanEngine_8h.html":[2,0,0,0,3],
+"SpanEngine_8h_source.html":[2,0,0,0,3],
 "SpanMath_8h.html":[2,0,0,0,0,3,0],
 "SpanMath_8h_source.html":[2,0,0,0,0,3,0],
 "SpanReflection_8h.html":[2,0,0,0,2,4,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "classSpan_1_1Archetype.html#aba45aa9225749156ea021eb1d7ad06a5":[1,0,0,31,14],
 "classSpan_1_1Archetype.html#ac679093a9a9285da19dac5b95d82390c":[0,0,0,32,15],
 "classSpan_1_1Archetype.html#ac679093a9a9285da19dac5b95d82390c":[1,0,0,31,15],
-"classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1":[0,0,0,32,6],
-"classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1":[1,0,0,31,6],
-"classSpan_1_1Archetype.html#ad633259d537c7198fb352935010ca9e1":[0,0,0,32,11]
+"classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1":[0,0,0,32,6]
 };

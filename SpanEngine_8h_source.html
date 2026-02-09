@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/SpanEngine.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('SpanEngine_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">SpanEngine.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="SpanEngine_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// ==========================================</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// AUTO-GENERATED FILE. DO NOT MODIFY.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// This file includes all Core and Runtime headers.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// ==========================================</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// Core &amp; Runtime</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="FixedString_8h.html">Core/Containers/FixedString.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="Input_8h.html">Core/Input/Input.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="Logger_8h.html">Core/Log/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="SpanMath_8h.html">Core/Math/SpanMath.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="MemoryArena_8h.html">Core/Memory/MemoryArena.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="Time_8h.html">Core/Time/Time.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="Application_8h.html">Runtime/Application.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="Active_8h.html">Runtime/Components/Core/Active.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="Layer_8h.html">Runtime/Components/Core/Layer.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="LocalToWorld_8h.html">Runtime/Components/Core/LocalToWorld.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="Name_8h.html">Runtime/Components/Core/Name.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="Relationship_8h.html">Runtime/Components/Core/Relationship.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="Tag_8h.html">Runtime/Components/Core/Tag.h</a>&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="Transform_8h.html">Runtime/Components/Core/Transform.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="EditorCamera_8h.html">Runtime/Components/Editor/EditorCamera.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="Camera_8h.html">Runtime/Components/Graphics/Camera.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="MeshFilter_8h.html">Runtime/Components/Graphics/MeshFilter.h</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="MeshRenderer_8h.html">Runtime/Components/Graphics/MeshRenderer.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="ComponentType_8h.html">Runtime/ECS/Internal/ComponentType.h</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;<a class="code" href="Archetype_8h.html">Runtime/ECS/Kernel/Archetype.h</a>&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="ArchetypeManager_8h.html">Runtime/ECS/Kernel/ArchetypeManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;<a class="code" href="Chunk_8h.html">Runtime/ECS/Kernel/Chunk.h</a>&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="Entity_8h.html">Runtime/ECS/Kernel/Entity.h</a>&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="EntityBuilder_8h.html">Runtime/ECS/Kernel/EntityBuilder.h</a>&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="EntityManager_8h.html">Runtime/ECS/Kernel/EntityManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="System_8h.html">Runtime/ECS/Kernel/System.h</a>&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;<a class="code" href="World_8h.html">Runtime/ECS/Kernel/World.h</a>&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="ConstantBuffer_8h.html">Runtime/Graphics/Core/ConstantBuffer.h</a>&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="GraphicsContext_8h.html">Runtime/Graphics/Core/GraphicsContext.h</a>&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &quot;<a class="code" href="RenderTarget_8h.html">Runtime/Graphics/Core/RenderTarget.h</a>&quot;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;<a class="code" href="Shader_8h.html">Runtime/Graphics/Core/Shader.h</a>&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;<a class="code" href="ModelLoader_8h.html">Runtime/Graphics/ModelLoader.h</a>&quot;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &quot;<a class="code" href="Renderer_8h.html">Runtime/Graphics/Renderer.h</a>&quot;</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &quot;<a class="code" href="Material_8h.html">Runtime/Graphics/Resources/Material.h</a>&quot;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;<a class="code" href="Mesh_8h.html">Runtime/Graphics/Resources/Mesh.h</a>&quot;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &quot;<a class="code" href="Texture_8h.html">Runtime/Graphics/Resources/Texture.h</a>&quot;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &quot;<a class="code" href="Window_8h.html">Runtime/Platform/Window.h</a>&quot;</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &quot;<a class="code" href="ComponentRegistry_8h.html">Runtime/Reflection/ComponentRegistry.h</a>&quot;</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &quot;<a class="code" href="SpanAttributes_8h.html">Runtime/Reflection/SpanAttributes.h</a>&quot;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#include &quot;<a class="code" href="SpanReflection_8h.html">Runtime/Reflection/SpanReflection.h</a>&quot;</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &quot;<a class="code" href="RuntimeModule_8h.html">Runtime/RuntimeModule.h</a>&quot;</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &quot;<a class="code" href="RelationshipSystem_8h.html">Runtime/Systems/Core/RelationshipSystem.h</a>&quot;</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &quot;<a class="code" href="TransformSystem_8h.html">Runtime/Systems/Core/TransformSystem.h</a>&quot;</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &quot;<a class="code" href="CameraSystem_8h.html">Runtime/Systems/Graphics/CameraSystem.h</a>&quot;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#include &quot;<a class="code" href="EditorCameraSystem_8h.html">Runtime/Systems/Graphics/EditorCameraSystem.h</a>&quot;</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#include &quot;<a class="code" href="RenderingSystem_8h.html">Runtime/Systems/Graphics/RenderingSystem.h</a>&quot;</span></div>
+<div class="ttc" id="aActive_8h_html"><div class="ttname"><a href="Active_8h.html">Active.h</a></div><div class="ttdoc">エンティティの有効/無効フラグ。</div></div>
+<div class="ttc" id="aApplication_8h_html"><div class="ttname"><a href="Application_8h.html">Application.h</a></div><div class="ttdoc">エンジンのメインループとライフサイクル管理。</div></div>
+<div class="ttc" id="aArchetypeManager_8h_html"><div class="ttname"><a href="ArchetypeManager_8h.html">ArchetypeManager.h</a></div><div class="ttdoc">アーキタイプの生成と管理を行うクラス</div></div>
+<div class="ttc" id="aArchetype_8h_html"><div class="ttname"><a href="Archetype_8h.html">Archetype.h</a></div><div class="ttdoc">ECSのメモリレイアウト定義 (アーキタイプ) を行うクラス。</div></div>
+<div class="ttc" id="aCameraSystem_8h_html"><div class="ttname"><a href="CameraSystem_8h.html">CameraSystem.h</a></div><div class="ttdoc">カメラ行列の更新とレンダラーへの適用。</div></div>
+<div class="ttc" id="aCamera_8h_html"><div class="ttname"><a href="Camera_8h.html">Camera.h</a></div><div class="ttdoc">レンダリング視点を定義するカメラコンポーネント。</div></div>
+<div class="ttc" id="aChunk_8h_html"><div class="ttname"><a href="Chunk_8h.html">Chunk.h</a></div><div class="ttdoc">ECSのメモリブロック (チャンク) 定義。</div></div>
+<div class="ttc" id="aComponentRegistry_8h_html"><div class="ttname"><a href="ComponentRegistry_8h.html">ComponentRegistry.h</a></div><div class="ttdoc">コンポーネントのメタデータ管理 (リフレクション)。</div></div>
+<div class="ttc" id="aComponentType_8h_html"><div class="ttname"><a href="ComponentType_8h.html">ComponentType.h</a></div><div class="ttdoc">コンポーネント型システム (Type to Mapping)。</div></div>
+<div class="ttc" id="aConstantBuffer_8h_html"><div class="ttname"><a href="ConstantBuffer_8h.html">ConstantBuffer.h</a></div><div class="ttdoc">DirectX 12 定数バッファ (CBV) のラッパークラス</div></div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aEditorCameraSystem_8h_html"><div class="ttname"><a href="EditorCameraSystem_8h.html">EditorCameraSystem.h</a></div><div class="ttdoc">エディタ用フリーカメラの操作システム</div></div>
+<div class="ttc" id="aEditorCamera_8h_html"><div class="ttname"><a href="EditorCamera_8h.html">EditorCamera.h</a></div><div class="ttdoc">エディタビューポート用の制御カメラタグ。</div></div>
+<div class="ttc" id="aEntityBuilder_8h_html"><div class="ttname"><a href="EntityBuilder_8h.html">EntityBuilder.h</a></div><div class="ttdoc">エンティティ生成を簡略化するヘルパークラス。</div></div>
+<div class="ttc" id="aEntityManager_8h_html"><div class="ttname"><a href="EntityManager_8h.html">EntityManager.h</a></div><div class="ttdoc">エンティティIDのライフサイクル管理クラス</div></div>
+<div class="ttc" id="aEntity_8h_html"><div class="ttname"><a href="Entity_8h.html">Entity.h</a></div><div class="ttdoc">ECSにおけるオブジェクトの識別子 (ID) を定義します。</div></div>
+<div class="ttc" id="aFixedString_8h_html"><div class="ttname"><a href="FixedString_8h.html">FixedString.h</a></div><div class="ttdoc">固定長文字列ラッパー (POD)</div></div>
+<div class="ttc" id="aGraphicsContext_8h_html"><div class="ttname"><a href="GraphicsContext_8h.html">GraphicsContext.h</a></div><div class="ttdoc">DirectX 12 デヴァイスとスワップチェーンの管理クラス。</div></div>
+<div class="ttc" id="aInput_8h_html"><div class="ttname"><a href="Input_8h.html">Input.h</a></div><div class="ttdoc">入力管理システム (キーボード、マウス、ゲームパッド)。</div></div>
+<div class="ttc" id="aLayer_8h_html"><div class="ttname"><a href="Layer_8h.html">Layer.h</a></div><div class="ttdoc">物理演算やレンダリングのレイヤー分け。</div></div>
+<div class="ttc" id="aLocalToWorld_8h_html"><div class="ttname"><a href="LocalToWorld_8h.html">LocalToWorld.h</a></div><div class="ttdoc">計算済みのワールド変換行列</div></div>
+<div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="Logger_8h.html">Logger.h</a></div><div class="ttdoc">デバッグログ出力システム</div></div>
+<div class="ttc" id="aMaterial_8h_html"><div class="ttname"><a href="Material_8h.html">Material.h</a></div><div class="ttdoc">PBRマテリアルのパラメータ管理。</div></div>
+<div class="ttc" id="aMemoryArena_8h_html"><div class="ttname"><a href="MemoryArena_8h.html">MemoryArena.h</a></div><div class="ttdoc">線形メモリ割り当て (Linear Allocator)。</div></div>
+<div class="ttc" id="aMeshFilter_8h_html"><div class="ttname"><a href="MeshFilter_8h.html">MeshFilter.h</a></div><div class="ttdoc">描画する形状 (メッシュ) への参照。</div></div>
+<div class="ttc" id="aMeshRenderer_8h_html"><div class="ttname"><a href="MeshRenderer_8h.html">MeshRenderer.h</a></div><div class="ttdoc">メッシュの描画設定とマテリアル参照。</div></div>
+<div class="ttc" id="aMesh_8h_html"><div class="ttname"><a href="Mesh_8h.html">Mesh.h</a></div><div class="ttdoc">3Dモデルの形状データ (頂点バッファ) 管理。</div></div>
+<div class="ttc" id="aModelLoader_8h_html"><div class="ttname"><a href="ModelLoader_8h.html">ModelLoader.h</a></div><div class="ttdoc">3Dモデルファイル(.fbx, .obj)のインポート処理。</div></div>
+<div class="ttc" id="aName_8h_html"><div class="ttname"><a href="Name_8h.html">Name.h</a></div><div class="ttdoc">エンティティの名前</div></div>
+<div class="ttc" id="aRelationshipSystem_8h_html"><div class="ttname"><a href="RelationshipSystem_8h.html">RelationshipSystem.h</a></div><div class="ttdoc">エンティティ間の親子・兄弟関係 (階層構造) を操作するシステム。</div></div>
+<div class="ttc" id="aRelationship_8h_html"><div class="ttname"><a href="Relationship_8h.html">Relationship.h</a></div><div class="ttdoc">ECSにおける階層構造 (親子関係) データ。</div></div>
+<div class="ttc" id="aRenderTarget_8h_html"><div class="ttname"><a href="RenderTarget_8h.html">RenderTarget.h</a></div><div class="ttdoc">レンダリングターゲット (RTV) とシェーダーリソース (SRV) の管理。</div></div>
+<div class="ttc" id="aRenderer_8h_html"><div class="ttname"><a href="Renderer_8h.html">Renderer.h</a></div><div class="ttdoc">描画パイプラインの構築と実行。</div></div>
+<div class="ttc" id="aRenderingSystem_8h_html"><div class="ttname"><a href="RenderingSystem_8h.html">RenderingSystem.h</a></div><div class="ttdoc">描画コマンド発行システム。</div></div>
+<div class="ttc" id="aRuntimeModule_8h_html"><div class="ttname"><a href="RuntimeModule_8h.html">RuntimeModule.h</a></div></div>
+<div class="ttc" id="aShader_8h_html"><div class="ttname"><a href="Shader_8h.html">Shader.h</a></div><div class="ttdoc">HLSLシェーダーのロードとコンパイル管理。</div></div>
+<div class="ttc" id="aSpanAttributes_8h_html"><div class="ttname"><a href="SpanAttributes_8h.html">SpanAttributes.h</a></div><div class="ttdoc">インスペクタ表示用の属性 (Attribute) 定義。</div></div>
+<div class="ttc" id="aSpanMath_8h_html"><div class="ttname"><a href="SpanMath_8h.html">SpanMath.h</a></div><div class="ttdoc">算術ライブラリ (Vector, Matrix, Quaternion)。</div></div>
+<div class="ttc" id="aSpanReflection_8h_html"><div class="ttname"><a href="SpanReflection_8h.html">SpanReflection.h</a></div><div class="ttdoc">コンポーネント定義用のリフレクションマクロ。</div></div>
+<div class="ttc" id="aSystem_8h_html"><div class="ttname"><a href="System_8h.html">System.h</a></div><div class="ttdoc">ECSシステム (ロジック) の基底クラス。</div></div>
+<div class="ttc" id="aTag_8h_html"><div class="ttname"><a href="Tag_8h.html">Tag.h</a></div><div class="ttdoc">エンティティのタグ分類</div></div>
+<div class="ttc" id="aTexture_8h_html"><div class="ttname"><a href="Texture_8h.html">Texture.h</a></div><div class="ttdoc">画像読み込みとテクスチャリソース管理。</div></div>
+<div class="ttc" id="aTime_8h_html"><div class="ttname"><a href="Time_8h.html">Time.h</a></div><div class="ttdoc">ゲームループの時間管理クラス。</div></div>
+<div class="ttc" id="aTransformSystem_8h_html"><div class="ttname"><a href="TransformSystem_8h.html">TransformSystem.h</a></div><div class="ttdoc">ローカル座標からワールド座標への変換行列計算</div></div>
+<div class="ttc" id="aTransform_8h_html"><div class="ttname"><a href="Transform_8h.html">Transform.h</a></div><div class="ttdoc">位置、回転、拡大縮小を管理するコンポーネント。</div></div>
+<div class="ttc" id="aWindow_8h_html"><div class="ttname"><a href="Window_8h.html">Window.h</a></div><div class="ttdoc">Windows OSS ウィンドウのラッパー。</div></div>
+<div class="ttc" id="aWorld_8h_html"><div class="ttname"><a href="World_8h.html">World.h</a></div><div class="ttdoc">ECSワールド (シーン) の管理クラス。</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="SpanEngine_8h.html">SpanEngine.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>
