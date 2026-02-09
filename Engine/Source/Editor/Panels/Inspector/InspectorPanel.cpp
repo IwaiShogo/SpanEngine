@@ -1,17 +1,10 @@
 ﻿#include "InspectorPanel.h"
+
+#include <SpanEngine.h>
+
 #include "Editor/SelectionManager.h"
-#include "Runtime/Application.h"
-#include "Runtime/Reflection/ComponentRegistry.h"
-#include "Core/Math/SpanMath.h"
 #include "Editor/PanelManager.h"
 #include "Editor/ImGui/ImGuiUI.h"
-
-// 基本コンポーネント
-#include "Runtime/Components/Core/Name.h"
-#include "Runtime/Components/Core/Tag.h"
-#include "Runtime/Components/Core/Layer.h"
-#include "Runtime/Components/Core/Transform.h"
-#include "Runtime/Components/Core/Active.h"
 
 #include <imgui.h>
 #include <imgui_internal.h>

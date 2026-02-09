@@ -2,37 +2,13 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 
+#include <SpanEngine.h>
+
 #include "Runtime/EntryPoint.h"
-#include "Runtime/Application.h"
-#include "Core/Log/Logger.h"
-#include "Core/Math/SpanMath.h"
-
-// --- Systems ---
-#include "Runtime/Systems/Core/TransformSystem.h"
-#include "Runtime/Systems/Graphics/CameraSystem.h"
-#include "Runtime/Systems/Graphics/RenderingSystem.h"
-#include "Runtime/Systems/Graphics/EditorCameraSystem.h"
-#include "Runtime/Systems/Core/RelationshipSystem.h"
-
-// --- Components ---
-#include "Runtime/Components/Core/Transform.h"
-#include "Runtime/Components/Core/LocalToWorld.h"
-#include "Runtime/Components/Core/Relationship.h"
-#include "Runtime/Components/Graphics/MeshFilter.h"
-#include "Runtime/Components/Graphics/MeshRenderer.h"
-#include "Runtime/Components/Graphics/Camera.h"
-#include "Runtime/Components/Editor/EditorCamera.h"
-
-// --- Resources ---
-#include "Runtime/Graphics/Resources/Mesh.h"
-#include "Runtime/Graphics/Resources/Material.h"
-#include "Runtime/Graphics/Resources/Texture.h"
-#include "Runtime/Graphics/ModelLoader.h"
 
 // --- Editor & Tools ---
 #include "Editor/GuiManager.h"
 #include "Editor/PanelManager.h"
-#include "Runtime/ECS/Kernel/EntityBuilder.h"
 #include "Editor/SelectionManager.h"
 
 using namespace Span;

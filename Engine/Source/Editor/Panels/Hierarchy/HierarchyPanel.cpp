@@ -1,14 +1,9 @@
 ﻿#include "HierarchyPanel.h"
-#include "Editor/SelectionManager.h"
-#include "Runtime/Application.h"
-#include "Editor/PanelManager.h"
-#include "Runtime/ECS/Kernel/EntityBuilder.h"
 
-// コンポーネント & システム
-#include "Runtime/Components/Core/Name.h"
-#include "Runtime/Components/Core/Relationship.h"
-#include "Runtime/Components/Core/Active.h"
-#include "Runtime/Systems/Core/RelationshipSystem.h"
+#include <SpanEngine.h>
+
+#include "Editor/SelectionManager.h"
+#include "Editor/PanelManager.h"
 
 #include <imgui.h>
 

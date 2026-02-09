@@ -1,6 +1,8 @@
 ﻿#include "GuiManager.h"
+
+#include <SpanEngine.h>
+
 #include "PanelManager.h"
-#include "Input/Input.h"
 
 namespace Span
 {

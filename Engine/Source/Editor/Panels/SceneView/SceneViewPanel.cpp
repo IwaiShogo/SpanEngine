@@ -1,14 +1,9 @@
 ﻿#include "SceneViewPanel.h"
-#include "Runtime/Application.h"
+
+#include <SpanEngine.h>
+
 #include "Editor/SelectionManager.h"
 #include "Editor/PanelManager.h"
-#include "Core/Input/Input.h"
-
-// Components
-#include "Runtime/Components/Core/Transform.h"
-#include "Runtime/Components/Core/LocalToWorld.h"
-#include "Runtime/Components/Graphics/Camera.h"
-#include "Runtime/Components/Editor/EditorCamera.h"
 
 #include <imgui.h>
 #include <ImGuizmo.h>
