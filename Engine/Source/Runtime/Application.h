@@ -36,6 +36,12 @@ namespace Span
 		/// @brief	シングルトンインスタンスの取得
 		static Application& Get() { return *s_instance; }
 
+		/// @brief	シングルトンインスタンスのポインタ取得 (存在チェック用)
+		static Application* Ptr() { return s_instance; }
+
+		/// @brief	アプリケーションを終了モードにします
+		void Close() { isRunning = false; }
+
 		/**
 		 * @brief	アプリケーションを実行します (ブロック関数)。
 		 * @details	ウィンドウが閉じられるまで無限ループします。
@@ -64,6 +70,20 @@ namespace Span
 		/// @brief	エディタ表示用のシーン描画ターゲットを取得
 		RenderTarget& GetSceneBuffer() { return sceneBuffer; }
 
+		/// @brief	SceneViewPanelから毎フレームサイズを受けとる
+		void SetSceneViewSize(uint32 width, uint32 height)
+		{
+			// 0除算防止
+			if (width == 0 || height == 0) return;
+			m_sceneViewWidth = width;
+			m_sceneViewHeight = height;
+		}
+
+		float GetSceneViewAspectRatio() const
+		{
+			return (float)m_sceneViewWidth / (float)m_sceneViewHeight;
+		}
+
 	protected:
 		// 子クラス（ユーザーのゲーム）からアクセスできるようにする
 
@@ -79,6 +99,10 @@ namespace Span
 
 		// Editor Support
 		RenderTarget sceneBuffer;	///< シーン描画用オフスクリーンバッファ
+
+		// SceneView
+		uint32 m_sceneViewWidth = 1280;
+		uint32 m_sceneViewHeight = 720;
 	};
 
 	/// @brief	ユーザー側で定義すべきファクトリー関数

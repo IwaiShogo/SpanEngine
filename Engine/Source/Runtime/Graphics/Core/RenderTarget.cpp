@@ -43,7 +43,7 @@ namespace Span
 		D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
 		srvHeapDesc.NumDescriptors = 1;
 		srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 
 		hr = device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap));
 		if (FAILED(hr))
@@ -52,22 +52,62 @@ namespace Span
 			return false;
 		}
 		srvHandle = srvHeap->GetCPUDescriptorHandleForHeapStart();
+		srvHandleGpu = srvHeap->GetGPUDescriptorHandleForHeapStart();
 
-		// 3. DSV Heap (Depth)
-		D3D12_DESCRIPTOR_HEAP_DESC dsvHeapDesc = {};
-		dsvHeapDesc.NumDescriptors = 1;
-		dsvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_DSV;
-		dsvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+		// 3. リソースの作成
+		D3D12_RESOURCE_DESC resDesc = {};
+		resDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
+		resDesc.Width = width;
+		resDesc.Height = height;
+		resDesc.DepthOrArraySize = 1;
+		resDesc.MipLevels = 1;
+		resDesc.Format = format;
+		resDesc.SampleDesc.Count = 1;
+		resDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET;
+		resDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
 
-		hr = device->CreateDescriptorHeap(&dsvHeapDesc, IID_PPV_ARGS(&dsvHeap));
-		if (FAILED(hr))
+		// クリアカラー設定
+		D3D12_CLEAR_VALUE clearValue = {};
+		clearValue.Format = format;
+		clearValue.Color[0] = 0.1f;
+		clearValue.Color[1] = 0.1f;
+		clearValue.Color[2] = 0.1f;
+		clearValue.Color[3] = 1.0f;
+
+		D3D12_HEAP_PROPERTIES heapProps = {};
+		heapProps.Type = D3D12_HEAP_TYPE_DEFAULT;
+
+		// リソース生成
+		if (FAILED(device->CreateCommittedResource(
+			&heapProps,
+			D3D12_HEAP_FLAG_NONE,
+			&resDesc,
+			D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, // 初期状態
+			&clearValue,
+			IID_PPV_ARGS(&resource))))
 		{
-			SPAN_ERROR("[RenderTarget] Failed to create DSV Heap! HRESULT: 0x%08X", hr);
+			SPAN_ERROR("Failed to create RenderTarget Resource");
 			return false;
 		}
-		dsvHandle = dsvHeap->GetCPUDescriptorHandleForHeapStart();
 
-		Resize(device, width, height);
+		currentState = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+
+		// 4. ビュー(RTV/SRV)の作成
+
+		// RTV作成
+		device->CreateRenderTargetView(resource.Get(), nullptr, rtvHandle);
+
+		// SRV作成
+		D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+		srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+		srvDesc.Format = format;
+		srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
+		srvDesc.Texture2D.MipLevels = 1;
+		device->CreateShaderResourceView(resource.Get(), &srvDesc, srvHandle);
+
+
+		// 5. 深度バッファの作成
+		CreateDepthBuffer(device);
 
 		return true;
 	}
@@ -81,72 +121,84 @@ namespace Span
 		dsvHeap.Reset();
 	}
 
-	bool RenderTarget::Resize(ID3D12Device* device, uint32 newWidth, uint32 newHeight)
+	void RenderTarget::Resize(ID3D12Device* device, uint32 newWidth, uint32 newHeight)
 	{
-		if (newWidth == 0 || newHeight == 0) return false;
+		//if (newWidth == 0 || newHeight == 0) return false;
 
-		// 最小サイズ保証
-		newWidth = std::max(newWidth, 1u);
-		newHeight = std::max(newHeight, 1u);
+		//// 最小サイズ保証
+		//newWidth = std::max(newWidth, 1u);
+		//newHeight = std::max(newHeight, 1u);
 
-		if (width == newWidth && height == newHeight && resource) return true;
+		//if (width == newWidth && height == newHeight && resource) return true;
 
-		width = newWidth;
-		height = newHeight;
+		//width = newWidth;
+		//height = newHeight;
 
-		// 既存のリソースがあれば解放
-		resource.Reset();
-		depthResource.Reset();
+		//// 既存のリソースがあれば解放
+		//resource.Reset();
+		//depthResource.Reset();
 
-		// リソース記述
-		D3D12_RESOURCE_DESC resDesc = {};
-		resDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
-		resDesc.Alignment = 0;
-		resDesc.Width = width;
-		resDesc.Height = height;
-		resDesc.DepthOrArraySize = 1;
-		resDesc.MipLevels = 1;
-		resDesc.Format = format;
-		resDesc.SampleDesc.Count = 1;
-		resDesc.SampleDesc.Quality = 0;
-		resDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
-		resDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET;
+		//// リソース記述
+		//D3D12_RESOURCE_DESC resDesc = {};
+		//resDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
+		//resDesc.Alignment = 0;
+		//resDesc.Width = width;
+		//resDesc.Height = height;
+		//resDesc.DepthOrArraySize = 1;
+		//resDesc.MipLevels = 1;
+		//resDesc.Format = format;
+		//resDesc.SampleDesc.Count = 1;
+		//resDesc.SampleDesc.Quality = 0;
+		//resDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
+		//resDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET;
 
-		// クリア値の設定
-		D3D12_CLEAR_VALUE optClear;
-		optClear.Format = format;
-		memcpy(optClear.Color, clearColor, sizeof(float) * 4);
+		//// クリア値の設定
+		//D3D12_CLEAR_VALUE optClear;
+		//optClear.Format = format;
+		//memcpy(optClear.Color, clearColor, sizeof(float) * 4);
 
-		// デフォルトヒープ（VRAM）に作成
-		D3D12_HEAP_PROPERTIES heapProps = {};
-		heapProps.Type = D3D12_HEAP_TYPE_DEFAULT;
-		heapProps.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
-		heapProps.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN;
-		heapProps.CreationNodeMask = 1;
-		heapProps.VisibleNodeMask = 1;
+		//// デフォルトヒープ（VRAM）に作成
+		//D3D12_HEAP_PROPERTIES heapProps = {};
+		//heapProps.Type = D3D12_HEAP_TYPE_DEFAULT;
+		//heapProps.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
+		//heapProps.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN;
+		//heapProps.CreationNodeMask = 1;
+		//heapProps.VisibleNodeMask = 1;
 
-		// 初期状態は PIXEL_SHADER_RESOURCE にしておく（ImGuiが表示するため）
-		currentState = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+		//// 初期状態は PIXEL_SHADER_RESOURCE にしておく（ImGuiが表示するため）
+		//currentState = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
 
-		HRESULT hr = device->CreateCommittedResource(
-			&heapProps,
-			D3D12_HEAP_FLAG_NONE,
-			&resDesc,
-			currentState,
-			&optClear,
-			IID_PPV_ARGS(&resource)
-		);
+		//HRESULT hr = device->CreateCommittedResource(
+		//	&heapProps,
+		//	D3D12_HEAP_FLAG_NONE,
+		//	&resDesc,
+		//	currentState,
+		//	&optClear,
+		//	IID_PPV_ARGS(&resource)
+		//);
 
-		if (FAILED(hr))
+		//if (FAILED(hr))
+		//{
+		//	SPAN_ERROR("RenderTarget: Failed to create texture resource!");
+		//	return false;
+		//}
+
+		//CreateViews(device);
+		//CreateDepthBuffer(device);
+
+		//return true;
+
+		// サイズが変わっていない、または無効なサイズなら何もしない
+		if ((width == newWidth && height == newHeight) || newWidth == 0 || newHeight == 0)
 		{
-			SPAN_ERROR("RenderTarget: Failed to create texture resource!");
-			return false;
+			return;
 		}
 
-		CreateViews(device);
-		CreateDepthBuffer(device);
+		// 既存のリソースを解放
+		Shutdown();
 
-		return true;
+		// 新しいサイズで初期化
+		Initialize(device, newWidth, newHeight);
 	}
 
 	void RenderTarget::CreateViews(ID3D12Device* device)
@@ -172,39 +224,61 @@ namespace Span
 
 	void RenderTarget::CreateDepthBuffer(ID3D12Device* device)
 	{
-		depthResource.Reset();
+		// 1. DSV Heap
+		D3D12_DESCRIPTOR_HEAP_DESC dsvHeapDesc = {};
+		dsvHeapDesc.NumDescriptors = 1;
+		dsvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_DSV;
+		dsvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
 
+		if (FAILED(device->CreateDescriptorHeap(&dsvHeapDesc, IID_PPV_ARGS(&dsvHeap)))) return;
+
+		dsvHandle = dsvHeap->GetCPUDescriptorHandleForHeapStart();
+
+		// 2. Depth Resource
 		D3D12_RESOURCE_DESC depthDesc = {};
 		depthDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
 		depthDesc.Width = width;
 		depthDesc.Height = height;
 		depthDesc.DepthOrArraySize = 1;
 		depthDesc.MipLevels = 1;
-		depthDesc.Format = depthFormat;
+		depthDesc.Format = DXGI_FORMAT_D32_FLOAT; // 通常はD32_FLOAT
 		depthDesc.SampleDesc.Count = 1;
 		depthDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL;
+		depthDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
 
-		D3D12_CLEAR_VALUE optClear = {};
-		optClear.Format = depthFormat;
-		optClear.DepthStencil.Depth = 1.0f;
-		optClear.DepthStencil.Stencil = 0;
+		D3D12_CLEAR_VALUE depthClear = {};
+		depthClear.Format = DXGI_FORMAT_D32_FLOAT;
+		depthClear.DepthStencil.Depth = 1.0f;
+		depthClear.DepthStencil.Stencil = 0;
 
-		D3D12_HEAP_PROPERTIES heapProps = { D3D12_HEAP_TYPE_DEFAULT };
+		D3D12_HEAP_PROPERTIES heapProps = {};
+		heapProps.Type = D3D12_HEAP_TYPE_DEFAULT;
 
-		device->CreateCommittedResource(
-			&heapProps, D3D12_HEAP_FLAG_NONE, &depthDesc,
-			D3D12_RESOURCE_STATE_DEPTH_WRITE, &optClear,
-			IID_PPV_ARGS(&depthResource)
-		);
+		if (FAILED(device->CreateCommittedResource(
+			&heapProps,
+			D3D12_HEAP_FLAG_NONE,
+			&depthDesc,
+			D3D12_RESOURCE_STATE_DEPTH_WRITE,
+			&depthClear,
+			IID_PPV_ARGS(&depthStencil))))
+		{
+			SPAN_ERROR("Failed to create Depth Stencil Resource");
+			return;
+		}
 
+		// --- 【重要】3. DSVの作成 ---
 		D3D12_DEPTH_STENCIL_VIEW_DESC dsvDesc = {};
-		dsvDesc.Format = depthFormat;
+		dsvDesc.Format = DXGI_FORMAT_D32_FLOAT;
 		dsvDesc.ViewDimension = D3D12_DSV_DIMENSION_TEXTURE2D;
-		device->CreateDepthStencilView(depthResource.Get(), &dsvDesc, dsvHandle);
+		dsvDesc.Flags = D3D12_DSV_FLAG_NONE;
+
+		device->CreateDepthStencilView(depthStencil.Get(), &dsvDesc, dsvHandle);
 	}
 
 	void RenderTarget::TransitionToRenderTarget(ID3D12GraphicsCommandList* commandList)
 	{
+		if (!resource) return;
+
 		if (currentState == D3D12_RESOURCE_STATE_RENDER_TARGET) return;
 
 		D3D12_RESOURCE_BARRIER barrier = {};
@@ -220,6 +294,8 @@ namespace Span
 
 	void RenderTarget::TransitionToShaderResource(ID3D12GraphicsCommandList* commandList)
 	{
+		if (!resource) return;
+
 		if (currentState == D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE) return;
 
 		D3D12_RESOURCE_BARRIER barrier = {};
@@ -235,6 +311,8 @@ namespace Span
 
 	void RenderTarget::Clear(ID3D12GraphicsCommandList* commandList)
 	{
+		if (rtvHandle.ptr == 0) return;
+
 		// レンダーターゲット状態であることを前提とする（事前にTransitionを呼ぶこと）
 		commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
 

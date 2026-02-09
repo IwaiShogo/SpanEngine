@@ -64,6 +64,9 @@ namespace Span
 		/// @brief	カメラ情報を更新します。
 		void SetCamera(const Matrix4x4& view, const Matrix4x4 projection);
 
+		/// @brief	GPUの処理完了を待機する
+		void WaitForGPU();
+
 		// 📊 Getters
 		// ============================================================
 
@@ -101,5 +104,10 @@ namespace Span
 		// Camera
 		Matrix4x4 viewMatrix;
 		Matrix4x4 projectionMatrix;
+
+		// 同期用オブジェクト
+		ComPtr<ID3D12Fence> m_waitFence;
+		HANDLE m_waitEvent = nullptr;
+		uint64_t m_waitFenceValue = 0;
 	};
 }

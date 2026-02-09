@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	RenderTarget.h
  * @brief	レンダリングターゲット (RTV) とシェーダーリソース (SRV) の管理。
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -17,11 +17,11 @@ namespace Span
 	/**
 	 * @class	RenderTarget
 	 * @brief	🎯 描画対象となるテクスチャリソース。
-	 * 
+	 *
 	 * @details
 	 * 「描画先 (RTV)」としても、「テクスチャ (SRV)」としても使用できるリソースを管理します。
 	 * ImGui経由でテクスチャとして表示することで実現されています。
-	 * 
+	 *
 	 * ### 🔄 Resource Barrier State Flow
 	 * 1. **RT State**: 描画中 (`D3D12_RESOURCE_STATE_RENDER_TARGET`)
 	 * 2. **Barrier**: `TransitionToShaderResource()`
@@ -45,7 +45,7 @@ namespace Span
 		bool Initialize(ID3D12Device* device, uint32 width, uint32 height, DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM);
 
 		/// @brief	解像度を変更し、リソースを作り直します。
-		bool Resize(ID3D12Device* device, uint32 width, uint32 height);
+		void Resize(ID3D12Device* device, uint32 width, uint32 height);
 
 		/// @brief	リソースを解放
 		void Shutdown();
@@ -95,6 +95,7 @@ namespace Span
 		// Depth Buffer
 		ComPtr<ID3D12Resource> depthResource;
 		ComPtr<ID3D12DescriptorHeap> dsvHeap;
+		ComPtr<ID3D12Resource> depthStencil;
 		D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = {};
 
 		DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM;

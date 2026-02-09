@@ -9,10 +9,39 @@ namespace Span
 {
 	Application* Application::s_instance = nullptr;
 
+	// コンソールイベントハンドラ
+	static BOOL WINAPI ConsoleCtrlHandler(DWORD dwCtrlType)
+	{
+		// コンソールのxボタンが押された場合
+		if (dwCtrlType == CTRL_CLOSE_EVENT)
+		{
+			if (auto* app = Application::Ptr())
+			{
+				// 1. メインループを止めるフラグを立てる
+				app->Close();
+
+				// 2. メインスレッドが完全に終了し、インスタンスが破棄されるのを待つ
+				int safetyCount = 200;
+				while (Application::Ptr() && safetyCount > 0)
+				{
+					Sleep(10);	// 10ms
+					safetyCount--;
+				}
+			}
+			return TRUE;
+		}
+		return FALSE;
+	}
+
 	Application::Application()
+		: m_sceneViewWidth(1280)
+		, m_sceneViewHeight(720)
 	{
 		assert(!s_instance && "Application already exists!");	// 二重起動防止
 		s_instance = this;
+
+		// コンソール終了ハンドラの登録
+		SetConsoleCtrlHandler(ConsoleCtrlHandler, TRUE);
 
 		// 1. システム初期化 (System Initialization)
 		// ------------------------------------------------------------
@@ -136,6 +165,17 @@ namespace Span
 
 			// --- A. シーン描画 (Render to Texture) ---
 			{
+				// 必要であればレンダーターゲットをリサイズ
+				if (m_sceneViewWidth > 0 && m_sceneViewHeight > 0)
+				{
+					if (sceneBuffer.GetWidth() != m_sceneViewWidth || sceneBuffer.GetHeight() != m_sceneViewHeight)
+					{
+						renderer.WaitForGPU();
+
+						sceneBuffer.Resize(renderer.GetDevice(), m_sceneViewWidth, m_sceneViewHeight);
+					}
+				}
+
 				// バリア: SRV -> RTV
 				sceneBuffer.TransitionToRenderTarget(cmd);
 
@@ -162,17 +202,25 @@ namespace Span
 			}
 
 			// --- B. エディタ描画 (Back Buffer) ---
+
+			// バックバッファへ戻す
+			graphicsContext.SetRenderTargetToBackBuffer(cmd);
+
+			// フレーム開始
+			GuiManager::BeginFrame();
+
+			// ドッキングスペースの作成
+			ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+			ImGui::DockSpaceOverViewport(dockspace_id, ImGui::GetMainViewport());
+
+			// シーンビューへのテクスチャセット
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
 			{
 				D3D12_GPU_DESCRIPTOR_HANDLE imGuiTexture = GuiManager::RegisterTexture(sceneBuffer.GetSRV());
 				scenePanel->SetTexture(imGuiTexture);
 			}
 
-			// ImGui用にバックバッファへ戻す (GraphicsContextに追加した関数を使う)
-			graphicsContext.SetRenderTargetToBackBuffer(cmd);
-
-			GuiManager::BeginFrame();
-			ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport());
+			// 描画終了
 			GuiManager::EndFrame(cmd);
 
 			renderer.EndFrame();

@@ -32,6 +32,12 @@ namespace Span
 		// ルート要素を描画
 		for (Entity root : roots)
 		{
+			// EditorCameraを持っているエンティティは表示しない
+			if (world.HasComponent<EditorCamera>(root))
+			{
+				continue;
+			}
+
 			Relationship& rel = world.GetComponent<Relationship>(root);
 			if (rel.PrevSibling.IsNull())
 			{
@@ -71,6 +77,10 @@ namespace Span
 	void HierarchyPanel::DrawEntityNode(Entity entity)
 	{
 		World& world = Application::Get().GetWorld();
+
+		// 削除済みならスキップ
+		if (!world.IsAlive(entity)) return;
+
 		Relationship& rel = world.GetComponent<Relationship>(entity);
 
 		// IDスコープを開始

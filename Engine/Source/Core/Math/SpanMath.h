@@ -153,7 +153,15 @@ namespace Span
 			Vector3 r; r.FromXM(XMVector3Cross(a.ToXM(), b.ToXM())); return r;
 		}
 
+		/// @brief	ベクトルの長さ (Magnitude)
 		float Length() const { return std::sqrt(x * x + y * y + z * z); }
+
+		/// @brief		ベクトルの長さの二乗 (Squared Magnitude)
+		/// @details	平方根計算を行わないため高速。距離比較などに使用。
+		float LengthSquared() const
+		{
+			return x * x + y * y + z * z;
+		}
 
 		/// @brief	正規化ベクトルを返します (SIMD高速化版)
 		Vector3 Normalized() const

@@ -24,6 +24,22 @@ namespace Span
 			return false;
 		}
 
+		auto device = context->GetDevice();
+
+		// 同期用フェンスの作成
+		if (FAILED(device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&m_waitFence))))
+		{
+			SPAN_ERROR("Failed to create Wait Fence");
+			return false;
+		}
+		m_waitEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
+		if (!m_waitEvent)
+		{
+			SPAN_ERROR("Failed to create Wait Event");
+			return false;
+		}
+		m_waitFenceValue = 1;
+
 		// 1. Root Signature (入力レイアウト定義)
 		if (!CreateRootSignature()) return false;
 
@@ -46,6 +62,16 @@ namespace Span
 
 	void Renderer::Shutdown()
 	{
+		// 同期用オブジェクトの開放
+		WaitForGPU();
+
+		if (m_waitEvent)
+		{
+			CloseHandle(m_waitEvent);
+			m_waitEvent = nullptr;
+		}
+		m_waitFence.Reset();
+
 		SAFE_DELETE(vs);
 		SAFE_DELETE(ps);
 
@@ -141,6 +167,25 @@ namespace Span
 	{
 		viewMatrix = view;
 		projectionMatrix = projection;
+	}
+
+	void Renderer::WaitForGPU()
+	{
+		if (!context || !context->GetCommandQueue() || !m_waitFence) return;
+
+		ID3D12CommandQueue* queue = context->GetCommandQueue();
+
+		// 次の値をシグナル
+		const uint64_t fenceToWaitFor = m_waitFenceValue;
+		queue->Signal(m_waitFence.Get(), fenceToWaitFor);
+		m_waitFenceValue++;
+
+		// GPUがここまで到達するのを待つ
+		if (m_waitFence->GetCompletedValue() < fenceToWaitFor)
+		{
+			m_waitFence->SetEventOnCompletion(fenceToWaitFor, m_waitEvent);
+			WaitForSingleObject(m_waitEvent, INFINITE);
+		}
 	}
 
 	bool Renderer::CreateRootSignature()

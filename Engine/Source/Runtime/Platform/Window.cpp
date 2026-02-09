@@ -114,11 +114,44 @@ namespace Span
 
 		// --- キーボード入力 ---
 		case WM_KEYDOWN:
-			Input::OnKeyDown((uint32)wParam);
-			return 0;
+		case WM_SYSKEYDOWN:
 		case WM_KEYUP:
-			Input::OnKeyUp((uint32)wParam);
+		case WM_SYSKEYUP:
+		{
+			bool isDown = (message == WM_KEYDOWN || message == WM_SYSKEYDOWN);
+			WPARAM vk = wParam;
+			LPARAM flags = lParam;
+
+			// Shift / Ctrl / Alt の左右区別を行う拡張ロジック
+			if (vk == VK_SHIFT || vk == VK_CONTROL || vk == VK_MENU)
+			{
+				// スキャンコードを取得
+				UINT scancode = (flags >> 16) & 0xFF;
+				int extended = (flags >> 24) & 1;
+
+				if (vk == VK_SHIFT)
+				{
+					// Shiftの場合は MapVirtualKey で左右を特定
+					vk = MapVirtualKey(scancode, MAPVK_VSC_TO_VK_EX);
+				}
+				else if (vk == VK_CONTROL)
+				{
+					vk = extended ? VK_RCONTROL : VK_LCONTROL;
+				}
+				else if (vk == VK_MENU)
+				{
+					vk = extended ? VK_RMENU : VK_LMENU;
+				}
+			}
+
+			// 変換後のキーコードで Input に通知
+			if (isDown)
+				Input::OnKeyDown((uint32)vk);
+			else
+				Input::OnKeyUp((uint32)vk);
+
 			return 0;
+		}
 
 		// --- マウス入力 ---
 		case WM_LBUTTONDOWN: Input::OnMouseDown(0); return 0;

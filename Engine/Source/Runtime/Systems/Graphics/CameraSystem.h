@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	CameraSystem.h
  * @brief	カメラ行列の更新とレンダラーへの適用。
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -21,7 +21,7 @@ namespace Span
 	/**
 	 * @class	CameraSystem
 	 * @brief	📷 アクティブなカメラのView/Projection行列を計算するシステム。
-	 * 
+	 *
 	 * @details
 	 * `Camera` コンポーネントを持つエンティティの `LocalToWorld` を元にビュー行列 (逆行列) を作成し、
 	 * ウィンドウのアスペクト比に合わせて投影行列を作成します。
@@ -33,7 +33,6 @@ namespace Span
 		void OnUpdate() override
 		{
 			auto& renderer = Application::Get().GetRenderer();
-			auto& window = Application::Get().GetWindow();
 
 			GetWorld()->ForEach<Camera, LocalToWorld>(
 				[&](Entity, Camera& cam, LocalToWorld& ltw)
@@ -42,8 +41,7 @@ namespace Span
 					Matrix4x4 viewMatrix = ltw.Value.Invert();
 
 					// 2. Projection行列
-					float aspectRatio = static_cast<float>(window.GetWidth()) / static_cast<float>(window.GetHeight());
-					if (aspectRatio <= 0.0f) aspectRatio = 1.0f;
+					float aspectRatio = Application::Get().GetSceneViewAspectRatio();
 
 					Matrix4x4 projMatrix = Matrix4x4::PerspectiveFovLH(
 						ToRadians(cam.Fov),

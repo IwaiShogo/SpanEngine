@@ -31,7 +31,7 @@ namespace Span
 			// --- 1. ビューポート解像度管理 ---
 			ImVec2 avail = ImGui::GetContentRegionAvail();
 
-			// ★修正: ドッキング中などでサイズが極端に小さい場合は処理しない (クラッシュ/バグ対策)
+			// ドッキング中などでサイズが極端に小さい場合は処理しない
 			if (avail.x > 1.0f && avail.y > 1.0f)
 			{
 				m_PanelSize = { avail.x, avail.y };
@@ -42,6 +42,9 @@ namespace Span
 
 				// 次のフレームでApplicationがリサイズするべき解像度を保存
 				m_TargetResolution = imageSize;
+
+				// 計算されたサイズをApplicationに通知し、カメラのアスペクト比を同期させる
+				Application::Get().SetSceneViewSize((uint32)imageSize.x, (uint32)imageSize.y);
 
 				// --- 画像の描画 ---
 				// カーソル位置を計算した開始位置に移動 (これで中央寄せされる)
@@ -170,7 +173,7 @@ namespace Span
 
 		// --- ショートカットキー処理 ---
 		// シーンビューにフォーカスがある時のみ
-		if (ImGui::IsWindowFocused() && !ImGuizmo::IsUsing())
+		if (ImGui::IsWindowFocused() && !ImGuizmo::IsUsing() && !Input::GetKey(Key::MouseRight))
 		{
 			if (Input::GetKeyDown(Key::Q)) m_GizmoType = -1;	// なし (選択モード)
 			if (Input::GetKeyDown(Key::W)) m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;

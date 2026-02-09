@@ -46,7 +46,6 @@
 #include "Runtime/Reflection/ComponentRegistry.h"
 #include "Runtime/Reflection/SpanAttributes.h"
 #include "Runtime/Reflection/SpanReflection.h"
-#include "Runtime/RuntimeModule.h"
 #include "Runtime/Systems/Core/RelationshipSystem.h"
 #include "Runtime/Systems/Core/TransformSystem.h"
 #include "Runtime/Systems/Graphics/CameraSystem.h"
