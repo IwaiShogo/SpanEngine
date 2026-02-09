@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Span Engine: Engine/Source/Editor/Panels -&gt; ImGui 関係</title>
+<title>Span Engine: Engine/Source/SpanEditor.h ソースファイル</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('dir_bcba414dde695aa9b94bbe05564e6e5d.html','',''); });
+$(function(){initNavTree('SpanEditor_8h_source.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -88,21 +88,29 @@ $(function(){initNavTree('dir_bcba414dde695aa9b94bbe05564e6e5d.html','',''); });
 </div>
 </div>
 
+<div class="header">
+  <div class="headertitle"><div class="title">SpanEditor.h</div></div>
+</div><!--header-->
 <div class="contents">
-<h3>Panels &rarr; ImGui 関係</h3><table class="dirtab"><tr class="dirtab"><th class="dirtab">Engine/Source/Editor/Panelsにあるファイル</th><th class="dirtab">Engine/Source/Editor/ImGuiにあるファイルを include している</th></tr><tr class="dirtab"><td class="dirtab"><a class="el" href="dir_b6b1c143615c8369fe6c6b8386f9603d.html">Inspector</a>&#160;/&#160;<a class="el" href="InspectorPanel_8cpp.html">InspectorPanel.cpp</a></td><td class="dirtab"><a class="el" href="ImGuiUI_8h.html">ImGuiUI.h</a></td></tr></table></div><!-- contents -->
+<a href="SpanEditor_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Editor Headers</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// エディタ関連の機能をまとめてインクルードするためのヘッダー</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="GuiManager_8h.html">Editor/GuiManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="PanelManager_8h.html">Editor/PanelManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="SelectionManager_8h.html">Editor/SelectionManager.h</a>&quot;</span></div>
+<div class="ttc" id="aGuiManager_8h_html"><div class="ttname"><a href="GuiManager_8h.html">GuiManager.h</a></div><div class="ttdoc">ImGuiのライフサイクルとレンダリング管理。</div></div>
+<div class="ttc" id="aPanelManager_8h_html"><div class="ttname"><a href="PanelManager_8h.html">PanelManager.h</a></div><div class="ttdoc">エディタパネルのファクトリーと自動登録システム。</div></div>
+<div class="ttc" id="aSelectionManager_8h_html"><div class="ttname"><a href="SelectionManager_8h.html">SelectionManager.h</a></div><div class="ttdoc">エディタ内でのオブジェクト選択状態の管理</div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_c6cb6fb3292d721ac39edcf45c3f2a55.html">Editor</a></li><li class="navelem"><a href="dir_bcba414dde695aa9b94bbe05564e6e5d.html">Panels</a></li>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="SpanEditor_8h.html">SpanEditor.h</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

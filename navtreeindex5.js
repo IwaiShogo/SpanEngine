@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"namespaceSpan.html#a706679730aeab52031ed8774240027f2a4059b0251f66a18cb56f544728796875":[0,0,0,86,0],
+"namespaceSpan.html#a706679730aeab52031ed8774240027f2a882384ec38ce8d9582b57e70861730e4":[0,0,0,86,3],
 "namespaceSpan.html#a706679730aeab52031ed8774240027f2a902b0d55fddef6f8d651fe1035b7d4bd":[0,0,0,86,2],
 "namespaceSpan.html#a7bacb65f8630776d46220ef4ce0c7421":[0,0,0,104],
 "namespaceSpan.html#a7d00f8fdfe7b0d03b2a4d5ba06efe594":[0,0,0,70],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "structSpan_1_1LocalToWorld.html#a95689c156cd5dbfedd718f60b6b59ac2":[0,0,0,21,0],
 "structSpan_1_1LocalToWorld.html#a95689c156cd5dbfedd718f60b6b59ac2":[1,0,0,20,0],
 "structSpan_1_1LocalToWorld.html#aa8817b89dc2edd1f85e37d94008191b9":[0,0,0,21,1],
-"structSpan_1_1LocalToWorld.html#aa8817b89dc2edd1f85e37d94008191b9":[1,0,0,20,1],
-"structSpan_1_1MaterialData.html":[0,0,0,49],
-"structSpan_1_1MaterialData.html":[1,0,0,48]
+"structSpan_1_1LocalToWorld.html#aa8817b89dc2edd1f85e37d94008191b9":[1,0,0,20,1]
 };
