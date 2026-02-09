@@ -39,20 +39,3 @@ Unityの優れたUXと、DOTS (Data-Oriented Technology Stack) を凌駕する�
 2. `SetupProject.bat` を実行 (依存ライブラリの展開)
 3. `GenerateProject.bat` を実行 (CMakeによるソリューション生成)
 4. `SpanEngine.sln` を開き、ビルドして実行
-
-// 拡張機能
-
-- Image Watch
-- HLSL Tools for Visual Studio
-- Markdown Editor v2
-- Visual Assist
-- Git Diff Margin
-- CodeMaid
-- Viasfora
-- Code Alignment
-- Trailing Whitespace Visualizer
-- Editor Guidelines
-- File Icons
-- SwitchStartupProject
-- VSColorOutput64
-- One Dark Pro
