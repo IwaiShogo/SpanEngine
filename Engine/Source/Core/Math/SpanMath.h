@@ -134,6 +134,8 @@ namespace Span
 		Vector3 operator/(float s) const { return Vector3(x / s, y / s, z / s); }
 		Vector3& operator+=(const Vector3& v) { x += v.x; y += v.y; z += v.z; return *this; }
 		Vector3& operator-=(const Vector3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
+		Vector3& operator*=(float s) { x *= s; y *= s; z *= s; return *this; }
+		Vector3& operator/=(float s) { x /= s; y /= s; z /= s; return *this; }
 		/// @}
 
 		/// @name	Utility
@@ -394,7 +396,51 @@ namespace Span
 		/// @brief	転置行列
 		Matrix4x4 Transpose() const
 		{
-			Matrix4x4 r; r.FromXM(XMMatrixTranspose(ToXM())); return r;
+			Matrix4x4 result;
+			for (int r = 0; r < 4; ++r)
+			{
+				for (int c = 0; c < 4; ++c)
+				{
+					result.m[r][c] = m[c][r];
+				}
+			}
+			return result;
+		}
+
+		/// @brief	行列を 移動・回転・スケール に分解する
+		bool Decompose(Vector3& outTranslation, Quaternion& outRotation, Vector3& outScale) const
+		{
+			// 1. Translation
+			outTranslation = Vector3(m[3][0], m[3][1], m[3][2]);
+
+			// 2. Scale
+			// 各軸の長さ(ノルム)を計算
+			Vector3 xaxis(m[0][0], m[0][1], m[0][2]);
+			Vector3 yaxis(m[1][0], m[1][1], m[1][2]);
+			Vector3 zaxis(m[2][0], m[2][1], m[2][2]);
+
+			outScale.x = xaxis.Length();
+			outScale.y = yaxis.Length();
+			outScale.z = zaxis.Length();
+
+			if (outScale.x < 0.0001f || outScale.y < 0.0001f || outScale.z < 0.0001f)
+				return false;
+
+			// 回転行列の抽出のため正規化
+			xaxis /= outScale.x;
+			yaxis /= outScale.y;
+			zaxis /= outScale.z;
+
+			// 回転行列の構築
+			Matrix4x4 rotationMtx = Identity();
+			rotationMtx.m[0][0] = xaxis.x; rotationMtx.m[0][1] = xaxis.y; rotationMtx.m[0][2] = xaxis.z;
+			rotationMtx.m[1][0] = yaxis.x; rotationMtx.m[1][1] = yaxis.y; rotationMtx.m[1][2] = yaxis.z;
+			rotationMtx.m[2][0] = zaxis.x; rotationMtx.m[2][1] = zaxis.y; rotationMtx.m[2][2] = zaxis.z;
+
+			// Quaternionへの変換
+			outRotation = Quaternion::FromRotationMatrix(rotationMtx);
+
+			return true;
 		}
 
 		/// @brief	行列同士の掛け算

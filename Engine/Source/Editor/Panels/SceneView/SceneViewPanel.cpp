@@ -15,7 +15,7 @@ namespace Span
 	{
 		// 初期設定: 移動モード, ローカル座標
 		m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
-		m_GizmoType = ImGuizmo::MODE::LOCAL;
+		m_GizmoMode = ImGuizmo::MODE::LOCAL;
 	}
 
 	void SceneViewPanel::OnImGuiRender()
@@ -78,8 +78,12 @@ namespace Span
 				// ImGuizmoの描画範囲設定
 				ImVec2 imageScreenPos = ImGui::GetItemRectMin();
 
+				// ImGuizmoのセットアップ
 				ImGuizmo::SetDrawlist();
 				ImGuizmo::SetRect(imageScreenPos.x, imageScreenPos.y, imageSize.x, imageSize.y);
+
+				// ギズモ有効化
+				ImGuizmo::Enable(true);
 
 				DrawGizmo(Vector2(imageScreenPos.x, imageScreenPos.y), imageSize);
 				DrawToolbarOverlay();
@@ -101,6 +105,7 @@ namespace Span
 		Entity cameraEntity = Entity::Null;
 		Matrix4x4 cameraView = Matrix4x4::Identity();
 		Matrix4x4 cameraProj = Matrix4x4::Identity();
+		Transform* cameraTransform = nullptr;
 
 		// シーン内のアクティブなカメラ(EditorCamera優先)を探す
 		world.ForEach<Camera, LocalToWorld>([&](Entity e, Camera& cam, LocalToWorld& ltw)
@@ -110,6 +115,7 @@ namespace Span
 			{
 				cameraEntity = e;
 				cameraView = ltw.Value.Invert();
+				cameraTransform = world.GetComponentPtr<Transform>(e);
 
 				// アスペクト比を現在のビューポートに合わせる
 				float aspect = size.x / size.y;
@@ -123,22 +129,12 @@ namespace Span
 
 		ImGuizmo::SetOrthographic(false);
 
-		// --- View Cube (シーンギズモ) ---
-		// 右上に表示
-		{
-			Matrix4x4 viewManipulateMatrix = cameraView;
-			float viewSize = 128.0f;
+		// 行列転置用バッファ
+		Matrix4x4 viewMtx = cameraView.Transpose();
+		Matrix4x4 projMtx = cameraProj.Transpose();
 
-			ImGuizmo::ViewManipulate(
-				(float*)&viewManipulateMatrix,
-				5.0f,
-				ImVec2(pos.x + size.x - viewSize, pos.y),
-				ImVec2(viewSize, viewSize),
-				0x10101010
-			);
-		}
-
-		// --- 選択オブジェクトの操作ギズモ ---
+		// 1. Object Manipulate
+		// ------------------------------------------------------------
 		Entity selectedEntity = SelectionManager::GetPrimary();
 		if (!selectedEntity.IsNull() && world.IsAlive(selectedEntity) && m_GizmoType != -1)
 		{
@@ -148,6 +144,9 @@ namespace Span
 				// 現在のTransform行列
 				Matrix4x4 transformMatrix = Matrix4x4::TRS(tc->Position, tc->Rotation, tc->Scale);
 
+				// オブジェクト行列も転置して渡す
+				Matrix4x4 objectMtx = transformMatrix.Transpose();
+
 				// スナップ設定
 				float snapValue = 0.5f;
 				if (m_GizmoType == ImGuizmo::OPERATION::ROTATE) snapValue = m_SnapValueRotate;
@@ -156,13 +155,16 @@ namespace Span
 
 				float snapValues[3] = { snapValue, snapValue, snapValue };
 
+				// IDを設定して競合を防ぐ
+				ImGuizmo::SetID((int)(uint64_t)selectedEntity.ID.Index);
+
 				// ギズモ操作実行
 				ImGuizmo::Manipulate(
-					(float*)&cameraView,
-					(float*)&cameraProj,
+					(float*)&viewMtx,
+					(float*)&projMtx,
 					(ImGuizmo::OPERATION)m_GizmoType,
 					(ImGuizmo::MODE)m_GizmoMode,
-					(float*)&transformMatrix,
+					(float*)&objectMtx,
 					nullptr,
 					m_UseSnap ? snapValues : nullptr
 				);
@@ -170,18 +172,52 @@ namespace Span
 				// 操作された場合、値を書き戻す
 				if (ImGuizmo::IsUsing())
 				{
-					Vector3 translation, rotation, scale;
-					ImGuizmo::DecomposeMatrixToComponents((float*)&transformMatrix, &translation.x, &rotation.x, &scale.x);
+					// 結果を転置して戻す
+					Matrix4x4 newTransform = objectMtx.Transpose();
 
-					tc->Position = translation;
-					tc->Rotation = Quaternion::FromEuler(ToRadians(rotation.x), ToRadians(rotation.y), ToRadians(rotation.z));
-					tc->Scale = scale;
+					Vector3 p, s;
+					Quaternion r;
+					if (newTransform.Decompose(p, r, s))
+					{
+						tc->Position = p;
+						tc->Rotation = r;
+						tc->Scale = s;
+					}
 				}
 			}
 		}
 
-		// --- ショートカットキー処理 ---
-		// シーンビューにフォーカスがある時のみ
+		// 2. Scene Gizmo (ViewManipulate)
+		// ------------------------------------------------------------
+		{
+			float viewSize = 128.0f;
+			ImVec2 viewPos = ImVec2(pos.x + size.x - viewSize, pos.y);
+
+			ImGuizmo::ViewManipulate(
+				(float*)&viewMtx,
+				8.0f,
+				viewPos,
+				ImVec2(viewSize, viewSize),
+				0x10101010
+			);
+
+			// 転置されたView行列を元に戻す
+			Matrix4x4 newView = viewMtx.Transpose();
+			Matrix4x4 newCamWorld = newView.Invert();
+
+			if (cameraTransform)
+			{
+				Vector3 p, s;
+				Quaternion r;
+				if (newCamWorld.Decompose(p, r, s))
+				{
+					// 回転のみ適用
+					cameraTransform->Rotation = r;
+				}
+			}
+		}
+
+		// ショートカットキー処理
 		if (ImGui::IsWindowFocused() && !ImGuizmo::IsUsing() && !Input::GetKey(Key::MouseRight))
 		{
 			if (Input::GetKeyDown(Key::Q)) m_GizmoType = -1;	// なし (選択モード)
@@ -236,7 +272,7 @@ namespace Span
 			{
 				m_GizmoMode = (m_GizmoMode == ImGuizmo::MODE::LOCAL) ? ImGuizmo::MODE::WORLD : ImGuizmo::MODE::LOCAL;
 			}
-			if (ImGui::IsItemHovered()) ImGui::SetTooltip("Toggle Local/World Space");
+			ImGui::SetItemTooltip("Toggle Local/World Space");
 
 			ImGui::SameLine();
 			ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
@@ -245,7 +281,7 @@ namespace Span
 			// スナップ
 			// アイコンの代わりにテキストで簡易表示
 			if (ToolbarButton("S", m_UseSnap)) m_UseSnap = !m_UseSnap;
-			if (ImGui::IsItemHovered()) ImGui::SetTooltip("Toggle Snap (Hold Ctrl)");
+			ImGui::SetItemTooltip("Toggle Snap (Hold Ctrl)");
 
 			ImGui::SameLine();
 			ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);

@@ -4,6 +4,8 @@
 
 #include "PanelManager.h"
 
+#include <ImGuizmo.h>
+
 namespace Span
 {
 	ComPtr<ID3D12DescriptorHeap> GuiManager::srvHeap;
@@ -103,6 +105,8 @@ namespace Span
 		ImGui_ImplDX12_NewFrame();
 		ImGui_ImplWin32_NewFrame();
 		ImGui::NewFrame();
+
+		ImGuizmo::BeginFrame();
 
 		ImGuiIO& io = ImGui::GetIO();
 		Input::SetImGuiWantCapture(io.WantCaptureMouse);
