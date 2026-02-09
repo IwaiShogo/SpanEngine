@@ -7,6 +7,7 @@ var structSpan_1_1Vector3 =
     [ "Dot", "structSpan_1_1Vector3.html#afd00ea2d739d71571828e2d44b41c0c6", null ],
     [ "FromXM", "structSpan_1_1Vector3.html#a12f90de75907473c90edf3495c97d9f0", null ],
     [ "Length", "structSpan_1_1Vector3.html#a4d84dde93e6520ab1b1407f9d82d881e", null ],
+    [ "LengthSquared", "structSpan_1_1Vector3.html#a7c3f0c2ea10d0780a50fdb7e1a5dffee", null ],
     [ "Lerp", "structSpan_1_1Vector3.html#a636702ff63ba665c96251f818180e173", null ],
     [ "Normalized", "structSpan_1_1Vector3.html#aabe270fd26b1d874df94a455faef13c5", null ],
     [ "operator*", "structSpan_1_1Vector3.html#a9729500317b93907948bae240455f20a", null ],

@@ -23,6 +23,7 @@ var searchData=
   ['processmesh_20',['ProcessMesh',['../classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a',1,'Span::ModelLoader']]],
   ['projectionmatrix_21',['projectionMatrix',['../classSpan_1_1Renderer.html#a85117e6d23730b9c77f5a748eecce3b8',1,'Span::Renderer']]],
   ['ps_22',['ps',['../classSpan_1_1Renderer.html#a67b8dd8ecb0790d82f52d1750110595e',1,'Span::Renderer']]],
-  ['ptrarchetype_23',['PtrArchetype',['../structSpan_1_1EntityLocation.html#a58730dc235517432219e704856f08070',1,'Span::EntityLocation']]],
-  ['ptrchunk_24',['PtrChunk',['../structSpan_1_1EntityLocation.html#ae45a9bc42c1708063a91162472243478',1,'Span::EntityLocation']]]
+  ['ptr_23',['Ptr',['../classSpan_1_1Application.html#a095598d0c2e753bfb8d00acee435980f',1,'Span::Application']]],
+  ['ptrarchetype_24',['PtrArchetype',['../structSpan_1_1EntityLocation.html#a58730dc235517432219e704856f08070',1,'Span::EntityLocation']]],
+  ['ptrchunk_25',['PtrChunk',['../structSpan_1_1EntityLocation.html#ae45a9bc42c1708063a91162472243478',1,'Span::EntityLocation']]]
 ];

@@ -181,6 +181,7 @@ var namespaceSpan =
     [ "_reg_hierarchy", "namespaceSpan.html#ab70254134b06676ef075109a54d3c433", null ],
     [ "CalcConstantBufferByteSize", "namespaceSpan.html#a4fe00a2b184d928db9704896aa281ee9", null ],
     [ "Clamp", "namespaceSpan.html#a8cdcfa1b4931700b369b8017666cd36a", null ],
+    [ "ConsoleCtrlHandler", "namespaceSpan.html#a3f4b8561d46e69596ba6a7c3177a92e7", null ],
     [ "CreateApplication", "namespaceSpan.html#a1f3752f6a0fd409523c07eff247645bf", null ],
     [ "GetGamepadIndex", "namespaceSpan.html#ae79449040cc75c359f5829b808fb2a57", null ],
     [ "Header", "namespaceSpan.html#ad91faa614dc451a8508f2113cc2cb22d", null ],

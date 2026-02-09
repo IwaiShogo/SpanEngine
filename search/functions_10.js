@@ -11,7 +11,7 @@ var searchData=
   ['reset_8',['Reset',['../classSpan_1_1MemoryArena.html#ae1e5aee7a56ae1113ded9b6bfcfec909',1,'Span::MemoryArena']]],
   ['resetconsolecolor_9',['ResetConsoleColor',['../classSpan_1_1Logger.html#a597edce5826978973afddf5dbcd25a1f',1,'Span::Logger']]],
   ['resetcursortocenter_10',['ResetCursorToCenter',['../classSpan_1_1Input.html#af45cd4df00ba60ee6d0e03c85dc6ba80',1,'Span::Input']]],
-  ['resize_11',['Resize',['../classSpan_1_1RenderTarget.html#afb0bd3f571dc96eb95653295a8fab320',1,'Span::RenderTarget']]],
+  ['resize_11',['Resize',['../classSpan_1_1RenderTarget.html#aebe62bcc80108f67f68d0ee0eb579cfb',1,'Span::RenderTarget']]],
   ['rotation_12',['Rotation',['../structSpan_1_1Matrix4x4.html#a14547be89d9d77aba82522e5180c80df',1,'Span::Matrix4x4']]],
   ['run_13',['Run',['../classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9',1,'Span::Application']]]
 ];

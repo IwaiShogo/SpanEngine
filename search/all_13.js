@@ -31,7 +31,7 @@ var searchData=
   ['reset_28',['Reset',['../classSpan_1_1MemoryArena.html#ae1e5aee7a56ae1113ded9b6bfcfec909',1,'Span::MemoryArena']]],
   ['resetconsolecolor_29',['ResetConsoleColor',['../classSpan_1_1Logger.html#a597edce5826978973afddf5dbcd25a1f',1,'Span::Logger']]],
   ['resetcursortocenter_30',['ResetCursorToCenter',['../classSpan_1_1Input.html#af45cd4df00ba60ee6d0e03c85dc6ba80',1,'Span::Input']]],
-  ['resize_31',['Resize',['../classSpan_1_1RenderTarget.html#afb0bd3f571dc96eb95653295a8fab320',1,'Span::RenderTarget']]],
+  ['resize_31',['Resize',['../classSpan_1_1RenderTarget.html#aebe62bcc80108f67f68d0ee0eb579cfb',1,'Span::RenderTarget']]],
   ['resource_32',['resource',['../classSpan_1_1ConstantBuffer.html#a49d50882eddee173d07a680b3fecca97',1,'Span::ConstantBuffer::resource'],['../classSpan_1_1RenderTarget.html#a8fc923d13a57c3733de5f8935d898b2d',1,'Span::RenderTarget::resource'],['../classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab',1,'Span::Texture::resource']]],
   ['resource_20barrier_20state_20flow_33',['🔄 Resource Barrier State Flow',['../classSpan_1_1RenderTarget.html#autotoc_md96',1,'']]],
   ['right_34',['Right',['../structSpan_1_1Vector3.html#a91d58c181afda160b2e8bf5929e2d2a9',1,'Span::Vector3']]],
@@ -46,6 +46,5 @@ var searchData=
   ['rtvdescriptorsize_43',['rtvDescriptorSize',['../classSpan_1_1GraphicsContext.html#abde099b31325f4627beb3112463ec504',1,'Span::GraphicsContext']]],
   ['rtvhandle_44',['rtvHandle',['../classSpan_1_1RenderTarget.html#a5adb356295346fa447a09db782098de7',1,'Span::RenderTarget']]],
   ['rtvheap_45',['rtvHeap',['../classSpan_1_1GraphicsContext.html#a0a3e1b6f8de36b2fe35533463c4a8743',1,'Span::GraphicsContext::rtvHeap'],['../classSpan_1_1RenderTarget.html#adf2f3f2adc6dee59a402de3fccb36114',1,'Span::RenderTarget::rtvHeap']]],
-  ['run_46',['Run',['../classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9',1,'Span::Application']]],
-  ['runtimemodule_2eh_47',['RuntimeModule.h',['../RuntimeModule_8h.html',1,'']]]
+  ['run_46',['Run',['../classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9',1,'Span::Application']]]
 ];

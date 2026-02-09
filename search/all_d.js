@@ -14,7 +14,7 @@ var searchData=
   ['leftsticky_11',['LeftStickY',['../namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803da729f2100a072d3bc80d4eaea3218e61f',1,'Span']]],
   ['lefttrigger_12',['LeftTrigger',['../namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803dac412c6d19da2afaf2dc8891f5bcb8901',1,'Span']]],
   ['length_13',['Length',['../structSpan_1_1Vector2.html#a4562c34c0d9fda10cab79f8ab076438c',1,'Span::Vector2::Length()'],['../structSpan_1_1Vector3.html#a4d84dde93e6520ab1b1407f9d82d881e',1,'Span::Vector3::Length()']]],
-  ['lengthsquared_14',['LengthSquared',['../structSpan_1_1Vector2.html#aa6896267dd2a0f91e74443b32866898e',1,'Span::Vector2']]],
+  ['lengthsquared_14',['LengthSquared',['../structSpan_1_1Vector2.html#aa6896267dd2a0f91e74443b32866898e',1,'Span::Vector2::LengthSquared()'],['../structSpan_1_1Vector3.html#a7c3f0c2ea10d0780a50fdb7e1a5dffee',1,'Span::Vector3::LengthSquared() const']]],
   ['lerp_15',['Lerp',['../structSpan_1_1Vector3.html#a636702ff63ba665c96251f818180e173',1,'Span::Vector3::Lerp()'],['../namespaceSpan.html#abf375e5ec19260895ab2601db710d861',1,'Span::Lerp()']]],
   ['load_16',['Load',['../classSpan_1_1Shader.html#a546bb2f333eab4df01ea6cf76262cba9',1,'Span::Shader::Load()'],['../classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1',1,'Span::ModelLoader::Load()']]],
   ['localtoworld_17',['LocalToWorld',['../structSpan_1_1LocalToWorld.html',1,'Span::LocalToWorld'],['../structSpan_1_1LocalToWorld.html#a95689c156cd5dbfedd718f60b6b59ac2',1,'Span::LocalToWorld::LocalToWorld()'],['../structSpan_1_1LocalToWorld.html#aa8817b89dc2edd1f85e37d94008191b9',1,'Span::LocalToWorld::LocalToWorld(const Matrix4x4 &amp;matrix)']]],

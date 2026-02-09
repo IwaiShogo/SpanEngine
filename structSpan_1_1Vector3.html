@@ -100,7 +100,7 @@ $(function(){initNavTree('structSpan_1_1Vector3.html','','structSpan_1_1Vector3-
 <div class="dynheader">
 Span::Vector3 連携図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Vector3__coll__graph.svg" width="223" height="576"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Vector3__coll__graph.svg" width="243" height="596"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -145,7 +145,9 @@ Span::Vector3 連携図</div>
 <tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
 Utility</h2></td></tr>
 <tr class="memitem:a4d84dde93e6520ab1b1407f9d82d881e" id="r_a4d84dde93e6520ab1b1407f9d82d881e"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a4d84dde93e6520ab1b1407f9d82d881e">Length</a> () const</td></tr>
-<tr class="memdesc:a4d84dde93e6520ab1b1407f9d82d881e"><td class="mdescLeft">&#160;</td><td class="mdescRight">正規化ベクトルを返します (SIMD高速化版)  <br /></td></tr>
+<tr class="memdesc:a4d84dde93e6520ab1b1407f9d82d881e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベクトルの長さ (Magnitude)  <br /></td></tr>
+<tr class="memitem:a7c3f0c2ea10d0780a50fdb7e1a5dffee" id="r_a7c3f0c2ea10d0780a50fdb7e1a5dffee"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a7c3f0c2ea10d0780a50fdb7e1a5dffee">LengthSquared</a> () const</td></tr>
+<tr class="memdesc:a7c3f0c2ea10d0780a50fdb7e1a5dffee"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベクトルの長さの二乗 (Squared Magnitude)  <br /></td></tr>
 <tr class="memitem:aabe270fd26b1d874df94a455faef13c5" id="r_aabe270fd26b1d874df94a455faef13c5"><td class="memItemLeft"><a class="el" href="#a5b73d20c05747047ff35465dd3af4634">Vector3</a>&#160;</td><td class="memItemRight"><a class="el" href="#aabe270fd26b1d874df94a455faef13c5">Normalized</a> () const</td></tr>
 <tr class="memdesc:aabe270fd26b1d874df94a455faef13c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">正規化ベクトルを返します (SIMD高速化版)  <br /></td></tr>
 <tr class="memitem:afd00ea2d739d71571828e2d44b41c0c6" id="r_afd00ea2d739d71571828e2d44b41c0c6"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#afd00ea2d739d71571828e2d44b41c0c6">Dot</a> (const <a class="el" href="#a5b73d20c05747047ff35465dd3af4634">Vector3</a> &amp;a, const <a class="el" href="#a5b73d20c05747047ff35465dd3af4634">Vector3</a> &amp;b)</td></tr>
@@ -153,7 +155,7 @@ Utility</h2></td></tr>
 <tr class="memitem:af88324745a94c795f6b1190d5a7e7247" id="r_af88324745a94c795f6b1190d5a7e7247"><td class="memItemLeft">static <a class="el" href="#a5b73d20c05747047ff35465dd3af4634">Vector3</a>&#160;</td><td class="memItemRight"><a class="el" href="#af88324745a94c795f6b1190d5a7e7247">Cross</a> (const <a class="el" href="#a5b73d20c05747047ff35465dd3af4634">Vector3</a> &amp;a, const <a class="el" href="#a5b73d20c05747047ff35465dd3af4634">Vector3</a> &amp;b)</td></tr>
 <tr class="memdesc:af88324745a94c795f6b1190d5a7e7247"><td class="mdescLeft">&#160;</td><td class="mdescRight">外積 (Cross Product)  <br /></td></tr>
 <tr class="memitem:a636702ff63ba665c96251f818180e173" id="r_a636702ff63ba665c96251f818180e173"><td class="memItemLeft">static <a class="el" href="#a5b73d20c05747047ff35465dd3af4634">Vector3</a>&#160;</td><td class="memItemRight"><a class="el" href="#a636702ff63ba665c96251f818180e173">Lerp</a> (const <a class="el" href="#a5b73d20c05747047ff35465dd3af4634">Vector3</a> &amp;a, const <a class="el" href="#a5b73d20c05747047ff35465dd3af4634">Vector3</a> &amp;b, float t)</td></tr>
-<tr class="memdesc:a636702ff63ba665c96251f818180e173"><td class="mdescLeft">&#160;</td><td class="mdescRight">正規化ベクトルを返します (SIMD高速化版)  <br /></td></tr>
+<tr class="memdesc:a636702ff63ba665c96251f818180e173"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベクトルの長さ (Magnitude)  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>3次元ベクトル (float x, y, z) 位置、方向、スケールなどに使用されます。 </p>
@@ -371,7 +373,7 @@ Utility</h2></td></tr>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Vector3_a12f90de75907473c90edf3495c97d9f0_icgraph.svg" width="100%" height="438"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Vector3_a12f90de75907473c90edf3495c97d9f0_icgraph.svg" width="100%" height="487"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -399,9 +401,44 @@ Utility</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>正規化ベクトルを返します (SIMD高速化版) </p>
+<p>ベクトルの長さ (Magnitude) </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00156">156</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00157">157</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a7c3f0c2ea10d0780a50fdb7e1a5dffee" name="a7c3f0c2ea10d0780a50fdb7e1a5dffee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c3f0c2ea10d0780a50fdb7e1a5dffee">&#9670;&#160;</a></span>LengthSquared()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::Vector3::LengthSquared </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ベクトルの長さの二乗 (Squared Magnitude) </p>
+<p>平方根計算を行わないため高速。距離比較などに使用。 </p>
+
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00161">161</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Vector3_a7c3f0c2ea10d0780a50fdb7e1a5dffee_icgraph.svg" width="475" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -437,9 +474,9 @@ Utility</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>正規化ベクトルを返します (SIMD高速化版) </p>
+<p>ベクトルの長さ (Magnitude) </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00164">164</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00172">172</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -473,7 +510,7 @@ Utility</h2></td></tr>
 
 <p>正規化ベクトルを返します (SIMD高速化版) </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00159">159</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00167">167</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -482,7 +519,7 @@ Utility</h2></td></tr>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Vector3_aabe270fd26b1d874df94a455faef13c5_icgraph.svg" width="464" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Vector3_aabe270fd26b1d874df94a455faef13c5_icgraph.svg" width="464" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -706,7 +743,7 @@ Utility</h2></td></tr>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Vector3_a3f30a6301de9087ae83240d2ac0ee1c7_icgraph.svg" width="100%" height="549"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Vector3_a3f30a6301de9087ae83240d2ac0ee1c7_icgraph.svg" width="100%" height="579"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -734,7 +771,7 @@ Utility</h2></td></tr>
 
 <p>(0, 0, -1) </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00176">176</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00184">184</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -760,7 +797,7 @@ Utility</h2></td></tr>
 
 <p>(0, -1, 0) </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00174">174</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00182">182</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -786,7 +823,7 @@ Utility</h2></td></tr>
 
 <p>(0, 0, 1) </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00175">175</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00183">183</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -812,7 +849,7 @@ Utility</h2></td></tr>
 
 <p>(-1, 0, 0) </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00178">178</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00186">186</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -836,7 +873,7 @@ Utility</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00172">172</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00180">180</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -862,7 +899,7 @@ Utility</h2></td></tr>
 
 <p>(1, 0, 0) </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00177">177</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00185">185</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -888,7 +925,7 @@ Utility</h2></td></tr>
 
 <p>(0, 1, 0) </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00173">173</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00181">181</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -960,7 +997,7 @@ Utility</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00171">171</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00179">179</a> 行目に定義があります。</p>
 
 </div>
 </div>
