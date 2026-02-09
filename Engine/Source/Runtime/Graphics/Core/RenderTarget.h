@@ -44,11 +44,14 @@ namespace Span
 		 */
 		bool Initialize(ID3D12Device* device, uint32 width, uint32 height, DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM);
 
+		/// @brief	リソースを解放
+		void Shutdown();
+
 		/// @brief	解像度を変更し、リソースを作り直します。
 		void Resize(ID3D12Device* device, uint32 width, uint32 height);
 
-		/// @brief	リソースを解放
-		void Shutdown();
+		// 🔄 State Transition Barriers
+		// ============================================================
 
 		/**
 		 * @brief	リソースの状態を「描画先 (Render Target)」に変更します。
@@ -62,6 +65,9 @@ namespace Span
 		 */
 		void TransitionToShaderResource(ID3D12GraphicsCommandList* commandList);
 
+		// 🖌 Operations
+		// ============================================================
+
 		/// @brief	画面を指定色でクリアします。
 		void Clear(ID3D12GraphicsCommandList* commandList);
 
@@ -72,8 +78,6 @@ namespace Span
 		D3D12_CPU_DESCRIPTOR_HANDLE GetRTV() const { return rtvHandle; }
 		D3D12_CPU_DESCRIPTOR_HANDLE GetSRV() const { return srvHandle; }
 		D3D12_CPU_DESCRIPTOR_HANDLE GetDSV() const { return dsvHandle; }
-		/// @brief	シェーダーから参照するためのGPUハンドル (ImGui用)
-		D3D12_GPU_DESCRIPTOR_HANDLE GetSRV_GPU() const { return srvHandleGpu; }
 
 		uint32 GetWidth() const { return width; }
 		uint32 GetHeight() const { return height; }
@@ -90,21 +94,17 @@ namespace Span
 
 		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = {};
 		D3D12_CPU_DESCRIPTOR_HANDLE srvHandle = {};
-		D3D12_GPU_DESCRIPTOR_HANDLE srvHandleGpu = {};
 
-		// Depth Buffer
-		ComPtr<ID3D12Resource> depthResource;
+		// Depth Stencil
 		ComPtr<ID3D12DescriptorHeap> dsvHeap;
-		ComPtr<ID3D12Resource> depthStencil;
+		ComPtr<ID3D12Resource> depthBuffer;
 		D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = {};
 
-		DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM;
-		DXGI_FORMAT depthFormat = DXGI_FORMAT_D32_FLOAT;
-		float clearColor[4] = { 0.1f, 0.1f, 0.1f, 1.0f };
-
-		D3D12_RESOURCE_STATES currentState = D3D12_RESOURCE_STATE_COMMON;
 		uint32 width = 0;
 		uint32 height = 0;
+		DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM;
+
+		D3D12_RESOURCE_STATES currentState = D3D12_RESOURCE_STATE_COMMON;
 	};
 }
 

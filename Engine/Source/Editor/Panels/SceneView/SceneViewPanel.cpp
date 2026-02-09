@@ -28,42 +28,56 @@ namespace Span
 		{
 			isOpen = isOpenTmp;
 
-			// --- 1. ビューポート解像度管理 ---
+			// 利用可能なコンテンツ領域を取得
 			ImVec2 avail = ImGui::GetContentRegionAvail();
 
-			// ドッキング中などでサイズが極端に小さい場合は処理しない
+			// サイズが極端に小さい場合は更新しない
 			if (avail.x > 1.0f && avail.y > 1.0f)
 			{
 				m_PanelSize = { avail.x, avail.y };
 
-				// アスペクト比に基づいて、実際に画像を描画する位置とサイズを計算 (レターボックス処理)
+				// アスペクト比に基づいて、実際に画像を描画する位置とサイズを計算
 				Vector2 imagePos, imageSize;
 				CalculateImageArea(m_PanelSize, imagePos, imageSize);
 
-				// 次のフレームでApplicationがリサイズするべき解像度を保存
+				// 整数化
+				imagePos.x = std::floor(imagePos.x);
+				imagePos.y = std::floor(imagePos.y);
+				imageSize.x = std::floor(imageSize.x);
+				imageSize.y = std::floor(imageSize.y);
+
+				// 次のフレームのリサイズ用にサイズを保存
 				m_TargetResolution = imageSize;
 
-				// 計算されたサイズをApplicationに通知し、カメラのアスペクト比を同期させる
+				// Applicationに即座に通知
 				Application::Get().SetSceneViewSize((uint32)imageSize.x, (uint32)imageSize.y);
 
-				// --- 画像の描画 ---
-				// カーソル位置を計算した開始位置に移動 (これで中央寄せされる)
-				ImVec2 cursorPos = ImGui::GetCursorPos(); // 現在のカーソル（左上）
+				// カーソル位置を中心に移動
+				ImVec2 cursorPos = ImGui::GetCursorPos();
 				ImGui::SetCursorPos(ImVec2(cursorPos.x + imagePos.x, cursorPos.y + imagePos.y));
 
+				// テクスチャ描画
 				if (textureHandle.ptr != 0)
 				{
 					// ImGui::Image は現在のカーソル位置から描画する
-					ImGui::Image((ImTextureID)textureHandle.ptr, ImVec2(imageSize.x, imageSize.y));
+					ImGui::Image((ImTextureID)textureHandle.ptr, ImVec2(imageSize.x, imageSize.y), ImVec2(0, 0), ImVec2(1, 1));
+				}
+				else
+				{
+					// テクスチャが無い場合は黒塗りで場所を確保
+					ImVec2 screenPos = ImGui::GetCursorScreenPos();
+					ImGui::GetWindowDrawList()->AddRectFilled(
+						screenPos,
+						ImVec2(screenPos.x + imageSize.x, screenPos.y + imageSize.y),
+						IM_COL32(0, 0, 0, 255)
+					);
+					ImGui::Dummy(ImVec2(imageSize.x, imageSize.y));
 				}
 
-				// --- ギズモの描画 ---
-				// 画像のスクリーン座標（モニター左上からの絶対座標）を取得
-				// これは ImGui::Image の直前に SetCursorPos した場所に対応する
+				// --- Gizmo ---
+				// ImGuizmoの描画範囲設定
 				ImVec2 imageScreenPos = ImGui::GetItemRectMin();
 
-				// ImGuizmoの描画範囲を「画像の描画範囲」に完全に一致させる
-				// これでマウス判定のズレ（触れない問題）が直ります
 				ImGuizmo::SetDrawlist();
 				ImGuizmo::SetRect(imageScreenPos.x, imageScreenPos.y, imageSize.x, imageSize.y);
 
@@ -78,6 +92,9 @@ namespace Span
 
 	void SceneViewPanel::DrawGizmo(const Vector2& pos, const Vector2& size)
 	{
+		// サイズが小さすぎる場合はギズモを描画しない
+		if (size.x < 1.0f || size.y < 1.0f) return;
+
 		World& world = Application::Get().GetWorld();
 
 		// カメラ情報の取得
@@ -119,8 +136,6 @@ namespace Span
 				ImVec2(viewSize, viewSize),
 				0x10101010
 			);
-
-			// ViewManipulateで操作された場合、カメラの行列を更新する必要がある
 		}
 
 		// --- 選択オブジェクトの操作ギズモ ---
@@ -130,12 +145,6 @@ namespace Span
 			Transform* tc = world.GetComponentPtr<Transform>(selectedEntity);
 			if (tc)
 			{
-				// グリッド描画
-				if (m_GizmoType == ImGuizmo::OPERATION::TRANSLATE)
-				{
-					// ImGuizmo::DrawGrid((float*)&cameraView, (float*)&cameraProj, (float*)&Matrix4x4::Identity(), 100.0f);
-				}
-
 				// 現在のTransform行列
 				Matrix4x4 transformMatrix = Matrix4x4::TRS(tc->Position, tc->Rotation, tc->Scale);
 
@@ -187,7 +196,7 @@ namespace Span
 		ImVec2 windowPos = ImGui::GetWindowPos();
 		// タイトルバーの高さを考慮
 		float titleBarHeight = ImGui::GetFontSize() + ImGui::GetStyle().FramePadding.y * 2.0f;
-		ImVec2 overlayPos = { windowPos.x + 10.0f, windowPos.y + titleBarHeight + 10.0f };
+		ImVec2 overlayPos = { windowPos.x + 10.0f, windowPos.y + titleBarHeight + 5.0f };
 
 		ImGui::SetNextWindowPos(overlayPos);
 		ImGui::SetNextWindowBgAlpha(0.35f);

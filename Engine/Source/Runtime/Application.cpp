@@ -87,8 +87,8 @@ namespace Span
 
 		// Resize
 		window.SetOnResize([this](uint32 w, uint32 h) {
+			if (w == 0 || h == 0) return;
 			renderer.OnResize(w, h);
-			sceneBuffer.Resize(renderer.GetDevice(), w, h);
 			});
 
 		// Editor GUI (ImGui)
@@ -134,48 +134,50 @@ namespace Span
 		// ------------------------------------------------------------
 		while (isRunning)
 		{
-			// 1. OSイベント処理 (閉じるボタンなど)
 			if (!window.PollEvents())
 			{
 				isRunning = false;
 				break;
 			}
 
-			// 2. リサイズ対応 (シーンバッファ)
-			// シーンビューパネルのサイズに合わせてRTをリサイズする
+			if (window.GetWidth() == 0 || window.GetHeight() == 0)
+			{
+				Sleep(10);
+				continue;
+			}
+
+			// 1. SceneBuffer Resize Check
+			// ------------------------------------------------------------
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
 			{
 				Vector2 viewSize = scenePanel->GetTargetResolution();
-				if (viewSize.x > 0 && viewSize.y > 0)
+
+				// サイズが有効かつ、現在と異なる場合のみリサイズ
+				if (viewSize.x > 1.0f && viewSize.y > 1.0f)
 				{
-					if (sceneBuffer.GetWidth() != (uint32)viewSize.x || sceneBuffer.GetHeight() != (uint32)viewSize.y)
+					uint32 targetW = (uint32)viewSize.x;
+					uint32 targetH = (uint32)viewSize.y;
+
+					// サイズが異なる場合のみ再構築
+					if (sceneBuffer.GetWidth() != targetW || sceneBuffer.GetHeight() != targetH)
 					{
 						graphicsContext.WaitForGpu();
-						renderer.OnResize((uint32)viewSize.x, (uint32)viewSize.y);
-						sceneBuffer.Resize(renderer.GetDevice(), (uint32)viewSize.x, (uint32)viewSize.y);
+						sceneBuffer.Resize(renderer.GetDevice(), targetW, targetH);
+
+						// 更新されたサイズを保持
+						m_sceneViewWidth = targetW;
+						m_sceneViewHeight = targetH;
 					}
 				}
 			}
 
-			// 🖌 Rendering Phase
-			// ============================================================
-
+			// 2. Scene Rendering
+			// ------------------------------------------------------------
 			// コマンドリスト取得
 			ID3D12GraphicsCommandList* cmd = renderer.BeginFrame();
 
 			// --- A. シーン描画 (Render to Texture) ---
 			{
-				// 必要であればレンダーターゲットをリサイズ
-				if (m_sceneViewWidth > 0 && m_sceneViewHeight > 0)
-				{
-					if (sceneBuffer.GetWidth() != m_sceneViewWidth || sceneBuffer.GetHeight() != m_sceneViewHeight)
-					{
-						renderer.WaitForGPU();
-
-						sceneBuffer.Resize(renderer.GetDevice(), m_sceneViewWidth, m_sceneViewHeight);
-					}
-				}
-
 				// バリア: SRV -> RTV
 				sceneBuffer.TransitionToRenderTarget(cmd);
 
@@ -184,8 +186,9 @@ namespace Span
 				D3D12_CPU_DESCRIPTOR_HANDLE dsv = sceneBuffer.GetDSV();
 				cmd->OMSetRenderTargets(1, &rtv, FALSE, &dsv);
 
-				// クリア & ビューポート
 				sceneBuffer.Clear(cmd);
+
+				// クリア & ビューポート
 				D3D12_VIEWPORT viewport = { 0.0f, 0.0f, (float)sceneBuffer.GetWidth(), (float)sceneBuffer.GetHeight(), 0.0f, 1.0f };
 				D3D12_RECT scissor = { 0, 0, (LONG)sceneBuffer.GetWidth(), (LONG)sceneBuffer.GetHeight() };
 				cmd->RSSetViewports(1, &viewport);
@@ -201,8 +204,8 @@ namespace Span
 				sceneBuffer.TransitionToShaderResource(cmd);
 			}
 
-			// --- B. エディタ描画 (Back Buffer) ---
-
+			// 3. Editor UI Rendering
+			// ------------------------------------------------------------
 			// バックバッファへ戻す
 			graphicsContext.SetRenderTargetToBackBuffer(cmd);
 
@@ -216,8 +219,12 @@ namespace Span
 			// シーンビューへのテクスチャセット
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())
 			{
-				D3D12_GPU_DESCRIPTOR_HANDLE imGuiTexture = GuiManager::RegisterTexture(sceneBuffer.GetSRV());
-				scenePanel->SetTexture(imGuiTexture);
+				D3D12_CPU_DESCRIPTOR_HANDLE srvHandle = sceneBuffer.GetSRV();
+				if (srvHandle.ptr != 0)
+				{
+					D3D12_GPU_DESCRIPTOR_HANDLE imGuiTexture = GuiManager::RegisterTexture(srvHandle);
+					scenePanel->SetTexture(imGuiTexture);
+				}
 			}
 
 			// 描画終了

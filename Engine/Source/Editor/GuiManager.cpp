@@ -39,7 +39,7 @@ namespace Span
 
 		D3D12_DESCRIPTOR_HEAP_DESC desc = {};
 		desc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		desc.NumDescriptors = 64;
+		desc.NumDescriptors = 256;
 		desc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 
 		HRESULT hr = device->CreateDescriptorHeap(&desc, IID_PPV_ARGS(&srvHeap));
@@ -50,11 +50,7 @@ namespace Span
 		}
 
 		// 4. プラットフォーム初期化
-		if (!ImGui_ImplWin32_Init(hWnd))
-		{
-			SPAN_ERROR("[GuiManager] ImGui_ImplWin32_Init failed!");
-			return;
-		}
+		ImGui_ImplWin32_Init(hWnd);
 
 		// InitInfo構造体を使って初期化し、コマンドキューを渡す
 		ImGui_ImplDX12_InitInfo init_info = {};
@@ -73,12 +69,6 @@ namespace Span
 		{
 			SPAN_ERROR("[GuiManager] ImGui_ImplDX12_Init failed!");
 			return;
-		}
-
-		// フォント作成を明示的に呼び出し（任意だが、初期化確認のために推奨）
-		if (!ImGui_ImplDX12_CreateDeviceObjects())
-		{
-			SPAN_ERROR("[GuiManager] CreateDeviceObjects failed! Check Debug Layer output.");
 		}
 
 		// 全パネルを一括生成
@@ -152,7 +142,7 @@ namespace Span
 
 	D3D12_GPU_DESCRIPTOR_HANDLE GuiManager::RegisterTexture(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)
 	{
-		if (!m_device || !srvHeap) return { 0 };
+		if (!m_device || !srvHeap || srcHandle.ptr == 0) return { 0 };
 
 		// SRVヒープの先頭ハンドルを取得
 		D3D12_CPU_DESCRIPTOR_HANDLE destHandleCPU = srvHeap->GetCPUDescriptorHandleForHeapStart();
@@ -181,13 +171,13 @@ namespace Span
 		ImGuiStyle& style = ImGui::GetStyle();
 
 		// 丸みを持たせる
-		style.WindowRounding = 4.0f;
-		style.ChildRounding = 4.0f;
-		style.FrameRounding = 4.0f;
-		style.GrabRounding = 4.0f;
-		style.PopupRounding = 4.0f;
+		style.WindowRounding    = 4.0f;
+		style.ChildRounding     = 4.0f;
+		style.FrameRounding     = 4.0f;
+		style.GrabRounding      = 4.0f;
+		style.PopupRounding     = 4.0f;
 		style.ScrollbarRounding = 4.0f;
-		style.TabRounding = 4.0f;
+		style.TabRounding       = 4.0f;
 
 		// 色のカスタマイズ (Unity 2021+ Dark Theme風)
 		ImVec4* colors = style.Colors;
