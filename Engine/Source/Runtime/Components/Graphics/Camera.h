@@ -15,6 +15,13 @@
 
 namespace Span
 {
+	/// @brief	投影モード定義
+	enum class ProjectionType
+	{
+		Perspective,
+		Orthographic
+	};
+
 	/**
 	 * @struct	Camera
 	 * @brief	📷 シーンを撮影するための投影設定を保持するコンポーネント。
@@ -25,9 +32,12 @@ namespace Span
 	 */
 	struct Camera
 	{
-		float Fov = 45.0f;			///< 垂直画角（度数法）
-		float NearClip = 0.1;		///< 近クリップ面 (これより手前は描画しない)
-		float FarClip = 1000.0f;	///< 遠クリップ面 (これより奥は描画しない)
+		ProjectionType Projection = ProjectionType::Perspective;	// デフォルトは投資投影
+
+		float Fov = 45.0f;				///< Perspective用の画角
+		float OrthographicSize = 10.0f;	///< Ortho用のサイズ (縦の範囲)
+		float NearClip = 0.1;			///< 近クリップ面 (これより手前は描画しない)
+		float FarClip = 1000.0f;		///< 遠クリップ面 (これより奥は描画しない)
 
 		Camera() = default;
 		Camera(float fov) : Fov(fov) {}
@@ -36,6 +46,7 @@ namespace Span
 		// ============================================================
 		SPAN_INSPECTOR_BEGIN(Camera)
 			SPAN_FIELD(Fov, Range(1.0f, 179.0f), Tooltip("Field of View"))
+			SPAN_FIELD(OrthographicSize, Min(0.1f), Tooltip("Orthographic Size"))
 			SPAN_FIELD(NearClip, Min(0.01f), Tooltip("Cannot be 0"))
 			SPAN_FIELD(FarClip, Min(0.01f), Header("Far Clip dayo"), ReadOnly())
 		SPAN_INSPECTOR_END()

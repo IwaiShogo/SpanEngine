@@ -105,7 +105,10 @@ namespace Span
 		Entity cameraEntity = Entity::Null;
 		Matrix4x4 cameraView = Matrix4x4::Identity();
 
+		// 投影設定用変数
+		ProjectionType projType = ProjectionType::Perspective;
 		float fov = 60.0f;
+		float orthoSize = 10.0f;
 		float nearClip = 0.1f;
 		float farClip = 1000.0f;
 
@@ -118,7 +121,10 @@ namespace Span
 				cameraEntity = e;
 				cameraView = ltw.Value.Invert();
 
+				// カメラ設定コピー
+				projType = cam.Projection;
 				fov = cam.Fov;
+				orthoSize = cam.OrthographicSize;
 				nearClip = cam.NearClip;
 				farClip = cam.FarClip;
 			}
@@ -126,62 +132,203 @@ namespace Span
 
 		if (cameraEntity.IsNull()) return;
 
-		ImGuizmo::SetOrthographic(false);
+		ImGuizmo::SetOrthographic(projType == ProjectionType::Orthographic);
 
-		// 行列転置用バッファ
-		// 左手系 (LH) -> 右手系 (RH) への変換
+		// 1. プロジェクション行列 (RH: ImGuizmo用)
+		// ============================================================
+		float aspect = size.x / size.y;
+		if (aspect <= 0.0f) aspect = 1.0f;
+
+		Matrix4x4 projRH;
+
+		if (projType == ProjectionType::Perspective)
+		{
+			projRH.FromXM(XMMatrixPerspectiveFovRH(ToRadians(fov), aspect, nearClip, farClip));
+		}
+		else
+		{
+			// Orthographic行列
+			projRH.FromXM(XMMatrixOrthographicRH(orthoSize * aspect, orthoSize, nearClip, farClip));
+		}
+
+		// 2. View行列の変換 (LH -> RH)
+		// ============================================================
 		Matrix4x4 viewRH = cameraView;
 		viewRH.m[0][2] *= -1.0f;
 		viewRH.m[1][2] *= -1.0f;
 		viewRH.m[2][2] *= -1.0f;
 		viewRH.m[3][2] *= -1.0f;
 
-		float aspect = size.x / size.y;
-		if (aspect <= 0.0f) aspect = 1.0f;
-
-		Matrix4x4 projRH;
-		projRH.FromXM(XMMatrixPerspectiveFovRH(ToRadians(fov), aspect, nearClip, farClip));
-
-		// 1. Scene Gizmo (ViewManipulate)
+		// 3. Scene Gizmo (ViewManipulate)
 		// ------------------------------------------------------------
 		{
-			float viewSize = 128.0f;
-			ImVec2 viewPos = ImVec2(pos.x + size.x - viewSize, pos.y);
+			ImDrawList* drawList = ImGui::GetWindowDrawList();
 
-			ImGuizmo::ViewManipulate(
-				(float*)&viewRH,
-				8.0f,
-				viewPos,
-				ImVec2(viewSize, viewSize),
-				0x10101010
-			);
+			// A. ギズモのサイズと位置の計算
+			// パネルの短辺の 15% のサイズにする (最小 90px, 最大 150px)
+			float minDim = std::min(m_PanelSize.x, m_PanelSize.y);
+			float gizmoSize = Span::Clamp(minDim * 0.15f, 90.0f, 150.0f);
 
-			// 転置されたView行列を元に戻す
-			Matrix4x4 newViewLH = viewRH;
-			newViewLH.m[0][2] *= -1.0f;
-			newViewLH.m[1][2] *= -1.0f;
-			newViewLH.m[2][2] *= -1.0f;
-			newViewLH.m[3][2] *= -1.0f;
+			// 右上の余白
+			float padding = 15.0f;
+			Vector2 center = { pos.x + size.x - (gizmoSize * 0.5f) - padding, pos.y + (gizmoSize * 0.5f) + padding };
 
-			Matrix4x4 newCamWorld = newViewLH.Invert();
+			// 軸の長さ (円の半径)
+			float radius = gizmoSize * 0.5f;
 
-			if (world.IsAlive(cameraEntity))
+			// B. 軸の定義とソート
+			struct Axis
 			{
-				Transform* transform = world.GetComponentPtr<Transform>(cameraEntity);
-				if (transform)
+				Vector3 Direction;
+				ImU32 Color;
+				ImU32 HoverColor;
+				std::string Label;
+				float Depth;	// ソート用
+			};
+
+			// 軸データ (Right, Up, Forward, Left, Down, Back)
+			// 左手系 (Z+奥) を前提
+			std::vector<Axis> axes =
+			{
+				{ Vector3::Right,	IM_COL32(255, 60, 60, 255),	  IM_COL32(255, 120, 120, 255), "X", 0.0f }, // +X (Red)
+				{ Vector3::Up,		IM_COL32(60, 255, 60, 255),	  IM_COL32(120, 255, 120, 255), "Y", 0.0f }, // +Y (Green)
+				{ Vector3::Forward, IM_COL32(60, 60, 255, 255),	  IM_COL32(120, 120, 255, 255), "Z", 0.0f }, // +Z (Blue)
+				{ Vector3::Left,	IM_COL32(180, 180, 180, 255), IM_COL32(220, 220, 220, 255), "", 0.0f },	 // -X (Grey)
+				{ Vector3::Down,	IM_COL32(180, 180, 180, 255), IM_COL32(220, 220, 220, 255), "", 0.0f },	 // -Y (Grey)
+				{ Vector3::Back,	IM_COL32(180, 180, 180, 255), IM_COL32(220, 220, 220, 255), "", 0.0f },	 // -Z (Grey)
+			};
+
+			// 各軸のスクリーン上の位置と深度を計算
+			for (auto& axis : axes)
+			{
+				XMVECTOR vWorld = axis.Direction.ToXM();
+				XMVECTOR vView = XMVector3TransformNormal(vWorld, cameraView.ToXM());
+				XMFLOAT3 vRes;
+				XMStoreFloat3(&vRes, vView);
+
+				// 深度 (Z値が大きいほど奥)
+				axis.Depth = vRes.z;
+			}
+
+			// 奥にある順にソート (Zが大きい順)
+			std::sort(axes.begin(), axes.end(), [](const Axis& a, const Axis& b)
+			{
+					return a.Depth > b.Depth;
+			});
+
+			// マウス座標取得
+			ImVec2 imMousePos = ImGui::GetMousePos();
+			Vector2 mousePos = { imMousePos.x, imMousePos.y };
+
+			bool anyHovered = false;
+
+			for (const auto& axis : axes)
+			{
+				// スクリーン座標への投影
+				XMVECTOR vWorld = axis.Direction.ToXM();
+				XMVECTOR vView = XMVector3TransformNormal(vWorld, cameraView.ToXM());
+				XMFLOAT3 vRes;
+				XMStoreFloat3(&vRes, vView);
+
+				// Y軸は反転
+				Vector2 screenDir = { vRes.x, -vRes.y };
+				Vector2 axisPos = { center.x + screenDir.x * radius, center.y + screenDir.y * radius };
+
+				// 判定用サイズ
+				float circleRadius = (axis.Label.empty()) ? 7.0f : 9.0f;	// ラベルあり(手前)
+
+				// 距離判定
+				float dist = std::sqrt(std::pow(mousePos.x - axisPos.x, 2) + std::pow(mousePos.y - axisPos.y, 2));
+				bool hovered = (dist < circleRadius + 2.0f);	// 少し当たり判定を大きく
+				if (hovered) anyHovered = true;
+
+				// 線の描画 (中心から円まで)
+				if (axis.Label.empty())
 				{
-					Vector3 p, s;
-					Quaternion r;
-					if (newCamWorld.Decompose(p, r, s))
+					// 裏側の軸は細い線と小さな円
+					drawList->AddLine(ImVec2(center.x, center.y), ImVec2(axisPos.x, axisPos.y), axis.Color, 2.0f);
+					drawList->AddCircleFilled(ImVec2(axisPos.x, axisPos.y), circleRadius, hovered ? axis.HoverColor : axis.Color);
+				}
+				else
+				{
+					// 表側の軸は太い線と大きな円 + 文字
+					drawList->AddLine(ImVec2(center.x, center.y), ImVec2(axisPos.x, axisPos.y), axis.Color, 3.0f);
+					drawList->AddCircleFilled(ImVec2(axisPos.x, axisPos.y), circleRadius, hovered ? axis.HoverColor : axis.Color);
+
+					// 文字 (X, Y, Z)
+					ImVec2 textSize = ImGui::CalcTextSize(axis.Label.c_str());
+					drawList->AddText(ImVec2(axisPos.x - textSize.x * 0.5f, axisPos.y - textSize.y * 0.5f), IM_COL32(0, 0, 0, 255), axis.Label.c_str());
+				}
+
+				// クリック処理
+				if (hovered && ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+				{
+					if (world.IsAlive(cameraEntity))
 					{
-						// 回転のみ適用
-						transform->Rotation = r;
+						Transform* tr = world.GetComponentPtr<Transform>(cameraEntity);
+						if (tr)
+						{
+							// 軸の方向から中心を見る位置へ
+							float distFromOrigin = tr->Position.Length();
+							if (distFromOrigin < 1.0f) distFromOrigin = 10.0f;
+
+							// クリックされた軸の方向にある位置へ移動
+							Vector3 newPos = axis.Direction * distFromOrigin;
+
+							// 原点(0, 0, 0)を見る回転を計算
+							Matrix4x4 lookAt = Matrix4x4::LookAtLH(newPos, Vector3::Zero, Vector3::Up);
+
+							// View行列の逆がカメラのWorld行列
+							Matrix4x4 camWorld = lookAt.Invert();
+
+							Vector3 p, s;
+							Quaternion r;
+							if (camWorld.Decompose(p, r, s))
+							{
+								tr->Position = newPos;
+								tr->Rotation = r;
+							}
+						}
 					}
+				}
+			}
+
+			// 中心ボタン: Perspective/Ortho 切り替え
+			{
+				float centerRadius = 5.0f;
+				// マウス判定
+				float dist = std::sqrt(std::pow(mousePos.x - center.x, 2) + std::pow(mousePos.y - center.y, 2));
+				bool centerHovered = (dist < centerRadius + 2.0f);
+
+				ImU32 centerColor = centerHovered ? IM_COL32(220, 220, 220, 255) : IM_COL32(255, 255, 255, 255);
+				drawList->AddCircleFilled(ImVec2(center.x, center.y), centerRadius, centerColor);
+
+				// クリックで切り替え
+				if (centerHovered && ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+				{
+					if (world.IsAlive(cameraEntity))
+					{
+						Camera* camComp = world.GetComponentPtr<Camera>(cameraEntity);
+						if (camComp)
+						{
+							// トグル切り替え
+							if (camComp->Projection == ProjectionType::Perspective)
+								camComp->Projection = ProjectionType::Orthographic;
+							else
+								camComp->Projection = ProjectionType::Perspective;
+						}
+					}
+				}
+
+				// ツールチップ
+				if (centerHovered)
+				{
+					ImGui::SetTooltip(projType == ProjectionType::Perspective ? "Switch to Orthographic" : "Switch to Perspective");
 				}
 			}
 		}
 
-		// 2. Object Manipulate
+		// 4. Object Manipulate
 		// ------------------------------------------------------------
 		Entity selectedEntity = SelectionManager::GetPrimary();
 		if (!selectedEntity.IsNull() && world.IsAlive(selectedEntity) && m_GizmoType != -1)
@@ -189,11 +336,8 @@ namespace Span
 			Transform* tc = world.GetComponentPtr<Transform>(selectedEntity);
 			if (tc)
 			{
-				// 現在のTransform行列
-				Matrix4x4 transformMatrix = Matrix4x4::TRS(tc->Position, tc->Rotation, tc->Scale);
-
-				// オブジェクト行列も転置して渡す
-				Matrix4x4 objectMtx = transformMatrix;
+				// オブジェクト行列を転置して渡す
+				Matrix4x4 objectMtx = Matrix4x4::TRS(tc->Position, tc->Rotation, tc->Scale);
 
 				// スナップ設定
 				float snapValue = 0.5f;
