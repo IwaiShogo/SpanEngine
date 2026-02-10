@@ -7,6 +7,6 @@ var searchData=
   ['meshfilter_4',['MeshFilter',['../structSpan_1_1MeshFilter.html#a41bea58b7331829339ef8bb02da9e33e',1,'Span::MeshFilter::MeshFilter()=default'],['../structSpan_1_1MeshFilter.html#a9fe781d1cef7cb1a5cf29ff5fb858ad4',1,'Span::MeshFilter::MeshFilter(Mesh *m)']]],
   ['meshrenderer_5',['MeshRenderer',['../structSpan_1_1MeshRenderer.html#a1d10adf9d9057255cfe6a04e7c8b80ae',1,'Span::MeshRenderer::MeshRenderer()=default'],['../structSpan_1_1MeshRenderer.html#a47c89928d42ad1e881e5a80b70d0cde0',1,'Span::MeshRenderer::MeshRenderer(Material *m)']]],
   ['migrateentity_6',['MigrateEntity',['../classSpan_1_1World.html#a8c01f89c473a5da0aca8d152f248fc53',1,'Span::World']]],
-  ['min_7',['Min',['../structSpan_1_1Camera.html#a014e8eba964d808c5573ec1bc310ff57',1,'Span::Camera::Min(0.01f)'],['../structSpan_1_1Camera.html#a014e8eba964d808c5573ec1bc310ff57',1,'Span::Camera::Min(0.01f)'],['../namespaceSpan.html#a9822105b4bb016e1c0c580e617bd925a',1,'Span::Min()']]],
+  ['min_7',['Min',['../structSpan_1_1Camera.html#a7d7398de74ff9dd2dfa791c508251062',1,'Span::Camera::Min(0.1f)'],['../structSpan_1_1Camera.html#a014e8eba964d808c5573ec1bc310ff57',1,'Span::Camera::Min(0.01f)'],['../structSpan_1_1Camera.html#a014e8eba964d808c5573ec1bc310ff57',1,'Span::Camera::Min(0.01f)'],['../namespaceSpan.html#a9822105b4bb016e1c0c580e617bd925a',1,'Span::Min()']]],
   ['moveentitydata_8',['MoveEntityData',['../structSpan_1_1Chunk.html#a6bd9e470ec1f88ff4d5e7481a6608ccf',1,'Span::Chunk']]]
 ];

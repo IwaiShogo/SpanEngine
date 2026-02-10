@@ -5,7 +5,7 @@ var searchData=
   ['texture_2',['Texture',['../classSpan_1_1Texture.html#a09904643ca3ae39eae54a0b452be4744',1,'Span::Texture']]],
   ['todegrees_3',['ToDegrees',['../namespaceSpan.html#a6d290667947dd9fb137877008986c724',1,'Span']]],
   ['toeuler_4',['ToEuler',['../structSpan_1_1Quaternion.html#acfa147daa060ee83c95998431ea60e92',1,'Span::Quaternion']]],
-  ['tooltip_5',['Tooltip',['../structSpan_1_1Camera.html#afd4d2d4c32cbc8dac8523952a600e37f',1,'Span::Camera::Tooltip()'],['../namespaceSpan.html#a3a9bfa653e8f9e248d4313ed0939db77',1,'Span::Tooltip(const char *text)']]],
+  ['tooltip_5',['Tooltip',['../structSpan_1_1Camera.html#a3d41ffd6deefa357ade96ed3627eba4e',1,'Span::Camera::Tooltip(&quot;Orthographic Size&quot;)) SPAN_FIELD(NearClip'],['../structSpan_1_1Camera.html#afd4d2d4c32cbc8dac8523952a600e37f',1,'Span::Camera::Tooltip(&quot;Cannot be 0&quot;)) SPAN_FIELD(FarClip'],['../namespaceSpan.html#a3a9bfa653e8f9e248d4313ed0939db77',1,'Span::Tooltip(const char *text)']]],
   ['toradians_6',['ToRadians',['../namespaceSpan.html#a2e4930a806963e7ab8c6c60031c41fe8',1,'Span']]],
   ['tostring_7',['ToString',['../structSpan_1_1Name.html#af534a81dc3670e4fd74564eb92e602a0',1,'Span::Name']]],
   ['touint64_8',['ToUInt64',['../structSpan_1_1Entity.html#a85c8edb953c1f0723497085c974020dd',1,'Span::Entity']]],

@@ -172,6 +172,10 @@ var namespaceSpan =
       [ "Error", "namespaceSpan.html#a706679730aeab52031ed8774240027f2a902b0d55fddef6f8d651fe1035b7d4bd", null ],
       [ "Fatal", "namespaceSpan.html#a706679730aeab52031ed8774240027f2a882384ec38ce8d9582b57e70861730e4", null ]
     ] ],
+    [ "ProjectionType", "namespaceSpan.html#acf4814db50cb33df2e35d9ea4e8d8a00", [
+      [ "Perspective", "namespaceSpan.html#acf4814db50cb33df2e35d9ea4e8d8a00aa80420eef88d11f77532f1b9cb467fa3", null ],
+      [ "Orthographic", "namespaceSpan.html#acf4814db50cb33df2e35d9ea4e8d8a00a03424250432f2aa71de95579d2c0eaeb", null ]
+    ] ],
     [ "ShaderType", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920d", [
       [ "Vertex", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6", null ],
       [ "Pixel", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0", null ]

@@ -16,7 +16,7 @@ var searchData=
   ['title_13',['title',['../classSpan_1_1EditorPanel.html#ae47b5777434e86ea69207a5249ec52c3',1,'Span::EditorPanel']]],
   ['todegrees_14',['ToDegrees',['../namespaceSpan.html#a6d290667947dd9fb137877008986c724',1,'Span']]],
   ['toeuler_15',['ToEuler',['../structSpan_1_1Quaternion.html#acfa147daa060ee83c95998431ea60e92',1,'Span::Quaternion']]],
-  ['tooltip_16',['Tooltip',['../structSpan_1_1Camera.html#afd4d2d4c32cbc8dac8523952a600e37f',1,'Span::Camera::Tooltip()'],['../namespaceSpan.html#a3a9bfa653e8f9e248d4313ed0939db77',1,'Span::Tooltip(const char *text)'],['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257ac983077ca27977bb5cb4b6398f144166',1,'Span::Tooltip']]],
+  ['tooltip_16',['Tooltip',['../structSpan_1_1Camera.html#a3d41ffd6deefa357ade96ed3627eba4e',1,'Span::Camera::Tooltip(&quot;Orthographic Size&quot;)) SPAN_FIELD(NearClip'],['../structSpan_1_1Camera.html#afd4d2d4c32cbc8dac8523952a600e37f',1,'Span::Camera::Tooltip(&quot;Cannot be 0&quot;)) SPAN_FIELD(FarClip'],['../namespaceSpan.html#a3a9bfa653e8f9e248d4313ed0939db77',1,'Span::Tooltip(const char *text)'],['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257ac983077ca27977bb5cb4b6398f144166',1,'Span::Tooltip']]],
   ['toradians_17',['ToRadians',['../namespaceSpan.html#a2e4930a806963e7ab8c6c60031c41fe8',1,'Span']]],
   ['tostring_18',['ToString',['../structSpan_1_1Name.html#af534a81dc3670e4fd74564eb92e602a0',1,'Span::Name']]],
   ['totalsize_19',['totalSize',['../classSpan_1_1MemoryArena.html#a33699b38a54028a95c9db8c277bbe2a4',1,'Span::MemoryArena']]],

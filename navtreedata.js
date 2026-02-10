@@ -64,8 +64,8 @@ var NAVTREEINDEX =
 "classSpan_1_1RenderTarget.html#a2edbf044f8577ae96e51a6cb7782eec1",
 "classSpan_1_1Time.html#ae9e018cd0d5a3b34b773e80c750860e7",
 "namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803dac412c6d19da2afaf2dc8891f5bcb8901",
-"structSpan_1_1Layer.html#a5af67ab9347f1d0ea7ffa9df6f303b9a",
-"structSpan_1_1Vector2.html#ac6ad4f4009d7cd39d2e4ef8b393a7fdb"
+"structSpan_1_1FixedString.html#ad5419fd3f886b6e0c3e03b452cbefd0a",
+"structSpan_1_1Vector2.html#aa6896267dd2a0f91e74443b32866898e"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';
