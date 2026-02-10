@@ -104,8 +104,10 @@ namespace Span
 		// カメラ情報の取得
 		Entity cameraEntity = Entity::Null;
 		Matrix4x4 cameraView = Matrix4x4::Identity();
-		Matrix4x4 cameraProj = Matrix4x4::Identity();
-		Transform* cameraTransform = nullptr;
+
+		float fov = 60.0f;
+		float nearClip = 0.1f;
+		float farClip = 1000.0f;
 
 		// シーン内のアクティブなカメラ(EditorCamera優先)を探す
 		world.ForEach<Camera, LocalToWorld>([&](Entity e, Camera& cam, LocalToWorld& ltw)
@@ -117,11 +119,9 @@ namespace Span
 				cameraView = ltw.Value.Invert();
 				cameraTransform = world.GetComponentPtr<Transform>(e);
 
-				// アスペクト比を現在のビューポートに合わせる
-				float aspect = size.x / size.y;
-				if (aspect <= 0.0f) aspect = 1.0f;
-
-				cameraProj = Matrix4x4::PerspectiveFovLH(ToRadians(cam.Fov), aspect, cam.NearClip, cam.FarClip);
+				fov = cam.Fov;
+				nearClip = cam.NearClip;
+				farClip = cam.FarClip;
 			}
 		});
 
@@ -130,10 +130,59 @@ namespace Span
 		ImGuizmo::SetOrthographic(false);
 
 		// 行列転置用バッファ
-		Matrix4x4 viewMtx = cameraView.Transpose();
-		Matrix4x4 projMtx = cameraProj.Transpose();
+		// 左手系 (LH) -> 右手系 (RH) への変換
+		Matrix4x4 viewRH = cameraView;
+		viewRH.m[0][2] *= -1.0f;
+		viewRH.m[1][2] *= -1.0f;
+		viewRH.m[2][2] *= -1.0f;
+		viewRH.m[3][2] *= -1.0f;
 
-		// 1. Object Manipulate
+		float aspect = size.x / size.y;
+		if (aspect <= 0.0f) aspect = 1.0f;
+
+		Matrix4x4 projRH;
+		projRH.FromXM(XMMatrixPerspectiveFovRH(ToRadians(fov), aspect, nearClip, farClip));
+
+		// 1. Scene Gizmo (ViewManipulate)
+		// ------------------------------------------------------------
+		{
+			float viewSize = 128.0f;
+			ImVec2 viewPos = ImVec2(pos.x + size.x - viewSize, pos.y);
+
+			ImGuizmo::ViewManipulate(
+				(float*)&viewRH,
+				8.0f,
+				viewPos,
+				ImVec2(viewSize, viewSize),
+				0x10101010
+			);
+
+			// 転置されたView行列を元に戻す
+			Matrix4x4 newViewLH = viewRH;
+			newViewLH.m[0][2] *= -1.0f;
+			newViewLH.m[1][2] *= -1.0f;
+			newViewLH.m[2][2] *= -1.0f;
+			newViewLH.m[3][2] *= -1.0f;
+
+			Matrix4x4 newCamWorld = newViewLH.Invert();
+
+			if (world.IsAlive(cameraEntity))
+			{
+				Transform* transform = world.GetComponentPtr<Transform>(cameraEntity);
+				if (transform)
+				{
+					Vector3 p, s;
+					Quaternion r;
+					if (newCamWorld.Decompose(p, r, s))
+					{
+						// 回転のみ適用
+						transform->Rotation = r;
+					}
+				}
+			}
+		}
+
+		// 2. Object Manipulate
 		// ------------------------------------------------------------
 		Entity selectedEntity = SelectionManager::GetPrimary();
 		if (!selectedEntity.IsNull() && world.IsAlive(selectedEntity) && m_GizmoType != -1)
@@ -145,7 +194,7 @@ namespace Span
 				Matrix4x4 transformMatrix = Matrix4x4::TRS(tc->Position, tc->Rotation, tc->Scale);
 
 				// オブジェクト行列も転置して渡す
-				Matrix4x4 objectMtx = transformMatrix.Transpose();
+				Matrix4x4 objectMtx = transformMatrix;
 
 				// スナップ設定
 				float snapValue = 0.5f;
@@ -160,8 +209,8 @@ namespace Span
 
 				// ギズモ操作実行
 				ImGuizmo::Manipulate(
-					(float*)&viewMtx,
-					(float*)&projMtx,
+					(float*)&viewRH,
+					(float*)&projRH,
 					(ImGuizmo::OPERATION)m_GizmoType,
 					(ImGuizmo::MODE)m_GizmoMode,
 					(float*)&objectMtx,
@@ -173,7 +222,7 @@ namespace Span
 				if (ImGuizmo::IsUsing())
 				{
 					// 結果を転置して戻す
-					Matrix4x4 newTransform = objectMtx.Transpose();
+					Matrix4x4 newTransform = objectMtx;
 
 					Vector3 p, s;
 					Quaternion r;
@@ -183,36 +232,6 @@ namespace Span
 						tc->Rotation = r;
 						tc->Scale = s;
 					}
-				}
-			}
-		}
-
-		// 2. Scene Gizmo (ViewManipulate)
-		// ------------------------------------------------------------
-		{
-			float viewSize = 128.0f;
-			ImVec2 viewPos = ImVec2(pos.x + size.x - viewSize, pos.y);
-
-			ImGuizmo::ViewManipulate(
-				(float*)&viewMtx,
-				8.0f,
-				viewPos,
-				ImVec2(viewSize, viewSize),
-				0x10101010
-			);
-
-			// 転置されたView行列を元に戻す
-			Matrix4x4 newView = viewMtx.Transpose();
-			Matrix4x4 newCamWorld = newView.Invert();
-
-			if (cameraTransform)
-			{
-				Vector3 p, s;
-				Quaternion r;
-				if (newCamWorld.Decompose(p, r, s))
-				{
-					// 回転のみ適用
-					cameraTransform->Rotation = r;
 				}
 			}
 		}
