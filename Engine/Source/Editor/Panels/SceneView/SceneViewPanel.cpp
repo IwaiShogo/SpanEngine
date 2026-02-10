@@ -117,7 +117,6 @@ namespace Span
 			{
 				cameraEntity = e;
 				cameraView = ltw.Value.Invert();
-				cameraTransform = world.GetComponentPtr<Transform>(e);
 
 				fov = cam.Fov;
 				nearClip = cam.NearClip;
