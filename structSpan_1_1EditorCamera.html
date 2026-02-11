@@ -63,7 +63,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('structSpan_1_1EditorCamera.html','',''); });
+$(function(){initNavTree('structSpan_1_1EditorCamera.html','','structSpan_1_1EditorCamera-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -100,14 +100,119 @@ $(function(){initNavTree('structSpan_1_1EditorCamera.html','',''); });
 <div class="dynheader">
 Span::EditorCamera 連携図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1EditorCamera__coll__graph.svg" width="154" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1EditorCamera__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+公開変数類</h2></td></tr>
+<tr class="memitem:ad9f5386723b5a61125f3cfc37b4a235e" id="r_ad9f5386723b5a61125f3cfc37b4a235e"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ad9f5386723b5a61125f3cfc37b4a235e">MoveSpeed</a> = 5.0f</td></tr>
+<tr class="memdesc:ad9f5386723b5a61125f3cfc37b4a235e"><td class="mdescLeft">&#160;</td><td class="mdescRight">基本移動速度  <br /></td></tr>
+<tr class="memitem:affb215a9e35b3858f71955826a66ae22" id="r_affb215a9e35b3858f71955826a66ae22"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#affb215a9e35b3858f71955826a66ae22">SprintMultiplier</a> = 4.0f</td></tr>
+<tr class="memdesc:affb215a9e35b3858f71955826a66ae22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shiftキーでの倍率  <br /></td></tr>
+<tr class="memitem:ab3b159c65d028f1bafbc402d28cf0a9b" id="r_ab3b159c65d028f1bafbc402d28cf0a9b"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector3.html">Vector3</a>&#160;</td><td class="memItemRight"><a class="el" href="#ab3b159c65d028f1bafbc402d28cf0a9b">Velocity</a> = <a class="el" href="structSpan_1_1Vector3.html#afbc86249a7f3e1ce9c96938fb7e02d67">Vector3::Zero</a></td></tr>
+<tr class="memdesc:ab3b159c65d028f1bafbc402d28cf0a9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在の速度ベクトル  <br /></td></tr>
+<tr class="memitem:a6bc1cb4bf18fe12966c48e3a1cc9edf4" id="r_a6bc1cb4bf18fe12966c48e3a1cc9edf4"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a6bc1cb4bf18fe12966c48e3a1cc9edf4">Acceleration</a> = 5.0f</td></tr>
+<tr class="memdesc:a6bc1cb4bf18fe12966c48e3a1cc9edf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">加速度  <br /></td></tr>
+<tr class="memitem:ac2c7f54b75e39f66a37dc9c6fcc29665" id="r_ac2c7f54b75e39f66a37dc9c6fcc29665"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ac2c7f54b75e39f66a37dc9c6fcc29665">ScrollSensitivity</a> = 2.0f</td></tr>
+<tr class="memdesc:ac2c7f54b75e39f66a37dc9c6fcc29665"><td class="mdescLeft">&#160;</td><td class="mdescRight">ホイール感度  <br /></td></tr>
+</table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>🎥 シーンビュー操作用のカメラを識別するためのタグコンポーネント。 </p>
 <p>このコンポーネントを持つエンティティは、WASDキーやマウス操作によって エディタ内で自由に移動できる特殊な挙動 (CameraControllerSystem等) が適用されます。 通常のゲームプレイ用カメラと区別するために使用します。 </p>
 
 <p class="definition"> <a class="el" href="EditorCamera_8h_source.html">EditorCamera.h</a> の <a class="el" href="EditorCamera_8h_source.html#l00027">27</a> 行目に定義があります。</p>
-</div><hr/>この構造体詳解は次のファイルから抽出されました:<ul>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
+<a id="a6bc1cb4bf18fe12966c48e3a1cc9edf4" name="a6bc1cb4bf18fe12966c48e3a1cc9edf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bc1cb4bf18fe12966c48e3a1cc9edf4">&#9670;&#160;</a></span>Acceleration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::EditorCamera::Acceleration = 5.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>加速度 </p>
+
+<p class="definition"> <a class="el" href="EditorCamera_8h_source.html">EditorCamera.h</a> の <a class="el" href="EditorCamera_8h_source.html#l00035">35</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ad9f5386723b5a61125f3cfc37b4a235e" name="ad9f5386723b5a61125f3cfc37b4a235e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9f5386723b5a61125f3cfc37b4a235e">&#9670;&#160;</a></span>MoveSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::EditorCamera::MoveSpeed = 5.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>基本移動速度 </p>
+
+<p class="definition"> <a class="el" href="EditorCamera_8h_source.html">EditorCamera.h</a> の <a class="el" href="EditorCamera_8h_source.html#l00030">30</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ac2c7f54b75e39f66a37dc9c6fcc29665" name="ac2c7f54b75e39f66a37dc9c6fcc29665"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2c7f54b75e39f66a37dc9c6fcc29665">&#9670;&#160;</a></span>ScrollSensitivity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::EditorCamera::ScrollSensitivity = 2.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ホイール感度 </p>
+
+<p class="definition"> <a class="el" href="EditorCamera_8h_source.html">EditorCamera.h</a> の <a class="el" href="EditorCamera_8h_source.html#l00038">38</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="affb215a9e35b3858f71955826a66ae22" name="affb215a9e35b3858f71955826a66ae22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb215a9e35b3858f71955826a66ae22">&#9670;&#160;</a></span>SprintMultiplier</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::EditorCamera::SprintMultiplier = 4.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Shiftキーでの倍率 </p>
+
+<p class="definition"> <a class="el" href="EditorCamera_8h_source.html">EditorCamera.h</a> の <a class="el" href="EditorCamera_8h_source.html#l00031">31</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ab3b159c65d028f1bafbc402d28cf0a9b" name="ab3b159c65d028f1bafbc402d28cf0a9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3b159c65d028f1bafbc402d28cf0a9b">&#9670;&#160;</a></span>Velocity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSpan_1_1Vector3.html">Vector3</a> Span::EditorCamera::Velocity = <a class="el" href="structSpan_1_1Vector3.html#afbc86249a7f3e1ce9c96938fb7e02d67">Vector3::Zero</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在の速度ベクトル </p>
+
+<p class="definition"> <a class="el" href="EditorCamera_8h_source.html">EditorCamera.h</a> の <a class="el" href="EditorCamera_8h_source.html#l00034">34</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<hr/>この構造体詳解は次のファイルから抽出されました:<ul>
 <li>Engine/Source/Runtime/Components/Editor/<a class="el" href="EditorCamera_8h_source.html">EditorCamera.h</a></li>
 </ul>
 </div><!-- contents -->

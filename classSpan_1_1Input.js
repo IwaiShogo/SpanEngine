@@ -9,6 +9,7 @@ var classSpan_1_1Input =
     [ "GetKeyUp", "classSpan_1_1Input.html#a779b0d3886e270c0bf7daf297203f2b0", null ],
     [ "GetMouseDelta", "classSpan_1_1Input.html#a7cdc088270bb1c60b293360efccc7389", null ],
     [ "GetMousePosition", "classSpan_1_1Input.html#a1008e13cbcce0dec4e61a3753abdaf11", null ],
+    [ "GetMouseWheel", "classSpan_1_1Input.html#ac23a995b926be812e2f1b71620e2f013", null ],
     [ "Initialize", "classSpan_1_1Input.html#aac6e8f1cf694b484ed01742f2d16d63c", null ],
     [ "IsInputAvailable", "classSpan_1_1Input.html#a26b62cb0acb4961842496ac0175d5e3a", null ],
     [ "OnKeyDown", "classSpan_1_1Input.html#a5ed9bcf628b54c37662b4eacc29ce2c9", null ],
@@ -16,6 +17,7 @@ var classSpan_1_1Input =
     [ "OnMouseDown", "classSpan_1_1Input.html#a2626b1c530d57400b5fbeff22f310581", null ],
     [ "OnMouseMove", "classSpan_1_1Input.html#aba0b9fe928139c25ca3215dcbeb17e83", null ],
     [ "OnMouseUp", "classSpan_1_1Input.html#abd7e2e35b25679a12d4b0ec56c8aee19", null ],
+    [ "OnMouseWheel", "classSpan_1_1Input.html#ab7b1e06dbe23300a0cd34a9d7914f26d", null ],
     [ "ResetCursorToCenter", "classSpan_1_1Input.html#af45cd4df00ba60ee6d0e03c85dc6ba80", null ],
     [ "SetCursorVisible", "classSpan_1_1Input.html#ade5dc0b427d993d6d77595d67b79d6b6", null ],
     [ "SetImGuiWantCapture", "classSpan_1_1Input.html#ab4b75b835f5d27b47ce6033060ac3d65", null ],
@@ -31,6 +33,7 @@ var classSpan_1_1Input =
     [ "keyStates", "classSpan_1_1Input.html#af18be50d49f73df22bb78d4183c3d7bd", null ],
     [ "mouseDelta", "classSpan_1_1Input.html#acdebed1aa7b63d403f1fcfdd15455cd4", null ],
     [ "mousePosition", "classSpan_1_1Input.html#a2db0d55419c1e3154e432be096864c59", null ],
+    [ "mouseWheelDelta", "classSpan_1_1Input.html#a3177ecb1b845a0021b3704d826043b49", null ],
     [ "prevGamepadStates", "classSpan_1_1Input.html#ad586c63785ad77f894bfba1f4f2244cb", null ],
     [ "prevKeyStates", "classSpan_1_1Input.html#a1f464da6aee16f6ddc82b780a1ae08dd", null ],
     [ "prevMousePosition", "classSpan_1_1Input.html#a3b08ba6c179cf73626a1d343926b4d04", null ]

@@ -118,6 +118,8 @@ Span::Input 連携図</div>
 <tr class="memdesc:a1008e13cbcce0dec4e61a3753abdaf11"><td class="mdescLeft">&#160;</td><td class="mdescRight">マウスの位置を取得します。  <br /></td></tr>
 <tr class="memitem:a7cdc088270bb1c60b293360efccc7389" id="r_a7cdc088270bb1c60b293360efccc7389"><td class="memItemLeft">static <a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a7cdc088270bb1c60b293360efccc7389">GetMouseDelta</a> ()</td></tr>
 <tr class="memdesc:a7cdc088270bb1c60b293360efccc7389"><td class="mdescLeft">&#160;</td><td class="mdescRight">マウスの移動量を取得します。  <br /></td></tr>
+<tr class="memitem:ac23a995b926be812e2f1b71620e2f013" id="r_ac23a995b926be812e2f1b71620e2f013"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#ac23a995b926be812e2f1b71620e2f013">GetMouseWheel</a> ()</td></tr>
+<tr class="memdesc:ac23a995b926be812e2f1b71620e2f013"><td class="mdescLeft">&#160;</td><td class="mdescRight">ホイール移動量を取得します。  <br /></td></tr>
 <tr class="memitem:ade5dc0b427d993d6d77595d67b79d6b6" id="r_ade5dc0b427d993d6d77595d67b79d6b6"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ade5dc0b427d993d6d77595d67b79d6b6">SetCursorVisible</a> (bool visible)</td></tr>
 <tr class="memdesc:ade5dc0b427d993d6d77595d67b79d6b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">カーソルの表示を設定します。  <br /></td></tr>
 <tr class="memitem:a75f0d20b7698590ef556a266974199d5" id="r_a75f0d20b7698590ef556a266974199d5"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a75f0d20b7698590ef556a266974199d5">SetLockCursor</a> (bool lock)</td></tr>
@@ -133,6 +135,7 @@ Span::Input 連携図</div>
 <tr class="memitem:a2626b1c530d57400b5fbeff22f310581" id="r_a2626b1c530d57400b5fbeff22f310581"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a2626b1c530d57400b5fbeff22f310581">OnMouseDown</a> (<a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> btn)</td></tr>
 <tr class="memitem:abd7e2e35b25679a12d4b0ec56c8aee19" id="r_abd7e2e35b25679a12d4b0ec56c8aee19"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#abd7e2e35b25679a12d4b0ec56c8aee19">OnMouseUp</a> (<a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> btn)</td></tr>
 <tr class="memitem:aba0b9fe928139c25ca3215dcbeb17e83" id="r_aba0b9fe928139c25ca3215dcbeb17e83"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aba0b9fe928139c25ca3215dcbeb17e83">OnMouseMove</a> (int x, int y)</td></tr>
+<tr class="memitem:ab7b1e06dbe23300a0cd34a9d7914f26d" id="r_ab7b1e06dbe23300a0cd34a9d7914f26d"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ab7b1e06dbe23300a0cd34a9d7914f26d">OnMouseWheel</a> (float delta)</td></tr>
 <tr class="memitem:ab4b75b835f5d27b47ce6033060ac3d65" id="r_ab4b75b835f5d27b47ce6033060ac3d65"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ab4b75b835f5d27b47ce6033060ac3d65">SetImGuiWantCapture</a> (bool wantCapture)</td></tr>
 <tr class="memdesc:ab4b75b835f5d27b47ce6033060ac3d65"><td class="mdescLeft">&#160;</td><td class="mdescRight">ImGuiがマウスを占有しているか設定する  <br /></td></tr>
 <tr class="memitem:a26b62cb0acb4961842496ac0175d5e3a" id="r_a26b62cb0acb4961842496ac0175d5e3a"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a26b62cb0acb4961842496ac0175d5e3a">IsInputAvailable</a> ()</td></tr>
@@ -149,6 +152,7 @@ Span::Input 連携図</div>
 <tr class="memitem:a2db0d55419c1e3154e432be096864c59" id="r_a2db0d55419c1e3154e432be096864c59"><td class="memItemLeft">static <a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a2db0d55419c1e3154e432be096864c59">mousePosition</a> = { 0, 0 }</td></tr>
 <tr class="memitem:a3b08ba6c179cf73626a1d343926b4d04" id="r_a3b08ba6c179cf73626a1d343926b4d04"><td class="memItemLeft">static <a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3b08ba6c179cf73626a1d343926b4d04">prevMousePosition</a> = { 0, 0 }</td></tr>
 <tr class="memitem:acdebed1aa7b63d403f1fcfdd15455cd4" id="r_acdebed1aa7b63d403f1fcfdd15455cd4"><td class="memItemLeft">static <a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#acdebed1aa7b63d403f1fcfdd15455cd4">mouseDelta</a> = { 0, 0 }</td></tr>
+<tr class="memitem:a3177ecb1b845a0021b3704d826043b49" id="r_a3177ecb1b845a0021b3704d826043b49"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a3177ecb1b845a0021b3704d826043b49">mouseWheelDelta</a> = 0.0f</td></tr>
 <tr class="memitem:a894733c1ea68a084e5cf9ab8f0bcb999" id="r_a894733c1ea68a084e5cf9ab8f0bcb999"><td class="memItemLeft">static HWND&#160;</td><td class="memItemRight"><a class="el" href="#a894733c1ea68a084e5cf9ab8f0bcb999">hWnd</a> = nullptr</td></tr>
 <tr class="memitem:accda29becf004edc2064997c78605d95" id="r_accda29becf004edc2064997c78605d95"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#accda29becf004edc2064997c78605d95">isCursorLocked</a> = false</td></tr>
 <tr class="memitem:a65109dcc5b542aaeae82e631086268be" id="r_a65109dcc5b542aaeae82e631086268be"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a65109dcc5b542aaeae82e631086268be">ignoreNextDelta</a> = false</td></tr>
@@ -165,8 +169,8 @@ Span::Input 連携図</div>
 📝 Usage</h3>
 <div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="#a3e110cb7e9b44c605a5a169000b80cbd">Input::GetKeyDown</a>(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad511f8439ecde36647437fbba67a4394">Key::Space</a>)) { Jump(); }</div>
 <div class="line">flaot move = <a class="code hl_function" href="#ae4e440d73cfc73b192396eafb00384fd">Input::GetAxis</a>(<a class="code hl_enumvalue" href="namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803da9401da4ce408415b34ce204ccb2c27d0">Axis::LeftStickX</a>);</div>
-<div class="ttc" id="aclassSpan_1_1Input_html_a3e110cb7e9b44c605a5a169000b80cbd"><div class="ttname"><a href="#a3e110cb7e9b44c605a5a169000b80cbd">Span::Input::GetKeyDown</a></div><div class="ttdeci">static bool GetKeyDown(Key key)</div><div class="ttdoc">指定したキーが「このフレームで」押されたか</div><div class="ttdef"><b>Definition</b> <a href="Input_8cpp_source.html#l00160">Input.cpp:160</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Input_html_ae4e440d73cfc73b192396eafb00384fd"><div class="ttname"><a href="#ae4e440d73cfc73b192396eafb00384fd">Span::Input::GetAxis</a></div><div class="ttdeci">static float GetAxis(Axis axis)</div><div class="ttdoc">指定したスティックの傾きを取得します。 (-1.0 ~ 1.0)</div><div class="ttdef"><b>Definition</b> <a href="Input_8cpp_source.html#l00177">Input.cpp:177</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Input_html_a3e110cb7e9b44c605a5a169000b80cbd"><div class="ttname"><a href="#a3e110cb7e9b44c605a5a169000b80cbd">Span::Input::GetKeyDown</a></div><div class="ttdeci">static bool GetKeyDown(Key key)</div><div class="ttdoc">指定したキーが「このフレームで」押されたか</div><div class="ttdef"><b>Definition</b> <a href="Input_8cpp_source.html#l00162">Input.cpp:162</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Input_html_ae4e440d73cfc73b192396eafb00384fd"><div class="ttname"><a href="#ae4e440d73cfc73b192396eafb00384fd">Span::Input::GetAxis</a></div><div class="ttdeci">static float GetAxis(Axis axis)</div><div class="ttdoc">指定したスティックの傾きを取得します。 (-1.0 ~ 1.0)</div><div class="ttdef"><b>Definition</b> <a href="Input_8cpp_source.html#l00180">Input.cpp:180</a></div></div>
 <div class="ttc" id="anamespaceSpan_html_a51b25b4cd8ab95471e6318a07609803da9401da4ce408415b34ce204ccb2c27d0"><div class="ttname"><a href="namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803da9401da4ce408415b34ce204ccb2c27d0">Span::Axis::LeftStickX</a></div><div class="ttdeci">@ LeftStickX</div><div class="ttdef"><b>Definition</b> <a href="Input_8h_source.html#l00045">Input.h:45</a></div></div>
 <div class="ttc" id="anamespaceSpan_html_aa350a9ffb8abcc7152b348bf09b86d8fad511f8439ecde36647437fbba67a4394"><div class="ttname"><a href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad511f8439ecde36647437fbba67a4394">Span::Key::Space</a></div><div class="ttdeci">@ Space</div><div class="ttdef"><b>Definition</b> <a href="Input_8h_source.html#l00027">Input.h:27</a></div></div>
 </div><!-- fragment --> 
@@ -195,7 +199,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00153">153</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00154">154</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -229,7 +233,7 @@ Span::Input 連携図</div>
 
 <p>指定したスティックの傾きを取得します。 (-1.0 ~ 1.0) </p>
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00177">177</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00180">180</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -258,7 +262,7 @@ Span::Input 連携図</div>
 
 <p>指定したボタンが現在押されているか </p>
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00167">167</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00170">170</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -292,7 +296,7 @@ Span::Input 連携図</div>
 
 <p>指定したボタンが「このフレームで」押されたか </p>
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00172">172</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00175">175</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -326,7 +330,7 @@ Span::Input 連携図</div>
 
 <p>指定したキーが現在押されているか </p>
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00159">159</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00161">161</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -360,7 +364,7 @@ Span::Input 連携図</div>
 
 <p>指定したキーが「このフレームで」押されたか </p>
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00160">160</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00162">162</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -394,7 +398,7 @@ Span::Input 連携図</div>
 
 <p>指定したキーが「このフレームで」離されたか </p>
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00161">161</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00163">163</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -423,7 +427,7 @@ Span::Input 連携図</div>
 
 <p>マウスの移動量を取得します。 </p>
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00164">164</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00166">166</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -457,7 +461,36 @@ Span::Input 連携図</div>
 
 <p>マウスの位置を取得します。 </p>
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00163">163</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00165">165</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ac23a995b926be812e2f1b71620e2f013" name="ac23a995b926be812e2f1b71620e2f013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac23a995b926be812e2f1b71620e2f013">&#9670;&#160;</a></span>GetMouseWheel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::Input::GetMouseWheel </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ホイール移動量を取得します。 </p>
+
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00167">167</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -484,7 +517,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00048">48</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00049">49</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -518,7 +551,7 @@ Span::Input 連携図</div>
 
 <p>UIが入力を奪っていないか </p>
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00115">115</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00119">119</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -545,7 +578,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00180">180</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00183">183</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -577,7 +610,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00181">181</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00184">184</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -609,7 +642,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00182">182</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00185">185</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -645,7 +678,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00194">194</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00197">197</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -677,12 +710,39 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00188">188</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00191">191</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Input_abd7e2e35b25679a12d4b0ec56c8aee19_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
+
+</div>
+</div>
+<a id="ab7b1e06dbe23300a0cd34a9d7914f26d" name="ab7b1e06dbe23300a0cd34a9d7914f26d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7b1e06dbe23300a0cd34a9d7914f26d">&#9670;&#160;</a></span>OnMouseWheel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::Input::OnMouseWheel </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>delta</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00201">201</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -709,7 +769,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00221">221</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00228">228</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -743,7 +803,7 @@ Span::Input 連携図</div>
 
 <p>カーソルの表示を設定します。 </p>
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00200">200</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00207">207</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -777,7 +837,7 @@ Span::Input 連携図</div>
 
 <p>ImGuiがマウスを占有しているか設定する </p>
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00113">113</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00117">117</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -811,7 +871,7 @@ Span::Input 連携図</div>
 
 <p>カーソルを画面中央にロックし、非表示にします (FPS視点用) </p>
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00204">204</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00211">211</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -848,7 +908,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00060">60</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00061">61</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -878,7 +938,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00136">136</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00141">141</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -902,7 +962,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00134">134</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00139">139</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -926,7 +986,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00128">128</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00133">133</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -950,7 +1010,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00130">130</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00135">135</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -974,7 +1034,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00140">140</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00145">145</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -998,7 +1058,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00137">137</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00142">142</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1022,7 +1082,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00129">129</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00134">134</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1046,7 +1106,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00120">120</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00124">124</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1070,7 +1130,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00126">126</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00130">130</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1094,7 +1154,31 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00124">124</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00128">128</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a3177ecb1b845a0021b3704d826043b49" name="a3177ecb1b845a0021b3704d826043b49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3177ecb1b845a0021b3704d826043b49">&#9670;&#160;</a></span>mouseWheelDelta</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::Input::mouseWheelDelta = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00131">131</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1118,7 +1202,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00135">135</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00140">140</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1142,7 +1226,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00122">122</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00126">126</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1166,7 +1250,7 @@ Span::Input 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00125">125</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00129">129</a> 行目に定義があります。</p>
 
 </div>
 </div>

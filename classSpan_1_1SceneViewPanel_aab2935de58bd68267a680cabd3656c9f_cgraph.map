@@ -1,115 +1,126 @@
 <map id="Span::SceneViewPanel::OnImGuiRender" name="Span::SceneViewPanel::OnImGuiRender">
-<area shape="rect" id="Node000001" title="毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。" alt="" coords="5,637,173,677"/>
-<area shape="rect" id="Node000002" href="$classSpan_1_1SceneViewPanel.html#a7b7d10b9fdd6d03aa9096f5326a8eb73" title="アスペクト比設定に基づいて、画像を表示すべき領域を計算します。" alt="" coords="221,516,389,556"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,635,163,601,220,566,233,559,235,564,223,570,166,605,118,639"/>
-<area shape="rect" id="Node000003" href="$classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" title="選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。" alt="" coords="221,580,389,620"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,635,215,621,217,626,166,640"/>
-<area shape="rect" id="Node000021" href="$classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e" title="シングルトンインスタンスの取得" alt="" coords="465,1054,632,1079"/>
-<area shape="poly" id="edge65_Node000001_Node000021" title=" " alt="" coords="173,636,228,632,286,634,342,649,368,663,391,681,410,702,423,724,430,746,433,769,430,814,419,860,408,905,403,951,405,973,411,995,422,1018,439,1039,454,1052,451,1056,435,1043,418,1020,406,997,400,974,398,951,403,904,414,858,425,813,428,769,425,747,418,726,406,705,388,685,365,667,340,654,285,640,228,637,174,642"/>
-<area shape="rect" id="Node000046" href="$classSpan_1_1SceneViewPanel.html#a351d465df5c38b07b6e74bcdfeee97bc" title="パネル上部にツールバー (ギズモ操作ボタン等) を重ねて表示します。" alt="" coords="221,695,389,735"/>
-<area shape="poly" id="edge64_Node000001_Node000046" title=" " alt="" coords="166,675,217,688,215,694,165,680"/>
-<area shape="rect" id="Node000047" href="$classSpan_1_1Application.html#a00004fbc6787efc05e06646216ee349f" title="SceneViewPanelから毎フレームサイズを受けとる" alt="" coords="234,759,377,799"/>
-<area shape="poly" id="edge66_Node000001_Node000047" title=" " alt="" coords="118,676,166,710,223,744,235,751,233,755,220,749,163,714,115,680"/>
-<area shape="rect" id="Node000004" href="$namespaceSpan.html#a8cdcfa1b4931700b369b8017666cd36a" title="値を指定範囲に制限します" alt="" coords="497,169,601,194"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="375,578,387,566,403,543,413,521,421,477,418,433,409,390,400,346,397,302,407,257,418,234,435,211,457,195,482,185,484,190,460,199,439,215,423,237,412,259,403,302,405,345,414,388,423,432,426,477,418,523,407,546,391,570,378,582"/>
-<area shape="rect" id="Node000005" href="$structSpan_1_1Matrix4x4.html#aea4a95a235a15e6ad3366fd07649d253" title="行列を 移動・回転・スケール に分解する" alt="" coords="442,435,655,461"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="370,578,387,566,404,545,410,523,418,500,436,478,460,463,462,468,439,482,422,503,415,524,408,547,391,570,373,582"/>
-<area shape="rect" id="Node000009" href="$structSpan_1_1Matrix4x4.html#afc3f3a8aeeaac6aa4302a64b7568fbf3" title=" " alt="" coords="1031,219,1202,245"/>
-<area shape="poly" id="edge59_Node000003_Node000009" title=" " alt="" coords="375,578,387,566,400,547,409,528,416,489,413,451,405,412,398,374,397,337,407,300,419,282,436,265,454,251,478,240,539,224,613,214,696,209,868,211,1017,220,1017,225,868,216,696,214,613,219,540,229,480,245,457,256,439,269,423,285,412,302,402,337,403,374,410,411,418,450,421,489,414,529,405,550,391,570,378,582"/>
-<area shape="rect" id="Node000010" href="$structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557" title="単位行列" alt="" coords="730,486,917,511"/>
-<area shape="poly" id="edge46_Node000003_Node000010" title=" " alt="" coords="359,577,437,551,582,522,716,505,716,511,583,528,438,556,360,582"/>
-<area shape="rect" id="Node000012" href="$structSpan_1_1Matrix4x4.html#a4adf277b2c441fe8d2ea295a0c0a2610" title=" " alt="" coords="1317,470,1507,495"/>
-<area shape="poly" id="edge21_Node000003_Node000012" title=" " alt="" coords="373,578,387,566,400,548,407,530,409,494,413,457,421,439,435,421,469,394,500,377,530,367,561,362,627,360,708,356,860,334,981,317,1039,315,1101,320,1169,333,1248,356,1292,376,1332,403,1392,458,1388,462,1328,408,1289,381,1246,361,1167,338,1100,325,1039,321,982,322,861,339,708,361,627,366,561,367,531,372,502,382,472,399,439,425,425,441,418,458,415,494,412,532,405,551,391,570,376,582"/>
-<area shape="rect" id="Node000013" href="$structSpan_1_1Vector3.html#a4d84dde93e6520ab1b1407f9d82d881e" title="ベクトルの長さ (Magnitude)" alt="" coords="742,535,905,561"/>
-<area shape="poly" id="edge53_Node000003_Node000013" title=" " alt="" coords="389,585,437,579,728,552,729,557,438,584,390,590"/>
-<area shape="rect" id="Node000014" href="$classSpan_1_1World.html#afd6041d6b68f1964882d1941fc0fddaf" title="指定したコンポーネントを持つ全てのEntityに対して関数を実行します。" alt="" coords="744,722,903,747"/>
-<area shape="poly" id="edge14_Node000003_Node000014" title=" " alt="" coords="370,617,438,637,608,682,754,716,752,722,607,687,437,643,369,623"/>
-<area shape="poly" id="edge22_Node000003_Node000021" title=" " alt="" coords="371,618,391,637,408,665,419,692,425,718,427,744,422,795,410,845,400,894,397,942,400,966,407,990,420,1015,439,1039,454,1052,451,1056,435,1043,416,1018,403,993,395,967,391,942,394,893,405,844,417,794,422,744,420,719,414,693,404,667,387,640,367,622"/>
-<area shape="rect" id="Node000031" href="$classSpan_1_1World.html#a637d963c8538b8ca6535bd1c6b88115c" title="コンポーネントへのポインタを取得します。" alt="" coords="437,739,660,765"/>
-<area shape="poly" id="edge33_Node000003_Node000031" title=" " alt="" coords="364,618,391,637,408,658,415,679,423,699,439,718,463,732,460,736,436,722,418,702,410,681,403,661,388,641,361,622"/>
-<area shape="rect" id="Node000033" href="$classSpan_1_1World.html#a5e0da52990e6715e2cc31a0d85913748" title="エンティティが現在有効かどうかを確認します。" alt="" coords="748,887,899,913"/>
-<area shape="poly" id="edge51_Node000003_Node000033" title=" " alt="" coords="367,618,391,637,404,655,411,674,414,709,418,742,425,758,439,774,466,793,492,803,518,806,544,806,599,805,629,811,661,826,677,839,686,853,695,866,709,878,735,888,733,893,707,882,691,870,682,856,673,842,659,830,628,816,599,811,544,811,518,811,491,808,464,798,436,778,421,761,413,744,409,709,406,675,400,658,387,641,364,622"/>
-<area shape="rect" id="Node000034" href="$classSpan_1_1Input.html#a86ffd3759273c0529fff0dd511d7b065" title="指定したキーが現在押されているか" alt="" coords="473,890,624,915"/>
-<area shape="poly" id="edge39_Node000003_Node000034" title=" " alt="" coords="369,618,391,637,410,669,417,701,417,731,413,761,409,790,410,819,419,847,439,875,462,891,459,895,435,879,414,849,405,820,404,790,407,760,411,731,412,701,405,671,387,640,366,622"/>
-<area shape="rect" id="Node000035" href="$classSpan_1_1Input.html#a3e110cb7e9b44c605a5a169000b80cbd" title="指定したキーが「このフレームで」押されたか" alt="" coords="455,939,642,965"/>
-<area shape="poly" id="edge40_Node000003_Node000035" title=" " alt="" coords="370,618,391,637,413,676,420,714,418,751,412,786,406,821,406,856,415,890,439,925,445,930,442,934,435,928,411,893,401,857,401,821,407,786,413,750,415,714,408,678,387,640,366,622"/>
-<area shape="rect" id="Node000036" href="$classSpan_1_1SelectionManager.html#ab8b9b7e17346f5fb71277549ad085bc4" title="メインの選択対象 (最後に選択されたもの) を取得します。" alt="" coords="459,989,638,1029"/>
-<area shape="poly" id="edge41_Node000003_Node000036" title=" " alt="" coords="370,618,391,637,406,660,416,683,424,727,421,770,413,811,405,852,403,893,413,934,424,955,439,976,449,985,445,989,435,979,419,957,408,936,398,893,400,852,407,810,415,769,418,727,411,684,401,663,387,640,367,622"/>
-<area shape="rect" id="Node000037" href="$classSpan_1_1Application.html#a42e065e188c6e225983aad97d576865c" title=" " alt="" coords="477,5,620,45"/>
-<area shape="poly" id="edge42_Node000003_Node000037" title=" " alt="" coords="375,578,387,566,398,547,406,523,413,462,413,390,409,312,406,234,406,161,415,100,423,75,435,56,448,44,463,35,466,40,451,48,439,59,428,78,420,101,412,162,411,234,415,311,418,390,418,462,411,524,403,549,391,570,379,582"/>
-<area shape="rect" id="Node000038" href="$classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0" title="指定したコンポーネントを持っているか確認します。" alt="" coords="445,841,652,866"/>
-<area shape="poly" id="edge43_Node000003_Node000038" title=" " alt="" coords="368,618,391,637,407,661,414,686,414,732,415,776,423,798,439,819,456,832,453,837,435,823,418,800,410,777,409,732,409,686,402,664,387,640,365,622"/>
-<area shape="rect" id="Node000039" href="$structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e" title="転置行列" alt="" coords="736,270,911,295"/>
-<area shape="poly" id="edge47_Node000003_Node000039" title=" " alt="" coords="374,578,387,566,406,534,413,502,412,470,406,437,401,406,402,374,411,343,436,313,472,287,512,269,555,258,600,252,686,254,760,265,759,270,686,259,600,258,556,263,514,274,474,291,439,317,416,345,407,375,407,405,412,437,417,469,418,502,411,536,391,570,378,582"/>
-<area shape="rect" id="Node000040" href="$structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3" title="このエンティティが無効 (Null) かどうかを判定します。" alt="" coords="477,70,621,95"/>
-<area shape="poly" id="edge52_Node000003_Node000040" title=" " alt="" coords="375,578,387,566,407,536,419,507,426,477,428,449,421,391,406,334,392,277,387,221,390,192,398,163,413,134,436,105,462,87,465,91,439,109,418,137,403,165,395,193,392,221,397,277,411,333,426,390,433,448,431,478,424,508,411,539,391,570,379,582"/>
-<area shape="rect" id="Node000041" href="$structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa" title="ビュー行列作成 (左手系: Z+が奥)" alt="" coords="724,637,923,662"/>
-<area shape="poly" id="edge54_Node000003_Node000041" title=" " alt="" coords="390,605,710,636,710,641,389,611"/>
-<area shape="rect" id="Node000043" href="$namespaceSpan.html#a2e4930a806963e7ab8c6c60031c41fe8" title="度数法(Degree) を 弧度法(Radian) に変換" alt="" coords="485,119,613,145"/>
-<area shape="poly" id="edge58_Node000003_Node000043" title=" " alt="" coords="375,578,387,566,405,540,416,513,422,487,424,461,419,410,407,359,395,308,391,257,394,232,402,206,415,180,435,154,452,141,470,133,473,138,454,146,439,158,420,183,407,208,399,233,396,258,400,308,412,358,424,409,430,461,428,488,421,515,409,542,391,570,378,582"/>
-<area shape="rect" id="Node000044" href="$structSpan_1_1Matrix4x4.html#a26c91de102eab3c6d4d45b5f7bf107fc" title="TRS行列 (Translation * Rotation * Scale) を作成" alt="" coords="743,585,904,610"/>
-<area shape="poly" id="edge60_Node000003_Node000044" title=" " alt="" coords="389,597,728,595,729,600,389,602"/>
-<area shape="rect" id="Node000006" href="$structSpan_1_1Quaternion.html#af2a0a1def4d845d030a45c5a26d32a80" title="回転行列から変換 (実装は後述)" alt="" coords="708,371,939,411"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="610,433,713,411,714,416,611,438"/>
-<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="619,458,741,481,740,486,618,463"/>
-<area shape="rect" id="Node000011" href="$structSpan_1_1Matrix4x4.html#a431bf3af613c1029e6de25d64cfda6b7" title=" " alt="" coords="1015,470,1218,495"/>
-<area shape="poly" id="edge13_Node000005_Node000011" title=" " alt="" coords="656,452,1002,473,1001,478,656,457"/>
-<area shape="poly" id="edge12_Node000005_Node000013" title=" " alt="" coords="574,458,634,489,709,520,741,530,739,535,707,525,632,494,572,463"/>
-<area shape="rect" id="Node000007" href="$structSpan_1_1Quaternion.html#a93b63ae6c847e74c6d425dfda81b8dd2" title=" " alt="" coords="1019,371,1215,397"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="939,385,1005,384,1005,389,939,391"/>
-<area shape="rect" id="Node000008" href="$structSpan_1_1Quaternion.html#af2cdd440ffc8c055ff354b0199b522d1" title=" " alt="" coords="1009,421,1224,446"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="939,405,1016,416,1015,421,938,410"/>
-<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="860,368,1079,249,1081,254,863,373"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="917,491,1001,486,1002,492,917,496"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="1218,480,1303,480,1303,485,1218,485"/>
-<area shape="rect" id="Node000015" href="$classSpan_1_1Archetype.html#aa2e946edc196fefbef2969c9f6092479" title="このアーキタイプが管理している全チャンクのリスト" alt="" coords="1013,721,1220,746"/>
-<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="903,732,999,731,999,737,903,737"/>
-<area shape="rect" id="Node000016" href="$classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1" title="コンポーネント配列の「チャンク内オフセット」を取得します。" alt="" coords="999,869,1234,909"/>
-<area shape="poly" id="edge16_Node000014_Node000016" title=" " alt="" coords="904,740,923,747,940,758,952,770,959,782,965,807,971,831,978,843,988,854,997,860,994,864,985,858,973,846,966,833,960,808,954,784,948,773,937,762,921,752,902,745"/>
-<area shape="rect" id="Node000017" href="$classSpan_1_1ComponentType.html#aa561932b92eabbe74390cb7b0cef0de6" title="型 T に対応する一意のIDを取得します。" alt="" coords="1033,933,1200,973"/>
-<area shape="poly" id="edge17_Node000014_Node000017" title=" " alt="" coords="904,738,923,746,940,758,957,778,964,799,966,840,967,881,974,900,989,919,1004,931,1021,939,1019,944,1001,935,985,923,969,903,961,882,960,840,959,800,952,781,937,762,921,751,902,743"/>
-<area shape="rect" id="Node000018" href="$classSpan_1_1Archetype.html#ab576f4f851319859304bfa1fc1ada7ed" title="要求された全てのコンポーネントを持っているか確認します。" alt="" coords="987,770,1247,795"/>
-<area shape="poly" id="edge18_Node000014_Node000018" title=" " alt="" coords="902,745,1025,765,1025,770,901,750"/>
-<area shape="rect" id="Node000019" href="$classSpan_1_1World.html#af5701baf0c3d17c6cc72333001c9def1" title=" " alt="" coords="1017,819,1216,845"/>
-<area shape="poly" id="edge19_Node000014_Node000019" title=" " alt="" coords="904,743,940,758,955,769,965,782,974,794,988,804,1007,813,1005,817,985,809,970,797,960,785,952,773,937,762,902,748"/>
-<area shape="rect" id="Node000020" href="$classSpan_1_1World.html#abf57371dde3a4dcdc84fae0acb3bf88f" title=" " alt="" coords="1295,819,1529,845"/>
-<area shape="poly" id="edge20_Node000019_Node000020" title=" " alt="" coords="1216,829,1281,829,1281,835,1216,835"/>
-<area shape="rect" id="Node000022" href="$classSpan_1_1Application.html#a0c44e973ca5db1d23a02a2cee66f5c11" title=" " alt="" coords="752,1089,895,1129"/>
-<area shape="poly" id="edge23_Node000021_Node000022" title=" " alt="" coords="631,1077,739,1094,738,1099,630,1082"/>
-<area shape="rect" id="Node000023" href="$namespaceSpan.html#a3f4b8561d46e69596ba6a7c3177a92e7" title=" " alt="" coords="1023,1198,1211,1223"/>
-<area shape="poly" id="edge24_Node000022_Node000023" title=" " alt="" coords="868,1127,924,1152,988,1176,1043,1192,1042,1197,986,1181,922,1157,866,1132"/>
-<area shape="rect" id="Node000025" href="$classSpan_1_1GuiManager.html#ab78e1a284f6d5aced7912c00ab43c559" title="ImGuiコンテキストとバックエンドを初期化します。" alt="" coords="1014,1247,1219,1273"/>
-<area shape="poly" id="edge27_Node000022_Node000025" title=" " alt="" coords="846,1128,906,1182,945,1210,988,1234,1007,1241,1005,1246,986,1238,942,1215,902,1186,842,1132"/>
-<area shape="rect" id="Node000028" href="$classSpan_1_1Input.html#aac6e8f1cf694b484ed01742f2d16d63c" title=" " alt="" coords="1037,998,1196,1023"/>
-<area shape="poly" id="edge30_Node000022_Node000028" title=" " alt="" coords="861,1087,919,1059,986,1033,1023,1023,1025,1029,987,1039,921,1064,863,1092"/>
-<area shape="rect" id="Node000029" href="$classSpan_1_1Logger.html#a557d77ccfa31551817d7b28d985866c8" title="ロガーを初期化し、ログファイルを開きます。" alt="" coords="1031,1047,1202,1073"/>
-<area shape="poly" id="edge31_Node000022_Node000029" title=" " alt="" coords="895,1095,1027,1072,1028,1078,895,1100"/>
-<area shape="rect" id="Node000030" href="$classSpan_1_1Time.html#ae9e018cd0d5a3b34b773e80c750860e7" title="初期化（エンジン起動時）" alt="" coords="1037,1097,1196,1122"/>
-<area shape="poly" id="edge32_Node000022_Node000030" title=" " alt="" coords="895,1107,1023,1107,1023,1112,895,1112"/>
-<area shape="rect" id="Node000024" href="$classSpan_1_1Application.html#a095598d0c2e753bfb8d00acee435980f" title="シングルトンインスタンスのポインタ取得 (存在チェック用)" alt="" coords="1331,1159,1493,1185"/>
-<area shape="poly" id="edge25_Node000023_Node000024" title=" " alt="" coords="1211,1196,1318,1182,1318,1187,1211,1201"/>
-<area shape="poly" id="edge26_Node000024_Node000022" title=" " alt="" coords="1331,1169,1172,1156,986,1137,908,1126,908,1121,987,1132,1172,1151,1331,1164"/>
-<area shape="rect" id="Node000026" href="$classSpan_1_1GuiManager.html#a79fd10d93a58b741c10bd8c8477afc0a" title="管理対象のエディタパネルを追加します。" alt="" coords="1307,1271,1517,1297"/>
-<area shape="poly" id="edge28_Node000025_Node000026" title=" " alt="" coords="1220,1266,1294,1272,1294,1277,1219,1271"/>
-<area shape="rect" id="Node000027" href="$classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0" title="フォントや配色などのスタイル設定を適用します。" alt="" coords="1303,1222,1521,1247"/>
-<area shape="poly" id="edge29_Node000025_Node000027" title=" " alt="" coords="1219,1249,1289,1243,1289,1248,1220,1254"/>
-<area shape="poly" id="edge37_Node000031_Node000017" title=" " alt="" coords="612,762,661,782,676,792,686,802,695,812,709,822,742,835,771,842,824,845,877,850,907,858,940,872,955,884,965,896,974,908,988,919,1022,933,1019,938,985,924,970,912,961,899,952,888,937,877,905,863,876,855,824,851,770,847,740,840,707,826,692,816,682,806,673,796,659,786,610,767"/>
-<area shape="rect" id="Node000032" href="$classSpan_1_1World.html#a44e36e9b91bb78cd486b93a5a02ff1fa" title=" " alt="" coords="721,772,926,812"/>
-<area shape="poly" id="edge34_Node000031_Node000032" title=" " alt="" coords="637,762,707,772,706,778,636,767"/>
-<area shape="poly" id="edge38_Node000031_Node000033" title=" " alt="" coords="624,762,662,782,679,803,686,825,693,846,710,866,736,881,733,885,706,870,689,849,681,827,675,806,658,786,622,767"/>
-<area shape="poly" id="edge35_Node000032_Node000016" title=" " alt="" coords="891,810,940,828,964,841,988,854,1015,863,1013,868,986,858,961,846,938,833,889,815"/>
-<area shape="poly" id="edge36_Node000032_Node000017" title=" " alt="" coords="910,810,940,829,958,852,965,876,971,898,988,919,1022,937,1019,942,985,923,967,901,960,877,953,855,937,833,907,814"/>
-<area shape="poly" id="edge44_Node000038_Node000017" title=" " alt="" coords="634,864,661,875,677,887,686,900,695,912,709,922,747,936,787,947,869,960,949,964,1020,962,1020,967,949,969,869,966,786,953,746,941,707,926,691,915,681,903,673,891,659,880,632,869"/>
-<area shape="poly" id="edge45_Node000038_Node000033" title=" " alt="" coords="624,863,735,882,734,888,624,869"/>
-<area shape="poly" id="edge50_Node000039_Node000009" title=" " alt="" coords="897,267,1029,244,1030,250,898,273"/>
-<area shape="poly" id="edge49_Node000039_Node000011" title=" " alt="" coords="853,293,897,319,941,357,957,384,963,410,970,433,988,455,1004,465,1001,469,985,459,965,436,958,411,952,386,937,360,894,323,850,298"/>
-<area shape="poly" id="edge48_Node000039_Node000012" title=" " alt="" coords="911,269,985,266,1072,269,1162,283,1206,296,1248,312,1297,343,1339,382,1373,422,1397,456,1393,459,1369,425,1335,386,1293,347,1245,317,1204,301,1161,288,1071,275,986,271,911,275"/>
-<area shape="poly" id="edge56_Node000041_Node000011" title=" " alt="" coords="912,634,937,619,949,606,955,592,960,563,964,533,972,519,985,505,1001,494,1004,499,988,509,976,522,969,535,965,564,960,594,953,609,940,623,915,639"/>
-<area shape="poly" id="edge55_Node000041_Node000012" title=" " alt="" coords="923,649,996,646,1078,638,1163,622,1246,598,1287,577,1326,552,1386,503,1390,507,1329,557,1290,582,1248,602,1165,628,1079,643,996,651,923,654"/>
-<area shape="rect" id="Node000042" href="$structSpan_1_1Vector3.html#a3f30a6301de9087ae83240d2ac0ee1c7" title=" " alt="" coords="1039,671,1194,697"/>
-<area shape="poly" id="edge57_Node000041_Node000042" title=" " alt="" coords="923,658,1026,671,1025,676,922,664"/>
-<area shape="poly" id="edge62_Node000044_Node000011" title=" " alt="" coords="903,585,937,570,952,555,960,538,968,521,985,505,1001,496,1003,501,988,509,973,524,965,540,957,558,940,574,905,590"/>
-<area shape="poly" id="edge61_Node000044_Node000012" title=" " alt="" coords="904,594,1064,585,1156,573,1246,553,1316,528,1375,500,1377,504,1318,533,1247,559,1157,578,1064,590,904,600"/>
-<area shape="rect" id="Node000045" href="$structSpan_1_1Quaternion.html#ab13d28932806a3ce57c49bd97afa3335" title=" " alt="" coords="1028,519,1205,545"/>
-<area shape="poly" id="edge63_Node000044_Node000045" title=" " alt="" coords="882,582,938,569,1046,545,1047,550,939,575,883,587"/>
+<area shape="rect" id="Node000001" title="毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。" alt="" coords="5,827,173,867"/>
+<area shape="rect" id="Node000002" href="$classSpan_1_1SceneViewPanel.html#a7b7d10b9fdd6d03aa9096f5326a8eb73" title="アスペクト比設定に基づいて、画像を表示すべき領域を計算します。" alt="" coords="221,451,389,491"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,827,101,766,124,682,141,636,162,591,188,547,219,508,233,497,236,501,223,512,193,550,167,593,146,638,129,684,107,768,96,828"/>
+<area shape="rect" id="Node000003" href="$namespaceSpan.html#a8cdcfa1b4931700b369b8017666cd36a" title="値を指定範囲に制限します" alt="" coords="497,5,601,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="91,827,103,772,126,698,143,659,164,620,189,584,220,552,242,537,265,530,309,529,330,530,350,527,369,518,387,502,408,472,421,443,428,415,430,386,423,329,408,271,394,214,388,157,391,128,399,98,413,69,435,40,457,24,482,16,484,21,459,29,439,44,418,72,404,100,396,129,393,157,399,213,414,270,429,328,436,386,433,415,426,445,412,475,391,505,372,523,351,532,330,535,309,535,266,535,244,542,223,556,193,587,169,623,148,661,131,700,108,774,96,828"/>
+<area shape="rect" id="Node000004" href="$classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" title="選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。" alt="" coords="221,566,389,606"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="105,826,277,615,281,618,109,829"/>
+<area shape="rect" id="Node000017" href="$classSpan_1_1World.html#afd6041d6b68f1964882d1941fc0fddaf" title="指定したコンポーネントを持つ全てのEntityに対して関数を実行します。" alt="" coords="469,972,628,997"/>
+<area shape="poly" id="edge71_Node000001_Node000017" title=" " alt="" coords="174,827,225,822,281,822,338,831,391,852,409,868,418,886,425,905,439,924,470,947,503,964,500,969,467,951,435,928,420,908,413,888,405,871,388,856,336,836,280,827,225,827,174,832"/>
+<area shape="rect" id="Node000024" href="$classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e" title="シングルトンインスタンスの取得" alt="" coords="465,1021,632,1047"/>
+<area shape="poly" id="edge72_Node000001_Node000024" title=" " alt="" coords="174,852,298,871,353,885,391,902,403,915,411,929,416,956,421,982,428,995,439,1007,454,1016,451,1021,436,1011,423,998,416,984,411,957,406,931,399,918,388,907,352,890,297,876,173,857"/>
+<area shape="rect" id="Node000040" href="$classSpan_1_1Application.html#a42e065e188c6e225983aad97d576865c" title=" " alt="" coords="477,1071,620,1111"/>
+<area shape="poly" id="edge73_Node000001_Node000040" title=" " alt="" coords="133,865,222,902,270,913,311,915,349,922,370,931,391,947,404,960,411,975,416,1003,421,1031,428,1044,439,1057,466,1074,463,1078,436,1061,423,1047,416,1033,411,1004,406,977,399,963,388,951,367,936,348,927,310,920,270,918,221,907,131,870"/>
+<area shape="rect" id="Node000050" href="$classSpan_1_1SceneViewPanel.html#a351d465df5c38b07b6e74bcdfeee97bc" title="パネル上部にツールバー (ギズモ操作ボタン等) を重ねて表示します。" alt="" coords="221,961,389,1001"/>
+<area shape="poly" id="edge70_Node000001_Node000050" title=" " alt="" coords="117,866,165,902,223,940,246,952,243,957,220,944,162,906,114,870"/>
+<area shape="rect" id="Node000051" href="$classSpan_1_1Application.html#a00004fbc6787efc05e06646216ee349f" title="SceneViewPanelから毎フレームサイズを受けとる" alt="" coords="234,1025,377,1065"/>
+<area shape="poly" id="edge74_Node000001_Node000051" title=" " alt="" coords="104,866,150,936,184,976,223,1011,231,1016,228,1020,220,1015,180,979,146,939,99,869"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="367,564,387,546,397,526,404,502,411,441,411,369,407,292,404,215,405,143,414,83,423,59,435,40,457,24,482,16,484,21,459,29,439,44,428,62,419,85,410,144,409,215,412,292,416,369,416,441,410,503,402,528,391,549,371,568"/>
+<area shape="rect" id="Node000005" href="$structSpan_1_1Matrix4x4.html#aea4a95a235a15e6ad3366fd07649d253" title="行列を 移動・回転・スケール に分解する" alt="" coords="442,371,655,396"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="363,564,387,545,399,529,406,513,409,480,414,447,422,430,436,413,455,400,458,404,439,417,426,433,419,448,415,480,411,514,404,531,391,549,366,568"/>
+<area shape="rect" id="Node000009" href="$structSpan_1_1Matrix4x4.html#afc3f3a8aeeaac6aa4302a64b7568fbf3" title=" " alt="" coords="1048,171,1219,196"/>
+<area shape="poly" id="edge65_Node000004_Node000009" title=" " alt="" coords="381,564,387,558,407,527,415,496,414,466,410,435,405,404,405,372,414,341,435,310,462,287,488,276,515,271,542,272,597,272,627,266,659,253,673,242,681,229,691,217,707,206,748,191,790,180,877,167,961,164,1035,168,1034,173,961,169,877,172,791,185,749,196,709,211,695,221,686,233,677,245,661,258,628,272,598,277,542,277,515,277,490,281,465,292,439,313,419,343,410,373,411,403,415,434,420,465,420,497,412,529,391,561,384,568"/>
+<area shape="rect" id="Node000010" href="$structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557" title="単位行列" alt="" coords="745,221,931,247"/>
+<area shape="poly" id="edge49_Node000004_Node000010" title=" " alt="" coords="365,564,387,546,402,521,409,498,408,451,407,427,409,404,418,380,435,356,463,334,489,323,515,318,542,318,597,317,627,311,659,298,673,288,682,277,691,266,707,256,730,246,732,251,709,260,695,270,686,281,676,292,661,303,628,317,598,322,542,323,516,323,491,328,465,339,439,360,422,382,414,405,412,427,414,451,414,499,407,524,391,549,368,568"/>
+<area shape="rect" id="Node000012" href="$structSpan_1_1Matrix4x4.html#a4adf277b2c441fe8d2ea295a0c0a2610" title=" " alt="" coords="1308,421,1499,447"/>
+<area shape="poly" id="edge25_Node000004_Node000012" title=" " alt="" coords="390,587,587,591,836,591,962,586,1078,578,1176,566,1250,547,1289,529,1324,505,1379,455,1383,459,1328,509,1291,534,1252,553,1177,571,1078,584,962,592,836,596,587,597,390,592"/>
+<area shape="rect" id="Node000014" href="$structSpan_1_1Vector3.html#afd00ea2d739d71571828e2d44b41c0c6" title="内積 (Dot Product)" alt="" coords="477,624,620,649"/>
+<area shape="poly" id="edge15_Node000004_Node000014" title=" " alt="" coords="390,601,475,619,473,624,389,606"/>
+<area shape="poly" id="edge18_Node000004_Node000017" title=" " alt="" coords="317,605,440,924,467,947,498,964,495,969,463,952,435,928,312,607"/>
+<area shape="poly" id="edge26_Node000004_Node000024" title=" " alt="" coords="315,606,439,1007,454,1017,451,1022,435,1010,310,607"/>
+<area shape="rect" id="Node000034" href="$classSpan_1_1World.html#a637d963c8538b8ca6535bd1c6b88115c" title="コンポーネントへのポインタを取得します。" alt="" coords="437,840,660,865"/>
+<area shape="poly" id="edge36_Node000004_Node000034" title=" " alt="" coords="315,605,330,650,355,707,391,767,413,795,439,819,462,833,460,837,436,823,410,798,387,770,350,710,325,652,310,607"/>
+<area shape="rect" id="Node000036" href="$classSpan_1_1World.html#a5e0da52990e6715e2cc31a0d85913748" title="エンティティが現在有効かどうかを確認します。" alt="" coords="763,824,913,849"/>
+<area shape="poly" id="edge54_Node000004_Node000036" title=" " alt="" coords="317,605,333,642,359,689,394,735,415,756,439,773,462,784,494,794,575,810,665,821,749,829,749,834,664,826,574,815,492,799,460,789,436,778,412,760,390,739,355,692,328,645,312,607"/>
+<area shape="rect" id="Node000037" href="$classSpan_1_1Input.html#a86ffd3759273c0529fff0dd511d7b065" title="指定したキーが現在押されているか" alt="" coords="473,889,624,915"/>
+<area shape="poly" id="edge42_Node000004_Node000037" title=" " alt="" coords="316,605,368,749,404,826,422,855,439,875,461,888,459,892,436,879,418,858,399,828,363,751,311,607"/>
+<area shape="rect" id="Node000038" href="$classSpan_1_1Input.html#a3e110cb7e9b44c605a5a169000b80cbd" title="指定したキーが「このフレームで」押されたか" alt="" coords="455,55,642,80"/>
+<area shape="poly" id="edge43_Node000004_Node000038" title=" " alt="" coords="367,564,387,546,405,515,417,486,423,457,425,428,418,371,404,316,391,260,387,205,390,176,399,148,414,120,435,91,442,84,446,88,439,94,418,122,404,150,396,177,392,205,397,259,410,314,423,370,430,428,429,457,422,487,410,518,391,549,371,568"/>
+<area shape="rect" id="Node000039" href="$classSpan_1_1SelectionManager.html#ab8b9b7e17346f5fb71277549ad085bc4" title="メインの選択対象 (最後に選択されたもの) を取得します。" alt="" coords="459,105,638,145"/>
+<area shape="poly" id="edge44_Node000004_Node000039" title=" " alt="" coords="367,564,387,546,403,520,414,495,420,470,422,445,417,397,407,349,397,302,394,254,397,229,404,205,417,180,435,155,446,145,450,149,439,158,422,183,409,207,402,231,399,254,402,301,412,348,422,396,427,445,425,471,419,496,408,522,391,549,370,568"/>
+<area shape="poly" id="edge45_Node000004_Node000040" title=" " alt="" coords="315,606,383,863,420,997,439,1058,466,1075,463,1080,435,1061,415,998,378,864,309,607"/>
+<area shape="rect" id="Node000041" href="$classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0" title="指定したコンポーネントを持っているか確認します。" alt="" coords="445,739,652,764"/>
+<area shape="poly" id="edge46_Node000004_Node000041" title=" " alt="" coords="325,604,373,655,405,683,439,708,489,732,487,736,436,712,401,687,370,659,321,608"/>
+<area shape="rect" id="Node000042" href="$structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e" title="転置行列" alt="" coords="751,320,925,345"/>
+<area shape="poly" id="edge50_Node000004_Node000042" title=" " alt="" coords="359,564,388,545,403,527,410,509,419,490,436,472,465,453,493,440,543,428,595,421,659,405,796,349,798,354,661,410,596,426,544,433,494,445,468,457,439,476,423,493,415,511,407,530,391,549,362,568"/>
+<area shape="rect" id="Node000043" href="$structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3" title="このエンティティが無効 (Null) かどうかを判定します。" alt="" coords="477,169,621,195"/>
+<area shape="poly" id="edge55_Node000004_Node000043" title=" " alt="" coords="367,564,387,546,401,523,411,501,418,458,414,415,406,373,398,331,396,289,407,247,418,226,436,204,462,187,465,191,439,208,423,228,412,249,401,290,403,331,411,372,420,414,423,458,416,503,406,526,391,549,370,568"/>
+<area shape="rect" id="Node000044" href="$structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa" title="ビュー行列作成 (左手系: Z+が奥)" alt="" coords="449,523,648,548"/>
+<area shape="poly" id="edge56_Node000004_Node000044" title=" " alt="" coords="389,566,473,548,475,553,390,571"/>
+<area shape="rect" id="Node000045" href="$structSpan_1_1Vector3.html#aabe270fd26b1d874df94a455faef13c5" title="正規化ベクトルを返します (SIMD高速化版)" alt="" coords="451,673,646,699"/>
+<area shape="poly" id="edge60_Node000004_Node000045" title=" " alt="" coords="337,604,384,632,438,658,465,667,463,672,436,663,381,637,335,608"/>
+<area shape="rect" id="Node000047" href="$namespaceSpan.html#a2e4930a806963e7ab8c6c60031c41fe8" title="度数法(Degree) を 弧度法(Radian) に変換" alt="" coords="485,219,613,244"/>
+<area shape="poly" id="edge64_Node000004_Node000047" title=" " alt="" coords="366,564,387,546,408,509,415,473,413,438,408,403,403,369,402,333,412,298,435,262,451,248,470,239,472,244,454,253,439,265,416,300,407,334,408,368,413,403,419,438,420,474,413,511,391,549,370,568"/>
+<area shape="rect" id="Node000048" href="$structSpan_1_1Matrix4x4.html#a26c91de102eab3c6d4d45b5f7bf107fc" title="TRS行列 (Translation * Rotation * Scale) を作成" alt="" coords="757,472,919,497"/>
+<area shape="poly" id="edge66_Node000004_Node000048" title=" " alt="" coords="353,564,388,545,411,525,421,516,436,508,515,485,597,474,675,471,744,473,744,478,675,476,597,479,516,491,438,512,424,520,414,529,391,550,356,568"/>
+<area shape="rect" id="Node000006" href="$structSpan_1_1Quaternion.html#af2a0a1def4d845d030a45c5a26d32a80" title="回転行列から変換 (実装は後述)" alt="" coords="723,106,953,146"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="559,369,631,285,706,207,746,176,787,151,790,155,749,181,710,211,635,289,563,372"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="623,368,658,349,669,338,675,327,681,303,687,279,695,267,706,256,730,243,733,247,710,260,699,270,692,281,686,305,680,329,673,342,662,353,626,373"/>
+<area shape="rect" id="Node000011" href="$structSpan_1_1Matrix4x4.html#a431bf3af613c1029e6de25d64cfda6b7" title=" " alt="" coords="1032,371,1235,396"/>
+<area shape="poly" id="edge14_Node000005_Node000011" title=" " alt="" coords="655,381,1018,381,1018,386,655,386"/>
+<area shape="rect" id="Node000013" href="$structSpan_1_1Vector3.html#a4d84dde93e6520ab1b1407f9d82d881e" title="ベクトルの長さ (Magnitude)" alt="" coords="757,271,919,296"/>
+<area shape="poly" id="edge13_Node000005_Node000013" title=" " alt="" coords="612,368,659,349,673,338,682,327,691,316,707,305,742,292,744,297,709,310,695,320,686,331,676,342,661,354,614,373"/>
+<area shape="rect" id="Node000007" href="$structSpan_1_1Quaternion.html#a93b63ae6c847e74c6d425dfda81b8dd2" title=" " alt="" coords="1035,117,1231,143"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="954,125,1022,126,1022,131,954,130"/>
+<area shape="rect" id="Node000008" href="$structSpan_1_1Quaternion.html#af2cdd440ffc8c055ff354b0199b522d1" title=" " alt="" coords="1026,68,1241,93"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="953,106,1036,93,1037,98,954,111"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="942,143,1054,165,1053,171,941,149"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="932,243,969,256,1012,279,1051,306,1112,359,1108,363,1048,310,1009,283,967,260,931,248"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="1202,393,1322,416,1321,421,1201,399"/>
+<area shape="rect" id="Node000015" href="$structSpan_1_1Vector3.html#a3f30a6301de9087ae83240d2ac0ee1c7" title=" " alt="" coords="761,624,915,649"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="620,634,747,634,747,639,620,639"/>
+<area shape="rect" id="Node000016" href="$structSpan_1_1Vector3.html#a5b73d20c05747047ff35465dd3af4634" title=" " alt="" coords="754,673,922,699"/>
+<area shape="poly" id="edge17_Node000014_Node000016" title=" " alt="" coords="621,646,750,668,749,674,620,651"/>
+<area shape="rect" id="Node000018" href="$classSpan_1_1Archetype.html#aa2e946edc196fefbef2969c9f6092479" title="このアーキタイプが管理している全チャンクのリスト" alt="" coords="735,1189,941,1215"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="630,988,647,996,662,1007,678,1028,686,1050,686,1094,687,1136,694,1156,710,1176,724,1186,721,1190,706,1180,689,1159,682,1137,681,1094,681,1051,674,1030,658,1011,644,1000,628,993"/>
+<area shape="rect" id="Node000019" href="$classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1" title="コンポーネント配列の「チャンク内オフセット」を取得します。" alt="" coords="1016,993,1251,1033"/>
+<area shape="poly" id="edge20_Node000017_Node000019" title=" " alt="" coords="611,995,661,1006,684,1013,708,1018,784,1024,860,1026,1002,1022,1002,1027,860,1032,783,1030,708,1023,683,1018,659,1011,609,1000"/>
+<area shape="rect" id="Node000020" href="$classSpan_1_1ComponentType.html#aa561932b92eabbe74390cb7b0cef0de6" title="型 T に対応する一意のIDを取得します。" alt="" coords="1050,897,1217,937"/>
+<area shape="poly" id="edge21_Node000017_Node000020" title=" " alt="" coords="628,988,786,991,877,986,967,974,1024,959,1076,940,1078,945,1026,964,969,979,878,991,786,996,628,993"/>
+<area shape="rect" id="Node000021" href="$classSpan_1_1Archetype.html#ab576f4f851319859304bfa1fc1ada7ed" title="要求された全てのコンポーネントを持っているか確認します。" alt="" coords="708,1140,968,1165"/>
+<area shape="poly" id="edge22_Node000017_Node000021" title=" " alt="" coords="630,989,662,1007,675,1022,682,1037,686,1069,690,1099,697,1113,710,1127,715,1131,712,1135,706,1131,693,1116,685,1101,681,1069,677,1039,671,1024,658,1011,627,994"/>
+<area shape="rect" id="Node000022" href="$classSpan_1_1World.html#af5701baf0c3d17c6cc72333001c9def1" title=" " alt="" coords="739,1091,937,1116"/>
+<area shape="poly" id="edge23_Node000017_Node000022" title=" " alt="" coords="630,992,661,1006,678,1022,686,1039,694,1054,710,1069,739,1084,737,1089,706,1074,690,1058,682,1041,674,1025,659,1011,627,997"/>
+<area shape="rect" id="Node000023" href="$classSpan_1_1World.html#abf57371dde3a4dcdc84fae0acb3bf88f" title=" " alt="" coords="1016,1091,1251,1116"/>
+<area shape="poly" id="edge24_Node000022_Node000023" title=" " alt="" coords="938,1101,1002,1101,1002,1106,938,1106"/>
+<area shape="rect" id="Node000025" href="$classSpan_1_1Application.html#a0c44e973ca5db1d23a02a2cee66f5c11" title=" " alt="" coords="767,1239,909,1279"/>
+<area shape="poly" id="edge27_Node000024_Node000025" title=" " alt="" coords="634,1040,662,1057,678,1078,686,1100,687,1143,687,1185,695,1206,710,1225,730,1240,754,1249,752,1254,728,1245,706,1229,690,1208,682,1186,682,1143,681,1101,674,1081,658,1061,631,1045"/>
+<area shape="rect" id="Node000026" href="$namespaceSpan.html#a3f4b8561d46e69596ba6a7c3177a92e7" title=" " alt="" coords="1039,1143,1227,1168"/>
+<area shape="poly" id="edge28_Node000025_Node000026" title=" " alt="" coords="909,1245,967,1225,981,1216,990,1206,1000,1195,1015,1185,1053,1169,1055,1174,1017,1190,1003,1199,994,1209,984,1220,969,1230,910,1250"/>
+<area shape="rect" id="Node000028" href="$classSpan_1_1GuiManager.html#ab78e1a284f6d5aced7912c00ab43c559" title="ImGuiコンテキストとバックエンドを初期化します。" alt="" coords="1031,1244,1236,1269"/>
+<area shape="poly" id="edge31_Node000025_Node000028" title=" " alt="" coords="909,1256,1017,1255,1017,1260,909,1261"/>
+<area shape="rect" id="Node000031" href="$classSpan_1_1Input.html#aac6e8f1cf694b484ed01742f2d16d63c" title=" " alt="" coords="1054,1293,1213,1319"/>
+<area shape="poly" id="edge33_Node000025_Node000031" title=" " alt="" coords="910,1268,1041,1289,1040,1294,909,1273"/>
+<area shape="rect" id="Node000032" href="$classSpan_1_1Logger.html#a557d77ccfa31551817d7b28d985866c8" title="ロガーを初期化し、ログファイルを開きます。" alt="" coords="1048,1343,1219,1368"/>
+<area shape="poly" id="edge34_Node000025_Node000032" title=" " alt="" coords="883,1277,946,1303,1017,1329,1048,1337,1046,1342,1015,1334,944,1308,881,1282"/>
+<area shape="rect" id="Node000033" href="$classSpan_1_1Time.html#ae9e018cd0d5a3b34b773e80c750860e7" title="初期化（エンジン起動時）" alt="" coords="1054,1392,1213,1417"/>
+<area shape="poly" id="edge35_Node000025_Node000033" title=" " alt="" coords="864,1277,930,1328,972,1355,1017,1378,1041,1387,1040,1392,1015,1383,970,1360,927,1333,860,1282"/>
+<area shape="rect" id="Node000027" href="$classSpan_1_1Application.html#a095598d0c2e753bfb8d00acee435980f" title="シングルトンインスタンスのポインタ取得 (存在チェック用)" alt="" coords="1323,1168,1484,1193"/>
+<area shape="poly" id="edge29_Node000026_Node000027" title=" " alt="" coords="1228,1161,1309,1169,1309,1174,1227,1167"/>
+<area shape="poly" id="edge30_Node000027_Node000025" title=" " alt="" coords="1323,1194,1016,1235,923,1249,922,1244,1016,1230,1322,1188"/>
+<area shape="rect" id="Node000029" href="$classSpan_1_1GuiManager.html#a79fd10d93a58b741c10bd8c8477afc0a" title="管理対象のエディタパネルを追加します。" alt="" coords="1299,1244,1508,1269"/>
+<area shape="poly" id="edge32_Node000028_Node000029" title=" " alt="" coords="1236,1254,1285,1254,1285,1259,1236,1259"/>
+<area shape="poly" id="edge40_Node000034_Node000020" title=" " alt="" coords="660,862,1037,904,1036,909,660,867"/>
+<area shape="rect" id="Node000035" href="$classSpan_1_1World.html#a44e36e9b91bb78cd486b93a5a02ff1fa" title=" " alt="" coords="735,925,941,965"/>
+<area shape="poly" id="edge37_Node000034_Node000035" title=" " alt="" coords="625,863,661,874,686,889,709,904,746,918,745,923,707,908,683,893,659,879,624,868"/>
+<area shape="poly" id="edge41_Node000034_Node000036" title=" " alt="" coords="660,844,749,839,749,844,660,849"/>
+<area shape="poly" id="edge38_Node000035_Node000019" title=" " alt="" coords="926,962,1033,987,1032,992,925,967"/>
+<area shape="poly" id="edge39_Node000035_Node000020" title=" " alt="" coords="941,932,1036,923,1037,928,941,938"/>
+<area shape="poly" id="edge47_Node000041_Node000020" title=" " alt="" coords="653,758,829,780,910,794,969,809,1005,825,1040,845,1099,886,1096,890,1038,850,1003,830,967,814,909,799,828,785,652,764"/>
+<area shape="poly" id="edge48_Node000041_Node000036" title=" " alt="" coords="600,762,661,781,709,802,764,818,763,823,707,807,659,786,598,767"/>
+<area shape="poly" id="edge53_Node000042_Node000009" title=" " alt="" coords="925,319,967,305,1008,282,1047,256,1108,204,1111,208,1050,260,1011,287,969,310,926,324"/>
+<area shape="poly" id="edge52_Node000042_Node000011" title=" " alt="" coords="913,343,1046,366,1045,371,912,348"/>
+<area shape="poly" id="edge51_Node000042_Node000012" title=" " alt="" coords="926,325,997,325,1079,328,1166,338,1251,355,1318,381,1373,412,1370,416,1315,386,1250,361,1165,343,1079,334,997,330,926,331"/>
+<area shape="poly" id="edge58_Node000044_Node000011" title=" " alt="" coords="570,520,631,488,707,457,787,434,868,416,1018,393,1018,398,869,422,788,440,709,462,633,493,573,525"/>
+<area shape="poly" id="edge57_Node000044_Node000012" title=" " alt="" coords="648,542,771,548,922,547,1087,535,1170,523,1250,506,1316,481,1370,452,1373,456,1318,486,1251,511,1171,528,1088,541,922,553,771,553,648,547"/>
+<area shape="poly" id="edge59_Node000044_Node000015" title=" " alt="" coords="587,546,789,617,787,622,585,551"/>
+<area shape="poly" id="edge62_Node000045_Node000015" title=" " alt="" coords="623,671,749,649,750,654,624,676"/>
+<area shape="poly" id="edge63_Node000045_Node000016" title=" " alt="" coords="646,683,740,683,740,689,646,689"/>
+<area shape="rect" id="Node000046" href="$structSpan_1_1Vector3.html#a12f90de75907473c90edf3495c97d9f0" title=" " alt="" coords="751,723,925,748"/>
+<area shape="poly" id="edge61_Node000045_Node000046" title=" " alt="" coords="624,696,750,718,749,723,623,701"/>
+<area shape="poly" id="edge68_Node000048_Node000011" title=" " alt="" coords="912,469,967,450,981,441,990,432,1000,423,1015,413,1055,397,1056,402,1017,418,1003,427,994,436,984,446,969,455,914,474"/>
+<area shape="poly" id="edge67_Node000048_Node000012" title=" " alt="" coords="918,469,1016,457,1161,444,1294,436,1294,442,1161,450,1016,462,919,475"/>
+<area shape="rect" id="Node000049" href="$structSpan_1_1Quaternion.html#ab13d28932806a3ce57c49bd97afa3335" title=" " alt="" coords="1045,472,1222,497"/>
+<area shape="poly" id="edge69_Node000048_Node000049" title=" " alt="" coords="919,482,1030,482,1030,487,919,487"/>
 </map>

@@ -28,7 +28,7 @@ var namespaceSpan =
     [ "Relationship", "structSpan_1_1Relationship.html", "structSpan_1_1Relationship" ],
     [ "Tag", "structSpan_1_1Tag.html", "structSpan_1_1Tag" ],
     [ "Transform", "structSpan_1_1Transform.html", "structSpan_1_1Transform" ],
-    [ "EditorCamera", "structSpan_1_1EditorCamera.html", null ],
+    [ "EditorCamera", "structSpan_1_1EditorCamera.html", "structSpan_1_1EditorCamera" ],
     [ "Camera", "structSpan_1_1Camera.html", "structSpan_1_1Camera" ],
     [ "MeshFilter", "structSpan_1_1MeshFilter.html", "structSpan_1_1MeshFilter" ],
     [ "MeshRenderer", "structSpan_1_1MeshRenderer.html", "structSpan_1_1MeshRenderer" ],

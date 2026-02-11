@@ -137,6 +137,8 @@ Span::Matrix4x4 連携図</div>
 <tr class="memdesc:a89c2ef7e5d64bc5015019811d0c88dfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">ビュー行列作成 (左手系: Z+が奥)  <br /></td></tr>
 <tr class="memitem:afe0101ccded226fc963d79f61111a6ed" id="r_afe0101ccded226fc963d79f61111a6ed"><td class="memItemLeft">static <a class="el" href="#a431bf3af613c1029e6de25d64cfda6b7">Matrix4x4</a>&#160;</td><td class="memItemRight"><a class="el" href="#afe0101ccded226fc963d79f61111a6ed">PerspectiveFovLH</a> (float fovAngleY, float aspectRatio, float nearZ, float farZ)</td></tr>
 <tr class="memdesc:afe0101ccded226fc963d79f61111a6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">透視投影行列作成 (左手系)  <br /></td></tr>
+<tr class="memitem:a20cfae49484e70f982ecfd6285f694e1" id="r_a20cfae49484e70f982ecfd6285f694e1"><td class="memItemLeft">static <a class="el" href="#a431bf3af613c1029e6de25d64cfda6b7">Matrix4x4</a>&#160;</td><td class="memItemRight"><a class="el" href="#a20cfae49484e70f982ecfd6285f694e1">OrthographicLH</a> (float viewWidth, float viewHeight, float nearZ, float farZ)</td></tr>
+<tr class="memdesc:a20cfae49484e70f982ecfd6285f694e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">平行投影行列作成 (左手系)  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
@@ -270,7 +272,7 @@ Span::Matrix4x4 連携図</div>
 
 <p>行列を 移動・回転・スケール に分解する </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00411">411</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00419">419</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -380,7 +382,7 @@ Span::Matrix4x4 連携図</div>
 
 <p>転置行列 </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00388">388</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00396">396</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -467,11 +469,64 @@ Span::Matrix4x4 連携図</div>
 
 <p>行列同士の掛け算 </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00447">447</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00455">455</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Matrix4x4_a59c1e5b5dede7d7aa342e8938676e3cb_cgraph.svg" width="100%" height="383"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a20cfae49484e70f982ecfd6285f694e1" name="a20cfae49484e70f982ecfd6285f694e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20cfae49484e70f982ecfd6285f694e1">&#9670;&#160;</a></span>OrthographicLH()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a431bf3af613c1029e6de25d64cfda6b7">Matrix4x4</a> Span::Matrix4x4::OrthographicLH </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>viewWidth</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>viewHeight</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>nearZ</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>farZ</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>平行投影行列作成 (左手系) </p>
+
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00386">386</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Matrix4x4_a20cfae49484e70f982ecfd6285f694e1_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1Matrix4x4_a20cfae49484e70f982ecfd6285f694e1_icgraph.svg" width="459" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -693,7 +748,7 @@ Span::Matrix4x4 連携図</div>
 
 <p>転置行列 </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00397">397</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00405">405</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">

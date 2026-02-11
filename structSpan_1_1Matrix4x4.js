@@ -8,6 +8,7 @@ var structSpan_1_1Matrix4x4 =
     [ "Invert", "structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e", null ],
     [ "LookAtLH", "structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa", null ],
     [ "operator*", "structSpan_1_1Matrix4x4.html#a59c1e5b5dede7d7aa342e8938676e3cb", null ],
+    [ "OrthographicLH", "structSpan_1_1Matrix4x4.html#a20cfae49484e70f982ecfd6285f694e1", null ],
     [ "PerspectiveFovLH", "structSpan_1_1Matrix4x4.html#afe0101ccded226fc963d79f61111a6ed", null ],
     [ "Rotation", "structSpan_1_1Matrix4x4.html#a14547be89d9d77aba82522e5180c80df", null ],
     [ "Scale", "structSpan_1_1Matrix4x4.html#ad408a695ef393eb21447241f44ff4d50", null ],

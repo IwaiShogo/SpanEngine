@@ -141,7 +141,7 @@ Span::SceneViewPanel 連携図</div>
 非公開変数類</h2></td></tr>
 <tr class="memitem:a561f609af5563d1057b09bcd19e6ce4d" id="r_a561f609af5563d1057b09bcd19e6ce4d"><td class="memItemLeft">D3D12_GPU_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight"><a class="el" href="#a561f609af5563d1057b09bcd19e6ce4d">textureHandle</a> = {}</td></tr>
 <tr class="memitem:aded0eb748a5cd8b392d58440f6638dc6" id="r_aded0eb748a5cd8b392d58440f6638dc6"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#aded0eb748a5cd8b392d58440f6638dc6">m_PanelSize</a> = { 0.0f, 0.0f }</td></tr>
-<tr class="memitem:a766ea75f29eac5da8b3d5d37558f3e99" id="r_a766ea75f29eac5da8b3d5d37558f3e99"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a766ea75f29eac5da8b3d5d37558f3e99">m_TargetResolution</a> = { 0.0f, 0.0f }</td></tr>
+<tr class="memitem:a766ea75f29eac5da8b3d5d37558f3e99" id="r_a766ea75f29eac5da8b3d5d37558f3e99"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a766ea75f29eac5da8b3d5d37558f3e99">m_TargetResolution</a> = { 1280.0f, 720.0f }</td></tr>
 <tr class="memitem:a44c1da326b24ff90580203cd14ad8e5c" id="r_a44c1da326b24ff90580203cd14ad8e5c"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a44c1da326b24ff90580203cd14ad8e5c">m_GizmoType</a> = 0</td></tr>
 <tr class="memitem:a19a55687fbdbe4ca6dab467631088305" id="r_a19a55687fbdbe4ca6dab467631088305"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a19a55687fbdbe4ca6dab467631088305">m_GizmoMode</a> = 0</td></tr>
 <tr class="memitem:a74f50450ae4ed363aa0869e1e2902f09" id="r_a74f50450ae4ed363aa0869e1e2902f09"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a74f50450ae4ed363aa0869e1e2902f09">m_UseSnap</a> = false</td></tr>
@@ -149,6 +149,8 @@ Span::SceneViewPanel 連携図</div>
 <tr class="memitem:a549c62c002b2b5b780f7827d998fe43b" id="r_a549c62c002b2b5b780f7827d998fe43b"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a549c62c002b2b5b780f7827d998fe43b">m_SnapValueRotate</a> = 45.0f</td></tr>
 <tr class="memitem:a0e4b58942505a091320a3aa4010b24d0" id="r_a0e4b58942505a091320a3aa4010b24d0"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a0e4b58942505a091320a3aa4010b24d0">m_SnapValueScale</a> = 0.5f</td></tr>
 <tr class="memitem:a854145e153644be5a5694c79cd16b00b" id="r_a854145e153644be5a5694c79cd16b00b"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a12c7c5c268a27e26bd54df1f069ed577">AspectRatioType</a>&#160;</td><td class="memItemRight"><a class="el" href="#a854145e153644be5a5694c79cd16b00b">m_AspectRatio</a> = <a class="el" href="namespaceSpan.html#a12c7c5c268a27e26bd54df1f069ed577ab24ce0cd392a5b0b8dedc66c25213594">AspectRatioType::Free</a></td></tr>
+<tr class="memitem:a99cb241c499e0fd12b2ad36fbbbdb003" id="r_a99cb241c499e0fd12b2ad36fbbbdb003"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a99cb241c499e0fd12b2ad36fbbbdb003">m_LastMoveSpeed</a> = -1.0f</td></tr>
+<tr class="memitem:a0c3875fba4e44f1914753f2ba67b14b7" id="r_a0c3875fba4e44f1914753f2ba67b14b7"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a0c3875fba4e44f1914753f2ba67b14b7">m_SpeedDisplayTimer</a> = 0.0f</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 その他の継承メンバ</h2></td></tr>
@@ -230,7 +232,7 @@ Span::SceneViewPanel 連携図</div>
 
 <p>アスペクト比設定に基づいて、画像を表示すべき領域を計算します。 </p>
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00466">466</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00509">509</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -268,7 +270,7 @@ Span::SceneViewPanel 連携図</div>
 
 <p>選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。 </p>
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00097">97</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00147">147</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -307,7 +309,7 @@ Span::SceneViewPanel 連携図</div>
 
 <p>パネル上部にツールバー (ギズモ操作ボタン等) を重ねて表示します。 </p>
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00392">392</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00435">435</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -490,6 +492,30 @@ Span::SceneViewPanel 連携図</div>
 
 </div>
 </div>
+<a id="a99cb241c499e0fd12b2ad36fbbbdb003" name="a99cb241c499e0fd12b2ad36fbbbdb003"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99cb241c499e0fd12b2ad36fbbbdb003">&#9670;&#160;</a></span>m_LastMoveSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::SceneViewPanel::m_LastMoveSpeed = -1.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00097">97</a> 行目に定義があります。</p>
+
+</div>
+</div>
 <a id="aded0eb748a5cd8b392d58440f6638dc6" name="aded0eb748a5cd8b392d58440f6638dc6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aded0eb748a5cd8b392d58440f6638dc6">&#9670;&#160;</a></span>m_PanelSize</h2>
 
@@ -586,6 +612,30 @@ Span::SceneViewPanel 連携図</div>
 
 </div>
 </div>
+<a id="a0c3875fba4e44f1914753f2ba67b14b7" name="a0c3875fba4e44f1914753f2ba67b14b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c3875fba4e44f1914753f2ba67b14b7">&#9670;&#160;</a></span>m_SpeedDisplayTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::SceneViewPanel::m_SpeedDisplayTimer = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00098">98</a> 行目に定義があります。</p>
+
+</div>
+</div>
 <a id="a766ea75f29eac5da8b3d5d37558f3e99" name="a766ea75f29eac5da8b3d5d37558f3e99"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a766ea75f29eac5da8b3d5d37558f3e99">&#9670;&#160;</a></span>m_TargetResolution</h2>
 
@@ -596,7 +646,7 @@ Span::SceneViewPanel 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a> Span::SceneViewPanel::m_TargetResolution = { 0.0f, 0.0f }</td>
+          <td class="memname"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a> Span::SceneViewPanel::m_TargetResolution = { 1280.0f, 720.0f }</td>
         </tr>
       </table>
   </td>

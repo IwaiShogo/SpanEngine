@@ -10,10 +10,12 @@ var classSpan_1_1SceneViewPanel =
     [ "m_AspectRatio", "classSpan_1_1SceneViewPanel.html#a854145e153644be5a5694c79cd16b00b", null ],
     [ "m_GizmoMode", "classSpan_1_1SceneViewPanel.html#a19a55687fbdbe4ca6dab467631088305", null ],
     [ "m_GizmoType", "classSpan_1_1SceneViewPanel.html#a44c1da326b24ff90580203cd14ad8e5c", null ],
+    [ "m_LastMoveSpeed", "classSpan_1_1SceneViewPanel.html#a99cb241c499e0fd12b2ad36fbbbdb003", null ],
     [ "m_PanelSize", "classSpan_1_1SceneViewPanel.html#aded0eb748a5cd8b392d58440f6638dc6", null ],
     [ "m_SnapValueMove", "classSpan_1_1SceneViewPanel.html#ab389085b238eacb3635e03f84a9d6d53", null ],
     [ "m_SnapValueRotate", "classSpan_1_1SceneViewPanel.html#a549c62c002b2b5b780f7827d998fe43b", null ],
     [ "m_SnapValueScale", "classSpan_1_1SceneViewPanel.html#a0e4b58942505a091320a3aa4010b24d0", null ],
+    [ "m_SpeedDisplayTimer", "classSpan_1_1SceneViewPanel.html#a0c3875fba4e44f1914753f2ba67b14b7", null ],
     [ "m_TargetResolution", "classSpan_1_1SceneViewPanel.html#a766ea75f29eac5da8b3d5d37558f3e99", null ],
     [ "m_UseSnap", "classSpan_1_1SceneViewPanel.html#a74f50450ae4ed363aa0869e1e2902f09", null ],
     [ "textureHandle", "classSpan_1_1SceneViewPanel.html#a561f609af5563d1057b09bcd19e6ce4d", null ]
