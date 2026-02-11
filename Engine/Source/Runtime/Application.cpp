@@ -176,6 +176,13 @@ namespace Span
 			// コマンドリスト取得
 			ID3D12GraphicsCommandList* cmd = renderer.BeginFrame();
 
+			graphicsContext.SetRenderTargetToBackBuffer(cmd);
+			GuiManager::BeginFrame();
+
+			// ドッキングスペースの作成
+			ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+			ImGui::DockSpaceOverViewport(dockspace_id, ImGui::GetMainViewport());
+
 			// --- A. シーン描画 (Render to Texture) ---
 			{
 				// バリア: SRV -> RTV
@@ -206,15 +213,7 @@ namespace Span
 
 			// 3. Editor UI Rendering
 			// ------------------------------------------------------------
-			// バックバッファへ戻す
 			graphicsContext.SetRenderTargetToBackBuffer(cmd);
-
-			// フレーム開始
-			GuiManager::BeginFrame();
-
-			// ドッキングスペースの作成
-			ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
-			ImGui::DockSpaceOverViewport(dockspace_id, ImGui::GetMainViewport());
 
 			// シーンビューへのテクスチャセット
 			if (auto scenePanel = GuiManager::GetPanel<SceneViewPanel>())

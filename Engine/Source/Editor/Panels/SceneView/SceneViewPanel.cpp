@@ -87,6 +87,56 @@ namespace Span
 
 				DrawGizmo(Vector2(imageScreenPos.x, imageScreenPos.y), imageSize);
 				DrawToolbarOverlay();
+
+				// 速度変更時のオーバーレイ表示
+				// ============================================================
+				World& world = Application::Get().GetWorld();
+				world.ForEach<EditorCamera>([&](Entity, EditorCamera& ec)
+				{
+					// 速度変化を検知
+						if (m_LastMoveSpeed < 0.0f) m_LastMoveSpeed = ec.MoveSpeed;
+
+						if (std::abs(ec.MoveSpeed - m_LastMoveSpeed) > 0.01f)
+						{
+							m_LastMoveSpeed = ec.MoveSpeed;
+							m_SpeedDisplayTimer = 1.5f;
+						}
+
+						// タイマー更新と描画
+						if (m_SpeedDisplayTimer > 0.0f)
+						{
+							m_SpeedDisplayTimer -= ImGui::GetIO().DeltaTime;
+
+							// アルファフェードアウト
+							float alpha = Span::Clamp(m_SpeedDisplayTimer / 0.5f, 0.0f, 1.0f);
+
+							// 画面中央位置を計算
+							ImVec2 windowCenter = ImGui::GetWindowPos();
+							windowCenter.x += ImGui::GetWindowSize().x * 0.5f;
+							windowCenter.y += ImGui::GetWindowSize().y * 0.5f;
+
+							// テキスト作成
+							char speedText[32];
+							sprintf_s(speedText, "Speed: %.1f x", ec.MoveSpeed);
+
+							// 背景とテキストを描画
+							ImGui::SetNextWindowPos(windowCenter, ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+							ImGui::SetNextWindowBgAlpha(0.6f * alpha);
+
+							// 入力を阻止しない透過ウィンドウ
+							ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoMove;
+
+							ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
+							if (ImGui::Begin("##SpeedOverlay", nullptr, flags))
+							{
+								ImGui::SetWindowFontScale(1.5f);
+								ImGui::Text("%s", speedText);
+								ImGui::SetWindowFontScale(1.0f);
+							}
+							ImGui::End();
+							ImGui::PopStyleVar();
+						}
+				});
 			}
 		}
 		ImGui::End();
@@ -201,15 +251,9 @@ namespace Span
 			// 各軸のスクリーン上の位置と深度を計算
 			for (auto& axis : axes)
 			{
-				XMVECTOR vWorld = axis.Direction.ToXM();
-				XMVECTOR vView = XMVector3TransformNormal(vWorld, cameraView.ToXM());
-				XMFLOAT3 vRes;
-				XMStoreFloat3(&vRes, vView);
-
-				// 深度 (Z値が大きいほど奥)
-				axis.Depth = vRes.z;
+				XMVECTOR vRes = XMVector3TransformNormal(axis.Direction.ToXM(), viewRH.ToXM());
+				axis.Depth = XMVectorGetZ(vRes);
 			}
-
 			// 奥にある順にソート (Zが大きい順)
 			std::sort(axes.begin(), axes.end(), [](const Axis& a, const Axis& b)
 			{
@@ -225,42 +269,58 @@ namespace Span
 			for (const auto& axis : axes)
 			{
 				// スクリーン座標への投影
-				XMVECTOR vWorld = axis.Direction.ToXM();
-				XMVECTOR vView = XMVector3TransformNormal(vWorld, cameraView.ToXM());
+				XMVECTOR vResVec = XMVector3TransformNormal(axis.Direction.ToXM(), viewRH.ToXM());
 				XMFLOAT3 vRes;
-				XMStoreFloat3(&vRes, vView);
+				XMStoreFloat3(&vRes, vResVec);
 
 				// Y軸は反転
 				Vector2 screenDir = { vRes.x, -vRes.y };
-				Vector2 axisPos = { center.x + screenDir.x * radius, center.y + screenDir.y * radius };
+				Vector2 axisEnd = { center.x + screenDir.x * radius, center.y + screenDir.y * radius };
 
-				// 判定用サイズ
-				float circleRadius = (axis.Label.empty()) ? 7.0f : 9.0f;	// ラベルあり(手前)
-
-				// 距離判定
-				float dist = std::sqrt(std::pow(mousePos.x - axisPos.x, 2) + std::pow(mousePos.y - axisPos.y, 2));
-				bool hovered = (dist < circleRadius + 2.0f);	// 少し当たり判定を大きく
+				float hitRadius = (axis.Label.empty()) ? 8.0f : 12.0f;
+				float dist = std::sqrt(std::pow(mousePos.x - axisEnd.x, 2) + std::pow(mousePos.y - axisEnd.y, 2));
+				bool hovered = (dist < hitRadius);
 				if (hovered) anyHovered = true;
 
-				// 線の描画 (中心から円まで)
+				ImU32 col = hovered ? axis.HoverColor : axis.Color;
+
+				// --- 描画処理 ---
 				if (axis.Label.empty())
 				{
-					// 裏側の軸は細い線と小さな円
-					drawList->AddLine(ImVec2(center.x, center.y), ImVec2(axisPos.x, axisPos.y), axis.Color, 2.0f);
-					drawList->AddCircleFilled(ImVec2(axisPos.x, axisPos.y), circleRadius, hovered ? axis.HoverColor : axis.Color);
+					// 裏側の軸 (線と丸)
+					drawList->AddLine(ImVec2(center.x, center.y), ImVec2(axisEnd.x, axisEnd.y), col, 2.0f);
+					drawList->AddCircleFilled(ImVec2(axisEnd.x, axisEnd.y), 6.0f, col);
 				}
 				else
 				{
-					// 表側の軸は太い線と大きな円 + 文字
-					drawList->AddLine(ImVec2(center.x, center.y), ImVec2(axisPos.x, axisPos.y), axis.Color, 3.0f);
-					drawList->AddCircleFilled(ImVec2(axisPos.x, axisPos.y), circleRadius, hovered ? axis.HoverColor : axis.Color);
+					// 表側の軸 (線とコーン)
+					// 線
+					drawList->AddLine(ImVec2(center.x, center.y), ImVec2(axisEnd.x, axisEnd.y), col, 3.0f);
 
-					// 文字 (X, Y, Z)
+					// コーンの描画
+					// 軸方向(screenDir)に対して垂直なベクトルを計算
+					Vector2 perp = { -screenDir.y, screenDir.x };
+					float coneWidth = 8.0f;
+					float coneLength = 14.0f;
+
+					// コーンの底辺の中心
+					Vector2 coneBase = { axisEnd.x - screenDir.x * coneLength, axisEnd.y - screenDir.y * coneLength };
+
+					// 三角形の3点
+					ImVec2 pTip = ImVec2(axisEnd.x, axisEnd.y);
+					ImVec2 pLeft = ImVec2(coneBase.x + perp.x * coneWidth, coneBase.y + perp.y * coneWidth);
+					ImVec2 pRight = ImVec2(coneBase.x - perp.x * coneWidth, coneBase.y - perp.y * coneWidth);
+
+					drawList->AddTriangleFilled(pTip, pLeft, pRight, col);
+
+					// ラベル
 					ImVec2 textSize = ImGui::CalcTextSize(axis.Label.c_str());
-					drawList->AddText(ImVec2(axisPos.x - textSize.x * 0.5f, axisPos.y - textSize.y * 0.5f), IM_COL32(0, 0, 0, 255), axis.Label.c_str());
+					// 少し外側にずらす
+					Vector2 labelPos = { axisEnd.x + screenDir.x * 10.0f, axisEnd.y + screenDir.y * 10.0f };
+					drawList->AddText(ImVec2(labelPos.x - textSize.x * 0.5f, labelPos.y - textSize.y * 0.5f), col, axis.Label.c_str());
 				}
 
-				// クリック処理
+				// --- クリック処理 ---
 				if (hovered && ImGui::IsMouseClicked(ImGuiMouseButton_Left))
 				{
 					if (world.IsAlive(cameraEntity))
@@ -268,24 +328,25 @@ namespace Span
 						Transform* tr = world.GetComponentPtr<Transform>(cameraEntity);
 						if (tr)
 						{
-							// 軸の方向から中心を見る位置へ
-							float distFromOrigin = tr->Position.Length();
-							if (distFromOrigin < 1.0f) distFromOrigin = 10.0f;
+							// 軸の方向を見るように回転する
+							Vector3 lookDir = axis.Direction * -1.0f;
 
-							// クリックされた軸の方向にある位置へ移動
-							Vector3 newPos = axis.Direction * distFromOrigin;
+							// ジンバルロック対策
+							Vector3 up = Vector3::Up;
+							if (std::abs(Vector3::Dot(lookDir.Normalized(), Vector3::Up)) > 0.99f)
+							{
+								// 真上・真下を見る場合は、UpベクトルをZ軸にする
+								up = Vector3::Forward;
+							}
 
-							// 原点(0, 0, 0)を見る回転を計算
-							Matrix4x4 lookAt = Matrix4x4::LookAtLH(newPos, Vector3::Zero, Vector3::Up);
+							Matrix4x4 lookMtx = Matrix4x4::LookAtLH(Vector3::Zero, lookDir, up);
+							Matrix4x4 camWorldRot = lookMtx.Invert();
 
-							// View行列の逆がカメラのWorld行列
-							Matrix4x4 camWorld = lookAt.Invert();
-
+							// 回転のみ適用
 							Vector3 p, s;
 							Quaternion r;
-							if (camWorld.Decompose(p, r, s))
+							if (camWorldRot.Decompose(p, r, s))
 							{
-								tr->Position = newPos;
 								tr->Rotation = r;
 							}
 						}
@@ -293,17 +354,26 @@ namespace Span
 				}
 			}
 
-			// 中心ボタン: Perspective/Ortho 切り替え
+			// --- 中心キューブ: Perspective/Ortho 切り替え ---
 			{
-				float centerRadius = 5.0f;
-				// マウス判定
-				float dist = std::sqrt(std::pow(mousePos.x - center.x, 2) + std::pow(mousePos.y - center.y, 2));
-				bool centerHovered = (dist < centerRadius + 2.0f);
+				float boxSize = 6.0f;
+				ImVec2 boxMin = ImVec2(center.x - boxSize, center.y - boxSize);
+				ImVec2 boxMax = ImVec2(center.x + boxSize, center.y + boxSize);
 
+				bool centerHovered = (mousePos.x >= boxMin.x && mousePos.x <= boxMax.x && mousePos.y >= boxMin.y && mousePos.y <= boxMax.y);
 				ImU32 centerColor = centerHovered ? IM_COL32(220, 220, 220, 255) : IM_COL32(255, 255, 255, 255);
-				drawList->AddCircleFilled(ImVec2(center.x, center.y), centerRadius, centerColor);
 
-				// クリックで切り替え
+				// 立方体っぽく描画
+				drawList->AddRectFilled(boxMin, boxMax, centerColor, 1.0f);
+
+				// 枠線
+				drawList->AddRect(boxMin, boxMax, IM_COL32(100, 100, 100, 255));
+				// 文字表示 ("Persp" / "Iso")
+				const char* modeText = (projType == ProjectionType::Perspective) ? "Persp" : "Iso";
+				ImVec2 txtSz = ImGui::CalcTextSize(modeText);
+				// ギズモの下に表示
+				drawList->AddText(ImVec2(center.x - txtSz.x * 0.5f, center.y + radius + 15.0f), IM_COL32(180, 180, 180, 255), modeText);
+
 				if (centerHovered && ImGui::IsMouseClicked(ImGuiMouseButton_Left))
 				{
 					if (world.IsAlive(cameraEntity))
@@ -311,65 +381,38 @@ namespace Span
 						Camera* camComp = world.GetComponentPtr<Camera>(cameraEntity);
 						if (camComp)
 						{
-							// トグル切り替え
-							if (camComp->Projection == ProjectionType::Perspective)
-								camComp->Projection = ProjectionType::Orthographic;
-							else
-								camComp->Projection = ProjectionType::Perspective;
+							// トグル
+							camComp->Projection = (camComp->Projection == ProjectionType::Perspective)
+								? ProjectionType::Orthographic
+								: ProjectionType::Perspective;
 						}
 					}
-				}
-
-				// ツールチップ
-				if (centerHovered)
-				{
-					ImGui::SetTooltip(projType == ProjectionType::Perspective ? "Switch to Orthographic" : "Switch to Perspective");
 				}
 			}
 		}
 
-		// 4. Object Manipulate
-		// ------------------------------------------------------------
+		// オブジェクト操作ギズモ
 		Entity selectedEntity = SelectionManager::GetPrimary();
 		if (!selectedEntity.IsNull() && world.IsAlive(selectedEntity) && m_GizmoType != -1)
 		{
 			Transform* tc = world.GetComponentPtr<Transform>(selectedEntity);
 			if (tc)
 			{
-				// オブジェクト行列を転置して渡す
 				Matrix4x4 objectMtx = Matrix4x4::TRS(tc->Position, tc->Rotation, tc->Scale);
-
-				// スナップ設定
-				float snapValue = 0.5f;
-				if (m_GizmoType == ImGuizmo::OPERATION::ROTATE) snapValue = m_SnapValueRotate;
-				else if (m_GizmoType == ImGuizmo::OPERATION::SCALE) snapValue = m_SnapValueScale;
-				else snapValue = m_SnapValueMove;
-
-				float snapValues[3] = { snapValue, snapValue, snapValue };
-
-				// IDを設定して競合を防ぐ
+				float snapValues[3] = { 0.5f, 0.5f, 0.5f }; // 必要に応じて設定
 				ImGuizmo::SetID((int)(uint64_t)selectedEntity.ID.Index);
 
-				// ギズモ操作実行
 				ImGuizmo::Manipulate(
-					(float*)&viewRH,
-					(float*)&projRH,
-					(ImGuizmo::OPERATION)m_GizmoType,
-					(ImGuizmo::MODE)m_GizmoMode,
-					(float*)&objectMtx,
-					nullptr,
-					m_UseSnap ? snapValues : nullptr
+					(float*)&viewRH, (float*)&projRH,
+					(ImGuizmo::OPERATION)m_GizmoType, (ImGuizmo::MODE)m_GizmoMode,
+					(float*)&objectMtx, nullptr, m_UseSnap ? snapValues : nullptr
 				);
 
-				// 操作された場合、値を書き戻す
 				if (ImGuizmo::IsUsing())
 				{
-					// 結果を転置して戻す
-					Matrix4x4 newTransform = objectMtx;
-
 					Vector3 p, s;
 					Quaternion r;
-					if (newTransform.Decompose(p, r, s))
+					if (objectMtx.Decompose(p, r, s))
 					{
 						tc->Position = p;
 						tc->Rotation = r;

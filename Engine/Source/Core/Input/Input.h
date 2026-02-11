@@ -86,6 +86,9 @@ namespace Span
 		/// @brief	マウスの移動量を取得します。
 		static Vector2 GetMouseDelta();
 
+		/// @brief	ホイール移動量を取得します。
+		static float GetMouseWheel();
+
 		/// @brief	カーソルの表示を設定します。
 		static void SetCursorVisible(bool visible);
 
@@ -108,6 +111,7 @@ namespace Span
 		static void OnMouseDown(uint32 btn);
 		static void OnMouseUp(uint32 btn);
 		static void OnMouseMove(int x, int y);
+		static void OnMouseWheel(float delta);
 
 		/// @brief	ImGuiがマウスを占有しているか設定する
 		static void SetImGuiWantCapture(bool wantCapture) { imGuiWantCaptureMouse = wantCapture; }
@@ -124,6 +128,7 @@ namespace Span
 		static Vector2 mousePosition;
 		static Vector2 prevMousePosition;
 		static Vector2 mouseDelta;
+		static float mouseWheelDelta;
 
 		static HWND hWnd;
 		static bool isCursorLocked;

@@ -32,7 +32,11 @@ namespace Span
 	public:
 		void OnUpdate() override
 		{
+			auto& app = Application::Get();
 			auto& renderer = Application::Get().GetRenderer();
+
+			// シーンビューのアスペクト比を計算
+			float aspect = app.GetSceneViewAspectRatio();
 
 			GetWorld()->ForEach<Camera, LocalToWorld>(
 				[&](Entity, Camera& cam, LocalToWorld& ltw)
@@ -41,14 +45,21 @@ namespace Span
 					Matrix4x4 viewMatrix = ltw.Value.Invert();
 
 					// 2. Projection行列
-					float aspectRatio = Application::Get().GetSceneViewAspectRatio();
+					Matrix4x4 projMatrix;
 
-					Matrix4x4 projMatrix = Matrix4x4::PerspectiveFovLH(
-						ToRadians(cam.Fov),
-						aspectRatio,
-						cam.NearClip,
-						cam.FarClip
-					);
+					if (cam.Projection == ProjectionType::Perspective)
+					{
+						// 透視投影 (Perspective)
+						projMatrix = Matrix4x4::PerspectiveFovLH(ToRadians(cam.Fov), aspect, cam.NearClip, cam.FarClip);
+					}
+					else
+					{
+						// 平行投影 (Orthographic)
+						float orthoHeight = cam.OrthographicSize;
+						float orthoWidth = orthoHeight * aspect;
+
+						projMatrix = Matrix4x4::OrthographicLH(orthoWidth, orthoHeight, cam.NearClip, cam.FarClip);
+					}
 
 					// 3. レンダラーに適用
 					renderer.SetCamera(viewMatrix, projMatrix);

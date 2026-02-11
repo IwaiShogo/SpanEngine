@@ -47,74 +47,120 @@ namespace Span
 			float dt = Time::GetDeltaTime();
 
 			world.ForEach<EditorCamera, Camera, Transform>(
-				[&](Entity e, EditorCamera&, Camera& cam, Transform& trans)
+				[&](Entity e, EditorCamera& edCam, Camera& cam, Transform& trans)
 				{
-					// --- 操作開始/終了処理 ---
-					// 右クリックが押されている間だけ操作可能
+					// --- Input Status ---
 					bool isRightClicking = Input::GetKey(Key::MouseRight);
+					float wheel = ImGui::GetIO().MouseWheel;
 
-					if (isRightClicking && !m_controlling)
+					// 1. マウスホイール操作 (ズーム / 速度変更)
+					// ============================================================
+					if (wheel != 0.0f)
 					{
-						// 操作開始: カーソルをロックしている間だけ操作可能
-						m_controlling = true;
-						Input::SetLockCursor(true);
+						if (isRightClicking)
+						{
+							// 右クリック中: 移動速度の変更
+							float change = wheel * (edCam.MoveSpeed * 0.1f);
+							if (std::abs(change) < 0.1f) change = (wheel > 0) ? 0.1f : -0.1f;
 
-						// 現在のカメラの角度を yaw/pitch の初期値として取り込む
-						Vector3 currentEuler = trans.Rotation.ToEuler();
-						m_pitch = currentEuler.x;
-						m_yaw = currentEuler.y;
+							edCam.MoveSpeed += change;
+							edCam.MoveSpeed = Clamp(edCam.MoveSpeed, 0.1f, 500.0f);
+						}
+						else
+						{
+							// 通常時: ズーム (前後移動 / Orthoサイズ)
+							if (cam.Projection == ProjectionType::Orthographic)
+							{
+								// Ortho: サイズを変更 (ズームイン/アウト)
+								cam.OrthographicSize -= wheel * edCam.ScrollSensitivity;
+								cam.OrthographicSize = std::max(0.1f, cam.OrthographicSize);
+							}
+							else
+							{
+								// Persp: 前後移動
+								Vector3 forward = trans.GetForward();
+								trans.Position += forward * (wheel * edCam.ScrollSensitivity * 2.0f);
+							}
+						}
 					}
-					else if (!isRightClicking && m_controlling)
-					{
-						// 操作終了: カーソルを解放
-						m_controlling = false;
-						Input::SetLockCursor(false);
-					}
 
-					// --- 操作ロジック (右クリック中のみ実行) ---
-					if (m_controlling)
+					// 2. 右クリックでの視点操作開始/終了
+					// ============================================================
+					if (isRightClicking)
 					{
-						// 1. 視点回転 (Mouse Look)
+						if (!m_controlling)
+						{
+							m_controlling = true;
+							Input::SetLockCursor(true);
+							Vector3 currentEuler = trans.Rotation.ToEuler();
+							m_pitch = currentEuler.x;
+							m_yaw = currentEuler.y;
+						}
+
+						// --- A. 視点回転 ---
 						Vector2 delta = Input::GetMouseDelta();
 						float sensitivity = 0.002f;
 
-						// 値を加算
 						m_yaw += delta.x * sensitivity;
 						m_pitch += delta.y * sensitivity;
 
-						// 角度制限 (-89 ~ 89度)
 						float limit = ToRadians(89.0f);
 						m_pitch = Clamp(m_pitch, -limit, limit);
 
-						// 回転を再構築 (Rollを含まない)
-						// 順序: Pitch(X) -> Yaw(Y) -> Roll(Z=0)
 						trans.Rotation = Quaternion::FromEuler(m_pitch, m_yaw, 0.0f);
+					}
+					else
+					{
+						if (m_controlling)
+						{
+							m_controlling = false;
+							Input::SetLockCursor(false);
+						}
+					}
 
-						// 2. 移動 (WASD + QE)
-						float speed = 5.0f * dt;
-						if (Input::GetKey(Key::LeftShift))
-							speed *= 4.0f;	// Shiftで高速化
+					// 3. 操作ロジック (慣性あり)
+					// ============================================================
+					Vector3 inputDir = Vector3::Zero;
 
-						Vector3 moveDir = Vector3::Zero;
-
+					if (m_controlling)
+					{
 						// カメラの前方・右方ベクトルを取得
 						Vector3 forward = trans.GetForward();
 						Vector3 rigtht = trans.GetRight();
 						Vector3 up = Vector3::Up;	// ワールドY軸基準で上昇させる場合
 
-						if (Input::GetKey(Key::W)) moveDir += forward;	// 前方
-						if (Input::GetKey(Key::S)) moveDir -= forward;	// 後方
-						if (Input::GetKey(Key::D)) moveDir += rigtht;	// 右方
-						if (Input::GetKey(Key::A)) moveDir -= rigtht;	// 左方
-						if (Input::GetKey(Key::E)) moveDir += up;		// 上昇
-						if (Input::GetKey(Key::Q)) moveDir -= up;		// 下降
+						if (Input::GetKey(Key::W)) inputDir += forward;	// 前方
+						if (Input::GetKey(Key::S)) inputDir -= forward;	// 後方
+						if (Input::GetKey(Key::D)) inputDir += rigtht;	// 右方
+						if (Input::GetKey(Key::A)) inputDir -= rigtht;	// 左方
+						if (Input::GetKey(Key::E)) inputDir += up;		// 上昇
+						if (Input::GetKey(Key::Q)) inputDir -= up;		// 下降
 
-						if (moveDir.LengthSquared() > 0.001f)
-						{
-							moveDir.Normalized();
-							trans.Position += moveDir * speed;
-						}
+						if (inputDir.LengthSquared() > 0.001f)
+							inputDir = inputDir.Normalized();
 					}
+
+					// 速度計算
+					if (inputDir.LengthSquared() > 0.001f)
+					{
+						// 入力がある場合: 加速
+						float targetSpeed = edCam.MoveSpeed;
+						if (Input::GetKey(Key::LeftShift)) targetSpeed *= edCam.SprintMultiplier;
+
+						// 現在の速度ベクトルに入力方向への加速を加える
+						Vector3 targetVelocity = inputDir * targetSpeed;
+
+						// Lerpで加速
+						edCam.Velocity = Vector3::Lerp(edCam.Velocity, targetVelocity, edCam.Acceleration * dt);
+					}
+					else
+					{
+						// 入力が無い場合: インスタントストップ
+						edCam.Velocity = Vector3::Zero;
+					}
+
+					// 位置の更新
+					trans.Position += edCam.Velocity * dt;
 				}
 			);
 		}

@@ -11,6 +11,7 @@ namespace Span
 	Vector2 Input::mousePosition = { 0, 0 };
 	Vector2 Input::prevMousePosition = { 0, 0 };
 	Vector2 Input::mouseDelta = { 0, 0 };
+	float Input::mouseWheelDelta = 0.0f;
 
 	HWND Input::hWnd = nullptr;
 	bool Input::isCursorLocked = false;
@@ -154,6 +155,7 @@ namespace Span
 	{
 		// 次のフレームの為に、現在の状態を「過去」として保存
 		memcpy(prevKeyStates, keyStates, sizeof(bool) * 256);
+		mouseWheelDelta = 0.0f;
 	}
 
 	bool Input::GetKey(Key key) { return keyStates[(int)key]; }
@@ -162,6 +164,7 @@ namespace Span
 
 	Vector2 Input::GetMousePosition() { return mousePosition; }
 	Vector2 Input::GetMouseDelta() { return mouseDelta; }
+	float Input::GetMouseWheel() { return mouseWheelDelta; }
 
 	// コントローラーAPI
 	bool Input::GetButton(Key key)
@@ -194,6 +197,10 @@ namespace Span
 	void Input::OnMouseMove(int x, int y)
 	{
 		mousePosition = { (float)x, (float)y };
+	}
+	void Input::OnMouseWheel(float delta)
+	{
+		mouseWheelDelta += delta;
 	}
 
 	// カーソル制御

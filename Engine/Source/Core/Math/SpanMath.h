@@ -381,6 +381,14 @@ namespace Span
 			r.FromXM(XMMatrixPerspectiveFovLH(fovAngleY, aspectRatio, nearZ, farZ));
 			return r;
 		}
+
+		/// @brief	平行投影行列作成 (左手系)
+		static Matrix4x4 OrthographicLH(float viewWidth, float viewHeight, float nearZ, float farZ)
+		{
+			Matrix4x4 r;
+			r.FromXM(XMMatrixOrthographicLH(viewWidth, viewHeight, nearZ, farZ));
+			return r;
+		}
 		/// @}
 
 		/// @name	Operations
