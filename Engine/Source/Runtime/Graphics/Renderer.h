@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	Renderer.h
  * @brief	描画パイプラインの構築と実行。
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -30,7 +30,7 @@ namespace Span
 	/**
 	 * @class	Renderer
 	 * @brief	🖌 描画コマンドの発行を担うクラス。
-	 * 
+	 *
 	 * @details
 	 * - **Root Signature**: シェーダーへの「入力スロット」定義。
 	 * - **PSO (Pipline State Object)**: シェーダー、ブレンド設定、深度設定などをまとめた状態オブジェクト。
@@ -61,8 +61,16 @@ namespace Span
 		 */
 		void DrawMesh(Mesh* mesh, Material* material, const Matrix4x4& worldMatrix);
 
+		/// @brief	Camera
+		/// @{
 		/// @brief	カメラ情報を更新します。
 		void SetCamera(const Matrix4x4& view, const Matrix4x4 projection);
+		void SetViewMatrix(const Matrix4x4& view) { viewMatrix = view; }
+		void SetProjectionMatrix(const Matrix4x4& proj) { projectionMatrix = proj; }
+
+		/// @brief	カメラ位置のセッター
+		void SetCameraPosition(const Vector3& pos) { cameraPosition = pos; }
+		/// @}
 
 		/// @brief	GPUの処理完了を待機する
 		void WaitForGPU();
@@ -74,6 +82,11 @@ namespace Span
 		ID3D12Device* GetDevice() const { return context ? context->GetDevice() : nullptr; }
 		uint32 GetFrameCount() const { return context ? context->GetFrameCount() : 2; }
 		ID3D12CommandQueue* GetCommandQueue() const { return context ? context->GetCommandQueue() : nullptr; }
+
+		// グリッド用リソース初期化
+		bool InitializeGridResources();
+		// グリッド描画コマンド
+		void RenderGrid(ID3D12GraphicsCommandList* cmd);
 
 	private:
 		// 内部初期化関数
@@ -104,6 +117,13 @@ namespace Span
 		// Camera
 		Matrix4x4 viewMatrix;
 		Matrix4x4 projectionMatrix;
+		Vector3 cameraPosition;
+
+		// Grid Resources
+		ComPtr<ID3D12PipelineState> m_gridPSO;
+		ComPtr<ID3D12RootSignature> m_gridRootSignature;
+		Shader* m_gridShader = nullptr;
+		Mesh* m_gridPlane = nullptr;
 
 		// 同期用オブジェクト
 		ComPtr<ID3D12Fence> m_waitFence;

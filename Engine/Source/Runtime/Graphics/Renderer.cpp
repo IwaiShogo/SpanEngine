@@ -56,6 +56,8 @@ namespace Span
 		// 4. 定数バッファ (動的書き換え用)
 		if (!CreateConstantBuffer()) return false;
 
+		if (!InitializeGridResources()) return false;
+
 		SPAN_LOG("Renderer Initialized Successfully!");
 		return true;
 	}
@@ -82,6 +84,11 @@ namespace Span
 		constantBuffer.Reset();
 
 		context = nullptr;
+
+		SAFE_DELETE(m_gridShader);
+		SAFE_DELETE(m_gridPlane);
+		m_gridPSO.Reset();
+		m_gridRootSignature.Reset();
 	}
 
 	ID3D12GraphicsCommandList* Renderer::BeginFrame()
@@ -98,6 +105,22 @@ namespace Span
 		// インデックスのリセット
 		constantBufferIndex = 0;
 
+		// シーン定数バッファの更新
+		struct SceneCB
+		{
+			Matrix4x4 view;
+			Matrix4x4 proj;
+			Vector3 camPos;
+			float padding;
+		};
+		SceneCB sceneData;
+		sceneData.view = viewMatrix.Transpose();
+		sceneData.proj = projectionMatrix.Transpose();
+		sceneData.camPos = cameraPosition;
+
+		memcpy(mappedConstantBuffer + (constantBufferIndex * CB_OBJ_SIZE), &sceneData, sizeof(SceneCB));
+		constantBufferIndex++;
+
 		return commandList;
 	}
 
@@ -105,7 +128,7 @@ namespace Span
 	{
 		if (!context) return;
 		context->EndFrame();
-		commandList = nullptr; // 所有権放棄
+		commandList = nullptr;
 	}
 
 	void Renderer::OnResize(uint32 width, uint32 height)
@@ -349,5 +372,162 @@ namespace Span
 		D3D12_RANGE readRange = { 0, 0 };
 		constantBuffer->Map(0, &readRange, reinterpret_cast<void**>(&mappedConstantBuffer));
 		return true;
+	}
+
+	bool Renderer::InitializeGridResources()
+	{
+		auto device = context->GetDevice();
+
+		// 1. シェーダー読み込み
+		// VSとPSを個別にロードして保持
+		Shader* gridVS = new Shader();
+		if (!gridVS->Load(L"EditorGrid.hlsl", ShaderType::Vertex, "VSMain"))
+		{
+			SPAN_ERROR("Failed to load EditorGrid VS");
+			return false;
+		}
+
+		Shader* gridPS = new Shader();
+		if (!gridPS->Load(L"EditorGrid.hlsl", ShaderType::Pixel, "PSMain"))
+		{
+			SPAN_ERROR("Failed to load EditorGrid PS");
+			delete gridVS;
+			return false;
+		}
+
+		// メンバ変数の m_gridShader には代表して VS を入れておく（終了処理でdeleteするため）
+		// 本来は配列で管理するか、それぞれメンバを持つべきですが、今回は簡易対応
+		m_gridShader = gridVS;
+
+		// 2. Root Signature (カメラCBVのみ)
+		D3D12_ROOT_PARAMETER slotRootParameter[1];
+		slotRootParameter[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		slotRootParameter[0].Descriptor.ShaderRegister = 0; // b0
+		slotRootParameter[0].Descriptor.RegisterSpace = 0;
+		slotRootParameter[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+
+		D3D12_ROOT_SIGNATURE_DESC rootSigDesc = {};
+		rootSigDesc.NumParameters = 1;
+		rootSigDesc.pParameters = slotRootParameter;
+		rootSigDesc.NumStaticSamplers = 0;
+		rootSigDesc.pStaticSamplers = nullptr;
+		rootSigDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
+
+		ComPtr<ID3DBlob> signature;
+		ComPtr<ID3DBlob> error;
+		if (FAILED(D3D12SerializeRootSignature(&rootSigDesc, D3D_ROOT_SIGNATURE_VERSION_1, &signature, &error)))
+			return false;
+
+		if (FAILED(device->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&m_gridRootSignature))))
+			return false;
+
+		// 3. PSO
+		D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
+		psoDesc.pRootSignature = m_gridRootSignature.Get();
+
+		// Shaderクラスのメソッドに合わせて修正
+		psoDesc.VS = gridVS->GetBytecode();
+		psoDesc.PS = gridPS->GetBytecode();
+
+		// Blend State
+		D3D12_BLEND_DESC blendDesc = {};
+		blendDesc.AlphaToCoverageEnable = FALSE;
+		blendDesc.IndependentBlendEnable = FALSE;
+		blendDesc.RenderTarget[0].BlendEnable = TRUE;
+		blendDesc.RenderTarget[0].LogicOpEnable = FALSE;
+		blendDesc.RenderTarget[0].SrcBlend = D3D12_BLEND_SRC_ALPHA;
+		blendDesc.RenderTarget[0].DestBlend = D3D12_BLEND_INV_SRC_ALPHA;
+		blendDesc.RenderTarget[0].BlendOp = D3D12_BLEND_OP_ADD;
+		blendDesc.RenderTarget[0].SrcBlendAlpha = D3D12_BLEND_ONE;
+		blendDesc.RenderTarget[0].DestBlendAlpha = D3D12_BLEND_ZERO;
+		blendDesc.RenderTarget[0].BlendOpAlpha = D3D12_BLEND_OP_ADD;
+		blendDesc.RenderTarget[0].LogicOp = D3D12_LOGIC_OP_NOOP;
+		blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
+		psoDesc.BlendState = blendDesc;
+
+		// Rasterizer State
+		D3D12_RASTERIZER_DESC rasterDesc = {};
+		rasterDesc.FillMode = D3D12_FILL_MODE_SOLID;
+		rasterDesc.CullMode = D3D12_CULL_MODE_NONE; // 両面描画
+		rasterDesc.FrontCounterClockwise = FALSE;
+		rasterDesc.DepthBias = D3D12_DEFAULT_DEPTH_BIAS;
+		rasterDesc.DepthBiasClamp = D3D12_DEFAULT_DEPTH_BIAS_CLAMP;
+		rasterDesc.SlopeScaledDepthBias = D3D12_DEFAULT_SLOPE_SCALED_DEPTH_BIAS;
+		rasterDesc.DepthClipEnable = TRUE;
+		rasterDesc.MultisampleEnable = FALSE;
+		rasterDesc.AntialiasedLineEnable = FALSE;
+		rasterDesc.ForcedSampleCount = 0;
+		rasterDesc.ConservativeRaster = D3D12_CONSERVATIVE_RASTERIZATION_MODE_OFF;
+		psoDesc.RasterizerState = rasterDesc;
+
+		// Depth Stencil State
+		// ★ 修正: 型名を D3D12_DEPTH_STENCIL_DESC に変更
+		D3D12_DEPTH_STENCIL_DESC depthDesc = {};
+		depthDesc.DepthEnable = TRUE;
+		depthDesc.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO; // 書き込みなし (半透明)
+		depthDesc.DepthFunc = D3D12_COMPARISON_FUNC_LESS;
+		depthDesc.StencilEnable = FALSE;
+		psoDesc.DepthStencilState = depthDesc;
+
+		// Input Layout
+		D3D12_INPUT_ELEMENT_DESC inputLayout[] = {
+			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
+			{ "NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
+			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 24, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
+		};
+		psoDesc.InputLayout = { inputLayout, _countof(inputLayout) };
+
+		psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+		psoDesc.NumRenderTargets = 1;
+		psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
+		psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
+		psoDesc.SampleDesc.Count = 1;
+
+		if (FAILED(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&m_gridPSO))))
+		{
+			SPAN_ERROR("Failed to create Grid PSO");
+			delete gridPS;
+			return false;
+		}
+
+		delete gridPS; // PSO作成後は不要
+
+		// 4. 平面メッシュ作成 (巨大な板)
+		float size = 2000.0f;
+		std::vector<Vertex> vertices = {
+			// Pos, Normal, UV
+			{ { -size, 0.0f,  size }, { 0,1,0 }, { 0.0f, 1.0f } }, // 0
+			{ {  size, 0.0f,  size }, { 0,1,0 }, { 1.0f, 1.0f } }, // 1
+			{ { -size, 0.0f, -size }, { 0,1,0 }, { 0.0f, 0.0f } }, // 2
+			// 2つ目の三角形
+			{ { -size, 0.0f, -size }, { 0,1,0 }, { 0.0f, 0.0f } }, // 2
+			{ {  size, 0.0f,  size }, { 0,1,0 }, { 1.0f, 1.0f } }, // 1
+			{ {  size, 0.0f, -size }, { 0,1,0 }, { 1.0f, 0.0f } }, // 3
+		};
+
+		m_gridPlane = new Mesh();
+		// ★ 修正: インデックスなしの2引数版 Initialize を使用
+		m_gridPlane->Initialize(device, vertices);
+
+		return true;
+	}
+
+	void Renderer::RenderGrid(ID3D12GraphicsCommandList* cmd)
+	{
+		if (!m_gridPSO || !m_gridPlane) return;
+
+		cmd->SetPipelineState(m_gridPSO.Get());
+		cmd->SetGraphicsRootSignature(m_gridRootSignature.Get());
+
+		// ★ 修正: SetDescriptorHeaps は不要 (CBVはルートパラメータで直接指定するため)
+		// ID3D12DescriptorHeap* heaps[] = { constantBuffer.Get() };
+		// cmd->SetDescriptorHeaps(1, heaps);
+
+		// 定数バッファのアドレスを設定
+		// 注意: constantBufferIndexはBeginFrameで進んでいるので、ここでは先頭(0番目)のアドレスを使用する
+		// シーン全体用の定数はバッファの先頭にあると仮定
+		cmd->SetGraphicsRootConstantBufferView(0, constantBuffer->GetGPUVirtualAddress());
+
+		m_gridPlane->Draw(cmd);
 	}
 }

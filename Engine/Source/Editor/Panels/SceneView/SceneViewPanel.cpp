@@ -85,57 +85,62 @@ namespace Span
 				// ギズモ有効化
 				ImGuizmo::Enable(true);
 
+				// ギズモの描画
+				// ============================================================
 				DrawGizmo(Vector2(imageScreenPos.x, imageScreenPos.y), imageSize);
+
+				// ツールバー
+				// ============================================================
 				DrawToolbarOverlay();
 
-				// 速度変更時のオーバーレイ表示
+				// 速度変更時のオーバーレイ
 				// ============================================================
 				World& world = Application::Get().GetWorld();
 				world.ForEach<EditorCamera>([&](Entity, EditorCamera& ec)
 				{
 					// 速度変化を検知
-						if (m_LastMoveSpeed < 0.0f) m_LastMoveSpeed = ec.MoveSpeed;
+					if (m_LastMoveSpeed < 0.0f) m_LastMoveSpeed = ec.MoveSpeed;
 
-						if (std::abs(ec.MoveSpeed - m_LastMoveSpeed) > 0.01f)
+					if (std::abs(ec.MoveSpeed - m_LastMoveSpeed) > 0.01f)
+					{
+						m_LastMoveSpeed = ec.MoveSpeed;
+						m_SpeedDisplayTimer = 1.5f;
+					}
+
+					// タイマー更新と描画
+					if (m_SpeedDisplayTimer > 0.0f)
+					{
+						m_SpeedDisplayTimer -= ImGui::GetIO().DeltaTime;
+
+						// アルファフェードアウト
+						float alpha = Span::Clamp(m_SpeedDisplayTimer / 0.5f, 0.0f, 1.0f);
+
+						// 画面中央位置を計算
+						ImVec2 windowCenter = ImGui::GetWindowPos();
+						windowCenter.x += ImGui::GetWindowSize().x * 0.5f;
+						windowCenter.y += ImGui::GetWindowSize().y * 0.5f;
+
+						// テキスト作成
+						char speedText[32];
+						sprintf_s(speedText, "Speed: %.1f x", ec.MoveSpeed);
+
+						// 背景とテキストを描画
+						ImGui::SetNextWindowPos(windowCenter, ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+						ImGui::SetNextWindowBgAlpha(0.6f * alpha);
+
+						// 入力を阻止しない透過ウィンドウ
+						ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoMove;
+
+						ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
+						if (ImGui::Begin("##SpeedOverlay", nullptr, flags))
 						{
-							m_LastMoveSpeed = ec.MoveSpeed;
-							m_SpeedDisplayTimer = 1.5f;
+							ImGui::SetWindowFontScale(1.5f);
+							ImGui::Text("%s", speedText);
+							ImGui::SetWindowFontScale(1.0f);
 						}
-
-						// タイマー更新と描画
-						if (m_SpeedDisplayTimer > 0.0f)
-						{
-							m_SpeedDisplayTimer -= ImGui::GetIO().DeltaTime;
-
-							// アルファフェードアウト
-							float alpha = Span::Clamp(m_SpeedDisplayTimer / 0.5f, 0.0f, 1.0f);
-
-							// 画面中央位置を計算
-							ImVec2 windowCenter = ImGui::GetWindowPos();
-							windowCenter.x += ImGui::GetWindowSize().x * 0.5f;
-							windowCenter.y += ImGui::GetWindowSize().y * 0.5f;
-
-							// テキスト作成
-							char speedText[32];
-							sprintf_s(speedText, "Speed: %.1f x", ec.MoveSpeed);
-
-							// 背景とテキストを描画
-							ImGui::SetNextWindowPos(windowCenter, ImGuiCond_Always, ImVec2(0.5f, 0.5f));
-							ImGui::SetNextWindowBgAlpha(0.6f * alpha);
-
-							// 入力を阻止しない透過ウィンドウ
-							ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoMove;
-
-							ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
-							if (ImGui::Begin("##SpeedOverlay", nullptr, flags))
-							{
-								ImGui::SetWindowFontScale(1.5f);
-								ImGui::Text("%s", speedText);
-								ImGui::SetWindowFontScale(1.0f);
-							}
-							ImGui::End();
-							ImGui::PopStyleVar();
-						}
+						ImGui::End();
+						ImGui::PopStyleVar();
+					}
 				});
 			}
 		}
@@ -435,75 +440,115 @@ namespace Span
 	void SceneViewPanel::DrawToolbarOverlay()
 	{
 		ImVec2 windowPos = ImGui::GetWindowPos();
-		// タイトルバーの高さを考慮
-		float titleBarHeight = ImGui::GetFontSize() + ImGui::GetStyle().FramePadding.y * 2.0f;
-		ImVec2 overlayPos = { windowPos.x + 10.0f, windowPos.y + titleBarHeight + 5.0f };
+		float titleHeight = ImGui::GetFontSize() + ImGui::GetStyle().FramePadding.y * 2.0f;
 
-		ImGui::SetNextWindowPos(overlayPos);
-		ImGui::SetNextWindowBgAlpha(0.35f);
+		// ツールバーの領域定義
+		float toolbarHeight = 36.0f;
+		ImVec2 toolbarPos = { windowPos.x, windowPos.y + titleHeight };
+		ImVec2 toolbarSize = { ImGui::GetWindowWidth(), toolbarHeight };
 
-		// ツールバー用のウィンドウスタイル
-		ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav;
+		// 背景描画
+		ImGui::GetWindowDrawList()->AddRectFilled(
+			toolbarPos,
+			ImVec2(toolbarPos.x + toolbarSize.x, toolbarPos.y + toolbarSize.y),
+			IM_COL32(20, 20, 20, 200)
+		);
+		// 下線
+		ImGui::GetWindowDrawList()->AddLine(
+			ImVec2(toolbarPos.x, toolbarPos.y + toolbarSize.y),
+			ImVec2(toolbarPos.x + toolbarSize.x, toolbarPos.y + toolbarSize.y),
+			IM_COL32(0, 0, 0, 255)
+		);
 
-		if (ImGui::Begin("##SceneToolbar", nullptr, window_flags))
+		// ボタン配置開始
+		ImGui::SetCursorScreenPos(ImVec2(toolbarPos.x + 8.0f, toolbarPos.y + 4.0f));
+
+		// スタイル調整
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(1, 1, 1, 0.1f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(1, 1, 1, 0.2f));
+		ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 2.0f);
+
+		auto ToolbarButton = [&](const char* label, bool active) -> bool
 		{
-			// ボタンの色設定ヘルパー
-			auto ToolbarButton = [&](const char* label, bool active) -> bool
+			if (active)
 			{
-				if (active) ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(1, 0.6f, 0, 1));
-				bool clicked = ImGui::Button(label, ImVec2(24, 24));
-				if (active) ImGui::PopStyleColor();
-				return clicked;
-			};
-
-			// Q: Select (None)
-			if (ToolbarButton("Q", m_GizmoType == -1)) m_GizmoType = -1;
-			ImGui::SameLine();
-			// W: Translate
-			if (ToolbarButton("W", m_GizmoType == ImGuizmo::OPERATION::TRANSLATE)) m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
-			ImGui::SameLine();
-			// E: Rotate
-			if (ToolbarButton("E", m_GizmoType == ImGuizmo::OPERATION::ROTATE)) m_GizmoType = ImGuizmo::OPERATION::ROTATE;
-			ImGui::SameLine();
-			// R: Scale
-			if (ToolbarButton("R", m_GizmoType == ImGuizmo::OPERATION::SCALE)) m_GizmoType = ImGuizmo::OPERATION::SCALE;
-
-			ImGui::SameLine();
-			ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
-			ImGui::SameLine();
-
-			// 座標系 (Local / World)
-			if (ImGui::Button(m_GizmoMode == ImGuizmo::MODE::LOCAL ? "Local" : "World"))
-			{
-				m_GizmoMode = (m_GizmoMode == ImGuizmo::MODE::LOCAL) ? ImGuizmo::MODE::WORLD : ImGuizmo::MODE::LOCAL;
+				ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1, 0.6f, 0, 1));	// アクティブ時: オレンジ
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(1, 1, 1, 0.1f));	// 背景薄く
 			}
-			ImGui::SetItemTooltip("Toggle Local/World Space");
-
-			ImGui::SameLine();
-			ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
-			ImGui::SameLine();
-
-			// スナップ
-			// アイコンの代わりにテキストで簡易表示
-			if (ToolbarButton("S", m_UseSnap)) m_UseSnap = !m_UseSnap;
-			ImGui::SetItemTooltip("Toggle Snap (Hold Ctrl)");
-
-			ImGui::SameLine();
-			ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
-			ImGui::SameLine();
-
-			// アスペクト比コンボボックス
-			const char* aspectItems[] = { "Free", "16:9", "16:10", "4:3", "21:9" };
-			int currentItem = (int)m_AspectRatio;
-			ImGui::PushItemWidth(80);
-			if (ImGui::Combo("##Aspect", &currentItem, aspectItems, IM_ARRAYSIZE(aspectItems)))
+			else
 			{
-				m_AspectRatio = (AspectRatioType)currentItem;
+				ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.9f, 0.9f, 0.9f, 1));
 			}
-			ImGui::PopItemWidth();
 
-			ImGui::End();
+			bool clicked = ImGui::Button(label, ImVec2(28, 28));
+
+			ImGui::PopStyleColor(active ? 2 : 1);
+			return clicked;
+		};
+
+		// ツール群 (左寄せ)
+		if (ToolbarButton("Q", m_GizmoType == -1)) m_GizmoType = -1;
+		ImGui::SetItemTooltip("View Tool (Q)");
+		ImGui::SameLine();
+
+		if (ToolbarButton("W", m_GizmoType == ImGuizmo::OPERATION::TRANSLATE)) m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
+		ImGui::SetItemTooltip("Move Tool (W)");
+		ImGui::SameLine();
+
+		if (ToolbarButton("E", m_GizmoType == ImGuizmo::OPERATION::ROTATE)) m_GizmoType = ImGuizmo::OPERATION::ROTATE;
+		ImGui::SetItemTooltip("Rotate Tool (E)");
+		ImGui::SameLine();
+
+		if (ToolbarButton("R", m_GizmoType == ImGuizmo::OPERATION::SCALE)) m_GizmoType = ImGuizmo::OPERATION::SCALE;
+		ImGui::SetItemTooltip("Scale Tool (R)");
+		ImGui::SameLine();
+
+		// --- セパレータ ---
+		ImGui::SameLine();
+		ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "|");
+		ImGui::SameLine();
+
+		// 座標系 (Local / World)
+		if (ImGui::Button(m_GizmoMode == ImGuizmo::MODE::LOCAL ? "Local" : "Grobal", ImVec2(0, 28)))
+		{
+			m_GizmoMode = (m_GizmoMode == ImGuizmo::MODE::LOCAL) ? ImGuizmo::MODE::WORLD : ImGuizmo::MODE::LOCAL;
 		}
+		ImGui::SetItemTooltip("Toggle Coordinate Space");
+
+		// --- セパレータ ---
+		ImGui::SameLine();
+		ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "|");
+		ImGui::SameLine();
+
+		// スナップ設定
+		if (ToolbarButton("S", m_UseSnap)) m_UseSnap = !m_UseSnap;
+		ImGui::SetItemTooltip("Toggle Snap (Hold Ctrl)");
+
+		// 右寄せグループ
+		float rightWidth = 150.0f;
+		float currentX = ImGui::GetCursorScreenPos().x;
+		float targetX = toolbarPos.x + toolbarSize.x - rightWidth;
+
+		if (targetX > currentX)
+		{
+			ImGui::SameLine();
+			ImGui::SetCursorScreenPos(ImVec2(targetX, toolbarPos.y + 4.0f));
+		}
+
+		ImGui::PushItemWidth(100);
+		ImGui::PopStyleColor(3);
+
+		const char* aspectItems[] = { "Free", "16:9", "16:10", "4:3", "21:9" };
+		int currentItem = (int)m_AspectRatio;
+		ImGui::PushItemWidth(80);
+		if (ImGui::Combo("##Aspect", &currentItem, aspectItems, IM_ARRAYSIZE(aspectItems)))
+		{
+			m_AspectRatio = (AspectRatioType)currentItem;
+		}
+		ImGui::PopItemWidth();
+
+		ImGui::PopStyleVar();
 	}
 
 	void SceneViewPanel::CalculateImageArea(const Vector2& avail, Vector2& outPos, Vector2& outSize)

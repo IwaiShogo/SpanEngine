@@ -1,6 +1,6 @@
 ﻿#include "Application.h"
-#include "Core/Time/Time.h"
-#include "Core/Input/Input.h"
+#include <SpanEngine.h>
+
 #include "Editor/GuiManager.h"
 
 #include "Editor/Panels/SceneView/SceneViewPanel.h"
@@ -206,6 +206,14 @@ namespace Span
 				Input::Update();		// Input update
 				world.UpdateSystems();	// Systems update
 				OnUpdate();				// User update
+
+				world.ForEach<Camera, Transform>([&](Entity, Camera&, Transform& t)
+				{
+					renderer.SetCameraPosition(t.Position);
+				});
+
+				// グリッド描画
+				renderer.RenderGrid(cmd);
 
 				// バリア: RTV -> SRV
 				sceneBuffer.TransitionToShaderResource(cmd);
