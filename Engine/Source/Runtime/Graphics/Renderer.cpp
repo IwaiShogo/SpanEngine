@@ -482,6 +482,7 @@ namespace Span
 		psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
 		psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
 		psoDesc.SampleDesc.Count = 1;
+		psoDesc.SampleMask = UINT_MAX;
 
 		if (FAILED(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&m_gridPSO))))
 		{
@@ -494,15 +495,37 @@ namespace Span
 
 		// 4. 平面メッシュ作成 (巨大な板)
 		float size = 2000.0f;
+
+		// Y軸の太さと高さ
+		float yW = 0.05f;  // 幅
+		float yH = 1000.0f; // 高さ
+
 		std::vector<Vertex> vertices = {
-			// Pos, Normal, UV
-			{ { -size, 0.0f,  size }, { 0,1,0 }, { 0.0f, 1.0f } }, // 0
-			{ {  size, 0.0f,  size }, { 0,1,0 }, { 1.0f, 1.0f } }, // 1
-			{ { -size, 0.0f, -size }, { 0,1,0 }, { 0.0f, 0.0f } }, // 2
-			// 2つ目の三角形
-			{ { -size, 0.0f, -size }, { 0,1,0 }, { 0.0f, 0.0f } }, // 2
-			{ {  size, 0.0f,  size }, { 0,1,0 }, { 1.0f, 1.0f } }, // 1
-			{ {  size, 0.0f, -size }, { 0,1,0 }, { 1.0f, 0.0f } }, // 3
+			// --- 床面 (Normal = 0,1,0) ---
+			{ { -size, 0.0f,  size }, { 0,1,0 }, { 0.0f, 1.0f } },
+			{ {	 size, 0.0f,  size }, { 0,1,0 }, { 1.0f, 1.0f } },
+			{ { -size, 0.0f, -size }, { 0,1,0 }, { 0.0f, 0.0f } },
+			{ { -size, 0.0f, -size }, { 0,1,0 }, { 0.0f, 0.0f } },
+			{ {	 size, 0.0f,  size }, { 0,1,0 }, { 1.0f, 1.0f } },
+			{ {	 size, 0.0f, -size }, { 0,1,0 }, { 1.0f, 0.0f } },
+
+			// --- Y軸 (Normal = 1,0,0) ---
+			// 十字にクロスした板を作成して、どの角度からも見えるようにする
+			// 1枚目 (Z方向に向いた板)
+			{ { -yW, 0.0f, 0.0f }, { 1,0,0 }, { 0,0 } },
+			{ {	 yW, 0.0f, 0.0f }, { 1,0,0 }, { 1,0 } },
+			{ { -yW,  yH, 0.0f }, { 1,0,0 }, { 0,1 } },
+			{ { -yW,  yH, 0.0f }, { 1,0,0 }, { 0,1 } },
+			{ {	 yW, 0.0f, 0.0f }, { 1,0,0 }, { 1,0 } },
+			{ {	 yW,  yH, 0.0f }, { 1,0,0 }, { 1,1 } },
+
+			// 2枚目 (X方向に向いた板)
+			{ { 0.0f, 0.0f, -yW }, { 1,0,0 }, { 0,0 } },
+			{ { 0.0f, 0.0f,	 yW }, { 1,0,0 }, { 1,0 } },
+			{ { 0.0f,  yH, -yW }, { 1,0,0 }, { 0,1 } },
+			{ { 0.0f,  yH, -yW }, { 1,0,0 }, { 0,1 } },
+			{ { 0.0f, 0.0f,	 yW }, { 1,0,0 }, { 1,0 } },
+			{ { 0.0f,  yH,	yW }, { 1,0,0 }, { 1,1 } },
 		};
 
 		m_gridPlane = new Mesh();
