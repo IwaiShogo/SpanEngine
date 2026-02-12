@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['alignment_0',['📏 Memory Layout (16-byte alignment)',['../structSpan_1_1MaterialData.html#autotoc_md106',1,'']]],
-  ['architecture_1',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md83',1,'']]]
+  ['alignment_0',['📏 Memory Layout (16-byte alignment)',['../structSpan_1_1MaterialData.html#autotoc_md108',1,'']]],
+  ['architecture_1',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md85',1,'']]]
 ];

@@ -10,10 +10,11 @@ var searchData=
   ['_7egraphicscontext_7',['~GraphicsContext',['../classSpan_1_1GraphicsContext.html#a528fcfee58e416dd387742f3c474f0ae',1,'Span::GraphicsContext']]],
   ['_7ematerial_8',['~Material',['../classSpan_1_1Material.html#a44f446bbf9cfe99b923dbb4b5cd3279d',1,'Span::Material']]],
   ['_7ememoryarena_9',['~MemoryArena',['../classSpan_1_1MemoryArena.html#a98c173cff3266b95469df1b0e89d958a',1,'Span::MemoryArena']]],
-  ['_7erenderer_10',['~Renderer',['../classSpan_1_1Renderer.html#a677dfbd231380d747cb86cc1a5b2b707',1,'Span::Renderer']]],
-  ['_7erendertarget_11',['~RenderTarget',['../classSpan_1_1RenderTarget.html#a0df47a253f65ec04538aab31b253f8b9',1,'Span::RenderTarget']]],
-  ['_7esystem_12',['~System',['../classSpan_1_1System.html#ad1482788910a7d4c856df9271b1e2ad3',1,'Span::System']]],
-  ['_7etexture_13',['~Texture',['../classSpan_1_1Texture.html#ab0c408c4cd9d3b54cf9d45d3973db89b',1,'Span::Texture']]],
-  ['_7ewindow_14',['~Window',['../classSpan_1_1Window.html#ab6565dd0bab59c4be208e1d5264dd21a',1,'Span::Window']]],
-  ['_7eworld_15',['~World',['../classSpan_1_1World.html#a4add61518853eeb7201e473af671f86b',1,'Span::World']]]
+  ['_7eprojectbrowserpanel_10',['~ProjectBrowserPanel',['../classSpan_1_1ProjectBrowserPanel.html#a8580b6c306f12d1e32aa0cd370bf67b1',1,'Span::ProjectBrowserPanel']]],
+  ['_7erenderer_11',['~Renderer',['../classSpan_1_1Renderer.html#a677dfbd231380d747cb86cc1a5b2b707',1,'Span::Renderer']]],
+  ['_7erendertarget_12',['~RenderTarget',['../classSpan_1_1RenderTarget.html#a0df47a253f65ec04538aab31b253f8b9',1,'Span::RenderTarget']]],
+  ['_7esystem_13',['~System',['../classSpan_1_1System.html#ad1482788910a7d4c856df9271b1e2ad3',1,'Span::System']]],
+  ['_7etexture_14',['~Texture',['../classSpan_1_1Texture.html#ab0c408c4cd9d3b54cf9d45d3973db89b',1,'Span::Texture']]],
+  ['_7ewindow_15',['~Window',['../classSpan_1_1Window.html#ab6565dd0bab59c4be208e1d5264dd21a',1,'Span::Window']]],
+  ['_7eworld_16',['~World',['../classSpan_1_1World.html#a4add61518853eeb7201e473af671f86b',1,'Span::World']]]
 ];

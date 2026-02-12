@@ -9,10 +9,10 @@ var searchData=
   ['up_6',['Up',['../structSpan_1_1Vector3.html#a6b74299445713044602688c5c14aa6d2',1,'Span::Vector3']]],
   ['update_7',['Update',['../classSpan_1_1Input.html#a3487299cd56899d0ddfad97dc6497e4c',1,'Span::Input::Update()'],['../classSpan_1_1Time.html#a990876cca93479473bd4e5e9aa5c8dfc',1,'Span::Time::Update()'],['../classSpan_1_1ConstantBuffer.html#ab85d99301f8c8372ce2d1b4765ee6345',1,'Span::ConstantBuffer::Update()'],['../classSpan_1_1Material.html#a879a957f83f3a9a274b3415614ffe18f',1,'Span::Material::Update()']]],
   ['updatesystems_8',['UpdateSystems',['../classSpan_1_1World.html#a0cf3c16fe3672409ea7d34226220111c',1,'Span::World']]],
-  ['upload_20process_9',['🔄 Upload Process',['../classSpan_1_1Texture.html#autotoc_md111',1,'']]],
+  ['upload_20process_9',['🔄 Upload Process',['../classSpan_1_1Texture.html#autotoc_md113',1,'']]],
   ['uploadbuffer_10',['uploadBuffer',['../classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a',1,'Span::Texture']]],
   ['uploadtexture_11',['UploadTexture',['../classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749',1,'Span::Texture']]],
-  ['usage_12',['Usage',['../classSpan_1_1Input.html#autotoc_md6',1,'📝 Usage'],['../classSpan_1_1EntityBuilder.html#autotoc_md74',1,'📝 Usage'],['../classSpan_1_1ConstantBuffer.html#autotoc_md90',1,'📝 Usage']]],
+  ['usage_12',['Usage',['../classSpan_1_1Input.html#autotoc_md6',1,'📝 Usage'],['../classSpan_1_1EntityBuilder.html#autotoc_md76',1,'📝 Usage'],['../classSpan_1_1ConstantBuffer.html#autotoc_md92',1,'📝 Usage']]],
   ['usedoffset_13',['usedOffset',['../classSpan_1_1MemoryArena.html#a029c90126f890269c315d7c8f34af0bd',1,'Span::MemoryArena']]],
   ['usetexture_14',['useTexture',['../structSpan_1_1MaterialData.html#a9d1bff25941d1bddd389c32dc8c44f1d',1,'Span::MaterialData']]],
   ['uv_15',['uv',['../structSpan_1_1Vertex.html#abac13f64d1c801dba33ee5ffac17474c',1,'Span::Vertex']]]

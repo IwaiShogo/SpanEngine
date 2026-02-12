@@ -16,6 +16,7 @@ var annotated_dup =
       [ "EditorPanel", "classSpan_1_1EditorPanel.html", "classSpan_1_1EditorPanel" ],
       [ "HierarchyPanel", "classSpan_1_1HierarchyPanel.html", "classSpan_1_1HierarchyPanel" ],
       [ "InspectorPanel", "classSpan_1_1InspectorPanel.html", "classSpan_1_1InspectorPanel" ],
+      [ "ProjectBrowserPanel", "classSpan_1_1ProjectBrowserPanel.html", "classSpan_1_1ProjectBrowserPanel" ],
       [ "SceneViewPanel", "classSpan_1_1SceneViewPanel.html", "classSpan_1_1SceneViewPanel" ],
       [ "SelectionManager", "classSpan_1_1SelectionManager.html", "classSpan_1_1SelectionManager" ],
       [ "Application", "classSpan_1_1Application.html", "classSpan_1_1Application" ],

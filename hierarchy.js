@@ -16,6 +16,7 @@ var hierarchy =
     [ "Span::EditorPanel", "classSpan_1_1EditorPanel.html", [
       [ "Span::HierarchyPanel", "classSpan_1_1HierarchyPanel.html", null ],
       [ "Span::InspectorPanel", "classSpan_1_1InspectorPanel.html", null ],
+      [ "Span::ProjectBrowserPanel", "classSpan_1_1ProjectBrowserPanel.html", null ],
       [ "Span::SceneViewPanel", "classSpan_1_1SceneViewPanel.html", null ]
     ] ],
     [ "Span::Entity", "structSpan_1_1Entity.html", null ],

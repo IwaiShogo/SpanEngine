@@ -128,7 +128,7 @@ Span::Entity 連携図</div>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。 </p>
 <p>Entity自体はデータを持たず、単なる <b>64bitのID</b> です 実際のデータ (コンポーネント) は <span class="tt"><a class="el" href="classSpan_1_1World.html" title="🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。">World</a></span> クラスが管理する <span class="tt"><a class="el" href="structSpan_1_1Chunk.html" title="🧱 コンポーネントデータを格納する固定サイズのメモリブロック。">Chunk</a></span> 内に存在します。</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md71"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md73"></a>
 📝 使い方</h3>
 <div class="fragment"><div class="line"><span class="comment">// Entityを作成</span></div>
 <div class="line"><a class="code hl_function" href="#a23ab2fecbbf9cbe9038d074bf442bb04">Entity</a> e = world.CreateEntity&lt;<a class="code hl_struct" href="structSpan_1_1Transform.html">Transform</a>, <a class="code hl_struct" href="structSpan_1_1MeshRenderer.html">MeshRenderer</a>&gt;();</div>

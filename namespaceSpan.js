@@ -18,6 +18,7 @@ var namespaceSpan =
     [ "EditorPanel", "classSpan_1_1EditorPanel.html", "classSpan_1_1EditorPanel" ],
     [ "HierarchyPanel", "classSpan_1_1HierarchyPanel.html", "classSpan_1_1HierarchyPanel" ],
     [ "InspectorPanel", "classSpan_1_1InspectorPanel.html", "classSpan_1_1InspectorPanel" ],
+    [ "ProjectBrowserPanel", "classSpan_1_1ProjectBrowserPanel.html", "classSpan_1_1ProjectBrowserPanel" ],
     [ "SceneViewPanel", "classSpan_1_1SceneViewPanel.html", "classSpan_1_1SceneViewPanel" ],
     [ "SelectionManager", "classSpan_1_1SelectionManager.html", "classSpan_1_1SelectionManager" ],
     [ "Application", "classSpan_1_1Application.html", "classSpan_1_1Application" ],
@@ -181,6 +182,7 @@ var namespaceSpan =
       [ "Pixel", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0", null ]
     ] ],
     [ "_reg", "namespaceSpan.html#a2ffd67e5c0ae55d0918e1924de043da2", null ],
+    [ "_reg", "namespaceSpan.html#a9fdcea43cb9f5a9905f8f0bf11447058", null ],
     [ "_reg", "namespaceSpan.html#aacd65e503c27c8b9ac1d74cc035daa11", null ],
     [ "_reg_hierarchy", "namespaceSpan.html#ab70254134b06676ef075109a54d3c433", null ],
     [ "CalcConstantBufferByteSize", "namespaceSpan.html#a4fe00a2b184d928db9704896aa281ee9", null ],
