@@ -119,30 +119,114 @@
 ---
 
 ### 3.3 Scene View Panel
-ゲーム世界の3Dプレビューと直接操作。
+ゲーム世界の3Dプレビューとオブジェクトの直接操作を行うメインエディタ。
 
-#### **Current Implementation**
-- **Render Target:** DirectX 12のバックバッファをテクスチャとしてImGuiウィンドウ内に描画。
-- **Gizmos:** `ImGuizmo` を統合し、選択オブジェクトの移動・回転・拡大縮小に対応。
-- **Aspect Ratio:** ウィンドウリサイズ時のアスペクト比維持（レターボックス表示）。
+#### **Current Implementation & Specifications**
+
+**1. Rendering Features**
+- **Infinite Grid:** カスタムシェーダー (`EditorGrid.hlsl`) による無限グリッド描画。
+  - カメラ位置に追従し、無限遠までグリッドを表示。
+  - 距離に応じたフェードアウト処理 (Distance Fading)。
+  - 1m単位の細線と10m単位の太線を視認性良くブレンド。
+  - 深度テストを有効化し、オブジェクトの前後関係を正しく描画。
+- **World Origin Axes:** 原点 (0,0,0) を示す太いX軸（赤）とZ軸（青）の表示。
+
+**2. Camera Navigation (Editor Camera)**
+- **Fly Mode:** `Right-Click` ホールド + `W, A, S, D` で前後左右移動、`Q, E` で垂直昇降。
+- **Look Around:** `Right-Click` ホールド + マウス移動で視点回転（Pitch/Yaw）。
+- **Acceleration Control:**
+  - `Shift` キー押下で移動速度を徐々に加速（Smooth Lerp）。
+  - キー離脱時は慣性を残さず即座に停止（Instant Stop）。
+- **Zoom & Speed:**
+  - **Scroll:** 前後移動（Perspective時）または ズームサイズ変更（Orthographic時）。
+  - **Right-Click + Scroll:** カメラの基本移動速度を変更 (0.1x ~ 200.0x)。
+- **Speed Overlay:** 速度変更時、画面中央に現在の倍率（例: `Speed: 5.0x`）を一時的にオーバーレイ表示。
+
+**3. Integrated Toolbar (Overlay UI)**
+パネル上部に統合された操作バー。ウィンドウ領域を消費せず、オーバーレイとして描画。
+- **Tools:** トランスフォーム操作切替 (`Q: View`, `W: Translate`, `E: Rotate`, `R: Scale`)。
+- **Coordinate Space:** 座標系の切り替え (`Local` / `Global`)。
+- **Snapping:** グリッドスナップの有効化 (`S`)。
+- **Aspect Ratio:** 解像度比率の選択 (`Free`, `16:9`, `16:10`, `4:3`, `21:9`)。
+
+**4. Scene Gizmo (Unity-Style)**
+画面右上に配置された3D軸コントローラー。
+- **Axis Navigation:** X/Y/Z軸をクリックすることで、その方向からの視点へカメラをスナップ。現在の注目点（ピボット）を中心に回転。
+- **Projection Toggle:** 中心をクリックして 透視投影 (`Perspective`) と 平行投影 (`Orthographic`) を切り替え。
+- **Dynamic Resizing:** パネルサイズに応じて適切な大きさに自動リサイズ。
 
 #### **Functional Requirements (Planned)**
-- [ ] **View Options Toolbar:** パネル上部にオーバーレイツールバーを配置。
-  - **Draw Mode:** Shaded / Wireframe / Shaded Wireframe 切り替え。
-  - **2D/3D Toggle:** 2D編集モードへの切り替え。
-  - **Lighting:** ライティングのOn/Off。
-  - **Audio:** オーディオ再生のOn/Off。
-- [ ] **Gizmo Settings:**
-  - **Pivot/Center:** 操作中心を「オブジェクト原点」か「バウンディングボックス中心」かで切り替え。
-  - **Local/Global:** 座標系を「ローカル」か「ワールド」かで切り替え。
-  - **Grid Snapping:** 移動・回転のスナップ設定（例: 0.5m単位、15度単位）。
-- [ ] **Overlay UI (Scene GUI):**
-  - 右上にシーンギズモ（View Cube）を表示し、X/Y/Z軸からの視点へワンクリックで切り替え。
-  - グリッド（Grid）と軸（Axis）の描画。
+- [ ] **Visual Feedback:**
+  - **Selection Outline:** 選択中のオブジェクトの輪郭をオレンジ色などで発光表示（ステンシルまたはポストプロセス）。
+  - **Gizmo Icons:** ライト、カメラ、オーディオソースなど、メッシュを持たないオブジェクトのアイコン表示（ビルボード）。
+- [ ] **Advanced Navigation:**
+  - **Frame Selected (F):** 選択中のオブジェクトを画面中央に捉えるフォーカス機能。
+  - **Box Selection:** マウスドラッグによる矩形選択。
+- [ ] **View Options:**
+  - **Shading Mode:** Lit / Unlit / Wireframe の描画モード切り替え。
+  - **Stats Overlay:** FPS、ポリゴン数、ドローコール数の表示。
+  - 
+---
+
+### 3.4 Game View Panel
+実際のゲームプレイ体験をシミュレーションし、最終的なレンダリング結果を確認するビュー。
+
+#### **Current Implementation**
+- **Render Target:** メインカメラ（`MainCamera`タグを持つエンティティ）の視点をレンダリング。
+- **Input Handling:** アクティブ時のみキーボード・マウス入力をゲームロジックへ転送。
+
+#### **Functional Requirements (Planned)**
+
+**1. Playback Controls (Toolbar)**
+パネル上部に統合された再生コントロールバー。
+- [ ] **Play/Stop:** ゲームループの開始と終了。
+- [ ] **Pause/Resume:** ゲームロジックの一時停止と再開（レンダリングは継続）。
+- [ ] **Frame Step:** 一時停止中に1フレームだけ進行させるコマ送り機能（デバッグ用）。
+- [ ] **Error Pause:** エラーログ発生時に自動的に一時停止するトグルスイッチ。
+
+**2. Display & Resolution Settings**
+多様なデバイス環境をエミュレートするための表示設定。
+- [ ] **Aspect Ratio / Resolution Presets:**
+  - `Free Aspect` (ウィンドウサイズ依存)
+  - `1920x1080 (FHD)`, `2560x1440 (QHD)`, `3840x2160 (4K)`
+  - `Portrait (9:16)` (モバイル用)
+  - `Custom` (ユーザー定義)
+- [ ] **Scale Slider:** 解像度を固定したまま、表示倍率を変更するスライダー (0.1x ~ 5.0x)。
+- [ ] **Low Resolution Aspect:** 低解像度レンダリング時のピクセルパーフェクト表示とバイリニア補間の切り替え。
+- [ ] **VSync Toggle:** 垂直同期の強制 On/Off。
+
+**3. Debugging & Visualization (G-Buffer)**
+レンダリングパイプラインの中間バッファを可視化し、グラフィックスデバッグを行う機能。
+- [ ] **Render Mode Dropdown:**
+  - **Final Color:** 最終的なレンダリング結果。
+  - **Albedo:** アルベド（ベースカラー）のみ表示。
+  - **Normal:** ワールド法線/ビュー法線の可視化。
+  - **Depth:** 深度バッファのグレースケール表示 (Linear/Non-Linear)。
+  - **Roughness / Metallic:** PBRマテリアルプロパティの可視化。
+  - **Overdraw:** 描画負荷（オーバードロー）をヒートマップで表示。
+  - **Wireframe:** ポリゴン分割の可視化オーバーレイ。
+- [ ] **Gizmos Toggle:** ゲームビュー内でのデバッグ描画（コライダー枠、レイキャスト線など）の On/Off。
+
+**4. Stats Overlay (Performance HUD)**
+リアルタイムのパフォーマンス情報を半透明オーバーレイで表示。
+- [ ] **Basic Stats:** FPS (Min/Max/Avg), Frame Time (ms)。
+- [ ] **Rendering Stats:** Draw Calls, Triangles, Vertices count。
+- [ ] **Memory:** System RAM, GPU VRAM usage。
+- [ ] **Graph Visualizer:** フレームタイムの推移を簡易グラフでリアルタイム表示。
+
+**5. Device & Network Emulation**
+実機環境やネットワーク環境をシミュレートする機能。
+- [ ] **Network Simulation:** ラグ（Latency）、パケットロス、ジッターを擬似的に発生させるスライダー。
+- [ ] **Input Emulation:** マウス入力をタッチ入力としてエミュレートするトグル。
+- [ ] **Safe Area Guide:** TVやノッチ付きスマホのためのセーフエリアガイド線の表示。
+
+**6. Capture Tools**
+- [ ] **Screenshot:** 現在のフレームを高解像度スクリーンショットとして保存（アルファチャンネル対応）。
+- [ ] **Recorder:** 直近30秒のゲームプレイをGIFまたはMP4として保存。
 
 ---
 
-## 3.4 Project Browser (Content Browser)
+## 3.5 Project Browser (Content Browser)
 アセットファイルの管理システム。[Planned]
 
 #### **Layout**
@@ -161,7 +245,7 @@
 
 ---
 
-## 3.5 Console Panel
+## 3.6 Console Panel
 ログとエラー情報の集約。[Planned]
 
 #### **Features**
@@ -176,7 +260,7 @@
 
 ---
 
-## 3.6 Advanced Creative Tools (Planned) 🚧
+## 3.7 Advanced Creative Tools (Planned) 🚧
 
 UnityのUXを再現するための、高度な専用エディタウィンドウ群。
 
@@ -225,7 +309,7 @@ AIナビゲーション用データの生成設定。
 
 ---
 
-## 3.7 Debug & Profiling Tools (Planned)
+## 3.8 Debug & Profiling Tools (Planned)
 
 ### **System Monitor**
 ECSパフォーマンスの可視化。

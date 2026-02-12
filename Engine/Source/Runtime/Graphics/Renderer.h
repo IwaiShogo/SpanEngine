@@ -33,7 +33,7 @@ namespace Span
 	 *
 	 * @details
 	 * - **Root Signature**: シェーダーへの「入力スロット」定義。
-	 * - **PSO (Pipline State Object)**: シェーダー、ブレンド設定、深度設定などをまとめた状態オブジェクト。
+	 * - **PSO (Pipeline State Object)**: シェーダー、ブレンド設定、深度設定などをまとめた状態オブジェクト。
 	 * - **Descriptor Heap**: テクスチャや定数バッファのカタログ。
 	 */
 	class Renderer

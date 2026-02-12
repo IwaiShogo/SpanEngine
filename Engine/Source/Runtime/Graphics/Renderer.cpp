@@ -379,7 +379,6 @@ namespace Span
 		auto device = context->GetDevice();
 
 		// 1. シェーダー読み込み
-		// VSとPSを個別にロードして保持
 		Shader* gridVS = new Shader();
 		if (!gridVS->Load(L"EditorGrid.hlsl", ShaderType::Vertex, "VSMain"))
 		{
@@ -395,8 +394,6 @@ namespace Span
 			return false;
 		}
 
-		// メンバ変数の m_gridShader には代表して VS を入れておく（終了処理でdeleteするため）
-		// 本来は配列で管理するか、それぞれメンバを持つべきですが、今回は簡易対応
 		m_gridShader = gridVS;
 
 		// 2. Root Signature (カメラCBVのみ)
@@ -424,8 +421,6 @@ namespace Span
 		// 3. PSO
 		D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
 		psoDesc.pRootSignature = m_gridRootSignature.Get();
-
-		// Shaderクラスのメソッドに合わせて修正
 		psoDesc.VS = gridVS->GetBytecode();
 		psoDesc.PS = gridPS->GetBytecode();
 
@@ -461,7 +456,6 @@ namespace Span
 		psoDesc.RasterizerState = rasterDesc;
 
 		// Depth Stencil State
-		// ★ 修正: 型名を D3D12_DEPTH_STENCIL_DESC に変更
 		D3D12_DEPTH_STENCIL_DESC depthDesc = {};
 		depthDesc.DepthEnable = TRUE;
 		depthDesc.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO; // 書き込みなし (半透明)
@@ -491,7 +485,7 @@ namespace Span
 			return false;
 		}
 
-		delete gridPS; // PSO作成後は不要
+		delete gridPS;
 
 		// 4. 平面メッシュ作成 (巨大な板)
 		float size = 2000.0f;
@@ -529,7 +523,6 @@ namespace Span
 		};
 
 		m_gridPlane = new Mesh();
-		// ★ 修正: インデックスなしの2引数版 Initialize を使用
 		m_gridPlane->Initialize(device, vertices);
 
 		return true;
@@ -542,13 +535,6 @@ namespace Span
 		cmd->SetPipelineState(m_gridPSO.Get());
 		cmd->SetGraphicsRootSignature(m_gridRootSignature.Get());
 
-		// ★ 修正: SetDescriptorHeaps は不要 (CBVはルートパラメータで直接指定するため)
-		// ID3D12DescriptorHeap* heaps[] = { constantBuffer.Get() };
-		// cmd->SetDescriptorHeaps(1, heaps);
-
-		// 定数バッファのアドレスを設定
-		// 注意: constantBufferIndexはBeginFrameで進んでいるので、ここでは先頭(0番目)のアドレスを使用する
-		// シーン全体用の定数はバッファの先頭にあると仮定
 		cmd->SetGraphicsRootConstantBufferView(0, constantBuffer->GetGPUVirtualAddress());
 
 		m_gridPlane->Draw(cmd);
