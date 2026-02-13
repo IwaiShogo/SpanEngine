@@ -143,95 +143,96 @@ $(function(){initNavTree('CoreMinimal_8h_source.html','',''); });
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &lt;typeindex&gt;</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &lt;set&gt;</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">// 3. DirectX 12 &amp; Math</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// ============================================================</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#include &lt;d3d12.h&gt;</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#include &lt;dxgi1_6.h&gt;</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#include &lt;d3dcompiler.h&gt;</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#include &lt;DirectXMath.h&gt;</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">// リンクライブラリ</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#pragma (lib, &quot;d3d12.lib&quot;)</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#pragma (lib, &quot;dxgi.lib&quot;)</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#pragma (lib, &quot;d3dcompiler.lib&quot;)</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">// 4. Assimp</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">// ============================================================</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#include &lt;assimp/Importer.hpp&gt;</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#include &lt;assimp/scene.h&gt;</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#include &lt;assimp/postprocess.h&gt;</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">// 5. Common Aliases &amp; Macros</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">// ============================================================</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">using namespace </span>Microsoft::WRL; <span class="comment">// ComPtr用</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">using namespace </span>DirectX;        <span class="comment">// XMMATRIX, XMFLOAT3等用</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>{</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">// Rust/C#風の型エイリアス</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a22abb8fc8284de21b5e9d080a1836f46">   82</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a22abb8fc8284de21b5e9d080a1836f46">int8</a>   = int8_t;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391">   83</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391">int16</a>  = int16_t;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a7d00f8fdfe7b0d03b2a4d5ba06efe594">   84</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a7d00f8fdfe7b0d03b2a4d5ba06efe594">int32</a>  = int32_t;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="namespaceSpan.html#aca56f7fb12365f1c73d650b4b5f84091">   85</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#aca56f7fb12365f1c73d650b4b5f84091">int64</a>  = int64_t;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">   87</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a>  = uint8_t;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a7e9a8de14762ae0ab1c4343b8326fea8">   88</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a7e9a8de14762ae0ab1c4343b8326fea8">uint16</a> = uint16_t;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">   89</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> = uint32_t;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">   90</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">uint64</a> = uint64_t;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">// 8. 便利マクロ / ヘルパー関数</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="comment">// メモリ安全解放 (ポインタ削除)</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00096" data-start="{" data-end="}">
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a825e5690a4fd5830377dd61ef46f22a6">   96</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceSpan.html#a825e5690a4fd5830377dd61ef46f22a6">SafeDelete</a>(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>*&amp; ptr) {</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">if</span> (ptr) {</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keyword">delete</span> ptr;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        }</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// 3. DirectX 12 &amp; Math</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#include &lt;d3d12.h&gt;</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#include &lt;dxgi1_6.h&gt;</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#include &lt;d3dcompiler.h&gt;</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#include &lt;DirectXMath.h&gt;</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">// リンクライブラリ</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#pragma (lib, &quot;d3d12.lib&quot;)</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#pragma (lib, &quot;dxgi.lib&quot;)</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#pragma (lib, &quot;d3dcompiler.lib&quot;)</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">// 4. Assimp</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#include &lt;assimp/Importer.hpp&gt;</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#include &lt;assimp/scene.h&gt;</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#include &lt;assimp/postprocess.h&gt;</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">// 5. Common Aliases &amp; Macros</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">using namespace </span>Microsoft::WRL; <span class="comment">// ComPtr用</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">using namespace </span>DirectX;        <span class="comment">// XMMATRIX, XMFLOAT3等用</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>{</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">// Rust/C#風の型エイリアス</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a22abb8fc8284de21b5e9d080a1836f46">   83</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a22abb8fc8284de21b5e9d080a1836f46">int8</a>   = int8_t;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391">   84</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391">int16</a>  = int16_t;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a7d00f8fdfe7b0d03b2a4d5ba06efe594">   85</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a7d00f8fdfe7b0d03b2a4d5ba06efe594">int32</a>  = int32_t;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="namespaceSpan.html#aca56f7fb12365f1c73d650b4b5f84091">   86</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#aca56f7fb12365f1c73d650b4b5f84091">int64</a>  = int64_t;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">   88</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a>  = uint8_t;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a7e9a8de14762ae0ab1c4343b8326fea8">   89</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a7e9a8de14762ae0ab1c4343b8326fea8">uint16</a> = uint16_t;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">   90</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> = uint32_t;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">   91</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">uint64</a> = uint64_t;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// 8. 便利マクロ / ヘルパー関数</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">// メモリ安全解放 (ポインタ削除)</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a825e5690a4fd5830377dd61ef46f22a6">   97</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceSpan.html#a825e5690a4fd5830377dd61ef46f22a6">SafeDelete</a>(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>*&amp; ptr) {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">if</span> (ptr) {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <span class="keyword">delete</span> ptr;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
 </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">  102</a></span><span class="preprocessor">    #define SAFE_DELETE(x) Span::SafeDelete(x)</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="comment">// COMオブジェクト安全解放 (Release呼び出し)</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a247e3d3dd552cb352584f6b968a21bd1">  106</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceSpan.html#a247e3d3dd552cb352584f6b968a21bd1">SafeRelease</a>(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>*&amp; ptr) {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">if</span> (ptr) {</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            ptr-&gt;Release();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">  103</a></span><span class="preprocessor">    #define SAFE_DELETE(x) Span::SafeDelete(x)</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="comment">// COMオブジェクト安全解放 (Release呼び出し)</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a247e3d3dd552cb352584f6b968a21bd1">  107</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceSpan.html#a247e3d3dd552cb352584f6b968a21bd1">SafeRelease</a>(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>*&amp; ptr) {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordflow">if</span> (ptr) {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            ptr-&gt;Release();</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
 </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="CoreMinimal_8h.html#a2bc549675ca29f733709b4656d22d52a">  112</a></span><span class="preprocessor">    #define SAFE_RELEASE(x) Span::SafeRelease(x)</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="comment">// コピー禁止マクロ (クラス定義内で使用)</span></div>
-<div class="foldopen" id="foldopen00115" data-start="" data-end="">
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="CoreMinimal_8h.html#a8060c7382a7330c4518b5bbccf78d2b7">  115</a></span><span class="preprocessor">    #define SPAN_NON_COPYABLE(ClassName) \</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">        ClassName(const ClassName&amp;) = delete; \</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">        ClassName&amp; operator=(const ClassName&amp;) = delete;</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="CoreMinimal_8h.html#a2bc549675ca29f733709b4656d22d52a">  113</a></span><span class="preprocessor">    #define SAFE_RELEASE(x) Span::SafeRelease(x)</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="comment">// コピー禁止マクロ (クラス定義内で使用)</span></div>
+<div class="foldopen" id="foldopen00116" data-start="" data-end="">
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="CoreMinimal_8h.html#a8060c7382a7330c4518b5bbccf78d2b7">  116</a></span><span class="preprocessor">    #define SPAN_NON_COPYABLE(ClassName) \</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">        ClassName(const ClassName&amp;) = delete; \</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="preprocessor">        ClassName&amp; operator=(const ClassName&amp;) = delete;</span></div>
 </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>}</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">// ログ出力</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="preprocessor">#include &quot;<a class="code" href="Logger_8h.html">Log/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">// ログ出力</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#include &quot;<a class="code" href="Logger_8h.html">Log/Logger.h</a>&quot;</span></div>
 <div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="Logger_8h.html">Logger.h</a></div><div class="ttdoc">デバッグログ出力システム</div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_a1d75ef2516efeab4c895dfc40640e11d"><div class="ttname"><a href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">Span::uint64</a></div><div class="ttdeci">uint64_t uint64</div><div class="ttdef"><b>Definition</b> <a href="#l00090">CoreMinimal.h:90</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_a22abb8fc8284de21b5e9d080a1836f46"><div class="ttname"><a href="namespaceSpan.html#a22abb8fc8284de21b5e9d080a1836f46">Span::int8</a></div><div class="ttdeci">int8_t int8</div><div class="ttdef"><b>Definition</b> <a href="#l00082">CoreMinimal.h:82</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_a247e3d3dd552cb352584f6b968a21bd1"><div class="ttname"><a href="namespaceSpan.html#a247e3d3dd552cb352584f6b968a21bd1">Span::SafeRelease</a></div><div class="ttdeci">void SafeRelease(T *&amp;ptr)</div><div class="ttdef"><b>Definition</b> <a href="#l00106">CoreMinimal.h:106</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="#l00089">CoreMinimal.h:89</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_a5dcbce7d5da8a4232c7603685b85b391"><div class="ttname"><a href="namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391">Span::int16</a></div><div class="ttdeci">int16_t int16</div><div class="ttdef"><b>Definition</b> <a href="#l00083">CoreMinimal.h:83</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_a7d00f8fdfe7b0d03b2a4d5ba06efe594"><div class="ttname"><a href="namespaceSpan.html#a7d00f8fdfe7b0d03b2a4d5ba06efe594">Span::int32</a></div><div class="ttdeci">int32_t int32</div><div class="ttdef"><b>Definition</b> <a href="#l00084">CoreMinimal.h:84</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_a7e9a8de14762ae0ab1c4343b8326fea8"><div class="ttname"><a href="namespaceSpan.html#a7e9a8de14762ae0ab1c4343b8326fea8">Span::uint16</a></div><div class="ttdeci">uint16_t uint16</div><div class="ttdef"><b>Definition</b> <a href="#l00088">CoreMinimal.h:88</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_a825e5690a4fd5830377dd61ef46f22a6"><div class="ttname"><a href="namespaceSpan.html#a825e5690a4fd5830377dd61ef46f22a6">Span::SafeDelete</a></div><div class="ttdeci">void SafeDelete(T *&amp;ptr)</div><div class="ttdef"><b>Definition</b> <a href="#l00096">CoreMinimal.h:96</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a1d75ef2516efeab4c895dfc40640e11d"><div class="ttname"><a href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">Span::uint64</a></div><div class="ttdeci">uint64_t uint64</div><div class="ttdef"><b>Definition</b> <a href="#l00091">CoreMinimal.h:91</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a22abb8fc8284de21b5e9d080a1836f46"><div class="ttname"><a href="namespaceSpan.html#a22abb8fc8284de21b5e9d080a1836f46">Span::int8</a></div><div class="ttdeci">int8_t int8</div><div class="ttdef"><b>Definition</b> <a href="#l00083">CoreMinimal.h:83</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a247e3d3dd552cb352584f6b968a21bd1"><div class="ttname"><a href="namespaceSpan.html#a247e3d3dd552cb352584f6b968a21bd1">Span::SafeRelease</a></div><div class="ttdeci">void SafeRelease(T *&amp;ptr)</div><div class="ttdef"><b>Definition</b> <a href="#l00107">CoreMinimal.h:107</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="#l00090">CoreMinimal.h:90</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a5dcbce7d5da8a4232c7603685b85b391"><div class="ttname"><a href="namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391">Span::int16</a></div><div class="ttdeci">int16_t int16</div><div class="ttdef"><b>Definition</b> <a href="#l00084">CoreMinimal.h:84</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a7d00f8fdfe7b0d03b2a4d5ba06efe594"><div class="ttname"><a href="namespaceSpan.html#a7d00f8fdfe7b0d03b2a4d5ba06efe594">Span::int32</a></div><div class="ttdeci">int32_t int32</div><div class="ttdef"><b>Definition</b> <a href="#l00085">CoreMinimal.h:85</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a7e9a8de14762ae0ab1c4343b8326fea8"><div class="ttname"><a href="namespaceSpan.html#a7e9a8de14762ae0ab1c4343b8326fea8">Span::uint16</a></div><div class="ttdeci">uint16_t uint16</div><div class="ttdef"><b>Definition</b> <a href="#l00089">CoreMinimal.h:89</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a825e5690a4fd5830377dd61ef46f22a6"><div class="ttname"><a href="namespaceSpan.html#a825e5690a4fd5830377dd61ef46f22a6">Span::SafeDelete</a></div><div class="ttdeci">void SafeDelete(T *&amp;ptr)</div><div class="ttdef"><b>Definition</b> <a href="#l00097">CoreMinimal.h:97</a></div></div>
 <div class="ttc" id="anamespaceSpan_html_aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">Span::Key::T</a></div><div class="ttdeci">@ T</div><div class="ttdef"><b>Definition</b> <a href="Input_8h_source.html#l00029">Input.h:29</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_aca56f7fb12365f1c73d650b4b5f84091"><div class="ttname"><a href="namespaceSpan.html#aca56f7fb12365f1c73d650b4b5f84091">Span::int64</a></div><div class="ttdeci">int64_t int64</div><div class="ttdef"><b>Definition</b> <a href="#l00085">CoreMinimal.h:85</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_adab5acbc8bcb80306a5e0c86c7e8ecbd"><div class="ttname"><a href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">Span::uint8</a></div><div class="ttdeci">uint8_t uint8</div><div class="ttdef"><b>Definition</b> <a href="#l00087">CoreMinimal.h:87</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_aca56f7fb12365f1c73d650b4b5f84091"><div class="ttname"><a href="namespaceSpan.html#aca56f7fb12365f1c73d650b4b5f84091">Span::int64</a></div><div class="ttdeci">int64_t int64</div><div class="ttdef"><b>Definition</b> <a href="#l00086">CoreMinimal.h:86</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_adab5acbc8bcb80306a5e0c86c7e8ecbd"><div class="ttname"><a href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">Span::uint8</a></div><div class="ttdeci">uint8_t uint8</div><div class="ttdef"><b>Definition</b> <a href="#l00088">CoreMinimal.h:88</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

@@ -92,6 +92,9 @@ $(function(){initNavTree('ProjectBrowserPanel_8cpp.html','',''); });
   <div class="headertitle"><div class="title">ProjectBrowserPanel.cpp ファイル</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>ProjectBrowserPanelの実装。  
+<a href="#details">[詳解]</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="SpanEngine_8h_source.html">SpanEngine.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="SpanEditor_8h_source.html">SpanEditor.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a>&quot;</code><br />
@@ -110,30 +113,38 @@ ProjectBrowserPanel.cpp の依存先関係図:</div>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 マクロ定義</h2></td></tr>
-<tr class="memitem:a12cf8dc2dd604abb245b1b0651be544c" id="r_a12cf8dc2dd604abb245b1b0651be544c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a12cf8dc2dd604abb245b1b0651be544c">ICON_FA_FOLDER</a>&#160;&#160;&#160;&quot;[D]&quot;</td></tr>
-<tr class="memitem:a554328eb3a45c07b27defc4225934dd6" id="r_a554328eb3a45c07b27defc4225934dd6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a554328eb3a45c07b27defc4225934dd6">ICON_FA_FILE</a>&#160;&#160;&#160;&quot;[F]&quot;</td></tr>
-<tr class="memitem:a5fc4359953b1ae2852c1065d30271842" id="r_a5fc4359953b1ae2852c1065d30271842"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a5fc4359953b1ae2852c1065d30271842">ICON_FA_ARROW_LEFT</a>&#160;&#160;&#160;&quot;&lt;-&quot;</td></tr>
-<tr class="memitem:af564f9c4c473ff0d633ed245d56cdc52" id="r_af564f9c4c473ff0d633ed245d56cdc52"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af564f9c4c473ff0d633ed245d56cdc52">ICON_FA_MAGNIFYING_GLASS</a>&#160;&#160;&#160;&quot;Search&quot;</td></tr>
-<tr class="memitem:abe8adf1e3c5e2b188a4d704b7ec7fd82" id="r_abe8adf1e3c5e2b188a4d704b7ec7fd82"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#abe8adf1e3c5e2b188a4d704b7ec7fd82">ICON_FA_GEAR</a>&#160;&#160;&#160;&quot;Settings&quot;</td></tr>
+<tr class="memitem:a12cf8dc2dd604abb245b1b0651be544c" id="r_a12cf8dc2dd604abb245b1b0651be544c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a12cf8dc2dd604abb245b1b0651be544c">ICON_FA_FOLDER</a>&#160;&#160;&#160;&quot;[DIR]&quot;</td></tr>
+<tr class="memitem:a554328eb3a45c07b27defc4225934dd6" id="r_a554328eb3a45c07b27defc4225934dd6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a554328eb3a45c07b27defc4225934dd6">ICON_FA_FILE</a>&#160;&#160;&#160;&quot;[FILE]&quot;</td></tr>
+<tr class="memitem:ac21173ceae61d2880c027297170f1c8d" id="r_ac21173ceae61d2880c027297170f1c8d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ac21173ceae61d2880c027297170f1c8d">ICON_FA_FILE_CODE</a>&#160;&#160;&#160;&quot;[CODE]&quot;</td></tr>
+<tr class="memitem:a1d22890f336190cd1926bf6773952e73" id="r_a1d22890f336190cd1926bf6773952e73"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1d22890f336190cd1926bf6773952e73">ICON_FA_IMAGE</a>&#160;&#160;&#160;&quot;[IMG]&quot;</td></tr>
+<tr class="memitem:afb106b79d6466d7d46285323337b36c2" id="r_afb106b79d6466d7d46285323337b36c2"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#afb106b79d6466d7d46285323337b36c2">ICON_FA_CUBE</a>&#160;&#160;&#160;&quot;[MESH]&quot;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
-<tr class="memitem:a9fdcea43cb9f5a9905f8f0bf11447058" id="r_a9fdcea43cb9f5a9905f8f0bf11447058"><td class="memItemLeft">static AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1ProjectBrowserPanel.html">ProjectBrowserPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a9fdcea43cb9f5a9905f8f0bf11447058">Span::_reg</a> (&quot;Project&quot;)</td></tr>
+<tr class="memitem:ace337f7269a75fc3dbdba7e232c99043" id="r_ace337f7269a75fc3dbdba7e232c99043"><td class="memItemLeft">static AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1ProjectBrowserPanel.html">ProjectBrowserPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#ace337f7269a75fc3dbdba7e232c99043">Span::_reg</a> (&quot;Project Browser&quot;)</td></tr>
 </table>
-<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">マクロ定義詳解</h2>
-<a id="a5fc4359953b1ae2852c1065d30271842" name="a5fc4359953b1ae2852c1065d30271842"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fc4359953b1ae2852c1065d30271842">&#9670;&#160;</a></span>ICON_FA_ARROW_LEFT</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>ProjectBrowserPanelの実装。 </p>
+<hr  />
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+autotoc_md29</h2>
+<dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
+
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> に定義があります。</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">マクロ定義詳解</h2>
+<a id="afb106b79d6466d7d46285323337b36c2" name="afb106b79d6466d7d46285323337b36c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb106b79d6466d7d46285323337b36c2">&#9670;&#160;</a></span>ICON_FA_CUBE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ICON_FA_ARROW_LEFT&#160;&#160;&#160;&quot;&lt;-&quot;</td>
+          <td class="memname">#define ICON_FA_CUBE&#160;&#160;&#160;&quot;[MESH]&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00014">14</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00033">33</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -144,12 +155,28 @@ ProjectBrowserPanel.cpp の依存先関係図:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ICON_FA_FILE&#160;&#160;&#160;&quot;[F]&quot;</td>
+          <td class="memname">#define ICON_FA_FILE&#160;&#160;&#160;&quot;[FILE]&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00011">11</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00024">24</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ac21173ceae61d2880c027297170f1c8d" name="ac21173ceae61d2880c027297170f1c8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac21173ceae61d2880c027297170f1c8d">&#9670;&#160;</a></span>ICON_FA_FILE_CODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ICON_FA_FILE_CODE&#160;&#160;&#160;&quot;[CODE]&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00027">27</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -160,44 +187,28 @@ ProjectBrowserPanel.cpp の依存先関係図:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ICON_FA_FOLDER&#160;&#160;&#160;&quot;[D]&quot;</td>
+          <td class="memname">#define ICON_FA_FOLDER&#160;&#160;&#160;&quot;[DIR]&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00008">8</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00021">21</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="abe8adf1e3c5e2b188a4d704b7ec7fd82" name="abe8adf1e3c5e2b188a4d704b7ec7fd82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe8adf1e3c5e2b188a4d704b7ec7fd82">&#9670;&#160;</a></span>ICON_FA_GEAR</h2>
+<a id="a1d22890f336190cd1926bf6773952e73" name="a1d22890f336190cd1926bf6773952e73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d22890f336190cd1926bf6773952e73">&#9670;&#160;</a></span>ICON_FA_IMAGE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ICON_FA_GEAR&#160;&#160;&#160;&quot;Settings&quot;</td>
+          <td class="memname">#define ICON_FA_IMAGE&#160;&#160;&#160;&quot;[IMG]&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00020">20</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="af564f9c4c473ff0d633ed245d56cdc52" name="af564f9c4c473ff0d633ed245d56cdc52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af564f9c4c473ff0d633ed245d56cdc52">&#9670;&#160;</a></span>ICON_FA_MAGNIFYING_GLASS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ICON_FA_MAGNIFYING_GLASS&#160;&#160;&#160;&quot;Search&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00017">17</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00030">30</a> 行目に定義があります。</p>
 
 </div>
 </div>
