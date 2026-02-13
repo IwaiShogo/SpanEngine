@@ -49,6 +49,7 @@
 #include <typeindex>
 #include <filesystem>
 #include <set>
+#include <fstream>
 
 // 3. DirectX 12 & Math
 // ============================================================
