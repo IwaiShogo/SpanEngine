@@ -31,6 +31,14 @@ namespace Span
 			// 利用可能なコンテンツ領域を取得
 			ImVec2 avail = ImGui::GetContentRegionAvail();
 
+			bool isHovered = ImGui::IsWindowHovered();
+
+			World& world = Application::Get().GetWorld();
+			world.ForEach<EditorCamera>([isHovered](Entity, EditorCamera& ec)
+			{
+				ec.IsFocused = isHovered;
+			});
+
 			// サイズが極端に小さい場合は更新しない
 			if (avail.x > 1.0f && avail.y > 1.0f)
 			{

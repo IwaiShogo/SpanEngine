@@ -53,6 +53,13 @@ namespace Span
 					bool isRightClicking = Input::GetKey(Key::MouseRight);
 					float wheel = ImGui::GetIO().MouseWheel;
 
+					// フォーカスが無い限り入力を無視する
+					if (!m_controlling && !edCam.IsFocused)
+					{
+						wheel = 0.0f;
+						isRightClicking = false;
+					}
+
 					// 1. マウスホイール操作 (ズーム / 速度変更)
 					// ============================================================
 					if (wheel != 0.0f)

@@ -36,6 +36,9 @@ namespace Span
 
 		// ズーム設定
 		float ScrollSensitivity = 2.0f;		///< ホイール感度
+
+		// カメラが操作入力を受けるか
+		bool IsFocused = false;				///< フォーカスされているかのフラグ
 	};
 }
 
