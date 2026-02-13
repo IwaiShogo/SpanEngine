@@ -46,12 +46,13 @@ var searchData=
   ['isdirty_43',['isDirty',['../classSpan_1_1Material.html#abf31d8c17fe0774fe579b219beb3f61a',1,'Span::Material']]],
   ['isenabled_44',['IsEnabled',['../classSpan_1_1System.html#a779e39d5ac0a7e503b3b26e4950ffff7',1,'Span::System']]],
   ['isenabled_45',['isEnabled',['../classSpan_1_1System.html#afd59f8c8e127b729de4971b3c010f4f5',1,'Span::System']]],
-  ['isinputavailable_46',['IsInputAvailable',['../classSpan_1_1Input.html#a26b62cb0acb4961842496ac0175d5e3a',1,'Span::Input']]],
-  ['isnull_47',['IsNull',['../structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3',1,'Span::Entity']]],
-  ['isopen_48',['IsOpen',['../classSpan_1_1EditorPanel.html#aff44b6072075af32e53652f92d235829',1,'Span::EditorPanel']]],
-  ['isopen_49',['isOpen',['../classSpan_1_1EditorPanel.html#a3c42b2ab17e0708eaeff54afc8058b4a',1,'Span::EditorPanel']]],
-  ['isrunning_50',['isRunning',['../classSpan_1_1Application.html#aa17fc8fd214b0af747aa587b10479e0f',1,'Span::Application']]],
-  ['isselected_51',['IsSelected',['../classSpan_1_1SelectionManager.html#a65d6aa36e0d09b69ff3914e6387d667d',1,'Span::SelectionManager']]],
-  ['istransparent_52',['IsTransparent',['../classSpan_1_1Material.html#abc4ee804b2e3c79090588ddcb26eef8f',1,'Span::Material']]],
-  ['istransparent_53',['isTransparent',['../classSpan_1_1Material.html#ae90bba1bf26fdccd3d01b29db3434529',1,'Span::Material']]]
+  ['isfocused_46',['IsFocused',['../structSpan_1_1EditorCamera.html#ae80ca3bd5f94684bba1149b6592fb004',1,'Span::EditorCamera']]],
+  ['isinputavailable_47',['IsInputAvailable',['../classSpan_1_1Input.html#a26b62cb0acb4961842496ac0175d5e3a',1,'Span::Input']]],
+  ['isnull_48',['IsNull',['../structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3',1,'Span::Entity']]],
+  ['isopen_49',['IsOpen',['../classSpan_1_1EditorPanel.html#aff44b6072075af32e53652f92d235829',1,'Span::EditorPanel']]],
+  ['isopen_50',['isOpen',['../classSpan_1_1EditorPanel.html#a3c42b2ab17e0708eaeff54afc8058b4a',1,'Span::EditorPanel']]],
+  ['isrunning_51',['isRunning',['../classSpan_1_1Application.html#aa17fc8fd214b0af747aa587b10479e0f',1,'Span::Application']]],
+  ['isselected_52',['IsSelected',['../classSpan_1_1SelectionManager.html#a65d6aa36e0d09b69ff3914e6387d667d',1,'Span::SelectionManager']]],
+  ['istransparent_53',['IsTransparent',['../classSpan_1_1Material.html#abc4ee804b2e3c79090588ddcb26eef8f',1,'Span::Material']]],
+  ['istransparent_54',['isTransparent',['../classSpan_1_1Material.html#ae90bba1bf26fdccd3d01b29db3434529',1,'Span::Material']]]
 ];
