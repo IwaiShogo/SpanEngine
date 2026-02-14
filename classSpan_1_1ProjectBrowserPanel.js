@@ -13,13 +13,16 @@ var classSpan_1_1ProjectBrowserPanel =
     [ "DrawTreeNode", "classSpan_1_1ProjectBrowserPanel.html#a3a88cd4c643e90607f339a3491b9f8fd", null ],
     [ "OnImGuiRender", "classSpan_1_1ProjectBrowserPanel.html#ad259c8cf9a9c066350b699f9cd14438e", null ],
     [ "SelectItem", "classSpan_1_1ProjectBrowserPanel.html#ad1b63fbbe232337cd64f286c4511a503", null ],
+    [ "SelectRange", "classSpan_1_1ProjectBrowserPanel.html#a7be9ab8dd13c402c851985182d863a22", null ],
     [ "m_BaseDirectory", "classSpan_1_1ProjectBrowserPanel.html#a1020b99a3ad65684e7c955deb23dba47", null ],
     [ "m_CurrentDirectory", "classSpan_1_1ProjectBrowserPanel.html#a7f2bd1217eb780e5018b78fcfd8df91d", null ],
     [ "m_IsRenaming", "classSpan_1_1ProjectBrowserPanel.html#ae24e0e8866b668ea4811e892a1f09f0d", null ],
+    [ "m_LastSelectedPath", "classSpan_1_1ProjectBrowserPanel.html#abfa1465fc7547cd2f57e006a8f570c40", null ],
     [ "m_Padding", "classSpan_1_1ProjectBrowserPanel.html#ad6c09bce8a3f1287deebe3fb1db5b216", null ],
     [ "m_RenameBuffer", "classSpan_1_1ProjectBrowserPanel.html#ae2b1aec33be54d5221a59c2b7aa1ec1f", null ],
     [ "m_RenamingPath", "classSpan_1_1ProjectBrowserPanel.html#adcae4ceb5ac9845b187e271b99c05e3d", null ],
     [ "m_SearchFilter", "classSpan_1_1ProjectBrowserPanel.html#a471f17027f090444501d614ec6fa4ba4", null ],
     [ "m_SelectedItems", "classSpan_1_1ProjectBrowserPanel.html#a87b8ed0af0c425e5bd80975424455aed", null ],
+    [ "m_ShowDeleteDialog", "classSpan_1_1ProjectBrowserPanel.html#a2c51bb26f5ebbf999136d7400412e70c", null ],
     [ "m_ThumbnailSize", "classSpan_1_1ProjectBrowserPanel.html#a0b0165d5fc5bdd7954e1418a3818b342", null ]
 ];

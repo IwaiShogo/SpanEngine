@@ -64,12 +64,16 @@ var namespaceSpan =
     [ "Attribute", "structSpan_1_1Attribute.html", "structSpan_1_1Attribute" ],
     [ "is_fixed_string", "structSpan_1_1is__fixed__string.html", null ],
     [ "is_fixed_string&lt; FixedString&lt; N &gt; &gt;", "structSpan_1_1is__fixed__string_3_01FixedString_3_01N_01_4_01_4.html", null ],
+    [ "AssetManager", "classSpan_1_1AssetManager.html", "classSpan_1_1AssetManager" ],
+    [ "AssetMetadata", "structSpan_1_1AssetMetadata.html", "structSpan_1_1AssetMetadata" ],
+    [ "AssetSerializer", "classSpan_1_1AssetSerializer.html", "classSpan_1_1AssetSerializer" ],
     [ "RelationshipSystem", "classSpan_1_1RelationshipSystem.html", "classSpan_1_1RelationshipSystem" ],
     [ "TransformSystem", "classSpan_1_1TransformSystem.html", "classSpan_1_1TransformSystem" ],
     [ "CameraSystem", "classSpan_1_1CameraSystem.html", "classSpan_1_1CameraSystem" ],
     [ "EditorCameraSystem", "classSpan_1_1EditorCameraSystem.html", "classSpan_1_1EditorCameraSystem" ],
     [ "RenderingSystem", "classSpan_1_1RenderingSystem.html", "classSpan_1_1RenderingSystem" ],
     [ "AddComponentFunc", "namespaceSpan.html#a6af56d259d0ccdc218e0cadc2dcd8e08", null ],
+    [ "AssetHandle", "namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446", null ],
     [ "ComponentTypeID", "namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd", null ],
     [ "DrawComponentFunc", "namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7", null ],
     [ "int16", "namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391", null ],
@@ -90,6 +94,15 @@ var namespaceSpan =
       [ "Ratio_16_10", "namespaceSpan.html#a12c7c5c268a27e26bd54df1f069ed577a3d61f794341c048f980f231e0341e934", null ],
       [ "Ratio_4_3", "namespaceSpan.html#a12c7c5c268a27e26bd54df1f069ed577a2249910b87640ba46f5344802d56c0e3", null ],
       [ "Ratio_21_9", "namespaceSpan.html#a12c7c5c268a27e26bd54df1f069ed577aaeae148490921d9d4e259e5d3224aca7", null ]
+    ] ],
+    [ "AssetType", "namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25", [
+      [ "None", "namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "Texture", "namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25aa3e8ae43188ae76d38f414b2bdb0077b", null ],
+      [ "Mesh", "namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a710fdb6adb881b408116ef95335e1961", null ],
+      [ "Material", "namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25ad92a8333dd3ccb895cc65f7455b71206", null ],
+      [ "Scene", "namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a9ead0d38e06ec253ca0ecbf6ea56e59b", null ],
+      [ "Script", "namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25af907e651164789346ae0a1e257c462d8", null ],
+      [ "Audio", "namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25ab22f0418e8ac915eb66f829d262d14a2", null ]
     ] ],
     [ "AttributeType", "namespaceSpan.html#a00c320c889b6c836e32c17b01071d257", [
       [ "None", "namespaceSpan.html#a00c320c889b6c836e32c17b01071d257a6adf97f83acf6453d4a6a4b1070f3754", null ],
@@ -196,6 +209,7 @@ var namespaceSpan =
     [ "Min", "namespaceSpan.html#a9822105b4bb016e1c0c580e617bd925a", null ],
     [ "Range", "namespaceSpan.html#a32a1ef503ab803ad2c45c621d77445a0", null ],
     [ "ReadOnly", "namespaceSpan.html#ae2c4e4f20e3caf156005d479cfc4b392", null ],
+    [ "s_Engine", "namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136", null ],
     [ "SafeDelete", "namespaceSpan.html#a825e5690a4fd5830377dd61ef46f22a6", null ],
     [ "SafeRelease", "namespaceSpan.html#a247e3d3dd552cb352584f6b968a21bd1", null ],
     [ "SerializeField", "namespaceSpan.html#ac4fda9227bb1ab31d0d5e2026ed86d53", null ],
@@ -210,5 +224,7 @@ var namespaceSpan =
     [ "NullEntityID", "namespaceSpan.html#a20540fd2e2d58f1722c48a6f1c6d1af5", null ],
     [ "PI", "namespaceSpan.html#af4fc42a9402477b7586237d036530a3d", null ],
     [ "s_LogFile", "namespaceSpan.html#ad4a86ef64ab27c3f27b56242c873941a", null ],
+    [ "s_RandomDevice", "namespaceSpan.html#a086d008b6a56d176facbbfbfde8a1cc5", null ],
+    [ "s_UniformDistribution", "namespaceSpan.html#a3b1c3d559ac672629a7459d8b6513225", null ],
     [ "TwoPI", "namespaceSpan.html#abc577250df3b868bd5b5d433f4c5632b", null ]
 ];

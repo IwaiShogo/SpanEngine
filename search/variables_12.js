@@ -7,7 +7,7 @@ var searchData=
   ['totalsize_4',['totalSize',['../classSpan_1_1MemoryArena.html#a33699b38a54028a95c9db8c277bbe2a4',1,'Span::MemoryArena']]],
   ['totaltime_5',['totalTime',['../classSpan_1_1Time.html#a3a5da90656f8b01cd0ba0e01fc780a98',1,'Span::Time']]],
   ['twopi_6',['TwoPI',['../namespaceSpan.html#abc577250df3b868bd5b5d433f4c5632b',1,'Span']]],
-  ['type_7',['Type',['../structSpan_1_1Attribute.html#ad4f69260b473673f7fa22e5004c8ab99',1,'Span::Attribute']]],
+  ['type_7',['Type',['../structSpan_1_1Attribute.html#ad4f69260b473673f7fa22e5004c8ab99',1,'Span::Attribute::Type'],['../structSpan_1_1AssetMetadata.html#abb9dddb738e37bae8d6ff6fcda1c6c5d',1,'Span::AssetMetadata::Type']]],
   ['typealignments_8',['typeAlignments',['../classSpan_1_1Archetype.html#ae81a33142663f5b2592850d7f866aafe',1,'Span::Archetype']]],
   ['typeids_9',['typeIDs',['../classSpan_1_1Archetype.html#a90e77740e743ce0f3c5b43a863fa84cf',1,'Span::Archetype']]],
   ['typeoffsets_10',['typeOffsets',['../classSpan_1_1Archetype.html#a39093386e673c2224b2fc6bce1366681',1,'Span::Archetype']]],

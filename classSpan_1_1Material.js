@@ -3,13 +3,16 @@ var classSpan_1_1Material =
     [ "Material", "classSpan_1_1Material.html#aacda1f1b21599fe1d49a675745caf175", null ],
     [ "~Material", "classSpan_1_1Material.html#a44f446bbf9cfe99b923dbb4b5cd3279d", null ],
     [ "GetGPUVirtualAddress", "classSpan_1_1Material.html#ac1ad98a9d8fdea157446dfa1ac6b8868", null ],
+    [ "GetPixelShader", "classSpan_1_1Material.html#ac42bf222bab218fa24a4e49fce5ee322", null ],
     [ "GetTexture", "classSpan_1_1Material.html#a86c0606bf8664d79712976e16867afda", null ],
+    [ "GetVertexShader", "classSpan_1_1Material.html#a417116d19a0bc680282a569baacae326", null ],
     [ "Initialize", "classSpan_1_1Material.html#a2b920fe1642aae29b0f2aca9b09cbeba", null ],
     [ "IsTransparent", "classSpan_1_1Material.html#abc4ee804b2e3c79090588ddcb26eef8f", null ],
     [ "SetAlbedo", "classSpan_1_1Material.html#ae11ac1235816e7bb51406afe24266196", null ],
     [ "SetMetallic", "classSpan_1_1Material.html#ad9f2e51ef13aa3b5d4da98284c1c6427", null ],
     [ "SetOpacity", "classSpan_1_1Material.html#ad4ecfde2490617f3c651be84ea8d5351", null ],
     [ "SetRoughness", "classSpan_1_1Material.html#a454c1fcdbe56044eff6d9f3b91b0823d", null ],
+    [ "SetShaders", "classSpan_1_1Material.html#a735426c2b29d6e13732546a5dcac5810", null ],
     [ "SetTexture", "classSpan_1_1Material.html#ad4a62723096dafd4efb9881f055a3c26", null ],
     [ "Shutdown", "classSpan_1_1Material.html#abc41360520a1ece7ca832b6695c51089", null ],
     [ "Update", "classSpan_1_1Material.html#a879a957f83f3a9a274b3415614ffe18f", null ],
@@ -17,5 +20,7 @@ var classSpan_1_1Material =
     [ "data", "classSpan_1_1Material.html#a780f39af36119c4dfcadb79eabfb1589", null ],
     [ "isDirty", "classSpan_1_1Material.html#abf31d8c17fe0774fe579b219beb3f61a", null ],
     [ "isTransparent", "classSpan_1_1Material.html#ae90bba1bf26fdccd3d01b29db3434529", null ],
-    [ "texture", "classSpan_1_1Material.html#a1dfcd44822116041f894a4a132076642", null ]
+    [ "pixelShader", "classSpan_1_1Material.html#a22ed086b40c97544e2c2b54cd987c068", null ],
+    [ "texture", "classSpan_1_1Material.html#a1dfcd44822116041f894a4a132076642", null ],
+    [ "vertexShader", "classSpan_1_1Material.html#a336bd3cb95f02a67f6103a950df586f8", null ]
 ];

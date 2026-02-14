@@ -31,7 +31,18 @@ var searchData=
   ['archetypesignature_28',['ArchetypeSignature',['../classSpan_1_1ArchetypeSignature.html',1,'Span']]],
   ['architecture_29',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md87',1,'']]],
   ['aspectratiotype_30',['AspectRatioType',['../namespaceSpan.html#a12c7c5c268a27e26bd54df1f069ed577',1,'Span']]],
-  ['attribute_31',['Attribute',['../structSpan_1_1Attribute.html',1,'Span::Attribute'],['../structSpan_1_1Attribute.html#aa27cc6c99166f9c479afbdf01ee0f781',1,'Span::Attribute::Attribute()']]],
-  ['attributetype_32',['AttributeType',['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257',1,'Span']]],
-  ['axis_33',['Axis',['../namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803d',1,'Span']]]
+  ['assethandle_31',['AssetHandle',['../namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446',1,'Span']]],
+  ['assetmanager_32',['AssetManager',['../classSpan_1_1AssetManager.html',1,'Span::AssetManager'],['../classSpan_1_1AssetManager.html#a9d65496b728f9a4fef2a5334d5a8ad56',1,'Span::AssetManager::AssetManager()']]],
+  ['assetmanager_2ecpp_33',['AssetManager.cpp',['../AssetManager_8cpp.html',1,'']]],
+  ['assetmanager_2eh_34',['AssetManager.h',['../AssetManager_8h.html',1,'']]],
+  ['assetmetadata_35',['AssetMetadata',['../structSpan_1_1AssetMetadata.html',1,'Span']]],
+  ['assetmetadata_2eh_36',['AssetMetadata.h',['../AssetMetadata_8h.html',1,'']]],
+  ['assetserializer_37',['AssetSerializer',['../classSpan_1_1AssetSerializer.html',1,'Span']]],
+  ['assetserializer_2ecpp_38',['AssetSerializer.cpp',['../AssetSerializer_8cpp.html',1,'']]],
+  ['assetserializer_2eh_39',['AssetSerializer.h',['../AssetSerializer_8h.html',1,'']]],
+  ['assettype_40',['AssetType',['../namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25',1,'Span']]],
+  ['attribute_41',['Attribute',['../structSpan_1_1Attribute.html',1,'Span::Attribute'],['../structSpan_1_1Attribute.html#aa27cc6c99166f9c479afbdf01ee0f781',1,'Span::Attribute::Attribute()']]],
+  ['attributetype_42',['AttributeType',['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257',1,'Span']]],
+  ['audio_43',['Audio',['../namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25ab22f0418e8ac915eb66f829d262d14a2',1,'Span']]],
+  ['axis_44',['Axis',['../namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803d',1,'Span']]]
 ];

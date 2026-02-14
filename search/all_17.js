@@ -10,7 +10,8 @@ var searchData=
   ['vertexbuffer_7',['vertexBuffer',['../classSpan_1_1Mesh.html#ab5326828b5a500cf38a357fcfeee3381',1,'Span::Mesh']]],
   ['vertexbufferview_8',['vertexBufferView',['../classSpan_1_1Mesh.html#a2b9c77cd3fe0c597c5c32d950a92f56d',1,'Span::Mesh']]],
   ['vertexcount_9',['vertexCount',['../classSpan_1_1Mesh.html#a7a4a75126636a829da28adff5d416a50',1,'Span::Mesh']]],
-  ['viewmatrix_10',['viewMatrix',['../classSpan_1_1Renderer.html#af03a4b1bbb7c73258554f363991196c5',1,'Span::Renderer']]],
-  ['viewport_11',['viewport',['../classSpan_1_1GraphicsContext.html#a05b5966d30bb15770e8104d7d0183f1b',1,'Span::GraphicsContext']]],
-  ['vs_12',['vs',['../classSpan_1_1Renderer.html#ab1be30cd3501208577f218d42903df76',1,'Span::Renderer']]]
+  ['vertexshader_10',['vertexShader',['../classSpan_1_1Material.html#a336bd3cb95f02a67f6103a950df586f8',1,'Span::Material']]],
+  ['viewmatrix_11',['viewMatrix',['../classSpan_1_1Renderer.html#af03a4b1bbb7c73258554f363991196c5',1,'Span::Renderer']]],
+  ['viewport_12',['viewport',['../classSpan_1_1GraphicsContext.html#a05b5966d30bb15770e8104d7d0183f1b',1,'Span::GraphicsContext']]],
+  ['vs_13',['vs',['../classSpan_1_1Renderer.html#ab1be30cd3501208577f218d42903df76',1,'Span::Renderer']]]
 ];

@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Resource/AssetSerializer.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('AssetSerializer_8cpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">AssetSerializer.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="AssetSerializer_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    AssetSerializer.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   AssetSerializerの実装。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="SpanEngine_8h.html">SpanEngine.h</a>&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="AssetSerializer_8h.html">AssetSerializer.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// ランダムのGUID生成器</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a086d008b6a56d176facbbfbfde8a1cc5">   18</a></span>    <span class="keyword">static</span> std::random_device <a class="code hl_variable" href="namespaceSpan.html#a086d008b6a56d176facbbfbfde8a1cc5">s_RandomDevice</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136">   19</a></span>    <span class="keyword">static</span> std::mt19937_64 <a class="code hl_function" href="namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136">s_Engine</a>(<a class="code hl_variable" href="namespaceSpan.html#a086d008b6a56d176facbbfbfde8a1cc5">s_RandomDevice</a>());</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespaceSpan.html#a3b1c3d559ac672629a7459d8b6513225">   20</a></span>    <span class="keyword">static</span> std::uniform_int_distribution&lt;uint64_t&gt; <a class="code hl_variable" href="namespaceSpan.html#a3b1c3d559ac672629a7459d8b6513225">s_UniformDistribution</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classSpan_1_1AssetSerializer.html#adea72d3eb1434b36473f6e0d38396451">   23</a></span>    <a class="code hl_struct" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a> <a class="code hl_function" href="classSpan_1_1AssetSerializer.html#adea72d3eb1434b36473f6e0d38396451">Span::AssetSerializer::LoadOrCreateMetadata</a>(<span class="keyword">const</span> std::filesystem::path&amp; assetPath)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        std::filesystem::path metaPath = assetPath;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        metaPath += <span class="stringliteral">&quot;.meta&quot;</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_struct" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a> metadata;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="comment">// 1. 既存の.metaを読み込む</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">if</span> (std::filesystem::exists(metaPath))</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            std::ifstream stream(metaPath);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordflow">if</span> (stream.is_open())</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                std::string line;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                <span class="keywordflow">while</span> (std::getline(stream, line))</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                    <span class="keywordflow">if</span> (line.find(<span class="stringliteral">&quot;GUID:&quot;</span>) != std::string::npos)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                    {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                        <span class="keywordflow">try</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                        {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                            metadata.<a class="code hl_variable" href="structSpan_1_1AssetMetadata.html#a1e833ed4447068c127a225a5f2bcacb6">Handle</a> = std::stoull(line.substr(6));</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                        }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                        <span class="keywordflow">catch</span> (...) { metadata.<a class="code hl_variable" href="structSpan_1_1AssetMetadata.html#a1e833ed4447068c127a225a5f2bcacb6">Handle</a> = 0; }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                    }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line.find(<span class="stringliteral">&quot;Type:&quot;</span>) != std::string::npos)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                        <span class="keywordflow">try</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                        {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                            metadata.<a class="code hl_variable" href="structSpan_1_1AssetMetadata.html#abb9dddb738e37bae8d6ff6fcda1c6c5d">Type</a> = (<a class="code hl_enumeration" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25">AssetType</a>)std::stoi(line.substr(6));</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                        }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                        <span class="keywordflow">catch</span> (...) { metadata.<a class="code hl_variable" href="structSpan_1_1AssetMetadata.html#abb9dddb738e37bae8d6ff6fcda1c6c5d">Type</a> = <a class="code hl_enumvalue" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a6adf97f83acf6453d4a6a4b1070f3754">AssetType::None</a>; }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                    }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                stream.close();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="comment">// 2. 読み込み失敗、または存在しない場合は新規作成</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">if</span> (!metadata.<a class="code hl_function" href="structSpan_1_1AssetMetadata.html#a83c8ed8bfd79a2aa90ed8d4e36b785b8">IsValid</a>())</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            metadata.<a class="code hl_variable" href="structSpan_1_1AssetMetadata.html#a1e833ed4447068c127a225a5f2bcacb6">Handle</a> = <a class="code hl_variable" href="namespaceSpan.html#a3b1c3d559ac672629a7459d8b6513225">s_UniformDistribution</a>(<a class="code hl_function" href="namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136">s_Engine</a>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">if</span> (metadata.<a class="code hl_variable" href="structSpan_1_1AssetMetadata.html#a1e833ed4447068c127a225a5f2bcacb6">Handle</a> == 0) metadata.<a class="code hl_variable" href="structSpan_1_1AssetMetadata.html#a1e833ed4447068c127a225a5f2bcacb6">Handle</a>++;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            metadata.<a class="code hl_variable" href="structSpan_1_1AssetMetadata.html#abb9dddb738e37bae8d6ff6fcda1c6c5d">Type</a> = <a class="code hl_function" href="classSpan_1_1AssetSerializer.html#a39e6a3bea02531fc2c31683a27d52061">DeduceTypeFromExtension</a>(assetPath);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <a class="code hl_function" href="classSpan_1_1AssetSerializer.html#a0eb09ea936ef7cf65184977a5809ef6b">SaveMetadata</a>(assetPath, metadata);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <a class="code hl_define" href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a>(<span class="stringliteral">&quot;Generated .meta for: %s&quot;</span>, assetPath.string().c_str());</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">return</span> metadata;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    }</div>
+</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classSpan_1_1AssetSerializer.html#a0eb09ea936ef7cf65184977a5809ef6b">   75</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1AssetSerializer.html#a0eb09ea936ef7cf65184977a5809ef6b">AssetSerializer::SaveMetadata</a>(<span class="keyword">const</span> std::filesystem::path&amp; assetPath, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a>&amp; metadata)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        std::filesystem::path metaPath = assetPath;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        metaPath += <span class="stringliteral">&quot;.meta&quot;</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        std::ofstream stream(metaPath);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">if</span> (stream.is_open())</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            stream &lt;&lt; <span class="stringliteral">&quot;GUID: &quot;</span> &lt;&lt; metadata.<a class="code hl_variable" href="structSpan_1_1AssetMetadata.html#a1e833ed4447068c127a225a5f2bcacb6">Handle</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            stream &lt;&lt; <span class="stringliteral">&quot;Type: &quot;</span> &lt;&lt; (int)metadata.<a class="code hl_variable" href="structSpan_1_1AssetMetadata.html#abb9dddb738e37bae8d6ff6fcda1c6c5d">Type</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            stream.close();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
+</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="foldopen" id="foldopen00089" data-start="{" data-end="}">
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classSpan_1_1AssetSerializer.html#a39e6a3bea02531fc2c31683a27d52061">   89</a></span>    <a class="code hl_enumeration" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25">AssetType</a> <a class="code hl_function" href="classSpan_1_1AssetSerializer.html#a39e6a3bea02531fc2c31683a27d52061">AssetSerializer::DeduceTypeFromExtension</a>(<span class="keyword">const</span> std::filesystem::path&amp; path)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        std::string ext = path.extension().string();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;.png&quot;</span> || ext == <span class="stringliteral">&quot;.jpg&quot;</span> || ext == <span class="stringliteral">&quot;.tga&quot;</span>)    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25aa3e8ae43188ae76d38f414b2bdb0077b">AssetType::Texture</a>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;.fbx&quot;</span> || ext == <span class="stringliteral">&quot;.obj&quot;</span>)                     <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a710fdb6adb881b408116ef95335e1961">AssetType::Mesh</a>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;.mat&quot;</span>)                                      <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25ad92a8333dd3ccb895cc65f7455b71206">AssetType::Material</a>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;.span&quot;</span>)                                     <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a9ead0d38e06ec253ca0ecbf6ea56e59b">AssetType::Scene</a>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;.h&quot;</span> || ext == <span class="stringliteral">&quot;.cpp&quot;</span>)                       <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25af907e651164789346ae0a1e257c462d8">AssetType::Script</a>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a6adf97f83acf6453d4a6a4b1070f3754">AssetType::None</a>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
+</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
+<div class="ttc" id="aAssetSerializer_8h_html"><div class="ttname"><a href="AssetSerializer_8h.html">AssetSerializer.h</a></div><div class="ttdoc">.metaファイルの読み書きを担当。</div></div>
+<div class="ttc" id="aLogger_8h_html_a1b7ff4efe93a9030e55f7598d493448c"><div class="ttname"><a href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a></div><div class="ttdeci">#define SPAN_LOG(Format,...)</div><div class="ttdoc">通常ログを出力します。</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00069">Logger.h:69</a></div></div>
+<div class="ttc" id="aSpanEngine_8h_html"><div class="ttname"><a href="SpanEngine_8h.html">SpanEngine.h</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetSerializer_html_a0eb09ea936ef7cf65184977a5809ef6b"><div class="ttname"><a href="classSpan_1_1AssetSerializer.html#a0eb09ea936ef7cf65184977a5809ef6b">Span::AssetSerializer::SaveMetadata</a></div><div class="ttdeci">static void SaveMetadata(const std::filesystem::path &amp;assetPath, const AssetMetadata &amp;metadata)</div><div class="ttdoc">メタデータをファイルに保存する。</div><div class="ttdef"><b>Definition</b> <a href="#l00075">AssetSerializer.cpp:75</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetSerializer_html_a39e6a3bea02531fc2c31683a27d52061"><div class="ttname"><a href="classSpan_1_1AssetSerializer.html#a39e6a3bea02531fc2c31683a27d52061">Span::AssetSerializer::DeduceTypeFromExtension</a></div><div class="ttdeci">static AssetType DeduceTypeFromExtension(const std::filesystem::path &amp;path)</div><div class="ttdoc">拡張子から汗ッとタイプを推論します。</div><div class="ttdef"><b>Definition</b> <a href="#l00089">AssetSerializer.cpp:89</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetSerializer_html_adea72d3eb1434b36473f6e0d38396451"><div class="ttname"><a href="classSpan_1_1AssetSerializer.html#adea72d3eb1434b36473f6e0d38396451">Span::AssetSerializer::LoadOrCreateMetadata</a></div><div class="ttdeci">static AssetMetadata LoadOrCreateMetadata(const std::filesystem::path &amp;assetPath)</div><div class="ttdoc">指定したアセットのメタデータを取得します。 .metaファイルが存在しない場合は、新規にGUIDを生成して作成します。</div><div class="ttdef"><b>Definition</b> <a href="#l00023">AssetSerializer.cpp:23</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a086d008b6a56d176facbbfbfde8a1cc5"><div class="ttname"><a href="namespaceSpan.html#a086d008b6a56d176facbbfbfde8a1cc5">Span::s_RandomDevice</a></div><div class="ttdeci">static std::random_device s_RandomDevice</div><div class="ttdef"><b>Definition</b> <a href="#l00018">AssetSerializer.cpp:18</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a371e826f9987adf5be5f3e54e7af0b25"><div class="ttname"><a href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25">Span::AssetType</a></div><div class="ttdeci">AssetType</div><div class="ttdoc">アセットの種類を識別するための列挙型。</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00023">AssetMetadata.h:24</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a371e826f9987adf5be5f3e54e7af0b25a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a6adf97f83acf6453d4a6a4b1070f3754">Span::AssetType::None</a></div><div class="ttdeci">@ None</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00025">AssetMetadata.h:25</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a371e826f9987adf5be5f3e54e7af0b25a710fdb6adb881b408116ef95335e1961"><div class="ttname"><a href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a710fdb6adb881b408116ef95335e1961">Span::AssetType::Mesh</a></div><div class="ttdeci">@ Mesh</div><div class="ttdoc">モデル (.fbx, .obj)</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00027">AssetMetadata.h:27</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a371e826f9987adf5be5f3e54e7af0b25a9ead0d38e06ec253ca0ecbf6ea56e59b"><div class="ttname"><a href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a9ead0d38e06ec253ca0ecbf6ea56e59b">Span::AssetType::Scene</a></div><div class="ttdeci">@ Scene</div><div class="ttdoc">シーン (.span)</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00029">AssetMetadata.h:29</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a371e826f9987adf5be5f3e54e7af0b25aa3e8ae43188ae76d38f414b2bdb0077b"><div class="ttname"><a href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25aa3e8ae43188ae76d38f414b2bdb0077b">Span::AssetType::Texture</a></div><div class="ttdeci">@ Texture</div><div class="ttdoc">画像 (.pnt, .jpg)</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00026">AssetMetadata.h:26</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a371e826f9987adf5be5f3e54e7af0b25ad92a8333dd3ccb895cc65f7455b71206"><div class="ttname"><a href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25ad92a8333dd3ccb895cc65f7455b71206">Span::AssetType::Material</a></div><div class="ttdeci">@ Material</div><div class="ttdoc">マテリアル (.mat)</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00028">AssetMetadata.h:28</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a371e826f9987adf5be5f3e54e7af0b25af907e651164789346ae0a1e257c462d8"><div class="ttname"><a href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25af907e651164789346ae0a1e257c462d8">Span::AssetType::Script</a></div><div class="ttdeci">@ Script</div><div class="ttdoc">コード (.h, .cpp)</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00030">AssetMetadata.h:30</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a3b1c3d559ac672629a7459d8b6513225"><div class="ttname"><a href="namespaceSpan.html#a3b1c3d559ac672629a7459d8b6513225">Span::s_UniformDistribution</a></div><div class="ttdeci">static std::uniform_int_distribution&lt; uint64_t &gt; s_UniformDistribution</div><div class="ttdef"><b>Definition</b> <a href="#l00020">AssetSerializer.cpp:20</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a8ba99036404afdb464fdc44c3dbc7136"><div class="ttname"><a href="namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136">Span::s_Engine</a></div><div class="ttdeci">static std::mt19937_64 s_Engine(s_RandomDevice())</div></div>
+<div class="ttc" id="astructSpan_1_1AssetMetadata_html"><div class="ttname"><a href="structSpan_1_1AssetMetadata.html">Span::AssetMetadata</a></div><div class="ttdoc">.metaファイルに保存されるデータ構造。</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00038">AssetMetadata.h:39</a></div></div>
+<div class="ttc" id="astructSpan_1_1AssetMetadata_html_a1e833ed4447068c127a225a5f2bcacb6"><div class="ttname"><a href="structSpan_1_1AssetMetadata.html#a1e833ed4447068c127a225a5f2bcacb6">Span::AssetMetadata::Handle</a></div><div class="ttdeci">AssetHandle Handle</div><div class="ttdoc">アセット固有のID (GUID)</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00040">AssetMetadata.h:40</a></div></div>
+<div class="ttc" id="astructSpan_1_1AssetMetadata_html_a83c8ed8bfd79a2aa90ed8d4e36b785b8"><div class="ttname"><a href="structSpan_1_1AssetMetadata.html#a83c8ed8bfd79a2aa90ed8d4e36b785b8">Span::AssetMetadata::IsValid</a></div><div class="ttdeci">bool IsValid() const</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00047">AssetMetadata.h:47</a></div></div>
+<div class="ttc" id="astructSpan_1_1AssetMetadata_html_abb9dddb738e37bae8d6ff6fcda1c6c5d"><div class="ttname"><a href="structSpan_1_1AssetMetadata.html#abb9dddb738e37bae8d6ff6fcda1c6c5d">Span::AssetMetadata::Type</a></div><div class="ttdeci">AssetType Type</div><div class="ttdoc">アセットの種類</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00041">AssetMetadata.h:41</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_64427cf10fdcbb9dc3445223b1ad6a9b.html">Resource</a></li><li class="navelem"><a href="AssetSerializer_8cpp.html">AssetSerializer.cpp</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

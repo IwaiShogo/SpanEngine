@@ -1,10 +1,11 @@
 var searchData=
 [
   ['handledragdrop_0',['HandleDragDrop',['../classSpan_1_1HierarchyPanel.html#af958ff25d0ba0576ae4848bbd01b2031',1,'Span::HierarchyPanel']]],
-  ['has_1',['Has',['../classSpan_1_1ArchetypeSignature.html#a3ed2e7bfb5bec1699681ecf2648f6890',1,'Span::ArchetypeSignature']]],
-  ['hasallcomponents_2',['HasAllComponents',['../classSpan_1_1Archetype.html#ab576f4f851319859304bfa1fc1ada7ed',1,'Span::Archetype']]],
-  ['hascomponent_3',['HasComponent',['../classSpan_1_1Archetype.html#a14c09aab559c4f601037d972cac3cc56',1,'Span::Archetype::HasComponent()'],['../classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0',1,'Span::World::HasComponent()']]],
-  ['header_4',['Header',['../structSpan_1_1Camera.html#a0c6923a4e86c576bb77222ca974ae4d0',1,'Span::Camera::Header()'],['../namespaceSpan.html#ad91faa614dc451a8508f2113cc2cb22d',1,'Span::Header(const char *header)']]],
-  ['hideininspector_5',['HideInInspector',['../namespaceSpan.html#a6c44cae3bf938ea21881939d2a2f04ea',1,'Span']]],
-  ['hierarchypanel_6',['HierarchyPanel',['../classSpan_1_1HierarchyPanel.html#a545fc24e0e7a780ea2f4a73e2e5778d0',1,'Span::HierarchyPanel']]]
+  ['handledragdroptarget_1',['HandleDragDropTarget',['../classSpan_1_1SceneViewPanel.html#a44344ec7b9c3b6d58ffe4b4a2c5791a4',1,'Span::SceneViewPanel']]],
+  ['has_2',['Has',['../classSpan_1_1ArchetypeSignature.html#a3ed2e7bfb5bec1699681ecf2648f6890',1,'Span::ArchetypeSignature']]],
+  ['hasallcomponents_3',['HasAllComponents',['../classSpan_1_1Archetype.html#ab576f4f851319859304bfa1fc1ada7ed',1,'Span::Archetype']]],
+  ['hascomponent_4',['HasComponent',['../classSpan_1_1Archetype.html#a14c09aab559c4f601037d972cac3cc56',1,'Span::Archetype::HasComponent()'],['../classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0',1,'Span::World::HasComponent()']]],
+  ['header_5',['Header',['../structSpan_1_1Camera.html#a0c6923a4e86c576bb77222ca974ae4d0',1,'Span::Camera::Header()'],['../namespaceSpan.html#ad91faa614dc451a8508f2113cc2cb22d',1,'Span::Header(const char *header)']]],
+  ['hideininspector_6',['HideInInspector',['../namespaceSpan.html#a6c44cae3bf938ea21881939d2a2f04ea',1,'Span']]],
+  ['hierarchypanel_7',['HierarchyPanel',['../classSpan_1_1HierarchyPanel.html#a545fc24e0e7a780ea2f4a73e2e5778d0',1,'Span::HierarchyPanel']]]
 ];

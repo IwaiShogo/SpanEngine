@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Span::AssetSerializer クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classSpan_1_1AssetSerializer.html','','classSpan_1_1AssetSerializer-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Span::AssetSerializer クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>.metaファイルの生成、読み込み、保存を担当する静的クラス。  
+ <a href="#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="AssetSerializer_8h_source.html">AssetSerializer.h</a>&gt;</code></p>
+<div class="dynheader">
+Span::AssetSerializer 連携図</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetSerializer__coll__graph.svg" width="226" height="116"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:adea72d3eb1434b36473f6e0d38396451" id="r_adea72d3eb1434b36473f6e0d38396451"><td class="memItemLeft">static <a class="el" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a>&#160;</td><td class="memItemRight"><a class="el" href="#adea72d3eb1434b36473f6e0d38396451">LoadOrCreateMetadata</a> (const std::filesystem::path &amp;assetPath)</td></tr>
+<tr class="memdesc:adea72d3eb1434b36473f6e0d38396451"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定したアセットのメタデータを取得します。 .metaファイルが存在しない場合は、新規にGUIDを生成して作成します。  <br /></td></tr>
+<tr class="memitem:a0eb09ea936ef7cf65184977a5809ef6b" id="r_a0eb09ea936ef7cf65184977a5809ef6b"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a0eb09ea936ef7cf65184977a5809ef6b">SaveMetadata</a> (const std::filesystem::path &amp;assetPath, const <a class="el" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a> &amp;metadata)</td></tr>
+<tr class="memdesc:a0eb09ea936ef7cf65184977a5809ef6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">メタデータをファイルに保存する。  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静的非公開メンバ関数</h2></td></tr>
+<tr class="memitem:a39e6a3bea02531fc2c31683a27d52061" id="r_a39e6a3bea02531fc2c31683a27d52061"><td class="memItemLeft">static <a class="el" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25">AssetType</a>&#160;</td><td class="memItemRight"><a class="el" href="#a39e6a3bea02531fc2c31683a27d52061">DeduceTypeFromExtension</a> (const std::filesystem::path &amp;path)</td></tr>
+<tr class="memdesc:a39e6a3bea02531fc2c31683a27d52061"><td class="mdescLeft">&#160;</td><td class="mdescRight">拡張子から汗ッとタイプを推論します。  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>.metaファイルの生成、読み込み、保存を担当する静的クラス。 </p>
+
+<p class="definition"> <a class="el" href="AssetSerializer_8h_source.html">AssetSerializer.h</a> の <a class="el" href="AssetSerializer_8h_source.html#l00022">22</a> 行目に定義があります。</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="a39e6a3bea02531fc2c31683a27d52061" name="a39e6a3bea02531fc2c31683a27d52061"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39e6a3bea02531fc2c31683a27d52061">&#9670;&#160;</a></span>DeduceTypeFromExtension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25">AssetType</a> Span::AssetSerializer::DeduceTypeFromExtension </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>拡張子から汗ッとタイプを推論します。 </p>
+
+<p class="definition"> <a class="el" href="AssetSerializer_8cpp_source.html">AssetSerializer.cpp</a> の <a class="el" href="AssetSerializer_8cpp_source.html#l00089">89</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetSerializer_a39e6a3bea02531fc2c31683a27d52061_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="adea72d3eb1434b36473f6e0d38396451" name="adea72d3eb1434b36473f6e0d38396451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adea72d3eb1434b36473f6e0d38396451">&#9670;&#160;</a></span>LoadOrCreateMetadata()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a> Span::AssetSerializer::LoadOrCreateMetadata </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>assetPath</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>指定したアセットのメタデータを取得します。 .metaファイルが存在しない場合は、新規にGUIDを生成して作成します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">assetPath</td><td>アセットファイルのパス </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>読み込まれた (または生成された) メタデータ </dd></dl>
+
+<p class="definition"> <a class="el" href="AssetSerializer_8cpp_source.html">AssetSerializer.cpp</a> の <a class="el" href="AssetSerializer_8cpp_source.html#l00023">23</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetSerializer_adea72d3eb1434b36473f6e0d38396451_cgraph.svg" width="447" height="230"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetSerializer_adea72d3eb1434b36473f6e0d38396451_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a0eb09ea936ef7cf65184977a5809ef6b" name="a0eb09ea936ef7cf65184977a5809ef6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eb09ea936ef7cf65184977a5809ef6b">&#9670;&#160;</a></span>SaveMetadata()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::AssetSerializer::SaveMetadata </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>assetPath</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>metadata</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>メタデータをファイルに保存する。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">assetPath</td><td>元のアセットのパス (例: "A.png" -&gt; "A.png.meta" に保存) </td></tr>
+    <tr><td class="paramname">metadata</td><td>保存するメタデータ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="AssetSerializer_8cpp_source.html">AssetSerializer.cpp</a> の <a class="el" href="AssetSerializer_8cpp_source.html#l00075">75</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetSerializer_a0eb09ea936ef7cf65184977a5809ef6b_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>Engine/Source/Runtime/Resource/<a class="el" href="AssetSerializer_8h_source.html">AssetSerializer.h</a></li>
+<li>Engine/Source/Runtime/Resource/<a class="el" href="AssetSerializer_8cpp_source.html">AssetSerializer.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceSpan.html">Span</a></li><li class="navelem"><a href="classSpan_1_1AssetSerializer.html">AssetSerializer</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,686 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Span::AssetManager クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classSpan_1_1AssetManager.html','','classSpan_1_1AssetManager-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Span::AssetManager クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>📦 アセット管理システム  
+ <a href="#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="AssetManager_8h_source.html">AssetManager.h</a>&gt;</code></p>
+<div class="dynheader">
+Span::AssetManager 連携図</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager__coll__graph.svg" width="195" height="396"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a69ad0e84f0e86f10a14693275d0872f2" id="r_a69ad0e84f0e86f10a14693275d0872f2"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a69ad0e84f0e86f10a14693275d0872f2">Initialize</a> (ID3D12Device *device, ID3D12CommandQueue *cmdQueue)</td></tr>
+<tr class="memdesc:a69ad0e84f0e86f10a14693275d0872f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">マネージャーを初期化します。  <br /></td></tr>
+<tr class="memitem:afc4aa4d92a15ef50751e33e69ceb311d" id="r_afc4aa4d92a15ef50751e33e69ceb311d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afc4aa4d92a15ef50751e33e69ceb311d">Shutdown</a> ()</td></tr>
+<tr class="memdesc:afc4aa4d92a15ef50751e33e69ceb311d"><td class="mdescLeft">&#160;</td><td class="mdescRight">全てのアセットを解放します。  <br /></td></tr>
+<tr class="memitem:a93b56de9af3fadbc0ff27f1e21e44291" id="r_a93b56de9af3fadbc0ff27f1e21e44291"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classSpan_1_1Texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a93b56de9af3fadbc0ff27f1e21e44291">GetTexture</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a93b56de9af3fadbc0ff27f1e21e44291"><td class="mdescLeft">&#160;</td><td class="mdescRight">テクスチャを取得します (キャッシュにあればそれを返し、無ければロードします)。  <br /></td></tr>
+<tr class="memitem:ade6d0e8b7b3467e28cfd5af72896c89b" id="r_ade6d0e8b7b3467e28cfd5af72896c89b"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classSpan_1_1Mesh.html">Mesh</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ade6d0e8b7b3467e28cfd5af72896c89b">GetMesh</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:ade6d0e8b7b3467e28cfd5af72896c89b"><td class="mdescLeft">&#160;</td><td class="mdescRight">メッシュデータを取得します (キャッシュ対応)。  <br /></td></tr>
+<tr class="memitem:a98a270b7faf1990407f7082143e437d6" id="r_a98a270b7faf1990407f7082143e437d6"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classSpan_1_1Material.html">Material</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a98a270b7faf1990407f7082143e437d6">GetDefaultMaterial</a> ()</td></tr>
+<tr class="memdesc:a98a270b7faf1990407f7082143e437d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルト (標準) のマテリアルを取得します。 シェーダーやマテリアルが存在しない場合は内部で生成します。  <br /></td></tr>
+<tr class="memitem:ac48434b5c664ed46069ac3d95aadfefb" id="r_ac48434b5c664ed46069ac3d95aadfefb"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#ac48434b5c664ed46069ac3d95aadfefb">GetEditorThumbnail</a> (const std::filesystem::path &amp;path)</td></tr>
+<tr class="memdesc:ac48434b5c664ed46069ac3d95aadfefb"><td class="mdescLeft">&#160;</td><td class="mdescRight">エディタ用: ファイルパスに対応するサムネイル (テクスチャID) を取得します。  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:a8b80e59ea529e23c8c8f5280d136fbf0" id="r_a8b80e59ea529e23c8c8f5280d136fbf0"><td class="memItemLeft">static <a class="el" href="#a9d65496b728f9a4fef2a5334d5a8ad56">AssetManager</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a8b80e59ea529e23c8c8f5280d136fbf0">Get</a> ()</td></tr>
+<tr class="memdesc:a8b80e59ea529e23c8c8f5280d136fbf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">シングルトンインスタンスを取得します。  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+非公開メンバ関数</h2></td></tr>
+<tr class="memitem:a9d65496b728f9a4fef2a5334d5a8ad56" id="r_a9d65496b728f9a4fef2a5334d5a8ad56"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a9d65496b728f9a4fef2a5334d5a8ad56">AssetManager</a> ()=default</td></tr>
+<tr class="memitem:a7f53a364ea460ac99e2fa7710acee6bb" id="r_a7f53a364ea460ac99e2fa7710acee6bb"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a7f53a364ea460ac99e2fa7710acee6bb">~AssetManager</a> ()=default</td></tr>
+<tr class="memitem:a4fd7f1ff6510617a6c19e4919d4d07b6" id="r_a4fd7f1ff6510617a6c19e4919d4d07b6"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a4fd7f1ff6510617a6c19e4919d4d07b6">SPAN_NON_COPYABLE</a> (<a class="el" href="#a9d65496b728f9a4fef2a5334d5a8ad56">AssetManager</a>)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+非公開変数類</h2></td></tr>
+<tr class="memitem:a49bc31a549ed1b0d29e6b415e6d6929c" id="r_a49bc31a549ed1b0d29e6b415e6d6929c"><td class="memItemLeft">ID3D12Device *&#160;</td><td class="memItemRight"><a class="el" href="#a49bc31a549ed1b0d29e6b415e6d6929c">m_Device</a> = nullptr</td></tr>
+<tr class="memitem:ae41bdf35b06948f829b66b7ec6a4e2e2" id="r_ae41bdf35b06948f829b66b7ec6a4e2e2"><td class="memItemLeft">ID3D12CommandQueue *&#160;</td><td class="memItemRight"><a class="el" href="#ae41bdf35b06948f829b66b7ec6a4e2e2">m_CommandQueue</a> = nullptr</td></tr>
+<tr class="memitem:a9381361617eb9868515cfb32a6415b8d" id="r_a9381361617eb9868515cfb32a6415b8d"><td class="memItemLeft">std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classSpan_1_1Texture.html">Texture</a> &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a9381361617eb9868515cfb32a6415b8d">m_TextureCache</a></td></tr>
+<tr class="memitem:a2c638b5e280e500962e8246baa4ba0a6" id="r_a2c638b5e280e500962e8246baa4ba0a6"><td class="memItemLeft">std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classSpan_1_1Mesh.html">Mesh</a> &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2c638b5e280e500962e8246baa4ba0a6">m_MeshCache</a></td></tr>
+<tr class="memitem:a1c4e55ff549fa45b42879f4a9e79c6e3" id="r_a1c4e55ff549fa45b42879f4a9e79c6e3"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classSpan_1_1Shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a1c4e55ff549fa45b42879f4a9e79c6e3">m_DefaultVS</a></td></tr>
+<tr class="memitem:ad6f877c76b663dd9a32a96a17591c4b8" id="r_ad6f877c76b663dd9a32a96a17591c4b8"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classSpan_1_1Shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad6f877c76b663dd9a32a96a17591c4b8">m_DefaultPS</a></td></tr>
+<tr class="memitem:aa6107910515da9a90b96b1652f40d09f" id="r_aa6107910515da9a90b96b1652f40d09f"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classSpan_1_1Material.html">Material</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa6107910515da9a90b96b1652f40d09f">m_DefaultMaterial</a></td></tr>
+<tr class="memitem:a1ff7c3f2bd2fd890a93b8fdb344738fa" id="r_a1ff7c3f2bd2fd890a93b8fdb344738fa"><td class="memItemLeft">std::mutex&#160;</td><td class="memItemRight"><a class="el" href="#a1ff7c3f2bd2fd890a93b8fdb344738fa">m_Mutex</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>📦 アセット管理システム </p>
+<p><b>主な機能:</b></p><ul>
+<li><b>キャッシュ機構:</b> 一度ロードしたアセットはメモリに保持し、再利用します。</li>
+<li><b>オンデマンドロード:</b> 要求された瞬間にロードを行います。</li>
+<li><b>サムネイル管理:</b> エディタ向けにファイルパスから直接テクスチャIDを返します。 </li>
+</ul>
+
+<p class="definition"> <a class="el" href="AssetManager_8h_source.html">AssetManager.h</a> の <a class="el" href="AssetManager_8h_source.html#l00029">29</a> 行目に定義があります。</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
+<a id="a9d65496b728f9a4fef2a5334d5a8ad56" name="a9d65496b728f9a4fef2a5334d5a8ad56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d65496b728f9a4fef2a5334d5a8ad56">&#9670;&#160;</a></span>AssetManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::AssetManager::AssetManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_a9d65496b728f9a4fef2a5334d5a8ad56_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a7f53a364ea460ac99e2fa7710acee6bb" name="a7f53a364ea460ac99e2fa7710acee6bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f53a364ea460ac99e2fa7710acee6bb">&#9670;&#160;</a></span>~AssetManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::AssetManager::~AssetManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="a8b80e59ea529e23c8c8f5280d136fbf0" name="a8b80e59ea529e23c8c8f5280d136fbf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b80e59ea529e23c8c8f5280d136fbf0">&#9670;&#160;</a></span>Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a9d65496b728f9a4fef2a5334d5a8ad56">AssetManager</a> &amp; Span::AssetManager::Get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>シングルトンインスタンスを取得します。 </p>
+
+<p class="definition"> <a class="el" href="AssetManager_8cpp_source.html">AssetManager.cpp</a> の <a class="el" href="AssetManager_8cpp_source.html#l00016">16</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_a8b80e59ea529e23c8c8f5280d136fbf0_cgraph.svg" width="400" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_a8b80e59ea529e23c8c8f5280d136fbf0_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a98a270b7faf1990407f7082143e437d6" name="a98a270b7faf1990407f7082143e437d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98a270b7faf1990407f7082143e437d6">&#9670;&#160;</a></span>GetDefaultMaterial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classSpan_1_1Material.html">Material</a> &gt; Span::AssetManager::GetDefaultMaterial </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>デフォルト (標準) のマテリアルを取得します。 シェーダーやマテリアルが存在しない場合は内部で生成します。 </p>
+
+<p class="definition"> <a class="el" href="AssetManager_8cpp_source.html">AssetManager.cpp</a> の <a class="el" href="AssetManager_8cpp_source.html#l00132">132</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_a98a270b7faf1990407f7082143e437d6_icgraph.svg" width="598" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ac48434b5c664ed46069ac3d95aadfefb" name="ac48434b5c664ed46069ac3d95aadfefb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac48434b5c664ed46069ac3d95aadfefb">&#9670;&#160;</a></span>GetEditorThumbnail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * Span::AssetManager::GetEditorThumbnail </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>エディタ用: ファイルパスに対応するサムネイル (テクスチャID) を取得します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>対象のファイルパス </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ImGuiで使用可能な TextureID。画像でない場合やロード失敗時は nullptr。 </dd></dl>
+
+<p class="definition"> <a class="el" href="AssetManager_8cpp_source.html">AssetManager.cpp</a> の <a class="el" href="AssetManager_8cpp_source.html#l00183">183</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_ac48434b5c664ed46069ac3d95aadfefb_cgraph.svg" width="374" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_ac48434b5c664ed46069ac3d95aadfefb_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ade6d0e8b7b3467e28cfd5af72896c89b" name="ade6d0e8b7b3467e28cfd5af72896c89b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade6d0e8b7b3467e28cfd5af72896c89b">&#9670;&#160;</a></span>GetMesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classSpan_1_1Mesh.html">Mesh</a> &gt; Span::AssetManager::GetMesh </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>メッシュデータを取得します (キャッシュ対応)。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>モデルのファイルパス </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>読み込まれたメッシュのリストへのポインタ。 </dd></dl>
+
+<p class="definition"> <a class="el" href="AssetManager_8cpp_source.html">AssetManager.cpp</a> の <a class="el" href="AssetManager_8cpp_source.html#l00090">90</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_ade6d0e8b7b3467e28cfd5af72896c89b_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_ade6d0e8b7b3467e28cfd5af72896c89b_icgraph.svg" width="598" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a93b56de9af3fadbc0ff27f1e21e44291" name="a93b56de9af3fadbc0ff27f1e21e44291"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93b56de9af3fadbc0ff27f1e21e44291">&#9670;&#160;</a></span>GetTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classSpan_1_1Texture.html">Texture</a> &gt; Span::AssetManager::GetTexture </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>テクスチャを取得します (キャッシュにあればそれを返し、無ければロードします)。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>アセットのファイルパス </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>テクスチャへの共有ポインタ </dd></dl>
+
+<p class="definition"> <a class="el" href="AssetManager_8cpp_source.html">AssetManager.cpp</a> の <a class="el" href="AssetManager_8cpp_source.html#l00043">43</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_a93b56de9af3fadbc0ff27f1e21e44291_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a69ad0e84f0e86f10a14693275d0872f2" name="a69ad0e84f0e86f10a14693275d0872f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69ad0e84f0e86f10a14693275d0872f2">&#9670;&#160;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::AssetManager::Initialize </td>
+          <td>(</td>
+          <td class="paramtype">ID3D12Device *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D12CommandQueue *</td>          <td class="paramname"><span class="paramname"><em>cmdQueue</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>マネージャーを初期化します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>グラフィックスデバイス </td></tr>
+    <tr><td class="paramname">cmdQueue</td><td>コマンドキュー (リソースアップデート用) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="AssetManager_8cpp_source.html">AssetManager.cpp</a> の <a class="el" href="AssetManager_8cpp_source.html#l00022">22</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_a69ad0e84f0e86f10a14693275d0872f2_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="afc4aa4d92a15ef50751e33e69ceb311d" name="afc4aa4d92a15ef50751e33e69ceb311d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc4aa4d92a15ef50751e33e69ceb311d">&#9670;&#160;</a></span>Shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::AssetManager::Shutdown </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全てのアセットを解放します。 </p>
+
+<p class="definition"> <a class="el" href="AssetManager_8cpp_source.html">AssetManager.cpp</a> の <a class="el" href="AssetManager_8cpp_source.html#l00029">29</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a4fd7f1ff6510617a6c19e4919d4d07b6" name="a4fd7f1ff6510617a6c19e4919d4d07b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd7f1ff6510617a6c19e4919d4d07b6">&#9670;&#160;</a></span>SPAN_NON_COPYABLE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::AssetManager::SPAN_NON_COPYABLE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a9d65496b728f9a4fef2a5334d5a8ad56">AssetManager</a></td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetManager_a4fd7f1ff6510617a6c19e4919d4d07b6_cgraph.svg" width="388" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
+<a id="ae41bdf35b06948f829b66b7ec6a4e2e2" name="ae41bdf35b06948f829b66b7ec6a4e2e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae41bdf35b06948f829b66b7ec6a4e2e2">&#9670;&#160;</a></span>m_CommandQueue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID3D12CommandQueue* Span::AssetManager::m_CommandQueue = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetManager_8h_source.html">AssetManager.h</a> の <a class="el" href="AssetManager_8h_source.html#l00083">83</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="aa6107910515da9a90b96b1652f40d09f" name="aa6107910515da9a90b96b1652f40d09f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6107910515da9a90b96b1652f40d09f">&#9670;&#160;</a></span>m_DefaultMaterial</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classSpan_1_1Material.html">Material</a>&gt; Span::AssetManager::m_DefaultMaterial</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetManager_8h_source.html">AssetManager.h</a> の <a class="el" href="AssetManager_8h_source.html#l00093">93</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ad6f877c76b663dd9a32a96a17591c4b8" name="ad6f877c76b663dd9a32a96a17591c4b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6f877c76b663dd9a32a96a17591c4b8">&#9670;&#160;</a></span>m_DefaultPS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classSpan_1_1Shader.html">Shader</a>&gt; Span::AssetManager::m_DefaultPS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetManager_8h_source.html">AssetManager.h</a> の <a class="el" href="AssetManager_8h_source.html#l00092">92</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a1c4e55ff549fa45b42879f4a9e79c6e3" name="a1c4e55ff549fa45b42879f4a9e79c6e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c4e55ff549fa45b42879f4a9e79c6e3">&#9670;&#160;</a></span>m_DefaultVS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classSpan_1_1Shader.html">Shader</a>&gt; Span::AssetManager::m_DefaultVS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetManager_8h_source.html">AssetManager.h</a> の <a class="el" href="AssetManager_8h_source.html#l00091">91</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a49bc31a549ed1b0d29e6b415e6d6929c" name="a49bc31a549ed1b0d29e6b415e6d6929c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49bc31a549ed1b0d29e6b415e6d6929c">&#9670;&#160;</a></span>m_Device</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID3D12Device* Span::AssetManager::m_Device = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetManager_8h_source.html">AssetManager.h</a> の <a class="el" href="AssetManager_8h_source.html#l00082">82</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a2c638b5e280e500962e8246baa4ba0a6" name="a2c638b5e280e500962e8246baa4ba0a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c638b5e280e500962e8246baa4ba0a6">&#9670;&#160;</a></span>m_MeshCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classSpan_1_1Mesh.html">Mesh</a>&gt; &gt; Span::AssetManager::m_MeshCache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetManager_8h_source.html">AssetManager.h</a> の <a class="el" href="AssetManager_8h_source.html#l00088">88</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a1ff7c3f2bd2fd890a93b8fdb344738fa" name="a1ff7c3f2bd2fd890a93b8fdb344738fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ff7c3f2bd2fd890a93b8fdb344738fa">&#9670;&#160;</a></span>m_Mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex Span::AssetManager::m_Mutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetManager_8h_source.html">AssetManager.h</a> の <a class="el" href="AssetManager_8h_source.html#l00096">96</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a9381361617eb9868515cfb32a6415b8d" name="a9381361617eb9868515cfb32a6415b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9381361617eb9868515cfb32a6415b8d">&#9670;&#160;</a></span>m_TextureCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classSpan_1_1Texture.html">Texture</a>&gt; &gt; Span::AssetManager::m_TextureCache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetManager_8h_source.html">AssetManager.h</a> の <a class="el" href="AssetManager_8h_source.html#l00086">86</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>Engine/Source/Runtime/Resource/<a class="el" href="AssetManager_8h_source.html">AssetManager.h</a></li>
+<li>Engine/Source/Runtime/Resource/<a class="el" href="AssetManager_8cpp_source.html">AssetManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceSpan.html">Span</a></li><li class="navelem"><a href="classSpan_1_1AssetManager.html">AssetManager</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

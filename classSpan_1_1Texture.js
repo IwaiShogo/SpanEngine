@@ -3,6 +3,7 @@ var classSpan_1_1Texture =
     [ "Texture", "classSpan_1_1Texture.html#a09904643ca3ae39eae54a0b452be4744", null ],
     [ "~Texture", "classSpan_1_1Texture.html#ab0c408c4cd9d3b54cf9d45d3973db89b", null ],
     [ "GetCPUDescriptorHandle", "classSpan_1_1Texture.html#ab7f1497482e3c11f84341d83aab51b94", null ],
+    [ "GetImGuiTextureID", "classSpan_1_1Texture.html#abdb98b25e004e4caf0a2f6bf9ca93e7f", null ],
     [ "GetSRVHeap", "classSpan_1_1Texture.html#a1e117e901ab11ec8630ef240fa59de6b", null ],
     [ "Initialize", "classSpan_1_1Texture.html#a4149a1e0df66fc08179a7e3b4a3f5d49", null ],
     [ "Shutdown", "classSpan_1_1Texture.html#a0739f7dfcb17e2ebcbab8bfd90c790ab", null ],

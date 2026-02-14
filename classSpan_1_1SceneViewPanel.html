@@ -136,6 +136,12 @@ Span::SceneViewPanel 連携図</div>
 <tr class="memdesc:ad83a4a55f083c75371d0873322808796"><td class="mdescLeft">&#160;</td><td class="mdescRight">選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。  <br /></td></tr>
 <tr class="memitem:a7b7d10b9fdd6d03aa9096f5326a8eb73" id="r_a7b7d10b9fdd6d03aa9096f5326a8eb73"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7b7d10b9fdd6d03aa9096f5326a8eb73">CalculateImageArea</a> (const <a class="el" href="structSpan_1_1Vector2.html">Vector2</a> &amp;availableSize, <a class="el" href="structSpan_1_1Vector2.html">Vector2</a> &amp;outPos, <a class="el" href="structSpan_1_1Vector2.html">Vector2</a> &amp;outSize)</td></tr>
 <tr class="memdesc:a7b7d10b9fdd6d03aa9096f5326a8eb73"><td class="mdescLeft">&#160;</td><td class="mdescRight">アスペクト比設定に基づいて、画像を表示すべき領域を計算します。  <br /></td></tr>
+<tr class="memitem:afebf890816b85f92e9ed73de887b2354" id="r_afebf890816b85f92e9ed73de887b2354"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afebf890816b85f92e9ed73de887b2354">OnAssetDropped</a> (const std::filesystem::path &amp;path)</td></tr>
+<tr class="memdesc:afebf890816b85f92e9ed73de887b2354"><td class="mdescLeft">&#160;</td><td class="mdescRight">外部またはブラウザからドロップされたファイルを処理します。  <br /></td></tr>
+<tr class="memitem:a948a8eb6329caddef8512f0612259f4a" id="r_a948a8eb6329caddef8512f0612259f4a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a948a8eb6329caddef8512f0612259f4a">MoveAsset</a> (const std::filesystem::path &amp;sourcePath, const std::filesystem::path &amp;destPath)</td></tr>
+<tr class="memdesc:a948a8eb6329caddef8512f0612259f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ファイルまたはフォルダを新しいディレクトリへ移動します。  <br /></td></tr>
+<tr class="memitem:a44344ec7b9c3b6d58ffe4b4a2c5791a4" id="r_a44344ec7b9c3b6d58ffe4b4a2c5791a4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a44344ec7b9c3b6d58ffe4b4a2c5791a4">HandleDragDropTarget</a> (const std::filesystem::path &amp;targetPath)</td></tr>
+<tr class="memdesc:a44344ec7b9c3b6d58ffe4b4a2c5791a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">ドラッグ&amp;ドロップの受け入れ処理  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
@@ -232,7 +238,7 @@ Span::SceneViewPanel 連携図</div>
 
 <p>アスペクト比設定に基づいて、画像を表示すべき領域を計算します。 </p>
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00562">562</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00573">573</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -270,7 +276,7 @@ Span::SceneViewPanel 連携図</div>
 
 <p>選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。 </p>
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00160">160</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00171">171</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -309,7 +315,7 @@ Span::SceneViewPanel 連携図</div>
 
 <p>パネル上部にツールバー (ギズモ操作ボタン等) を重ねて表示します。 </p>
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00448">448</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00459">459</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -345,6 +351,122 @@ Span::SceneViewPanel 連携図</div>
 <dl class="section return"><dt>戻り値</dt><dd>Resizingが必要なサイズ </dd></dl>
 
 <p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00062">62</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a44344ec7b9c3b6d58ffe4b4a2c5791a4" name="a44344ec7b9c3b6d58ffe4b4a2c5791a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44344ec7b9c3b6d58ffe4b4a2c5791a4">&#9670;&#160;</a></span>HandleDragDropTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::SceneViewPanel::HandleDragDropTarget </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>targetPath</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ドラッグ&amp;ドロップの受け入れ処理 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">targetPath</td><td>ドロップ対象のディレクトリパス </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a948a8eb6329caddef8512f0612259f4a" name="a948a8eb6329caddef8512f0612259f4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a948a8eb6329caddef8512f0612259f4a">&#9670;&#160;</a></span>MoveAsset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::SceneViewPanel::MoveAsset </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>sourcePath</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>destPath</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ファイルまたはフォルダを新しいディレクトリへ移動します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sourcePath</td><td>元のパス </td></tr>
+    <tr><td class="paramname">destPath</td><td>移動先のディレクトリパス </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afebf890816b85f92e9ed73de887b2354" name="afebf890816b85f92e9ed73de887b2354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afebf890816b85f92e9ed73de887b2354">&#9670;&#160;</a></span>OnAssetDropped()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::SceneViewPanel::OnAssetDropped </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>外部またはブラウザからドロップされたファイルを処理します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>ファイルパス </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="SceneViewPanel_8cpp_source.html">SceneViewPanel.cpp</a> の <a class="el" href="SceneViewPanel_8cpp_source.html#l00609">609</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SceneViewPanel_afebf890816b85f92e9ed73de887b2354_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SceneViewPanel_afebf890816b85f92e9ed73de887b2354_icgraph.svg" width="395" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -440,7 +562,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00094">94</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00113">113</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -464,7 +586,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00087">87</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00106">106</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -488,7 +610,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00086">86</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00105">105</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -512,7 +634,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00097">97</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00116">116</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -536,7 +658,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00080">80</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00099">99</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -560,7 +682,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00089">89</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00108">108</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -584,7 +706,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00090">90</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00109">109</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -608,7 +730,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00091">91</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00110">110</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -632,7 +754,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00098">98</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00117">117</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -656,7 +778,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00083">83</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00102">102</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -680,7 +802,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00088">88</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00107">107</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -704,7 +826,7 @@ Span::SceneViewPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00077">77</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00096">96</a> 行目に定義があります。</p>
 
 </div>
 </div>

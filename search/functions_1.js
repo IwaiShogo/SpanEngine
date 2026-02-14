@@ -12,5 +12,6 @@ var searchData=
   ['application_9',['Application',['../classSpan_1_1Application.html#a0c44e973ca5db1d23a02a2cee66f5c11',1,'Span::Application']]],
   ['applystyle_10',['ApplyStyle',['../classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0',1,'Span::GuiManager']]],
   ['archetype_11',['Archetype',['../classSpan_1_1Archetype.html#ae33408fe9890919e0210052bb8d38019',1,'Span::Archetype']]],
-  ['attribute_12',['Attribute',['../structSpan_1_1Attribute.html#aa27cc6c99166f9c479afbdf01ee0f781',1,'Span::Attribute']]]
+  ['assetmanager_12',['AssetManager',['../classSpan_1_1AssetManager.html#a9d65496b728f9a4fef2a5334d5a8ad56',1,'Span::AssetManager']]],
+  ['attribute_13',['Attribute',['../structSpan_1_1Attribute.html#aa27cc6c99166f9c479afbdf01ee0f781',1,'Span::Attribute']]]
 ];

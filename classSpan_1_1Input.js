@@ -1,9 +1,11 @@
 var classSpan_1_1Input =
 [
+    [ "ClearDroppedFiles", "classSpan_1_1Input.html#ad267593d5e73d25b6fe21f7ebbabb80d", null ],
     [ "EndFrame", "classSpan_1_1Input.html#a1be9ee5fee394c7fe2c6e3d7bfa6ee77", null ],
     [ "GetAxis", "classSpan_1_1Input.html#ae4e440d73cfc73b192396eafb00384fd", null ],
     [ "GetButton", "classSpan_1_1Input.html#ab72f1f993d3685a0782fa14750b2da4d", null ],
     [ "GetButtonDown", "classSpan_1_1Input.html#a3b224c719cd680c2037e2b4d1adb77f7", null ],
+    [ "GetDroppedFiles", "classSpan_1_1Input.html#a2bb95495819a9a798272baeb3ac1908f", null ],
     [ "GetKey", "classSpan_1_1Input.html#a86ffd3759273c0529fff0dd511d7b065", null ],
     [ "GetKeyDown", "classSpan_1_1Input.html#a3e110cb7e9b44c605a5a169000b80cbd", null ],
     [ "GetKeyUp", "classSpan_1_1Input.html#a779b0d3886e270c0bf7daf297203f2b0", null ],
@@ -11,7 +13,7 @@ var classSpan_1_1Input =
     [ "GetMousePosition", "classSpan_1_1Input.html#a1008e13cbcce0dec4e61a3753abdaf11", null ],
     [ "GetMouseWheel", "classSpan_1_1Input.html#ac23a995b926be812e2f1b71620e2f013", null ],
     [ "Initialize", "classSpan_1_1Input.html#aac6e8f1cf694b484ed01742f2d16d63c", null ],
-    [ "IsInputAvailable", "classSpan_1_1Input.html#a26b62cb0acb4961842496ac0175d5e3a", null ],
+    [ "OnFilesDropped", "classSpan_1_1Input.html#a8e84140312bd8e450d737e70346e4ac1", null ],
     [ "OnKeyDown", "classSpan_1_1Input.html#a5ed9bcf628b54c37662b4eacc29ce2c9", null ],
     [ "OnKeyUp", "classSpan_1_1Input.html#aa9395bd5dc15032ab02454bd361c1fe0", null ],
     [ "OnMouseDown", "classSpan_1_1Input.html#a2626b1c530d57400b5fbeff22f310581", null ],
@@ -36,5 +38,6 @@ var classSpan_1_1Input =
     [ "mouseWheelDelta", "classSpan_1_1Input.html#a3177ecb1b845a0021b3704d826043b49", null ],
     [ "prevGamepadStates", "classSpan_1_1Input.html#ad586c63785ad77f894bfba1f4f2244cb", null ],
     [ "prevKeyStates", "classSpan_1_1Input.html#a1f464da6aee16f6ddc82b780a1ae08dd", null ],
-    [ "prevMousePosition", "classSpan_1_1Input.html#a3b08ba6c179cf73626a1d343926b4d04", null ]
+    [ "prevMousePosition", "classSpan_1_1Input.html#a3b08ba6c179cf73626a1d343926b4d04", null ],
+    [ "s_DroppedFiles", "classSpan_1_1Input.html#a78236c32d169fc64f9b31bdf17b8a6ba", null ]
 ];

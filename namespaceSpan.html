@@ -219,6 +219,12 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🏷️ 変数に付与するメタデータ。  <a href="structSpan_1_1Attribute.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:is_5Ffixed_5Fstring" id="r_is_5Ffixed_5Fstring"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1is__fixed__string.html">is_fixed_string</a></td></tr>
 <tr class="memitem:is_5Ffixed_5Fstring_3C_20FixedString_3C_20N_20_3E_20_3E" id="r_is_5Ffixed_5Fstring_3C_20FixedString_3C_20N_20_3E_20_3E"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1is__fixed__string_3_01FixedString_3_01N_01_4_01_4.html">is_fixed_string&lt; FixedString&lt; N &gt; &gt;</a></td></tr>
+<tr class="memitem:AssetManager" id="r_AssetManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1AssetManager.html">AssetManager</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 アセット管理システム  <a href="classSpan_1_1AssetManager.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:AssetMetadata" id="r_AssetMetadata"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">.metaファイルに保存されるデータ構造。  <a href="structSpan_1_1AssetMetadata.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:AssetSerializer" id="r_AssetSerializer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1AssetSerializer.html">AssetSerializer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">.metaファイルの生成、読み込み、保存を担当する静的クラス。  <a href="classSpan_1_1AssetSerializer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:RelationshipSystem" id="r_RelationshipSystem"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1RelationshipSystem.html">RelationshipSystem</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🔗 階層構造 (リンクリスト) の操作ロジックを提供する静的ヘルパークラス。  <a href="classSpan_1_1RelationshipSystem.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:TransformSystem" id="r_TransformSystem"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1TransformSystem.html">TransformSystem</a></td></tr>
@@ -248,6 +254,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:a093013dab8d39277e04bac7cc500fde7" id="r_a093013dab8d39277e04bac7cc500fde7"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a093013dab8d39277e04bac7cc500fde7">DrawComponentFunc</a> = std::function&lt;void(<a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a>&amp;)&gt;</td></tr>
 <tr class="memitem:a936509841abf3411c6dae4ca675b811e" id="r_a936509841abf3411c6dae4ca675b811e"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a936509841abf3411c6dae4ca675b811e">RemoveComponentFunc</a> = std::function&lt;void(<a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a>&amp;)&gt;</td></tr>
 <tr class="memitem:a6af56d259d0ccdc218e0cadc2dcd8e08" id="r_a6af56d259d0ccdc218e0cadc2dcd8e08"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a6af56d259d0ccdc218e0cadc2dcd8e08">AddComponentFunc</a> = std::function&lt;void(<a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a>&amp;)&gt;</td></tr>
+<tr class="memitem:afdfa4cf289fb42dc538251b285a5a446" id="r_afdfa4cf289fb42dc538251b285a5a446"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#afdfa4cf289fb42dc538251b285a5a446">AssetHandle</a> = uint64_t</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 列挙型</h2></td></tr>
@@ -374,6 +381,18 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <br />
  }</td></tr>
 <tr class="memdesc:a00c320c889b6c836e32c17b01071d257"><td class="mdescLeft">&#160;</td><td class="mdescRight">属性の種類  <a href="#a00c320c889b6c836e32c17b01071d257">[詳解]</a><br /></td></tr>
+<tr class="memitem:a371e826f9987adf5be5f3e54e7af0b25" id="r_a371e826f9987adf5be5f3e54e7af0b25"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#a371e826f9987adf5be5f3e54e7af0b25">AssetType</a> { <br />
+&#160;&#160;<a class="el" href="#a371e826f9987adf5be5f3e54e7af0b25a6adf97f83acf6453d4a6a4b1070f3754">None</a> = 0
+, <a class="el" href="#a371e826f9987adf5be5f3e54e7af0b25aa3e8ae43188ae76d38f414b2bdb0077b">Texture</a>
+, <a class="el" href="#a371e826f9987adf5be5f3e54e7af0b25a710fdb6adb881b408116ef95335e1961">Mesh</a>
+, <a class="el" href="#a371e826f9987adf5be5f3e54e7af0b25ad92a8333dd3ccb895cc65f7455b71206">Material</a>
+, <br />
+&#160;&#160;<a class="el" href="#a371e826f9987adf5be5f3e54e7af0b25a9ead0d38e06ec253ca0ecbf6ea56e59b">Scene</a>
+, <a class="el" href="#a371e826f9987adf5be5f3e54e7af0b25af907e651164789346ae0a1e257c462d8">Script</a>
+, <a class="el" href="#a371e826f9987adf5be5f3e54e7af0b25ab22f0418e8ac915eb66f829d262d14a2">Audio</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a371e826f9987adf5be5f3e54e7af0b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">アセットの種類を識別するための列挙型。  <a href="#a371e826f9987adf5be5f3e54e7af0b25">[詳解]</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
@@ -407,6 +426,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:ae2c4e4f20e3caf156005d479cfc4b392"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を表示しますが、編集は出来ないようにします。  <br /></td></tr>
 <tr class="memitem:ac4fda9227bb1ab31d0d5e2026ed86d53" id="r_ac4fda9227bb1ab31d0d5e2026ed86d53"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="#ac4fda9227bb1ab31d0d5e2026ed86d53">SerializeField</a> ()</td></tr>
 <tr class="memitem:a089223d28981f1dcf214d34a44771067" id="r_a089223d28981f1dcf214d34a44771067"><td class="memItemLeft"><a class="el" href="structSpan_1_1Attribute.html">Attribute</a>&#160;</td><td class="memItemRight"><a class="el" href="#a089223d28981f1dcf214d34a44771067">TextArea</a> ()</td></tr>
+<tr class="memitem:a8ba99036404afdb464fdc44c3dbc7136" id="r_a8ba99036404afdb464fdc44c3dbc7136"><td class="memItemLeft">static std::mt19937_64&#160;</td><td class="memItemRight"><a class="el" href="#a8ba99036404afdb464fdc44c3dbc7136">s_Engine</a> (<a class="el" href="#a086d008b6a56d176facbbfbfde8a1cc5">s_RandomDevice</a>())</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 変数</h2></td></tr>
@@ -417,6 +437,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Null (無効) として扱うための定数ID  <br /></td></tr>
 <tr class="memitem:a145b8dc890551fcd9c17ad183b945a13" id="r_a145b8dc890551fcd9c17ad183b945a13"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a145b8dc890551fcd9c17ad183b945a13 template"><td class="memItemLeft">constexpr bool&#160;</td><td class="memItemRight"><a class="el" href="#a145b8dc890551fcd9c17ad183b945a13">is_fixed_string_v</a> = <a class="el" href="structSpan_1_1is__fixed__string.html">is_fixed_string</a>&lt;T&gt;::value</td></tr>
+<tr class="memitem:a086d008b6a56d176facbbfbfde8a1cc5" id="r_a086d008b6a56d176facbbfbfde8a1cc5"><td class="memItemLeft">static std::random_device&#160;</td><td class="memItemRight"><a class="el" href="#a086d008b6a56d176facbbfbfde8a1cc5">s_RandomDevice</a></td></tr>
+<tr class="memitem:a3b1c3d559ac672629a7459d8b6513225" id="r_a3b1c3d559ac672629a7459d8b6513225"><td class="memItemLeft">static std::uniform_int_distribution&lt; uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3b1c3d559ac672629a7459d8b6513225">s_UniformDistribution</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
 Constants &amp; Helpers</h2></td></tr>
@@ -453,6 +475,22 @@ Constants &amp; Helpers</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00030">30</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="afdfa4cf289fb42dc538251b285a5a446" name="afdfa4cf289fb42dc538251b285a5a446"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdfa4cf289fb42dc538251b285a5a446">&#9670;&#160;</a></span>AssetHandle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#afdfa4cf289fb42dc538251b285a5a446">Span::AssetHandle</a> = uint64_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetMetadata_8h_source.html">AssetMetadata.h</a> の <a class="el" href="AssetMetadata_8h_source.html#l00017">17</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -502,7 +540,7 @@ Constants &amp; Helpers</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00084">84</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00087">87</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -518,7 +556,7 @@ Constants &amp; Helpers</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00085">85</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00088">88</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -534,7 +572,7 @@ Constants &amp; Helpers</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00086">86</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00089">89</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -550,7 +588,7 @@ Constants &amp; Helpers</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00083">83</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00086">86</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -630,7 +668,7 @@ Constants &amp; Helpers</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00089">89</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00092">92</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -646,7 +684,7 @@ Constants &amp; Helpers</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00090">90</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00093">93</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -662,7 +700,7 @@ Constants &amp; Helpers</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00091">91</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00094">94</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -678,7 +716,7 @@ Constants &amp; Helpers</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00088">88</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00091">91</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -718,6 +756,47 @@ Constants &amp; Helpers</h2></td></tr>
 </table>
 
 <p class="definition"> <a class="el" href="SceneViewPanel_8h_source.html">SceneViewPanel.h</a> の <a class="el" href="SceneViewPanel_8h_source.html#l00019">19</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a371e826f9987adf5be5f3e54e7af0b25" name="a371e826f9987adf5be5f3e54e7af0b25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a371e826f9987adf5be5f3e54e7af0b25">&#9670;&#160;</a></span>AssetType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a371e826f9987adf5be5f3e54e7af0b25">Span::AssetType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アセットの種類を識別するための列挙型。 </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a371e826f9987adf5be5f3e54e7af0b25a6adf97f83acf6453d4a6a4b1070f3754" name="a371e826f9987adf5be5f3e54e7af0b25a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a371e826f9987adf5be5f3e54e7af0b25aa3e8ae43188ae76d38f414b2bdb0077b" name="a371e826f9987adf5be5f3e54e7af0b25aa3e8ae43188ae76d38f414b2bdb0077b"></a>Texture&#160;</td><td class="fielddoc"><p>画像 (.pnt, .jpg) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a371e826f9987adf5be5f3e54e7af0b25a710fdb6adb881b408116ef95335e1961" name="a371e826f9987adf5be5f3e54e7af0b25a710fdb6adb881b408116ef95335e1961"></a>Mesh&#160;</td><td class="fielddoc"><p>モデル (.fbx, .obj) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a371e826f9987adf5be5f3e54e7af0b25ad92a8333dd3ccb895cc65f7455b71206" name="a371e826f9987adf5be5f3e54e7af0b25ad92a8333dd3ccb895cc65f7455b71206"></a>Material&#160;</td><td class="fielddoc"><p>マテリアル (.mat) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a371e826f9987adf5be5f3e54e7af0b25a9ead0d38e06ec253ca0ecbf6ea56e59b" name="a371e826f9987adf5be5f3e54e7af0b25a9ead0d38e06ec253ca0ecbf6ea56e59b"></a>Scene&#160;</td><td class="fielddoc"><p>シーン (.span) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a371e826f9987adf5be5f3e54e7af0b25af907e651164789346ae0a1e257c462d8" name="a371e826f9987adf5be5f3e54e7af0b25af907e651164789346ae0a1e257c462d8"></a>Script&#160;</td><td class="fielddoc"><p>コード (.h, .cpp) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a371e826f9987adf5be5f3e54e7af0b25ab22f0418e8ac915eb66f829d262d14a2" name="a371e826f9987adf5be5f3e54e7af0b25ab22f0418e8ac915eb66f829d262d14a2"></a>Audio&#160;</td><td class="fielddoc"><p>音声 (.wav, .mp3) </p>
+</td></tr>
+</table>
+
+<p class="definition"> <a class="el" href="AssetMetadata_8h_source.html">AssetMetadata.h</a> の <a class="el" href="AssetMetadata_8h_source.html#l00023">23</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1219,7 +1298,7 @@ template&lt;typename T&gt; </div>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a3f4b8561d46e69596ba6a7c3177a92e7_cgraph.svg" width="100%" height="456"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a3f4b8561d46e69596ba6a7c3177a92e7_cgraph.svg" width="100%" height="530"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
@@ -1268,7 +1347,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00029">29</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Input_8cpp_source.html">Input.cpp</a> の <a class="el" href="Input_8cpp_source.html#l00031">31</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1476,6 +1555,36 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
+<a id="a8ba99036404afdb464fdc44c3dbc7136" name="a8ba99036404afdb464fdc44c3dbc7136"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ba99036404afdb464fdc44c3dbc7136">&#9670;&#160;</a></span>s_Engine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mt19937_64 Span::s_Engine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a086d008b6a56d176facbbfbfde8a1cc5">s_RandomDevice</a>()</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a8ba99036404afdb464fdc44c3dbc7136_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="a825e5690a4fd5830377dd61ef46f22a6" name="a825e5690a4fd5830377dd61ef46f22a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a825e5690a4fd5830377dd61ef46f22a6">&#9670;&#160;</a></span>SafeDelete()</h2>
 
@@ -1501,7 +1610,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00097">97</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00100">100</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1530,7 +1639,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00107">107</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="CoreMinimal_8h_source.html">CoreMinimal.h</a> の <a class="el" href="CoreMinimal_8h_source.html#l00110">110</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1862,6 +1971,54 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition"> <a class="el" href="Logger_8cpp_source.html">Logger.cpp</a> の <a class="el" href="Logger_8cpp_source.html#l00006">6</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a086d008b6a56d176facbbfbfde8a1cc5" name="a086d008b6a56d176facbbfbfde8a1cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a086d008b6a56d176facbbfbfde8a1cc5">&#9670;&#160;</a></span>s_RandomDevice</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::random_device Span::s_RandomDevice</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetSerializer_8cpp_source.html">AssetSerializer.cpp</a> の <a class="el" href="AssetSerializer_8cpp_source.html#l00018">18</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a3b1c3d559ac672629a7459d8b6513225" name="a3b1c3d559ac672629a7459d8b6513225"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b1c3d559ac672629a7459d8b6513225">&#9670;&#160;</a></span>s_UniformDistribution</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uniform_int_distribution&lt;uint64_t&gt; Span::s_UniformDistribution</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="AssetSerializer_8cpp_source.html">AssetSerializer.cpp</a> の <a class="el" href="AssetSerializer_8cpp_source.html#l00020">20</a> 行目に定義があります。</p>
 
 </div>
 </div>

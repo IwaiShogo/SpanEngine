@@ -6,7 +6,7 @@ var searchData=
   ['nearclip_3',['NearClip',['../structSpan_1_1Camera.html#a1325da14243956d6decb27abea298a72',1,'Span::Camera']]],
   ['nextsibling_4',['NextSibling',['../structSpan_1_1Relationship.html#a8e32cd5bcc454ebd1c9f4f3866f29d8f',1,'Span::Relationship']]],
   ['nominmax_5',['NOMINMAX',['../CoreMinimal_8h.html#a9f918755b601cf4bffca775992e6fb90',1,'CoreMinimal.h']]],
-  ['none_6',['None',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa6adf97f83acf6453d4a6a4b1070f3754',1,'Span::None'],['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257a6adf97f83acf6453d4a6a4b1070f3754',1,'Span::None']]],
+  ['none_6',['None',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa6adf97f83acf6453d4a6a4b1070f3754',1,'Span::None'],['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257a6adf97f83acf6453d4a6a4b1070f3754',1,'Span::None'],['../namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25a6adf97f83acf6453d4a6a4b1070f3754',1,'Span::None']]],
   ['normal_7',['normal',['../structSpan_1_1Vertex.html#a44736040b875692f9a6c28de54747500',1,'Span::Vertex']]],
   ['normalized_8',['Normalized',['../structSpan_1_1Vector2.html#a29bb4cbfa4114773082ce6e20c9faf69',1,'Span::Vector2::Normalized()'],['../structSpan_1_1Vector3.html#aabe270fd26b1d874df94a455faef13c5',1,'Span::Vector3::Normalized()']]],
   ['null_9',['Null',['../structSpan_1_1Entity.html#a3bc29e7cdb8d6012f8be1de9f0da5687',1,'Span::Entity']]],

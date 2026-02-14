@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Resource/AssetSerializer.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('AssetSerializer_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">AssetSerializer.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="AssetSerializer_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    AssetSerializer.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   .metaファイルの読み書きを担当。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="AssetMetadata_8h.html">AssetMetadata.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">     * @class   AssetSerializer</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * @brief   .metaファイルの生成、読み込み、保存を担当する静的クラス。</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classSpan_1_1AssetSerializer.html">   22</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1AssetSerializer.html">AssetSerializer</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">         * @brief   指定したアセットのメタデータを取得します。</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">         * .metaファイルが存在しない場合は、新規にGUIDを生成して作成します。</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">         * </span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">         * @param   assetPath アセットファイルのパス</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">         * @return  読み込まれた (または生成された) メタデータ</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">static</span> <a class="code hl_struct" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a> <a class="code hl_function" href="classSpan_1_1AssetSerializer.html#adea72d3eb1434b36473f6e0d38396451">LoadOrCreateMetadata</a>(<span class="keyword">const</span> std::filesystem::path&amp; assetPath);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"></span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">         * @brief   メタデータをファイルに保存する。</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">         * </span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">         * @param   assetPath 元のアセットのパス (例: &quot;A.png&quot; -&gt; &quot;A.png.meta&quot; に保存)</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">         * @param   metadata 保存するメタデータ</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1AssetSerializer.html#a0eb09ea936ef7cf65184977a5809ef6b">SaveMetadata</a>(<span class="keyword">const</span> std::filesystem::path&amp; assetPath, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a>&amp; metadata);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">         * @brief   拡張子から汗ッとタイプを推論します。</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">static</span> <a class="code hl_enumeration" href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25">AssetType</a> <a class="code hl_function" href="classSpan_1_1AssetSerializer.html#a39e6a3bea02531fc2c31683a27d52061">DeduceTypeFromExtension</a>(<span class="keyword">const</span> std::filesystem::path&amp; path);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    };</div>
+</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+<div class="ttc" id="aAssetMetadata_8h_html"><div class="ttname"><a href="AssetMetadata_8h.html">AssetMetadata.h</a></div><div class="ttdoc">アセットのメタデータを定義する構造体。</div></div>
+<div class="ttc" id="aclassSpan_1_1AssetSerializer_html"><div class="ttname"><a href="classSpan_1_1AssetSerializer.html">Span::AssetSerializer</a></div><div class="ttdoc">.metaファイルの生成、読み込み、保存を担当する静的クラス。</div><div class="ttdef"><b>Definition</b> <a href="#l00022">AssetSerializer.h:23</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetSerializer_html_a0eb09ea936ef7cf65184977a5809ef6b"><div class="ttname"><a href="classSpan_1_1AssetSerializer.html#a0eb09ea936ef7cf65184977a5809ef6b">Span::AssetSerializer::SaveMetadata</a></div><div class="ttdeci">static void SaveMetadata(const std::filesystem::path &amp;assetPath, const AssetMetadata &amp;metadata)</div><div class="ttdoc">メタデータをファイルに保存する。</div><div class="ttdef"><b>Definition</b> <a href="AssetSerializer_8cpp_source.html#l00075">AssetSerializer.cpp:75</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetSerializer_html_a39e6a3bea02531fc2c31683a27d52061"><div class="ttname"><a href="classSpan_1_1AssetSerializer.html#a39e6a3bea02531fc2c31683a27d52061">Span::AssetSerializer::DeduceTypeFromExtension</a></div><div class="ttdeci">static AssetType DeduceTypeFromExtension(const std::filesystem::path &amp;path)</div><div class="ttdoc">拡張子から汗ッとタイプを推論します。</div><div class="ttdef"><b>Definition</b> <a href="AssetSerializer_8cpp_source.html#l00089">AssetSerializer.cpp:89</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetSerializer_html_adea72d3eb1434b36473f6e0d38396451"><div class="ttname"><a href="classSpan_1_1AssetSerializer.html#adea72d3eb1434b36473f6e0d38396451">Span::AssetSerializer::LoadOrCreateMetadata</a></div><div class="ttdeci">static AssetMetadata LoadOrCreateMetadata(const std::filesystem::path &amp;assetPath)</div><div class="ttdoc">指定したアセットのメタデータを取得します。 .metaファイルが存在しない場合は、新規にGUIDを生成して作成します。</div><div class="ttdef"><b>Definition</b> <a href="AssetSerializer_8cpp_source.html#l00023">AssetSerializer.cpp:23</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a371e826f9987adf5be5f3e54e7af0b25"><div class="ttname"><a href="namespaceSpan.html#a371e826f9987adf5be5f3e54e7af0b25">Span::AssetType</a></div><div class="ttdeci">AssetType</div><div class="ttdoc">アセットの種類を識別するための列挙型。</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00023">AssetMetadata.h:24</a></div></div>
+<div class="ttc" id="astructSpan_1_1AssetMetadata_html"><div class="ttname"><a href="structSpan_1_1AssetMetadata.html">Span::AssetMetadata</a></div><div class="ttdoc">.metaファイルに保存されるデータ構造。</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00038">AssetMetadata.h:39</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_64427cf10fdcbb9dc3445223b1ad6a9b.html">Resource</a></li><li class="navelem"><a href="AssetSerializer_8h.html">AssetSerializer.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>
