@@ -2,6 +2,11 @@
 
 namespace Span
 {
+	Mesh::~Mesh()
+	{
+		Shutdown();
+	}
+
 	bool Mesh::Initialize(ID3D12Device* device, const std::vector<Vertex>& vertices)
 	{
 		vertexCount = static_cast<uint32>(vertices.size());

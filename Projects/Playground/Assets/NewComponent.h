@@ -1,0 +1,11 @@
+
+#pragma once
+#include <SpanEngine.h>
+
+namespace App
+{
+	struct NewComponent
+	{
+		flaot Value = 0.0f;
+	};
+}

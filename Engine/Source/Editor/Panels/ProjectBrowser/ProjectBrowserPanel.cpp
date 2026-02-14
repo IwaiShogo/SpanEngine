@@ -62,6 +62,36 @@ namespace Span
 			return;
 		}
 
+		// 外部からのファイルドロップ処理
+		if (ImGui::IsWindowHovered(ImGuiHoveredFlags_RootAndChildWindows))
+		{
+			const auto& droppedFiles = Input::GetDroppedFiles();
+			if (!droppedFiles.empty())
+			{
+				for (const auto& filePath : droppedFiles)
+				{
+					try
+					{
+						std::filesystem::path srcPath(filePath);
+						std::filesystem::path destPath = m_CurrentDirectory / srcPath.filename();
+
+						// コピー実行
+						if (std::filesystem::exists(srcPath))
+						{
+							std::filesystem::copy(srcPath, destPath, std::filesystem::copy_options::recursive | std::filesystem::copy_options::overwrite_existing);
+							SPAN_LOG("Imported Asset: %s", destPath.string().c_str());
+						}
+					}
+					catch (const std::exception& e)
+					{
+						SPAN_ERROR("Import Failed: %s", e.what());
+					}
+				}
+				// 処理したらクリア
+				Input::ClearDroppedFiles();
+			}
+		}
+
 		// 1. Navigation Bar
 		DrawNavBar();
 		ImGui::Separator();
@@ -102,6 +132,42 @@ namespace Span
 		ImGui::EndChild();
 
 		ImGui::Columns(1);
+
+		if (m_ShowDeleteDialog)
+		{
+			ImGui::OpenPopup("Delete Assets?");
+			m_ShowDeleteDialog = false;
+		}
+
+		if (ImGui::BeginPopupModal("Delete Assets?", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+		{
+			ImGui::Text("Are you sure you want to delete %d items?", (int)m_SelectedItems.size());
+			ImGui::Separator();
+
+			if (ImGui::Button("Delete", ImVec2(120, 0)))
+			{
+				for (const auto& item : m_SelectedItems)
+				{
+					try
+					{
+						if (std::filesystem::is_directory(item))
+							std::filesystem::remove_all(item);
+						else
+							std::filesystem::remove(item);
+					}
+					catch (...) {}
+				}
+				m_SelectedItems.clear();
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::SetItemDefaultFocus();
+			ImGui::SameLine();
+			if (ImGui::Button("Cancel", ImVec2(120, 0)))
+			{
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::EndPopup();
+		}
 
 		ImGui::End();
 	}
@@ -191,8 +257,15 @@ namespace Span
 				const auto& path = entry.path();
 				std::string filename = path.filename().string();
 
-				// 隠しファイルスキップ
+				// 隠しファイルと、既に存在する .meta ファイル自体はスキップ
 				// if (!m_ShowHiddenFiles && filename[0] == '.') continue;
+				if (path.extension() == ".meta") continue;
+
+				// メタデータの自動生成/読み込みチェック
+				if (!entry.is_directory())
+				{
+					AssetSerializer::LoadOrCreateMetadata(path);
+				}
 
 				// 検索フィルタ適用
 				if (!m_SearchFilter.empty())
@@ -258,34 +331,6 @@ namespace Span
 
 			ImGui::EndPopup();
 		}
-
-		// アイテム上のコンテキストメニュー (リネーム・削除)
-		if (!m_SelectedItems.empty() && ImGui::BeginPopupContextItem("ItemContext"))
-		{
-			// 単一選択時のみリネーム可能
-			if (m_SelectedItems.size() == 1)
-			{
-				if (ImGui::MenuItem("Rename", "F2"))
-				{
-					m_IsRenaming = true;
-					m_RenamingPath = *m_SelectedItems.begin();
-					std::string filename = m_RenamingPath.filename().string();
-					strcpy_s(m_RenameBuffer, filename.c_str());
-				}
-			}
-
-			if (ImGui::MenuItem("Delete", "Delete"))
-			{
-				// 確認ダイアログを出すべき
-				for (const auto& item : m_SelectedItems)
-				{
-					std::filesystem::remove_all(item);
-				}
-				m_SelectedItems.clear();
-			}
-
-			ImGui::EndPopup();
-		}
 	}
 
 	void ProjectBrowserPanel::DrawEntryItem(const std::filesystem::directory_entry& entry)
@@ -297,7 +342,12 @@ namespace Span
 
 		ImGui::PushID(filename.c_str());
 
-		// 1. アイコン選択
+		// --- アイコン / サムネイル処理 ---
+
+		// AssetManagerからサムネイルを取得を試みる
+		void* textureID = AssetManager::Get().GetEditorThumbnail(path);
+
+		// フォールバックアイコンの設定
 		const char* iconStr = isDir ? ICON_FA_FOLDER : ICON_FA_FILE;
 		if (!isDir)
 		{
@@ -306,7 +356,10 @@ namespace Span
 			else if (extension == ".fbx" || extension == ".obj") iconStr = ICON_FA_CUBE;
 		}
 
-		// 2. ボタン (アイコン) 描画
+		// ボタンサイズ
+		ImVec2 size(m_ThumbnailSize, m_ThumbnailSize);
+
+		// スタイル設定
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
 
 		// 選択状態の強調表示
@@ -316,26 +369,53 @@ namespace Span
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.4f, 0.8f, 0.5f));
 		}
 
-		// ボタン押下処理
-		if (ImGui::Button(iconStr, ImVec2(m_ThumbnailSize, m_ThumbnailSize)))
+		// 描画: 画像があればImageButton、なければTextButton
+		if (textureID)
 		{
-			bool ctrl = ImGui::GetIO().KeyCtrl;
-			bool shift = ImGui::GetIO().KeyShift;	// TODO: Shift範囲選択
-
-			SelectItem(path, ctrl);
+			ImGui::ImageButton("##thumbnail", (ImTextureID)textureID, size, ImVec2(0, 0), ImVec2(1, 1), ImVec4(0, 0, 0, 0), ImVec4(1, 1, 1, 1));
+		}
+		else
+		{
+			// 従来のフォントアイコン
+			ImGui::Button(iconStr, size);
 		}
 
-		// ダブルクリック処理
-		if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+		// クリック・ドラッグ処理
+		if (ImGui::IsItemHovered())
 		{
-			if (isDir)
+			// シングルクリック (選択)
+			if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
 			{
-				m_CurrentDirectory = path;
-				m_SelectedItems.clear();
+				bool ctrl = ImGui::GetIO().KeyCtrl;
+				bool shift = ImGui::GetIO().KeyShift;
+
+				if (shift && !m_LastSelectedPath.empty())
+				{
+					// Shift範囲選択
+					SelectRange(m_LastSelectedPath, path);
+				}
+				else
+				{
+					// 通常選択 / Ctrl選択
+					SelectItem(path, ctrl);
+					m_LastSelectedPath = path;	// 始点を記録
+				}
 			}
-			else
+			// ダブルクリック (開く/移動)
+			else if (ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 			{
-				// TODO: ファイルを開く処理 (ShellExecute?)
+				if (isDir)
+				{
+					m_CurrentDirectory = path;
+					m_SelectedItems.clear();
+					m_LastSelectedPath.clear();
+				}
+				else
+				{
+					// ファイルを開く
+					auto pathStr = path.wstring();
+					ShellExecuteW(nullptr, L"open", pathStr.c_str(), nullptr, nullptr, SW_SHOW);
+				}
 			}
 		}
 
@@ -346,12 +426,55 @@ namespace Span
 		if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_SourceAllowNullID))
 		{
 			// ペイロードとしてファイルの絶対パスを渡す
-			std::wstring pathStr = entry.path().wstring();
-			ImGui::SetDragDropPayload("PROJECT_BROWSER_ITEM", pathStr.c_str(), (pathStr.length() + 1) * sizeof(wchar_t));
+			const wchar_t* itemPath = path.c_str();
+			ImGui::SetDragDropPayload("CONTENT_BROWSER_ITEM", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t));
 
-			// ドラッグ中のプレビュー
-			ImGui::Text("%s %s", iconStr, filename.c_str());
+			// ドラッグ中のプレビュー表示
+			if (textureID)
+			{
+				ImGui::Image((ImTextureID)textureID, ImVec2(64, 64));
+			}
+			else
+			{
+				ImGui::Text("%s %s", iconStr, filename.c_str());
+			}
+
 			ImGui::EndDragDropSource();
+		}
+
+		// アイテムごとの右クリックメニューをここに実装
+		if (ImGui::BeginPopupContextItem("ItemContextMenu"))
+		{
+			// 右クリックしたアイテムが未選択なら、選択状態にする
+			if (m_SelectedItems.find(path) == m_SelectedItems.end())
+			{
+				if (!ImGui::GetIO().KeyCtrl)
+					m_SelectedItems.clear();
+				m_SelectedItems.insert(path);
+			}
+
+			// --- メニュー項目 ---
+
+			// 単一選択時のリネーム可能
+			if (m_SelectedItems.size() == 1)
+			{
+				if (ImGui::MenuItem("Rename", "F2"))
+				{
+					m_IsRenaming = true;
+					m_RenamingPath = path;
+					std::string filenameStr = path.filename().string();
+					strncpy_s(m_RenameBuffer, filenameStr.c_str(), sizeof(m_RenameBuffer));
+				}
+			}
+
+			if (ImGui::MenuItem("Delete", "Del"))
+			{
+				m_ShowDeleteDialog = true;
+			}
+
+			// TODO: 将来的に Open, Show in Explorer 等も追加
+
+			ImGui::EndPopup();
 		}
 
 		// 4. ファイル名 / リネーム
@@ -456,6 +579,43 @@ namespace Span
 		else
 		{
 			m_SelectedItems.insert(path);
+		}
+	}
+
+	void ProjectBrowserPanel::SelectRange(const std::filesystem::path& start, const std::filesystem::path& end)
+	{
+		m_SelectedItems.clear();
+
+		// カレントディレクトリ内のファイルを操作して、startとendの間にあるものをすべて選択する
+		std::vector<std::filesystem::path> allFiles;
+		try
+		{
+			for (const auto& entry : std::filesystem::directory_iterator(m_CurrentDirectory))
+			{
+				allFiles.push_back(entry.path());
+			}
+		}
+		catch (...) { return; }
+
+		int startIndex = -1;
+		int endIndex = -1;
+
+		for (int i = 0; i < allFiles.size(); ++i)
+		{
+			if (allFiles[i] == start) startIndex = i;
+			if (allFiles[i] == end) endIndex = i;
+		}
+
+		if (startIndex != -1 && endIndex != -1)
+		{
+			// startとendが逆でも対応できるように
+			int minIdx = std::min(startIndex, endIndex);
+			int maxIdx = std::max(startIndex, endIndex);
+
+			for (int i = minIdx; i <= maxIdx; ++i)
+			{
+				m_SelectedItems.insert(allFiles[i]);
+			}
 		}
 	}
 

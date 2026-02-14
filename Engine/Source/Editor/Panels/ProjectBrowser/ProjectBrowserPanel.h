@@ -93,6 +93,13 @@ namespace Span
 		void SelectItem(const std::filesystem::path& path, bool multiSelect);
 
 		/**
+		 * @brief	範囲選択
+		 * @param	start 最初のパス
+		 * @param	end 最後のパス
+		 */
+		void SelectRange(const std::filesystem::path& start, const std::filesystem::path& end);
+
+		/**
 		 * @brief	テンプレートからファイルを生成します。
 		 * @param	fileName 生成するファイル名
 		 * @param	content ファイルの内容
@@ -124,6 +131,8 @@ namespace Span
 		bool m_IsRenaming = false;							///< 現在リネーム操作中のどうかのフラグ
 		char m_RenameBuffer[256] = "";						///< リネーム用の入力バッファ
 		std::filesystem::path m_RenamingPath;				///< リネーム対象のパス
+		std::filesystem::path m_LastSelectedPath;			///< Shift選択用
+		bool m_ShowDeleteDialog = false;					///< 削除時のダイアログのフラグ
 
 		// --- Icons (Textures) ---
 		// TODO: Texture* m_FolderIcon;

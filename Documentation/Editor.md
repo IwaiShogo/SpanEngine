@@ -231,60 +231,61 @@
 
 ### **Layout**
 - **Two-Pane Interface:**
-  - **Left Pane (Folder Tree):** プロジェクトのフォルダ階層（`Assets/` 以下）をツリー表示。ディレクトリの移動のみを担当。
-  - **Right Pane (Asset Grid/List):** 現在選択されているフォルダ内のファイル一覧を表示。
+  - [x] **Left Pane (Folder Tree):** プロジェクトのフォルダ階層（`Assets/` 以下）をツリー表示。
+  - [x] **Right Pane (Asset Grid/List):** 現在選択されているフォルダ内のファイル一覧を表示。
 - **Navigation Bar:**
-  - **Breadcrumbs:** 現在のパスを表示するパンくずリスト（例: `Assets > Models > Characters`）。各要素をクリックしてジャンプ可能。
-  - **History Controls:** `<` (戻る) `>` (進む) ボタン。
-  - **Search Field:** 名前検索およびフィルタリング用入力欄。
+  - [x] **Breadcrumbs:** 現在のパスを表示するパンくずリスト。
+  - [ ] **History Controls:** `<` (戻る) `>` (進む) ボタン。 (Backspaceキーのみ実装済)
+  - [ ] **Search Field:** 名前検索およびフィルタリング用入力欄。 (簡易実装済、高機能化が必要)
 - **Bottom Bar:**
-  - **Item Count:** 現在表示中のアイテム数を表示。
-  - **Zoom Slider:** アイコンの表示サイズを動的に変更するスライダー。
+  - [ ] **Item Count:** 現在表示中のアイテム数を表示。
+  - [x] **Zoom Slider:** アイコンの表示サイズを動的に変更するスライダー。
 
 ### **Features**
 
 #### **1. Selection & Manipulation (Interaction)**
-- **Multi-Select:** `Ctrl + Click`（個別追加）、`Shift + Click`（範囲選択）、マウスドラッグによる矩形選択（Rubber Band Selection）に対応。
-- **Keyboard Navigation:** 矢印キーでの選択移動、`Enter` で開く、`Backspace` で上の階層へ移動。
-- **Renaming:** `F2` キーまたはゆっくりしたダブルクリックでファイル名を変更。変更時は `.meta` ファイルも追従して更新。
-- **Delete:** `Delete` キーで削除確認ダイアログを表示し、ご箱へ移動または完全削除。
+- [x] **Multi-Select:** `Ctrl + Click`（個別追加）、`Shift + Click`（範囲選択）。
+- [ ] **Rubber Band Selection:** マウスドラッグによる矩形範囲選択。
+- [ ] **Keyboard Navigation:** 矢印キーでのフォーカス移動。
+- [x] **Renaming:** `F2` キーまたはコンテキストメニュー。 (.meta更新対応)
+- [x] **Delete:** `Delete` キーで削除確認ダイアログを表示。 (.meta削除対応)
 
 #### **2. Drag & Drop Workflow**
-- **External to Engine (Import):**
-  - Windowsエクスプローラーからファイル/フォルダをドラッグ＆ドロップでインポート。
-  - 対応フォーマット（`.fbx`, `.png`, `.wav` 等）は自動的にインポータが走り、`.meta` を生成。
-- **Internal Move:**
-  - Browser内でファイルをドラッグし、別のフォルダへ移動。
-- **Asset to Scene:**
-  - モデル/プレハブ → シーンビューへのドラッグでインスタンス配置。
-  - マテリアル → シーン内のオブジェクトへのドラッグで割り当て。
-- **Asset to Inspector:**
-  - コンポーネントのプロパティ（Texture, Mesh, Materialスロット）へのドラッグ＆ドロップ割り当て。
+- [x] **External to Engine (Import):**
+  - エクスプローラーからのインポート。.metaの自動生成。
+- [ ] **Internal Move:**
+  - **[重要]** Browser内でファイルをドラッグし、左側のフォルダツリーやフォルダアイコンへドロップして移動させる。
+  - `.meta` ファイルも同時に移動させる必要がある。
+- [x] **Asset to Scene:**
+  - モデル(.fbx) → シーンビューへの配置。
+- [ ] **Asset to Inspector:**
+  - アセット → コンポーネントプロパティへの割り当て。
 
 #### **3. Asset Creation (Context Menu)**
-右クリックメニューから以下のアセットを新規作成可能。
-- **Folder:** 新規フォルダ。
-- **C++ Component:** テンプレートから新しいコンポーネント構造体（`.h`）を生成。
-  - `struct [Name] { ... };` の形式で、リフレクション用マクロを含んだヘッダーのみを作成。
-- **C++ System:** テンプレートから新しいシステムクラス（`.h`, `.cpp`）を生成。
-  - `ISystem` を継承し、`OnUpdate` などのメソッドスタブを含んだソースコードを作成。
-- **Shader:** HLSLシェーダーファイルの作成。
-- **Material:** デフォルトまたは選択したシェーダーベースのマテリアルアセット。
-- **Scene:** 空の新規シーン。
-- **Show in Explorer:** OSのファイラーで該当フォルダを開く。
+- [x] **Folder:** 新規フォルダ。
+- [x] **C++ Component/System:** テンプレート生成。
+- [ ] **Shader:** HLSLシェーダーファイルの作成。
+- [ ] **Material:** デフォルトまたは選択したシェーダーベースのマテリアルアセット (.mat)。
+- [ ] **Scene:** 空の新規シーン。
+- [x] **Show in Explorer:** OSのファイラーで該当フォルダを開く。
 
 #### **4. Visualization & Filtering**
-- **Thumbnail Generation:**
-  - **Texture:** 画像そのものをサムネイルとして表示。
-  - **Material:** 球体にマテリアルを適用したプレビューを表示（キャッシュ化）。
-  - **Model:** 3Dモデルのレンダリング結果を表示。
-- **View Modes:**
-  - **Grid View:** アイコン主体のグリッド表示。
-  - **List View:** 名前、タイプ、サイズ、更新日時を列挙する詳細リスト表示。
-- **Advanced Search:**
-  - **Fuzzy Search:** 部分一致検索。
-  - **Type Filter:** `t:Texture`, `t:Material`, `t:Script` のようにプレフィックスで種類を絞り込み。
-  - **Label Filter:** `l:Enemy` のようにアセットラベルでの絞り込み。
+- [x] **Thumbnail Generation (Texture):** 画像のサムネイル表示。
+- [ ] **Thumbnail Generation (Material/Model):** 3Dプレビュー画像のキャッシュ生成。
+- [x] **View Modes (Grid):** アイコン主体のグリッド表示。
+- [ ] **View Modes (List):** 詳細リスト表示。
+- [ ] **Advanced Search:** タイプフィルタ (`t:Texture`)、ラベルフィルタ。
+
+### **🚀 Additional Features (Proposed for Commercial Grade)**
+商用レベルに引き上げるために追加すべき機能です。
+
+- **Asset Database / Registry:**
+  - 全アセットの GUID と ファイルパス の対応表をメモリ上に保持するシステム。
+  - ファイル移動やリネームが発生しても、GUID経由で参照を維持するために必須。
+- **Directory Watcher (Hot Reload):**
+  - エンジン外（VSCodeやPhotoshopなど）でファイルが変更されたことを検知し、自動的にリロード・インポートする機能。
+- **Favorites / Collections:**
+  - 実際のフォルダ階層とは別に、よく使うアセットをブックマークする機能。
 
 ---
 

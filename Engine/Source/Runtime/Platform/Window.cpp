@@ -51,6 +51,9 @@ namespace Span
 			return false;
 		}
 
+		// ドラッグ&ドロップを受け入れる
+		DragAcceptFiles(hWnd, TRUE);
+
 		// ユーザーデータをこのクラスのポインタに紐づける
 		SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
 
@@ -92,6 +95,29 @@ namespace Span
 
 		switch (message)
 		{
+		case WM_DROPFILES:
+		{
+			HDROP hDrop = (HDROP)wParam;
+			int count = DragQueryFileA(hDrop, 0xFFFFFFFF, NULL, 0);
+
+			std::vector<std::string> droppedFiles;
+			char filePath[MAX_PATH];
+
+			for (int i = 0; i < count; i++)
+			{
+				if (DragQueryFileA(hDrop, i, filePath, MAX_PATH))
+				{
+					droppedFiles.push_back(filePath);
+				}
+			}
+
+			DragFinish(hDrop);
+
+			// Inputシステムへ通知
+			Input::OnFilesDropped(droppedFiles);
+			return 0;
+		}
+
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			return 0;

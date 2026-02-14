@@ -82,6 +82,17 @@ namespace Span
 					ImGui::Dummy(ImVec2(imageSize.x, imageSize.y));
 				}
 
+				// 現在のカーソル位置を利用してドロップターゲットを設定
+				if (ImGui::BeginDragDropTarget())
+				{
+					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM"))
+					{
+						const wchar_t* path = (const wchar_t*)payload->Data;
+						OnAssetDropped(std::filesystem::path(path));
+					}
+					ImGui::EndDragDropTarget();
+				}
+
 				// --- Gizmo ---
 				// ImGuizmoの描画範囲設定
 				ImVec2 imageScreenPos = ImGui::GetItemRectMin();
@@ -592,6 +603,45 @@ namespace Span
 			outSize.y = outSize.x / targetAspect;
 			outPos.x = 0.0f;
 			outPos.y = (avail.y - outSize.y) * 0.5f;
+		}
+	}
+
+	void SceneViewPanel::OnAssetDropped(const std::filesystem::path& path)
+	{
+		// 拡張子で処理を分岐
+		std::string ext = path.extension().string();
+
+		// 1. モデルの場合 -> Entity生成
+		if (ext == ".fbx" || ext == ".obj" || ext == ".gltf" || ext == ".glb")
+		{
+			auto meshPtr = AssetManager::Get().GetMesh(path.string());
+
+			auto materialPtr = AssetManager::Get().GetDefaultMaterial();
+
+			if (meshPtr)
+			{
+				auto entity = EntityBuilder(&Application::Get().GetWorld(), path.stem().string().c_str())
+					.Add(Transform{ {0,0,0}, {0,0,0,1}, {1,1,1} })
+					.Add(LocalToWorld{})
+					.Add(MeshFilter(meshPtr.get()))
+					.Add(MeshRenderer{ materialPtr.get()})
+					.Build();
+
+				SelectionManager::Select(entity);
+
+				SPAN_LOG("Spawned Entity from: %s", path.string().c_str());
+			}
+		}
+		// 2. シーンの場合 -> シーンロード (将来実装)
+		else if (ext == ".span")
+		{
+			SPAN_WARN("Scene loading from Drag&Drop is not implemented yet.");
+			// SceneManager::LoadScene(path.string());
+		}
+		// 3. テクスチャの場合 -> 選択中のオブジェクトのマテリアルに適用 or UI Entityとして配置 (将来実装)
+		else if (ext == ".png" || ext == ".jpg")
+		{
+			SPAN_LOG("Texture dropped. (Material assignment TODO)");
 		}
 	}
 }

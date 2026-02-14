@@ -50,6 +50,9 @@
 #include <filesystem>
 #include <set>
 #include <fstream>
+#include <sstream>
+#include <mutex>
+#include <random>
 
 // 3. DirectX 12 & Math
 // ============================================================

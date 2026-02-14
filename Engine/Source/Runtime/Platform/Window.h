@@ -11,6 +11,7 @@
 
 #pragma once
 #include "Core/CoreMinimal.h"
+#include <shellapi.h>
 
 namespace Span
 {

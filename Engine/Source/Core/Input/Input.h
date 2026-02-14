@@ -115,8 +115,13 @@ namespace Span
 
 		/// @brief	ImGuiがマウスを占有しているか設定する
 		static void SetImGuiWantCapture(bool wantCapture) { imGuiWantCaptureMouse = wantCapture; }
-		/// @brief	UIが入力を奪っていないか
-		static bool IsInputAvailable() { return !imGuiWantCaptureMouse; }
+
+		/// @brief	ドロップされたファイルのパスを取得
+		static const std::vector<std::string>& GetDroppedFiles() { return s_DroppedFiles; }
+
+		/// @brief	システム側から呼ぶイベント
+		static void OnFilesDropped(const std::vector<std::string>& files) { s_DroppedFiles = files; }
+		static void ClearDroppedFiles() { s_DroppedFiles.clear(); }
 
 	private:
 		// State
@@ -143,6 +148,8 @@ namespace Span
 		static void ResetCursorToCenter();
 
 		static bool imGuiWantCaptureMouse;
+
+		static std::vector<std::string> s_DroppedFiles;
 	};
 }
 

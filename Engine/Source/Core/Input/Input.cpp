@@ -25,7 +25,9 @@ namespace Span
 
 	bool Input::imGuiWantCaptureMouse = false;
 
-	// ボタンと配列インデックスの対応表マップ
+	std::vector<std::string> Input::s_DroppedFiles;
+
+	// ボタンと配列インデックスの対応表マップ 
 	int GetGamepadIndex(Key key)
 	{
 		switch (key)

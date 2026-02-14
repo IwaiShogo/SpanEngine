@@ -26,42 +26,56 @@ namespace Span
 	 * 2. **Copy Command**: `CopyTextureRegion` で Upload Heap から `Default Heap` (VRAM) へ転送。
 	 * 3. **Transition**: リソースの状態を `PIXEL_SHADER_RESOURCE` に変更してシェーダーで使用可能にする。
 	 */
-    class Texture
-    {
-    public:
-        Texture();
-        ~Texture();
+	class Texture
+	{
+	public:
+		Texture();
+		~Texture();
 
-        /**
-         * @brief	画像ファイルからテクスチャを作成します。
-         * @param	device D3D12デバイス
-         * @param	commandQueue 転送コマンドを実行するキュー
-         * @param	filepath ファイルパス (Assets/...)
-         */
-        bool Initialize(ID3D12Device* device, ID3D12CommandQueue* commandQueue, const std::string& filepath);
+		/**
+		 * @brief	画像ファイルからテクスチャを作成します。
+		 * @param	device D3D12デバイス
+		 * @param	commandQueue 転送コマンドを実行するキュー
+		 * @param	filepath ファイルパス (Assets/...)
+		 * @return	成功ならtrue
+		 */
+		bool Initialize(ID3D12Device* device, ID3D12CommandQueue* commandQueue, const std::string& filepath);
 
-        /// @brief	終了処理
-        void Shutdown();
+		/// @brief	終了処理
+		void Shutdown();
 
-        /// @brief	SRVヒープ上のCPUハンドル (ディスクリプタのコピー元)
-        D3D12_CPU_DESCRIPTOR_HANDLE GetCPUDescriptorHandle() const { return srvHandleCPU; }
+		/**
+		 * @brief	ImGui表示用のテクスチャIDを取得します。
+		 * @return	ImTextureID (GPU Descriptor Handle ptr)
+		 */
+		void* GetImGuiTextureID() const
+		{
+			if (srvHeap)
+			{
+				return (void*)srvHeap->GetGPUDescriptorHandleForHeapStart().ptr;
+			}
+			return nullptr;
+		}
 
-        /// @brief	SRVヒープ自体 (ShaderVisibleではない、保管用)
-        ID3D12DescriptorHeap* GetSRVHeap() const { return srvHeap.Get(); }
+		/// @brief	SRVヒープ上のCPUハンドル (ディスクリプタのコピー元)
+		D3D12_CPU_DESCRIPTOR_HANDLE GetCPUDescriptorHandle() const { return srvHandleCPU; }
 
-    private:
-        // 画像データをGPUバッファへアップロードするヘルパー関数
-        bool UploadTexture(ID3D12Device* device, ID3D12CommandQueue* commandQueue,
-            const void* initialData, uint64_t width, uint64_t height, uint64_t bytesPerPixel);
+		/// @brief	SRVヒープ自体 (ShaderVisibleではない、保管用)
+		ID3D12DescriptorHeap* GetSRVHeap() const { return srvHeap.Get(); }
 
-    private:
-        ComPtr<ID3D12Resource> resource;       ///< テクスチャ本体 (VRAM)
-        ComPtr<ID3D12Resource> uploadBuffer;   ///< アップロード用の一時バッファ (Upload Heap)
-        ComPtr<ID3D12DescriptorHeap> srvHeap;  ///< SRV用デスクリプタヒープ (このテクスチャ専用)
+	private:
+		// 画像データをGPUバッファへアップロードするヘルパー関数
+		bool UploadTexture(ID3D12Device* device, ID3D12CommandQueue* commandQueue,
+			const void* initialData, uint64_t width, uint64_t height, uint64_t bytesPerPixel);
 
-        D3D12_CPU_DESCRIPTOR_HANDLE srvHandleCPU = {};
+	private:
+		ComPtr<ID3D12Resource> resource;       ///< テクスチャ本体 (VRAM)
+		ComPtr<ID3D12Resource> uploadBuffer;   ///< アップロード用の一時バッファ (Upload Heap)
+		ComPtr<ID3D12DescriptorHeap> srvHeap;  ///< SRV用デスクリプタヒープ (このテクスチャ専用)
 
-        uint32_t width = 0;
-        uint32_t height = 0;
-    };
+		D3D12_CPU_DESCRIPTOR_HANDLE srvHandleCPU = {};
+
+		uint32_t width = 0;
+		uint32_t height = 0;
+	};
 }

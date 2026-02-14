@@ -100,6 +100,19 @@ namespace Span
 		// Input
 		Input::Initialize(window.GetHandle());
 
+		// AssetManager
+		auto device = renderer.GetDevice();
+		auto queue = renderer.GetCommandQueue();
+
+		if (device && queue)
+		{
+			AssetManager::Get().Initialize(device, queue);
+		}
+		else
+		{
+			SPAN_ERROR("Failed to initialize AssetManager: Device or Queue is null");
+		}
+
 		SPAN_LOG("--- Initialization Complete ---");
 	}
 

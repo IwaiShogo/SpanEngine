@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	Mesh.h
  * @brief	3Dモデルの形状データ (頂点バッファ) 管理。
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -30,7 +30,7 @@ namespace Span
 	/**
 	 * @class	Mesh
 	 * @brief	📦 頂点データをGPUメモリ (Vertex Buffer) に保持するクラス。
-	 * 
+	 *
 	 * @details
 	 * - **VertexBufferView (VBV)** を通じて描画コマンドにバインドされます。
 	 * - 現時点ではインデックスバッファを使用しない実装になっています (将来的に拡張推奨)。
@@ -38,6 +38,18 @@ namespace Span
 	class Mesh
 	{
 	public:
+		Mesh() = default;
+
+		// Move Constructor
+		Mesh(Mesh&&) noexcept = default;
+		Mesh& operator=(Mesh&&) noexcept = default;
+
+		// Copy Constructor
+		Mesh(const Mesh&) = delete;
+		Mesh& operator=(const Mesh&) = delete;
+
+		~Mesh();
+
 		/**
 		 * @brief	頂点配列からメッシュを初期化します。
 		 * @param	device D3D12デバイス
