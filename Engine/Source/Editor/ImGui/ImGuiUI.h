@@ -11,11 +11,18 @@
 
 #pragma once
 #include "Core/Math/SpanMath.h"
+#include "Core/Log/Logger.h"
+
 #include <imgui.h>
 #include <imgui_internal.h>
 
 namespace Span
 {
+	// 前方宣言
+	class Texture;
+	class Mesh;
+	class Material;
+
 	/**
 	 * @class	ImGuiUI
 	 * @brief	🎛️ エディタ独自のUIパーツを提供する静的クラス。
@@ -35,136 +42,113 @@ namespace Span
 		 * - **X**: 赤色
 		 * - **Y**: 緑色
 		 * - **Z**: 青色
-		 * 
+		 *
 		 * @param	label 左側に表示するラベル文字列
 		 * @param	values 編集対象のVector3参照
 		 * @param	resetValue 軸ラベルをクリックした際のリセット値 (Default: 0.0f)
 		 * @param	columnWidth ラベルカラムの幅 (Default: 100.0f)
 		 * @return	値が変更された場合 true
 		 */
-		static bool DrawVec3Control(const std::string& label, Vector3& values, float resetValue = 0.0f, float columnWidth = 100.0f)
-		{
-			bool changed = false;
-			ImGui::PushID(label.c_str());
-
-			// Columns APIを使用 (BeginTableよりクラッシュしにくい)
-			ImGui::Columns(2);
-
-			// 1列目の幅設定
-			ImGui::SetColumnWidth(0, columnWidth);
-			ImGui::Text("%s", label.c_str());
-			ImGui::NextColumn();
-
-			// 2列目: X, Y, Z の描画
-			ImGui::PushMultiItemsWidths(3, ImGui::CalcItemWidth());
-			ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2{ 0, 0 });
-
-			float lineHeight = ImGui::GetFontSize() + GImGui->Style.FramePadding.y * 2.0f;
-			ImVec2 buttonSize = { lineHeight + 3.0f, lineHeight };
-
-			auto DrawAxis = [&](const char* axisLabel, float& value, const ImVec4& color)
-				{
-					// 軸ごとのIDスコープを作る (これがないと全て同じIDになり連動してしまう)
-					ImGui::PushID(axisLabel);
-
-					ImGui::PushStyleColor(ImGuiCol_Button, color);
-					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ color.x + 0.1f, color.y + 0.1f, color.z + 0.1f, 1.0f });
-					ImGui::PushStyleColor(ImGuiCol_ButtonActive, color);
-
-					if (ImGui::Button(axisLabel, buttonSize))
-					{
-						value = resetValue;
-						changed = true;
-					}
-					ImGui::PopStyleColor(3);
-
-					ImGui::SameLine();
-
-					// IDは "label/axisLabel/##Drag" となり一意になる
-					if (ImGui::DragFloat("##Drag", &value, 0.1f, 0.0f, 0.0f, "%.2f"))
-					{
-						changed = true;
-					}
-					ImGui::PopItemWidth();
-
-					ImGui::PopID(); // axisLabelのIDをポップ
-				};
-
-			// X Axis
-			DrawAxis("X", values.x, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
-			ImGui::SameLine();
-
-			// Y Axis
-			DrawAxis("Y", values.y, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
-			ImGui::SameLine();
-
-			// Z Axis
-			DrawAxis("Z", values.z, ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });
-
-			ImGui::PopStyleVar(); // ItemSpacing
-			ImGui::Columns(1); // カラムリセット
-
-			ImGui::PopID();
-			return changed;
-		}
+		static bool DrawVec3Control(const std::string& label, Vector3& values, float resetValue = 0.0f, float columnWidth = 100.0f);
 
 		/**
 		 * @brief	コンポーネント用の折り畳みヘッダーを描画します。
-		 * 
+		 *
 		 * @details
 		 * 枠線付きの `TreeNode` を描画し、右クリックメニューで「コンポーネント削除」機能を提供します。
-		 * 
+		 *
 		 * @param	name ヘッダーに表示するコンポーネント名
 		 * @param[out] isRemoved 「Remove Component」が選択された場合 true がセットされる
 		 * @param	defaultOpen 初期状態で開いているか
 		 * @returnヘッダが開いている場合 true
 		 */
-		static bool DrawComponentHeader(const std::string& name, bool& isRemoved, bool defaultOpen = true)
+		static bool DrawComponentHeader(const std::string& name, bool& isRemoved, bool defaultOpen = true);
+
+		/**
+		 * @brief	アセット選択用スロットを描画し、D&Dを受け入れる汎用ヘルパー
+		 * @tparam	AssetType アセットのクラス (Texture, Mesh etc)
+		 * @param	label プロパティ名
+		 * @param	assetPtr アセットへのポインタ参照
+		 * @param	assetName 表示するアセット名
+		 * @param	extensionFilter 受け入れる拡張子 (例: ".png")
+		 * @param	loaderFunc ロード関数
+		 */
+		template <typename AssetType, typename LoaderFunc>
+		static void DrawAssetSlot(const char* label, AssetType*& assetPtr, const std::string& assetName, const std::vector<std::string>& extensions, LoaderFunc loaderFunc)
 		{
-			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4, 4));
+			ImGui::PushID(label);
 
-			ImGuiTreeNodeFlags treeNodeFlags = ImGuiTreeNodeFlags_Framed | ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_AllowOverlap | ImGuiTreeNodeFlags_FramePadding;
-			if (defaultOpen) treeNodeFlags |= ImGuiTreeNodeFlags_DefaultOpen;
+			// 2カラムレイアウト (ラベル | ボタン)
+			ImGui::Columns(2);
+			ImGui::SetColumnWidth(0, 100.0f);
+			ImGui::Text("%s", label);
+			ImGui::NextColumn();
 
-			bool open = ImGui::TreeNodeEx(name.c_str(), treeNodeFlags, name.c_str());
+			// ボタン幅設計
+			float buttonWidth = ImGui::GetContentRegionAvail().x - 30.0f;
 
-			// 右クリックメニュー (TreeNodeの直後に配置することでヘッダー全体で反応する)
-			if (ImGui::BeginPopupContextItem("ComponentSettings_Context", ImGuiPopupFlags_MouseButtonRight))
+			// アセット名の表示ボタン
+			std::string displayText = assetPtr ? assetName : "None (" + std::string(typeid(AssetType).name()) + ")";
+
+			if (assetPtr)
 			{
-				ImGui::TextDisabled("%s", name.c_str());
-				ImGui::Separator();
-				if (ImGui::MenuItem("Remove Component"))
-				{
-					isRemoved = true;
-				}
-				ImGui::EndPopup();
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.7f, 0.2f, 1.0f));
 			}
 
-			// --- 歯車アイコン (右端) ---
+			ImGui::Button(displayText.c_str(), ImVec2(buttonWidth, 0.0f));
+
+			if (assetPtr) ImGui::PopStyleColor();
+
+			// --- ドラッグ&ドロップ受け入れ処理 ---
+			if (ImGui::BeginDragDropTarget())
+			{
+				if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM"))
+				{
+					const wchar_t* pathStr = (const wchar_t*)payload->Data;
+					std::filesystem::path path(pathStr);
+					std::string ext = path.extension().string();
+
+					// 拡張子チェック
+					bool isValid = false;
+					for (const auto& e : extensions)
+					{
+						if (ext == e) { isValid = true; break; }
+					}
+
+					if (isValid)
+					{
+						// ロード関数を呼び出してポインタ更新
+						auto sharedAsset = loaderFunc(path.string());
+						if (sharedAsset)
+						{
+							assetPtr = sharedAsset.get();
+						}
+					}
+					else
+					{
+						SPAN_WARN("Invalid asset type: %s", ext.c_str());
+					}
+				}
+				ImGui::EndDragDropTarget();
+			}
+
+			// xボタン
 			ImGui::SameLine();
-			float buttonWidth = 20.0f;
-			ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x - buttonWidth - 5.0f);
-
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0)); // 透明
-
-			if (ImGui::Button(":", ImVec2(buttonWidth, 0)))
+			if (ImGui::Button("X", ImVec2(20, 0)))
 			{
-				ImGui::OpenPopup("ComponentSettings");
-			}
-			ImGui::PopStyleColor();
-
-			// 歯車ボタン用のポップアップ
-			if (ImGui::BeginPopup("ComponentSettings"))
-			{
-				if (ImGui::MenuItem("Remove Component"))
-				{
-					isRemoved = true;
-				}
-				ImGui::EndPopup();
+				assetPtr = nullptr;
 			}
 
-			ImGui::PopStyleVar();
-			return open;
+			ImGui::Columns(1);
+			ImGui::PopID();
 		}
+
+		// --- 特化型ラッパー関数 ---
+
+		static void DrawTextureSlot(const char* label, Texture*& texture);
+
+		static void DrawMeshSlot(const char* label, Mesh*& mesh);
+
+		static void DrawMaterialSlot(const char* label, Material*& material);
 	};
 }

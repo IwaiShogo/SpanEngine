@@ -11,8 +11,10 @@
 
 #pragma once
 
-#include <SpanEngine.h>
 #include "Runtime/Graphics/Resources/Texture.h"
+#include "Runtime/Graphics/Resources/Mesh.h"
+#include "Runtime/Graphics/Resources/Material.h"
+#include "Runtime/Graphics/ModelLoader.h"
 
 namespace Span
 {

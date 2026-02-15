@@ -79,19 +79,6 @@ namespace Span
 		 */
 		void OnAssetDropped(const std::filesystem::path& path);
 
-		/**
-		 * @brief	ファイルまたはフォルダを新しいディレクトリへ移動します。
-		 * @param	sourcePath 元のパス
-		 * @param	destPath 移動先のディレクトリパス
-		 */
-		void MoveAsset(const std::filesystem::path& sourcePath, const std::filesystem::path& destPath);
-
-		/**
-		 * @brief	ドラッグ&ドロップの受け入れ処理
-		 * @param	targetPath ドロップ対象のディレクトリパス
-		 */
-		void HandleDragDropTarget(const std::filesystem::path& targetPath);
-
 	private:
 		D3D12_GPU_DESCRIPTOR_HANDLE textureHandle = {};
 

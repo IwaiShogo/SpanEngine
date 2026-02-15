@@ -100,6 +100,19 @@ namespace Span
 		void SelectRange(const std::filesystem::path& start, const std::filesystem::path& end);
 
 		/**
+		 * @brief	ファイルまたはフォルダを新しいディレクトリへ移動します。
+		 * @param	sourcePath 元のパス
+		 * @param	destPath 移動先のディレクトリパス
+		 */
+		void MoveAsset(const std::filesystem::path& sourcePath, const std::filesystem::path& destPath);
+
+		/**
+		 * @brief	ドラッグ&ドロップの受け入れ処理
+		 * @param	targetPath ドロップ対象のディレクトリパス
+		 */
+		void HandleDragDropTarget(const std::filesystem::path& targetPath);
+
+		/**
 		 * @brief	テンプレートからファイルを生成します。
 		 * @param	fileName 生成するファイル名
 		 * @param	content ファイルの内容

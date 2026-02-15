@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	SpanReflection.h
  * @brief	コンポーネント定義用のリフレクションマクロ。
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -11,7 +11,7 @@
 
 #pragma once
 #include "SpanAttributes.h"
-#include "ComponentRegistry.h" 
+#include "ComponentRegistry.h"
 #include "Editor/ImGui/ImGuiUI.h"
 #include "Core/Containers/FixedString.h"
 #include <vector>
@@ -26,7 +26,7 @@
 /**
  * @def		SPAN_INSPECTOR_BEGIN(ComponentType)
  * @brief	インスペクターUI定義の開始マクロ
- * 
+ *
  * @details
  * 構造体の中に `OnGui` 関数と、自動登録用の静的構造体 `_AutoReg_Inspector` を生成します。
  */

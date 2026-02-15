@@ -12,6 +12,7 @@
 #include <SpanEngine.h>
 #include <SpanEditor.h>
 #include "ProjectBrowserPanel.h"
+#include "Utils/EditorFileSystem.h"
 
 #include <imgui.h>
 //#include <imgui_stdlib.h>
@@ -148,14 +149,7 @@ namespace Span
 			{
 				for (const auto& item : m_SelectedItems)
 				{
-					try
-					{
-						if (std::filesystem::is_directory(item))
-							std::filesystem::remove_all(item);
-						else
-							std::filesystem::remove(item);
-					}
-					catch (...) {}
+					EditorFileSystem::DeleteFile(item);
 				}
 				m_SelectedItems.clear();
 				ImGui::CloseCurrentPopup();
@@ -380,6 +374,12 @@ namespace Span
 			ImGui::Button(iconStr, size);
 		}
 
+		// フォルダアイコンへのドロップターゲット
+		if (isDir)
+		{
+			HandleDragDropTarget(path);
+		}
+
 		// クリック・ドラッグ処理
 		if (ImGui::IsItemHovered())
 		{
@@ -412,9 +412,7 @@ namespace Span
 				}
 				else
 				{
-					// ファイルを開く
-					auto pathStr = path.wstring();
-					ShellExecuteW(nullptr, L"open", pathStr.c_str(), nullptr, nullptr, SW_SHOW);
+					EditorFileSystem::OpenExternal(path);
 				}
 			}
 		}
@@ -543,6 +541,9 @@ namespace Span
 		// ノード描画
 		bool opened = ImGui::TreeNodeEx(path.string().c_str(), flags, "%s %s", ICON_FA_FOLDER, filename.c_str());
 
+		// ドロップターゲット処理
+		HandleDragDropTarget(path);
+
 		if (ImGui::IsItemClicked())
 		{
 			m_CurrentDirectory = path;
@@ -616,6 +617,46 @@ namespace Span
 			{
 				m_SelectedItems.insert(allFiles[i]);
 			}
+		}
+	}
+
+	void ProjectBrowserPanel::MoveAsset(const std::filesystem::path& source, const std::filesystem::path& dest)
+	{
+		if (EditorFileSystem::MoveFile(source, dest))
+		{
+			SPAN_LOG("Moved: %s", source.string().c_str());
+			m_SelectedItems.clear();
+		}
+	}
+
+	void ProjectBrowserPanel::HandleDragDropTarget(const std::filesystem::path& targetPath)
+	{
+		if (ImGui::BeginDragDropTarget())
+		{
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM"))
+			{
+				const wchar_t* sourcePathStr = (const wchar_t*)payload->Data;
+				std::filesystem::path sourcePath(sourcePathStr);
+
+				// 自分自身や、自分のサブフォルダへの移動を防ぐ
+				bool isSelf = (sourcePath == targetPath);
+				bool isSubDir = false;
+
+				// 親子関係チェック
+				std::string targetStr = targetPath.string();
+				std::string sourceStr = sourcePath.string();
+				if (targetStr.find(sourceStr) == 0) isSubDir = true;
+
+				if (!isSelf && !isSubDir)
+				{
+					MoveAsset(sourcePath, targetPath);
+				}
+				else
+				{
+					SPAN_WARN("Invalid move operation.");
+				}
+			}
+			ImGui::EndDragDropTarget();
 		}
 	}
 

@@ -236,7 +236,7 @@
 - **Navigation Bar:**
   - [x] **Breadcrumbs:** 現在のパスを表示するパンくずリスト。
   - [ ] **History Controls:** `<` (戻る) `>` (進む) ボタン。 (Backspaceキーのみ実装済)
-  - [ ] **Search Field:** 名前検索およびフィルタリング用入力欄。 (簡易実装済、高機能化が必要)
+  - [x] **Search Field:** 名前検索およびフィルタリング用入力欄。 (簡易実装済、高機能化が必要)
 - **Bottom Bar:**
   - [ ] **Item Count:** 現在表示中のアイテム数を表示。
   - [x] **Zoom Slider:** アイコンの表示サイズを動的に変更するスライダー。
@@ -253,7 +253,7 @@
 #### **2. Drag & Drop Workflow**
 - [x] **External to Engine (Import):**
   - エクスプローラーからのインポート。.metaの自動生成。
-- [ ] **Internal Move:**
+- [x] **Internal Move:**
   - **[重要]** Browser内でファイルをドラッグし、左側のフォルダツリーやフォルダアイコンへドロップして移動させる。
   - `.meta` ファイルも同時に移動させる必要がある。
 - [x] **Asset to Scene:**
@@ -275,6 +275,10 @@
 - [x] **View Modes (Grid):** アイコン主体のグリッド表示。
 - [ ] **View Modes (List):** 詳細リスト表示。
 - [ ] **Advanced Search:** タイプフィルタ (`t:Texture`)、ラベルフィルタ。
+
+### **🛠️ Refactoring & Architecture**
+- [x] **Logic Separation:** ファイル操作ロジックを `EditorFileSystem` クラスへ分離。
+- [ ] **Asset Database:** GUIDとパスの対応を管理するDBの構築（ファイル移動時のリンク切れ防止）。
 
 ### **🚀 Additional Features (Proposed for Commercial Grade)**
 商用レベルに引き上げるために追加すべき機能です。
