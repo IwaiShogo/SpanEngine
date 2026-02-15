@@ -4,7 +4,7 @@ var searchData=
   ['halfpi_1',['HalfPI',['../namespaceSpan.html#aab3b565f31423405c3fdb453380bc937',1,'Span']]],
   ['handle_2',['Handle',['../structSpan_1_1AssetMetadata.html#a1e833ed4447068c127a225a5f2bcacb6',1,'Span::AssetMetadata']]],
   ['handledragdrop_3',['HandleDragDrop',['../classSpan_1_1HierarchyPanel.html#af958ff25d0ba0576ae4848bbd01b2031',1,'Span::HierarchyPanel']]],
-  ['handledragdroptarget_4',['HandleDragDropTarget',['../classSpan_1_1SceneViewPanel.html#a44344ec7b9c3b6d58ffe4b4a2c5791a4',1,'Span::SceneViewPanel']]],
+  ['handledragdroptarget_4',['HandleDragDropTarget',['../classSpan_1_1ProjectBrowserPanel.html#af297fa0f9503a5ea5833e17da8ec2983',1,'Span::ProjectBrowserPanel']]],
   ['has_5',['Has',['../classSpan_1_1ArchetypeSignature.html#a3ed2e7bfb5bec1699681ecf2648f6890',1,'Span::ArchetypeSignature']]],
   ['hasallcomponents_6',['HasAllComponents',['../classSpan_1_1Archetype.html#ab576f4f851319859304bfa1fc1ada7ed',1,'Span::Archetype']]],
   ['hascomponent_7',['HasComponent',['../classSpan_1_1Archetype.html#a14c09aab559c4f601037d972cac3cc56',1,'Span::Archetype::HasComponent()'],['../classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0',1,'Span::World::HasComponent()']]],

@@ -16,6 +16,7 @@ var hierarchy =
     [ "Span::ComponentType&lt; T &gt;", "classSpan_1_1ComponentType.html", null ],
     [ "Span::ConstantBuffer&lt; T &gt;", "classSpan_1_1ConstantBuffer.html", null ],
     [ "Span::EditorCamera", "structSpan_1_1EditorCamera.html", null ],
+    [ "Span::EditorFileSystem", "classSpan_1_1EditorFileSystem.html", null ],
     [ "Span::EditorPanel", "classSpan_1_1EditorPanel.html", [
       [ "Span::HierarchyPanel", "classSpan_1_1HierarchyPanel.html", null ],
       [ "Span::InspectorPanel", "classSpan_1_1InspectorPanel.html", null ],

@@ -11,6 +11,8 @@ var classSpan_1_1ProjectBrowserPanel =
     [ "DrawEntryItem", "classSpan_1_1ProjectBrowserPanel.html#a61f13161ddf1dcca1a2a1a5a8a865ccc", null ],
     [ "DrawNavBar", "classSpan_1_1ProjectBrowserPanel.html#aaa42d64a23e51093f81c1e7e400b0911", null ],
     [ "DrawTreeNode", "classSpan_1_1ProjectBrowserPanel.html#a3a88cd4c643e90607f339a3491b9f8fd", null ],
+    [ "HandleDragDropTarget", "classSpan_1_1ProjectBrowserPanel.html#af297fa0f9503a5ea5833e17da8ec2983", null ],
+    [ "MoveAsset", "classSpan_1_1ProjectBrowserPanel.html#a8b07b7595d427067ec0747978be3d2fc", null ],
     [ "OnImGuiRender", "classSpan_1_1ProjectBrowserPanel.html#ad259c8cf9a9c066350b699f9cd14438e", null ],
     [ "SelectItem", "classSpan_1_1ProjectBrowserPanel.html#ad1b63fbbe232337cd64f286c4511a503", null ],
     [ "SelectRange", "classSpan_1_1ProjectBrowserPanel.html#a7be9ab8dd13c402c851985182d863a22", null ],

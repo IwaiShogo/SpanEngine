@@ -1,7 +1,7 @@
 var searchData=
 [
   ['handledragdrop_0',['HandleDragDrop',['../classSpan_1_1HierarchyPanel.html#af958ff25d0ba0576ae4848bbd01b2031',1,'Span::HierarchyPanel']]],
-  ['handledragdroptarget_1',['HandleDragDropTarget',['../classSpan_1_1SceneViewPanel.html#a44344ec7b9c3b6d58ffe4b4a2c5791a4',1,'Span::SceneViewPanel']]],
+  ['handledragdroptarget_1',['HandleDragDropTarget',['../classSpan_1_1ProjectBrowserPanel.html#af297fa0f9503a5ea5833e17da8ec2983',1,'Span::ProjectBrowserPanel']]],
   ['has_2',['Has',['../classSpan_1_1ArchetypeSignature.html#a3ed2e7bfb5bec1699681ecf2648f6890',1,'Span::ArchetypeSignature']]],
   ['hasallcomponents_3',['HasAllComponents',['../classSpan_1_1Archetype.html#ab576f4f851319859304bfa1fc1ada7ed',1,'Span::Archetype']]],
   ['hascomponent_4',['HasComponent',['../classSpan_1_1Archetype.html#a14c09aab559c4f601037d972cac3cc56',1,'Span::Archetype::HasComponent()'],['../classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0',1,'Span::World::HasComponent()']]],

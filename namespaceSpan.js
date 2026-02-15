@@ -21,6 +21,7 @@ var namespaceSpan =
     [ "ProjectBrowserPanel", "classSpan_1_1ProjectBrowserPanel.html", "classSpan_1_1ProjectBrowserPanel" ],
     [ "SceneViewPanel", "classSpan_1_1SceneViewPanel.html", "classSpan_1_1SceneViewPanel" ],
     [ "SelectionManager", "classSpan_1_1SelectionManager.html", "classSpan_1_1SelectionManager" ],
+    [ "EditorFileSystem", "classSpan_1_1EditorFileSystem.html", "classSpan_1_1EditorFileSystem" ],
     [ "Application", "classSpan_1_1Application.html", "classSpan_1_1Application" ],
     [ "Active", "structSpan_1_1Active.html", "structSpan_1_1Active" ],
     [ "Layer", "structSpan_1_1Layer.html", "structSpan_1_1Layer" ],
