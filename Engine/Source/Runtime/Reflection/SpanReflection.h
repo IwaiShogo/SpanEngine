@@ -157,7 +157,7 @@ namespace Span::Internal
 		}
 		else if constexpr (std::is_enum_v<T>) {
 			int val = static_cast<int>(value);
-			if (ImGui::DragInt(label, &vel)) value = static_cast<T>(val);
+			if (ImGui::DragInt(label, &val)) value = static_cast<T>(val);
 		}
 		else {
 			ImGui::TextDisabled("%s (Unknown)", label);
