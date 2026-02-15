@@ -146,6 +146,22 @@ namespace Span::Internal
 		else if constexpr (std::is_array_v<T> && std::is_same_v<std::remove_all_extents_t<T>, char>) {
 			ImGui::InputText(label, value, sizeof(T));
 		}
+		else if constexpr (std::is_same_v<T, Span::Texture*>) {
+			Span::ImGuiUI::DrawTextureSlot(label, value);
+		}
+		else if constexpr (std::is_same_v<T, Span::Mesh*>) {
+			Span::ImGuiUI::DrawMeshSlot(label, value);
+		}
+		else if constexpr (std::is_same_v<T, Span::Material*>) {
+			Span::ImGuiUI::DrawMaterialSlot(label, value);
+		}
+		else if constexpr (std::is_enum_v<T>) {
+			int val = static_cast<int>(value);
+			if (ImGui::DragInt(label, &vel)) value = static_cast<T>(val);
+		}
+		else {
+			ImGui::TextDisabled("%s (Unknown)", label);
+		}
 
 		if (isReadOnly) ImGui::EndDisabled();
 
