@@ -63,6 +63,9 @@ namespace Span
 		/// @brief	SRVヒープ自体 (ShaderVisibleではない、保管用)
 		ID3D12DescriptorHeap* GetSRVHeap() const { return srvHeap.Get(); }
 
+		/// @brief	パスの取得
+		const std::string& GetPath() const { return m_FilePath; }
+
 	private:
 		// 画像データをGPUバッファへアップロードするヘルパー関数
 		bool UploadTexture(ID3D12Device* device, ID3D12CommandQueue* commandQueue,
@@ -77,5 +80,7 @@ namespace Span
 
 		uint32_t width = 0;
 		uint32_t height = 0;
+
+		std::string m_FilePath;
 	};
 }

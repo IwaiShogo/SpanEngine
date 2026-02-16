@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	EditorFileSystem.cpp
  * @brief	EditorFileSystemの実装。
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -20,6 +20,8 @@ namespace Span
 	{
 		// 移動先パスの構築
 		std::filesystem::path targetPath = destination / source.filename();
+
+		if (source == targetPath) return true;
 
 		if (std::filesystem::exists(targetPath))
 		{
@@ -51,6 +53,8 @@ namespace Span
 
 	bool EditorFileSystem::DeleteFile(const std::filesystem::path& path)
 	{
+		if (!std::filesystem::exists(path)) return false;
+
 		try
 		{
 			// 1. 本体削除
@@ -83,14 +87,20 @@ namespace Span
 	{
 		std::filesystem::path targetPath = path.parent_path() / newName;
 
-		return MoveFile(path, path.parent_path());
+		if (path == targetPath) return true;
 
-		if (std::filesystem::exists(targetPath)) return false;
+		if (std::filesystem::exists(targetPath))
+		{
+			SPAN_WARN("Rename failed: Target already exists '%s'", targetPath.string().c_str());
+			return false;
+		}
 
 		try
 		{
+			// 1. 本体リネーム
 			std::filesystem::rename(path, targetPath);
 
+			// 2. .metaリネーム
 			auto srcMeta = GetMetaPath(path);
 			if (std::filesystem::exists(srcMeta))
 			{
@@ -99,17 +109,21 @@ namespace Span
 			}
 			return true;
 		}
-		catch (...) { return false; }
+		catch (const std::exception& e)
+		{
+			SPAN_ERROR("Rename Failed: %s", e.what());
+			return false;
+		}
 	}
 
 	void EditorFileSystem::OpenInExplorer(const std::filesystem::path& path)
 	{
-		ShellExecuteW(nullptr, L"open", L"explorer.exe", path.wstring().c_str(), nullptr, SW_SHOW);
+		ShellExecuteA(NULL, "open", path.string().c_str(), NULL, NULL, SW_SHOWDEFAULT);
 	}
 
 	void EditorFileSystem::OpenExternal(const std::filesystem::path& path)
 	{
-		ShellExecuteW(nullptr, L"open", path.wstring().c_str(), nullptr, nullptr, SW_SHOW);
+		ShellExecuteA(NULL, "open", path.string().c_str(), NULL, NULL, SW_SHOWDEFAULT);
 	}
 
 	std::filesystem::path EditorFileSystem::GetMetaPath(const std::filesystem::path& assetPath)

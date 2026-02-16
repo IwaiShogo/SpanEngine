@@ -114,6 +114,8 @@ namespace Span
 		{
 			std::shared_ptr<Mesh> meshPtr(meshes[0]);
 
+			meshPtr->SetPath(path);
+
 			m_MeshCache[key] = meshPtr;
 			SPAN_LOG("Mesh Loaded: %s", path.c_str());
 

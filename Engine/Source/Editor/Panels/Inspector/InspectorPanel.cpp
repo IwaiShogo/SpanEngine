@@ -192,11 +192,16 @@ namespace Span
 
 			for (const auto* meta : sortedMetas)
 			{
-				if (meta->Name == "Name" || meta->Name == "Tag" || meta->Name == "Layer" || meta->Name == "Transform" || meta->Name == "Active") continue;
+				if (meta->Name == "Name" || meta->Name == "Tag" || meta->Name == "Layer" || meta->Name == "Active") continue;
 
+				if (meta->HasFunc && meta->HasFunc(selected, world)) continue;
+				
 				if (ImGui::MenuItem(meta->Name.c_str()))
 				{
-					// AddComponent...
+					if (meta->Name.c_str())
+					{
+						meta->AddFunc(selected, world);
+					}
 				}
 			}
 			ImGui::EndPopup();

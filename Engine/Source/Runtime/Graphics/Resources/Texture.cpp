@@ -20,6 +20,8 @@ namespace Span
     {
         SPAN_LOG("Loading Texture: %s", filepath.c_str());
 
+		m_FilePath = filepath;
+
         // 1. stb_image で画像読み込み
         int w, h, channels;
         // RGBA (4チャンネル) で強制的に読み込む

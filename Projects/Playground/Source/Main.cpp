@@ -98,7 +98,7 @@ public:
 				std::string partName = "Part_" + std::to_string(i);
 
 				Entity part = EntityBuilder(&GetWorld(), partName)
-					// 【修正2】MeshFilterにメッシュ、MeshRendererにマテリアルを個別に渡す
+					// MeshFilterにメッシュ、MeshRendererにマテリアルを個別に渡す
 					.Add(MeshFilter(loaded[i]))
 					.Add(MeshRenderer(m_materials[1]))
 					.Add(LocalToWorld{})

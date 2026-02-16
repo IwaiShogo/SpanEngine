@@ -41,6 +41,7 @@ namespace Span
 		DrawComponentFunc DrawFunc;
 		RemoveComponentFunc RemoveFunc;
 		AddComponentFunc AddFunc;
+		HasComponentFunc HasFunc;
 
 		int Order = 0;	///< インスペクターでの表示順
 	};
@@ -63,33 +64,26 @@ namespace Span
 		 * @param	onGui UI描画ロジック (ラムダ式)
 		 */
 		template<typename T>
-		static void Register(const std::string& name, std::function<void(T&, Entity, World&)> onGui)
+		static void Register(
+			const std::string& name,
+			DrawComponentFunc drawFunc,
+			AddComponentFunc addFunc,
+			HasComponentFunc hasFunc)
 		{
 			ComponentMetadata meta;
 			meta.Name = name;
-			meta.Order = (int)GetRegistry().size(); // 登録順を初期値に
+			meta.Order = (int)GetRegistry().size();
 
-			// UI描画関数
-			meta.DrawFunc = [onGui](Entity entity, World& world)
-			{
-				if (T* component = world.GetComponentPtr<T>(entity))
-				{
-					onGui(*component, entity, world);
-				}
-			};
+			meta.DrawFunc = drawFunc;
+			meta.AddFunc = addFunc;
+			meta.HasFunc = hasFunc;
 
 			// 削除関数
 			meta.RemoveFunc = [](Entity entity, World& world)
 			{
-				world.RemoveComponent<T>(entity);
-			};
-
-			// 追加関数
-			meta.AddFunc = [](Entity entity, World& world)
-			{
-				if (!world.HasComponent<T>(entity))
+				if (world.HasComponent<T>(entity))
 				{
-					world.AddComponent<T>(entity);
+					world.RemoveComponent<T>(entity);
 				}
 			};
 

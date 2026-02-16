@@ -77,9 +77,17 @@ namespace Span
 		static Mesh* CreateTorus(ID3D12Device* device, float radius = 0.5f, float tubeRadius = 0.2f, int segments = 32, int tubeSegments = 16);
 		static Mesh* CreateCapsule(ID3D12Device* device, float radius = 0.5f, float height = 2.0f, int slices = 32, int stacks = 16);
 
+		/// @brief	パスの取得
+		const std::string& GetPath() const { return m_FilePath; }
+
+		/// @brief	パスの設定
+		void SetPath(const std::string& path) { m_FilePath = path; }
+
 	private:
 		Microsoft::WRL::ComPtr<ID3D12Resource> vertexBuffer;
 		D3D12_VERTEX_BUFFER_VIEW vertexBufferView = {};
 		uint32 vertexCount = 0;
+
+		std::string m_FilePath;
 	};
 }

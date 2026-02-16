@@ -12,6 +12,7 @@
 #pragma once
 
 #include "Editor/Panels/EditorPanel.h"
+#include "Editor/Core/ICommand.h"
 
 namespace Span
 {
@@ -61,15 +62,15 @@ namespace Span
 		void DrawDirectoryTree();
 
 		/**
+		 * @brief	指定したパスのディレクトリノードを再帰的に描画する。
+		 * @param	path 描画対象のディレクトリパス
+		 */
+		void DrawTreeNode(const std::filesystem::path& path);
+
+		/**
 		 * @brief	右側のファイル/アセット一覧エリアを描画します。
 		 */
 		void DrawContentArea();
-
-		/**
-		 * @brief	右クリックコンテキストメニューを描画します。
-		 * @details	何もない場所でのクリックと、アイテム上でのクリックで挙動が変化します。
-		 */
-		void DrawContextMenu();
 
 		/**
 		 * @brief	個別のアセットアイテムを描画します。
@@ -77,13 +78,17 @@ namespace Span
 		 */
 		void DrawEntryItem(const std::filesystem::directory_entry& entry);
 
-		// --- Helper Methods ---
-
 		/**
-		 * @brief	指定したパスのディレクトリノードを再帰的に描画する。
-		 * @param	path 描画対象のディレクトリパス
+		 * @brief	右クリックコンテキストメニューを描画します。
+		 * @details	何もない場所でのクリックと、アイテム上でのクリックで挙動が変化します。
 		 */
-		void DrawTreeNode(const std::filesystem::path& path);
+		void DrawContextMenu();
+
+		// --- Logic Helpers ---
+		/**
+		 * @brief	キー入力処理
+		 */
+		void HandleKeyboardInputs();
 
 		/**
 		 * @brief	指定されたパスを選択状態にします (複数選択対応)。
@@ -100,11 +105,31 @@ namespace Span
 		void SelectRange(const std::filesystem::path& start, const std::filesystem::path& end);
 
 		/**
-		 * @brief	ファイルまたはフォルダを新しいディレクトリへ移動します。
-		 * @param	sourcePath 元のパス
-		 * @param	destPath 移動先のディレクトリパス
+		 * @brief	ディレクトリ移動(履歴対応)
 		 */
-		void MoveAsset(const std::filesystem::path& sourcePath, const std::filesystem::path& destPath);
+		void ChangeDirectory(const std::filesystem::path& newDir);
+
+		/**
+		 * @brief	戻る
+		 */
+		void GoBack();
+
+		/**
+		 * @brief	進む
+		 */
+		void GoForward();
+
+		// --- Command System ---
+
+		/**
+		 * @brief	コマンド実行用ラッパー
+		 */
+		void ExecuteCommand(std::unique_ptr<ICommand> command);
+
+		void PerformUndo();
+		void PerformRedo();
+
+		// --- Drag & Drop / Create ---
 
 		/**
 		 * @brief	ドラッグ&ドロップの受け入れ処理
@@ -134,6 +159,14 @@ namespace Span
 		std::filesystem::path m_BaseDirectory;				///< アセットのルートディレクトリ (Assets/)
 		std::filesystem::path m_CurrentDirectory;			///< 現在表示中のディレクトリ
 
+		// --- Navigation History ---
+		std::vector<std::filesystem::path> m_BackHistory;
+		std::vector<std::filesystem::path> m_ForwardHistory;
+
+		// --- Undo/Redo Stack ---
+		std::vector<std::unique_ptr<ICommand>> m_UndoStack;
+		std::vector<std::unique_ptr<ICommand>> m_RedoStack;
+
 		// --- View Settings ---
 		float m_ThumbnailSize = 96.0f;						///< アイコンの表示サイズ
 		float m_Padding = 16.0f;							///< アイコン間のパディング
@@ -141,14 +174,15 @@ namespace Span
 
 		// --- Selection & Interaction ---
 		std::set<std::filesystem::path> m_SelectedItems;	///< 現在選択されているアイテムのリスト
-		bool m_IsRenaming = false;							///< 現在リネーム操作中のどうかのフラグ
-		char m_RenameBuffer[256] = "";						///< リネーム用の入力バッファ
-		std::filesystem::path m_RenamingPath;				///< リネーム対象のパス
 		std::filesystem::path m_LastSelectedPath;			///< Shift選択用
-		bool m_ShowDeleteDialog = false;					///< 削除時のダイアログのフラグ
 
-		// --- Icons (Textures) ---
-		// TODO: Texture* m_FolderIcon;
-		// TODO: Texture* m_FileIcon;
+		// --- Rename State ---
+		bool m_IsRenaming = false;							///< 現在リネーム操作中のどうかのフラグ
+		std::filesystem::path m_RenamingPath;				///< リネーム対象のパス
+		char m_RenameBuffer[256] = "";						///< リネーム用の入力バッファ
+		bool m_RenameFocus = false;							///< フォーカス制御用フラグ
+
+		// --- Delete Dialog ---
+		bool m_ShowDeleteDialog = false;					///< 削除時のダイアログのフラグ
 	};
 }

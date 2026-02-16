@@ -67,12 +67,23 @@
 			world.RemoveComponent<_InspectorSelfType>(entity); \
 		} \
 	} \
-	/* 自動登録用構造体 (main前にコンストラクタが走る) */ \
+	/* 自動登録用構造体 */ \
 	struct _AutoReg_Inspector { \
 		_AutoReg_Inspector() { \
 			Span::ComponentRegistry::Register<_InspectorSelfType>( \
 				_InspectorSelfType::_GetInspectorName(), \
-				[](_InspectorSelfType& t, Span::Entity e, Span::World& w){ t.OnGui(e, w); } \
+				/* Draw Func */ \
+				[](Span::Entity e, Span::World& w) { \
+					if (auto* c = w.GetComponentPtr<_InspectorSelfType>(e)) c->OnGui(e, w); \
+				}, \
+				/* Add Func */ \
+				[](Span::Entity e, Span::World& w) { \
+					if (!w.HasComponent<_InspectorSelfType>(e)) w.AddComponent<_InspectorSelfType>(e); \
+				}, \
+				/* Has Func */ \
+				[](Span::Entity e, Span::World& w) { \
+					return w.HasComponent<_InspectorSelfType>(e); \
+				} \
 			); \
 		} \
 	}; \

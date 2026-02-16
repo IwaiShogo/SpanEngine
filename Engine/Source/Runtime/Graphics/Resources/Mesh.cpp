@@ -102,7 +102,10 @@ namespace Span
 			{ {-w, w, w}, {-1,0,0}, {0,0} }, { {-w, w, -w}, {-1,0,0}, {1,0} }, { {-w, -w, w}, {-1,0,0}, {0,1} },
 			{ {-w, -w, w}, {-1,0,0}, {0,1} }, { {-w, w, -w}, {-1,0,0}, {1,0} }, { {-w, -w, -w}, {-1,0,0}, {1,1} },
 		};
-		Mesh* mesh = new Mesh(); mesh->Initialize(device, vertices); return mesh;
+
+		Mesh* mesh = new Mesh();
+		mesh->Initialize(device, vertices);
+		return mesh;
 	}
 
 	Mesh* Mesh::CreateSphere(ID3D12Device* device, int slices, int stacks)
