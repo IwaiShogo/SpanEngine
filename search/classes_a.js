@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['projectbrowserpanel_0',['ProjectBrowserPanel',['../classSpan_1_1ProjectBrowserPanel.html',1,'Span']]]
+  ['name_0',['Name',['../structSpan_1_1Name.html',1,'Span']]]
 ];

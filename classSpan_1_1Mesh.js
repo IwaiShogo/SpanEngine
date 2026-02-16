@@ -12,10 +12,13 @@ var classSpan_1_1Mesh =
     [ "CreateSphere", "classSpan_1_1Mesh.html#af6eda3dd586a593a9d13770d220c7d3f", null ],
     [ "CreateTorus", "classSpan_1_1Mesh.html#a6f5c35919ab5f66862d1a9eed38024e6", null ],
     [ "Draw", "classSpan_1_1Mesh.html#a778cd9c09642759f91c6f0cbe53503a1", null ],
+    [ "GetPath", "classSpan_1_1Mesh.html#a7f60af0e137f58d6fdd35578b1063932", null ],
     [ "Initialize", "classSpan_1_1Mesh.html#ae731b2ee0cf4e9bbfd30b70285a6688f", null ],
     [ "operator=", "classSpan_1_1Mesh.html#a1ef9d8d27ed37379d4639160cf823d0f", null ],
     [ "operator=", "classSpan_1_1Mesh.html#a7113e033ff6bf7da2db5c9cc3759ac2b", null ],
+    [ "SetPath", "classSpan_1_1Mesh.html#a965fcd783ae59797ed01b47fba34e59a", null ],
     [ "Shutdown", "classSpan_1_1Mesh.html#aca0bddbe8557e777c6cbb1a519e360af", null ],
+    [ "m_FilePath", "classSpan_1_1Mesh.html#a3a406bc2c314327b7121ebe44554a8f0", null ],
     [ "vertexBuffer", "classSpan_1_1Mesh.html#ab5326828b5a500cf38a357fcfeee3381", null ],
     [ "vertexBufferView", "classSpan_1_1Mesh.html#a2b9c77cd3fe0c597c5c32d950a92f56d", null ],
     [ "vertexCount", "classSpan_1_1Mesh.html#a7a4a75126636a829da28adff5d416a50", null ]

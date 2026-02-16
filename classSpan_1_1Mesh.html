@@ -100,7 +100,7 @@ $(function(){initNavTree('classSpan_1_1Mesh.html','','classSpan_1_1Mesh-members'
 <div class="dynheader">
 Span::Mesh 連携図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Mesh__coll__graph.svg" width="152" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Mesh__coll__graph.svg" width="152" height="476"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -116,6 +116,10 @@ Span::Mesh 連携図</div>
 <tr class="memitem:aca0bddbe8557e777c6cbb1a519e360af" id="r_aca0bddbe8557e777c6cbb1a519e360af"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aca0bddbe8557e777c6cbb1a519e360af">Shutdown</a> ()</td></tr>
 <tr class="memitem:a778cd9c09642759f91c6f0cbe53503a1" id="r_a778cd9c09642759f91c6f0cbe53503a1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a778cd9c09642759f91c6f0cbe53503a1">Draw</a> (ID3D12GraphicsCommandList *commandList)</td></tr>
 <tr class="memdesc:a778cd9c09642759f91c6f0cbe53503a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">描画コマンドを発行します。  <br /></td></tr>
+<tr class="memitem:a7f60af0e137f58d6fdd35578b1063932" id="r_a7f60af0e137f58d6fdd35578b1063932"><td class="memItemLeft">const std::string &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a7f60af0e137f58d6fdd35578b1063932">GetPath</a> () const</td></tr>
+<tr class="memdesc:a7f60af0e137f58d6fdd35578b1063932"><td class="mdescLeft">&#160;</td><td class="mdescRight">パスの取得  <br /></td></tr>
+<tr class="memitem:a965fcd783ae59797ed01b47fba34e59a" id="r_a965fcd783ae59797ed01b47fba34e59a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a965fcd783ae59797ed01b47fba34e59a">SetPath</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a965fcd783ae59797ed01b47fba34e59a"><td class="mdescLeft">&#160;</td><td class="mdescRight">パスの設定  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静的公開メンバ関数</h2></td></tr>
@@ -132,6 +136,7 @@ Span::Mesh 連携図</div>
 <tr class="memitem:ab5326828b5a500cf38a357fcfeee3381" id="r_ab5326828b5a500cf38a357fcfeee3381"><td class="memItemLeft">Microsoft::WRL::ComPtr&lt; ID3D12Resource &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab5326828b5a500cf38a357fcfeee3381">vertexBuffer</a></td></tr>
 <tr class="memitem:a2b9c77cd3fe0c597c5c32d950a92f56d" id="r_a2b9c77cd3fe0c597c5c32d950a92f56d"><td class="memItemLeft">D3D12_VERTEX_BUFFER_VIEW&#160;</td><td class="memItemRight"><a class="el" href="#a2b9c77cd3fe0c597c5c32d950a92f56d">vertexBufferView</a> = {}</td></tr>
 <tr class="memitem:a7a4a75126636a829da28adff5d416a50" id="r_a7a4a75126636a829da28adff5d416a50"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a7a4a75126636a829da28adff5d416a50">vertexCount</a> = 0</td></tr>
+<tr class="memitem:a3a406bc2c314327b7121ebe44554a8f0" id="r_a3a406bc2c314327b7121ebe44554a8f0"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a3a406bc2c314327b7121ebe44554a8f0">m_FilePath</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>📦 頂点データをGPUメモリ (<a class="el" href="structSpan_1_1Vertex.html" title="頂点フォーマット。">Vertex</a> Buffer) に保持するクラス。 </p>
@@ -299,7 +304,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00291">291</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00294">294</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -350,7 +355,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00213">213</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00216">216</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -438,7 +443,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00167">167</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00170">170</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -484,7 +489,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00150">150</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00153">153</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -530,7 +535,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00108">108</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00111">111</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -586,7 +591,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00246">246</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a> の <a class="el" href="Mesh_8cpp_source.html#l00249">249</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -629,6 +634,45 @@ Span::Mesh 連携図</div>
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Mesh_a778cd9c09642759f91c6f0cbe53503a1_icgraph.svg" width="622" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a7f60af0e137f58d6fdd35578b1063932" name="a7f60af0e137f58d6fdd35578b1063932"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f60af0e137f58d6fdd35578b1063932">&#9670;&#160;</a></span>GetPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; Span::Mesh::GetPath </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>パスの取得 </p>
+
+<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00081">81</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Mesh_a7f60af0e137f58d6fdd35578b1063932_cgraph.svg" width="167" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Mesh_a7f60af0e137f58d6fdd35578b1063932_icgraph.svg" width="666" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -730,6 +774,35 @@ Span::Mesh 連携図</div>
 
 </div>
 </div>
+<a id="a965fcd783ae59797ed01b47fba34e59a" name="a965fcd783ae59797ed01b47fba34e59a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a965fcd783ae59797ed01b47fba34e59a">&#9670;&#160;</a></span>SetPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::Mesh::SetPath </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>パスの設定 </p>
+
+<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00084">84</a> 行目に定義があります。</p>
+
+</div>
+</div>
 <a id="aca0bddbe8557e777c6cbb1a519e360af" name="aca0bddbe8557e777c6cbb1a519e360af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aca0bddbe8557e777c6cbb1a519e360af">&#9670;&#160;</a></span>Shutdown()</h2>
 
@@ -755,6 +828,30 @@ Span::Mesh 連携図</div>
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
+<a id="a3a406bc2c314327b7121ebe44554a8f0" name="a3a406bc2c314327b7121ebe44554a8f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a406bc2c314327b7121ebe44554a8f0">&#9670;&#160;</a></span>m_FilePath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Span::Mesh::m_FilePath</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00091">91</a> 行目に定義があります。</p>
+
+</div>
+</div>
 <a id="ab5326828b5a500cf38a357fcfeee3381" name="ab5326828b5a500cf38a357fcfeee3381"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5326828b5a500cf38a357fcfeee3381">&#9670;&#160;</a></span>vertexBuffer</h2>
 
@@ -775,7 +872,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00081">81</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00087">87</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -799,7 +896,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00082">82</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00088">88</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -823,7 +920,7 @@ Span::Mesh 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00083">83</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Mesh_8h_source.html">Mesh.h</a> の <a class="el" href="Mesh_8h_source.html#l00089">89</a> 行目に定義があります。</p>
 
 </div>
 </div>

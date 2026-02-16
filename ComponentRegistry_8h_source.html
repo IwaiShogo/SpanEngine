@@ -136,91 +136,85 @@ $(function(){initNavTree('ComponentRegistry_8h_source.html','',''); });
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structSpan_1_1ComponentMetadata.html#a924a91448da37722c778ded258ac15ae">   41</a></span>        <a class="code hl_typedef" href="namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7">DrawComponentFunc</a> <a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#a924a91448da37722c778ded258ac15ae">DrawFunc</a>;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structSpan_1_1ComponentMetadata.html#a43d26ea0ea617c22bb3bcea736359fdf">   42</a></span>        <a class="code hl_typedef" href="namespaceSpan.html#a936509841abf3411c6dae4ca675b811e">RemoveComponentFunc</a> <a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#a43d26ea0ea617c22bb3bcea736359fdf">RemoveFunc</a>;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structSpan_1_1ComponentMetadata.html#a4cedcd411cbb100c56d542b856279af6">   43</a></span>        <a class="code hl_typedef" href="namespaceSpan.html#a6af56d259d0ccdc218e0cadc2dcd8e08">AddComponentFunc</a> <a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#a4cedcd411cbb100c56d542b856279af6">AddFunc</a>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structSpan_1_1ComponentMetadata.html#ae80c08df2974efc5d8d45d6ad76b6199">   45</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#ae80c08df2974efc5d8d45d6ad76b6199">Order</a> = 0;  <span class="comment">///&lt; インスペクターでの表示順</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    };</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structSpan_1_1ComponentMetadata.html#ad6350fc810d1bb0b2034c039a17971eb">   44</a></span>        <a class="code hl_typedef" href="namespaceSpan.html#ad284dad2c8e86ac8f482272df541e612">HasComponentFunc</a> <a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#ad6350fc810d1bb0b2034c039a17971eb">HasFunc</a>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structSpan_1_1ComponentMetadata.html#ae80c08df2974efc5d8d45d6ad76b6199">   46</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#ae80c08df2974efc5d8d45d6ad76b6199">Order</a> = 0;  <span class="comment">///&lt; インスペクターでの表示順</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    };</div>
 </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"></span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">     * @class   ComponentRegistry</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">     * @brief   📚 全コンポーネントのメタデータを管理する静的レジストリ。</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">     * </span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">     * @details</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">     * `SpanReflection` マクロによって、アプリ起動時に自動的に各コンポーネントの情報が登録されます。</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">     * Inspectorパネルは、このレジストリを参照してUIを構築します。</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">     */</span></div>
-<div class="foldopen" id="foldopen00056" data-start="{" data-end="};">
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classSpan_1_1ComponentRegistry.html">   56</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1ComponentRegistry.html">ComponentRegistry</a></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">        /**</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">         * @brief   コンポーネント型を登録します。</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">         * @tparam  T コンポーネント型</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">         * @param   name 表示名 (&quot;Transform&quot; 等)</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">         * @param   onGui UI描画ロジック (ラムダ式)</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">         */</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classSpan_1_1ComponentRegistry.html#a424b5381bdd9dec493f85ca3a31600ae">   66</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a424b5381bdd9dec493f85ca3a31600ae">Register</a>(<span class="keyword">const</span> std::string&amp; name, std::function&lt;<span class="keywordtype">void</span>(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&amp;, <a class="code hl_class" href="structSpan_1_1Entity.html">Entity</a>, <a class="code hl_struct" href="classSpan_1_1World.html">World</a>&amp;)&gt; onGui)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <a class="code hl_struct" href="structSpan_1_1ComponentMetadata.html">ComponentMetadata</a> meta;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            meta.<a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#ac98160a5377e1d5708c727bd7aed64e9">Name</a> = name;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            meta.<a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#ae80c08df2974efc5d8d45d6ad76b6199">Order</a> = (int)<a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">GetRegistry</a>().size(); <span class="comment">// 登録順を初期値に</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="comment">// UI描画関数</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            meta.<a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#a924a91448da37722c778ded258ac15ae">DrawFunc</a> = [onGui](<a class="code hl_class" href="structSpan_1_1Entity.html">Entity</a> entity, <a class="code hl_struct" href="classSpan_1_1World.html">World</a>&amp; world)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* component = world.GetComponentPtr&lt;<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt;(entity))</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                    onGui(*component, entity, world);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                }</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            };</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"></span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">     * @class   ComponentRegistry</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">     * @brief   📚 全コンポーネントのメタデータを管理する静的レジストリ。</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">     * </span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">     * @details</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">     * `SpanReflection` マクロによって、アプリ起動時に自動的に各コンポーネントの情報が登録されます。</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">     * Inspectorパネルは、このレジストリを参照してUIを構築します。</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="};">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classSpan_1_1ComponentRegistry.html">   57</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1ComponentRegistry.html">ComponentRegistry</a></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">         * @brief   コンポーネント型を登録します。</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">         * @tparam  T コンポーネント型</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">         * @param   name 表示名 (&quot;Transform&quot; 等)</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">         * @param   onGui UI描画ロジック (ラムダ式)</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classSpan_1_1ComponentRegistry.html#ac0ba6b2d084b74ea22a9da579f59b88a">   67</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#ac0ba6b2d084b74ea22a9da579f59b88a">Register</a>(</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keyword">const</span> std::string&amp; name,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <a class="code hl_typedef" href="namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7">DrawComponentFunc</a> drawFunc,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <a class="code hl_typedef" href="namespaceSpan.html#a6af56d259d0ccdc218e0cadc2dcd8e08">AddComponentFunc</a> addFunc,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <a class="code hl_typedef" href="namespaceSpan.html#ad284dad2c8e86ac8f482272df541e612">HasComponentFunc</a> hasFunc)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <a class="code hl_struct" href="structSpan_1_1ComponentMetadata.html">ComponentMetadata</a> meta;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            meta.<a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#ac98160a5377e1d5708c727bd7aed64e9">Name</a> = name;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            meta.<a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#ae80c08df2974efc5d8d45d6ad76b6199">Order</a> = (int)<a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">GetRegistry</a>().size();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            meta.<a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#a924a91448da37722c778ded258ac15ae">DrawFunc</a> = drawFunc;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            meta.<a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#a4cedcd411cbb100c56d542b856279af6">AddFunc</a> = addFunc;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            meta.<a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#ad6350fc810d1bb0b2034c039a17971eb">HasFunc</a> = hasFunc;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="comment">// 削除関数</span></div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            meta.<a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#a43d26ea0ea617c22bb3bcea736359fdf">RemoveFunc</a> = [](<a class="code hl_class" href="structSpan_1_1Entity.html">Entity</a> entity, <a class="code hl_struct" href="classSpan_1_1World.html">World</a>&amp; world)</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            {</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                world.RemoveComponent&lt;<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt;(entity);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            };</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <span class="comment">// 追加関数</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            meta.<a class="code hl_variable" href="structSpan_1_1ComponentMetadata.html#a4cedcd411cbb100c56d542b856279af6">AddFunc</a> = [](<a class="code hl_class" href="structSpan_1_1Entity.html">Entity</a> entity, <a class="code hl_struct" href="classSpan_1_1World.html">World</a>&amp; world)</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            {</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                <span class="keywordflow">if</span> (!world.HasComponent&lt;<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt;(entity))</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                    world.AddComponent&lt;<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt;(entity);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                }</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            };</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">GetRegistry</a>().push_back(meta);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <span class="keywordflow">if</span> (world.HasComponent&lt;<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt;(entity))</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                    world.RemoveComponent&lt;<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt;(entity);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            };</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">GetRegistry</a>().push_back(meta);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
+</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"></span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">        /// @brief  登録済みの全コンポーネント情報を取得します。</span></div>
+<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classSpan_1_1ComponentRegistry.html#a8449d84d0096e3a92e226e510f0accb0">   94</a></span>        <span class="keyword">static</span> std::vector&lt;ComponentMetadata&gt;&amp; <a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a8449d84d0096e3a92e226e510f0accb0">GetAll</a>()</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">GetRegistry</a>();</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        }</div>
 </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"></span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">        /// @brief  登録済みの全コンポーネント情報を取得します。</span></div>
-<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classSpan_1_1ComponentRegistry.html#a8449d84d0096e3a92e226e510f0accb0">  100</a></span>        <span class="keyword">static</span> std::vector&lt;ComponentMetadata&gt;&amp; <a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a8449d84d0096e3a92e226e510f0accb0">GetAll</a>()</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">GetRegistry</a>();</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="comment">// 静的変数の初期化順序問題を避けるためのアクセサ</span></div>
+<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">  101</a></span>        <span class="keyword">static</span> std::vector&lt;ComponentMetadata&gt;&amp; <a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">GetRegistry</a>()</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="keyword">static</span> std::vector&lt;ComponentMetadata&gt; registry;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <span class="keywordflow">return</span> registry;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
 </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="comment">// 静的変数の初期化順序問題を避けるためのアクセサ</span></div>
-<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">  107</a></span>        <span class="keyword">static</span> std::vector&lt;ComponentMetadata&gt;&amp; <a class="code hl_function" href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">GetRegistry</a>()</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        {</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            <span class="keyword">static</span> std::vector&lt;ComponentMetadata&gt; registry;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            <span class="keywordflow">return</span> registry;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    };</div>
 </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    };</div>
-</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
 <div class="ttc" id="aEntity_8h_html"><div class="ttname"><a href="Entity_8h.html">Entity.h</a></div><div class="ttdoc">ECSにおけるオブジェクトの識別子 (ID) を定義します。</div></div>
 <div class="ttc" id="aWorld_8h_html"><div class="ttname"><a href="World_8h.html">World.h</a></div><div class="ttdoc">ECSワールド (シーン) の管理クラス。</div></div>
-<div class="ttc" id="aclassSpan_1_1ComponentRegistry_html"><div class="ttname"><a href="classSpan_1_1ComponentRegistry.html">Span::ComponentRegistry</a></div><div class="ttdoc">📚 全コンポーネントのメタデータを管理する静的レジストリ。</div><div class="ttdef"><b>Definition</b> <a href="#l00056">ComponentRegistry.h:57</a></div></div>
-<div class="ttc" id="aclassSpan_1_1ComponentRegistry_html_a424b5381bdd9dec493f85ca3a31600ae"><div class="ttname"><a href="classSpan_1_1ComponentRegistry.html#a424b5381bdd9dec493f85ca3a31600ae">Span::ComponentRegistry::Register</a></div><div class="ttdeci">static void Register(const std::string &amp;name, std::function&lt; void(T &amp;, Entity, World &amp;)&gt; onGui)</div><div class="ttdoc">コンポーネント型を登録します。</div><div class="ttdef"><b>Definition</b> <a href="#l00066">ComponentRegistry.h:66</a></div></div>
-<div class="ttc" id="aclassSpan_1_1ComponentRegistry_html_a8449d84d0096e3a92e226e510f0accb0"><div class="ttname"><a href="classSpan_1_1ComponentRegistry.html#a8449d84d0096e3a92e226e510f0accb0">Span::ComponentRegistry::GetAll</a></div><div class="ttdeci">static std::vector&lt; ComponentMetadata &gt; &amp; GetAll()</div><div class="ttdoc">登録済みの全コンポーネント情報を取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00100">ComponentRegistry.h:100</a></div></div>
-<div class="ttc" id="aclassSpan_1_1ComponentRegistry_html_a888dafb7173154120394d2382b74e6bd"><div class="ttname"><a href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">Span::ComponentRegistry::GetRegistry</a></div><div class="ttdeci">static std::vector&lt; ComponentMetadata &gt; &amp; GetRegistry()</div><div class="ttdef"><b>Definition</b> <a href="#l00107">ComponentRegistry.h:107</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ComponentRegistry_html"><div class="ttname"><a href="classSpan_1_1ComponentRegistry.html">Span::ComponentRegistry</a></div><div class="ttdoc">📚 全コンポーネントのメタデータを管理する静的レジストリ。</div><div class="ttdef"><b>Definition</b> <a href="#l00057">ComponentRegistry.h:58</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ComponentRegistry_html_a8449d84d0096e3a92e226e510f0accb0"><div class="ttname"><a href="classSpan_1_1ComponentRegistry.html#a8449d84d0096e3a92e226e510f0accb0">Span::ComponentRegistry::GetAll</a></div><div class="ttdeci">static std::vector&lt; ComponentMetadata &gt; &amp; GetAll()</div><div class="ttdoc">登録済みの全コンポーネント情報を取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00094">ComponentRegistry.h:94</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ComponentRegistry_html_a888dafb7173154120394d2382b74e6bd"><div class="ttname"><a href="classSpan_1_1ComponentRegistry.html#a888dafb7173154120394d2382b74e6bd">Span::ComponentRegistry::GetRegistry</a></div><div class="ttdeci">static std::vector&lt; ComponentMetadata &gt; &amp; GetRegistry()</div><div class="ttdef"><b>Definition</b> <a href="#l00101">ComponentRegistry.h:101</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ComponentRegistry_html_ac0ba6b2d084b74ea22a9da579f59b88a"><div class="ttname"><a href="classSpan_1_1ComponentRegistry.html#ac0ba6b2d084b74ea22a9da579f59b88a">Span::ComponentRegistry::Register</a></div><div class="ttdeci">static void Register(const std::string &amp;name, DrawComponentFunc drawFunc, AddComponentFunc addFunc, HasComponentFunc hasFunc)</div><div class="ttdoc">コンポーネント型を登録します。</div><div class="ttdef"><b>Definition</b> <a href="#l00067">ComponentRegistry.h:67</a></div></div>
 <div class="ttc" id="aclassSpan_1_1World_html"><div class="ttname"><a href="classSpan_1_1World.html">Span::World</a></div><div class="ttdoc">🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00055">World.h:56</a></div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
 <div class="ttc" id="anamespaceSpan_html_a093013dab8d39277e04bac7cc500fde7"><div class="ttname"><a href="namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7">Span::DrawComponentFunc</a></div><div class="ttdeci">std::function&lt; void(Entity, World &amp;)&gt; DrawComponentFunc</div><div class="ttdef"><b>Definition</b> <a href="#l00026">ComponentRegistry.h:26</a></div></div>
@@ -233,7 +227,8 @@ $(function(){initNavTree('ComponentRegistry_8h_source.html','',''); });
 <div class="ttc" id="astructSpan_1_1ComponentMetadata_html_a4cedcd411cbb100c56d542b856279af6"><div class="ttname"><a href="structSpan_1_1ComponentMetadata.html#a4cedcd411cbb100c56d542b856279af6">Span::ComponentMetadata::AddFunc</a></div><div class="ttdeci">AddComponentFunc AddFunc</div><div class="ttdef"><b>Definition</b> <a href="#l00043">ComponentRegistry.h:43</a></div></div>
 <div class="ttc" id="astructSpan_1_1ComponentMetadata_html_a924a91448da37722c778ded258ac15ae"><div class="ttname"><a href="structSpan_1_1ComponentMetadata.html#a924a91448da37722c778ded258ac15ae">Span::ComponentMetadata::DrawFunc</a></div><div class="ttdeci">DrawComponentFunc DrawFunc</div><div class="ttdef"><b>Definition</b> <a href="#l00041">ComponentRegistry.h:41</a></div></div>
 <div class="ttc" id="astructSpan_1_1ComponentMetadata_html_ac98160a5377e1d5708c727bd7aed64e9"><div class="ttname"><a href="structSpan_1_1ComponentMetadata.html#ac98160a5377e1d5708c727bd7aed64e9">Span::ComponentMetadata::Name</a></div><div class="ttdeci">std::string Name</div><div class="ttdef"><b>Definition</b> <a href="#l00040">ComponentRegistry.h:40</a></div></div>
-<div class="ttc" id="astructSpan_1_1ComponentMetadata_html_ae80c08df2974efc5d8d45d6ad76b6199"><div class="ttname"><a href="structSpan_1_1ComponentMetadata.html#ae80c08df2974efc5d8d45d6ad76b6199">Span::ComponentMetadata::Order</a></div><div class="ttdeci">int Order</div><div class="ttdoc">インスペクターでの表示順</div><div class="ttdef"><b>Definition</b> <a href="#l00045">ComponentRegistry.h:45</a></div></div>
+<div class="ttc" id="astructSpan_1_1ComponentMetadata_html_ad6350fc810d1bb0b2034c039a17971eb"><div class="ttname"><a href="structSpan_1_1ComponentMetadata.html#ad6350fc810d1bb0b2034c039a17971eb">Span::ComponentMetadata::HasFunc</a></div><div class="ttdeci">HasComponentFunc HasFunc</div><div class="ttdef"><b>Definition</b> <a href="#l00044">ComponentRegistry.h:44</a></div></div>
+<div class="ttc" id="astructSpan_1_1ComponentMetadata_html_ae80c08df2974efc5d8d45d6ad76b6199"><div class="ttname"><a href="structSpan_1_1ComponentMetadata.html#ae80c08df2974efc5d8d45d6ad76b6199">Span::ComponentMetadata::Order</a></div><div class="ttdeci">int Order</div><div class="ttdoc">インスペクターでの表示順</div><div class="ttdef"><b>Definition</b> <a href="#l00046">ComponentRegistry.h:46</a></div></div>
 <div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。</div><div class="ttdef"><b>Definition</b> <a href="Entity_8h_source.html#l00070">Entity.h:71</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -117,200 +117,203 @@ $(function(){initNavTree('Texture_8cpp_source.html','',''); });
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_define" href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a>(<span class="stringliteral">&quot;Loading Texture: %s&quot;</span>, filepath.c_str());</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="comment">// 1. stb_image で画像読み込み</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordtype">int</span> w, h, channels;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment">// RGBA (4チャンネル) で強制的に読み込む</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* data = stbi_load(filepath.c_str(), &amp;w, &amp;h, &amp;channels, 4);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">if</span> (!data)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <a class="code hl_define" href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a>(<span class="stringliteral">&quot;Failed to load image: %s&quot;</span>, filepath.c_str());</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        }</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#ad4bffa9fb2e8830770ed4209ba6d362b">width</a> = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(w);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6">height</a> = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(h);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">// 2. GPUへアップロード</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749">UploadTexture</a>(device, commandQueue, data, <a class="code hl_variable" href="classSpan_1_1Texture.html#ad4bffa9fb2e8830770ed4209ba6d362b">width</a>, <a class="code hl_variable" href="classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6">height</a>, 4))</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            stbi_image_free(data);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">// メモリ解放</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        stbi_image_free(data);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="comment">// 3. SRV (Shader Resource View) ヒープの作成</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        srvHeapDesc.NumDescriptors = 1;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateDescriptorHeap(&amp;srvHeapDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">srvHeap</a>))))</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <a class="code hl_define" href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a>(<span class="stringliteral">&quot;Failed to create SRV Heap&quot;</span>);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        }</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment">// 4. SRV (ビュー) の作成</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        srvDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        srvDesc.Texture2D.MipLevels = 1;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#ae174a75a471258f60f3b5f4a16ce96ba">srvHandleCPU</a> = <a class="code hl_variable" href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">srvHeap</a>-&gt;GetCPUDescriptorHandleForHeapStart();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        device-&gt;CreateShaderResourceView(<a class="code hl_variable" href="classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab">resource</a>.Get(), &amp;srvDesc, <a class="code hl_variable" href="classSpan_1_1Texture.html#ae174a75a471258f60f3b5f4a16ce96ba">srvHandleCPU</a>);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#a778802b18268802d37ebf7a89a5f39fc">m_FilePath</a> = filepath;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment">// 1. stb_image で画像読み込み</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">int</span> w, h, channels;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">// RGBA (4チャンネル) で強制的に読み込む</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* data = stbi_load(filepath.c_str(), &amp;w, &amp;h, &amp;channels, 4);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordflow">if</span> (!data)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <a class="code hl_define" href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a>(<span class="stringliteral">&quot;Failed to load image: %s&quot;</span>, filepath.c_str());</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#ad4bffa9fb2e8830770ed4209ba6d362b">width</a> = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(w);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6">height</a> = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(h);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="comment">// 2. GPUへアップロード</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749">UploadTexture</a>(device, commandQueue, data, <a class="code hl_variable" href="classSpan_1_1Texture.html#ad4bffa9fb2e8830770ed4209ba6d362b">width</a>, <a class="code hl_variable" href="classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6">height</a>, 4))</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            stbi_image_free(data);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="comment">// メモリ解放</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        stbi_image_free(data);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="comment">// 3. SRV (Shader Resource View) ヒープの作成</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        srvHeapDesc.NumDescriptors = 1;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateDescriptorHeap(&amp;srvHeapDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">srvHeap</a>))))</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <a class="code hl_define" href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a>(<span class="stringliteral">&quot;Failed to create SRV Heap&quot;</span>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="comment">// 4. SRV (ビュー) の作成</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        srvDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        srvDesc.Texture2D.MipLevels = 1;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#ae174a75a471258f60f3b5f4a16ce96ba">srvHandleCPU</a> = <a class="code hl_variable" href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">srvHeap</a>-&gt;GetCPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        device-&gt;CreateShaderResourceView(<a class="code hl_variable" href="classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab">resource</a>.Get(), &amp;srvDesc, <a class="code hl_variable" href="classSpan_1_1Texture.html#ae174a75a471258f60f3b5f4a16ce96ba">srvHandleCPU</a>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="foldopen" id="foldopen00072" data-start="{" data-end="}">
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749">   72</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749">Texture::UploadTexture</a>(ID3D12Device* device, ID3D12CommandQueue* commandQueue,</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">const</span> <span class="keywordtype">void</span>* initialData, uint64_t w, uint64_t h, uint64_t bytesPerPixel)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="comment">// リソース記述</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        D3D12_RESOURCE_DESC textureDesc = {};</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        textureDesc.MipLevels = 1;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        textureDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        textureDesc.Width = w;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        textureDesc.Height = h;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        textureDesc.Flags = D3D12_RESOURCE_FLAG_NONE;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        textureDesc.DepthOrArraySize = 1;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        textureDesc.SampleDesc.Count = 1;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        textureDesc.SampleDesc.Quality = 0;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        textureDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="comment">// 1. デフォルトヒープ（VRAM）にテクスチャリソースを作成</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="comment">// 初期状態は COPY_DEST (コピー先) にする</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        D3D12_HEAP_PROPERTIES defaultHeap = { D3D12_HEAP_TYPE_DEFAULT };</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateCommittedResource(</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            &amp;defaultHeap,</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            D3D12_HEAP_FLAG_NONE,</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            &amp;textureDesc,</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            D3D12_RESOURCE_STATE_COPY_DEST,</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab">resource</a>))))</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        }</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="comment">// 2. アップロード用バッファのサイズ計算</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        uint64_t uploadBufferSize = 0;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        D3D12_PLACED_SUBRESOURCE_FOOTPRINT footprint;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        UINT64 rowSizeInBytes;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        UINT numRows;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        device-&gt;GetCopyableFootprints(&amp;textureDesc, 0, 1, 0, &amp;footprint, &amp;numRows, &amp;rowSizeInBytes, &amp;uploadBufferSize);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749">   74</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749">Texture::UploadTexture</a>(ID3D12Device* device, ID3D12CommandQueue* commandQueue,</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keyword">const</span> <span class="keywordtype">void</span>* initialData, uint64_t w, uint64_t h, uint64_t bytesPerPixel)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="comment">// リソース記述</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        D3D12_RESOURCE_DESC textureDesc = {};</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        textureDesc.MipLevels = 1;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        textureDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        textureDesc.Width = w;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        textureDesc.Height = h;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        textureDesc.Flags = D3D12_RESOURCE_FLAG_NONE;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        textureDesc.DepthOrArraySize = 1;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        textureDesc.SampleDesc.Count = 1;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        textureDesc.SampleDesc.Quality = 0;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        textureDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="comment">// 1. デフォルトヒープ（VRAM）にテクスチャリソースを作成</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="comment">// 初期状態は COPY_DEST (コピー先) にする</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        D3D12_HEAP_PROPERTIES defaultHeap = { D3D12_HEAP_TYPE_DEFAULT };</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateCommittedResource(</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            &amp;defaultHeap,</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            D3D12_HEAP_FLAG_NONE,</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            &amp;textureDesc,</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            D3D12_RESOURCE_STATE_COPY_DEST,</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab">resource</a>))))</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="comment">// 2. アップロード用バッファのサイズ計算</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        uint64_t uploadBufferSize = 0;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        D3D12_PLACED_SUBRESOURCE_FOOTPRINT footprint;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        UINT64 rowSizeInBytes;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        UINT numRows;</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="comment">// 3. アップロードヒープ（CPU書き込み可）のリソース作成</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        D3D12_HEAP_PROPERTIES uploadHeap = { D3D12_HEAP_TYPE_UPLOAD };</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        D3D12_RESOURCE_DESC bufferDesc = {};</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        bufferDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        bufferDesc.Alignment = 0;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        bufferDesc.Width = uploadBufferSize;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        bufferDesc.Height = 1;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        bufferDesc.DepthOrArraySize = 1;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        bufferDesc.MipLevels = 1;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        bufferDesc.Format = DXGI_FORMAT_UNKNOWN;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        bufferDesc.SampleDesc.Count = 1;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        bufferDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        bufferDesc.Flags = D3D12_RESOURCE_FLAG_NONE;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateCommittedResource(</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            &amp;uploadHeap,</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            D3D12_HEAP_FLAG_NONE,</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            &amp;bufferDesc,</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            D3D12_RESOURCE_STATE_GENERIC_READ,</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a">uploadBuffer</a>))))</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        }</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="comment">// 4. データをアップロードバッファにコピー</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordtype">void</span>* mappedData = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a">uploadBuffer</a>-&gt;Map(0, <span class="keyword">nullptr</span>, &amp;mappedData);</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keyword">const</span> uint8_t* srcData = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8_t*<span class="keyword">&gt;</span>(initialData);</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        uint8_t* destData = <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(mappedData);</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordflow">for</span> (UINT i = 0; i &lt; h; ++i)</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        {</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            memcpy(destData + (i * footprint.Footprint.RowPitch),</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                srcData + (i * w * bytesPerPixel),</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                w * bytesPerPixel);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        }</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a">uploadBuffer</a>-&gt;Unmap(0, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="comment">// 5. コマンドリストを作ってコピー命令を発行</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="comment">// (本来はRendererのコマンドリストを使うべきだが、初期化用として一時的に作成)</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        ComPtr&lt;ID3D12CommandAllocator&gt; cmdAlloc;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        ComPtr&lt;ID3D12GraphicsCommandList&gt; cmdList;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        device-&gt;CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&amp;cmdAlloc));</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        device-&gt;CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, cmdAlloc.Get(), <span class="keyword">nullptr</span>, IID_PPV_ARGS(&amp;cmdList));</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        D3D12_TEXTURE_COPY_LOCATION srcLoc = {};</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        srcLoc.pResource = <a class="code hl_variable" href="classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a">uploadBuffer</a>.Get();</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        srcLoc.Type = D3D12_TEXTURE_COPY_TYPE_PLACED_FOOTPRINT;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        srcLoc.PlacedFootprint = footprint;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        D3D12_TEXTURE_COPY_LOCATION dstLoc = {};</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        dstLoc.pResource = <a class="code hl_variable" href="classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab">resource</a>.Get();</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        dstLoc.Type = D3D12_TEXTURE_COPY_TYPE_SUBRESOURCE_INDEX;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        dstLoc.SubresourceIndex = 0;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        cmdList-&gt;CopyTextureRegion(&amp;dstLoc, 0, 0, 0, &amp;srcLoc, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        device-&gt;GetCopyableFootprints(&amp;textureDesc, 0, 1, 0, &amp;footprint, &amp;numRows, &amp;rowSizeInBytes, &amp;uploadBufferSize);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="comment">// 3. アップロードヒープ（CPU書き込み可）のリソース作成</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        D3D12_HEAP_PROPERTIES uploadHeap = { D3D12_HEAP_TYPE_UPLOAD };</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        D3D12_RESOURCE_DESC bufferDesc = {};</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        bufferDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        bufferDesc.Alignment = 0;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        bufferDesc.Width = uploadBufferSize;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        bufferDesc.Height = 1;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        bufferDesc.DepthOrArraySize = 1;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        bufferDesc.MipLevels = 1;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        bufferDesc.Format = DXGI_FORMAT_UNKNOWN;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        bufferDesc.SampleDesc.Count = 1;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        bufferDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        bufferDesc.Flags = D3D12_RESOURCE_FLAG_NONE;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateCommittedResource(</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            &amp;uploadHeap,</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            D3D12_HEAP_FLAG_NONE,</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            &amp;bufferDesc,</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            D3D12_RESOURCE_STATE_GENERIC_READ,</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a">uploadBuffer</a>))))</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        }</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="comment">// 4. データをアップロードバッファにコピー</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keywordtype">void</span>* mappedData = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a">uploadBuffer</a>-&gt;Map(0, <span class="keyword">nullptr</span>, &amp;mappedData);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keyword">const</span> uint8_t* srcData = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8_t*<span class="keyword">&gt;</span>(initialData);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        uint8_t* destData = <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(mappedData);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keywordflow">for</span> (UINT i = 0; i &lt; h; ++i)</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        {</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            memcpy(destData + (i * footprint.Footprint.RowPitch),</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                srcData + (i * w * bytesPerPixel),</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                w * bytesPerPixel);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <a class="code hl_variable" href="classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a">uploadBuffer</a>-&gt;Unmap(0, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="comment">// 5. コマンドリストを作ってコピー命令を発行</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="comment">// (本来はRendererのコマンドリストを使うべきだが、初期化用として一時的に作成)</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        ComPtr&lt;ID3D12CommandAllocator&gt; cmdAlloc;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        ComPtr&lt;ID3D12GraphicsCommandList&gt; cmdList;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        device-&gt;CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&amp;cmdAlloc));</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        device-&gt;CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, cmdAlloc.Get(), <span class="keyword">nullptr</span>, IID_PPV_ARGS(&amp;cmdList));</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        D3D12_TEXTURE_COPY_LOCATION srcLoc = {};</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        srcLoc.pResource = <a class="code hl_variable" href="classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a">uploadBuffer</a>.Get();</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        srcLoc.Type = D3D12_TEXTURE_COPY_TYPE_PLACED_FOOTPRINT;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        srcLoc.PlacedFootprint = footprint;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        D3D12_TEXTURE_COPY_LOCATION dstLoc = {};</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        dstLoc.pResource = <a class="code hl_variable" href="classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab">resource</a>.Get();</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        dstLoc.Type = D3D12_TEXTURE_COPY_TYPE_SUBRESOURCE_INDEX;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        dstLoc.SubresourceIndex = 0;</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="comment">// リソースバリア (コピー先 -&gt; シェーダーリソース読み取り)</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        D3D12_RESOURCE_BARRIER barrier = {};</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        barrier.Transition.pResource = <a class="code hl_variable" href="classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab">resource</a>.Get();</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        barrier.Transition.StateBefore = D3D12_RESOURCE_STATE_COPY_DEST;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        barrier.Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        cmdList-&gt;ResourceBarrier(1, &amp;barrier);</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        cmdList-&gt;Close();</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        cmdList-&gt;CopyTextureRegion(&amp;dstLoc, 0, 0, 0, &amp;srcLoc, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="comment">// リソースバリア (コピー先 -&gt; シェーダーリソース読み取り)</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        D3D12_RESOURCE_BARRIER barrier = {};</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        barrier.Transition.pResource = <a class="code hl_variable" href="classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab">resource</a>.Get();</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        barrier.Transition.StateBefore = D3D12_RESOURCE_STATE_COPY_DEST;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        barrier.Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        cmdList-&gt;ResourceBarrier(1, &amp;barrier);</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="comment">// 実行して待機 (簡易同期)</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        ID3D12CommandList* ppCommandLists[] = { cmdList.Get() };</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        commandQueue-&gt;ExecuteCommandLists(1, ppCommandLists);</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="comment">// フェンス同期 (待機)</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        ComPtr&lt;ID3D12Fence&gt; fence;</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        device-&gt;CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&amp;fence));</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        commandQueue-&gt;Signal(fence.Get(), 1);</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        HANDLE fenceEvent = CreateEvent(<span class="keyword">nullptr</span>, FALSE, FALSE, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordflow">if</span> (fence-&gt;GetCompletedValue() &lt; 1)</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        {</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            fence-&gt;SetEventOnCompletion(1, fenceEvent);</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            WaitForSingleObject(fenceEvent, INFINITE);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        }</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        CloseHandle(fenceEvent);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    }</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        cmdList-&gt;Close();</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="comment">// 実行して待機 (簡易同期)</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        ID3D12CommandList* ppCommandLists[] = { cmdList.Get() };</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        commandQueue-&gt;ExecuteCommandLists(1, ppCommandLists);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="comment">// フェンス同期 (待機)</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        ComPtr&lt;ID3D12Fence&gt; fence;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        device-&gt;CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&amp;fence));</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        commandQueue-&gt;Signal(fence.Get(), 1);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        HANDLE fenceEvent = CreateEvent(<span class="keyword">nullptr</span>, FALSE, FALSE, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="keywordflow">if</span> (fence-&gt;GetCompletedValue() &lt; 1)</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            fence-&gt;SetEventOnCompletion(1, fenceEvent);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            WaitForSingleObject(fenceEvent, INFINITE);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        }</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        CloseHandle(fenceEvent);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    }</div>
 </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>}</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>}</div>
 <div class="ttc" id="aLogger_8h_html_a1b7ff4efe93a9030e55f7598d493448c"><div class="ttname"><a href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a></div><div class="ttdeci">#define SPAN_LOG(Format,...)</div><div class="ttdoc">通常ログを出力します。</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00069">Logger.h:69</a></div></div>
 <div class="ttc" id="aLogger_8h_html_a64e6317fa96d76ed26e6c4c79ec2d9b6"><div class="ttname"><a href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a></div><div class="ttdeci">#define SPAN_ERROR(Format,...)</div><div class="ttdoc">エラーログを出力します (赤色)。</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00075">Logger.h:75</a></div></div>
 <div class="ttc" id="aTexture_8h_html"><div class="ttname"><a href="Texture_8h.html">Texture.h</a></div><div class="ttdoc">画像読み込みとテクスチャリソース管理。</div></div>
 <div class="ttc" id="aclassSpan_1_1Texture_html_a0739f7dfcb17e2ebcbab8bfd90c790ab"><div class="ttname"><a href="classSpan_1_1Texture.html#a0739f7dfcb17e2ebcbab8bfd90c790ab">Span::Texture::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdoc">終了処理</div><div class="ttdef"><b>Definition</b> <a href="#l00012">Texture.cpp:12</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Texture_html_a09904643ca3ae39eae54a0b452be4744"><div class="ttname"><a href="classSpan_1_1Texture.html#a09904643ca3ae39eae54a0b452be4744">Span::Texture::Texture</a></div><div class="ttdeci">Texture()</div><div class="ttdef"><b>Definition</b> <a href="#l00009">Texture.cpp:9</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Texture_html_a1556b35304b4e78640e769fd06a782e6"><div class="ttname"><a href="classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6">Span::Texture::height</a></div><div class="ttdeci">uint32_t height</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00079">Texture.h:79</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Texture_html_a1556b35304b4e78640e769fd06a782e6"><div class="ttname"><a href="classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6">Span::Texture::height</a></div><div class="ttdeci">uint32_t height</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00082">Texture.h:82</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Texture_html_a4149a1e0df66fc08179a7e3b4a3f5d49"><div class="ttname"><a href="classSpan_1_1Texture.html#a4149a1e0df66fc08179a7e3b4a3f5d49">Span::Texture::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device, ID3D12CommandQueue *commandQueue, const std::string &amp;filepath)</div><div class="ttdoc">画像ファイルからテクスチャを作成します。</div><div class="ttdef"><b>Definition</b> <a href="#l00019">Texture.cpp:19</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Texture_html_a44848875a4af76b2d462e019c73c911a"><div class="ttname"><a href="classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a">Span::Texture::uploadBuffer</a></div><div class="ttdeci">ComPtr&lt; ID3D12Resource &gt; uploadBuffer</div><div class="ttdoc">アップロード用の一時バッファ (Upload Heap)</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00073">Texture.h:73</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Texture_html_a5d64c838ec0d3a4760e0b46f761c30ab"><div class="ttname"><a href="classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab">Span::Texture::resource</a></div><div class="ttdeci">ComPtr&lt; ID3D12Resource &gt; resource</div><div class="ttdoc">テクスチャ本体 (VRAM)</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00072">Texture.h:72</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Texture_html_a44848875a4af76b2d462e019c73c911a"><div class="ttname"><a href="classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a">Span::Texture::uploadBuffer</a></div><div class="ttdeci">ComPtr&lt; ID3D12Resource &gt; uploadBuffer</div><div class="ttdoc">アップロード用の一時バッファ (Upload Heap)</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00076">Texture.h:76</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Texture_html_a5d64c838ec0d3a4760e0b46f761c30ab"><div class="ttname"><a href="classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab">Span::Texture::resource</a></div><div class="ttdeci">ComPtr&lt; ID3D12Resource &gt; resource</div><div class="ttdoc">テクスチャ本体 (VRAM)</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00075">Texture.h:75</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Texture_html_a778802b18268802d37ebf7a89a5f39fc"><div class="ttname"><a href="classSpan_1_1Texture.html#a778802b18268802d37ebf7a89a5f39fc">Span::Texture::m_FilePath</a></div><div class="ttdeci">std::string m_FilePath</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00084">Texture.h:84</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Texture_html_ab0c408c4cd9d3b54cf9d45d3973db89b"><div class="ttname"><a href="classSpan_1_1Texture.html#ab0c408c4cd9d3b54cf9d45d3973db89b">Span::Texture::~Texture</a></div><div class="ttdeci">~Texture()</div><div class="ttdef"><b>Definition</b> <a href="#l00010">Texture.cpp:10</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Texture_html_ab5b2e96515a5039d23eede237b966749"><div class="ttname"><a href="classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749">Span::Texture::UploadTexture</a></div><div class="ttdeci">bool UploadTexture(ID3D12Device *device, ID3D12CommandQueue *commandQueue, const void *initialData, uint64_t width, uint64_t height, uint64_t bytesPerPixel)</div><div class="ttdef"><b>Definition</b> <a href="#l00072">Texture.cpp:72</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Texture_html_ad4bffa9fb2e8830770ed4209ba6d362b"><div class="ttname"><a href="classSpan_1_1Texture.html#ad4bffa9fb2e8830770ed4209ba6d362b">Span::Texture::width</a></div><div class="ttdeci">uint32_t width</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00078">Texture.h:78</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Texture_html_adcfa46e251fcfa5ba9c8b9e568fef0cc"><div class="ttname"><a href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">Span::Texture::srvHeap</a></div><div class="ttdeci">ComPtr&lt; ID3D12DescriptorHeap &gt; srvHeap</div><div class="ttdoc">SRV用デスクリプタヒープ (このテクスチャ専用)</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00074">Texture.h:74</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Texture_html_ae174a75a471258f60f3b5f4a16ce96ba"><div class="ttname"><a href="classSpan_1_1Texture.html#ae174a75a471258f60f3b5f4a16ce96ba">Span::Texture::srvHandleCPU</a></div><div class="ttdeci">D3D12_CPU_DESCRIPTOR_HANDLE srvHandleCPU</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00076">Texture.h:76</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Texture_html_ab5b2e96515a5039d23eede237b966749"><div class="ttname"><a href="classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749">Span::Texture::UploadTexture</a></div><div class="ttdeci">bool UploadTexture(ID3D12Device *device, ID3D12CommandQueue *commandQueue, const void *initialData, uint64_t width, uint64_t height, uint64_t bytesPerPixel)</div><div class="ttdef"><b>Definition</b> <a href="#l00074">Texture.cpp:74</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Texture_html_ad4bffa9fb2e8830770ed4209ba6d362b"><div class="ttname"><a href="classSpan_1_1Texture.html#ad4bffa9fb2e8830770ed4209ba6d362b">Span::Texture::width</a></div><div class="ttdeci">uint32_t width</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00081">Texture.h:81</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Texture_html_adcfa46e251fcfa5ba9c8b9e568fef0cc"><div class="ttname"><a href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">Span::Texture::srvHeap</a></div><div class="ttdeci">ComPtr&lt; ID3D12DescriptorHeap &gt; srvHeap</div><div class="ttdoc">SRV用デスクリプタヒープ (このテクスチャ専用)</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00077">Texture.h:77</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Texture_html_ae174a75a471258f60f3b5f4a16ce96ba"><div class="ttname"><a href="classSpan_1_1Texture.html#ae174a75a471258f60f3b5f4a16ce96ba">Span::Texture::srvHandleCPU</a></div><div class="ttdeci">D3D12_CPU_DESCRIPTOR_HANDLE srvHandleCPU</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00079">Texture.h:79</a></div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

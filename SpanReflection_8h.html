@@ -150,8 +150,8 @@ SpanReflection.h の依存先関係図:</div>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>コンポーネント定義用のリフレクションマクロ。 </p>
 <hr  />
- <h2 class="doxsection"><a class="anchor" id="autotoc_md127"></a>
-autotoc_md127</h2>
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md131"></a>
+autotoc_md131</h2>
 <dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
 
 <p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> に定義があります。</p>
@@ -248,16 +248,30 @@ autotoc_md127</h2>
 <div class="line">        world.RemoveComponent&lt;_InspectorSelfType&gt;(entity); \</div>
 <div class="line">    } \</div>
 <div class="line">} \</div>
-<div class="line"><span class="comment">/* 自動登録用構造体 (main前にコンストラクタが走る) */</span> \</div>
+<div class="line"><span class="comment">/* 自動登録用構造体 */</span> \</div>
 <div class="line"><span class="keyword">struct </span>_AutoReg_Inspector { \</div>
 <div class="line">    _AutoReg_Inspector() { \</div>
 <div class="line">        Span::ComponentRegistry::Register&lt;_InspectorSelfType&gt;( \</div>
 <div class="line">            _InspectorSelfType::_GetInspectorName(), \</div>
-<div class="line">            [](_InspectorSelfType&amp; t, Span::Entity e, Span::World&amp; w){ t.OnGui(e, w); } \</div>
+<div class="line">            <span class="comment">/* Draw Func */</span> \</div>
+<div class="line">            [](Span::Entity e, Span::World&amp; w) { \</div>
+<div class="line">                if (<span class="keyword">auto</span>* c = w.<a class="code hl_function" href="classSpan_1_1World.html#a637d963c8538b8ca6535bd1c6b88115c">GetComponentPtr</a>&lt;_InspectorSelfType&gt;(e)) c-&gt;OnGui(e, w); \</div>
+<div class="line">            }, \</div>
+<div class="line">            <span class="comment">/* Add Func */</span> \</div>
+<div class="line">            [](Span::Entity e, Span::World&amp; w) { \</div>
+<div class="line">                if (!w.<a class="code hl_function" href="classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0">HasComponent</a>&lt;_InspectorSelfType&gt;(e)) w.<a class="code hl_function" href="classSpan_1_1World.html#a555e11829d3833ce35f444779c4c2369">AddComponent</a>&lt;_InspectorSelfType&gt;(e); \</div>
+<div class="line">            }, \</div>
+<div class="line">            <span class="comment">/* Has Func */</span> \</div>
+<div class="line">            [](Span::Entity e, Span::World&amp; w) { \</div>
+<div class="line">                <span class="keywordflow">return</span> w.<a class="code hl_function" href="classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0">HasComponent</a>&lt;_InspectorSelfType&gt;(e); \</div>
+<div class="line">            } \</div>
 <div class="line">        ); \</div>
 <div class="line">    } \</div>
 <div class="line">}; \</div>
 <div class="line"><span class="keyword">inline</span> <span class="keyword">static</span> _AutoReg_Inspector _autoreg_inspector;</div>
+<div class="ttc" id="aclassSpan_1_1World_html_a059bbe879fcaf0a57d1b935be05810f0"><div class="ttname"><a href="classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0">Span::World::HasComponent</a></div><div class="ttdeci">bool HasComponent(Entity entity)</div><div class="ttdoc">指定したコンポーネントを持っているか確認します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00248">World.h:248</a></div></div>
+<div class="ttc" id="aclassSpan_1_1World_html_a555e11829d3833ce35f444779c4c2369"><div class="ttname"><a href="classSpan_1_1World.html#a555e11829d3833ce35f444779c4c2369">Span::World::AddComponent</a></div><div class="ttdeci">void AddComponent(Entity entity, const T &amp;initialValue=T())</div><div class="ttdoc">既存のEntityに新しいコンポーネントを追加します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00163">World.h:163</a></div></div>
+<div class="ttc" id="aclassSpan_1_1World_html_a637d963c8538b8ca6535bd1c6b88115c"><div class="ttname"><a href="classSpan_1_1World.html#a637d963c8538b8ca6535bd1c6b88115c">Span::World::GetComponentPtr</a></div><div class="ttdeci">T * GetComponentPtr(Entity entity)</div><div class="ttdoc">コンポーネントへのポインタを取得します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00285">World.h:285</a></div></div>
 </div><!-- fragment -->
 <p>インスペクターUI定義の終了マクロ。 </p>
 

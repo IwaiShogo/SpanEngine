@@ -119,6 +119,18 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🧠 高速なメモリ割り当てを行うアリーナクラス。  <a href="classSpan_1_1MemoryArena.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Time" id="r_Time"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Time.html">Time</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">⏱ 時間経過 (Delta <a class="el" href="classSpan_1_1Time.html" title="⏱ 時間経過 (Delta Time) と総時間を管理する静的クラス。">Time</a>) と総時間を管理する静的クラス。  <a href="classSpan_1_1Time.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:RenameFileCommand" id="r_RenameFileCommand"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1RenameFileCommand.html">RenameFileCommand</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ファイルのリネーム操作コマンド。Undo時は名前を元に戻します。  <a href="classSpan_1_1RenameFileCommand.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:MoveFileCommand" id="r_MoveFileCommand"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1MoveFileCommand.html">MoveFileCommand</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ファイルの移動操作コマンド。Undo時は元の場所に戻します。  <a href="classSpan_1_1MoveFileCommand.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:DeleteFileCommand" id="r_DeleteFileCommand"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1DeleteFileCommand.html">DeleteFileCommand</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ファイルの削除コマンド。  <a href="classSpan_1_1DeleteFileCommand.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:CreateFileCommand" id="r_CreateFileCommand"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1CreateFileCommand.html">CreateFileCommand</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ファイルの作成コマンド  <a href="classSpan_1_1CreateFileCommand.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:CreateDirectoryCommand" id="r_CreateDirectoryCommand"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1CreateDirectoryCommand.html">CreateDirectoryCommand</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">フォルダの作成コマンド  <a href="classSpan_1_1CreateDirectoryCommand.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:ICommand" id="r_ICommand"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ICommand.html">ICommand</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">元に戻す(Undo) / やり直し(Redo) をサポートするための操作基底クラス。  <a href="classSpan_1_1ICommand.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:GuiManager" id="r_GuiManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1GuiManager.html">GuiManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎨 エディタUI (ImGui)の統括マネージャー。  <a href="classSpan_1_1GuiManager.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:ImGuiUI" id="r_ImGuiUI"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ImGuiUI.html">ImGuiUI</a></td></tr>
@@ -404,6 +416,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:a247e3d3dd552cb352584f6b968a21bd1" id="r_a247e3d3dd552cb352584f6b968a21bd1"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a247e3d3dd552cb352584f6b968a21bd1 template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a247e3d3dd552cb352584f6b968a21bd1">SafeRelease</a> (T *&amp;ptr)</td></tr>
 <tr class="memitem:ae79449040cc75c359f5829b808fb2a57" id="r_ae79449040cc75c359f5829b808fb2a57"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae79449040cc75c359f5829b808fb2a57">GetGamepadIndex</a> (<a class="el" href="#aa350a9ffb8abcc7152b348bf09b86d8f">Key</a> key)</td></tr>
+<tr class="memitem:a2ef8a3c6c287dbf431e5d2d344b7d4cc" id="r_a2ef8a3c6c287dbf431e5d2d344b7d4cc"><td class="memItemLeft">std::filesystem::path&#160;</td><td class="memItemRight"><a class="el" href="#a2ef8a3c6c287dbf431e5d2d344b7d4cc">GetTrashPath</a> (const std::filesystem::path &amp;originalPath)</td></tr>
 <tr class="memitem:ab70254134b06676ef075109a54d3c433" id="r_ab70254134b06676ef075109a54d3c433"><td class="memItemLeft">static AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1HierarchyPanel.html">HierarchyPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab70254134b06676ef075109a54d3c433">_reg_hierarchy</a> (&quot;Hierarchy&quot;)</td></tr>
 <tr class="memitem:a2ffd67e5c0ae55d0918e1924de043da2" id="r_a2ffd67e5c0ae55d0918e1924de043da2"><td class="memItemLeft">static AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1InspectorPanel.html">InspectorPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2ffd67e5c0ae55d0918e1924de043da2">_reg</a> (&quot;Inspector&quot;)</td></tr>
 <tr class="memitem:ace337f7269a75fc3dbdba7e232c99043" id="r_ace337f7269a75fc3dbdba7e232c99043"><td class="memItemLeft">static AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1ProjectBrowserPanel.html">ProjectBrowserPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ace337f7269a75fc3dbdba7e232c99043">_reg</a> (&quot;Project Browser&quot;)</td></tr>
@@ -1375,6 +1388,38 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
+<a id="a2ef8a3c6c287dbf431e5d2d344b7d4cc" name="a2ef8a3c6c287dbf431e5d2d344b7d4cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ef8a3c6c287dbf431e5d2d344b7d4cc">&#9670;&#160;</a></span>GetTrashPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::filesystem::path Span::GetTrashPath </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>originalPath</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="FileCommands_8h_source.html">FileCommands.h</a> の <a class="el" href="FileCommands_8h_source.html#l00024">24</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a2ef8a3c6c287dbf431e5d2d344b7d4cc_icgraph.svg" width="400" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="ad91faa614dc451a8508f2113cc2cb22d" name="ad91faa614dc451a8508f2113cc2cb22d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad91faa614dc451a8508f2113cc2cb22d">&#9670;&#160;</a></span>Header()</h2>
 
@@ -1918,7 +1963,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00090">90</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00101">101</a> 行目に定義があります。</p>
 
 </div>
 </div>

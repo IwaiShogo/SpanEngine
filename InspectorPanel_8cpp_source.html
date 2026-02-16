@@ -287,26 +287,31 @@ $(function(){initNavTree('InspectorPanel_8cpp_source.html','',''); });
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>* meta : sortedMetas)</div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            {</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                <span class="keywordflow">if</span> (meta-&gt;Name == <span class="stringliteral">&quot;Name&quot;</span> || meta-&gt;Name == <span class="stringliteral">&quot;Tag&quot;</span> || meta-&gt;Name == <span class="stringliteral">&quot;Layer&quot;</span> || meta-&gt;Name == <span class="stringliteral">&quot;Transform&quot;</span> || meta-&gt;Name == <span class="stringliteral">&quot;Active&quot;</span>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                <span class="keywordflow">if</span> (meta-&gt;Name == <span class="stringliteral">&quot;Name&quot;</span> || meta-&gt;Name == <span class="stringliteral">&quot;Tag&quot;</span> || meta-&gt;Name == <span class="stringliteral">&quot;Layer&quot;</span> || meta-&gt;Name == <span class="stringliteral">&quot;Active&quot;</span>) <span class="keywordflow">continue</span>;</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                <span class="keywordflow">if</span> (ImGui::MenuItem(meta-&gt;Name.c_str()))</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                {</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                    <span class="comment">// AddComponent...</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                }</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            }</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>            ImGui::EndPopup();</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        }</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        ImGui::End();</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    }</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                <span class="keywordflow">if</span> (meta-&gt;HasFunc &amp;&amp; meta-&gt;HasFunc(selected, world)) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                <span class="keywordflow">if</span> (ImGui::MenuItem(meta-&gt;Name.c_str()))</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                {</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                    <span class="keywordflow">if</span> (meta-&gt;Name.c_str())</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                    {</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                        meta-&gt;AddFunc(selected, world);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                    }</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                }</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            }</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            ImGui::EndPopup();</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        }</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        ImGui::End();</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    }</div>
 </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>}</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>}</div>
 <div class="ttc" id="aInspectorPanel_8h_html"><div class="ttname"><a href="InspectorPanel_8h.html">InspectorPanel.h</a></div><div class="ttdoc">エンティティの詳細情報表示パネル。</div></div>
 <div class="ttc" id="aSpanEditor_8h_html"><div class="ttname"><a href="SpanEditor_8h.html">SpanEditor.h</a></div></div>
 <div class="ttc" id="aSpanEngine_8h_html"><div class="ttname"><a href="SpanEngine_8h.html">SpanEngine.h</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Application_html_a42e065e188c6e225983aad97d576865c"><div class="ttname"><a href="classSpan_1_1Application.html#a42e065e188c6e225983aad97d576865c">Span::Application::GetWorld</a></div><div class="ttdeci">World &amp; GetWorld()</div><div class="ttdef"><b>Definition</b> <a href="Application_8h_source.html#l00068">Application.h:68</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Application_html_ae2e9eaebe90ffdf55cfef9d74ccbce3e"><div class="ttname"><a href="classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e">Span::Application::Get</a></div><div class="ttdeci">static Application &amp; Get()</div><div class="ttdoc">シングルトンインスタンスの取得</div><div class="ttdef"><b>Definition</b> <a href="Application_8h_source.html#l00037">Application.h:37</a></div></div>
-<div class="ttc" id="aclassSpan_1_1ComponentRegistry_html_a8449d84d0096e3a92e226e510f0accb0"><div class="ttname"><a href="classSpan_1_1ComponentRegistry.html#a8449d84d0096e3a92e226e510f0accb0">Span::ComponentRegistry::GetAll</a></div><div class="ttdeci">static std::vector&lt; ComponentMetadata &gt; &amp; GetAll()</div><div class="ttdoc">登録済みの全コンポーネント情報を取得します。</div><div class="ttdef"><b>Definition</b> <a href="ComponentRegistry_8h_source.html#l00100">ComponentRegistry.h:100</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ComponentRegistry_html_a8449d84d0096e3a92e226e510f0accb0"><div class="ttname"><a href="classSpan_1_1ComponentRegistry.html#a8449d84d0096e3a92e226e510f0accb0">Span::ComponentRegistry::GetAll</a></div><div class="ttdeci">static std::vector&lt; ComponentMetadata &gt; &amp; GetAll()</div><div class="ttdoc">登録済みの全コンポーネント情報を取得します。</div><div class="ttdef"><b>Definition</b> <a href="ComponentRegistry_8h_source.html#l00094">ComponentRegistry.h:94</a></div></div>
 <div class="ttc" id="aclassSpan_1_1EditorPanel_html_a3c42b2ab17e0708eaeff54afc8058b4a"><div class="ttname"><a href="classSpan_1_1EditorPanel.html#a3c42b2ab17e0708eaeff54afc8058b4a">Span::EditorPanel::isOpen</a></div><div class="ttdeci">bool isOpen</div><div class="ttdoc">表示フラグ</div><div class="ttdef"><b>Definition</b> <a href="EditorPanel_8h_source.html#l00056">EditorPanel.h:56</a></div></div>
 <div class="ttc" id="aclassSpan_1_1InspectorPanel_html_ae32fda6018a2e54f880e6708ac5b89fe"><div class="ttname"><a href="classSpan_1_1InspectorPanel.html#ae32fda6018a2e54f880e6708ac5b89fe">Span::InspectorPanel::OnImGuiRender</a></div><div class="ttdeci">void OnImGuiRender() override</div><div class="ttdoc">毎フレーム呼ばれる描画関数。</div><div class="ttdef"><b>Definition</b> <a href="#l00013">InspectorPanel.cpp:13</a></div></div>
 <div class="ttc" id="aclassSpan_1_1SelectionManager_html_ab8b9b7e17346f5fb71277549ad085bc4"><div class="ttname"><a href="classSpan_1_1SelectionManager.html#ab8b9b7e17346f5fb71277549ad085bc4">Span::SelectionManager::GetPrimary</a></div><div class="ttdeci">static Entity GetPrimary()</div><div class="ttdoc">メインの選択対象 (最後に選択されたもの) を取得します。</div><div class="ttdef"><b>Definition</b> <a href="SelectionManager_8h_source.html#l00061">SelectionManager.h:61</a></div></div>

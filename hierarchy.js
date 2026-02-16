@@ -36,6 +36,13 @@ var hierarchy =
     [ "Span::GraphicsContext", "classSpan_1_1GraphicsContext.html", null ],
     [ "Span::GuiManager", "classSpan_1_1GuiManager.html", null ],
     [ "std::hash&lt; Span::EntityID &gt;", "structstd_1_1hash_3_01Span_1_1EntityID_01_4.html", null ],
+    [ "Span::ICommand", "classSpan_1_1ICommand.html", [
+      [ "Span::CreateDirectoryCommand", "classSpan_1_1CreateDirectoryCommand.html", null ],
+      [ "Span::CreateFileCommand", "classSpan_1_1CreateFileCommand.html", null ],
+      [ "Span::DeleteFileCommand", "classSpan_1_1DeleteFileCommand.html", null ],
+      [ "Span::MoveFileCommand", "classSpan_1_1MoveFileCommand.html", null ],
+      [ "Span::RenameFileCommand", "classSpan_1_1RenameFileCommand.html", null ]
+    ] ],
     [ "Span::ImGuiUI", "classSpan_1_1ImGuiUI.html", null ],
     [ "Span::Input", "classSpan_1_1Input.html", null ],
     [ "Span::Layer", "structSpan_1_1Layer.html", null ],
