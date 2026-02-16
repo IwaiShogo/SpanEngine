@@ -10,7 +10,7 @@ var searchData=
   ['camerasystem_7',['CameraSystem',['../classSpan_1_1CameraSystem.html',1,'Span']]],
   ['camerasystem_2eh_8',['CameraSystem.h',['../CameraSystem_8h.html',1,'']]],
   ['capacity_9',['Capacity',['../structSpan_1_1Chunk.html#a191a5a7d054efc388aa95de168e31706',1,'Span::Chunk::Capacity'],['../structSpan_1_1FixedString.html#a2c03714f578e2ca1f71d60747a83eb9d',1,'Span::FixedString::Capacity()']]],
-  ['castshadows_10',['castShadows',['../structSpan_1_1MeshRenderer.html#a10cc61f0735e4e138936f4589377895d',1,'Span::MeshRenderer']]],
+  ['castshadows_10',['CastShadows',['../structSpan_1_1MeshRenderer.html#a178ad248dae129974d03400f1a70beb7',1,'Span::MeshRenderer']]],
   ['cb_5fobj_5fsize_11',['CB_OBJ_SIZE',['../classSpan_1_1Renderer.html#a87ca912198c8ee1584f05c4393593a0a',1,'Span::Renderer']]],
   ['chain_20double_20buffering_12',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md101',1,'']]],
   ['chunk_13',['Chunk',['../structSpan_1_1Chunk.html',1,'Span::Chunk'],['../structSpan_1_1Chunk.html#aa1c814331a30276427362db4d60998e3',1,'Span::Chunk::Chunk()']]],

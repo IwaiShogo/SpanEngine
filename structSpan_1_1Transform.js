@@ -8,9 +8,7 @@ var structSpan_1_1Transform =
     [ "GetRight", "structSpan_1_1Transform.html#a201045237f4cff825ff023848c5967fa", null ],
     [ "GetUp", "structSpan_1_1Transform.html#a4251fb155ba185e11247bd5b8044a003", null ],
     [ "Identity", "structSpan_1_1Transform.html#a9d153f15fae559d82693d957fd0a7f5d", null ],
-    [ "if", "structSpan_1_1Transform.html#ac8c51921144bb458d1850814a7f9bd99", null ],
     [ "LookAt", "structSpan_1_1Transform.html#a22e91c428e57737b16a5e9281a28a610", null ],
-    [ "deg", "structSpan_1_1Transform.html#ad68b513f2dbc9ddbfbce95f03d749770", null ],
     [ "Position", "structSpan_1_1Transform.html#a8ef17302f26b199237a1d7db7a3920e2", null ],
     [ "Rotation", "structSpan_1_1Transform.html#ac340e8d1ddf99199fa41f243c9e77820", null ],
     [ "Scale", "structSpan_1_1Transform.html#a9edefaff02e5a0d097f68fdad451819b", null ]

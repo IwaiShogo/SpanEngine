@@ -1,12 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"structSpan_1_1Vector2.html#aa6896267dd2a0f91e74443b32866898e":[1,0,0,3,5],
-"structSpan_1_1Vector2.html#ab0b4e9cf9b8f4eeeb9aa17bb42a61453":[0,0,0,4,3],
-"structSpan_1_1Vector2.html#ab0b4e9cf9b8f4eeeb9aa17bb42a61453":[1,0,0,3,3],
-"structSpan_1_1Vector2.html#ab876b0c87711d5be2c26e34a59a7242f":[0,0,0,4,11],
-"structSpan_1_1Vector2.html#ab876b0c87711d5be2c26e34a59a7242f":[1,0,0,3,11],
-"structSpan_1_1Vector2.html#aba26d703e5ab66c4c5de32ee7f4b4838":[0,0,0,4,13],
-"structSpan_1_1Vector2.html#aba26d703e5ab66c4c5de32ee7f4b4838":[1,0,0,3,13],
 "structSpan_1_1Vector2.html#ac15cef2e05458ff9c485a33cced17b0b":[0,0,0,4,9],
 "structSpan_1_1Vector2.html#ac15cef2e05458ff9c485a33cced17b0b":[1,0,0,3,9],
 "structSpan_1_1Vector2.html#ac6ad4f4009d7cd39d2e4ef8b393a7fdb":[0,0,0,4,17],

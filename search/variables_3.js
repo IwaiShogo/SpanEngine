@@ -2,7 +2,7 @@ var searchData=
 [
   ['cameraposition_0',['cameraPosition',['../classSpan_1_1Renderer.html#ad698e7011441a21320dbf3513e4f3517',1,'Span::Renderer']]],
   ['capacity_1',['Capacity',['../structSpan_1_1Chunk.html#a191a5a7d054efc388aa95de168e31706',1,'Span::Chunk']]],
-  ['castshadows_2',['castShadows',['../structSpan_1_1MeshRenderer.html#a10cc61f0735e4e138936f4589377895d',1,'Span::MeshRenderer']]],
+  ['castshadows_2',['CastShadows',['../structSpan_1_1MeshRenderer.html#a178ad248dae129974d03400f1a70beb7',1,'Span::MeshRenderer']]],
   ['cb_5fobj_5fsize_3',['CB_OBJ_SIZE',['../classSpan_1_1Renderer.html#a87ca912198c8ee1584f05c4393593a0a',1,'Span::Renderer']]],
   ['chunk_5fsize_4',['CHUNK_SIZE',['../namespaceSpan.html#a51dc0b6d0daae8cf8e6841254d8dc062',1,'Span']]],
   ['chunkcapacity_5',['chunkCapacity',['../classSpan_1_1Archetype.html#a3bf3be2bac8f239b385af773698f50d5',1,'Span::Archetype']]],

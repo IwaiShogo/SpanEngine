@@ -77,6 +77,7 @@ var namespaceSpan =
     [ "AssetHandle", "namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446", null ],
     [ "ComponentTypeID", "namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd", null ],
     [ "DrawComponentFunc", "namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7", null ],
+    [ "HasComponentFunc", "namespaceSpan.html#ad284dad2c8e86ac8f482272df541e612", null ],
     [ "int16", "namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391", null ],
     [ "int32", "namespaceSpan.html#a7d00f8fdfe7b0d03b2a4d5ba06efe594", null ],
     [ "int64", "namespaceSpan.html#aca56f7fb12365f1c73d650b4b5f84091", null ],

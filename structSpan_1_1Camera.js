@@ -13,5 +13,5 @@ var structSpan_1_1Camera =
     [ "Fov", "structSpan_1_1Camera.html#a578d987419d24d67146b3b7e93df69b2", null ],
     [ "NearClip", "structSpan_1_1Camera.html#a1325da14243956d6decb27abea298a72", null ],
     [ "OrthographicSize", "structSpan_1_1Camera.html#a636016ce8ac1f2b81e78861848bff615", null ],
-    [ "Projection", "structSpan_1_1Camera.html#ad4b775e9c76fcd2605f408f02ab81e31", null ]
+    [ "Type", "structSpan_1_1Camera.html#add602a5b10a80c4416bf6819f83421b6", null ]
 ];
