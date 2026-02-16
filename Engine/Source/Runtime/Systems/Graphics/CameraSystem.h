@@ -47,7 +47,7 @@ namespace Span
 					// 2. Projection行列
 					Matrix4x4 projMatrix;
 
-					if (cam.Projection == ProjectionType::Perspective)
+					if (cam.Type == ProjectionType::Perspective)
 					{
 						// 透視投影 (Perspective)
 						projMatrix = Matrix4x4::PerspectiveFovLH(ToRadians(cam.Fov), aspect, cam.NearClip, cam.FarClip);

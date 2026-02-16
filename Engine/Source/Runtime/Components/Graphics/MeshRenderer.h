@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	MeshRenderer.h
  * @brief	メッシュの描画設定とマテリアル参照。
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -19,7 +19,7 @@ namespace Span
 	/**
 	 * @struct	MeshRenderer
 	 * @brief	🖌 オブジェクトを画面に描画するための設定コンポーネント。
-	 * 
+	 *
 	 * @details
 	 * `MeshFilter` で指定された形状に対し、どの `Material` (色・質感) を適用するか決定します。
 	 * また、影のキャスト/レシーブなどの描画フラグも管理します。
@@ -27,19 +27,16 @@ namespace Span
 	struct MeshRenderer
 	{
 		Material* material = nullptr;
-		bool castShadows = true;
-		bool receiveShadows = true;
+		bool CastShadows = true;
+		bool ReceiveShadows = true;
 
 		MeshRenderer() = default;
 		MeshRenderer(Material* m) : material(m) {}
 
 		SPAN_INSPECTOR_BEGIN(MeshRenderer)
-			// 1. Material Info
-			// マテリアルのパラメータをここで簡易編集できるようにする。
-			// マテリアルエディタとして別ウィンドウにするので簡易実装
-			// 2. Settings
-			SPAN_FIELD(castShadows)
-			SPAN_FIELD(receiveShadows)
+			SPAN_FIELD(material)
+			SPAN_FIELD(CastShadows, Header("Lighting Settings"))
+			SPAN_FIELD(ReceiveShadows)
 		SPAN_INSPECTOR_END()
 	};
 }

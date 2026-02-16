@@ -65,15 +65,25 @@ file(GLOB_RECURSE ENGINE_SOURCES
 	"Source/*.h"
 )
 
+# --- 5. Magic Enum (Enum Reflection) ---
+message(STATUS "Downloading Magic Enum...")
+
+FetchContent_Declare(
+	magic_enum
+	GIT_REPOSITORY https://github.com/Neargye/magic_enum.git
+	GIT_TAG v0.9.5
+)
+FetchContent_MakeAvailable(magic_enum)
+
 # ライブラリとして定義
-add_library(SpanCore STATIC 
-	${ENGINE_SOURCES} 
+add_library(SpanCore STATIC
+	${ENGINE_SOURCES}
 	${IMGUI_SOURCES}
 	${IMGUIZMO_SOURCES}
  "Source/Runtime/Graphics/Core/RenderTarget.h" "Source/Runtime/Graphics/Core/RenderTarget.cpp" "Source/Runtime/Graphics/Core/GraphicsContext.h" "Source/Runtime/Graphics/Core/GraphicsContext.cpp" "Source/Editor/Panels/EditorPanel.h" "Source/Editor/Panels/SceneView/SceneViewPanel.h" "Source/Editor/Panels/SceneView/SceneViewPanel.cpp" "Source/Runtime/Components/Core/LocalToWorld.h"  "Source/Runtime/Components/Graphics/MeshRenderer.h" "Source/Runtime/Systems/Graphics/EditorCameraSystem.h" "Source/Runtime/Systems/Core/RelationshipSystem.h" "Source/Runtime/Components/Editor/EditorCamera.h" "Source/Editor/SelectionManager.h" "Source/Editor/ImGui/ImGuiUI.h" "Source/Runtime/Reflection/ComponentRegistry.h" "Source/Editor/Panels/Inspector/InspectorPanel.h" "Source/Editor/Panels/Inspector/InspectorPanel.cpp" "Source/Editor/PanelManager.h" "Source/Runtime/Reflection/SpanAttributes.h" "Source/Runtime/Reflection/SpanReflection.h" "Source/Runtime/Components/Core/Tag.h" "Source/Runtime/Components/Core/Layer.h" "Source/Editor/Panels/Hierarchy/HierarchyPanel.h" "Source/Editor/Panels/Hierarchy/HierarchyPanel.cpp" "Source/Runtime/ECS/Kernel/EntityBuilder.h" "Source/Runtime/Components/Core/Active.h" "Source/Core/Containers/FixedString.h" "Source/SpanEditor.h" "Source/Editor/Panels/ProjectBrowser/ProjectBrowserPanel.h" "Source/Editor/Panels/ProjectBrowser/ProjectBrowserPanel.cpp" "Source/Runtime/Resource/AssetMetadata.h" "Source/Runtime/Resource/AssetSerializer.h" "Source/Runtime/Resource/AssetSerializer.cpp" "Source/Editor/Utils/EditorFileSystem.h" "Source/Editor/Utils/EditorFileSystem.cpp" "Source/Editor/ImGui/ImGuiUI.cpp")
 
 # インクルードパスの設定
-target_include_directories(SpanCore PUBLIC 
+target_include_directories(SpanCore PUBLIC
 	Source
 	Source/Core
 	Source/Runtime
@@ -90,12 +100,13 @@ target_precompile_headers(SpanCore PUBLIC Source/Core/CoreMinimal.h)
 # ------------------------------------------------------------------------------
 # リンク設定
 # ------------------------------------------------------------------------------
-target_link_libraries(SpanCore PUBLIC 
-	d3d12.lib 
-	dxgi.lib 
+target_link_libraries(SpanCore PUBLIC
+	d3d12.lib
+	dxgi.lib
 	d3dcompiler.lib
 	assimp::assimp
 	xinput
+	magic_enum::magic_enum
 )
 
 # コンパイルオプション

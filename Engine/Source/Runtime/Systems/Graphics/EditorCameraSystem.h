@@ -76,7 +76,7 @@ namespace Span
 						else
 						{
 							// 通常時: ズーム (前後移動 / Orthoサイズ)
-							if (cam.Projection == ProjectionType::Orthographic)
+							if (cam.Type == ProjectionType::Orthographic)
 							{
 								// Ortho: サイズを変更 (ズームイン/アウト)
 								cam.OrthographicSize -= wheel * edCam.ScrollSensitivity;

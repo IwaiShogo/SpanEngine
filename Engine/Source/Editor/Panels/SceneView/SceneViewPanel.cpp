@@ -196,7 +196,7 @@ namespace Span
 				cameraView = ltw.Value.Invert();
 
 				// カメラ設定コピー
-				projType = cam.Projection;
+				projType = cam.Type;
 				fov = cam.Fov;
 				orthoSize = cam.OrthographicSize;
 				nearClip = cam.NearClip;
@@ -406,7 +406,7 @@ namespace Span
 						if (camComp)
 						{
 							// トグル
-							camComp->Projection = (camComp->Projection == ProjectionType::Perspective)
+							camComp->Type = (camComp->Type == ProjectionType::Perspective)
 								? ProjectionType::Orthographic
 								: ProjectionType::Perspective;
 						}

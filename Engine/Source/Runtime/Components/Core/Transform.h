@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	Transform.h
  * @brief	位置、回転、拡大縮小を管理するコンポーネント。
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -18,7 +18,7 @@ namespace Span
 	/**
 	 * @struct	Transform
 	 * @brief	📍 オブジェクトの3次元的な位置情報を保持するコンポーネント。
-	 * 
+	 *
 	 * @details
 	 * 全てのオブジェクトの基本となるコンポーネントです。
 	 * 階層構造 (親子関係) がある場合、この値は「親からの相対座標(Local)」として扱われます。
@@ -31,7 +31,6 @@ namespace Span
 
 		// Constructors
 		// ============================================================
-
 		Transform()
 			: Position(Vector3::Zero)
 			, Rotation(Quaternion::Identity)
@@ -130,23 +129,9 @@ namespace Span
 		// Reflection (Editor UI)
 		// ============================================================
 		SPAN_INSPECTOR_BEGIN(Transform)
-
-		// 1. Position
-		SPAN_FIELD(Position)
-
-		// 2. Rotaion (Custom Handling: Quaternion <-> Euler Degree)
-		{
-			Vector3 euler = Rotation.ToEuler();
-			Vector3 deg = { ToDegrees(euler.x), ToDegrees(euler.y), ToDegrees(euler.z) };
-			if (ImGuiUI::DrawVec3Control("Rotation", deg))
-			{
-				Rotation = Quaternion::FromEuler(ToRadians(deg.x), ToRadians(deg.y), ToRadians(deg.z));
-			}
-		}
-
-		// 3. Scale
-		SPAN_FIELD(Scale)
-
+			SPAN_FIELD(Position)
+			SPAN_FIELD(Rotation)
+			SPAN_FIELD(Scale)
 		SPAN_INSPECTOR_END()
 	};
 }

@@ -28,6 +28,8 @@ namespace Span
 	using RemoveComponentFunc = std::function<void(Entity, World&)>;
 	// コンポーネント追加用の関数ポインタ型
 	using AddComponentFunc = std::function<void(Entity, World&)>;
+	// コンポーネント確認用の関数ポインタ型
+	using HasComponentFunc = std::function<bool(Entity, World&)>;
 
 	/**
 	 * @struct	ComponentMetadata

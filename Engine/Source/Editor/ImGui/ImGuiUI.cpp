@@ -120,7 +120,11 @@ namespace Span
 
 	void ImGuiUI::DrawTextureSlot(const char* label, Texture*& texture)
 	{
-		std::string name = texture ? "Texture Asset" : "None";
+		std::string name = "None";
+		if (texture)
+		{
+			name = std::filesystem::path(texture->GetPath()).filename().string();
+		}
 
 		DrawAssetSlot(label, texture, name, { ".png", ".jpg", ".jpeg", ".tga", ".bmp" },
 			[](const std::string& path) { return AssetManager::Get().GetTexture(path); });
@@ -128,7 +132,12 @@ namespace Span
 
 	void ImGuiUI::DrawMeshSlot(const char* label, Mesh*& mesh)
 	{
-		std::string name = mesh ? "Mesh Asset" : "None";
+		std::string name = "None";
+		if (mesh)
+		{
+			name = std::filesystem::path(mesh->GetPath()).filename().string();
+		}
+
 		DrawAssetSlot(label, mesh, name, { ".fbx", ".obj", ".gltf", ".glb" },
 			[](const std::string& path) { return AssetManager::Get().GetMesh(path); });
 	}

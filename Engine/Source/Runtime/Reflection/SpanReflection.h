@@ -19,6 +19,8 @@
 #include <type_traits>
 #include <cfloat>
 
+#include <magic_enum.hpp>
+
 
 //	🪄 Reflection Macros
 // ============================================================
@@ -127,6 +129,7 @@ namespace Span::Internal
 		if (isReadOnly) ImGui::BeginDisabled();
 
 		// --- 型別描画 ---
+		// 1. 基本型
 		if constexpr (std::is_same_v<T, float>) {
 			if (hasRange) ImGui::SliderFloat(label, &value, minV, maxV);
 			else ImGui::DragFloat(label, &value, 0.1f, minV, maxV);
@@ -140,27 +143,64 @@ namespace Span::Internal
 		else if constexpr (std::is_same_v<T, Vector3>) {
 			ImGuiUI::DrawVec3Control(label, value);
 		}
+		// 2. 文字列
 		else if constexpr (Span::is_fixed_string_v<T>) {
 			ImGui::InputText(label, value.Data, value.Capacity());
 		}
 		else if constexpr (std::is_array_v<T> && std::is_same_v<std::remove_all_extents_t<T>, char>) {
 			ImGui::InputText(label, value, sizeof(T));
 		}
+		// 3. Asset Pointers (Drag & Drop Slots)
 		else if constexpr (std::is_same_v<T, Span::Texture*>) {
-			Span::ImGuiUI::DrawTextureSlot(label, value);
+			ImGuiUI::DrawTextureSlot(label, value);
 		}
 		else if constexpr (std::is_same_v<T, Span::Mesh*>) {
-			Span::ImGuiUI::DrawMeshSlot(label, value);
+			ImGuiUI::DrawMeshSlot(label, value);
 		}
 		else if constexpr (std::is_same_v<T, Span::Material*>) {
-			Span::ImGuiUI::DrawMaterialSlot(label, value);
+			ImGuiUI::DrawMaterialSlot(label, value);
 		}
+		// 4. Quaternion (Euler変換)
+		else if constexpr (std::is_same_v<T, Quaternion>) {
+			Vector3 euler = value.ToEuler();
+			Vector3 deg = { ToDegrees(euler.x), ToDegrees(euler.y), ToDegrees(euler.z) };
+
+			// 回転は -180~180 に正規化して表示
+			if (deg.x > 180.0f) deg.x -= 360.0f; if (deg.x < -180.f) deg.x += 360.f;
+			if (deg.y > 180.f) deg.y -= 360.f; if (deg.y < -180.f) deg.y += 360.f;
+			if (deg.z > 180.f) deg.z -= 360.f; if (deg.z < -180.f) deg.z += 360.f;
+
+			if (ImGuiUI::DrawVec3Control(label, deg)) {
+				value = Quaternion::FromEuler(ToRadians(deg.x), ToRadians(deg.y), ToRadians(deg.z));
+			}
+		}
+		// 5. Enum (Magic Enum)
 		else if constexpr (std::is_enum_v<T>) {
-			int val = static_cast<int>(value);
-			if (ImGui::DragInt(label, &val)) value = static_cast<T>(val);
+			// 現在のEnum名の取得
+			std::string_view currentName = magic_enum::enum_name(value);
+			if (currentName.empty()) currentName = "Unknown";
+
+			if (ImGui::BeginCombo(label, currentName.data()))
+			{
+				// Enumの全要素を列挙
+				constexpr auto values = magic_enum::enum_values<T>();
+				for (const auto& v : values)
+				{
+					bool isSelected = (value == v);
+					std::string_view name = magic_enum::enum_name(v);
+
+					if (ImGui::Selectable(name.data(), isSelected))
+					{
+						value = v;
+					}
+					if (isSelected) ImGui::SetItemDefaultFocus();
+				}
+				ImGui::EndCombo();
+			}
 		}
+		// 6. 未対応
 		else {
-			ImGui::TextDisabled("%s (Unknown)", label);
+			ImGui::TextDisabled("%s (Not Supported)", label);
 		}
 
 		if (isReadOnly) ImGui::EndDisabled();

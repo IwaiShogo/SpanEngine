@@ -32,7 +32,7 @@ namespace Span
 	 */
 	struct Camera
 	{
-		ProjectionType Projection = ProjectionType::Perspective;	// デフォルトは投資投影
+		ProjectionType Type = ProjectionType::Perspective;	// デフォルトは投資投影
 
 		float Fov = 45.0f;				///< Perspective用の画角
 		float OrthographicSize = 10.0f;	///< Ortho用のサイズ (縦の範囲)
@@ -45,6 +45,7 @@ namespace Span
 		// Reflection
 		// ============================================================
 		SPAN_INSPECTOR_BEGIN(Camera)
+			SPAN_FIELD(Type)
 			SPAN_FIELD(Fov, Range(1.0f, 179.0f), Tooltip("Field of View"))
 			SPAN_FIELD(OrthographicSize, Min(0.1f), Tooltip("Orthographic Size"))
 			SPAN_FIELD(NearClip, Min(0.01f), Tooltip("Cannot be 0"))

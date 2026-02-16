@@ -32,12 +32,7 @@ namespace Span
 		MeshFilter(Mesh* m) : mesh(m) {}
 
 		SPAN_INSPECTOR_BEGIN(MeshFilter)
-			if (mesh) {
-				ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Mesh Loaded (0x%p)", mesh);
-			}
-			else {
-				ImGui::TextColored(ImVec4(0.8f, 0.2f, 0.2f, 1.0f), "Empty (Null)");
-			}
+			SPAN_FIELD(mesh)
 		SPAN_INSPECTOR_END()
 	};
 }
