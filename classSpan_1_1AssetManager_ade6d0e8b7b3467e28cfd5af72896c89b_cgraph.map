@@ -1,9 +1,33 @@
 <map id="Span::AssetManager::GetMesh" name="Span::AssetManager::GetMesh">
-<area shape="rect" id="Node000001" title="メッシュデータを取得します (キャッシュ対応)。" alt="" coords="5,5,160,45"/>
-<area shape="rect" id="Node000002" href="$classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1" title="モデルファイルをロードし、メッシュリストを返します" alt="" coords="208,13,393,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,23,195,23,195,28,161,28"/>
-<area shape="rect" id="Node000003" href="$classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a" title=" " alt="" coords="441,5,596,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="394,23,428,23,428,28,394,28"/>
-<area shape="rect" id="Node000004" href="$classSpan_1_1Mesh.html#ae731b2ee0cf4e9bbfd30b70285a6688f" title="頂点配列からメッシュを初期化します。" alt="" coords="644,13,805,38"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="596,23,631,23,631,28,596,28"/>
+<area shape="rect" id="Node000001" title="メッシュデータを取得します (キャッシュ対応)。" alt="" coords="5,143,160,183"/>
+<area shape="rect" id="Node000002" href="$classSpan_1_1AssetRegistry.html#a2b83eeb5aa2e6d4c807d4e4a11db563c" title=" " alt="" coords="412,5,595,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,142,139,87,171,58,207,36,254,19,303,9,352,5,398,5,398,10,352,10,304,15,255,24,209,40,174,62,143,90,99,145"/>
+<area shape="rect" id="Node000003" href="$classSpan_1_1AssetRegistry.html#ac48f2d0e316daa76675614aaf1d94024" title=" " alt="" coords="209,50,361,90"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,141,207,100,222,93,224,98,209,104,125,146"/>
+<area shape="rect" id="Node000004" href="$classSpan_1_1AssetManager.html#a8013680152c26b9e11618a2bb207eff0" title="GUIDでメッシュを取得 (推奨)" alt="" coords="208,114,363,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="160,150,194,145,195,150,161,155"/>
+<area shape="rect" id="Node000009" href="$structSpan_1_1AssetMetadata.html#a83c8ed8bfd79a2aa90ed8d4e36b785b8" title=" " alt="" coords="667,202,827,242"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="161,167,654,211,653,216,160,173"/>
+<area shape="rect" id="Node000010" href="$classSpan_1_1AssetSerializer.html#adea72d3eb1434b36473f6e0d38396451" title="指定したアセットのメタデータを取得します。 .metaファイルが存在しない場合は、新規にGUIDを生成して作成します。" alt="" coords="413,283,594,323"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="100,182,145,232,175,258,209,278,255,294,304,304,353,308,399,309,399,315,353,314,303,309,254,299,207,283,172,262,141,236,96,185"/>
+<area shape="rect" id="Node000014" href="$classSpan_1_1AssetRegistry.html#a432dbe6ae1b0ab930bd903d93ad5a734" title="パスからアセット情報を登録・更新します (ファイル移動/作成時用)。" alt="" coords="209,229,361,269"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="132,181,226,221,224,226,130,186"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="341,112,361,100,375,86,384,73,393,59,409,45,432,33,434,38,412,50,397,62,389,76,379,90,364,104,344,116"/>
+<area shape="rect" id="Node000005" href="$classSpan_1_1AssetRegistry.html#a3cae91f52d3d29c67936e289d1244319" title=" " alt="" coords="427,59,579,99"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="363,112,413,99,415,104,364,117"/>
+<area shape="rect" id="Node000006" href="$classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1" title="モデルファイルをロードし、メッシュリストを返します" alt="" coords="411,124,596,149"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="363,132,397,133,397,138,363,138"/>
+<area shape="rect" id="Node000007" href="$classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a" title=" " alt="" coords="670,117,825,157"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="596,134,656,134,656,139,596,139"/>
+<area shape="rect" id="Node000008" href="$classSpan_1_1Mesh.html#ae731b2ee0cf4e9bbfd30b70285a6688f" title="頂点配列からメッシュを初期化します。" alt="" coords="899,124,1060,149"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="825,134,885,134,885,139,825,139"/>
+<area shape="poly" id="edge12_Node000010_Node000009" title=" " alt="" coords="559,281,643,251,667,244,668,249,645,257,561,286"/>
+<area shape="rect" id="Node000011" href="$classSpan_1_1AssetSerializer.html#a39e6a3bea02531fc2c31683a27d52061" title="拡張子から汗ッとタイプを推論します。" alt="" coords="644,266,851,306"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="594,294,630,292,630,297,594,300"/>
+<area shape="rect" id="Node000012" href="$namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136" title=" " alt="" coords="687,331,807,356"/>
+<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="595,316,674,329,673,334,594,321"/>
+<area shape="rect" id="Node000013" href="$classSpan_1_1AssetSerializer.html#a0eb09ea936ef7cf65184977a5809ef6b" title="メタデータをファイルに保存する。" alt="" coords="668,381,827,421"/>
+<area shape="poly" id="edge14_Node000010_Node000013" title=" " alt="" coords="545,321,645,366,666,374,664,379,643,371,543,326"/>
+<area shape="poly" id="edge16_Node000014_Node000009" title=" " alt="" coords="361,242,653,225,654,230,362,247"/>
+<area shape="poly" id="edge17_Node000014_Node000010" title=" " alt="" coords="362,265,410,277,409,282,361,270"/>
 </map>

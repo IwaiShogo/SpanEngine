@@ -1,17 +1,23 @@
 <map id="Engine/Source/Runtime/Resource/AssetManager.cpp" name="Engine/Source/Runtime/Resource/AssetManager.cpp">
-<area shape="rect" id="Node000001" title="AssetManagerの実装。" alt="" coords="1287,5,1496,45"/>
-<area shape="rect" id="Node000002" href="$AssetManager_8h.html" title="エンジン全域のアセットライフサイクルを管理するシングルトン。" alt="" coords="1328,93,1455,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1394,46,1394,79,1389,79,1389,46"/>
-<area shape="rect" id="Node000003" href="$Texture_8h.html" title="画像読み込みとテクスチャリソース管理。" alt="" coords="1799,255,2008,295"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1447,116,1535,137,1633,164,1750,206,1849,247,1847,252,1748,211,1632,169,1534,142,1446,121"/>
-<area shape="rect" id="Node000037" href="$Mesh_8h.html" title="3Dモデルの形状データ (頂点バッファ) 管理。" alt="" coords="1013,255,1223,295"/>
-<area shape="poly" id="edge37_Node000002_Node000037" title=" " alt="" coords="1328,117,1217,136,1169,151,1138,169,1128,184,1121,203,1118,241,1112,241,1116,202,1123,182,1135,165,1167,146,1216,131,1327,112"/>
-<area shape="rect" id="Node000040" href="$Material_8h.html" title="PBRマテリアルのパラメータ管理。" alt="" coords="1411,167,1620,207"/>
-<area shape="poly" id="edge43_Node000002_Node000040" title=" " alt="" coords="1411,117,1475,157,1472,161,1408,121"/>
-<area shape="rect" id="Node000043" href="$ModelLoader_8h.html" title="3Dモデルファイル(.fbx, .obj)のインポート処理。" alt="" coords="1149,174,1386,199"/>
-<area shape="poly" id="edge51_Node000002_Node000043" title=" " alt="" coords="1374,121,1299,169,1296,164,1372,117"/>
+<area shape="rect" id="Node000001" title="AssetManagerの実装。" alt="" coords="1513,5,1723,45"/>
+<area shape="rect" id="Node000002" href="$AssetManager_8h.html" title="エンジン全域のアセットライフサイクルを管理するシングルトン。" alt="" coords="1400,93,1527,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1582,48,1499,89,1497,85,1580,43"/>
+<area shape="rect" id="Node000045" href="$AssetRegistry_8h.html" title=" " alt="" coords="1707,93,1830,119"/>
+<area shape="poly" id="edge54_Node000001_Node000045" title=" " alt="" coords="1655,43,1735,84,1733,89,1653,48"/>
+<area shape="rect" id="Node000046" href="$AssetSerializer_8h.html" title=".metaファイルの読み書きを担当。" alt="" coords="1553,93,1683,119"/>
+<area shape="poly" id="edge57_Node000001_Node000046" title=" " alt="" coords="1621,46,1621,79,1615,79,1615,46"/>
+<area shape="rect" id="Node000003" href="$Texture_8h.html" title="画像読み込みとテクスチャリソース管理。" alt="" coords="1665,255,1875,295"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1474,117,1508,160,1533,184,1561,204,1611,230,1665,248,1663,253,1609,235,1558,209,1530,188,1505,163,1469,121"/>
+<area shape="rect" id="Node000037" href="$Mesh_8h.html" title="3Dモデルの形状データ (頂点バッファ) 管理。" alt="" coords="883,255,1092,295"/>
+<area shape="poly" id="edge37_Node000002_Node000037" title=" " alt="" coords="1400,110,1300,112,1186,121,1082,139,1042,152,1014,169,1002,184,995,202,989,241,983,240,989,201,998,181,1011,165,1040,147,1080,134,1185,116,1300,107,1400,104"/>
+<area shape="rect" id="Node000040" href="$Material_8h.html" title="PBRマテリアルのパラメータ管理。" alt="" coords="1287,167,1496,207"/>
+<area shape="poly" id="edge43_Node000002_Node000040" title=" " alt="" coords="1455,121,1420,158,1416,155,1451,117"/>
+<area shape="rect" id="Node000043" href="$ModelLoader_8h.html" title="3Dモデルファイル(.fbx, .obj)のインポート処理。" alt="" coords="1025,174,1262,199"/>
+<area shape="poly" id="edge51_Node000002_Node000043" title=" " alt="" coords="1417,121,1204,173,1202,168,1416,116"/>
+<area shape="rect" id="Node000044" href="$AssetMetadata_8h.html" title="アセットのメタデータを定義する構造体。" alt="" coords="1572,174,1827,199"/>
+<area shape="poly" id="edge53_Node000002_Node000044" title=" " alt="" coords="1498,116,1653,167,1651,172,1497,121"/>
 <area shape="rect" id="Node000004" href="$CoreMinimal_8h.html" title="エンジンの標準インクルードファイル。" alt="" coords="1587,343,1737,368"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1846,297,1711,341,1710,336,1845,292"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1745,297,1691,336,1688,332,1742,293"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="2711,416,2805,441"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1738,355,1908,359,2144,368,2417,386,2697,413,2697,419,2416,391,2144,374,1908,364,1738,360"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="2829,416,2884,441"/>
@@ -77,21 +83,24 @@
 <area shape="rect" id="Node000036" href="$Logger_8h.html" title="デバッグログ出力システム" alt="" coords="2583,416,2687,441"/>
 <area shape="poly" id="edge35_Node000004_Node000036" title=" " alt="" coords="1738,356,2093,373,2325,390,2560,413,2570,415,2569,420,2559,419,2324,395,2093,378,1737,362"/>
 <area shape="poly" id="edge36_Node000036_Node000004" title=" " alt="" coords="2583,419,2348,395,2115,378,1751,362,1751,356,2115,373,2348,390,2583,413"/>
-<area shape="poly" id="edge38_Node000037_Node000004" title=" " alt="" coords="1223,288,1573,339,1572,344,1223,294"/>
+<area shape="poly" id="edge38_Node000037_Node000004" title=" " alt="" coords="1092,285,1573,341,1573,346,1092,291"/>
 <area shape="rect" id="Node000038" href="$SpanMath_8h.html" title="算術ライブラリ (Vector, Matrix, Quaternion)。" alt="" coords="174,343,345,368"/>
-<area shape="poly" id="edge39_Node000037_Node000038" title=" " alt="" coords="1013,288,359,348,358,342,1013,283"/>
+<area shape="poly" id="edge39_Node000037_Node000038" title=" " alt="" coords="883,290,359,346,358,341,882,285"/>
 <area shape="poly" id="edge42_Node000038_Node000017" title=" " alt="" coords="241,370,169,411,166,407,238,366"/>
 <area shape="poly" id="edge40_Node000038_Node000032" title=" " alt="" coords="262,368,262,402,257,402,257,368"/>
 <area shape="rect" id="Node000039" title=" " alt="" coords="5,416,68,441"/>
 <area shape="poly" id="edge41_Node000038_Node000039" title=" " alt="" coords="224,371,82,416,80,411,223,365"/>
-<area shape="poly" id="edge48_Node000040_Node000003" title=" " alt="" coords="1601,204,1806,249,1805,254,1600,209"/>
-<area shape="poly" id="edge44_Node000040_Node000004" title=" " alt="" coords="1517,207,1521,249,1528,272,1540,293,1569,318,1603,336,1601,340,1566,323,1536,296,1523,275,1516,251,1512,207"/>
-<area shape="poly" id="edge45_Node000040_Node000038" title=" " alt="" coords="1428,209,1360,229,1291,257,1275,267,1264,278,1253,288,1235,297,1160,316,1061,331,944,341,817,349,564,356,359,358,359,352,564,351,817,344,944,336,1060,325,1159,311,1233,292,1250,284,1261,274,1272,263,1289,252,1358,224,1427,204"/>
-<area shape="rect" id="Node000041" href="$ConstantBuffer_8h.html" title="DirectX 12 定数バッファ (CBV) のラッパークラス" alt="" coords="1549,262,1775,287"/>
-<area shape="poly" id="edge46_Node000040_Node000041" title=" " alt="" coords="1549,204,1632,253,1629,257,1546,209"/>
-<area shape="rect" id="Node000042" href="$Shader_8h.html" title="HLSLシェーダーのロードとコンパイル管理。" alt="" coords="1302,262,1475,287"/>
-<area shape="poly" id="edge49_Node000040_Node000042" title=" " alt="" coords="1489,209,1419,256,1416,252,1486,205"/>
-<area shape="poly" id="edge47_Node000041_Node000004" title=" " alt="" coords="1665,288,1665,329,1659,329,1659,288"/>
-<area shape="poly" id="edge50_Node000042_Node000004" title=" " alt="" coords="1429,285,1610,336,1608,341,1428,290"/>
-<area shape="poly" id="edge52_Node000043_Node000037" title=" " alt="" coords="1249,202,1164,250,1162,245,1246,197"/>
+<area shape="poly" id="edge48_Node000040_Node000003" title=" " alt="" coords="1475,204,1674,249,1673,254,1474,209"/>
+<area shape="poly" id="edge44_Node000040_Node000004" title=" " alt="" coords="1301,209,1254,224,1216,244,1204,255,1198,266,1198,279,1207,293,1223,302,1255,311,1351,326,1573,346,1573,351,1350,331,1254,316,1221,307,1203,297,1193,280,1193,265,1200,252,1213,239,1252,219,1299,204"/>
+<area shape="poly" id="edge45_Node000040_Node000038" title=" " alt="" coords="1329,209,1191,257,1148,279,1130,289,1104,297,1040,310,956,320,751,337,536,348,358,354,358,349,536,343,751,332,955,315,1039,304,1103,292,1128,284,1146,274,1189,252,1328,204"/>
+<area shape="rect" id="Node000041" href="$ConstantBuffer_8h.html" title="DirectX 12 定数バッファ (CBV) のラッパークラス" alt="" coords="1217,262,1443,287"/>
+<area shape="poly" id="edge46_Node000040_Node000041" title=" " alt="" coords="1380,208,1348,252,1344,249,1376,205"/>
+<area shape="rect" id="Node000042" href="$Shader_8h.html" title="HLSLシェーダーのロードとコンパイル管理。" alt="" coords="1467,262,1641,287"/>
+<area shape="poly" id="edge49_Node000040_Node000042" title=" " alt="" coords="1428,204,1522,253,1519,258,1426,209"/>
+<area shape="poly" id="edge47_Node000041_Node000004" title=" " alt="" coords="1379,285,1601,337,1600,342,1378,290"/>
+<area shape="poly" id="edge50_Node000042_Node000004" title=" " alt="" coords="1571,285,1636,332,1633,337,1568,290"/>
+<area shape="poly" id="edge52_Node000043_Node000037" title=" " alt="" coords="1124,202,1035,250,1033,246,1121,197"/>
+<area shape="poly" id="edge55_Node000045_Node000004" title=" " alt="" coords="1788,117,1829,148,1873,193,1890,218,1901,244,1901,271,1889,296,1868,312,1834,326,1751,344,1750,339,1833,320,1865,308,1885,293,1896,270,1895,245,1886,221,1869,196,1825,152,1784,121"/>
+<area shape="poly" id="edge56_Node000045_Node000044" title=" " alt="" coords="1760,121,1721,165,1717,162,1756,117"/>
+<area shape="poly" id="edge58_Node000046_Node000044" title=" " alt="" coords="1632,117,1679,163,1676,166,1628,121"/>
 </map>

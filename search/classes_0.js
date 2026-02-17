@@ -7,6 +7,7 @@ var searchData=
   ['archetypesignature_4',['ArchetypeSignature',['../classSpan_1_1ArchetypeSignature.html',1,'Span']]],
   ['assetmanager_5',['AssetManager',['../classSpan_1_1AssetManager.html',1,'Span']]],
   ['assetmetadata_6',['AssetMetadata',['../structSpan_1_1AssetMetadata.html',1,'Span']]],
-  ['assetserializer_7',['AssetSerializer',['../classSpan_1_1AssetSerializer.html',1,'Span']]],
-  ['attribute_8',['Attribute',['../structSpan_1_1Attribute.html',1,'Span']]]
+  ['assetregistry_7',['AssetRegistry',['../classSpan_1_1AssetRegistry.html',1,'Span']]],
+  ['assetserializer_8',['AssetSerializer',['../classSpan_1_1AssetSerializer.html',1,'Span']]],
+  ['attribute_9',['Attribute',['../structSpan_1_1Attribute.html',1,'Span']]]
 ];

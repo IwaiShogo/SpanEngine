@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Resource/AssetRegistry.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('AssetRegistry_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">AssetRegistry.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="AssetRegistry_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="AssetMetadata_8h.html">AssetMetadata.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">     * @class   AssetRegistry</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">     * @brief   全アセットの GUID と ファイルパス の対応関係を管理するデータベース。</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classSpan_1_1AssetRegistry.html">   11</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1AssetRegistry.html">AssetRegistry</a></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">static</span> <a class="code hl_class" href="classSpan_1_1AssetRegistry.html">AssetRegistry</a>&amp; <a class="code hl_function" href="classSpan_1_1AssetRegistry.html#a2b83eeb5aa2e6d4c807d4e4a11db563c">Get</a>();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"></span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">         * @brief   指定ディレクトリ以下の全アセットをスキャンし、レジストリを構築します。</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">         * @note    通常はエンジンの初期化時に呼び出します。</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1AssetRegistry.html#a71c0e006b41117cb0b296adaf0de1c56">Refresh</a>(<span class="keyword">const</span> std::filesystem::path&amp; rootDirectory);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"></span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">         * @brief   パスからアセット情報を登録・更新します (ファイル移動/作成時用)。</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1AssetRegistry.html#a432dbe6ae1b0ab930bd903d93ad5a734">RegisterAsset</a>(<span class="keyword">const</span> std::filesystem::path&amp; path);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1AssetRegistry.html#a42655d152fe373d26ee0e6c5121c712c">UnregisterAsset</a>(<span class="keyword">const</span> std::filesystem::path&amp; path);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="comment">// --- Lookups ---</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1AssetRegistry.html#aad02919d2f3d7e1fce59bb77f3feeaad">Contains</a>(<a class="code hl_typedef" href="namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446">AssetHandle</a> handle) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1AssetRegistry.html#aad02919d2f3d7e1fce59bb77f3feeaad">Contains</a>(<span class="keyword">const</span> std::filesystem::path&amp; path) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">const</span> std::filesystem::path&amp; <a class="code hl_function" href="classSpan_1_1AssetRegistry.html#a3cae91f52d3d29c67936e289d1244319">GetPath</a>(<a class="code hl_typedef" href="namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446">AssetHandle</a> handle) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_typedef" href="namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446">AssetHandle</a> <a class="code hl_function" href="classSpan_1_1AssetRegistry.html#ac48f2d0e316daa76675614aaf1d94024">GetHandle</a>(<span class="keyword">const</span> std::filesystem::path&amp; path) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="comment">// デバッグ用: 全アセットリスト</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classSpan_1_1AssetRegistry.html#a22477bd81a3ed50c60a6bc41f4b577f6">   36</a></span>        <span class="keyword">const</span> std::unordered_map&lt;AssetHandle, std::filesystem::path&gt;&amp; <a class="code hl_function" href="classSpan_1_1AssetRegistry.html#a22477bd81a3ed50c60a6bc41f4b577f6">GetEntries</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1AssetRegistry.html#a1659ea58ac56bc09efe8385a409838f4">m_Assets</a>; }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="comment">// GUID -&gt; Path (メインDB)</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classSpan_1_1AssetRegistry.html#a1659ea58ac56bc09efe8385a409838f4">   40</a></span>        std::unordered_map&lt;AssetHandle, std::filesystem::path&gt; <a class="code hl_variable" href="classSpan_1_1AssetRegistry.html#a1659ea58ac56bc09efe8385a409838f4">m_Assets</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="comment">// Path -&gt; GUID (逆引き用キャッシュ)</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classSpan_1_1AssetRegistry.html#a82bdce528d0490c6b16412a6ab42eca0">   43</a></span>        std::unordered_map&lt;std::string, AssetHandle&gt; <a class="code hl_variable" href="classSpan_1_1AssetRegistry.html#a82bdce528d0490c6b16412a6ab42eca0">m_PathToHandle</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="comment">// 無効な場合のフォールバック</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classSpan_1_1AssetRegistry.html#aed18f9c33eeb7e791793206540bb1043">   46</a></span>        std::filesystem::path <a class="code hl_variable" href="classSpan_1_1AssetRegistry.html#aed18f9c33eeb7e791793206540bb1043">m_EmptyPath</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    };</div>
+</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+<div class="ttc" id="aAssetMetadata_8h_html"><div class="ttname"><a href="AssetMetadata_8h.html">AssetMetadata.h</a></div><div class="ttdoc">アセットのメタデータを定義する構造体。</div></div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html">Span::AssetRegistry</a></div><div class="ttdoc">全アセットの GUID と ファイルパス の対応関係を管理するデータベース。</div><div class="ttdef"><b>Definition</b> <a href="#l00011">AssetRegistry.h:12</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_a1659ea58ac56bc09efe8385a409838f4"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#a1659ea58ac56bc09efe8385a409838f4">Span::AssetRegistry::m_Assets</a></div><div class="ttdeci">std::unordered_map&lt; AssetHandle, std::filesystem::path &gt; m_Assets</div><div class="ttdef"><b>Definition</b> <a href="#l00040">AssetRegistry.h:40</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_a22477bd81a3ed50c60a6bc41f4b577f6"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#a22477bd81a3ed50c60a6bc41f4b577f6">Span::AssetRegistry::GetEntries</a></div><div class="ttdeci">const std::unordered_map&lt; AssetHandle, std::filesystem::path &gt; &amp; GetEntries() const</div><div class="ttdef"><b>Definition</b> <a href="#l00036">AssetRegistry.h:36</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_a2b83eeb5aa2e6d4c807d4e4a11db563c"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#a2b83eeb5aa2e6d4c807d4e4a11db563c">Span::AssetRegistry::Get</a></div><div class="ttdeci">static AssetRegistry &amp; Get()</div><div class="ttdef"><b>Definition</b> <a href="AssetRegistry_8cpp_source.html#l00018">AssetRegistry.cpp:18</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_a3cae91f52d3d29c67936e289d1244319"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#a3cae91f52d3d29c67936e289d1244319">Span::AssetRegistry::GetPath</a></div><div class="ttdeci">const std::filesystem::path &amp; GetPath(AssetHandle handle) const</div><div class="ttdef"><b>Definition</b> <a href="AssetRegistry_8cpp_source.html#l00084">AssetRegistry.cpp:84</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_a42655d152fe373d26ee0e6c5121c712c"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#a42655d152fe373d26ee0e6c5121c712c">Span::AssetRegistry::UnregisterAsset</a></div><div class="ttdeci">void UnregisterAsset(const std::filesystem::path &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="AssetRegistry_8cpp_source.html#l00064">AssetRegistry.cpp:64</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_a432dbe6ae1b0ab930bd903d93ad5a734"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#a432dbe6ae1b0ab930bd903d93ad5a734">Span::AssetRegistry::RegisterAsset</a></div><div class="ttdeci">void RegisterAsset(const std::filesystem::path &amp;path)</div><div class="ttdoc">パスからアセット情報を登録・更新します (ファイル移動/作成時用)。</div><div class="ttdef"><b>Definition</b> <a href="AssetRegistry_8cpp_source.html#l00050">AssetRegistry.cpp:50</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_a71c0e006b41117cb0b296adaf0de1c56"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#a71c0e006b41117cb0b296adaf0de1c56">Span::AssetRegistry::Refresh</a></div><div class="ttdeci">void Refresh(const std::filesystem::path &amp;rootDirectory)</div><div class="ttdoc">指定ディレクトリ以下の全アセットをスキャンし、レジストリを構築します。</div><div class="ttdef"><b>Definition</b> <a href="AssetRegistry_8cpp_source.html#l00024">AssetRegistry.cpp:24</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_a82bdce528d0490c6b16412a6ab42eca0"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#a82bdce528d0490c6b16412a6ab42eca0">Span::AssetRegistry::m_PathToHandle</a></div><div class="ttdeci">std::unordered_map&lt; std::string, AssetHandle &gt; m_PathToHandle</div><div class="ttdef"><b>Definition</b> <a href="#l00043">AssetRegistry.h:43</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_aad02919d2f3d7e1fce59bb77f3feeaad"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#aad02919d2f3d7e1fce59bb77f3feeaad">Span::AssetRegistry::Contains</a></div><div class="ttdeci">bool Contains(AssetHandle handle) const</div><div class="ttdef"><b>Definition</b> <a href="AssetRegistry_8cpp_source.html#l00074">AssetRegistry.cpp:74</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_ac48f2d0e316daa76675614aaf1d94024"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#ac48f2d0e316daa76675614aaf1d94024">Span::AssetRegistry::GetHandle</a></div><div class="ttdeci">AssetHandle GetHandle(const std::filesystem::path &amp;path) const</div><div class="ttdef"><b>Definition</b> <a href="AssetRegistry_8cpp_source.html#l00091">AssetRegistry.cpp:91</a></div></div>
+<div class="ttc" id="aclassSpan_1_1AssetRegistry_html_aed18f9c33eeb7e791793206540bb1043"><div class="ttname"><a href="classSpan_1_1AssetRegistry.html#aed18f9c33eeb7e791793206540bb1043">Span::AssetRegistry::m_EmptyPath</a></div><div class="ttdeci">std::filesystem::path m_EmptyPath</div><div class="ttdef"><b>Definition</b> <a href="#l00046">AssetRegistry.h:46</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_afdfa4cf289fb42dc538251b285a5a446"><div class="ttname"><a href="namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446">Span::AssetHandle</a></div><div class="ttdeci">uint64_t AssetHandle</div><div class="ttdef"><b>Definition</b> <a href="AssetMetadata_8h_source.html#l00017">AssetMetadata.h:17</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_64427cf10fdcbb9dc3445223b1ad6a9b.html">Resource</a></li><li class="navelem"><a href="AssetRegistry_8h.html">AssetRegistry.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

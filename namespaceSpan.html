@@ -141,7 +141,6 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🌳 シーン上の全エンティティをツリー形式で表示するパネル。  <a href="classSpan_1_1HierarchyPanel.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:InspectorPanel" id="r_InspectorPanel"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1InspectorPanel.html">InspectorPanel</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🕵️ 選択中のEntityが持つコンポーネントを列挙し、編集UIを提供するパネル。  <a href="classSpan_1_1InspectorPanel.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:BrowserHistory" id="r_BrowserHistory"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1BrowserHistory.html">BrowserHistory</a></td></tr>
 <tr class="memitem:ProjectBrowserPanel" id="r_ProjectBrowserPanel"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ProjectBrowserPanel.html">ProjectBrowserPanel</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">アセットディレクトリの内容を表示し、ドラッグ&amp;ドロップ操作を提供するエディタパネル。  <a href="classSpan_1_1ProjectBrowserPanel.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:SceneViewPanel" id="r_SceneViewPanel"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1SceneViewPanel.html">SceneViewPanel</a></td></tr>
@@ -238,6 +237,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 アセット管理システム  <a href="classSpan_1_1AssetManager.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:AssetMetadata" id="r_AssetMetadata"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1AssetMetadata.html">AssetMetadata</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">.metaファイルに保存されるデータ構造。  <a href="structSpan_1_1AssetMetadata.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:AssetRegistry" id="r_AssetRegistry"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1AssetRegistry.html">AssetRegistry</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">全アセットの GUID と ファイルパス の対応関係を管理するデータベース。  <a href="classSpan_1_1AssetRegistry.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:AssetSerializer" id="r_AssetSerializer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1AssetSerializer.html">AssetSerializer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">.metaファイルの生成、読み込み、保存を担当する静的クラス。  <a href="classSpan_1_1AssetSerializer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:RelationshipSystem" id="r_RelationshipSystem"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1RelationshipSystem.html">RelationshipSystem</a></td></tr>
@@ -448,7 +449,6 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 変数</h2></td></tr>
 <tr class="memitem:ad4a86ef64ab27c3f27b56242c873941a" id="r_ad4a86ef64ab27c3f27b56242c873941a"><td class="memItemLeft">static FILE *&#160;</td><td class="memItemRight"><a class="el" href="#ad4a86ef64ab27c3f27b56242c873941a">s_LogFile</a> = nullptr</td></tr>
-<tr class="memitem:aafc03027026cfb11c989fd2b730d142a" id="r_aafc03027026cfb11c989fd2b730d142a"><td class="memItemLeft">static <a class="el" href="structSpan_1_1BrowserHistory.html">BrowserHistory</a>&#160;</td><td class="memItemRight"><a class="el" href="#aafc03027026cfb11c989fd2b730d142a">s_History</a></td></tr>
 <tr class="memitem:a51dc0b6d0daae8cf8e6841254d8dc062" id="r_a51dc0b6d0daae8cf8e6841254d8dc062"><td class="memItemLeft">constexpr size_t&#160;</td><td class="memItemRight"><a class="el" href="#a51dc0b6d0daae8cf8e6841254d8dc062">CHUNK_SIZE</a> = 16 * 1024</td></tr>
 <tr class="memdesc:a51dc0b6d0daae8cf8e6841254d8dc062"><td class="mdescLeft">&#160;</td><td class="mdescRight">1つのチャンクが確保する固定メモリサイズ (16KB)  <br /></td></tr>
 <tr class="memitem:a20540fd2e2d58f1722c48a6f1c6d1af5" id="r_a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="memItemLeft">static const <a class="el" href="structSpan_1_1EntityID.html">EntityID</a>&#160;</td><td class="memItemRight"><a class="el" href="#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a> = { UINT32_MAX, 0 }</td></tr>
@@ -1332,7 +1332,7 @@ template&lt;typename T&gt; </div>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a3f4b8561d46e69596ba6a7c3177a92e7_cgraph.svg" width="100%" height="530"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a3f4b8561d46e69596ba6a7c3177a92e7_cgraph.svg" width="100%" height="573"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
@@ -1646,7 +1646,7 @@ template&lt;typename T&gt; </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a8ba99036404afdb464fdc44c3dbc7136_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a8ba99036404afdb464fdc44c3dbc7136_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -2018,30 +2018,6 @@ template&lt;typename T&gt; </div>
 <p>度数法(Degree) を 弧度法(Radian) に変換 </p>
 
 <p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00042">42</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="aafc03027026cfb11c989fd2b730d142a" name="aafc03027026cfb11c989fd2b730d142a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafc03027026cfb11c989fd2b730d142a">&#9670;&#160;</a></span>s_History</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structSpan_1_1BrowserHistory.html">BrowserHistory</a> Span::s_History</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00055">55</a> 行目に定義があります。</p>
 
 </div>
 </div>

@@ -95,14 +95,14 @@ $(function(){initNavTree('FileCommands_8h_source.html','',''); });
 <a href="FileCommands_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    FileCommands.h</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   ファイル操作に関するUndo可能なコマンド群</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * - RenameFileCommand: ファイル名変更</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * - MoveFileCommand: ファイル移動</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * - DeleteFileCommand: 削除 (実際は .Trash への移動)</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * - CreateFileCommand: ファイル作成</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * - CreateDirectoryCommand: フォルダ削除</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * ------------------------------------------------------------</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * @author  Iwai Shogo</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * ------------------------------------------------------------</span></div>
@@ -128,12 +128,12 @@ $(function(){initNavTree('FileCommands_8h_source.html','',''); });
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        std::filesystem::path trashDir = projectRoot / <span class="stringliteral">&quot;.Trash&quot;</span>;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        std::error_code ec;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">if</span> (!std::filesystem::exists(transDir)) std::filesystem::create_directories(trashDir, ec);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">if</span> (!std::filesystem::exists(trashDir)) std::filesystem::create_directories(trashDir, ec);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// 一意な名前を生成</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">auto</span> now = std::chrono::system_clock::now().time_since_epoch().count();</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        std::string filename = originalPath.stem().string();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        std::string ext = originalPath.extention().string();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        std::string ext = originalPath.extension().string();</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        std::stringstream ss;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        ss &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;_&quot;</span> &lt;&lt; now &lt;&lt; ext;</div>
@@ -268,15 +268,15 @@ $(function(){initNavTree('FileCommands_8h_source.html','',''); });
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            <span class="keywordflow">try</span></div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            {</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                <span class="comment">// 元のディレクトリが消えている場合に備えて再生成</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                <span class="keywordflow">if</span> (!std::filesystem::exists(<a class="code hl_variable" href="classSpan_1_1DeleteFileCommand.html#ab407fadb25fd30c6f7d183377f3d76c7">m_OriginalPath</a>.parent_path())</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                <span class="keywordflow">if</span> (!std::filesystem::exists(<a class="code hl_variable" href="classSpan_1_1DeleteFileCommand.html#ab407fadb25fd30c6f7d183377f3d76c7">m_OriginalPath</a>.parent_path()))</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                {</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                    std::filesystem::create_directories(m_OriginalPath.parent_path());</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                    std::filesystem::create_directories(<a class="code hl_variable" href="classSpan_1_1DeleteFileCommand.html#ab407fadb25fd30c6f7d183377f3d76c7">m_OriginalPath</a>.parent_path());</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                }</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                std::filesystem::rename(<a class="code hl_variable" href="classSpan_1_1DeleteFileCommand.html#a313b689bd88427cd25a129595340f728">m_TrashPath</a>, <a class="code hl_variable" href="classSpan_1_1DeleteFileCommand.html#ab407fadb25fd30c6f7d183377f3d76c7">m_OriginalPath</a>);</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                <span class="keyword">auto</span> trashMeta = <a class="code hl_variable" href="classSpan_1_1DeleteFileCommand.html#a313b689bd88427cd25a129595340f728">m_TrashPath</a>.string() + <span class="stringliteral">&quot;.meta&quot;</span>;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                if (std::filesystem::exists(trashMeta))</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                <span class="keywordflow">if</span> (std::filesystem::exists(trashMeta))</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                {</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                    std::filesystem::rename(trashMeta, <a class="code hl_variable" href="classSpan_1_1DeleteFileCommand.html#ab407fadb25fd30c6f7d183377f3d76c7">m_OriginalPath</a>.string() + <span class="stringliteral">&quot;.meta&quot;</span>);</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                }</div>
