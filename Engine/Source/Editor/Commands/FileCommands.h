@@ -1,14 +1,14 @@
 ﻿/*****************************************************************//**
  * @file	FileCommands.h
  * @brief	ファイル操作に関するUndo可能なコマンド群
- * 
- * @details	
+ *
+ * @details
  * - RenameFileCommand: ファイル名変更
  * - MoveFileCommand: ファイル移動
  * - DeleteFileCommand: 削除 (実際は .Trash への移動)
  * - CreateFileCommand: ファイル作成
  * - CreateDirectoryCommand: フォルダ削除
- * 
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -33,12 +33,12 @@ namespace Span
 		std::filesystem::path trashDir = projectRoot / ".Trash";
 
 		std::error_code ec;
-		if (!std::filesystem::exists(transDir)) std::filesystem::create_directories(trashDir, ec);
+		if (!std::filesystem::exists(trashDir)) std::filesystem::create_directories(trashDir, ec);
 
 		// 一意な名前を生成
 		auto now = std::chrono::system_clock::now().time_since_epoch().count();
 		std::string filename = originalPath.stem().string();
-		std::string ext = originalPath.extention().string();
+		std::string ext = originalPath.extension().string();
 
 		std::stringstream ss;
 		ss << filename << "_" << now << ext;
@@ -150,7 +150,7 @@ namespace Span
 			try
 			{
 				// 元のディレクトリが消えている場合に備えて再生成
-				if (!std::filesystem::exists(m_OriginalPath.parent_path())
+				if (!std::filesystem::exists(m_OriginalPath.parent_path()))
 				{
 					std::filesystem::create_directories(m_OriginalPath.parent_path());
 				}

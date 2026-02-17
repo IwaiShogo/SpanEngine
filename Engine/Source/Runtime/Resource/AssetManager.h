@@ -15,6 +15,7 @@
 #include "Runtime/Graphics/Resources/Mesh.h"
 #include "Runtime/Graphics/Resources/Material.h"
 #include "Runtime/Graphics/ModelLoader.h"
+#include "Runtime/Resource/AssetMetadata.h"
 
 namespace Span
 {
@@ -47,6 +48,20 @@ namespace Span
 		 * @brief	全てのアセットを解放します。
 		 */
 		void Shutdown();
+
+		// --- Core API (GUID Base) ---
+
+		/**
+		 * @brief	GUIDでテクスチャを取得 (推奨)
+		 */
+		std::shared_ptr<Texture> GetTexture(AssetHandle handle);
+
+		/**
+		 * @brief	GUIDでメッシュを取得 (推奨)
+		 */
+		std::shared_ptr<Mesh> GetMesh(AssetHandle handle);
+
+		// --- Legacy / Helper API (Path Base) ---
 
 		/**
 		 * @brief	テクスチャを取得します (キャッシュにあればそれを返し、無ければロードします)。
@@ -81,13 +96,10 @@ namespace Span
 		SPAN_NON_COPYABLE(AssetManager);
 
 	private:
-		ID3D12Device* m_Device = nullptr;
-		ID3D12CommandQueue* m_CommandQueue = nullptr;
-
 		// Texture Cache
-		std::map<std::string, std::shared_ptr<Texture>> m_TextureCache;
+		std::unordered_map<AssetHandle, std::shared_ptr<Texture>> m_TextureCache;
 		// Mesh Cache
-		std::map<std::string, std::shared_ptr<Mesh>> m_MeshCache;
+		std::unordered_map<AssetHandle, std::shared_ptr<Mesh>> m_MeshCache;
 
 		// デフォルトリソースのキャッシュ
 		std::shared_ptr<Shader> m_DefaultVS;	// Vertex Shader
@@ -95,6 +107,8 @@ namespace Span
 		std::shared_ptr<Material> m_DefaultMaterial;
 
 		// Thread safety
+		ID3D12Device* m_Device = nullptr;
+		ID3D12CommandQueue* m_CommandQueue = nullptr;
 		std::mutex m_Mutex;
 	};
 }

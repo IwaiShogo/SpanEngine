@@ -10,6 +10,8 @@
  *********************************************************************/
 
 #include "AssetManager.h"
+#include "AssetRegistry.h"
+#include "AssetSerializer.h"
 
 namespace Span
 {
@@ -23,6 +25,10 @@ namespace Span
 	{
 		m_Device = device;
 		m_CommandQueue = cmdQueue;
+
+		// レジストリの初期構築
+		AssetRegistry::Get().Refresh("../Projects/Playground/Assets");
+
 		SPAN_LOG("AssetManager Initialized.");
 	}
 
@@ -36,99 +42,99 @@ namespace Span
 			if (texture) texture->Shutdown();
 		}
 		m_TextureCache.clear();
+		m_MeshCache.clear();
 
 		SPAN_LOG("AssetManager Shutdown: All assets released.");
 	}
 
-	std::shared_ptr<Texture> AssetManager::GetTexture(const std::string& path)
+	std::shared_ptr<Texture> AssetManager::GetTexture(AssetHandle handle)
 	{
-		// デバイス未初期化チェック
-		if (!m_Device || !m_CommandQueue)
-		{
-			SPAN_ERROR("AssetManager used before initialization!");
-			return nullptr;
-		}
-
-		// パスを正規化してキーにする
-		std::string key;
-		try
-		{
-			key = std::filesystem::absolute(path).string();
-		}
-		catch (...)
-		{
-			key = path;
-		}
-
-		std::lock_guard<std::mutex> lock(m_Mutex);
-
-		// 1. キャッシュヒット確認
-		auto it = m_TextureCache.find(key);
-		if (it != m_TextureCache.end())
-		{
-			return it->second;
-		}
-
-		// 2. 新規ロード
-		if (!std::filesystem::exists(key))
-		{
-			SPAN_WARN("Asset not found: %s", path.c_str());
-			return nullptr;
-		}
-
-		auto newTexture = std::make_shared<Texture>();
-		if (newTexture->Initialize(m_Device, m_CommandQueue, key))
-		{
-			m_TextureCache[key] = newTexture;
-			return newTexture;
-		}
-
-		SPAN_ERROR("Failed to load texture: %s", path.c_str());
-		return nullptr;
-	}
-
-	std::shared_ptr<Mesh> AssetManager::GetMesh(const std::string& path)
-	{
-		std::string key;
-		try { key = std::filesystem::absolute(path).string(); }
-		catch (...) { key = path; }
+		if (handle == 0) return nullptr;
 
 		std::lock_guard<std::mutex> lock(m_Mutex);
 
 		// 1. キャッシュ確認
-		if (m_MeshCache.find(key) != m_MeshCache.end())
-		{
-			return m_MeshCache[key];
-		}
+		auto it = m_TextureCache.find(handle);
+		if (it != m_TextureCache.end()) return it->second;
 
-		// 2. 新規ロード
-		if (!std::filesystem::exists(key))
+		// 2. パス解決
+		const auto& path = AssetRegistry::Get().GetPath(handle);
+		if (path.empty())
 		{
-			SPAN_ERROR("Mesh not found: %s", path.c_str());
+			SPAN_WARN("AssetManager: GUID %llu not found in Registry.", handle);
 			return nullptr;
 		}
 
-		std::vector<Mesh*> meshes = ModelLoader::Load(m_Device, key);
-
-		if (!meshes.empty())
+		// 3. ロード
+		// 将来的にはここで AsyncLoad
+		auto texture = std::make_shared<Texture>();
+		if (texture->Initialize(m_Device, m_CommandQueue, path.string()))
 		{
-			std::shared_ptr<Mesh> meshPtr(meshes[0]);
-
-			meshPtr->SetPath(path);
-
-			m_MeshCache[key] = meshPtr;
-			SPAN_LOG("Mesh Loaded: %s", path.c_str());
-
-			for (size_t i = 1; i < meshes.size(); ++i)
-			{
-				delete meshes[i];
-			}
-
-			return meshPtr;
+			m_TextureCache[handle] = texture;
+			return texture;
 		}
 
-		SPAN_ERROR("Failed to load mesh: %s", path.c_str());
 		return nullptr;
+	}
+
+	std::shared_ptr<Mesh> AssetManager::GetMesh(AssetHandle handle)
+	{
+		if (handle == 0) return nullptr;
+		std::lock_guard<std::mutex> lock(m_Mutex);
+
+		if (m_MeshCache.find(handle) != m_MeshCache.end()) return m_MeshCache[handle];
+
+		const auto& path = AssetRegistry::Get().GetPath(handle);
+		if (path.empty()) return nullptr;
+
+		auto meshes = ModelLoader::Load(m_Device, path.string());
+		if (!meshes.empty() && meshes[0] != nullptr)
+		{
+			m_MeshCache[handle] = std::shared_ptr<Mesh>(meshes[0]);
+			m_MeshCache[handle]->SetPath(path.string());
+
+			return m_MeshCache[handle];
+		}
+		return nullptr;
+	}
+
+	std::shared_ptr<Texture> AssetManager::GetTexture(const std::string& path)
+	{
+		AssetHandle handle = AssetRegistry::Get().GetHandle(path);
+		if (handle == 0)
+		{
+			AssetMetadata meta = AssetSerializer::LoadOrCreateMetadata(path);
+			if (meta.IsValid())
+			{
+				AssetRegistry::Get().RegisterAsset(path);
+				handle = meta.Handle;
+			}
+			else
+			{
+				return nullptr;
+			}
+		}
+		return GetTexture(handle);
+	}
+
+	std::shared_ptr<Mesh> AssetManager::GetMesh(const std::string& path)
+	{
+		AssetHandle handle = AssetRegistry::Get().GetHandle(path);
+		if (handle == 0)
+		{
+			AssetMetadata meta = AssetSerializer::LoadOrCreateMetadata(path);
+			if (meta.IsValid())
+			{
+				AssetRegistry::Get().RegisterAsset(path);
+				handle = meta.Handle;
+			}
+			else
+			{
+				return nullptr;
+			}
+		}
+
+		return GetMesh(handle);
 	}
 
 	std::shared_ptr<Material> AssetManager::GetDefaultMaterial()

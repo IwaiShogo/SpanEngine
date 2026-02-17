@@ -163,6 +163,10 @@ namespace Span
 		std::vector<std::filesystem::path> m_BackHistory;
 		std::vector<std::filesystem::path> m_ForwardHistory;
 
+		// --- Undo/Redo Stack ---
+		std::vector<std::unique_ptr<ICommand>> m_UndoStack;
+		std::vector<std::unique_ptr<ICommand>> m_RedoStack;
+
 		// --- View Settings ---
 		float m_ThumbnailSize = 96.0f;						///< アイコンの表示サイズ
 		float m_Padding = 16.0f;							///< アイコン間のパディング

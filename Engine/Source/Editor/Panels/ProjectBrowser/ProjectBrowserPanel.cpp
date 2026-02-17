@@ -47,12 +47,12 @@ namespace Span
 {
 	static AutoRegisterPanel<ProjectBrowserPanel> _reg("Project Browser");
 
-	struct BrowserHistory
+	/*struct BrowserHistory
 	{
 		std::vector<std::unique_ptr<ICommand>> UndoStack;
 		std::vector<std::unique_ptr<ICommand>> RedoStack;
 	};
-	static BrowserHistory s_History;
+	static BrowserHistory s_History;*/
 
 	ProjectBrowserPanel::ProjectBrowserPanel()
 		: EditorPanel("Project Browser")
@@ -233,7 +233,7 @@ namespace Span
 		ImGui::SameLine();
 
 		// Undo/Redoの状態を表示
-		ImGui::TextDisabled("| Undo: %d | Redo: %d", (int)s_History.UndoStack.size(), (int)s_History.RedoStack.size());
+		ImGui::TextDisabled("| Undo: %d | Redo: %d", (int)m_UndoStack.size(), (int)m_RedoStack.size());
 
 		// 右寄せグループ
 		float searchWidth = 150.0f;
@@ -777,7 +777,7 @@ namespace Span
 
 	void ProjectBrowserPanel::PerformUndo()
 	{
-		if (!m_RedoStack.empty())
+		if (!m_UndoStack.empty())
 		{
 			auto cmd = std::move(m_UndoStack.back());
 			m_UndoStack.pop_back();

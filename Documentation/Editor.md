@@ -235,8 +235,8 @@
   - [x] **Right Pane (Asset Grid/List):** 現在選択されているフォルダ内のファイル一覧を表示。
 - **Navigation Bar:**
   - [x] **Breadcrumbs:** 現在のパスを表示するパンくずリスト。
-  - [ ] **History Controls:** `<` (戻る) `>` (進む) ボタン。 (Backspaceキーのみ実装済)
-  - [x] **Search Field:** 名前検索およびフィルタリング用入力欄。 (簡易実装済、高機能化が必要)
+  - [x] **History Controls:** `<` (戻る) `>` (進む) ボタン。 (Backspaceキーのみ実装済)
+  - [ ] **Search Field:** 名前検索およびフィルタリング用入力欄。 (簡易実装済、高機能化が必要)
 - **Bottom Bar:**
   - [ ] **Item Count:** 現在表示中のアイテム数を表示。
   - [x] **Zoom Slider:** アイコンの表示サイズを動的に変更するスライダー。
@@ -258,7 +258,7 @@
   - `.meta` ファイルも同時に移動させる必要がある。
 - [x] **Asset to Scene:**
   - モデル(.fbx) → シーンビューへの配置。
-- [ ] **Asset to Inspector:**
+- [x] **Asset to Inspector:**
   - アセット → コンポーネントプロパティへの割り当て。
 
 #### **3. Asset Creation (Context Menu)**
