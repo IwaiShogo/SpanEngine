@@ -31,11 +31,19 @@ namespace Span
 		if (projectRoot.filename() == "Assets") projectRoot = projectRoot.parent_path();
 
 		std::filesystem::path trashDir = projectRoot / ".Trash";
-		if (!std::filesystem::exists(trashDir)) std::filesystem::create_directories(trashDir);
+
+		std::error_code ec;
+		if (!std::filesystem::exists(transDir)) std::filesystem::create_directories(trashDir, ec);
 
 		// 一意な名前を生成
 		auto now = std::chrono::system_clock::now().time_since_epoch().count();
-		return trashDir / (originalPath.filename().string() + "_" + std::to_string(now));
+		std::string filename = originalPath.stem().string();
+		std::string ext = originalPath.extention().string();
+
+		std::stringstream ss;
+		ss << filename << "_" << now << ext;
+
+		return trashDir / ss.str();
 	}
 
 	/**
@@ -89,6 +97,7 @@ namespace Span
 		bool Execute() override
 		{
 			// 実行: Source -> DistDir
+			if (m_SourcePath == m_DestinationPath) return false;
 			return EditorFileSystem::MoveFile(m_SourcePath, m_DestinationDir);
 		}
 
@@ -140,6 +149,12 @@ namespace Span
 		{
 			try
 			{
+				// 元のディレクトリが消えている場合に備えて再生成
+				if (!std::filesystem::exists(m_OriginalPath.parent_path())
+				{
+					std::filesystem::create_directories(m_OriginalPath.parent_path());
+				}
+
 				std::filesystem::rename(m_TrashPath, m_OriginalPath);
 
 				auto trashMeta = m_TrashPath.string() + ".meta";
@@ -151,7 +166,7 @@ namespace Span
 			catch (...) {}
 		}
 
-		const char* GetName() const override { return "Delete Assest"; }
+		const char* GetName() const override { return "Delete Asset"; }
 
 	private:
 		std::filesystem::path m_OriginalPath;
@@ -209,13 +224,13 @@ namespace Span
 
 		bool Execute() override
 		{
-			return std::filesystem::create_directory(m_Path);
+			std::error_code ec;
+			return std::filesystem::create_directory(m_Path, ec);
 		}
 
 		void Undo() override
 		{
-			// 空のディレクトリなら削除可能
-			std::filesystem::remove(m_Path);
+			EditorFileSystem::DeleteFile(m_Path);
 		}
 
 		const char* GetName() const override { return "Create Folder"; }

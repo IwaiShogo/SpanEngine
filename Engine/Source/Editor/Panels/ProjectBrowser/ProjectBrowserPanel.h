@@ -46,7 +46,7 @@ namespace Span
 		 * @brief	GUI描画の更新処理
 		 * @details	ImGuiの描画コマンド発行はここで行う。
 		 */
-		virtual void OnImGuiRender() override;
+		void OnImGuiRender() override;
 
 	private:
 		// --- Drawing Methods ---
@@ -162,10 +162,6 @@ namespace Span
 		// --- Navigation History ---
 		std::vector<std::filesystem::path> m_BackHistory;
 		std::vector<std::filesystem::path> m_ForwardHistory;
-
-		// --- Undo/Redo Stack ---
-		std::vector<std::unique_ptr<ICommand>> m_UndoStack;
-		std::vector<std::unique_ptr<ICommand>> m_RedoStack;
 
 		// --- View Settings ---
 		float m_ThumbnailSize = 96.0f;						///< アイコンの表示サイズ

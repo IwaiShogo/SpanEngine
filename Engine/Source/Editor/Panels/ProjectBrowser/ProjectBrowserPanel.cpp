@@ -43,10 +43,16 @@
 #define ICON_FA_TRASH "[DEL]"
 #endif
 
-
 namespace Span
 {
 	static AutoRegisterPanel<ProjectBrowserPanel> _reg("Project Browser");
+
+	struct BrowserHistory
+	{
+		std::vector<std::unique_ptr<ICommand>> UndoStack;
+		std::vector<std::unique_ptr<ICommand>> RedoStack;
+	};
+	static BrowserHistory s_History;
 
 	ProjectBrowserPanel::ProjectBrowserPanel()
 		: EditorPanel("Project Browser")
@@ -144,7 +150,6 @@ namespace Span
 		if (m_ShowDeleteDialog)
 		{
 			ImGui::OpenPopup("Delete Assets?");
-			m_ShowDeleteDialog = false;
 		}
 
 		if (ImGui::BeginPopupModal("Delete Assets?", NULL, ImGuiWindowFlags_AlwaysAutoResize))
@@ -153,11 +158,12 @@ namespace Span
 			ImGui::TextColored(ImVec4(1, 0, 0, 1), "Items will be moved to .Trash folder.");
 			ImGui::Separator();
 
-			if (ImGui::Button("Delete", ImVec2(120, 0)))
+			if (ImGui::Button("Delete", ImVec2(120, 0)) || ImGui::IsKeyPressed(ImGuiKey_Enter))
 			{
 				for (const auto& item : m_SelectedItems)
 				{
 					auto cmd = std::make_unique<DeleteFileCommand>(item);
+					ExecuteCommand(std::move(cmd));
 				}
 				m_SelectedItems.clear();
 				m_ShowDeleteDialog = false;
@@ -196,7 +202,7 @@ namespace Span
 		}
 		ImGui::SameLine();
 
-		// Breadrumbs
+		// Breadcrumbs
 		std::vector<std::filesystem::path> parts;
 		for (auto p = m_CurrentDirectory; p != m_BaseDirectory; p = p.parent_path())
 		{
@@ -212,7 +218,7 @@ namespace Span
 			// パスボタン
 			if (ImGui::Button(name.c_str()))
 			{
-				m_CurrentDirectory = *it;
+				ChangeDirectory(*it);
 			}
 
 			// 区切り文字
@@ -223,6 +229,11 @@ namespace Span
 				ImGui::SameLine();
 			}
 		}
+
+		ImGui::SameLine();
+
+		// Undo/Redoの状態を表示
+		ImGui::TextDisabled("| Undo: %d | Redo: %d", (int)s_History.UndoStack.size(), (int)s_History.RedoStack.size());
 
 		// 右寄せグループ
 		float searchWidth = 150.0f;
@@ -489,9 +500,7 @@ namespace Span
 			// 右クリックしたアイテムが未選択なら、選択状態にする
 			if (m_SelectedItems.find(path) == m_SelectedItems.end())
 			{
-				if (!ImGui::GetIO().KeyCtrl)
-					m_SelectedItems.clear();
-				m_SelectedItems.insert(path);
+				SelectItem(path, false);
 			}
 
 			// --- メニュー項目 ---
@@ -502,9 +511,9 @@ namespace Span
 				if (ImGui::MenuItem("Rename", "F2"))
 				{
 					m_IsRenaming = true;
+					m_RenameFocus = true;
 					m_RenamingPath = path;
-					std::string filenameStr = path.filename().string();
-					strncpy_s(m_RenameBuffer, filenameStr.c_str(), sizeof(m_RenameBuffer));
+					strncpy_s(m_RenameBuffer, filename.c_str(), sizeof(m_RenameBuffer));
 				}
 			}
 
@@ -614,7 +623,7 @@ namespace Span
 		if (!ImGui::IsWindowFocused(ImGuiFocusedFlags_RootAndChildWindows)) return;
 
 		// Undo: Ctrl + Z
-		if (ctrl && ImGui::IsKeyPressed(ImGuiKey_Z))
+		if (ctrl && ImGui::IsKeyPressed(ImGuiKey_Z, false))
 		{
 			// Shiftが押されていたらRedoへ
 			if (shift)
@@ -628,13 +637,13 @@ namespace Span
 		}
 
 		// Redo: Ctrl + Y
-		if (ctrl && ImGui::IsKeyPressed(ImGuiKey_Y))
+		if (ctrl && ImGui::IsKeyPressed(ImGuiKey_Y, false))
 		{
 			PerformRedo();
 		}
 
 		// Rename: F2
-		if (ImGui::IsKeyPressed(ImGuiKey_F2))
+		if (ImGui::IsKeyPressed(ImGuiKey_F2, false))
 		{
 			if (m_SelectedItems.size() == 1)
 			{
@@ -646,7 +655,7 @@ namespace Span
 		}
 
 		// Delete: Delete Key
-		if (ImGui::IsKeyPressed(ImGuiKey_Delete))
+		if (ImGui::IsKeyPressed(ImGuiKey_Delete, false))
 		{
 			if (!m_SelectedItems.empty() && !m_IsRenaming)
 			{
@@ -655,7 +664,7 @@ namespace Span
 		}
 
 		// Select All: Ctrl + A
-		if (ctrl && ImGui::IsKeyPressed(ImGuiKey_A))
+		if (ctrl && ImGui::IsKeyPressed(ImGuiKey_A, false))
 		{
 			m_SelectedItems.clear();
 			for (const auto& entry : std::filesystem::directory_iterator(m_CurrentDirectory))
@@ -756,6 +765,7 @@ namespace Span
 	{
 		if (command->Execute())
 		{
+			SPAN_LOG("Command Executed: %s", command->GetName());
 			m_UndoStack.push_back(std::move(command));
 			m_RedoStack.clear();
 		}
@@ -771,9 +781,13 @@ namespace Span
 		{
 			auto cmd = std::move(m_UndoStack.back());
 			m_UndoStack.pop_back();
+			SPAN_LOG("Undoing: %s", cmd->GetName());
 			cmd->Undo();
 			m_RedoStack.push_back(std::move(cmd));
-			SPAN_LOG("Undo Executed");
+		}
+		else
+		{
+			SPAN_WARN("Undo Stack is empty");
 		}
 	}
 
@@ -783,9 +797,9 @@ namespace Span
 		{
 			auto cmd = std::move(m_RedoStack.back());
 			m_RedoStack.pop_back();
+			SPAN_LOG("Redoing: %s", cmd->GetName());
 			cmd->Execute();
 			m_UndoStack.push_back(std::move(cmd));
-			SPAN_LOG("Redo Executed");
 		}
 	}
 

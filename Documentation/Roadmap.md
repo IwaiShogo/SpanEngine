@@ -4,3 +4,4 @@
 - [ ] point light, spot light, その他ライト
 - [ ] tag manager
 - [ ] layer manager
+- [ ] .Trashフォルダ内の削除
