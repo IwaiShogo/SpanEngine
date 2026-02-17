@@ -9,6 +9,7 @@ var hierarchy =
     [ "Span::AssetMetadata", "structSpan_1_1AssetMetadata.html", null ],
     [ "Span::AssetSerializer", "classSpan_1_1AssetSerializer.html", null ],
     [ "Span::Attribute", "structSpan_1_1Attribute.html", null ],
+    [ "Span::BrowserHistory", "structSpan_1_1BrowserHistory.html", null ],
     [ "Span::Camera", "structSpan_1_1Camera.html", null ],
     [ "Span::Chunk", "structSpan_1_1Chunk.html", null ],
     [ "Span::ComponentMetadata", "structSpan_1_1ComponentMetadata.html", null ],
