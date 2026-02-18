@@ -1,78 +1,74 @@
 <map id="Span::ProjectBrowserPanel::OnImGuiRender" name="Span::ProjectBrowserPanel::OnImGuiRender">
-<area shape="rect" id="Node000001" title="GUI描画の更新処理" alt="" coords="5,493,200,533"/>
+<area shape="rect" id="Node000001" title="GUI描画の更新処理" alt="" coords="5,439,200,479"/>
 <area shape="rect" id="Node000002" href="$classSpan_1_1Input.html#ad267593d5e73d25b6fe21f7ebbabb80d" title=" " alt="" coords="257,5,449,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,493,108,415,129,300,147,237,172,174,205,115,246,62,260,50,264,54,250,66,209,118,177,176,152,239,134,301,114,415,107,493"/>
-<area shape="rect" id="Node000003" href="$classSpan_1_1ProjectBrowserPanel.html#a3877e936c3c6ee4b522ea63dc65dfd3b" title="右側のファイル/アセット一覧エリアを描画します。" alt="" coords="256,464,451,504"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,499,242,494,243,500,201,505"/>
-<area shape="rect" id="Node000006" href="$classSpan_1_1ProjectBrowserPanel.html#a7b1af5b6e52d5d7dc6afe0cc6d32407a" title="コマンド実行用ラッパー" alt="" coords="1004,175,1199,215"/>
-<area shape="poly" id="edge37_Node000001_Node000006" title=" " alt="" coords="104,492,116,433,141,350,160,306,183,263,212,223,246,189,334,125,376,102,417,84,457,71,497,62,577,56,661,63,750,79,957,127,1009,144,1056,166,1053,170,1007,149,955,132,749,85,660,68,577,62,498,67,458,76,419,89,378,107,337,129,250,193,216,227,188,266,165,308,146,352,121,434,109,494"/>
-<area shape="rect" id="Node000022" href="$classSpan_1_1ProjectBrowserPanel.html#ab2dd36335036fc99b71aafa7fb90afb5" title="右クリックコンテキストメニューを描画します。" alt="" coords="256,203,451,243"/>
-<area shape="poly" id="edge22_Node000001_Node000022" title=" " alt="" coords="119,491,324,251,328,255,123,495"/>
-<area shape="rect" id="Node000025" href="$classSpan_1_1ProjectBrowserPanel.html#a62fbc991ae5a3c977d7ae4a626039cf4" title="左側のディレクトリツリーを描画する。" alt="" coords="256,387,451,427"/>
-<area shape="poly" id="edge26_Node000001_Node000025" title=" " alt="" coords="150,491,292,430,294,435,152,496"/>
-<area shape="rect" id="Node000027" href="$classSpan_1_1ProjectBrowserPanel.html#aaa42d64a23e51093f81c1e7e400b0911" title="ナビゲーションバー (戻るボタン、パンくずリスト、検索、設定) を描画する。" alt="" coords="256,629,451,669"/>
-<area shape="poly" id="edge31_Node000001_Node000027" title=" " alt="" coords="131,531,184,569,249,608,279,622,277,627,247,613,182,574,128,536"/>
-<area shape="rect" id="Node000028" href="$classSpan_1_1ProjectBrowserPanel.html#ab1579d0e551c9206c67a9b4bee9bb57c" title="戻る" alt="" coords="507,565,701,605"/>
-<area shape="poly" id="edge39_Node000001_Node000028" title=" " alt="" coords="201,525,494,567,493,572,200,530"/>
-<area shape="rect" id="Node000029" href="$classSpan_1_1ProjectBrowserPanel.html#aa6a90afca01fba00f70706c033f592dc" title="進む" alt="" coords="507,629,701,669"/>
-<area shape="poly" id="edge40_Node000001_Node000029" title=" " alt="" coords="150,531,249,568,353,594,459,615,500,624,499,629,458,620,352,599,247,573,148,536"/>
-<area shape="rect" id="Node000032" href="$classSpan_1_1Input.html#a2bb95495819a9a798272baeb3ac1908f" title="ドロップされたファイルのパスを取得" alt="" coords="248,758,459,783"/>
-<area shape="poly" id="edge38_Node000001_Node000032" title=" " alt="" coords="113,532,130,577,159,634,198,693,223,720,250,743,261,750,258,755,246,747,219,724,194,697,154,637,125,579,108,534"/>
-<area shape="rect" id="Node000033" href="$classSpan_1_1ProjectBrowserPanel.html#aa84913079c0bc1df37175fbcbd5b50c7" title="キー入力処理" alt="" coords="256,693,451,733"/>
-<area shape="poly" id="edge41_Node000001_Node000033" title=" " alt="" coords="118,532,169,604,207,644,250,679,260,685,257,690,246,684,203,648,165,607,114,535"/>
-<area shape="rect" id="Node000004" href="$classSpan_1_1ProjectBrowserPanel.html#a61f13161ddf1dcca1a2a1a5a8a865ccc" title="個別のアセットアイテムを描画します。" alt="" coords="507,437,701,477"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="451,471,493,466,493,472,451,476"/>
-<area shape="rect" id="Node000017" href="$classSpan_1_1AssetSerializer.html#adea72d3eb1434b36473f6e0d38396451" title="指定したアセットのメタデータを取得します。 .metaファイルが存在しない場合は、新規にGUIDを生成して作成します。" alt="" coords="513,501,695,541"/>
-<area shape="poly" id="edge17_Node000003_Node000017" title=" " alt="" coords="451,496,500,503,499,508,451,501"/>
-<area shape="rect" id="Node000005" href="$classSpan_1_1ProjectBrowserPanel.html#a4319651fae5ef6c77d2233425add874d" title="ディレクトリ移動(履歴対応)" alt="" coords="755,171,950,211"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="685,435,699,424,716,399,724,374,725,349,722,324,720,299,721,273,729,247,747,221,751,217,755,221,751,224,734,249,727,274,726,298,728,324,730,349,729,375,721,401,703,427,689,439"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="682,435,700,423,716,402,722,380,729,357,748,335,775,318,800,308,848,302,897,300,925,295,955,284,1013,254,1062,221,1065,225,1015,258,957,289,926,300,898,305,848,307,802,313,777,322,751,339,734,360,727,382,721,405,703,427,685,440"/>
-<area shape="rect" id="Node000007" href="$classSpan_1_1AssetManager.html#a8b80e59ea529e23c8c8f5280d136fbf0" title="シングルトンインスタンスを取得します。" alt="" coords="759,542,946,567"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="677,475,703,487,717,498,727,508,737,518,751,527,770,535,768,540,748,532,733,522,723,512,714,502,700,492,675,480"/>
-<area shape="rect" id="Node000009" href="$classSpan_1_1AssetManager.html#ac48434b5c664ed46069ac3d95aadfefb" title="エディタ用: ファイルパスに対応するサムネイル (テクスチャID) を取得します。" alt="" coords="773,413,933,453"/>
-<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="701,445,759,440,759,445,702,451"/>
-<area shape="rect" id="Node000013" href="$classSpan_1_1ProjectBrowserPanel.html#af297fa0f9503a5ea5833e17da8ec2983" title="ドラッグ&amp;ドロップの受け入れ処理" alt="" coords="755,235,950,275"/>
-<area shape="poly" id="edge12_Node000004_Node000013" title=" " alt="" coords="684,435,699,423,712,408,719,392,723,359,727,326,734,309,747,291,762,280,765,284,751,295,739,311,732,327,728,360,724,393,717,410,703,427,687,439"/>
-<area shape="rect" id="Node000014" href="$classSpan_1_1EditorFileSystem.html#abd004be9e3bb4f680bffa5722f82aa34" title="指定されたファイルを関連付けられたアプリで開きます。" alt="" coords="767,592,939,632"/>
-<area shape="poly" id="edge14_Node000004_Node000014" title=" " alt="" coords="685,475,703,487,721,510,728,533,734,555,751,577,759,583,756,587,747,581,730,558,723,535,716,513,700,491,682,480"/>
-<area shape="rect" id="Node000015" href="$classSpan_1_1ProjectBrowserPanel.html#ad1b63fbbe232337cd64f286c4511a503" title="指定されたパスを選択状態にします (複数選択対応)。" alt="" coords="755,349,950,389"/>
-<area shape="poly" id="edge15_Node000004_Node000015" title=" " alt="" coords="669,435,700,423,748,399,768,391,770,396,750,404,702,428,671,440"/>
-<area shape="rect" id="Node000016" href="$classSpan_1_1ProjectBrowserPanel.html#a7be9ab8dd13c402c851985182d863a22" title="範囲選択" alt="" coords="755,477,950,517"/>
-<area shape="poly" id="edge16_Node000004_Node000016" title=" " alt="" coords="702,470,742,477,741,482,701,476"/>
-<area shape="rect" id="Node000008" href="$classSpan_1_1AssetManager.html#a9d65496b728f9a4fef2a5334d5a8ad56" title=" " alt="" coords="1024,535,1179,575"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="946,552,1010,552,1010,557,946,557"/>
-<area shape="rect" id="Node000010" href="$classSpan_1_1AssetManager.html#a8ad360aa2a6d909bfafc96484d426a0f" title="GUIDでテクスチャを取得 (推奨)" alt="" coords="1024,413,1179,453"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="933,431,1010,431,1010,436,933,436"/>
-<area shape="rect" id="Node000011" href="$classSpan_1_1AssetRegistry.html#a2b83eeb5aa2e6d4c807d4e4a11db563c" title=" " alt="" coords="1247,393,1429,418"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="1179,422,1232,415,1233,420,1180,427"/>
-<area shape="rect" id="Node000012" href="$classSpan_1_1AssetRegistry.html#a3cae91f52d3d29c67936e289d1244319" title=" " alt="" coords="1262,443,1414,483"/>
-<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="1180,440,1248,449,1248,454,1179,446"/>
-<area shape="poly" id="edge13_Node000013_Node000006" title=" " alt="" coords="936,232,1004,215,1005,221,937,237"/>
-<area shape="rect" id="Node000018" href="$classSpan_1_1AssetSerializer.html#a39e6a3bea02531fc2c31683a27d52061" title="拡張子から汗ッとタイプを推論します。" alt="" coords="749,771,956,811"/>
-<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="689,539,703,552,721,578,729,605,730,631,728,656,725,682,726,707,734,732,751,757,755,761,751,764,747,760,729,734,721,708,720,682,722,656,725,631,724,605,717,580,699,555,685,544"/>
-<area shape="rect" id="Node000019" href="$structSpan_1_1AssetMetadata.html#a83c8ed8bfd79a2aa90ed8d4e36b785b8" title=" " alt="" coords="773,835,933,875"/>
-<area shape="poly" id="edge19_Node000017_Node000019" title=" " alt="" coords="690,540,703,552,725,587,734,621,733,655,728,689,722,722,722,755,730,788,751,821,763,831,759,835,747,824,725,790,716,755,717,721,722,688,728,655,728,622,720,589,699,555,686,544"/>
-<area shape="rect" id="Node000020" href="$namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136" title=" " alt="" coords="793,657,913,682"/>
-<area shape="poly" id="edge20_Node000017_Node000020" title=" " alt="" coords="685,539,703,551,721,575,727,598,734,621,751,642,781,657,778,662,748,646,729,623,722,600,716,577,700,555,682,544"/>
-<area shape="rect" id="Node000021" href="$classSpan_1_1AssetSerializer.html#a0eb09ea936ef7cf65184977a5809ef6b" title="メタデータをファイルに保存する。" alt="" coords="773,707,932,747"/>
-<area shape="poly" id="edge21_Node000017_Node000021" title=" " alt="" coords="687,539,703,551,717,570,725,588,728,624,731,659,738,676,751,693,763,702,759,706,747,697,733,679,726,660,723,624,719,589,713,572,699,555,684,544"/>
-<area shape="poly" id="edge25_Node000022_Node000006" title=" " alt="" coords="390,200,443,175,506,156,631,136,730,132,830,140,956,156,1021,169,1020,174,956,161,829,145,730,137,632,141,507,161,445,180,392,205"/>
-<area shape="rect" id="Node000023" href="$classSpan_1_1ProjectBrowserPanel.html#a9c8bd4d52ec6a953f4708efdb2514507" title="C++ コンポーネントのテンプレートを生成します。" alt="" coords="507,171,701,211"/>
-<area shape="poly" id="edge23_Node000022_Node000023" title=" " alt="" coords="451,208,493,202,493,207,451,213"/>
-<area shape="rect" id="Node000024" href="$classSpan_1_1ProjectBrowserPanel.html#a5c90e6fb529021ba52ce62765c93009c" title="C++ システムのテンプレートを生成します。" alt="" coords="507,235,701,275"/>
-<area shape="poly" id="edge24_Node000022_Node000024" title=" " alt="" coords="451,232,493,238,493,243,451,238"/>
-<area shape="rect" id="Node000026" href="$classSpan_1_1ProjectBrowserPanel.html#a3a88cd4c643e90607f339a3491b9f8fd" title="指定したパスのディレクトリノードを再帰的に描画する。" alt="" coords="507,373,701,413"/>
-<area shape="poly" id="edge27_Node000025_Node000026" title=" " alt="" coords="451,399,493,397,493,402,451,404"/>
-<area shape="poly" id="edge28_Node000026_Node000005" title=" " alt="" coords="646,371,674,352,699,329,715,301,721,274,728,248,735,234,748,221,753,216,757,220,751,225,740,237,733,250,726,275,720,303,703,332,677,357,649,375"/>
-<area shape="poly" id="edge30_Node000026_Node000013" title=" " alt="" coords="636,371,700,329,723,309,748,291,776,278,778,282,751,296,726,313,703,333,639,375"/>
-<area shape="poly" id="edge29_Node000026_Node000026" title=" " alt="" coords="558,374,555,364,563,354,579,349,604,347,633,350,649,357,646,362,631,355,604,352,580,354,566,359,560,365,563,372"/>
-<area shape="poly" id="edge32_Node000027_Node000005" title=" " alt="" coords="373,627,415,578,437,547,456,515,466,489,471,465,472,421,477,379,487,357,505,335,529,317,553,307,576,304,600,304,648,304,673,298,700,285,715,270,723,254,732,237,748,221,757,215,760,219,751,225,736,240,728,256,719,273,703,289,675,303,649,309,600,310,577,309,554,312,532,321,509,339,492,360,482,380,477,421,476,465,471,490,461,517,442,550,419,582,377,631"/>
-<area shape="poly" id="edge33_Node000027_Node000028" title=" " alt="" coords="432,627,511,606,513,611,433,632"/>
-<area shape="poly" id="edge34_Node000027_Node000029" title=" " alt="" coords="451,647,493,647,493,652,451,652"/>
-<area shape="rect" id="Node000030" href="$classSpan_1_1ProjectBrowserPanel.html#a4b861c3010bfde42f422857c621f926a" title=" " alt="" coords="507,757,701,797"/>
-<area shape="poly" id="edge35_Node000027_Node000030" title=" " alt="" coords="439,667,460,679,477,695,485,712,493,728,508,743,517,749,514,753,505,747,489,731,480,714,472,699,457,683,436,672"/>
-<area shape="rect" id="Node000031" href="$classSpan_1_1ProjectBrowserPanel.html#a882b3d3bb1434263afdbbcf234fdce63" title=" " alt="" coords="507,693,701,733"/>
-<area shape="poly" id="edge36_Node000027_Node000031" title=" " alt="" coords="433,667,513,687,511,693,432,672"/>
-<area shape="poly" id="edge42_Node000033_Node000030" title=" " alt="" coords="433,731,513,751,511,757,432,736"/>
-<area shape="poly" id="edge43_Node000033_Node000031" title=" " alt="" coords="451,711,493,711,493,716,451,716"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,438,112,368,135,268,154,213,178,159,209,108,246,62,261,50,264,54,250,66,213,111,183,161,159,215,141,269,118,369,108,439"/>
+<area shape="rect" id="Node000003" href="$classSpan_1_1ProjectBrowserPanel.html#a3877e936c3c6ee4b522ea63dc65dfd3b" title="右側のファイル/アセット一覧エリアを描画します。" alt="" coords="256,556,451,596"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,476,249,532,287,548,285,553,247,537,138,481"/>
+<area shape="rect" id="Node000006" href="$classSpan_1_1ProjectBrowserPanel.html#a7b1af5b6e52d5d7dc6afe0cc6d32407a" title="コマンド実行用ラッパー" alt="" coords="992,299,1187,339"/>
+<area shape="poly" id="edge34_Node000001_Node000006" title=" " alt="" coords="111,437,131,399,161,352,200,303,246,261,313,216,373,184,428,161,483,145,600,125,749,105,850,85,894,87,918,93,945,106,971,122,994,143,1032,191,1061,241,1079,285,1074,287,1056,244,1028,194,990,147,968,127,943,110,916,98,893,92,850,91,750,111,601,130,484,150,430,166,375,189,316,221,250,265,204,306,165,355,136,402,116,439"/>
+<area shape="rect" id="Node000017" href="$classSpan_1_1ProjectBrowserPanel.html#a2ed9ba33e444c3cf9b807a2261fcacb3" title=" " alt="" coords="507,624,701,664"/>
+<area shape="poly" id="edge42_Node000001_Node000017" title=" " alt="" coords="119,477,140,507,170,543,207,578,249,606,309,628,372,642,435,648,493,649,493,655,435,653,371,647,307,633,247,610,203,582,166,547,136,511,114,480"/>
+<area shape="rect" id="Node000018" href="$classSpan_1_1ProjectBrowserPanel.html#ab2dd36335036fc99b71aafa7fb90afb5" title="右クリックコンテキストメニューを描画します。" alt="" coords="507,229,701,269"/>
+<area shape="poly" id="edge18_Node000001_Node000018" title=" " alt="" coords="115,437,166,371,204,335,247,306,307,280,371,263,434,252,493,247,493,252,435,258,372,268,309,285,249,310,207,339,170,375,119,440"/>
+<area shape="rect" id="Node000022" href="$classSpan_1_1ProjectBrowserPanel.html#a62fbc991ae5a3c977d7ae4a626039cf4" title="左側のディレクトリツリーを描画する。" alt="" coords="256,320,451,360"/>
+<area shape="poly" id="edge25_Node000001_Node000022" title=" " alt="" coords="138,436,247,380,287,363,289,368,249,385,141,441"/>
+<area shape="rect" id="Node000024" href="$classSpan_1_1ProjectBrowserPanel.html#aaa42d64a23e51093f81c1e7e400b0911" title="ナビゲーションバー (戻るボタン、パンくずリスト、検索、設定) を描画する。" alt="" coords="256,439,451,479"/>
+<area shape="poly" id="edge30_Node000001_Node000024" title=" " alt="" coords="200,456,242,456,242,461,200,461"/>
+<area shape="rect" id="Node000025" href="$classSpan_1_1ProjectBrowserPanel.html#ab1579d0e551c9206c67a9b4bee9bb57c" title="戻る" alt="" coords="507,381,701,421"/>
+<area shape="poly" id="edge36_Node000001_Node000025" title=" " alt="" coords="184,436,248,424,374,410,492,402,493,408,375,415,248,429,185,441"/>
+<area shape="rect" id="Node000026" href="$classSpan_1_1ProjectBrowserPanel.html#aa6a90afca01fba00f70706c033f592dc" title="進む" alt="" coords="507,496,701,536"/>
+<area shape="poly" id="edge37_Node000001_Node000026" title=" " alt="" coords="185,476,248,488,375,502,493,510,492,515,374,507,248,493,184,481"/>
+<area shape="rect" id="Node000027" href="$classSpan_1_1Input.html#a2bb95495819a9a798272baeb3ac1908f" title="ドロップされたファイルのパスを取得" alt="" coords="248,735,459,761"/>
+<area shape="poly" id="edge35_Node000001_Node000027" title=" " alt="" coords="112,478,127,528,154,594,195,663,220,694,250,721,259,727,256,731,246,725,216,697,190,666,149,596,122,530,106,480"/>
+<area shape="rect" id="Node000028" href="$classSpan_1_1ProjectBrowserPanel.html#aa84913079c0bc1df37175fbcbd5b50c7" title="キー入力処理" alt="" coords="256,671,451,711"/>
+<area shape="poly" id="edge38_Node000001_Node000028" title=" " alt="" coords="116,478,137,515,167,561,205,608,250,650,270,662,267,667,246,654,201,612,162,564,132,517,112,481"/>
+<area shape="rect" id="Node000004" href="$classSpan_1_1ProjectBrowserPanel.html#a61f13161ddf1dcca1a2a1a5a8a865ccc" title="個別のアセットアイテムを描画します。" alt="" coords="507,560,701,600"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="451,575,493,576,493,581,451,580"/>
+<area shape="poly" id="edge17_Node000003_Node000017" title=" " alt="" coords="428,593,517,618,516,623,427,599"/>
+<area shape="rect" id="Node000005" href="$classSpan_1_1ProjectBrowserPanel.html#a4319651fae5ef6c77d2233425add874d" title="ディレクトリ移動(履歴対応)" alt="" coords="749,427,944,467"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="680,558,700,546,715,529,723,512,731,494,748,477,756,471,759,476,751,481,736,497,728,514,719,532,703,550,683,562"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="702,588,759,588,822,582,885,567,943,540,968,522,991,499,1028,448,1056,396,1075,351,1080,353,1061,398,1033,451,995,503,971,526,945,545,887,572,823,587,760,593,701,593"/>
+<area shape="rect" id="Node000007" href="$classSpan_1_1AssetManager.html#a8b80e59ea529e23c8c8f5280d136fbf0" title="シングルトンインスタンスを取得します。" alt="" coords="753,606,940,631"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="702,593,753,601,753,606,701,598"/>
+<area shape="rect" id="Node000009" href="$classSpan_1_1AssetManager.html#ac48434b5c664ed46069ac3d95aadfefb" title="エディタ用: ファイルパスに対応するサムネイル (テクスチャID) を取得します。" alt="" coords="767,720,927,760"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="685,598,703,610,721,635,728,659,734,683,751,706,757,711,754,715,747,710,729,685,723,661,717,637,699,614,682,602"/>
+<area shape="rect" id="Node000013" href="$classSpan_1_1ProjectBrowserPanel.html#af297fa0f9503a5ea5833e17da8ec2983" title="ドラッグ&amp;ドロップの受け入れ処理" alt="" coords="749,491,944,531"/>
+<area shape="poly" id="edge12_Node000004_Node000013" title=" " alt="" coords="674,557,762,532,764,537,675,563"/>
+<area shape="rect" id="Node000014" href="$classSpan_1_1EditorFileSystem.html#abd004be9e3bb4f680bffa5722f82aa34" title="指定されたファイルを関連付けられたアプリで開きます。" alt="" coords="761,784,933,824"/>
+<area shape="poly" id="edge14_Node000004_Node000014" title=" " alt="" coords="688,598,703,610,718,631,726,651,728,692,730,731,737,751,751,770,755,774,751,778,747,774,732,753,725,733,723,692,721,653,714,633,699,614,685,602"/>
+<area shape="rect" id="Node000015" href="$classSpan_1_1EditorFileSystem.html#a8605b55dcb8b7650b1963e28e3ea6747" title="エクスプローラーで指定のパスを開きます。" alt="" coords="761,363,933,403"/>
+<area shape="poly" id="edge15_Node000004_Node000015" title=" " alt="" coords="684,558,699,546,712,530,719,514,723,481,727,447,734,430,747,413,752,409,756,413,751,416,738,433,732,449,728,482,724,515,717,533,703,550,687,562"/>
+<area shape="rect" id="Node000016" href="$classSpan_1_1ProjectBrowserPanel.html#ad1b63fbbe232337cd64f286c4511a503" title="指定されたパスを選択状態にします (複数選択対応)。" alt="" coords="749,656,944,696"/>
+<area shape="poly" id="edge16_Node000004_Node000016" title=" " alt="" coords="674,598,703,610,727,625,751,640,769,649,767,654,748,645,724,630,700,614,672,603"/>
+<area shape="rect" id="Node000008" href="$classSpan_1_1AssetManager.html#a9d65496b728f9a4fef2a5334d5a8ad56" title=" " alt="" coords="1012,599,1167,639"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="940,616,998,616,998,621,940,621"/>
+<area shape="rect" id="Node000010" href="$classSpan_1_1AssetManager.html#a8ad360aa2a6d909bfafc96484d426a0f" title="GUIDでテクスチャを取得 (推奨)" alt="" coords="1012,720,1167,760"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="927,737,998,737,998,743,927,743"/>
+<area shape="rect" id="Node000011" href="$classSpan_1_1AssetRegistry.html#a2b83eeb5aa2e6d4c807d4e4a11db563c" title=" " alt="" coords="1235,698,1417,723"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="1167,728,1220,721,1221,726,1168,733"/>
+<area shape="rect" id="Node000012" href="$classSpan_1_1AssetRegistry.html#a3cae91f52d3d29c67936e289d1244319" title=" " alt="" coords="1250,748,1402,788"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="1168,747,1236,755,1236,760,1167,752"/>
+<area shape="poly" id="edge13_Node000013_Node000006" title=" " alt="" coords="920,488,943,476,980,447,1014,413,1065,349,1069,352,1018,417,984,451,945,481,923,493"/>
+<area shape="poly" id="edge23_Node000018_Node000006" title=" " alt="" coords="702,254,818,267,944,284,992,293,991,298,944,289,818,272,701,260"/>
+<area shape="poly" id="edge24_Node000018_Node000015" title=" " alt="" coords="683,267,703,279,719,297,728,315,736,332,751,349,759,354,756,358,748,353,731,335,723,317,715,300,700,283,680,272"/>
+<area shape="rect" id="Node000019" href="$classSpan_1_1ProjectBrowserPanel.html#a9c8bd4d52ec6a953f4708efdb2514507" title="C++ コンポーネントのテンプレートを生成します。" alt="" coords="749,120,944,160"/>
+<area shape="poly" id="edge19_Node000018_Node000019" title=" " alt="" coords="638,227,689,198,748,170,766,162,768,167,750,174,691,203,640,232"/>
+<area shape="rect" id="Node000020" href="$classSpan_1_1ProjectBrowserPanel.html#a81fd9fb886e478f14222e91c2ca43d7f" title="テンプレートからファイルを生成します。" alt="" coords="749,299,944,339"/>
+<area shape="poly" id="edge20_Node000018_Node000020" title=" " alt="" coords="675,267,764,292,762,297,674,272"/>
+<area shape="rect" id="Node000021" href="$classSpan_1_1ProjectBrowserPanel.html#a5c90e6fb529021ba52ce62765c93009c" title="C++ システムのテンプレートを生成します。" alt="" coords="749,184,944,224"/>
+<area shape="poly" id="edge22_Node000018_Node000021" title=" " alt="" coords="701,229,735,222,736,227,702,234"/>
+<area shape="poly" id="edge21_Node000020_Node000006" title=" " alt="" coords="944,316,978,316,978,321,944,321"/>
+<area shape="rect" id="Node000023" href="$classSpan_1_1ProjectBrowserPanel.html#a3a88cd4c643e90607f339a3491b9f8fd" title="指定したパスのディレクトリノードを再帰的に描画する。" alt="" coords="507,317,701,357"/>
+<area shape="poly" id="edge26_Node000022_Node000023" title=" " alt="" coords="451,336,493,336,493,341,451,342"/>
+<area shape="poly" id="edge27_Node000023_Node000005" title=" " alt="" coords="678,355,703,367,718,379,727,390,737,401,751,412,762,419,760,423,748,417,733,405,723,394,714,383,700,372,676,360"/>
+<area shape="poly" id="edge29_Node000023_Node000013" title=" " alt="" coords="686,355,703,367,715,381,722,396,728,423,733,451,740,464,751,477,756,481,753,485,747,481,735,467,728,452,723,425,717,397,711,384,700,371,683,360"/>
+<area shape="poly" id="edge28_Node000023_Node000023" title=" " alt="" coords="559,318,556,308,563,298,579,293,604,291,632,294,648,301,645,306,631,299,604,296,581,298,566,303,561,309,564,316"/>
+<area shape="poly" id="edge31_Node000024_Node000005" title=" " alt="" coords="451,454,736,447,736,452,451,459"/>
+<area shape="poly" id="edge32_Node000024_Node000025" title=" " alt="" coords="441,436,502,422,503,427,442,441"/>
+<area shape="poly" id="edge33_Node000024_Node000026" title=" " alt="" coords="442,476,503,490,502,496,441,481"/>
+<area shape="poly" id="edge39_Node000028_Node000017" title=" " alt="" coords="450,670,493,662,494,667,451,675"/>
+<area shape="rect" id="Node000029" href="$classSpan_1_1ProjectBrowserPanel.html#a4b861c3010bfde42f422857c621f926a" title=" " alt="" coords="507,688,701,728"/>
+<area shape="poly" id="edge40_Node000028_Node000029" title=" " alt="" coords="451,695,493,698,493,703,451,700"/>
+<area shape="rect" id="Node000030" href="$classSpan_1_1ProjectBrowserPanel.html#a882b3d3bb1434263afdbbcf234fdce63" title=" " alt="" coords="507,752,701,792"/>
+<area shape="poly" id="edge41_Node000028_Node000030" title=" " alt="" coords="422,708,460,720,508,737,530,745,528,750,506,743,458,725,421,713"/>
 </map>

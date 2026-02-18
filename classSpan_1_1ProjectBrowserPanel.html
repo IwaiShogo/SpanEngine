@@ -165,6 +165,7 @@ Span::ProjectBrowserPanel 連携図</div>
 <tr class="memdesc:a9c8bd4d52ec6a953f4708efdb2514507"><td class="mdescLeft">&#160;</td><td class="mdescRight">C++ コンポーネントのテンプレートを生成します。  <br /></td></tr>
 <tr class="memitem:a5c90e6fb529021ba52ce62765c93009c" id="r_a5c90e6fb529021ba52ce62765c93009c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5c90e6fb529021ba52ce62765c93009c">CreateSystemScript</a> ()</td></tr>
 <tr class="memdesc:a5c90e6fb529021ba52ce62765c93009c"><td class="mdescLeft">&#160;</td><td class="mdescRight">C++ システムのテンプレートを生成します。  <br /></td></tr>
+<tr class="memitem:a2ed9ba33e444c3cf9b807a2261fcacb3" id="r_a2ed9ba33e444c3cf9b807a2261fcacb3"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2ed9ba33e444c3cf9b807a2261fcacb3">MatchesFilter</a> (const std::filesystem::path &amp;path)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
@@ -196,6 +197,8 @@ Span::ProjectBrowserPanel 連携図</div>
 <tr class="memdesc:a54b15a26723b31b54718b81e61ecf9c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">フォーカス制御用フラグ  <br /></td></tr>
 <tr class="memitem:a2c51bb26f5ebbf999136d7400412e70c" id="r_a2c51bb26f5ebbf999136d7400412e70c"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2c51bb26f5ebbf999136d7400412e70c">m_ShowDeleteDialog</a> = false</td></tr>
 <tr class="memdesc:a2c51bb26f5ebbf999136d7400412e70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">削除時のダイアログのフラグ  <br /></td></tr>
+<tr class="memitem:a820cd604684d23982333f88822ec2764" id="r_a820cd604684d23982333f88822ec2764"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a820cd604684d23982333f88822ec2764">m_TypeFilterIndex</a> = 0</td></tr>
+<tr class="memdesc:a820cd604684d23982333f88822ec2764"><td class="mdescLeft">&#160;</td><td class="mdescRight">0: All, 1: <a class="el" href="classSpan_1_1Texture.html" title="🖼 GPUテクスチャリソース。">Texture</a>, 2: <a class="el" href="classSpan_1_1Mesh.html" title="📦 頂点データをGPUメモリ (Vertex Buffer) に保持するクラス。">Mesh</a>, 3: Script ...  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 その他の継承メンバ</h2></td></tr>
@@ -240,7 +243,7 @@ Span::ProjectBrowserPanel 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00057">57</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00108">108</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -302,7 +305,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>ディレクトリ移動(履歴対応) </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00732">732</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00881">881</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -336,7 +339,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>C++ コンポーネントのテンプレートを生成します。 </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00845">845</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00994">994</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -381,11 +384,16 @@ Span::ProjectBrowserPanel 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00830">830</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00979">979</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_a81fd9fb886e478f14222e91c2ca43d7f_cgraph.svg" width="448" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_a81fd9fb886e478f14222e91c2ca43d7f_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -415,7 +423,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>C++ システムのテンプレートを生成します。 </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00855">855</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l01004">1004</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -449,7 +457,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>右側のファイル/アセット一覧エリアを描画します。 </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00332">332</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00455">455</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -489,11 +497,11 @@ Span::ProjectBrowserPanel 連携図</div>
 <p>右クリックコンテキストメニューを描画します。 </p>
 <p>何もない場所でのクリックと、アイテム上でのクリックで挙動が変化します。 </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00565">565</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00647">647</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_ab2dd36335036fc99b71aafa7fb90afb5_cgraph.svg" width="448" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_ab2dd36335036fc99b71aafa7fb90afb5_cgraph.svg" width="100%" height="520"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
@@ -528,7 +536,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>左側のディレクトリツリーを描画する。 </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00271">271</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00386">386</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -573,7 +581,7 @@ Span::ProjectBrowserPanel 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00385">385</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00494">494</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -612,11 +620,11 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>ナビゲーションバー (戻るボタン、パンくずリスト、検索、設定) を描画する。 </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00185">185</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00279">279</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_aaa42d64a23e51093f81c1e7e400b0911_cgraph.svg" width="448" height="307"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_aaa42d64a23e51093f81c1e7e400b0911_cgraph.svg" width="448" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
@@ -657,7 +665,7 @@ Span::ProjectBrowserPanel 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00276">276</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00398">398</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -696,7 +704,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>コマンド実行用ラッパー </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00764">764</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00913">913</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -730,7 +738,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>戻る </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00744">744</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00893">893</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -764,7 +772,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>進む </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00754">754</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00903">903</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -804,7 +812,7 @@ Span::ProjectBrowserPanel 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00806">806</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00955">955</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -843,16 +851,48 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>キー入力処理 </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00613">613</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00710">710</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_aa84913079c0bc1df37175fbcbd5b50c7_cgraph.svg" width="448" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_aa84913079c0bc1df37175fbcbd5b50c7_cgraph.svg" width="448" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_aa84913079c0bc1df37175fbcbd5b50c7_icgraph.svg" width="448" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a2ed9ba33e444c3cf9b807a2261fcacb3" name="a2ed9ba33e444c3cf9b807a2261fcacb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ed9ba33e444c3cf9b807a2261fcacb3">&#9670;&#160;</a></span>MatchesFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Span::ProjectBrowserPanel::MatchesFilter </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00057">57</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_a2ed9ba33e444c3cf9b807a2261fcacb3_icgraph.svg" width="100%" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -885,7 +925,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p><a class="el" href="classSpan_1_1EditorPanel.html#a95362399147c9087c18e5ec22ec432a6">Span::EditorPanel</a>を実装しています。</p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00071">71</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00122">122</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -917,11 +957,11 @@ Span::ProjectBrowserPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00794">794</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00943">943</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_a4b861c3010bfde42f422857c621f926a_icgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_a4b861c3010bfde42f422857c621f926a_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -949,11 +989,11 @@ Span::ProjectBrowserPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00778">778</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00927">927</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_a882b3d3bb1434263afdbbcf234fdce63_icgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_a882b3d3bb1434263afdbbcf234fdce63_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -994,7 +1034,7 @@ Span::ProjectBrowserPanel 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00678">678</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00777">777</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1039,12 +1079,7 @@ Span::ProjectBrowserPanel 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00695">695</a> 行目に定義があります。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ProjectBrowserPanel_a7be9ab8dd13c402c851985182d863a22_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8cpp_source.html">ProjectBrowserPanel.cpp</a> の <a class="el" href="ProjectBrowserPanel_8cpp_source.html#l00844">844</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1069,7 +1104,7 @@ Span::ProjectBrowserPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00163">163</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00165">165</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1095,7 +1130,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>アセットのルートディレクトリ (Assets/) </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00159">159</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00161">161</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1121,7 +1156,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>現在表示中のディレクトリ </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00160">160</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00162">162</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1145,7 +1180,7 @@ Span::ProjectBrowserPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00164">164</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00166">166</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1171,7 +1206,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>現在リネーム操作中のどうかのフラグ </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00180">180</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00182">182</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1197,7 +1232,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>Shift選択用 </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00177">177</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00179">179</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1223,7 +1258,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>アイコン間のパディング </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00172">172</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00174">174</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1247,7 +1282,7 @@ Span::ProjectBrowserPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00168">168</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00170">170</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1273,7 +1308,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>リネーム用の入力バッファ </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00182">182</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00184">184</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1299,7 +1334,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>フォーカス制御用フラグ </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00183">183</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00185">185</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1325,7 +1360,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>リネーム対象のパス </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00181">181</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00183">183</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1351,7 +1386,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>ファイル名検索フィルタ </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00173">173</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00175">175</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1377,7 +1412,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>現在選択されているアイテムのリスト </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00176">176</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00178">178</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1403,7 +1438,7 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>削除時のダイアログのフラグ </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00186">186</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00188">188</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1429,7 +1464,33 @@ Span::ProjectBrowserPanel 連携図</div>
 
 <p>アイコンの表示サイズ </p>
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00171">171</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00173">173</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a820cd604684d23982333f88822ec2764" name="a820cd604684d23982333f88822ec2764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a820cd604684d23982333f88822ec2764">&#9670;&#160;</a></span>m_TypeFilterIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Span::ProjectBrowserPanel::m_TypeFilterIndex = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>0: All, 1: <a class="el" href="classSpan_1_1Texture.html" title="🖼 GPUテクスチャリソース。">Texture</a>, 2: <a class="el" href="classSpan_1_1Mesh.html" title="📦 頂点データをGPUメモリ (Vertex Buffer) に保持するクラス。">Mesh</a>, 3: Script ... </p>
+
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00190">190</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1453,7 +1514,7 @@ Span::ProjectBrowserPanel 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00167">167</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ProjectBrowserPanel_8h_source.html">ProjectBrowserPanel.h</a> の <a class="el" href="ProjectBrowserPanel_8h_source.html#l00169">169</a> 行目に定義があります。</p>
 
 </div>
 </div>

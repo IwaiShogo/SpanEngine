@@ -8,6 +8,7 @@ var classSpan_1_1AssetRegistry =
     [ "GetPath", "classSpan_1_1AssetRegistry.html#a3cae91f52d3d29c67936e289d1244319", null ],
     [ "Refresh", "classSpan_1_1AssetRegistry.html#a71c0e006b41117cb0b296adaf0de1c56", null ],
     [ "RegisterAsset", "classSpan_1_1AssetRegistry.html#a432dbe6ae1b0ab930bd903d93ad5a734", null ],
+    [ "Shutdown", "classSpan_1_1AssetRegistry.html#ab3148e1b4623787719596cffd8242cc6", null ],
     [ "UnregisterAsset", "classSpan_1_1AssetRegistry.html#a42655d152fe373d26ee0e6c5121c712c", null ],
     [ "m_Assets", "classSpan_1_1AssetRegistry.html#a1659ea58ac56bc09efe8385a409838f4", null ],
     [ "m_EmptyPath", "classSpan_1_1AssetRegistry.html#aed18f9c33eeb7e791793206540bb1043", null ],

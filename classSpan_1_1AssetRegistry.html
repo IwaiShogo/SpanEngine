@@ -100,13 +100,15 @@ $(function(){initNavTree('classSpan_1_1AssetRegistry.html','','classSpan_1_1Asse
 <div class="dynheader">
 Span::AssetRegistry 連携図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetRegistry__coll__graph.svg" width="155" height="276"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetRegistry__coll__graph.svg" width="155" height="296"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:a71c0e006b41117cb0b296adaf0de1c56" id="r_a71c0e006b41117cb0b296adaf0de1c56"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a71c0e006b41117cb0b296adaf0de1c56">Refresh</a> (const std::filesystem::path &amp;rootDirectory)</td></tr>
 <tr class="memdesc:a71c0e006b41117cb0b296adaf0de1c56"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定ディレクトリ以下の全アセットをスキャンし、レジストリを構築します。  <br /></td></tr>
+<tr class="memitem:ab3148e1b4623787719596cffd8242cc6" id="r_ab3148e1b4623787719596cffd8242cc6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab3148e1b4623787719596cffd8242cc6">Shutdown</a> ()</td></tr>
+<tr class="memdesc:ab3148e1b4623787719596cffd8242cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">終了処理  <br /></td></tr>
 <tr class="memitem:a432dbe6ae1b0ab930bd903d93ad5a734" id="r_a432dbe6ae1b0ab930bd903d93ad5a734"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a432dbe6ae1b0ab930bd903d93ad5a734">RegisterAsset</a> (const std::filesystem::path &amp;path)</td></tr>
 <tr class="memdesc:a432dbe6ae1b0ab930bd903d93ad5a734"><td class="mdescLeft">&#160;</td><td class="mdescRight">パスからアセット情報を登録・更新します (ファイル移動/作成時用)。  <br /></td></tr>
 <tr class="memitem:a42655d152fe373d26ee0e6c5121c712c" id="r_a42655d152fe373d26ee0e6c5121c712c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a42655d152fe373d26ee0e6c5121c712c">UnregisterAsset</a> (const std::filesystem::path &amp;path)</td></tr>
@@ -224,7 +226,7 @@ Span::AssetRegistry 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="AssetRegistry_8h_source.html">AssetRegistry.h</a> の <a class="el" href="AssetRegistry_8h_source.html#l00036">36</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="AssetRegistry_8h_source.html">AssetRegistry.h</a> の <a class="el" href="AssetRegistry_8h_source.html#l00045">45</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -339,6 +341,40 @@ Span::AssetRegistry 連携図</div>
 
 </div>
 </div>
+<a id="ab3148e1b4623787719596cffd8242cc6" name="ab3148e1b4623787719596cffd8242cc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3148e1b4623787719596cffd8242cc6">&#9670;&#160;</a></span>Shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::AssetRegistry::Shutdown </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>終了処理 </p>
+
+<p class="definition"> <a class="el" href="AssetRegistry_8h_source.html">AssetRegistry.h</a> の <a class="el" href="AssetRegistry_8h_source.html#l00025">25</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1AssetRegistry_ab3148e1b4623787719596cffd8242cc6_icgraph.svg" width="366" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="a42655d152fe373d26ee0e6c5121c712c" name="a42655d152fe373d26ee0e6c5121c712c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a42655d152fe373d26ee0e6c5121c712c">&#9670;&#160;</a></span>UnregisterAsset()</h2>
 
@@ -379,7 +415,7 @@ Span::AssetRegistry 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="AssetRegistry_8h_source.html">AssetRegistry.h</a> の <a class="el" href="AssetRegistry_8h_source.html#l00040">40</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="AssetRegistry_8h_source.html">AssetRegistry.h</a> の <a class="el" href="AssetRegistry_8h_source.html#l00049">49</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -403,7 +439,7 @@ Span::AssetRegistry 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="AssetRegistry_8h_source.html">AssetRegistry.h</a> の <a class="el" href="AssetRegistry_8h_source.html#l00046">46</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="AssetRegistry_8h_source.html">AssetRegistry.h</a> の <a class="el" href="AssetRegistry_8h_source.html#l00055">55</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -427,7 +463,7 @@ Span::AssetRegistry 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="AssetRegistry_8h_source.html">AssetRegistry.h</a> の <a class="el" href="AssetRegistry_8h_source.html#l00043">43</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="AssetRegistry_8h_source.html">AssetRegistry.h</a> の <a class="el" href="AssetRegistry_8h_source.html#l00052">52</a> 行目に定義があります。</p>
 
 </div>
 </div>

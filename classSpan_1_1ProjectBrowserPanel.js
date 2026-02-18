@@ -17,6 +17,7 @@ var classSpan_1_1ProjectBrowserPanel =
     [ "GoForward", "classSpan_1_1ProjectBrowserPanel.html#aa6a90afca01fba00f70706c033f592dc", null ],
     [ "HandleDragDropTarget", "classSpan_1_1ProjectBrowserPanel.html#af297fa0f9503a5ea5833e17da8ec2983", null ],
     [ "HandleKeyboardInputs", "classSpan_1_1ProjectBrowserPanel.html#aa84913079c0bc1df37175fbcbd5b50c7", null ],
+    [ "MatchesFilter", "classSpan_1_1ProjectBrowserPanel.html#a2ed9ba33e444c3cf9b807a2261fcacb3", null ],
     [ "OnImGuiRender", "classSpan_1_1ProjectBrowserPanel.html#ad259c8cf9a9c066350b699f9cd14438e", null ],
     [ "PerformRedo", "classSpan_1_1ProjectBrowserPanel.html#a4b861c3010bfde42f422857c621f926a", null ],
     [ "PerformUndo", "classSpan_1_1ProjectBrowserPanel.html#a882b3d3bb1434263afdbbcf234fdce63", null ],
@@ -37,5 +38,6 @@ var classSpan_1_1ProjectBrowserPanel =
     [ "m_SelectedItems", "classSpan_1_1ProjectBrowserPanel.html#a87b8ed0af0c425e5bd80975424455aed", null ],
     [ "m_ShowDeleteDialog", "classSpan_1_1ProjectBrowserPanel.html#a2c51bb26f5ebbf999136d7400412e70c", null ],
     [ "m_ThumbnailSize", "classSpan_1_1ProjectBrowserPanel.html#a0b0165d5fc5bdd7954e1418a3818b342", null ],
+    [ "m_TypeFilterIndex", "classSpan_1_1ProjectBrowserPanel.html#a820cd604684d23982333f88822ec2764", null ],
     [ "m_UndoStack", "classSpan_1_1ProjectBrowserPanel.html#afe66aaf6ca5830c068538b3d4a14795e", null ]
 ];
