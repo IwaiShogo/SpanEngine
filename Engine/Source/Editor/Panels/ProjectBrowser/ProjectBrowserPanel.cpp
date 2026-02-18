@@ -40,19 +40,70 @@
 #define ICON_FA_CUBE "[MESH]"
 #endif
 #ifndef ICON_FA_TRASH
-#define ICON_FA_TRASH "[DEL]"
+#define ICON_FA_TRASH "[TRASH]"
+#endif
+#ifndef ICON_FA_SEARCH
+#define ICON_FA_SEARCH "[SEARCH]"
+#endif
+#ifndef ICON_FA_EYE
+#define ICON_FA_EYE "[SHOW]"
 #endif
 
 namespace Span
 {
 	static AutoRegisterPanel<ProjectBrowserPanel> _reg("Project Browser");
 
-	/*struct BrowserHistory
+	// 検索条件に合致するか判定するヘルパー
+	bool ProjectBrowserPanel::MatchesFilter(const std::filesystem::path& path)
 	{
-		std::vector<std::unique_ptr<ICommand>> UndoStack;
-		std::vector<std::unique_ptr<ICommand>> RedoStack;
-	};
-	static BrowserHistory s_History;*/
+		// 1. .meta は常に除外
+		if (path.extension() == ".meta") return false;
+
+		// .Trash フォルダは、Assets直下にある場合のみ隠す
+		if (path.filename() == ".Trash" && m_CurrentDirectory != path.parent_path()) return false;
+		if (path.filename() == ".Trash") return false;
+
+		std::string filename = path.filename().string();
+
+		// 2. テキスト検索
+		if (!m_SearchFilter.empty())
+		{
+			auto it = std::search(
+				filename.begin(), filename.end(),
+				m_SearchFilter.begin(), m_SearchFilter.end(),
+				[](char a, char b) { return std::tolower(a) == std::tolower(b); }
+			);
+			if (it == filename.end()) return false;
+		}
+
+		// 3. タイプフィルター
+		if (m_TypeFilterIndex > 0)
+		{
+			std::string ext = path.extension().string();
+			std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
+
+			switch (m_TypeFilterIndex)
+			{
+			case 1:	// Texture
+				if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".tga" && ext != ".bmp") return false;
+				break;
+			case 2:	// Mesh
+				if (ext != ".fbx" && ext != ".obj" && ext != ".gltf" && ext != ".glb") return false;
+				break;
+			case 3:	// Script
+				if (ext != ".h" && ext != ".cpp" && ext != ".cs") return false;
+				break;
+			case 4:	// Material
+				if (ext != ".mat") return false;
+				break;
+			case 5:
+				if (ext != ".span") return false;
+				break;
+			}
+		}
+
+		return true;
+	}
 
 	ProjectBrowserPanel::ProjectBrowserPanel()
 		: EditorPanel("Project Browser")
@@ -107,7 +158,7 @@ namespace Span
 		}
 
 		// 1. キーボードショートカット処理
-		if (ImGui::IsWindowFocused(ImGuiFocusedFlags_RootAndChildWindows))
+		if (ImGui::IsWindowFocused(ImGuiFocusedFlags_RootAndChildWindows) || ImGui::IsWindowHovered(ImGuiFocusedFlags_RootAndChildWindows))
 		{
 			HandleKeyboardInputs();
 		}
@@ -119,27 +170,37 @@ namespace Span
 		// 3. Main Area
 		// 2カラムレイアウト (左: ツリー、右: コンテンツ)
 		static float leftPaneWidth = 200.0f;
-		ImGui::Columns(2, "ProjectBrowserColumns", true);
+		float bottomBarHeight = 30.0f;
+		float contentHeight = ImGui::GetContentRegionAvail().y - bottomBarHeight - 10.0f;
 
-		// 初回のみ幅を設定
-		if (ImGui::GetFrameCount() == 1)
-		{
-			ImGui::SetColumnWidth(0, leftPaneWidth);
-		}
+		ImGui::Columns(2, "ProjectBrowserColumns", true);
+		if (ImGui::GetFrameCount() == 1) ImGui::SetColumnWidth(0, leftPaneWidth);
 
 		// --- Left Pane: Directory Tree ---
-		ImGui::BeginChild("DirectoryTree");
+		ImGui::BeginChild("DirectoryTree", ImVec2(0, contentHeight));
 		DrawDirectoryTree();
 		ImGui::EndChild();
 
 		ImGui::NextColumn();
 
 		// --- Right Pane: Content Area ---
-		ImGui::BeginChild("ContentArea");
+		ImGui::BeginChild("ContentArea", ImVec2(0, contentHeight));
 
-		// マウスの戻るボタン対応
+		// マウスナビゲーション
 		if (ImGui::IsWindowFocused() && ImGui::IsMouseClicked(3)) GoBack();
 		if (ImGui::IsWindowFocused() && ImGui::IsMouseClicked(4)) GoForward();
+
+		// マウスホイールズーム (Ctrl + Wheel)
+		if (ImGui::IsWindowHovered() && ImGui::GetIO().KeyCtrl)
+		{
+			float wheel = ImGui::GetIO().MouseWheel;
+			if (wheel != 0.0f)
+			{
+				m_ThumbnailSize += wheel * 5.0f;
+				if (m_ThumbnailSize < 32.0f) m_ThumbnailSize = 32.0f;
+				if (m_ThumbnailSize > 256.0f) m_ThumbnailSize = 256.0f;
+			}
+		}
 
 		DrawContentArea();
 		DrawContextMenu();	// コンテキストメニュー (右クリック)
@@ -147,11 +208,44 @@ namespace Span
 		ImGui::EndChild();
 		ImGui::Columns(1);
 
+		// --- Bottom Bar ---
+		ImGui::Separator();
+		ImGui::BeginChild("BottomBar", ImVec2(0, bottomBarHeight), false, ImGuiWindowFlags_NoScrollbar);
+		{
+			// Item Count
+			int itemCount = 0;
+			try
+			{
+				for (const auto& entry : std::filesystem::directory_iterator(m_CurrentDirectory))
+				{
+					if (MatchesFilter(entry.path())) itemCount++;
+				}
+			}
+			catch (...) {}
+
+			ImGui::AlignTextToFramePadding();
+			ImGui::Text("%d items", itemCount);
+
+			ImGui::SameLine();
+			ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
+			ImGui::SameLine();
+			float contentHeight = ImGui::GetContentRegionAvail().y - bottomBarHeight - 10.0f;
+
+			ImGui::SameLine();
+
+			// Zoom Slider
+			float sliderWidth = 150.0f;
+			ImGui::SetCursorPosX(ImGui::GetWindowWidth() - sliderWidth - 10.0f);
+			ImGui::SetNextItemWidth(sliderWidth);
+			ImGui::SliderFloat("##Zoom", &m_ThumbnailSize, 32.0f, 256.0f, "Zoom: %.0f");
+		}
+		ImGui::EndChild();
+
+		// --- Delete Dialog
 		if (m_ShowDeleteDialog)
 		{
 			ImGui::OpenPopup("Delete Assets?");
 		}
-
 		if (ImGui::BeginPopupModal("Delete Assets?", NULL, ImGuiWindowFlags_AlwaysAutoResize))
 		{
 			ImGui::Text("Are you sure you want to delete %d items?", (int)m_SelectedItems.size());
@@ -184,99 +278,128 @@ namespace Span
 
 	void ProjectBrowserPanel::DrawNavBar()
 	{
-		// Back / Forward Buttons
+		// Controls
 		if (ImGui::Button(ICON_FA_ARROW_LEFT)) GoBack();
 		ImGui::SameLine();
 		if (ImGui::Button(ICON_FA_ARROW_RIGHT)) GoForward();
 		ImGui::SameLine();
 
-		// Undo / Redo Buttons
-		if (ImGui::Button("Undo"))
-		{
-			PerformUndo();
-		}
-		ImGui::SameLine();
-		if (ImGui::Button("Redo"))
-		{
-			PerformRedo();
-		}
-		ImGui::SameLine();
-
 		// Breadcrumbs
-		std::vector<std::filesystem::path> parts;
-		for (auto p = m_CurrentDirectory; p != m_BaseDirectory; p = p.parent_path())
-		{
-			parts.push_back(p);
-		}
-		parts.push_back(m_BaseDirectory); // Root
+		float footerWidth = 350.0f;
+		float availWidth = ImGui::GetContentRegionAvail().x;
+		float pathWidth = availWidth - footerWidth;
+		if (pathWidth < 100.0f) pathWidth = 100.0f;
 
-		// 逆順で描画
-		for (auto it = parts.rbegin(); it != parts.rend(); ++it)
+		ImGui::BeginChild("##PathBar", ImVec2(pathWidth, 24.0f), false, ImGuiWindowFlags_NoScrollbar);
 		{
-			std::string name = (it->filename() == "Assets") ? "Assets" : it->filename().string();
+			std::vector<std::filesystem::path> parts;
+			std::filesystem::path p = m_CurrentDirectory;
+			std::filesystem::path trashPath = m_BaseDirectory.parent_path() / ".Trash";
 
-			// パスボタン
-			if (ImGui::Button(name.c_str()))
+			while (true)
 			{
-				ChangeDirectory(*it);
+				parts.push_back(p);
+
+				// Assetsフォルダに到達したら終了
+				if (p == m_BaseDirectory) break;
+
+				// Trashフォルダに到達したら終了
+				if (p == trashPath) break;
+
+				// ルートまで行ったら終了
+				if (!p.has_parent_path() || p.parent_path() == p) break;
+
+				p = p.parent_path();
 			}
 
-			// 区切り文字
-			if (std::next(it) != parts.rend())
+			for (auto it = parts.rbegin(); it != parts.rend(); ++it)
 			{
-				ImGui::SameLine();
-				ImGui::Text(">");
-				ImGui::SameLine();
+				std::string name;
+				if (*it == m_BaseDirectory) name = "Assets";
+				else if (*it == trashPath) name = "Trash";	// Trash表示
+				else name = it->filename().string();
+
+				if (ImGui::Button(name.c_str())) ChangeDirectory(*it);
+				if (std::next(it) != parts.rend())
+				{
+					ImGui::SameLine();
+					ImGui::Text(">");
+					ImGui::SameLine();
+				}
 			}
 		}
+		ImGui::EndChild();
 
 		ImGui::SameLine();
 
-		// Undo/Redoの状態を表示
-		ImGui::TextDisabled("| Undo: %d | Redo: %d", (int)m_UndoStack.size(), (int)m_RedoStack.size());
+		// Search & Filter & Tools
 
-		// 右寄せグループ
-		float searchWidth = 150.0f;
-		float sliderWidth = 100.0f;
-		float spacing = 10.0f;
-		float rightAreaWidth = searchWidth + sliderWidth + spacing * 2;
+		// Type Filter
+		ImGui::SetNextItemWidth(100.0f);
+		const char* filterTypes[] = { "All", "Texture", "Mesh", "Script", "Material", "Scene" };
+		ImGui::Combo("##TypeFilter", &m_TypeFilterIndex, filterTypes, IM_ARRAYSIZE(filterTypes));
 
 		ImGui::SameLine();
-		float availX = ImGui::GetContentRegionAvail().x;
-		if (availX > rightAreaWidth)
-		{
-			ImGui::SetCursorPosX(ImGui::GetCursorPosX() + availX - rightAreaWidth);
-		}
 
-		// 検索バー
-		ImGui::PushItemWidth(searchWidth);
+		// Search Bar
+		ImGui::SetNextItemWidth(150.0f);
 		char buffer[256];
-		memset(buffer, 0, sizeof(buffer));
-		strncpy_s(buffer, m_SearchFilter.c_str(), sizeof(buffer));
+		strcpy_s(buffer, m_SearchFilter.c_str());
 		if (ImGui::InputTextWithHint("##Search", "Search...", buffer, sizeof(buffer)))
 		{
-			m_SearchFilter = std::string(buffer);
+			m_SearchFilter = buffer;
 		}
-
-		ImGui::PopItemWidth();
 
 		ImGui::SameLine();
 
-		// ズームスライダー
-		ImGui::PushItemWidth(sliderWidth);
-		ImGui::SliderFloat("##Zoom", &m_ThumbnailSize, 32.0f, 128.0f, "");
-		ImGui::PopItemWidth();
+		// TrashButton
+		// 左クリック: Trashフォルダへ移動
+		// 右クリック: 空にするメニュー表示
+		if (ImGui::Button(ICON_FA_TRASH))
+		{
+			std::filesystem::path trashPath = m_BaseDirectory.parent_path() / ".Trash";
+			if (std::filesystem::exists(trashPath))
+			{
+				ChangeDirectory(trashPath);
+			}
+		}
+		if (ImGui::IsItemHovered()) ImGui::SetTooltip("Click to Open Trash\nRight-Click to Empty");
+
+		if (ImGui::BeginPopupContextItem("TrashCtx", ImGuiPopupFlags_MouseButtonRight))
+		{
+			if (ImGui::MenuItem("Empty Trash"))
+			{
+				ImGui::CloseCurrentPopup();
+				ImGui::OpenPopup("EmptyTrashPopup");
+
+				std::filesystem::path trashPath = m_BaseDirectory.parent_path() / ".Trash";
+				if (std::filesystem::exists(trashPath))
+				{
+					for (const auto& entry : std::filesystem::directory_iterator(trashPath))
+						std::filesystem::remove_all(entry.path());
+				}
+			}
+			ImGui::EndPopup();
+		}
 	}
 
 	void ProjectBrowserPanel::DrawDirectoryTree()
 	{
 		DrawTreeNode(m_BaseDirectory);
+
+		// Trashもツリーに表示する場合
+		std::filesystem::path trashPath = m_BaseDirectory.parent_path() / ".Trash";
+		if (std::filesystem::exists(trashPath))
+		{
+			DrawTreeNode(trashPath);
+		}
 	}
 
 	void ProjectBrowserPanel::DrawTreeNode(const std::filesystem::path& path)
 	{
 		std::string filename = path.filename().string();
 		if (filename.empty()) filename = path.string();
+		if (filename == ".Trash") filename = "Trash";
 
 		// ツリーノードの設定
 		ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_SpanAvailWidth;
@@ -338,38 +461,24 @@ namespace Span
 
 		ImGui::Columns(columnCount, 0, false);
 
-		// ディレクトリ走査
+		// リスト化
+		std::vector<std::filesystem::directory_entry> entries;
 		try
 		{
 			for (const auto& entry : std::filesystem::directory_iterator(m_CurrentDirectory))
 			{
-				const auto& path = entry.path();
-				std::string filename = path.filename().string();
-
-				// 隠しファイルと、既に存在する .meta ファイル自体はスキップ
-				// if (!m_ShowHiddenFiles && filename[0] == '.') continue;
-				if (path.extension() == ".meta" || path.extension() == ".Trash") continue;
-
-				// メタデータの自動生成/読み込みチェック
-				if (!entry.is_directory())
-				{
-					AssetSerializer::LoadOrCreateMetadata(path);
-				}
-
-				// 検索フィルタ適用
-				if (!m_SearchFilter.empty())
-				{
-					// TODO: 大文字小文字を無視した部分一致などを実装
-					if (filename.find(m_SearchFilter) == std::string::npos) continue;
-				}
-
-				DrawEntryItem(entry);
-				ImGui::NextColumn();
+				entries.push_back(entry);
 			}
 		}
-		catch (const std::exception& e)
+		catch (...) {}
+
+		// 描画ループ
+		for (const auto& entry : entries)
 		{
-			ImGui::TextColored(ImVec4(1, 0, 0, 1), "Access Error: %s", e.what());
+			if (!MatchesFilter(entry.path())) continue;
+
+			DrawEntryItem(entry);
+			ImGui::NextColumn();
 		}
 
 		ImGui::Columns(1);
@@ -429,105 +538,78 @@ namespace Span
 			ImGui::Button(iconStr, size);
 		}
 
-		// フォルダアイコンへのドロップターゲット
+		// Drag & Drop
 		if (isDir)
 		{
 			HandleDragDropTarget(path);
 		}
 
-		// クリック・ドラッグ処理
+		// Drag & Drop
+		if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_SourceAllowNullID))
+		{
+			const wchar_t* itemPath = path.c_str();
+			ImGui::SetDragDropPayload("CONTENT_BROWSER_ITEM", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t));
+			ImGui::Text("%s", filename.c_str());
+			ImGui::EndDragDropSource();
+		}
+
+		// Interaction
 		if (ImGui::IsItemHovered())
 		{
-			// シングルクリック (選択)
 			if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
 			{
 				bool ctrl = ImGui::GetIO().KeyCtrl;
-				bool shift = ImGui::GetIO().KeyShift;
-
-				if (shift && !m_LastSelectedPath.empty())
-				{
-					// Shift範囲選択
-					SelectRange(m_LastSelectedPath, path);
-				}
-				else
-				{
-					// 通常選択 / Ctrl選択
-					SelectItem(path, ctrl);
-					m_LastSelectedPath = path;	// 始点を記録
-				}
+				SelectItem(path, ctrl);
 			}
-			// ダブルクリック (開く/移動)
 			else if (ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 			{
 				if (isDir)
 				{
 					ChangeDirectory(path);
-					m_LastSelectedPath.clear();
 				}
 				else
 				{
-					EditorFileSystem::OpenExternal(path);
+					std::filesystem::path preferredPath = path;
+					preferredPath.make_preferred();
+					EditorFileSystem::OpenExternal(preferredPath);
 				}
 			}
 		}
 
-		if (isSelected) ImGui::PopStyleColor();
+		// Pop Style
+		if (isSelected)
+		{
+			ImGui::PopStyleColor();
+		}
 		ImGui::PopStyleColor();
 
-		// 3. Drag & Drop Source
-		if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_SourceAllowNullID))
+		// Context Menu (Right Click)
+		if (ImGui::BeginPopupContextItem("ItemCtx"))
 		{
-			// ペイロードとしてファイルの絶対パスを渡す
-			const wchar_t* itemPath = path.c_str();
-			ImGui::SetDragDropPayload("CONTENT_BROWSER_ITEM", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t));
+			if (m_SelectedItems.find(path) == m_SelectedItems.end()) SelectItem(path, false);
 
-			// ドラッグ中のプレビュー表示
-			if (textureID)
+			// Show in Explorer
+			if (ImGui::MenuItem(ICON_FA_EYE " Show in Explorer"))
 			{
-				ImGui::Image((ImTextureID)textureID, ImVec2(64, 64));
+				std::filesystem::path p = path.parent_path();
+				p.make_preferred();
+				EditorFileSystem::OpenInExplorer(p);
 			}
-			else
+			ImGui::Separator();
+
+			if (ImGui::MenuItem("Rename", "F2"))
 			{
-				ImGui::Text("%s %s", iconStr, filename.c_str());
+				m_IsRenaming = true;
+				m_RenameFocus = true;
+				m_RenamingPath = path;
+				strncpy_s(m_RenameBuffer, filename.c_str(), sizeof(m_RenameBuffer));
 			}
-
-			ImGui::EndDragDropSource();
-		}
-
-		// アイテムごとの右クリックメニューをここに実装
-		if (ImGui::BeginPopupContextItem("ItemContextMenu"))
-		{
-			// 右クリックしたアイテムが未選択なら、選択状態にする
-			if (m_SelectedItems.find(path) == m_SelectedItems.end())
-			{
-				SelectItem(path, false);
-			}
-
-			// --- メニュー項目 ---
-
-			// 単一選択時のリネーム可能
-			if (m_SelectedItems.size() == 1)
-			{
-				if (ImGui::MenuItem("Rename", "F2"))
-				{
-					m_IsRenaming = true;
-					m_RenameFocus = true;
-					m_RenamingPath = path;
-					strncpy_s(m_RenameBuffer, filename.c_str(), sizeof(m_RenameBuffer));
-				}
-			}
-
-			if (ImGui::MenuItem("Delete", "Del"))
-			{
-				m_ShowDeleteDialog = true;
-			}
-
-			// TODO: 将来的に Open, Show in Explorer 等も追加
+			if (ImGui::MenuItem("Delete", "Del")) m_ShowDeleteDialog = true;
 
 			ImGui::EndPopup();
 		}
 
-		// 4. ファイル名 / リネーム
+		// Rename Input
 		if (m_IsRenaming && m_RenamingPath == path)
 		{
 			if (m_RenameFocus)
@@ -564,8 +646,17 @@ namespace Span
 
 	void ProjectBrowserPanel::DrawContextMenu()
 	{
+		// Background Context Menu
 		if (ImGui::BeginPopupContextWindow("ProjectBrowserContext", ImGuiPopupFlags_MouseButtonRight | ImGuiPopupFlags_NoOpenOverItems))
 		{
+			if (ImGui::MenuItem(ICON_FA_EYE " Show in Explorer"))
+			{
+				std::filesystem::path p = m_CurrentDirectory;
+				p.make_preferred();
+				EditorFileSystem::OpenInExplorer(p);
+			}
+			ImGui::Separator();
+
 			// --- 作成メニュー ---
 			if (ImGui::BeginMenu("Create"))
 			{
@@ -582,6 +673,17 @@ namespace Span
 					ExecuteCommand(std::move(cmd));
 				}
 				ImGui::Separator();
+				if (ImGui::MenuItem("Material", ".mat"))
+				{
+					std::string content = "{\n\t\"Shader\": \"Basic.hlsl\",\n\t\"Albedo\": [1.0, 1.0, 1.0]\n}";
+					CreateFileFromTemplate("NewMaterial.mat", content);
+				}
+				if (ImGui::MenuItem("Scene", ".span"))
+				{
+					std::string content = "{\n\t\"Entities\": []\n}";
+					CreateFileFromTemplate("NewScene.span", content);
+				}
+				ImGui::Separator();
 				if (ImGui::MenuItem("C++ Component", "Struct"))
 				{
 					CreateComponentScript();
@@ -589,11 +691,6 @@ namespace Span
 				if (ImGui::MenuItem("C++ System", "System"))
 				{
 					CreateSystemScript();
-				}
-				ImGui::Separator();
-				if (ImGui::MenuItem("Material", ".mat"))
-				{
-					// TODO: Create Material Asset
 				}
 				ImGui::EndMenu();
 			}
@@ -669,26 +766,78 @@ namespace Span
 			m_SelectedItems.clear();
 			for (const auto& entry : std::filesystem::directory_iterator(m_CurrentDirectory))
 			{
-				if (entry.path().filename() != ".Trash" && entry.path().extension() != ".meta")
+				if (MatchesFilter(entry.path()))
+				{
 					m_SelectedItems.insert(entry.path());
+				}
 			}
 		}
 	}
 
 	void ProjectBrowserPanel::SelectItem(const std::filesystem::path& path, bool multiSelect)
 	{
-		if (!multiSelect)
+		if (multiSelect)	// Ctrl + Click
 		{
-			m_SelectedItems.clear();
+			if (m_SelectedItems.find(path) != m_SelectedItems.end())
+			{
+				m_SelectedItems.erase(path);
+			}
+			else
+			{
+				m_SelectedItems.insert(path);
+				m_LastSelectedPath = path;
+			}
 		}
+		else // Normal Click
+		{
+			// Shiftキーの判定
+			bool shift = ImGui::GetIO().KeyShift;
 
-		if (m_SelectedItems.find(path) != m_SelectedItems.end())
-		{
-			if (multiSelect) m_SelectedItems.erase(path);
-		}
-		else
-		{
-			m_SelectedItems.insert(path);
+			if (shift && !m_LastSelectedPath.empty() && m_LastSelectedPath != path)
+			{
+				// 選択範囲ロジック
+				m_SelectedItems.clear();
+
+				// 現在の全ディレクトリ内のアイテムを走査後、StartとEndの間にあるものを追加
+				bool inRange = false;
+				std::filesystem::path start = m_LastSelectedPath;
+				std::filesystem::path end = path;
+
+				std::vector<std::filesystem::path> currentItems;
+				for (const auto& entry : std::filesystem::directory_iterator(m_CurrentDirectory))
+				{
+					if (entry.path().filename() != ".Trash" && entry.path().extension() != ".meta")
+					{
+						// フィルタ使用中ならフィルタも考慮
+						if (!m_SearchFilter.empty() && entry.path().filename().string().find(m_SearchFilter) == std::string::npos) continue;
+
+						currentItems.push_back(entry.path());
+					}
+				}
+
+				bool selecting = false;
+				for (const auto& item : currentItems)
+				{
+					if (item == start || item == end)
+					{
+						m_SelectedItems.insert(item);
+						if (start == end) break;
+
+						selecting = !selecting;
+					}
+					else if (selecting)
+					{
+						m_SelectedItems.insert(item);
+					}
+				}
+			}
+			else
+			{
+				// 通常の単一選択
+				m_SelectedItems.clear();
+				m_SelectedItems.insert(path);
+				m_LastSelectedPath = path;
+			}
 		}
 	}
 

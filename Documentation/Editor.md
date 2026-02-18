@@ -236,7 +236,7 @@
 - **Navigation Bar:**
   - [x] **Breadcrumbs:** 現在のパスを表示するパンくずリスト。
   - [x] **History Controls:** `<` (戻る) `>` (進む) ボタン。 (Backspaceキーのみ実装済)
-  - [ ] **Search Field:** 名前検索およびフィルタリング用入力欄。 (簡易実装済、高機能化が必要)
+  - [x] **Search Field:** 名前検索およびフィルタリング用入力欄。 (簡易実装済、高機能化が必要)
 - **Bottom Bar:**
   - [ ] **Item Count:** 現在表示中のアイテム数を表示。
   - [x] **Zoom Slider:** アイコンの表示サイズを動的に変更するスライダー。

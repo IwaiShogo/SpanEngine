@@ -20,6 +20,15 @@ namespace Span
 		void Refresh(const std::filesystem::path& rootDirectory);
 
 		/**
+		 * @brief	終了処理
+		 */
+		void Shutdown()
+		{
+			m_Assets.clear();
+			m_PathToHandle.clear();
+		}
+
+		/**
 		 * @brief	パスからアセット情報を登録・更新します (ファイル移動/作成時用)。
 		 */
 		void RegisterAsset(const std::filesystem::path& path);

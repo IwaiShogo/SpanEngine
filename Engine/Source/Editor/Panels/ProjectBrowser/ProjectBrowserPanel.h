@@ -154,6 +154,8 @@ namespace Span
 		 */
 		void CreateSystemScript();
 
+		bool MatchesFilter(const std::filesystem::path& path);
+
 	private:
 		// --- Paths ---
 		std::filesystem::path m_BaseDirectory;				///< アセットのルートディレクトリ (Assets/)
@@ -184,5 +186,7 @@ namespace Span
 
 		// --- Delete Dialog ---
 		bool m_ShowDeleteDialog = false;					///< 削除時のダイアログのフラグ
+
+		int m_TypeFilterIndex = 0;							///< 0: All, 1: Texture, 2: Mesh, 3: Script ...
 	};
 }

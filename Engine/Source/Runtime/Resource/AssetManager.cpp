@@ -44,6 +44,12 @@ namespace Span
 		m_TextureCache.clear();
 		m_MeshCache.clear();
 
+		m_DefaultMaterial.reset();
+		m_DefaultVS.reset();
+		m_DefaultPS.reset();
+
+		AssetRegistry::Get().Shutdown();
+
 		SPAN_LOG("AssetManager Shutdown: All assets released.");
 	}
 
@@ -92,6 +98,12 @@ namespace Span
 		{
 			m_MeshCache[handle] = std::shared_ptr<Mesh>(meshes[0]);
 			m_MeshCache[handle]->SetPath(path.string());
+
+			// 使用しなかった残りのメッシュを削除
+			for (size_t i = 1; i < meshes.size(); ++i)
+			{
+				delete meshes[i];
+			}
 
 			return m_MeshCache[handle];
 		}
