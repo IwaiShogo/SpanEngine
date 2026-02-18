@@ -556,12 +556,7 @@ namespace Span
 		// Interaction
 		if (ImGui::IsItemHovered())
 		{
-			if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
-			{
-				bool ctrl = ImGui::GetIO().KeyCtrl;
-				SelectItem(path, ctrl);
-			}
-			else if (ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+			if (ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 			{
 				if (isDir)
 				{
@@ -573,6 +568,11 @@ namespace Span
 					preferredPath.make_preferred();
 					EditorFileSystem::OpenExternal(preferredPath);
 				}
+			}
+			else if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+			{
+				bool ctrl = ImGui::GetIO().KeyCtrl;
+				SelectItem(path, ctrl);
 			}
 		}
 
@@ -695,14 +695,6 @@ namespace Span
 				ImGui::EndMenu();
 			}
 
-			ImGui::Separator();
-
-			if (ImGui::MenuItem("Show in Explorer"))
-			{
-				// Windows固有: エクスプローラーで開く
-				system(("explorer" + m_CurrentDirectory.string()).c_str());
-			}
-
 			ImGui::EndPopup();
 		}
 	}
@@ -781,11 +773,13 @@ namespace Span
 			if (m_SelectedItems.find(path) != m_SelectedItems.end())
 			{
 				m_SelectedItems.erase(path);
+				SelectionManager::DeselectAsset(path);	// 同期: 選択解除
 			}
 			else
 			{
 				m_SelectedItems.insert(path);
 				m_LastSelectedPath = path;
+				SelectionManager::AddAsset(path);		// 同期: 追加選択
 			}
 		}
 		else // Normal Click
@@ -815,19 +809,26 @@ namespace Span
 					}
 				}
 
+				// 範囲選択の実行
+				SelectionManager::Clear();
 				bool selecting = false;
-				for (const auto& item : currentItems)
-				{
-					if (item == start || item == end)
-					{
-						m_SelectedItems.insert(item);
-						if (start == end) break;
 
-						selecting = !selecting;
-					}
-					else if (selecting)
+				// インデックスベースで再取得
+				int startIdx = -1, endIdx = -1;
+				for (int i = 0; i < currentItems.size(); ++i)
+				{
+					if (currentItems[i] == start) startIdx = i;
+					if (currentItems[i] == end) endIdx = i;
+				}
+
+				if (startIdx != -1 && endIdx != -1)
+				{
+					int minIdx = std::min(startIdx, endIdx);
+					int maxIdx = std::max(startIdx, endIdx);
+					for (int i = minIdx; i <= maxIdx; ++i)
 					{
-						m_SelectedItems.insert(item);
+						m_SelectedItems.insert(currentItems[i]);
+						SelectionManager::AddAsset(currentItems[i]);
 					}
 				}
 			}
@@ -837,6 +838,7 @@ namespace Span
 				m_SelectedItems.clear();
 				m_SelectedItems.insert(path);
 				m_LastSelectedPath = path;
+				SelectionManager::SelectAsset(path);
 			}
 		}
 	}

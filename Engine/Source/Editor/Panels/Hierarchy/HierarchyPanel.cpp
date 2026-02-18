@@ -202,7 +202,7 @@ namespace Span
 		{
 			// 子も消すべきだが、とりあえず対象のみ削除
 			world.DestroyEntity(entity);
-			if (SelectionManager::GetPrimary() == entity)
+			if (SelectionManager::GetPrimaryEntity() == entity)
 			{
 				SelectionManager::Clear();
 			}

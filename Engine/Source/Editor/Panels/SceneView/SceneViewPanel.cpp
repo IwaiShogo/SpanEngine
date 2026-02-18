@@ -416,7 +416,7 @@ namespace Span
 		}
 
 		// オブジェクト操作ギズモ
-		Entity selectedEntity = SelectionManager::GetPrimary();
+		Entity selectedEntity = SelectionManager::GetPrimaryEntity();
 		if (!selectedEntity.IsNull() && world.IsAlive(selectedEntity) && m_GizmoType != -1)
 		{
 			Transform* tc = world.GetComponentPtr<Transform>(selectedEntity);
