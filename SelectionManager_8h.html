@@ -117,9 +117,18 @@ SelectionManager.h の依存先関係図:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 名前空間</h2></td></tr>
 <tr class="memitem:Span" id="r_Span"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html">Span</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+列挙型</h2></td></tr>
+<tr class="memitem:ae126b95988f55f544522b13f75659b3f" id="r_ae126b95988f55f544522b13f75659b3f"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3f">Span::SelectionType</a> { <a class="el" href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa6adf97f83acf6453d4a6a4b1070f3754">Span::None</a> = 0
+, <a class="el" href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f">Span::Entity</a>
+, <a class="el" href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa26e9054be7f40079575582b7ad3f7363">Span::Asset</a>
+ }</td></tr>
+<tr class="memdesc:ae126b95988f55f544522b13f75659b3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在選択されているオブジェクトの種類を識別します。  <a href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3f">[詳解]</a><br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>エディタ内でのオブジェクト選択状態の管理 </p>
+<p>HierarchyPanelでのEntity選択、ProjectBrowserでのAssetファイル選択を統合管理します。 EntityとAssetの選択は排他的（どちらか一方のみアクティブ）であり、 どちらも複数選択 (Multi-Select) をサポートしています。</p>
 <hr  />
  <h2 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
 autotoc_md40</h2>

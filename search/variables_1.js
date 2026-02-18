@@ -5,5 +5,6 @@ var searchData=
   ['addfunc_2',['AddFunc',['../structSpan_1_1ComponentMetadata.html#a4cedcd411cbb100c56d542b856279af6',1,'Span::ComponentMetadata']]],
   ['albedo_3',['Albedo',['../structSpan_1_1MaterialData.html#aa361f1922d18999eb46092a1b8926806',1,'Span::MaterialData']]],
   ['archetypemanager_4',['archetypeManager',['../classSpan_1_1World.html#a5af4a9f07d803a8be677b59842bdadb0',1,'Span::World']]],
-  ['archetypes_5',['archetypes',['../classSpan_1_1ArchetypeManager.html#a645659a380e6e245fa76b29caf5e2a64',1,'Span::ArchetypeManager']]]
+  ['archetypes_5',['archetypes',['../classSpan_1_1ArchetypeManager.html#a645659a380e6e245fa76b29caf5e2a64',1,'Span::ArchetypeManager']]],
+  ['assetselections_6',['assetSelections',['../classSpan_1_1SelectionManager.html#a6e374b55087114ca1818dd02d472a8ff',1,'Span::SelectionManager']]]
 ];

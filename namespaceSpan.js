@@ -199,6 +199,11 @@ var namespaceSpan =
       [ "Perspective", "namespaceSpan.html#acf4814db50cb33df2e35d9ea4e8d8a00aa80420eef88d11f77532f1b9cb467fa3", null ],
       [ "Orthographic", "namespaceSpan.html#acf4814db50cb33df2e35d9ea4e8d8a00a03424250432f2aa71de95579d2c0eaeb", null ]
     ] ],
+    [ "SelectionType", "namespaceSpan.html#ae126b95988f55f544522b13f75659b3f", [
+      [ "None", "namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "Entity", "namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f", null ],
+      [ "Asset", "namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa26e9054be7f40079575582b7ad3f7363", null ]
+    ] ],
     [ "ShaderType", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920d", [
       [ "Vertex", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6", null ],
       [ "Pixel", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0", null ]

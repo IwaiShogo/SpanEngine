@@ -12,7 +12,7 @@ var searchData=
   ['editorpanel_2eh_9',['EditorPanel.h',['../EditorPanel_8h.html',1,'']]],
   ['empty_10',['Empty',['../structSpan_1_1FixedString.html#ad5e9613c004c88532a25a0bc289fb997',1,'Span::FixedString']]],
   ['endframe_11',['EndFrame',['../classSpan_1_1Input.html#a1be9ee5fee394c7fe2c6e3d7bfa6ee77',1,'Span::Input::EndFrame()'],['../classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec',1,'Span::GuiManager::EndFrame()'],['../classSpan_1_1GraphicsContext.html#a003ab67b72f1c4f582ade1d8e335a1f8',1,'Span::GraphicsContext::EndFrame()'],['../classSpan_1_1Renderer.html#a677d1565f7c6df08b393f328801ca419',1,'Span::Renderer::EndFrame()']]],
-  ['entity_12',['Entity',['../structSpan_1_1Entity.html',1,'Span::Entity'],['../structSpan_1_1Entity.html#a23ab2fecbbf9cbe9038d074bf442bb04',1,'Span::Entity::Entity()=default'],['../structSpan_1_1Entity.html#acfcb503b4305999b74e7856ffb269581',1,'Span::Entity::Entity(EntityID id)']]],
+  ['entity_12',['Entity',['../structSpan_1_1Entity.html',1,'Span::Entity'],['../structSpan_1_1Entity.html#a23ab2fecbbf9cbe9038d074bf442bb04',1,'Span::Entity::Entity()=default'],['../structSpan_1_1Entity.html#acfcb503b4305999b74e7856ffb269581',1,'Span::Entity::Entity(EntityID id)'],['../namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f',1,'Span::Entity']]],
   ['entity_2eh_13',['Entity.h',['../Entity_8h.html',1,'']]],
   ['entitybuilder_14',['EntityBuilder',['../classSpan_1_1EntityBuilder.html',1,'Span::EntityBuilder'],['../classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2',1,'Span::EntityBuilder::EntityBuilder()']]],
   ['entitybuilder_2eh_15',['EntityBuilder.h',['../EntityBuilder_8h.html',1,'']]],
@@ -23,10 +23,11 @@ var searchData=
   ['entitymanager_20',['entityManager',['../classSpan_1_1World.html#a756621ec548408d3d8e438d91d701d64',1,'Span::World']]],
   ['entitymanager_2ecpp_21',['EntityManager.cpp',['../EntityManager_8cpp.html',1,'']]],
   ['entitymanager_2eh_22',['EntityManager.h',['../EntityManager_8h.html',1,'']]],
-  ['entitysize_23',['entitySize',['../classSpan_1_1Archetype.html#aba45aa9225749156ea021eb1d7ad06a5',1,'Span::Archetype']]],
-  ['entrypoint_2eh_24',['EntryPoint.h',['../EntryPoint_8h.html',1,'']]],
-  ['error_25',['Error',['../namespaceSpan.html#a706679730aeab52031ed8774240027f2a902b0d55fddef6f8d651fe1035b7d4bd',1,'Span']]],
-  ['escape_26',['Escape',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa013ec032d3460d4be4431c6ab1f8f224',1,'Span']]],
-  ['execute_27',['Execute',['../classSpan_1_1RenameFileCommand.html#afff923f74e0e459939f56807f776e664',1,'Span::RenameFileCommand::Execute()'],['../classSpan_1_1MoveFileCommand.html#ae5b7da7c7298954570d1058c61b046e4',1,'Span::MoveFileCommand::Execute()'],['../classSpan_1_1DeleteFileCommand.html#ad66eaca81e3aca4cea62f9d41385bed1',1,'Span::DeleteFileCommand::Execute()'],['../classSpan_1_1CreateFileCommand.html#af7059f43b81c330aace44ad414b90fee',1,'Span::CreateFileCommand::Execute()'],['../classSpan_1_1CreateDirectoryCommand.html#a4403e259fcf2161106739b0b971f9b89',1,'Span::CreateDirectoryCommand::Execute()'],['../classSpan_1_1ICommand.html#a948582c1800aa55e785ede88188c2c92',1,'Span::ICommand::Execute()']]],
-  ['executecommand_28',['ExecuteCommand',['../classSpan_1_1ProjectBrowserPanel.html#a7b1af5b6e52d5d7dc6afe0cc6d32407a',1,'Span::ProjectBrowserPanel']]]
+  ['entityselections_23',['entitySelections',['../classSpan_1_1SelectionManager.html#a0ec6ec6dc9e08204c26adc1404f0c149',1,'Span::SelectionManager']]],
+  ['entitysize_24',['entitySize',['../classSpan_1_1Archetype.html#aba45aa9225749156ea021eb1d7ad06a5',1,'Span::Archetype']]],
+  ['entrypoint_2eh_25',['EntryPoint.h',['../EntryPoint_8h.html',1,'']]],
+  ['error_26',['Error',['../namespaceSpan.html#a706679730aeab52031ed8774240027f2a902b0d55fddef6f8d651fe1035b7d4bd',1,'Span']]],
+  ['escape_27',['Escape',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa013ec032d3460d4be4431c6ab1f8f224',1,'Span']]],
+  ['execute_28',['Execute',['../classSpan_1_1RenameFileCommand.html#afff923f74e0e459939f56807f776e664',1,'Span::RenameFileCommand::Execute()'],['../classSpan_1_1MoveFileCommand.html#ae5b7da7c7298954570d1058c61b046e4',1,'Span::MoveFileCommand::Execute()'],['../classSpan_1_1DeleteFileCommand.html#ad66eaca81e3aca4cea62f9d41385bed1',1,'Span::DeleteFileCommand::Execute()'],['../classSpan_1_1CreateFileCommand.html#af7059f43b81c330aace44ad414b90fee',1,'Span::CreateFileCommand::Execute()'],['../classSpan_1_1CreateDirectoryCommand.html#a4403e259fcf2161106739b0b971f9b89',1,'Span::CreateDirectoryCommand::Execute()'],['../classSpan_1_1ICommand.html#a948582c1800aa55e785ede88188c2c92',1,'Span::ICommand::Execute()']]],
+  ['executecommand_29',['ExecuteCommand',['../classSpan_1_1ProjectBrowserPanel.html#a7b1af5b6e52d5d7dc6afe0cc6d32407a',1,'Span::ProjectBrowserPanel']]]
 ];

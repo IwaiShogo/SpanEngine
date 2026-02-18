@@ -254,15 +254,15 @@ autotoc_md131</h2>
 <div class="line">        Span::ComponentRegistry::Register&lt;_InspectorSelfType&gt;( \</div>
 <div class="line">            _InspectorSelfType::_GetInspectorName(), \</div>
 <div class="line">            <span class="comment">/* Draw Func */</span> \</div>
-<div class="line">            [](Span::Entity e, Span::World&amp; w) { \</div>
+<div class="line">            [](<a class="code hl_enumvalue" href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f">Span::Entity</a> e, Span::World&amp; w) { \</div>
 <div class="line">                if (<span class="keyword">auto</span>* c = w.<a class="code hl_function" href="classSpan_1_1World.html#a637d963c8538b8ca6535bd1c6b88115c">GetComponentPtr</a>&lt;_InspectorSelfType&gt;(e)) c-&gt;OnGui(e, w); \</div>
 <div class="line">            }, \</div>
 <div class="line">            <span class="comment">/* Add Func */</span> \</div>
-<div class="line">            [](Span::Entity e, Span::World&amp; w) { \</div>
+<div class="line">            [](<a class="code hl_enumvalue" href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f">Span::Entity</a> e, Span::World&amp; w) { \</div>
 <div class="line">                if (!w.<a class="code hl_function" href="classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0">HasComponent</a>&lt;_InspectorSelfType&gt;(e)) w.<a class="code hl_function" href="classSpan_1_1World.html#a555e11829d3833ce35f444779c4c2369">AddComponent</a>&lt;_InspectorSelfType&gt;(e); \</div>
 <div class="line">            }, \</div>
 <div class="line">            <span class="comment">/* Has Func */</span> \</div>
-<div class="line">            [](Span::Entity e, Span::World&amp; w) { \</div>
+<div class="line">            [](<a class="code hl_enumvalue" href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f">Span::Entity</a> e, Span::World&amp; w) { \</div>
 <div class="line">                <span class="keywordflow">return</span> w.<a class="code hl_function" href="classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0">HasComponent</a>&lt;_InspectorSelfType&gt;(e); \</div>
 <div class="line">            } \</div>
 <div class="line">        ); \</div>
@@ -272,6 +272,7 @@ autotoc_md131</h2>
 <div class="ttc" id="aclassSpan_1_1World_html_a059bbe879fcaf0a57d1b935be05810f0"><div class="ttname"><a href="classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0">Span::World::HasComponent</a></div><div class="ttdeci">bool HasComponent(Entity entity)</div><div class="ttdoc">指定したコンポーネントを持っているか確認します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00248">World.h:248</a></div></div>
 <div class="ttc" id="aclassSpan_1_1World_html_a555e11829d3833ce35f444779c4c2369"><div class="ttname"><a href="classSpan_1_1World.html#a555e11829d3833ce35f444779c4c2369">Span::World::AddComponent</a></div><div class="ttdeci">void AddComponent(Entity entity, const T &amp;initialValue=T())</div><div class="ttdoc">既存のEntityに新しいコンポーネントを追加します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00163">World.h:163</a></div></div>
 <div class="ttc" id="aclassSpan_1_1World_html_a637d963c8538b8ca6535bd1c6b88115c"><div class="ttname"><a href="classSpan_1_1World.html#a637d963c8538b8ca6535bd1c6b88115c">Span::World::GetComponentPtr</a></div><div class="ttdeci">T * GetComponentPtr(Entity entity)</div><div class="ttdoc">コンポーネントへのポインタを取得します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00285">World.h:285</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f"><div class="ttname"><a href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f">Span::SelectionType::Entity</a></div><div class="ttdeci">@ Entity</div><div class="ttdoc">シーン上のEntityが選択されている</div><div class="ttdef"><b>Definition</b> <a href="SelectionManager_8h_source.html#l00027">SelectionManager.h:27</a></div></div>
 </div><!-- fragment -->
 <p>インスペクターUI定義の終了マクロ。 </p>
 

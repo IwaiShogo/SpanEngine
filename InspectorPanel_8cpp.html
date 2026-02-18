@@ -95,6 +95,7 @@ $(function(){initNavTree('InspectorPanel_8cpp.html','',''); });
 <div class="textblock"><code>#include &quot;<a class="el" href="InspectorPanel_8h_source.html">InspectorPanel.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="SpanEngine_8h_source.html">SpanEngine.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="SpanEditor_8h_source.html">SpanEditor.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="EditorFileSystem_8h_source.html">Editor/Utils/EditorFileSystem.h</a>&quot;</code><br />
 <code>#include &lt;imgui.h&gt;</code><br />
 <code>#include &lt;imgui_internal.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -109,10 +110,82 @@ InspectorPanel.cpp の依存先関係図:</div>
 名前空間</h2></td></tr>
 <tr class="memitem:Span" id="r_Span"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html">Span</a></td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a554328eb3a45c07b27defc4225934dd6" id="r_a554328eb3a45c07b27defc4225934dd6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a554328eb3a45c07b27defc4225934dd6">ICON_FA_FILE</a>&#160;&#160;&#160;&quot;[FILE]&quot;</td></tr>
+<tr class="memitem:a2dda25b7495de6f18c2d092e38f93f37" id="r_a2dda25b7495de6f18c2d092e38f93f37"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2dda25b7495de6f18c2d092e38f93f37">ICON_FA_FILES_O</a>&#160;&#160;&#160;&quot;[FILES]&quot;</td></tr>
+<tr class="memitem:a1d22890f336190cd1926bf6773952e73" id="r_a1d22890f336190cd1926bf6773952e73"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1d22890f336190cd1926bf6773952e73">ICON_FA_IMAGE</a>&#160;&#160;&#160;&quot;[IMG]&quot;</td></tr>
+<tr class="memitem:afb106b79d6466d7d46285323337b36c2" id="r_afb106b79d6466d7d46285323337b36c2"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#afb106b79d6466d7d46285323337b36c2">ICON_FA_CUBE</a>&#160;&#160;&#160;&quot;[MESH]&quot;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
 <tr class="memitem:a2ffd67e5c0ae55d0918e1924de043da2" id="r_a2ffd67e5c0ae55d0918e1924de043da2"><td class="memItemLeft">static AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1InspectorPanel.html">InspectorPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a2ffd67e5c0ae55d0918e1924de043da2">Span::_reg</a> (&quot;Inspector&quot;)</td></tr>
 </table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">マクロ定義詳解</h2>
+<a id="afb106b79d6466d7d46285323337b36c2" name="afb106b79d6466d7d46285323337b36c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb106b79d6466d7d46285323337b36c2">&#9670;&#160;</a></span>ICON_FA_CUBE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ICON_FA_CUBE&#160;&#160;&#160;&quot;[MESH]&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="InspectorPanel_8cpp_source.html">InspectorPanel.cpp</a> の <a class="el" href="InspectorPanel_8cpp_source.html#l00022">22</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a554328eb3a45c07b27defc4225934dd6" name="a554328eb3a45c07b27defc4225934dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a554328eb3a45c07b27defc4225934dd6">&#9670;&#160;</a></span>ICON_FA_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ICON_FA_FILE&#160;&#160;&#160;&quot;[FILE]&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="InspectorPanel_8cpp_source.html">InspectorPanel.cpp</a> の <a class="el" href="InspectorPanel_8cpp_source.html#l00013">13</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a2dda25b7495de6f18c2d092e38f93f37" name="a2dda25b7495de6f18c2d092e38f93f37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dda25b7495de6f18c2d092e38f93f37">&#9670;&#160;</a></span>ICON_FA_FILES_O</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ICON_FA_FILES_O&#160;&#160;&#160;&quot;[FILES]&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="InspectorPanel_8cpp_source.html">InspectorPanel.cpp</a> の <a class="el" href="InspectorPanel_8cpp_source.html#l00016">16</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a1d22890f336190cd1926bf6773952e73" name="a1d22890f336190cd1926bf6773952e73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d22890f336190cd1926bf6773952e73">&#9670;&#160;</a></span>ICON_FA_IMAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ICON_FA_IMAGE&#160;&#160;&#160;&quot;[IMG]&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="InspectorPanel_8cpp_source.html">InspectorPanel.cpp</a> の <a class="el" href="InspectorPanel_8cpp_source.html#l00019">19</a> 行目に定義があります。</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">

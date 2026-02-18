@@ -100,12 +100,12 @@ $(function(){initNavTree('classSpan_1_1InspectorPanel.html','','classSpan_1_1Ins
 <div class="dynheader">
 Span::InspectorPanel の継承関係図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1InspectorPanel__inherit__graph.svg" width="160" height="330"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1InspectorPanel__inherit__graph.svg" width="180" height="350"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Span::InspectorPanel 連携図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1InspectorPanel__coll__graph.svg" width="160" height="330"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1InspectorPanel__coll__graph.svg" width="180" height="350"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -113,6 +113,8 @@ Span::InspectorPanel 連携図</div>
 <tr class="memitem:a2c067589801cb71a36c33e142aed6eff" id="r_a2c067589801cb71a36c33e142aed6eff"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a2c067589801cb71a36c33e142aed6eff">InspectorPanel</a> ()</td></tr>
 <tr class="memitem:ae32fda6018a2e54f880e6708ac5b89fe" id="r_ae32fda6018a2e54f880e6708ac5b89fe"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae32fda6018a2e54f880e6708ac5b89fe">OnImGuiRender</a> () override</td></tr>
 <tr class="memdesc:ae32fda6018a2e54f880e6708ac5b89fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレーム呼ばれる描画関数。  <br /></td></tr>
+<tr class="memitem:aa24fb5f7f8d1de98906fe4b644cb4a86" id="r_aa24fb5f7f8d1de98906fe4b644cb4a86"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa24fb5f7f8d1de98906fe4b644cb4a86">DrawAssetInspector</a> (const std::vector&lt; std::filesystem::path &gt; &amp;paths)</td></tr>
+<tr class="memdesc:aa24fb5f7f8d1de98906fe4b644cb4a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">アセット用のインスペクターを描画します。  <br /></td></tr>
 <tr class="inherit_header pub_methods_classSpan_1_1EditorPanel"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classSpan_1_1EditorPanel')"><span class="dynarrow"><span class="arrowhead closed"></span></span>基底クラス <a class="el" href="classSpan_1_1EditorPanel.html">Span::EditorPanel</a> に属する継承公開メンバ関数</td></tr>
 <tr class="memitem:a53c2cb1d331dca6a442575055d09a515 inherit pub_methods_classSpan_1_1EditorPanel" id="r_a53c2cb1d331dca6a442575055d09a515"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1EditorPanel.html#a53c2cb1d331dca6a442575055d09a515">EditorPanel</a> (const std::string &amp;<a class="el" href="classSpan_1_1EditorPanel.html#ae47b5777434e86ea69207a5249ec52c3">title</a>)</td></tr>
 <tr class="memdesc:a53c2cb1d331dca6a442575055d09a515 inherit pub_methods_classSpan_1_1EditorPanel"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ。  <br /></td></tr>
@@ -171,6 +173,47 @@ Span::InspectorPanel 連携図</div>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="aa24fb5f7f8d1de98906fe4b644cb4a86" name="aa24fb5f7f8d1de98906fe4b644cb4a86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa24fb5f7f8d1de98906fe4b644cb4a86">&#9670;&#160;</a></span>DrawAssetInspector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::InspectorPanel::DrawAssetInspector </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::filesystem::path &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>paths</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アセット用のインスペクターを描画します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">paths</td><td>選択されている全てのアセットパス</td></tr>
+  </table>
+  </dd>
+</dl>
+<ul>
+<li>単一選択の場合: 詳細情報を表示します。</li>
+<li>複数選択の場合: 選択アイテムのリストと、Primary Asset (最後に選んだもの) の簡易プレビューを表示します。 </li>
+</ul>
+
+<p class="definition"> <a class="el" href="InspectorPanel_8cpp_source.html">InspectorPanel.cpp</a> の <a class="el" href="InspectorPanel_8cpp_source.html#l00246">246</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1InspectorPanel_aa24fb5f7f8d1de98906fe4b644cb4a86_cgraph.svg" width="608" height="108"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1InspectorPanel_aa24fb5f7f8d1de98906fe4b644cb4a86_icgraph.svg" width="376" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="ae32fda6018a2e54f880e6708ac5b89fe" name="ae32fda6018a2e54f880e6708ac5b89fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae32fda6018a2e54f880e6708ac5b89fe">&#9670;&#160;</a></span>OnImGuiRender()</h2>
 
@@ -199,7 +242,7 @@ Span::InspectorPanel 連携図</div>
 
 <p><a class="el" href="classSpan_1_1EditorPanel.html#a95362399147c9087c18e5ec22ec432a6">Span::EditorPanel</a>を実装しています。</p>
 
-<p class="definition"> <a class="el" href="InspectorPanel_8cpp_source.html">InspectorPanel.cpp</a> の <a class="el" href="InspectorPanel_8cpp_source.html#l00013">13</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="InspectorPanel_8cpp_source.html">InspectorPanel.cpp</a> の <a class="el" href="InspectorPanel_8cpp_source.html#l00029">29</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">

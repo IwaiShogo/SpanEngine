@@ -10,10 +10,11 @@ var searchData=
   ['inspectorpanel_7',['InspectorPanel',['../classSpan_1_1InspectorPanel.html#a2c067589801cb71a36c33e142aed6eff',1,'Span::InspectorPanel']]],
   ['invert_8',['Invert',['../structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e',1,'Span::Matrix4x4']]],
   ['isalive_9',['IsAlive',['../classSpan_1_1EntityManager.html#a3056c638e46d14b21123cbec5b76ee39',1,'Span::EntityManager::IsAlive()'],['../classSpan_1_1World.html#a5e0da52990e6715e2cc31a0d85913748',1,'Span::World::IsAlive()']]],
-  ['isenabled_10',['IsEnabled',['../classSpan_1_1System.html#a779e39d5ac0a7e503b3b26e4950ffff7',1,'Span::System']]],
-  ['isnull_11',['IsNull',['../structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3',1,'Span::Entity']]],
-  ['isopen_12',['IsOpen',['../classSpan_1_1EditorPanel.html#aff44b6072075af32e53652f92d235829',1,'Span::EditorPanel']]],
-  ['isselected_13',['IsSelected',['../classSpan_1_1SelectionManager.html#a65d6aa36e0d09b69ff3914e6387d667d',1,'Span::SelectionManager']]],
-  ['istransparent_14',['IsTransparent',['../classSpan_1_1Material.html#abc4ee804b2e3c79090588ddcb26eef8f',1,'Span::Material']]],
-  ['isvalid_15',['IsValid',['../structSpan_1_1AssetMetadata.html#a83c8ed8bfd79a2aa90ed8d4e36b785b8',1,'Span::AssetMetadata']]]
+  ['isassetselected_10',['IsAssetSelected',['../classSpan_1_1SelectionManager.html#a3235bc3fdf4f6f5bd91580e8bebeceb4',1,'Span::SelectionManager']]],
+  ['isenabled_11',['IsEnabled',['../classSpan_1_1System.html#a779e39d5ac0a7e503b3b26e4950ffff7',1,'Span::System']]],
+  ['isnull_12',['IsNull',['../structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3',1,'Span::Entity']]],
+  ['isopen_13',['IsOpen',['../classSpan_1_1EditorPanel.html#aff44b6072075af32e53652f92d235829',1,'Span::EditorPanel']]],
+  ['isselected_14',['IsSelected',['../classSpan_1_1SelectionManager.html#a65d6aa36e0d09b69ff3914e6387d667d',1,'Span::SelectionManager']]],
+  ['istransparent_15',['IsTransparent',['../classSpan_1_1Material.html#abc4ee804b2e3c79090588ddcb26eef8f',1,'Span::Material']]],
+  ['isvalid_16',['IsValid',['../structSpan_1_1AssetMetadata.html#a83c8ed8bfd79a2aa90ed8d4e36b785b8',1,'Span::AssetMetadata']]]
 ];

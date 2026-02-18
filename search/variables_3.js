@@ -15,5 +15,6 @@ var searchData=
   ['constantbufferindex_12',['constantBufferIndex',['../classSpan_1_1Renderer.html#af593a2174b046ad060ad6fe70af71f36',1,'Span::Renderer']]],
   ['context_13',['context',['../classSpan_1_1Renderer.html#a104c859dbad9750fc0848280c7d271ec',1,'Span::Renderer']]],
   ['count_14',['Count',['../structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d',1,'Span::Chunk']]],
-  ['currentstate_15',['currentState',['../classSpan_1_1RenderTarget.html#a573a1102c9303b7c67fd99bc0e7489d0',1,'Span::RenderTarget']]]
+  ['currentstate_15',['currentState',['../classSpan_1_1RenderTarget.html#a573a1102c9303b7c67fd99bc0e7489d0',1,'Span::RenderTarget']]],
+  ['currenttype_16',['currentType',['../classSpan_1_1SelectionManager.html#a927ddf6ff02dc3a128708289278d55ca',1,'Span::SelectionManager']]]
 ];
