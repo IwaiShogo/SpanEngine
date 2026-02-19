@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "1_abcdefghijklmnopqrstuvwxyz~⚠アパビメラリ使座操注計🌳🏗📁📊📏📝🔄🖱🖼🧠🧮",
   1: "acdefghilmnpqrstvw",
   2: "s",
-  3: "acefghilmnprstw",
+  3: "acdefghilmnprstw",
   4: "_abcdefghilmnopqrstuvw~",
   5: "_abcdefghiklmnoprstuvwxyz",
   6: "acdhirsu",

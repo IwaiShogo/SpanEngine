@@ -12,12 +12,13 @@ var searchData=
   ['hascomponentfunc_9',['HasComponentFunc',['../namespaceSpan.html#ad284dad2c8e86ac8f482272df541e612',1,'Span']]],
   ['hasfunc_10',['HasFunc',['../structSpan_1_1ComponentMetadata.html#ad6350fc810d1bb0b2034c039a17971eb',1,'Span::ComponentMetadata']]],
   ['hash_3c_20span_3a_3aentityid_20_3e_11',['hash&lt; Span::EntityID &gt;',['../structstd_1_1hash_3_01Span_1_1EntityID_01_4.html',1,'std']]],
-  ['header_12',['Header',['../structSpan_1_1Camera.html#a0c6923a4e86c576bb77222ca974ae4d0',1,'Span::Camera::Header()'],['../namespaceSpan.html#ad91faa614dc451a8508f2113cc2cb22d',1,'Span::Header(const char *header)'],['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257abf50d5e661106d0abe925af3c2e6f7e7',1,'Span::Header']]],
-  ['height_13',['Height',['../structSpan_1_1WindowDesc.html#aac08d89553d3b8035353fccaec19c9d9',1,'Span::WindowDesc']]],
-  ['height_14',['height',['../classSpan_1_1GraphicsContext.html#aaaddcb875742327d39925d6663e51b3a',1,'Span::GraphicsContext::height'],['../classSpan_1_1RenderTarget.html#a04c440b3a562ca83de2fea0a91dab0bb',1,'Span::RenderTarget::height'],['../classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6',1,'Span::Texture::height'],['../classSpan_1_1Window.html#a235ef7aea03644d4d837583c3a3802c1',1,'Span::Window::height']]],
-  ['hideininspector_15',['HideInInspector',['../namespaceSpan.html#a6c44cae3bf938ea21881939d2a2f04ea',1,'Span::HideInInspector()'],['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257a56e3bd5ed469b7ba659ba60b2d65833a',1,'Span::HideInInspector']]],
-  ['hierarchypanel_16',['HierarchyPanel',['../classSpan_1_1HierarchyPanel.html',1,'Span::HierarchyPanel'],['../classSpan_1_1HierarchyPanel.html#a545fc24e0e7a780ea2f4a73e2e5778d0',1,'Span::HierarchyPanel::HierarchyPanel()']]],
-  ['hierarchypanel_2ecpp_17',['HierarchyPanel.cpp',['../HierarchyPanel_8cpp.html',1,'']]],
-  ['hierarchypanel_2eh_18',['HierarchyPanel.h',['../HierarchyPanel_8h.html',1,'']]],
-  ['hwnd_19',['hWnd',['../classSpan_1_1Input.html#a894733c1ea68a084e5cf9ab8f0bcb999',1,'Span::Input::hWnd'],['../classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515',1,'Span::Window::hWnd']]]
+  ['hastag_12',['HasTag',['../classSpan_1_1TagManager.html#ab00b37a4de706f5e174054ec7467a71b',1,'Span::TagManager']]],
+  ['header_13',['Header',['../structSpan_1_1Camera.html#a0c6923a4e86c576bb77222ca974ae4d0',1,'Span::Camera::Header()'],['../namespaceSpan.html#ad91faa614dc451a8508f2113cc2cb22d',1,'Span::Header(const char *header)'],['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257abf50d5e661106d0abe925af3c2e6f7e7',1,'Span::Header']]],
+  ['height_14',['Height',['../structSpan_1_1WindowDesc.html#aac08d89553d3b8035353fccaec19c9d9',1,'Span::WindowDesc']]],
+  ['height_15',['height',['../classSpan_1_1GraphicsContext.html#aaaddcb875742327d39925d6663e51b3a',1,'Span::GraphicsContext::height'],['../classSpan_1_1RenderTarget.html#a04c440b3a562ca83de2fea0a91dab0bb',1,'Span::RenderTarget::height'],['../classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6',1,'Span::Texture::height'],['../classSpan_1_1Window.html#a235ef7aea03644d4d837583c3a3802c1',1,'Span::Window::height']]],
+  ['hideininspector_16',['HideInInspector',['../namespaceSpan.html#a6c44cae3bf938ea21881939d2a2f04ea',1,'Span::HideInInspector()'],['../namespaceSpan.html#a00c320c889b6c836e32c17b01071d257a56e3bd5ed469b7ba659ba60b2d65833a',1,'Span::HideInInspector']]],
+  ['hierarchypanel_17',['HierarchyPanel',['../classSpan_1_1HierarchyPanel.html',1,'Span::HierarchyPanel'],['../classSpan_1_1HierarchyPanel.html#a545fc24e0e7a780ea2f4a73e2e5778d0',1,'Span::HierarchyPanel::HierarchyPanel()']]],
+  ['hierarchypanel_2ecpp_18',['HierarchyPanel.cpp',['../HierarchyPanel_8cpp.html',1,'']]],
+  ['hierarchypanel_2eh_19',['HierarchyPanel.h',['../HierarchyPanel_8h.html',1,'']]],
+  ['hwnd_20',['hWnd',['../classSpan_1_1Input.html#a894733c1ea68a084e5cf9ab8f0bcb999',1,'Span::Input::hWnd'],['../classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515',1,'Span::Window::hWnd']]]
 ];

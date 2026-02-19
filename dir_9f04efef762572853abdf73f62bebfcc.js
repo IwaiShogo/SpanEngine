@@ -1,6 +1,7 @@
 var dir_9f04efef762572853abdf73f62bebfcc =
 [
     [ "Components", "dir_68e5ee02315a150ea198303cea974c1f.html", "dir_68e5ee02315a150ea198303cea974c1f" ],
+    [ "Core", "dir_3de6fe8d63806cea4bedcdcf5470dc5e.html", "dir_3de6fe8d63806cea4bedcdcf5470dc5e" ],
     [ "ECS", "dir_5e12f0ed66b5e5f61b7b40f53564b633.html", "dir_5e12f0ed66b5e5f61b7b40f53564b633" ],
     [ "Graphics", "dir_6091cbee3e268cbb682ad3d3f55cf8b5.html", "dir_6091cbee3e268cbb682ad3d3f55cf8b5" ],
     [ "Platform", "dir_07f2be210ff6c371c35315ee7129d1a6.html", "dir_07f2be210ff6c371c35315ee7129d1a6" ],

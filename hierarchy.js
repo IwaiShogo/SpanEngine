@@ -16,6 +16,7 @@ var hierarchy =
     [ "Span::ComponentRegistry", "classSpan_1_1ComponentRegistry.html", null ],
     [ "Span::ComponentType&lt; T &gt;", "classSpan_1_1ComponentType.html", null ],
     [ "Span::ConstantBuffer&lt; T &gt;", "classSpan_1_1ConstantBuffer.html", null ],
+    [ "Span::DirectoryWatcher", "classSpan_1_1DirectoryWatcher.html", null ],
     [ "Span::EditorCamera", "structSpan_1_1EditorCamera.html", null ],
     [ "Span::EditorFileSystem", "classSpan_1_1EditorFileSystem.html", null ],
     [ "Span::EditorPanel", "classSpan_1_1EditorPanel.html", [
@@ -72,6 +73,7 @@ var hierarchy =
       [ "Span::TransformSystem", "classSpan_1_1TransformSystem.html", null ]
     ] ],
     [ "Span::Tag", "structSpan_1_1Tag.html", null ],
+    [ "Span::TagManager", "classSpan_1_1TagManager.html", null ],
     [ "Span::Texture", "classSpan_1_1Texture.html", null ],
     [ "Span::Time", "classSpan_1_1Time.html", null ],
     [ "Span::Transform", "structSpan_1_1Transform.html", null ],

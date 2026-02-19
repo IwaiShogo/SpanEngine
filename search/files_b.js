@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['relationship_2eh_0',['Relationship.h',['../Relationship_8h.html',1,'']]],
-  ['relationshipsystem_2eh_1',['RelationshipSystem.h',['../RelationshipSystem_8h.html',1,'']]],
-  ['renderer_2ecpp_2',['Renderer.cpp',['../Renderer_8cpp.html',1,'']]],
-  ['renderer_2eh_3',['Renderer.h',['../Renderer_8h.html',1,'']]],
-  ['renderingsystem_2eh_4',['RenderingSystem.h',['../RenderingSystem_8h.html',1,'']]],
-  ['rendertarget_2ecpp_5',['RenderTarget.cpp',['../RenderTarget_8cpp.html',1,'']]],
-  ['rendertarget_2eh_6',['RenderTarget.h',['../RenderTarget_8h.html',1,'']]]
+  ['panelmanager_2eh_0',['PanelManager.h',['../PanelManager_8h.html',1,'']]],
+  ['projectbrowserpanel_2ecpp_1',['ProjectBrowserPanel.cpp',['../ProjectBrowserPanel_8cpp.html',1,'']]],
+  ['projectbrowserpanel_2eh_2',['ProjectBrowserPanel.h',['../ProjectBrowserPanel_8h.html',1,'']]]
 ];

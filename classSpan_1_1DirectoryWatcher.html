@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Span::DirectoryWatcher クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classSpan_1_1DirectoryWatcher.html','','classSpan_1_1DirectoryWatcher-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Span::DirectoryWatcher クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>特定のディレクトリを監視し、変更を通知するクラス。  
+ <a href="#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="DirectoryWatcher_8h_source.html">DirectoryWatcher.h</a>&gt;</code></p>
+<div class="dynheader">
+Span::DirectoryWatcher 連携図</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1DirectoryWatcher__coll__graph.svg" width="178" height="236"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+公開型</h2></td></tr>
+<tr class="memitem:a2fc3f31d7e8a501395466b95f20c7812" id="r_a2fc3f31d7e8a501395466b95f20c7812"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a2fc3f31d7e8a501395466b95f20c7812">ActionCallback</a> = std::function&lt;void()&gt;</td></tr>
+<tr class="memdesc:a2fc3f31d7e8a501395466b95f20c7812"><td class="mdescLeft">&#160;</td><td class="mdescRight">変更検知時に発火するコールバックの型  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:abf0a90645482396c57f707d3ce0fe572" id="r_abf0a90645482396c57f707d3ce0fe572"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#abf0a90645482396c57f707d3ce0fe572">DirectoryWatcher</a> (const std::filesystem::path &amp;directoryToWatch, <a class="el" href="#a2fc3f31d7e8a501395466b95f20c7812">ActionCallback</a> onAction)</td></tr>
+<tr class="memdesc:abf0a90645482396c57f707d3ce0fe572"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
+<tr class="memitem:ab8a0bbeae474f95602ea228205cfb171" id="r_ab8a0bbeae474f95602ea228205cfb171"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ab8a0bbeae474f95602ea228205cfb171">~DirectoryWatcher</a> ()</td></tr>
+<tr class="memdesc:ab8a0bbeae474f95602ea228205cfb171"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ。監視スレッドを安全に停止します。  <br /></td></tr>
+<tr class="memitem:a70da06171e4fd055eca06b308eaf43c3" id="r_a70da06171e4fd055eca06b308eaf43c3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a70da06171e4fd055eca06b308eaf43c3">SetDirectory</a> (const std::filesystem::path &amp;newDirectory)</td></tr>
+<tr class="memdesc:a70da06171e4fd055eca06b308eaf43c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">監視対象のディレクトリを変更します。  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+非公開メンバ関数</h2></td></tr>
+<tr class="memitem:ababfe88cb51834bf6782c306e9db62d5" id="r_ababfe88cb51834bf6782c306e9db62d5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ababfe88cb51834bf6782c306e9db62d5">WatchLoop</a> ()</td></tr>
+<tr class="memdesc:ababfe88cb51834bf6782c306e9db62d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">バックグラウンドで実行される監視ループ  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+非公開変数類</h2></td></tr>
+<tr class="memitem:aef4c6245b80e3c10d1b30331c35f6c7c" id="r_aef4c6245b80e3c10d1b30331c35f6c7c"><td class="memItemLeft">std::filesystem::path&#160;</td><td class="memItemRight"><a class="el" href="#aef4c6245b80e3c10d1b30331c35f6c7c">m_CurrentDirectory</a></td></tr>
+<tr class="memitem:a38579ace5aa691908810a097e3560cb3" id="r_a38579ace5aa691908810a097e3560cb3"><td class="memItemLeft"><a class="el" href="#a2fc3f31d7e8a501395466b95f20c7812">ActionCallback</a>&#160;</td><td class="memItemRight"><a class="el" href="#a38579ace5aa691908810a097e3560cb3">m_OnAction</a></td></tr>
+<tr class="memitem:af0d766673b4aca67a339feb4885535bd" id="r_af0d766673b4aca67a339feb4885535bd"><td class="memItemLeft">std::thread&#160;</td><td class="memItemRight"><a class="el" href="#af0d766673b4aca67a339feb4885535bd">m_WatchThread</a></td></tr>
+<tr class="memitem:a3e23929351ada8ac8bcd954c53b48b58" id="r_a3e23929351ada8ac8bcd954c53b48b58"><td class="memItemLeft">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3e23929351ada8ac8bcd954c53b48b58">m_IsRunning</a></td></tr>
+<tr class="memitem:a3f0a92f5110a3e07bfcf2a049cd561e1" id="r_a3f0a92f5110a3e07bfcf2a049cd561e1"><td class="memItemLeft">std::mutex&#160;</td><td class="memItemRight"><a class="el" href="#a3f0a92f5110a3e07bfcf2a049cd561e1">m_Mutex</a></td></tr>
+<tr class="memitem:a8725d786e5a5c4484b556e070e01b820" id="r_a8725d786e5a5c4484b556e070e01b820"><td class="memItemLeft">std::unordered_map&lt; std::string, std::filesystem::file_time_type &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a8725d786e5a5c4484b556e070e01b820">m_FileCache</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>特定のディレクトリを監視し、変更を通知するクラス。 </p>
+<p>エディタのホットリロード機能 (Project Browserの自動更新など) に利用されます。 バックグラウンドスレッドで定期的にディレクトリをスキャンし、差分を検知します。 </p>
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8h_source.html">DirectoryWatcher.h</a> の <a class="el" href="DirectoryWatcher_8h_source.html#l00027">27</a> 行目に定義があります。</p>
+</div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">型定義メンバ詳解</h2>
+<a id="a2fc3f31d7e8a501395466b95f20c7812" name="a2fc3f31d7e8a501395466b95f20c7812"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fc3f31d7e8a501395466b95f20c7812">&#9670;&#160;</a></span>ActionCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a2fc3f31d7e8a501395466b95f20c7812">Span::DirectoryWatcher::ActionCallback</a> = std::function&lt;void()&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>変更検知時に発火するコールバックの型 </p>
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8h_source.html">DirectoryWatcher.h</a> の <a class="el" href="DirectoryWatcher_8h_source.html#l00033">33</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
+<a id="abf0a90645482396c57f707d3ce0fe572" name="abf0a90645482396c57f707d3ce0fe572"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf0a90645482396c57f707d3ce0fe572">&#9670;&#160;</a></span>DirectoryWatcher()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::DirectoryWatcher::DirectoryWatcher </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>directoryToWatch</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a2fc3f31d7e8a501395466b95f20c7812">ActionCallback</a></td>          <td class="paramname"><span class="paramname"><em>onAction</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">directoryToWatch</td><td>監視対象のディレクトリパス </td></tr>
+    <tr><td class="paramname">onAction</td><td>変更検知時に呼ばれるコールバック </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8cpp_source.html">DirectoryWatcher.cpp</a> の <a class="el" href="DirectoryWatcher_8cpp_source.html#l00016">16</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1DirectoryWatcher_abf0a90645482396c57f707d3ce0fe572_cgraph.svg" width="631" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ab8a0bbeae474f95602ea228205cfb171" name="ab8a0bbeae474f95602ea228205cfb171"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8a0bbeae474f95602ea228205cfb171">&#9670;&#160;</a></span>~DirectoryWatcher()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::DirectoryWatcher::~DirectoryWatcher </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>デストラクタ。監視スレッドを安全に停止します。 </p>
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8cpp_source.html">DirectoryWatcher.cpp</a> の <a class="el" href="DirectoryWatcher_8cpp_source.html#l00022">22</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="a70da06171e4fd055eca06b308eaf43c3" name="a70da06171e4fd055eca06b308eaf43c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70da06171e4fd055eca06b308eaf43c3">&#9670;&#160;</a></span>SetDirectory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::DirectoryWatcher::SetDirectory </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>newDirectory</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>監視対象のディレクトリを変更します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newDirectory</td><td>新しい監視対象のディレクトリパス </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8cpp_source.html">DirectoryWatcher.cpp</a> の <a class="el" href="DirectoryWatcher_8cpp_source.html#l00031">31</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1DirectoryWatcher_a70da06171e4fd055eca06b308eaf43c3_cgraph.svg" width="408" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1DirectoryWatcher_a70da06171e4fd055eca06b308eaf43c3_icgraph.svg" width="408" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ababfe88cb51834bf6782c306e9db62d5" name="ababfe88cb51834bf6782c306e9db62d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ababfe88cb51834bf6782c306e9db62d5">&#9670;&#160;</a></span>WatchLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::DirectoryWatcher::WatchLoop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>バックグラウンドで実行される監視ループ </p>
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8cpp_source.html">DirectoryWatcher.cpp</a> の <a class="el" href="DirectoryWatcher_8cpp_source.html#l00064">64</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1DirectoryWatcher_ababfe88cb51834bf6782c306e9db62d5_icgraph.svg" width="631" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
+<a id="aef4c6245b80e3c10d1b30331c35f6c7c" name="aef4c6245b80e3c10d1b30331c35f6c7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef4c6245b80e3c10d1b30331c35f6c7c">&#9670;&#160;</a></span>m_CurrentDirectory</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::filesystem::path Span::DirectoryWatcher::m_CurrentDirectory</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8h_source.html">DirectoryWatcher.h</a> の <a class="el" href="DirectoryWatcher_8h_source.html#l00060">60</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a8725d786e5a5c4484b556e070e01b820" name="a8725d786e5a5c4484b556e070e01b820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8725d786e5a5c4484b556e070e01b820">&#9670;&#160;</a></span>m_FileCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, std::filesystem::file_time_type&gt; Span::DirectoryWatcher::m_FileCache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8h_source.html">DirectoryWatcher.h</a> の <a class="el" href="DirectoryWatcher_8h_source.html#l00068">68</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a3e23929351ada8ac8bcd954c53b48b58" name="a3e23929351ada8ac8bcd954c53b48b58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e23929351ada8ac8bcd954c53b48b58">&#9670;&#160;</a></span>m_IsRunning</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt;bool&gt; Span::DirectoryWatcher::m_IsRunning</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8h_source.html">DirectoryWatcher.h</a> の <a class="el" href="DirectoryWatcher_8h_source.html#l00064">64</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a3f0a92f5110a3e07bfcf2a049cd561e1" name="a3f0a92f5110a3e07bfcf2a049cd561e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f0a92f5110a3e07bfcf2a049cd561e1">&#9670;&#160;</a></span>m_Mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex Span::DirectoryWatcher::m_Mutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8h_source.html">DirectoryWatcher.h</a> の <a class="el" href="DirectoryWatcher_8h_source.html#l00065">65</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a38579ace5aa691908810a097e3560cb3" name="a38579ace5aa691908810a097e3560cb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38579ace5aa691908810a097e3560cb3">&#9670;&#160;</a></span>m_OnAction</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a2fc3f31d7e8a501395466b95f20c7812">ActionCallback</a> Span::DirectoryWatcher::m_OnAction</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8h_source.html">DirectoryWatcher.h</a> の <a class="el" href="DirectoryWatcher_8h_source.html#l00061">61</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="af0d766673b4aca67a339feb4885535bd" name="af0d766673b4aca67a339feb4885535bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0d766673b4aca67a339feb4885535bd">&#9670;&#160;</a></span>m_WatchThread</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::thread Span::DirectoryWatcher::m_WatchThread</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DirectoryWatcher_8h_source.html">DirectoryWatcher.h</a> の <a class="el" href="DirectoryWatcher_8h_source.html#l00063">63</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>Engine/Source/Editor/Utils/<a class="el" href="DirectoryWatcher_8h_source.html">DirectoryWatcher.h</a></li>
+<li>Engine/Source/Editor/Utils/<a class="el" href="DirectoryWatcher_8cpp_source.html">DirectoryWatcher.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceSpan.html">Span</a></li><li class="navelem"><a href="classSpan_1_1DirectoryWatcher.html">DirectoryWatcher</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

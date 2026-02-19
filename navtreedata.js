@@ -42,7 +42,8 @@ var NAVTREE =
       [ "クラスメンバ", "functions.html", [
         [ "全て", "functions.html", "functions_dup" ],
         [ "関数", "functions_func.html", "functions_func" ],
-        [ "変数", "functions_vars.html", "functions_vars" ]
+        [ "変数", "functions_vars.html", "functions_vars" ],
+        [ "型定義", "functions_type.html", null ]
       ] ]
     ] ],
     [ "ファイル", "files.html", [
@@ -59,15 +60,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Active_8h.html",
-"classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9",
-"classSpan_1_1EditorCameraSystem.html",
-"classSpan_1_1Input.html#a3177ecb1b845a0021b3704d826043b49",
-"classSpan_1_1ProjectBrowserPanel.html#a54b15a26723b31b54718b81e61ecf9c2",
-"classSpan_1_1SceneViewPanel.html#a44c1da326b24ff90580203cd14ad8e5c",
-"dir_169bf179a3637a8526db086914425a95.html",
-"namespaceSpan.html#acf4814db50cb33df2e35d9ea4e8d8a00",
-"structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e",
-"structSpan_1_1Vector3.html#a91d58c181afda160b2e8bf5929e2d2a9"
+"classSpan_1_1Application.html#a874e2f98f78745d0c786d7bb03db6ddd",
+"classSpan_1_1DeleteFileCommand.html#ab407fadb25fd30c6f7d183377f3d76c7",
+"classSpan_1_1ImGuiUI.html",
+"classSpan_1_1MoveFileCommand.html#a701ec145b0b8f760af365b2fd30532f1",
+"classSpan_1_1Renderer.html#abcf344a9488f1c415de7368b1efc597a",
+"classSpan_1_1World.html#a0cf3c16fe3672409ea7d34226220111c",
+"namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa2b6ccd162daeb8ccb9b43f5c934c580a",
+"structSpan_1_1FixedString.html#abc61291c56a764c588d90ecebffb446e",
+"structSpan_1_1Vector2.html#ab876b0c87711d5be2c26e34a59a7242f"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

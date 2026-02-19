@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Editor/Utils/DirectoryWatcher.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('DirectoryWatcher_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">DirectoryWatcher.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="DirectoryWatcher_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    DirectoryWatcher.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   ディレクトリの変更を監視するクラス</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * std::filesystem を使用して、指定されたディレクトリ内の</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ファイルの追加、削除、変更、リネームをバックグラウンドで監視します。</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * 変更が検知された場合、登録されたコールバック関数を呼び出します。</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * @class   DirectoryWatcher</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     * @brief   特定のディレクトリを監視し、変更を通知するクラス。</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">     * </span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">     * @details</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">     * エディタのホットリロード機能 (Project Browserの自動更新など) に利用されます。</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">     * バックグラウンドスレッドで定期的にディレクトリをスキャンし、差分を検知します。</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classSpan_1_1DirectoryWatcher.html">   27</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classSpan_1_1DirectoryWatcher.html#abf0a90645482396c57f707d3ce0fe572">DirectoryWatcher</a></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">         * @brief   変更検知時に発火するコールバックの型</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classSpan_1_1DirectoryWatcher.html#a2fc3f31d7e8a501395466b95f20c7812">   33</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="classSpan_1_1DirectoryWatcher.html#a2fc3f31d7e8a501395466b95f20c7812">ActionCallback</a> = std::function&lt;void()&gt;;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"></span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">         * @brief   コンストラクタ</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">         * @param   directoryToWatch 監視対象のディレクトリパス</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">         * @param   onAction 変更検知時に呼ばれるコールバック</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_function" href="classSpan_1_1DirectoryWatcher.html#abf0a90645482396c57f707d3ce0fe572">DirectoryWatcher</a>(<span class="keyword">const</span> std::filesystem::path&amp; directoryToWatch, <a class="code hl_typedef" href="classSpan_1_1DirectoryWatcher.html#a2fc3f31d7e8a501395466b95f20c7812">ActionCallback</a> onAction);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"></span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">         * @brief   デストラクタ。監視スレッドを安全に停止します。</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_function" href="classSpan_1_1DirectoryWatcher.html#ab8a0bbeae474f95602ea228205cfb171">~DirectoryWatcher</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"></span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">         * @brief   監視対象のディレクトリを変更します。</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">         * @param   newDirectory 新しい監視対象のディレクトリパス</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1DirectoryWatcher.html#a70da06171e4fd055eca06b308eaf43c3">SetDirectory</a>(<span class="keyword">const</span> std::filesystem::path&amp; newDirectory);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">         * @brief   バックグラウンドで実行される監視ループ</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1DirectoryWatcher.html#ababfe88cb51834bf6782c306e9db62d5">WatchLoop</a>();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classSpan_1_1DirectoryWatcher.html#aef4c6245b80e3c10d1b30331c35f6c7c">   60</a></span>        std::filesystem::path <a class="code hl_variable" href="classSpan_1_1DirectoryWatcher.html#aef4c6245b80e3c10d1b30331c35f6c7c">m_CurrentDirectory</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classSpan_1_1DirectoryWatcher.html#a38579ace5aa691908810a097e3560cb3">   61</a></span>        <a class="code hl_typedef" href="classSpan_1_1DirectoryWatcher.html#a2fc3f31d7e8a501395466b95f20c7812">ActionCallback</a> <a class="code hl_variable" href="classSpan_1_1DirectoryWatcher.html#a38579ace5aa691908810a097e3560cb3">m_OnAction</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classSpan_1_1DirectoryWatcher.html#af0d766673b4aca67a339feb4885535bd">   63</a></span>        std::thread <a class="code hl_variable" href="classSpan_1_1DirectoryWatcher.html#af0d766673b4aca67a339feb4885535bd">m_WatchThread</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classSpan_1_1DirectoryWatcher.html#a3e23929351ada8ac8bcd954c53b48b58">   64</a></span>        std::atomic&lt;bool&gt; <a class="code hl_variable" href="classSpan_1_1DirectoryWatcher.html#a3e23929351ada8ac8bcd954c53b48b58">m_IsRunning</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classSpan_1_1DirectoryWatcher.html#a3f0a92f5110a3e07bfcf2a049cd561e1">   65</a></span>        std::mutex <a class="code hl_variable" href="classSpan_1_1DirectoryWatcher.html#a3f0a92f5110a3e07bfcf2a049cd561e1">m_Mutex</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="comment">// ファイルパスと最終更新時間のキャッシュ</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classSpan_1_1DirectoryWatcher.html#a8725d786e5a5c4484b556e070e01b820">   68</a></span>        std::unordered_map&lt;std::string, std::filesystem::file_time_type&gt; <a class="code hl_variable" href="classSpan_1_1DirectoryWatcher.html#a8725d786e5a5c4484b556e070e01b820">m_FileCache</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    };</div>
+</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_a2fc3f31d7e8a501395466b95f20c7812"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#a2fc3f31d7e8a501395466b95f20c7812">Span::DirectoryWatcher::ActionCallback</a></div><div class="ttdeci">std::function&lt; void()&gt; ActionCallback</div><div class="ttdoc">変更検知時に発火するコールバックの型</div><div class="ttdef"><b>Definition</b> <a href="#l00033">DirectoryWatcher.h:33</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_a38579ace5aa691908810a097e3560cb3"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#a38579ace5aa691908810a097e3560cb3">Span::DirectoryWatcher::m_OnAction</a></div><div class="ttdeci">ActionCallback m_OnAction</div><div class="ttdef"><b>Definition</b> <a href="#l00061">DirectoryWatcher.h:61</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_a3e23929351ada8ac8bcd954c53b48b58"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#a3e23929351ada8ac8bcd954c53b48b58">Span::DirectoryWatcher::m_IsRunning</a></div><div class="ttdeci">std::atomic&lt; bool &gt; m_IsRunning</div><div class="ttdef"><b>Definition</b> <a href="#l00064">DirectoryWatcher.h:64</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_a3f0a92f5110a3e07bfcf2a049cd561e1"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#a3f0a92f5110a3e07bfcf2a049cd561e1">Span::DirectoryWatcher::m_Mutex</a></div><div class="ttdeci">std::mutex m_Mutex</div><div class="ttdef"><b>Definition</b> <a href="#l00065">DirectoryWatcher.h:65</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_a70da06171e4fd055eca06b308eaf43c3"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#a70da06171e4fd055eca06b308eaf43c3">Span::DirectoryWatcher::SetDirectory</a></div><div class="ttdeci">void SetDirectory(const std::filesystem::path &amp;newDirectory)</div><div class="ttdoc">監視対象のディレクトリを変更します。</div><div class="ttdef"><b>Definition</b> <a href="DirectoryWatcher_8cpp_source.html#l00031">DirectoryWatcher.cpp:31</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_a8725d786e5a5c4484b556e070e01b820"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#a8725d786e5a5c4484b556e070e01b820">Span::DirectoryWatcher::m_FileCache</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::filesystem::file_time_type &gt; m_FileCache</div><div class="ttdef"><b>Definition</b> <a href="#l00068">DirectoryWatcher.h:68</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_ab8a0bbeae474f95602ea228205cfb171"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#ab8a0bbeae474f95602ea228205cfb171">Span::DirectoryWatcher::~DirectoryWatcher</a></div><div class="ttdeci">~DirectoryWatcher()</div><div class="ttdoc">デストラクタ。監視スレッドを安全に停止します。</div><div class="ttdef"><b>Definition</b> <a href="DirectoryWatcher_8cpp_source.html#l00022">DirectoryWatcher.cpp:22</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_ababfe88cb51834bf6782c306e9db62d5"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#ababfe88cb51834bf6782c306e9db62d5">Span::DirectoryWatcher::WatchLoop</a></div><div class="ttdeci">void WatchLoop()</div><div class="ttdoc">バックグラウンドで実行される監視ループ</div><div class="ttdef"><b>Definition</b> <a href="DirectoryWatcher_8cpp_source.html#l00064">DirectoryWatcher.cpp:64</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_abf0a90645482396c57f707d3ce0fe572"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#abf0a90645482396c57f707d3ce0fe572">Span::DirectoryWatcher::DirectoryWatcher</a></div><div class="ttdeci">DirectoryWatcher(const std::filesystem::path &amp;directoryToWatch, ActionCallback onAction)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition</b> <a href="DirectoryWatcher_8cpp_source.html#l00016">DirectoryWatcher.cpp:16</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_aef4c6245b80e3c10d1b30331c35f6c7c"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#aef4c6245b80e3c10d1b30331c35f6c7c">Span::DirectoryWatcher::m_CurrentDirectory</a></div><div class="ttdeci">std::filesystem::path m_CurrentDirectory</div><div class="ttdef"><b>Definition</b> <a href="#l00060">DirectoryWatcher.h:60</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DirectoryWatcher_html_af0d766673b4aca67a339feb4885535bd"><div class="ttname"><a href="classSpan_1_1DirectoryWatcher.html#af0d766673b4aca67a339feb4885535bd">Span::DirectoryWatcher::m_WatchThread</a></div><div class="ttdeci">std::thread m_WatchThread</div><div class="ttdef"><b>Definition</b> <a href="#l00063">DirectoryWatcher.h:63</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_c6cb6fb3292d721ac39edcf45c3f2a55.html">Editor</a></li><li class="navelem"><a href="dir_081b3def49d6dcff92d2057173091811.html">Utils</a></li><li class="navelem"><a href="DirectoryWatcher_8h.html">DirectoryWatcher.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>
