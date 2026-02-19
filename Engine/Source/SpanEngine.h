@@ -48,6 +48,7 @@
 #include "Runtime/Reflection/SpanReflection.h"
 #include "Runtime/Resource/AssetManager.h"
 #include "Runtime/Resource/AssetMetadata.h"
+#include "Runtime/Resource/AssetRegistry.h"
 #include "Runtime/Resource/AssetSerializer.h"
 #include "Runtime/Systems/Core/RelationshipSystem.h"
 #include "Runtime/Systems/Core/TransformSystem.h"

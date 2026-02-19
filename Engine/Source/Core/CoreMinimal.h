@@ -53,6 +53,9 @@
 #include <sstream>
 #include <mutex>
 #include <random>
+#include <thread>
+#include <atomic>
+#include <cctype>
 
 // 3. DirectX 12 & Math
 // ============================================================

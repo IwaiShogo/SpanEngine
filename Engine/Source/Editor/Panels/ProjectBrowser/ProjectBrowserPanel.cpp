@@ -117,6 +117,12 @@ namespace Span
 		{
 			std::filesystem::create_directories(m_BaseDirectory);
 		}
+
+		// DirectoryWatcher
+		m_DirectoryWatcher = std::make_unique<DirectoryWatcher>(m_CurrentDirectory, [this]()
+		{
+			m_NeedsRefresh = true;
+		});
 	}
 
 	void ProjectBrowserPanel::OnImGuiRender()
@@ -125,6 +131,26 @@ namespace Span
 		{
 			ImGui::End();
 			return;
+		}
+
+		// ホットリロード要求の処理
+		if (m_NeedsRefresh)
+		{
+			// 削除されたファイルが選択リストに残っていれば選択解除
+			for (auto it = m_SelectedItems.begin(); it != m_SelectedItems.end(); )
+			{
+				if (!std::filesystem::exists(*it))
+				{
+					SelectionManager::DeselectAsset(*it);
+					it = m_SelectedItems.erase(it);
+				}
+				else
+				{
+					++it;
+				}
+
+				m_NeedsRefresh = false;
+			}
 		}
 
 		// 外部からのファイルドロップ処理
@@ -890,6 +916,8 @@ namespace Span
 
 		m_CurrentDirectory = newDir;
 		m_SelectedItems.clear();
+
+		if (m_DirectoryWatcher) m_DirectoryWatcher->SetDirectory(m_CurrentDirectory);
 	}
 
 	void ProjectBrowserPanel::GoBack()

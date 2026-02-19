@@ -4,6 +4,7 @@
 #include <SpanEditor.h>
 
 #include "Editor/Utils/EditorFileSystem.h"
+#include "Runtime/Core/TagManager.h"
 
 #include <imgui.h>
 #include <imgui_internal.h>
@@ -116,31 +117,79 @@ namespace Span
 
 				// --- Tag ---
 				ImGui::Text("Tag"); ImGui::SameLine(labelWidth);
-				ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x * 0.5f - 10);
 
-				// タグリスト (将来的にはTagManagerから取得)
-				const char* tags[] = { "Untagged", "Player", "Enemy", "MainCamera" };
-				int currentTagIndex = 0;
+				// [+] ボタンの幅を考慮してComboの幅を設定
+				float addBtnWidth = 30.0f;
+				ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x * 0.5f - 10 - addBtnWidth);
 
-				// 現在のタグを取得
+				// TagManagerからタグリストを取得
+				const auto& registeredTags = TagManager::Get().GetAllTags();
+
+				// 現在のエンティティが持っているタグ名を取得
+				std::string currentTagStr = "Untagged";
 				if (Tag* t = world.GetComponentPtr<Tag>(selected))
 				{
-					for (int i = 0; i < IM_ARRAYSIZE(tags); i++) {
-						if (t->Value == tags[i]) { currentTagIndex = i; break; }
-					}
+					currentTagStr = t->Value.data();
 				}
 				else
 				{
-					// 持っていなければ追加してUntaggedにする
 					world.AddComponent<Tag>(selected, Tag("Untagged"));
 				}
 
-				if (ImGui::Combo("##Tag", &currentTagIndex, tags, IM_ARRAYSIZE(tags)))
+				// 現在のタグがリストの何番目か
+				int currentTagIndex = 0;
+				for (int i = 0; i < registeredTags.size(); i++)
 				{
-					// 変更を適用
-					if (Tag* t = world.GetComponentPtr<Tag>(selected)) {
-						t->Value = tags[currentTagIndex];
+					if (registeredTags[i] == currentTagStr)
+					{
+						currentTagIndex = i;
+						break;
 					}
+				}
+
+				// ImGui::Combo用のC文字列配列を作成
+				std::vector<const char*> tagCStrs;
+				tagCStrs.reserve(registeredTags.size());
+				for (const auto& tag : registeredTags) tagCStrs.push_back(tag.c_str());
+
+				if (ImGui::Combo("##Tag", &currentTagIndex, tagCStrs.data(), (int)tagCStrs.size()))
+				{
+					// 変更をコンポーネントに適用
+					if (Tag* t = world.GetComponentPtr<Tag>(selected))
+					{
+						t->Value = registeredTags[currentTagIndex];
+					}
+				}
+
+				// [+] タグ追加ボタン
+				ImGui::SameLine();
+				if (ImGui::Button("+##AddTag", ImVec2(addBtnWidth, 0)))
+				{
+					ImGui::OpenPopup("AddTagPopup");
+				}
+
+				// タグ追加用ポップアップ
+				if (ImGui::BeginPopup("AddTagPopup"))
+				{
+					ImGui::TextDisabled("Add New Tag");
+					ImGui::Separator();
+
+					static char newTagBuffer[64] = "";
+					if (ImGui::InputText("##NewTagName", newTagBuffer, sizeof(newTagBuffer), ImGuiInputTextFlags_EnterReturnsTrue))
+					{
+						std::string newTag(newTagBuffer);
+						if (TagManager::Get().AddTag(newTag))
+						{
+							// 追加後、即座にそのタグを設定する
+							if (Tag* t = world.GetComponentPtr<Tag>(selected))
+							{
+								t->Value = newTag;
+							}
+						}
+						newTagBuffer[0] = '\n';
+						ImGui::CloseCurrentPopup();
+					}
+					ImGui::EndPopup();
 				}
 
 				ImGui::SameLine();

@@ -13,6 +13,7 @@
 
 #include "Editor/Panels/EditorPanel.h"
 #include "Editor/Core/ICommand.h"
+#include "Editor/Utils/DirectoryWatcher.h"
 
 namespace Span
 {
@@ -188,5 +189,8 @@ namespace Span
 		bool m_ShowDeleteDialog = false;					///< 削除時のダイアログのフラグ
 
 		int m_TypeFilterIndex = 0;							///< 0: All, 1: Texture, 2: Mesh, 3: Script ...
+
+		std::unique_ptr<DirectoryWatcher> m_DirectoryWatcher;
+		std::atomic<bool> m_NeedsRefresh{ false };
 	};
 }
