@@ -138,7 +138,6 @@ var menudata={children:[
 {text:"ファイル一覧",url:"files.html"},
 {text:"ファイルメンバ",url:"globals.html",children:[
 {text:"全て",url:"globals.html",children:[
-{text:"g",url:"globals.html#index_g"},
 {text:"i",url:"globals.html#index_i"},
 {text:"m",url:"globals.html#index_m"},
 {text:"n",url:"globals.html#index_n"},
@@ -146,7 +145,6 @@ var menudata={children:[
 {text:"w",url:"globals.html#index_w"}]},
 {text:"関数",url:"globals_func.html"},
 {text:"マクロ定義",url:"globals_defs.html",children:[
-{text:"g",url:"globals_defs.html#index_g"},
 {text:"i",url:"globals_defs.html#index_i"},
 {text:"n",url:"globals_defs.html#index_n"},
 {text:"s",url:"globals_defs.html#index_s"},

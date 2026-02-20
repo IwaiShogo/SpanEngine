@@ -18,6 +18,7 @@ var hierarchy =
     [ "Span::ConstantBuffer&lt; T &gt;", "classSpan_1_1ConstantBuffer.html", null ],
     [ "Span::DirectoryWatcher", "classSpan_1_1DirectoryWatcher.html", null ],
     [ "Span::EditorCamera", "structSpan_1_1EditorCamera.html", null ],
+    [ "Span::EditorCameraState", "structSpan_1_1EditorCameraState.html", null ],
     [ "Span::EditorFileSystem", "classSpan_1_1EditorFileSystem.html", null ],
     [ "Span::EditorPanel", "classSpan_1_1EditorPanel.html", [
       [ "Span::HierarchyPanel", "classSpan_1_1HierarchyPanel.html", null ],
@@ -46,6 +47,7 @@ var hierarchy =
       [ "Span::MoveFileCommand", "classSpan_1_1MoveFileCommand.html", null ],
       [ "Span::RenameFileCommand", "classSpan_1_1RenameFileCommand.html", null ]
     ] ],
+    [ "Span::IDComponent", "structSpan_1_1IDComponent.html", null ],
     [ "Span::ImGuiUI", "classSpan_1_1ImGuiUI.html", null ],
     [ "Span::Internal::ImGuiVisitor", "structSpan_1_1Internal_1_1ImGuiVisitor.html", null ],
     [ "Span::Input", "classSpan_1_1Input.html", null ],
@@ -68,6 +70,7 @@ var hierarchy =
     [ "Span::Relationship", "structSpan_1_1Relationship.html", null ],
     [ "Span::Renderer", "classSpan_1_1Renderer.html", null ],
     [ "Span::RenderTarget", "classSpan_1_1RenderTarget.html", null ],
+    [ "Span::Scene", "classSpan_1_1Scene.html", null ],
     [ "Span::SceneSerializer", "classSpan_1_1SceneSerializer.html", null ],
     [ "Span::SelectionManager", "classSpan_1_1SelectionManager.html", null ],
     [ "Span::Shader", "classSpan_1_1Shader.html", null ],

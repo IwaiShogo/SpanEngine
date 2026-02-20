@@ -18,9 +18,10 @@ var searchData=
   ['_7eprojectbrowserpanel_15',['~ProjectBrowserPanel',['../classSpan_1_1ProjectBrowserPanel.html#a8580b6c306f12d1e32aa0cd370bf67b1',1,'Span::ProjectBrowserPanel']]],
   ['_7erenderer_16',['~Renderer',['../classSpan_1_1Renderer.html#a677dfbd231380d747cb86cc1a5b2b707',1,'Span::Renderer']]],
   ['_7erendertarget_17',['~RenderTarget',['../classSpan_1_1RenderTarget.html#a0df47a253f65ec04538aab31b253f8b9',1,'Span::RenderTarget']]],
-  ['_7esystem_18',['~System',['../classSpan_1_1System.html#ad1482788910a7d4c856df9271b1e2ad3',1,'Span::System']]],
-  ['_7etagmanager_19',['~TagManager',['../classSpan_1_1TagManager.html#a19b26b7f1f386acaff136aa17f653e38',1,'Span::TagManager']]],
-  ['_7etexture_20',['~Texture',['../classSpan_1_1Texture.html#ab0c408c4cd9d3b54cf9d45d3973db89b',1,'Span::Texture']]],
-  ['_7ewindow_21',['~Window',['../classSpan_1_1Window.html#ab6565dd0bab59c4be208e1d5264dd21a',1,'Span::Window']]],
-  ['_7eworld_22',['~World',['../classSpan_1_1World.html#a4add61518853eeb7201e473af671f86b',1,'Span::World']]]
+  ['_7escene_18',['~Scene',['../classSpan_1_1Scene.html#ae43523ff40cf95180e632a994fd2f345',1,'Span::Scene']]],
+  ['_7esystem_19',['~System',['../classSpan_1_1System.html#ad1482788910a7d4c856df9271b1e2ad3',1,'Span::System']]],
+  ['_7etagmanager_20',['~TagManager',['../classSpan_1_1TagManager.html#a19b26b7f1f386acaff136aa17f653e38',1,'Span::TagManager']]],
+  ['_7etexture_21',['~Texture',['../classSpan_1_1Texture.html#ab0c408c4cd9d3b54cf9d45d3973db89b',1,'Span::Texture']]],
+  ['_7ewindow_22',['~Window',['../classSpan_1_1Window.html#ab6565dd0bab59c4be208e1d5264dd21a',1,'Span::Window']]],
+  ['_7eworld_23',['~World',['../classSpan_1_1World.html#a4add61518853eeb7201e473af671f86b',1,'Span::World']]]
 ];

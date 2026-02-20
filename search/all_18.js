@@ -17,6 +17,5 @@ var searchData=
   ['windowproc_14',['WindowProc',['../classSpan_1_1Window.html#a24635208c038c943fedace7500f9ba18',1,'Span::Window']]],
   ['with_15',['With',['../classSpan_1_1EntityBuilder.html#ab28545e60edea3e91a3606552f952614',1,'Span::EntityBuilder']]],
   ['world_16',['World',['../classSpan_1_1World.html',1,'Span::World'],['../structSpan_1_1TransformData.html#af5eb0294b4a8dc4080305b4c20c9bdfb',1,'Span::TransformData::World'],['../classSpan_1_1World.html#aba3445185cce62ba69ea55949875a74f',1,'Span::World::World()']]],
-  ['world_17',['world',['../classSpan_1_1Application.html#a6b218a6b6618fa3fff11183802b81f66',1,'Span::Application']]],
-  ['world_2eh_18',['World.h',['../World_8h.html',1,'']]]
+  ['world_2eh_17',['World.h',['../World_8h.html',1,'']]]
 ];

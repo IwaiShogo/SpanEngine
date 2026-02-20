@@ -4,6 +4,7 @@ var classSpan_1_1Application =
     [ "~Application", "classSpan_1_1Application.html#ac1df33fbe70ef856f94f83225bb02fb7", null ],
     [ "Close", "classSpan_1_1Application.html#abc1fbff51183559983fcfcdc46cc4f99", null ],
     [ "Get", "classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e", null ],
+    [ "GetActiveScene", "classSpan_1_1Application.html#a113c6b1503b5d70d7a49181576ef7453", null ],
     [ "GetRenderer", "classSpan_1_1Application.html#a405d83887371210b9a67e940727689da", null ],
     [ "GetSceneBuffer", "classSpan_1_1Application.html#a1b54630b6a121e07555f020042a121cc", null ],
     [ "GetSceneViewAspectRatio", "classSpan_1_1Application.html#a459e7f12258aaeafd9820075bf689e28", null ],
@@ -15,6 +16,7 @@ var classSpan_1_1Application =
     [ "Ptr", "classSpan_1_1Application.html#a095598d0c2e753bfb8d00acee435980f", null ],
     [ "Run", "classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9", null ],
     [ "SetSceneViewSize", "classSpan_1_1Application.html#a00004fbc6787efc05e06646216ee349f", null ],
+    [ "activeScene", "classSpan_1_1Application.html#ad8181f0dea0cc82ad3968c7bb5004ccb", null ],
     [ "graphicsContext", "classSpan_1_1Application.html#a90d28617b1780ccc246c6b9341f1fdd9", null ],
     [ "isRunning", "classSpan_1_1Application.html#aa17fc8fd214b0af747aa587b10479e0f", null ],
     [ "m_sceneViewHeight", "classSpan_1_1Application.html#afc10c3c99651923911a4e71c08cee5e4", null ],
@@ -22,6 +24,5 @@ var classSpan_1_1Application =
     [ "renderer", "classSpan_1_1Application.html#a38177cabc8c37a3be8cb19c4bfd13b17", null ],
     [ "s_instance", "classSpan_1_1Application.html#ad11362b1cf76eb9f2c48a3497e67c450", null ],
     [ "sceneBuffer", "classSpan_1_1Application.html#a20fcfd95e71f9aad3f84d68811cb6711", null ],
-    [ "window", "classSpan_1_1Application.html#acac29b85acb51a2c94f9febfa9427bc1", null ],
-    [ "world", "classSpan_1_1Application.html#a6b218a6b6618fa3fff11183802b81f66", null ]
+    [ "window", "classSpan_1_1Application.html#acac29b85acb51a2c94f9febfa9427bc1", null ]
 ];

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Components/Core/IDComponent.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('IDComponent_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">IDComponent.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="IDComponent_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    IDComponent.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   エンティティの一意な識別子 (UUID) を保持するコンポーネント。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="SpanReflection_8h.html">Runtime/Reflection/SpanReflection.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * @struct  IDComponent</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     * @brief   シリアライズ及びシーン間の参照解決に使用する一意のID。</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structSpan_1_1IDComponent.html">   23</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="structSpan_1_1IDComponent.html#a287be099e9e3e038957f6a33caaf5f73">IDComponent</a></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structSpan_1_1IDComponent.html#a156f97f15968e64925be02e5e3c6b2fd">   25</a></span>        <a class="code hl_typedef" href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">uint64</a> <a class="code hl_variable" href="structSpan_1_1IDComponent.html#a156f97f15968e64925be02e5e3c6b2fd">ID</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structSpan_1_1IDComponent.html#a287be099e9e3e038957f6a33caaf5f73">   27</a></span>        <a class="code hl_function" href="structSpan_1_1IDComponent.html#a287be099e9e3e038957f6a33caaf5f73">IDComponent</a>()</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="comment">// UUIDの自動生成</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="keyword">static</span> std::random_device <a class="code hl_variable" href="namespaceSpan.html#a086d008b6a56d176facbbfbfde8a1cc5">s_RandomDevice</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="keyword">static</span> std::mt19937_64 <a class="code hl_function" href="namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136">s_Engine</a>(<a class="code hl_variable" href="namespaceSpan.html#a086d008b6a56d176facbbfbfde8a1cc5">s_RandomDevice</a>());</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keyword">static</span> std::uniform_int_distribution&lt;uint64&gt; <a class="code hl_variable" href="namespaceSpan.html#a3b1c3d559ac672629a7459d8b6513225">s_UniformDistribution</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <a class="code hl_variable" href="structSpan_1_1IDComponent.html#a156f97f15968e64925be02e5e3c6b2fd">ID</a> = <a class="code hl_variable" href="namespaceSpan.html#a3b1c3d559ac672629a7459d8b6513225">s_UniformDistribution</a>(<a class="code hl_function" href="namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136">s_Engine</a>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="structSpan_1_1IDComponent.html#a156f97f15968e64925be02e5e3c6b2fd">ID</a> == 0) <a class="code hl_variable" href="structSpan_1_1IDComponent.html#a156f97f15968e64925be02e5e3c6b2fd">ID</a>++;  <span class="comment">// 0は無効値とする場合</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        }</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structSpan_1_1IDComponent.html#afb80ad92e36fc8095946bee1a53ed941">   38</a></span>        <a class="code hl_function" href="structSpan_1_1IDComponent.html#afb80ad92e36fc8095946bee1a53ed941">IDComponent</a>(<a class="code hl_typedef" href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">uint64</a> <span class="keywordtype">id</span>) : <a class="code hl_variable" href="structSpan_1_1IDComponent.html#a156f97f15968e64925be02e5e3c6b2fd">ID</a>(id) {}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_define" href="SpanReflection_8h.html#a73d73b391d2c696aa97e2f555064a4ad">SPAN_INSPECTOR_BEGIN</a>(<a class="code hl_struct" href="structSpan_1_1IDComponent.html">IDComponent</a>)</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <a class="code hl_define" href="SpanReflection_8h.html#a6637ca0ed9083bc0f48fc532e4f3fa3e">SPAN_FIELD</a>(<a class="code hl_variable" href="structSpan_1_1IDComponent.html#a156f97f15968e64925be02e5e3c6b2fd">ID</a>, <a class="code hl_function" href="namespaceSpan.html#a6c44cae3bf938ea21881939d2a2f04ea">HideInInspector</a>())</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_define" href="SpanReflection_8h.html#a03c56469341230c856b122f920371494">SPAN_INSPECTOR_END</a>()</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    };</div>
+</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aSpanReflection_8h_html"><div class="ttname"><a href="SpanReflection_8h.html">SpanReflection.h</a></div><div class="ttdoc">コンポーネント定義用のリフレクションマクロ。</div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a03c56469341230c856b122f920371494"><div class="ttname"><a href="SpanReflection_8h.html#a03c56469341230c856b122f920371494">SPAN_INSPECTOR_END</a></div><div class="ttdeci">#define SPAN_INSPECTOR_END()</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00034">SpanReflection.h:34</a></div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a6637ca0ed9083bc0f48fc532e4f3fa3e"><div class="ttname"><a href="SpanReflection_8h.html#a6637ca0ed9083bc0f48fc532e4f3fa3e">SPAN_FIELD</a></div><div class="ttdeci">#define SPAN_FIELD(Variable,...)</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00031">SpanReflection.h:31</a></div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a73d73b391d2c696aa97e2f555064a4ad"><div class="ttname"><a href="SpanReflection_8h.html#a73d73b391d2c696aa97e2f555064a4ad">SPAN_INSPECTOR_BEGIN</a></div><div class="ttdeci">#define SPAN_INSPECTOR_BEGIN(ComponentType)</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00024">SpanReflection.h:24</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a086d008b6a56d176facbbfbfde8a1cc5"><div class="ttname"><a href="namespaceSpan.html#a086d008b6a56d176facbbfbfde8a1cc5">Span::s_RandomDevice</a></div><div class="ttdeci">static std::random_device s_RandomDevice</div><div class="ttdef"><b>Definition</b> <a href="AssetSerializer_8cpp_source.html#l00018">AssetSerializer.cpp:18</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a1d75ef2516efeab4c895dfc40640e11d"><div class="ttname"><a href="namespaceSpan.html#a1d75ef2516efeab4c895dfc40640e11d">Span::uint64</a></div><div class="ttdeci">uint64_t uint64</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00102">CoreMinimal.h:102</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a3b1c3d559ac672629a7459d8b6513225"><div class="ttname"><a href="namespaceSpan.html#a3b1c3d559ac672629a7459d8b6513225">Span::s_UniformDistribution</a></div><div class="ttdeci">static std::uniform_int_distribution&lt; uint64_t &gt; s_UniformDistribution</div><div class="ttdef"><b>Definition</b> <a href="AssetSerializer_8cpp_source.html#l00020">AssetSerializer.cpp:20</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a6c44cae3bf938ea21881939d2a2f04ea"><div class="ttname"><a href="namespaceSpan.html#a6c44cae3bf938ea21881939d2a2f04ea">Span::HideInInspector</a></div><div class="ttdeci">Attribute HideInInspector()</div><div class="ttdoc">インスペクターに表示しません (シリアライズのみしたい場合など)。</div><div class="ttdef"><b>Definition</b> <a href="SpanAttributes_8h_source.html#l00083">SpanAttributes.h:83</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a8ba99036404afdb464fdc44c3dbc7136"><div class="ttname"><a href="namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136">Span::s_Engine</a></div><div class="ttdeci">static std::mt19937_64 s_Engine(s_RandomDevice())</div></div>
+<div class="ttc" id="astructSpan_1_1IDComponent_html"><div class="ttname"><a href="structSpan_1_1IDComponent.html">Span::IDComponent</a></div><div class="ttdoc">シリアライズ及びシーン間の参照解決に使用する一意のID。</div><div class="ttdef"><b>Definition</b> <a href="#l00023">IDComponent.h:24</a></div></div>
+<div class="ttc" id="astructSpan_1_1IDComponent_html_a156f97f15968e64925be02e5e3c6b2fd"><div class="ttname"><a href="structSpan_1_1IDComponent.html#a156f97f15968e64925be02e5e3c6b2fd">Span::IDComponent::ID</a></div><div class="ttdeci">uint64 ID</div><div class="ttdef"><b>Definition</b> <a href="#l00025">IDComponent.h:25</a></div></div>
+<div class="ttc" id="astructSpan_1_1IDComponent_html_a287be099e9e3e038957f6a33caaf5f73"><div class="ttname"><a href="structSpan_1_1IDComponent.html#a287be099e9e3e038957f6a33caaf5f73">Span::IDComponent::IDComponent</a></div><div class="ttdeci">IDComponent()</div><div class="ttdef"><b>Definition</b> <a href="#l00027">IDComponent.h:27</a></div></div>
+<div class="ttc" id="astructSpan_1_1IDComponent_html_afb80ad92e36fc8095946bee1a53ed941"><div class="ttname"><a href="structSpan_1_1IDComponent.html#afb80ad92e36fc8095946bee1a53ed941">Span::IDComponent::IDComponent</a></div><div class="ttdeci">IDComponent(uint64 id)</div><div class="ttdef"><b>Definition</b> <a href="#l00038">IDComponent.h:38</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_68e5ee02315a150ea198303cea974c1f.html">Components</a></li><li class="navelem"><a href="dir_4c14043934fc375075b88319ac8da164.html">Core</a></li><li class="navelem"><a href="IDComponent_8h.html">IDComponent.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

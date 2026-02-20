@@ -1,7 +1,7 @@
 var searchData=
 [
   ['n_0',['N',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa8d9c307cb7f3c4a32822a51922d1ceaa',1,'Span']]],
-  ['name_1',['Name',['../structSpan_1_1Name.html',1,'Span::Name'],['../structSpan_1_1ComponentMetadata.html#ac98160a5377e1d5708c727bd7aed64e9',1,'Span::ComponentMetadata::Name'],['../structSpan_1_1Name.html#a79bca47f253da2e38a7395f3f6eb0196',1,'Span::Name::Name()=default'],['../structSpan_1_1Name.html#a4d932f73ab7e4b39d2e9710afe127804',1,'Span::Name::Name(const char *name)'],['../structSpan_1_1Name.html#ad9dd74ca7c3b110028995fc1600d311f',1,'Span::Name::Name(const std::string &amp;name)']]],
+  ['name_1',['Name',['../structSpan_1_1Name.html',1,'Span::Name'],['../structSpan_1_1ComponentMetadata.html#ac98160a5377e1d5708c727bd7aed64e9',1,'Span::ComponentMetadata::Name'],['../classSpan_1_1Scene.html#ae9685e2ad1aa55279765ce0827f6a46e',1,'Span::Scene::Name'],['../structSpan_1_1Name.html#a79bca47f253da2e38a7395f3f6eb0196',1,'Span::Name::Name()=default'],['../structSpan_1_1Name.html#a4d932f73ab7e4b39d2e9710afe127804',1,'Span::Name::Name(const char *name)'],['../structSpan_1_1Name.html#ad9dd74ca7c3b110028995fc1600d311f',1,'Span::Name::Name(const std::string &amp;name)']]],
   ['name_2eh_2',['Name.h',['../Name_8h.html',1,'']]],
   ['nearclip_3',['NearClip',['../structSpan_1_1Camera.html#a1325da14243956d6decb27abea298a72',1,'Span::Camera']]],
   ['nextsibling_4',['NextSibling',['../structSpan_1_1Relationship.html#a8e32cd5bcc454ebd1c9f4f3866f29d8f',1,'Span::Relationship']]],

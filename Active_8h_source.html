@@ -105,29 +105,41 @@ $(function(){initNavTree('Active_8h_source.html','',''); });
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{<span class="comment"></span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">     * @struct  Active</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">     * @brief   ✅ エンティティの活動状態を制御するコンポーネント。</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">     * @details</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * false の場合、このエンティティに関連するシステム (描画、物理、更新処理) はスキップされます。</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     */</span></div>
-<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structSpan_1_1Active.html">   22</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="structSpan_1_1Active.html#a9229a2ed9c412dac130dc5b0c9c84d42">Active</a></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d">   24</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d">IsActive</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structSpan_1_1Active.html#a9229a2ed9c412dac130dc5b0c9c84d42">   26</a></span>        <a class="code hl_function" href="structSpan_1_1Active.html#a9229a2ed9c412dac130dc5b0c9c84d42">Active</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structSpan_1_1Active.html#a72d2442697e2fa3bc492cd8bec9e4339">   27</a></span>        <a class="code hl_function" href="structSpan_1_1Active.html#a72d2442697e2fa3bc492cd8bec9e4339">Active</a>(<span class="keywordtype">bool</span> isActive) : <a class="code hl_variable" href="structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d">IsActive</a>(isActive) {}</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    };</div>
-</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="SpanReflection_8h.html">Runtime/Reflection/SpanReflection.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">     * @struct  Active</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * @brief   ✅ エンティティの活動状態を制御するコンポーネント。</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     * @details</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">     * false の場合、このエンティティに関連するシステム (描画、物理、更新処理) はスキップされます。</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structSpan_1_1Active.html">   24</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="structSpan_1_1Active.html#a9229a2ed9c412dac130dc5b0c9c84d42">Active</a></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d">   26</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d">IsActive</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structSpan_1_1Active.html#a9229a2ed9c412dac130dc5b0c9c84d42">   28</a></span>        <a class="code hl_function" href="structSpan_1_1Active.html#a9229a2ed9c412dac130dc5b0c9c84d42">Active</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structSpan_1_1Active.html#a72d2442697e2fa3bc492cd8bec9e4339">   29</a></span>        <a class="code hl_function" href="structSpan_1_1Active.html#a72d2442697e2fa3bc492cd8bec9e4339">Active</a>(<span class="keywordtype">bool</span> isActive) : <a class="code hl_variable" href="structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d">IsActive</a>(isActive) {}</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_define" href="SpanReflection_8h.html#a73d73b391d2c696aa97e2f555064a4ad">SPAN_INSPECTOR_BEGIN</a>(<a class="code hl_struct" href="structSpan_1_1Active.html">Active</a>)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <a class="code hl_define" href="SpanReflection_8h.html#a6637ca0ed9083bc0f48fc532e4f3fa3e">SPAN_FIELD</a>(<a class="code hl_variable" href="structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d">IsActive</a>, <a class="code hl_function" href="namespaceSpan.html#a6c44cae3bf938ea21881939d2a2f04ea">HideInInspector</a>())</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_define" href="SpanReflection_8h.html#a03c56469341230c856b122f920371494">SPAN_INSPECTOR_END</a>()</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    };</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="ttc" id="aSpanReflection_8h_html"><div class="ttname"><a href="SpanReflection_8h.html">SpanReflection.h</a></div><div class="ttdoc">コンポーネント定義用のリフレクションマクロ。</div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a03c56469341230c856b122f920371494"><div class="ttname"><a href="SpanReflection_8h.html#a03c56469341230c856b122f920371494">SPAN_INSPECTOR_END</a></div><div class="ttdeci">#define SPAN_INSPECTOR_END()</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00034">SpanReflection.h:34</a></div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a6637ca0ed9083bc0f48fc532e4f3fa3e"><div class="ttname"><a href="SpanReflection_8h.html#a6637ca0ed9083bc0f48fc532e4f3fa3e">SPAN_FIELD</a></div><div class="ttdeci">#define SPAN_FIELD(Variable,...)</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00031">SpanReflection.h:31</a></div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a73d73b391d2c696aa97e2f555064a4ad"><div class="ttname"><a href="SpanReflection_8h.html#a73d73b391d2c696aa97e2f555064a4ad">SPAN_INSPECTOR_BEGIN</a></div><div class="ttdeci">#define SPAN_INSPECTOR_BEGIN(ComponentType)</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00024">SpanReflection.h:24</a></div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
-<div class="ttc" id="astructSpan_1_1Active_html_a72d2442697e2fa3bc492cd8bec9e4339"><div class="ttname"><a href="structSpan_1_1Active.html#a72d2442697e2fa3bc492cd8bec9e4339">Span::Active::Active</a></div><div class="ttdeci">Active(bool isActive)</div><div class="ttdef"><b>Definition</b> <a href="#l00027">Active.h:27</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a6c44cae3bf938ea21881939d2a2f04ea"><div class="ttname"><a href="namespaceSpan.html#a6c44cae3bf938ea21881939d2a2f04ea">Span::HideInInspector</a></div><div class="ttdeci">Attribute HideInInspector()</div><div class="ttdoc">インスペクターに表示しません (シリアライズのみしたい場合など)。</div><div class="ttdef"><b>Definition</b> <a href="SpanAttributes_8h_source.html#l00083">SpanAttributes.h:83</a></div></div>
+<div class="ttc" id="astructSpan_1_1Active_html"><div class="ttname"><a href="structSpan_1_1Active.html">Span::Active</a></div><div class="ttdoc">✅ エンティティの活動状態を制御するコンポーネント。</div><div class="ttdef"><b>Definition</b> <a href="#l00024">Active.h:25</a></div></div>
+<div class="ttc" id="astructSpan_1_1Active_html_a72d2442697e2fa3bc492cd8bec9e4339"><div class="ttname"><a href="structSpan_1_1Active.html#a72d2442697e2fa3bc492cd8bec9e4339">Span::Active::Active</a></div><div class="ttdeci">Active(bool isActive)</div><div class="ttdef"><b>Definition</b> <a href="#l00029">Active.h:29</a></div></div>
 <div class="ttc" id="astructSpan_1_1Active_html_a9229a2ed9c412dac130dc5b0c9c84d42"><div class="ttname"><a href="structSpan_1_1Active.html#a9229a2ed9c412dac130dc5b0c9c84d42">Span::Active::Active</a></div><div class="ttdeci">Active()=default</div></div>
-<div class="ttc" id="astructSpan_1_1Active_html_a945b5904265b6e02779f88bd1915eb4d"><div class="ttname"><a href="structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d">Span::Active::IsActive</a></div><div class="ttdeci">bool IsActive</div><div class="ttdef"><b>Definition</b> <a href="#l00024">Active.h:24</a></div></div>
+<div class="ttc" id="astructSpan_1_1Active_html_a945b5904265b6e02779f88bd1915eb4d"><div class="ttname"><a href="structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d">Span::Active::IsActive</a></div><div class="ttdeci">bool IsActive</div><div class="ttdef"><b>Definition</b> <a href="#l00026">Active.h:26</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

@@ -9,7 +9,7 @@ var indexSectionsWithContent =
   6: "acdhirsu",
   7: "aklps",
   8: "abcdefghijklmnopqrstuvwxyz",
-  9: "ginsw",
+  9: "insw",
   10: "1abcdfilmprsu⚠アパビメラリ使座操注計🌳🏗📁📊📏📝🔄🖱🖼🧠🧮"
 };
 

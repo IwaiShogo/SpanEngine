@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_0',['Name',['../structSpan_1_1ComponentMetadata.html#ac98160a5377e1d5708c727bd7aed64e9',1,'Span::ComponentMetadata']]],
+  ['name_0',['Name',['../structSpan_1_1ComponentMetadata.html#ac98160a5377e1d5708c727bd7aed64e9',1,'Span::ComponentMetadata::Name'],['../classSpan_1_1Scene.html#ae9685e2ad1aa55279765ce0827f6a46e',1,'Span::Scene::Name']]],
   ['nearclip_1',['NearClip',['../structSpan_1_1Camera.html#a1325da14243956d6decb27abea298a72',1,'Span::Camera']]],
   ['nextsibling_2',['NextSibling',['../structSpan_1_1Relationship.html#a8e32cd5bcc454ebd1c9f4f3866f29d8f',1,'Span::Relationship']]],
   ['normal_3',['normal',['../structSpan_1_1Vertex.html#a44736040b875692f9a6c28de54747500',1,'Span::Vertex']]],

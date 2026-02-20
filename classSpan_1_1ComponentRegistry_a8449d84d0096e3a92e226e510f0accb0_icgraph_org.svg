@@ -37,32 +37,13 @@
 </a>
 </g>
 </g>
-<!-- Node3 -->
-<g id="Node000003" class="node">
-<title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classSpan_1_1InspectorPanel.html#a6daa94024d0c4ef940d144af94519964" target="_top" xlink:title="エンティティ用のインスペクターを描画します。">
-<polygon fill="white" stroke="#666666" points="481,-78 359,-78 359,-48 481,-48 481,-78"/>
-<text text-anchor="start" x="367" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::InspectorPanel</text>
-<text text-anchor="middle" x="420" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00">::DrawEntityInspector</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node3 -->
-<g id="edge2_Node000001_Node000003" class="edge">
-<title>Node1&#45;&gt;Node3</title>
-<g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M506.81,-63C498.19,-63 489.53,-63 481.2,-63"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="506.89,-66.5 516.89,-63 506.89,-59.5 506.89,-66.5"/>
-</a>
-</g>
-</g>
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="classSpan_1_1SceneSerializer.html#aaf49a936dbc423575b7eee4d48a89e0e" target="_top" xlink:title="現在のWorldの状態を指定したファイルパス(.span)に保存します。">
+<g id="a_Node000005"><a xlink:href="classSpan_1_1InspectorPanel.html#a6daa94024d0c4ef940d144af94519964" target="_top" xlink:title="エンティティ用のインスペクターを描画します。">
 <polygon fill="white" stroke="#666666" points="481,-30 359,-30 359,0 481,0 481,-30"/>
-<text text-anchor="start" x="367" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">Span::SceneSerializer</text>
-<text text-anchor="middle" x="420" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::Serialize</text>
+<text text-anchor="start" x="367" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">Span::InspectorPanel</text>
+<text text-anchor="middle" x="420" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::DrawEntityInspector</text>
 </a>
 </g>
 </g>
@@ -75,13 +56,49 @@
 </a>
 </g>
 </g>
+<!-- Node7 -->
+<g id="Node000007" class="node">
+<title>Node7</title>
+<g id="a_Node000007"><a xlink:href="classSpan_1_1SceneSerializer.html#aaf49a936dbc423575b7eee4d48a89e0e" target="_top" xlink:title="現在のWorldの状態を指定したファイルパス(.span)に保存します。">
+<polygon fill="white" stroke="#666666" points="481,-78 359,-78 359,-48 481,-48 481,-78"/>
+<text text-anchor="start" x="367" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::SceneSerializer</text>
+<text text-anchor="middle" x="420" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00">::Serialize</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node7 -->
+<g id="edge6_Node000001_Node000007" class="edge">
+<title>Node1&#45;&gt;Node7</title>
+<g id="a_edge6_Node000001_Node000007"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M506.81,-63C498.19,-63 489.53,-63 481.2,-63"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="506.89,-66.5 516.89,-63 506.89,-59.5 506.89,-66.5"/>
+</a>
+</g>
+</g>
+<!-- Node3 -->
+<g id="Node000003" class="node">
+<title>Node3</title>
+<g id="a_Node000003"><a xlink:href="classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec" target="_top" xlink:title="ImGuiの描画コマンドを発行し、フレームを終了します。">
+<polygon fill="white" stroke="#666666" points="323,-96.5 162,-96.5 162,-77.5 323,-77.5 323,-96.5"/>
+<text text-anchor="middle" x="242.5" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::GuiManager::EndFrame</text>
+</a>
+</g>
+</g>
+<!-- Node2&#45;&gt;Node3 -->
+<g id="edge2_Node000002_Node000003" class="edge">
+<title>Node2&#45;&gt;Node3</title>
+<g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M348.48,-101.36C336.8,-99.76 324.71,-98.11 313.06,-96.51"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="348.22,-104.85 358.6,-102.74 349.17,-97.92 348.22,-104.85"/>
+</a>
+</g>
+</g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="classSpan_1_1InspectorPanel.html#ae32fda6018a2e54f880e6708ac5b89fe" target="_top" xlink:title="毎フレーム呼ばれる描画関数。">
-<polygon fill="white" stroke="#666666" points="301.5,-78 183.5,-78 183.5,-48 301.5,-48 301.5,-78"/>
-<text text-anchor="start" x="191.5" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::InspectorPanel</text>
-<text text-anchor="middle" x="242.5" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00">::OnImGuiRender</text>
+<g id="a_Node000004"><a xlink:href="classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9" target="_top" xlink:title="アプリケーションを実行します (ブロック関数)。">
+<polygon fill="white" stroke="#666666" points="126,-96.5 0,-96.5 0,-77.5 126,-77.5 126,-96.5"/>
+<text text-anchor="middle" x="63" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Application::Run</text>
 </a>
 </g>
 </g>
@@ -89,17 +106,18 @@
 <g id="edge3_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M348.51,-63C332.95,-63 316.64,-63 301.64,-63"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="348.6,-66.5 358.6,-63 348.6,-59.5 348.6,-66.5"/>
+<path fill="none" stroke="#63b8ff" d="M151.69,-87C143.04,-87 134.4,-87 126.11,-87"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="151.84,-90.5 161.84,-87 151.84,-83.5 151.84,-90.5"/>
 </a>
 </g>
 </g>
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec" target="_top" xlink:title="ImGuiの描画コマンドを発行し、フレームを終了します。">
-<polygon fill="white" stroke="#666666" points="323,-24.5 162,-24.5 162,-5.5 323,-5.5 323,-24.5"/>
-<text text-anchor="middle" x="242.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::GuiManager::EndFrame</text>
+<g id="a_Node000006"><a xlink:href="classSpan_1_1InspectorPanel.html#ae32fda6018a2e54f880e6708ac5b89fe" target="_top" xlink:title="毎フレーム呼ばれる描画関数。">
+<polygon fill="white" stroke="#666666" points="301.5,-30 183.5,-30 183.5,0 301.5,0 301.5,-30"/>
+<text text-anchor="start" x="191.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">Span::InspectorPanel</text>
+<text text-anchor="middle" x="242.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::OnImGuiRender</text>
 </a>
 </g>
 </g>
@@ -107,26 +125,17 @@
 <g id="edge5_Node000005_Node000006" class="edge">
 <title>Node5&#45;&gt;Node6</title>
 <g id="a_edge5_Node000005_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M348.56,-15C340.23,-15 331.68,-15 323.22,-15"/>
+<path fill="none" stroke="#63b8ff" d="M348.51,-15C332.95,-15 316.64,-15 301.64,-15"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="348.6,-18.5 358.6,-15 348.6,-11.5 348.6,-18.5"/>
 </a>
 </g>
 </g>
-<!-- Node7 -->
-<g id="Node000007" class="node">
-<title>Node7</title>
-<g id="a_Node000007"><a xlink:href="classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9" target="_top" xlink:title="アプリケーションを実行します (ブロック関数)。">
-<polygon fill="white" stroke="#666666" points="126,-24.5 0,-24.5 0,-5.5 126,-5.5 126,-24.5"/>
-<text text-anchor="middle" x="63" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Application::Run</text>
-</a>
-</g>
-</g>
-<!-- Node6&#45;&gt;Node7 -->
-<g id="edge6_Node000006_Node000007" class="edge">
-<title>Node6&#45;&gt;Node7</title>
-<g id="a_edge6_Node000006_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M151.69,-15C143.04,-15 134.4,-15 126.11,-15"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="151.84,-18.5 161.84,-15 151.84,-11.5 151.84,-18.5"/>
+<!-- Node7&#45;&gt;Node3 -->
+<g id="edge7_Node000007_Node000003" class="edge">
+<title>Node7&#45;&gt;Node3</title>
+<g id="a_edge7_Node000007_Node000003"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M348.48,-72.64C336.8,-74.24 324.71,-75.89 313.06,-77.49"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="349.17,-76.08 358.6,-71.26 348.22,-69.15 349.17,-76.08"/>
 </a>
 </g>
 </g>
