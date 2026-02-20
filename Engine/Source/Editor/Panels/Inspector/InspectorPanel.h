@@ -31,15 +31,30 @@ namespace Span
 
 		void OnImGuiRender() override;
 
+	private:
 		/**
 		 * @brief	アセット用のインスペクターを描画します。
-		 * @param	paths 選択されている全てのアセットパス
-		 *
-		 * @details
-		 * - 単一選択の場合: 詳細情報を表示します。
-		 * - 複数選択の場合: 選択アイテムのリストと、Primary Asset (最後に選んだもの) の簡易プレビューを表示します。
 		 */
 		void DrawAssetInspector(const std::vector<std::filesystem::path>& paths);
+
+		/**
+		 * @brief	エンティティ用のインスペクターを描画します。
+		 */
+		void DrawEntityInspector(Entity selected, class World& world);
+
+		/**
+		 * @brief	タグのモーダル・ポップアップ
+		 */
+		void DrawTagEditorModal();
+
+		/**
+		 * @brief	レイヤーのモーダル・ポップアップ
+		 */
+		void DrawLayerEditorModal();
+
+	private:
+		bool m_OpenTagEditor = false;
+		bool m_OpenLayerEditor = false;
 	};
 }
 

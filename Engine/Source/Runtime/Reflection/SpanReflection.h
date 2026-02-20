@@ -14,67 +14,40 @@
 #include "ComponentRegistry.h"
 #include "Editor/ImGui/ImGuiUI.h"
 #include "Core/Containers/FixedString.h"
-#include <vector>
-#include <string>
-#include <type_traits>
-#include <cfloat>
 
 #include <magic_enum.hpp>
-
+#include <nlohmann/json.hpp>
 
 //	🪄 Reflection Macros
 // ============================================================
 
-/**
- * @def		SPAN_INSPECTOR_BEGIN(ComponentType)
- * @brief	インスペクターUI定義の開始マクロ
- *
- * @details
- * 構造体の中に `OnGui` 関数と、自動登録用の静的構造体 `_AutoReg_Inspector` を生成します。
- */
 #define SPAN_INSPECTOR_BEGIN(ComponentType) \
 	public: \
 	using _InspectorSelfType = ComponentType; \
 	static const char* _GetInspectorName() { return #ComponentType; } \
-	/* UI描画関数 (InspectorPanelから呼ばれる) */ \
-	void OnGui(Span::Entity entity, Span::World& world) { \
-		bool isRemoved = false; \
-		/* ヘッダー描画 (折り畳み & 右クリックメニュー) */ \
-		if (Span::ImGuiUI::DrawComponentHeader(#ComponentType, isRemoved)) {
+	template<typename Visitor> \
+	void Reflect(Visitor& visitor) {
 
-/**
- * @def		SPAN_FIELD(Variable, Label, ...)
- * @brief	変数をインスペクターに表示します。
- * @param	Variable メンバ変数名
- * @param	Label UI上のラベル名
- * @param	... 属性リスト (Range(0, 1), Tooltip("Help") 等)
- */
 #define SPAN_FIELD(Variable, ...) \
-	{ \
-		using namespace Span; \
-		std::vector<Attribute> attrs = { __VA_ARGS__ }; \
-		Span::Internal::DrawField(#Variable, Variable, attrs); \
-	}
+	Span::Internal::ProcessField(visitor, #Variable, Variable, __VA_ARGS__);
 
-/**
- * @def		SPAN_INSPECTOR_END()
- * @brief	インスペクターUI定義の終了マクロ。
- */
 #define SPAN_INSPECTOR_END() \
-			ImGui::TreePop(); \
-		} \
-		if (isRemoved) { \
-			world.RemoveComponent<_InspectorSelfType>(entity); \
-		} \
 	} \
-	/* 自動登録用構造体 */ \
 	struct _AutoReg_Inspector { \
 		_AutoReg_Inspector() { \
 			Span::ComponentRegistry::Register<_InspectorSelfType>( \
 				_InspectorSelfType::_GetInspectorName(), \
 				/* Draw Func */ \
 				[](Span::Entity e, Span::World& w) { \
-					if (auto* c = w.GetComponentPtr<_InspectorSelfType>(e)) c->OnGui(e, w); \
+					if (auto* c = w.GetComponentPtr<_InspectorSelfType>(e)) { \
+						bool isRemoved = false; \
+						if (Span::ImGuiUI::DrawComponentHeader(_InspectorSelfType::_GetInspectorName(), isRemoved)) { \
+							Span::Internal::ImGuiVisitor v; \
+							c->Reflect(v); \
+							ImGui::TreePop(); \
+						} \
+						if (isRemoved) w.RemoveComponent<_InspectorSelfType>(e); \
+					} \
 				}, \
 				/* Add Func */ \
 				[](Span::Entity e, Span::World& w) { \
@@ -83,6 +56,20 @@
 				/* Has Func */ \
 				[](Span::Entity e, Span::World& w) { \
 					return w.HasComponent<_InspectorSelfType>(e); \
+				}, \
+				/* Serialize Func */ \
+				[](Span::Entity e, Span::World& w, nlohmann::ordered_json& j) { \
+					if (auto* c = w.GetComponentPtr<_InspectorSelfType>(e)) { \
+						Span::Internal::JsonSerializeVisitor v(j); \
+						c->Reflect(v); \
+					} \
+				}, \
+				/* Deserialize Func */ \
+				[](Span::Entity e, Span::World& w, const nlohmann::ordered_json& j) { \
+					if (auto* c = w.GetComponentPtr<_InspectorSelfType>(e)) { \
+						Span::Internal::JsonDeserializeVisitor v(j); \
+						c->Reflect(v); \
+					} \
 				} \
 			); \
 		} \
@@ -103,6 +90,100 @@ namespace Span
 
 namespace Span::Internal
 {
+	// 前方宣言
+	template <typename T>
+	void DrawField(const char* label, T& value, const std::vector<Attribute>& attrs);
+
+	template <typename Visitor, typename T, typename... Attrs>
+	void ProcessField(Visitor& visitor, const char* name, T& value, Attrs&&... attrs)
+	{
+		std::vector<Span::Attribute> attrList = { std::forward<Attrs>(attrs)... };
+		visitor.Visit(name, value, attrList);
+	}
+
+	// 🐾 Visitor Classes (UI描画とJSON処理の自動分岐)
+	// ============================================================
+
+	// 1. UI描画用ビジター
+	struct ImGuiVisitor
+	{
+		template<typename T>
+		void Visit(const char* name, T& value, const std::vector<Attribute>& attrs)
+		{
+			Span::Internal::DrawField(name, value, attrs);
+		}
+	};
+
+	// 2. JSON保存用ビジター
+	struct JsonSerializeVisitor
+	{
+		nlohmann::ordered_json& j;
+		JsonSerializeVisitor(nlohmann::ordered_json& jsonRef) : j(jsonRef) {}
+
+		template<typename T>
+		void Visit(const char* name, T& value, const std::vector<Attribute>& attrs)
+		{
+			if constexpr (std::is_enum_v<T>) {
+				j[name] = static_cast<int>(value);
+			}
+			else if constexpr (Span::is_fixed_string_v<T>) {
+				j[name] = value.Data;
+			}
+			else if constexpr (std::is_same_v<T, Vector3>) {
+				j[name] = { value.x, value.y, value.z };
+			}
+			else if constexpr (std::is_same_v<T, Quaternion>) {
+				j[name] = { value.x, value.y, value.z, value.w };
+			}
+			else if constexpr (std::is_pointer_v<T>) {
+				// アセットポインタ等は現状スキップ
+			}
+			else {
+				j[name] = value;
+			}
+		}
+	};
+
+	// 3. JSON読み込み用ビジター
+	struct JsonDeserializeVisitor
+	{
+		const nlohmann::ordered_json& j;
+		JsonDeserializeVisitor(const nlohmann::ordered_json& jsonRef) : j(jsonRef) {}
+
+		template<typename T>
+		void Visit(const char* name, T& value, const std::vector<Attribute>& attrs)
+		{
+			// 変数名がJSON内に存在するかチェック
+			if (!j.contains(name)) return;
+
+			if constexpr (std::is_enum_v<T>) {
+				value = static_cast<T>(j[name].get<int>());
+			}
+			else if constexpr (Span::is_fixed_string_v<T>) {
+				std::string str = j[name].get<std::string>();
+				strncpy_s(value.Data, str.c_str(), value.Capacity());
+			}
+			else if constexpr (std::is_same_v<T, Vector3>) {
+				auto arr = j[name];
+				if (arr.is_array() && arr.size() >= 3) {
+					value.x = arr[0]; value.y = arr[1]; value.z = arr[2];
+				}
+			}
+			else if constexpr (std::is_same_v<T, Quaternion>) {
+				auto arr = j[name];
+				if (arr.is_array() && arr.size() >= 4) {
+					value.x = arr[0]; value.y = arr[1]; value.z = arr[2]; value.w = arr[3];
+				}
+			}
+			else if constexpr (std::is_pointer_v<T>) {
+				// スキップ
+			}
+			else {
+				value = j[name].get<T>();
+			}
+		}
+	};
+
 	/**
 	 * @brief	型に応じた描画ヘルパー関数
 	 */

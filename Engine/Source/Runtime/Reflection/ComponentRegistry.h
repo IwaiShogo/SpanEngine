@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	ComponentRegistry.h
  * @brief	コンポーネントのメタデータ管理 (リフレクション)。
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -11,9 +11,6 @@
 
 #pragma once
 #include "ECS/Kernel/Entity.h"
-#include <functional>
-#include <vector>
-#include <string>
 
 // Forward Declaration
 namespace Span { class World; }
@@ -31,6 +28,10 @@ namespace Span
 	// コンポーネント確認用の関数ポインタ型
 	using HasComponentFunc = std::function<bool(Entity, World&)>;
 
+	// JSON処理用
+	using SerializeComponentFunc = std::function<void(Entity, World&, nlohmann::ordered_json&)>;
+	using DeserializeComponentFunc = std::function<void(Entity, World&, const nlohmann::ordered_json&)>;
+
 	/**
 	 * @struct	ComponentMetadata
 	 * @brief	🗃️ コンポーネント1つ分の型情報と操作関数。
@@ -43,13 +44,16 @@ namespace Span
 		AddComponentFunc AddFunc;
 		HasComponentFunc HasFunc;
 
+		SerializeComponentFunc SerializeFunc;
+		DeserializeComponentFunc DeserializeFunc;
+
 		int Order = 0;	///< インスペクターでの表示順
 	};
 
 	/**
 	 * @class	ComponentRegistry
 	 * @brief	📚 全コンポーネントのメタデータを管理する静的レジストリ。
-	 * 
+	 *
 	 * @details
 	 * `SpanReflection` マクロによって、アプリ起動時に自動的に各コンポーネントの情報が登録されます。
 	 * Inspectorパネルは、このレジストリを参照してUIを構築します。
@@ -68,7 +72,9 @@ namespace Span
 			const std::string& name,
 			DrawComponentFunc drawFunc,
 			AddComponentFunc addFunc,
-			HasComponentFunc hasFunc)
+			HasComponentFunc hasFunc,
+			SerializeComponentFunc serializeFunc,
+			DeserializeComponentFunc deserializeFunc)
 		{
 			ComponentMetadata meta;
 			meta.Name = name;
@@ -77,6 +83,8 @@ namespace Span
 			meta.DrawFunc = drawFunc;
 			meta.AddFunc = addFunc;
 			meta.HasFunc = hasFunc;
+			meta.SerializeFunc = serializeFunc;
+			meta.DeserializeFunc = deserializeFunc;
 
 			// 削除関数
 			meta.RemoveFunc = [](Entity entity, World& world)

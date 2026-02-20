@@ -146,6 +146,34 @@ namespace Span
 			return entityManager.IsAlive(entity);
 		}
 
+		/**
+		 * @brief	ワールド内の全てのエンティティを取得します。
+		 * @return	有効なEntityハンドルのリスト
+		 */
+		std::vector<Entity> GetAllEntities() const
+		{
+			std::vector<Entity> entities;
+			entities.reserve(entityLocationMap.size());
+			for (const auto& pair : entityLocationMap)
+			{
+				entities.push_back(Entity{ pair.first });
+			}
+			return entities;
+		}
+
+		/**
+		 * @brief	ワールド内の全てのエンティティを削除し、初期状態に戻します。
+		 * @details	シーンのロード前などに使用します。
+		 */
+		void Clear()
+		{
+			auto entities = GetAllEntities();
+			for (auto e : entities)
+			{
+				DestroyEntity(e);
+			}
+		}
+
 		// 🧩 Component Management
 		// ============================================================
 

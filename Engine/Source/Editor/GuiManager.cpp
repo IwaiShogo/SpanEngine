@@ -3,6 +3,7 @@
 #include <SpanEngine.h>
 
 #include "PanelManager.h"
+#include "Runtime/Scene/SceneSerializer.h"
 
 #include <ImGuizmo.h>
 
@@ -136,6 +137,21 @@ namespace Span
 		{
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault(nullptr, (void*)commandList);
+		}
+
+		if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_S))
+		{
+			// TODO: 現在のシーンファイルパスを取得する
+			std::filesystem::path scenePath = "Projects/Playground/Assets/Scenes/Main.span";
+
+			// フォルダが無ければ作成
+			std::filesystem::create_directories(scenePath.parent_path());
+
+			SceneSerializer serializer(Application::Get().GetWorld());
+			if (serializer.Serialize(scenePath))
+			{
+				SPAN_LOG("Scene saved successfully to {}", scenePath.string());
+			}
 		}
 	}
 

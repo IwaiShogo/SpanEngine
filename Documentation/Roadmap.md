@@ -4,17 +4,17 @@
 **目標:** 「アセット管理・設定・保存・復帰」の完全なサイクルを確立し、エディタとしての信頼性を確保する。
 
 ### 1. Project Browser Polish (Current Focus)
-- [ ] **Asset Inspector:**
+- [x] **Asset Inspector:**
   - Project Browserでファイルを選択した際、Inspectorパネルにその詳細情報を表示する。
   - テクスチャ解像度、モデルの頂点数、GUIDなどの確認。
-- [ ] **Directory Watcher (Hot Reload):**
+- [x] **Directory Watcher (Hot Reload):**
   - エクスプローラー側でのファイル追加・削除・変更をリアルタイムに検知し、Project Browserを自動更新する。
 
 ### 2. Global Managers (Tag & Layer)
-- [ ] **Tag Manager:**
+- [x] **Tag Manager:**
   - ゲーム内で使用するタグ（Player, Enemy, UIなど）を文字列リストとして一元管理するシステム。
   - Inspectorでプルダウン選択できるようにする。
-- [ ] **Layer Manager:**
+- [x] **Layer Manager:**
   - 物理衝突やレンダリング可視性を制御するためのレイヤー定義（Default, Transparent, UI, Waterなど）。
   - 衝突マトリクス（どのレイヤーとどのレイヤーが衝突するか）の設定UI。
 
