@@ -1,0 +1,474 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Span::LayerManager クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classSpan_1_1LayerManager.html','','classSpan_1_1LayerManager-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Span::LayerManager クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>レイヤー名とレイヤー間の衝突関係を管理するシングルトン。  
+ <a href="#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="LayerManager_8h_source.html">LayerManager.h</a>&gt;</code></p>
+<div class="dynheader">
+Span::LayerManager 連携図</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LayerManager__coll__graph.svg" width="164" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:afa9cc1f52fa944e4358a16cac63f4f60" id="r_afa9cc1f52fa944e4358a16cac63f4f60"><td class="memItemLeft">uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#afa9cc1f52fa944e4358a16cac63f4f60">GetCollisionMask</a> (uint8_t layerIndex) const</td></tr>
+<tr class="memdesc:afa9cc1f52fa944e4358a16cac63f4f60"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定したレイヤーの物理衝突マスク(32bit)を取得します。  <br /></td></tr>
+<tr class="memitem:a33477af2edce8fb0c546a89dbba9b71f" id="r_a33477af2edce8fb0c546a89dbba9b71f"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a33477af2edce8fb0c546a89dbba9b71f">CanCollide</a> (uint8_t layerA, uint8_t layerB) const</td></tr>
+<tr class="memdesc:a33477af2edce8fb0c546a89dbba9b71f"><td class="mdescLeft">&#160;</td><td class="mdescRight">レイヤー同士が衝突設定になっているか判定します。  <br /></td></tr>
+<tr class="memitem:ac8a238e94a5c45d9b27248678db35416" id="r_ac8a238e94a5c45d9b27248678db35416"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac8a238e94a5c45d9b27248678db35416">SetCollision</a> (uint8_t layerA, uint8_t layerB, bool canCollide)</td></tr>
+<tr class="memdesc:ac8a238e94a5c45d9b27248678db35416"><td class="mdescLeft">&#160;</td><td class="mdescRight">レイヤー間の衝突関係を設定します。  <br /></td></tr>
+<tr class="memitem:a5b0011a32b61df3de7f38722aeb83ead" id="r_a5b0011a32b61df3de7f38722aeb83ead"><td class="memItemLeft">const std::string &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a5b0011a32b61df3de7f38722aeb83ead">GetLayerName</a> (uint8_t layerIndex) const</td></tr>
+<tr class="memdesc:a5b0011a32b61df3de7f38722aeb83ead"><td class="mdescLeft">&#160;</td><td class="mdescRight">レイヤー名を取得します。  <br /></td></tr>
+<tr class="memitem:a784ad5c267bcb06486007c4e75673a1b" id="r_a784ad5c267bcb06486007c4e75673a1b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a784ad5c267bcb06486007c4e75673a1b">SetLayerName</a> (uint8_t layerIndex, const std::string &amp;name)</td></tr>
+<tr class="memdesc:a784ad5c267bcb06486007c4e75673a1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ユーザーレイヤー (8～31) の名前を設定します。  <br /></td></tr>
+<tr class="memitem:a8e4b03d32ae100dafd9900edeae9f8d2" id="r_a8e4b03d32ae100dafd9900edeae9f8d2"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a8e4b03d32ae100dafd9900edeae9f8d2">IsValidLayer</a> (uint8_t layerIndex) const</td></tr>
+<tr class="memdesc:a8e4b03d32ae100dafd9900edeae9f8d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">そのレイヤーが有効 (名前が設定されているか) 判定します。  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:a9239a20ca838296684ae510cae5aa6a9" id="r_a9239a20ca838296684ae510cae5aa6a9"><td class="memItemLeft">static <a class="el" href="#a0053db8e29d09f9c923845e43f62535d">LayerManager</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a9239a20ca838296684ae510cae5aa6a9">Get</a> ()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+非公開メンバ関数</h2></td></tr>
+<tr class="memitem:a0053db8e29d09f9c923845e43f62535d" id="r_a0053db8e29d09f9c923845e43f62535d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a0053db8e29d09f9c923845e43f62535d">LayerManager</a> ()</td></tr>
+<tr class="memitem:a8f4ae5e3e834728e4a27540ad0e8ca28" id="r_a8f4ae5e3e834728e4a27540ad0e8ca28"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a8f4ae5e3e834728e4a27540ad0e8ca28">~LayerManager</a> ()=default</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+非公開変数類</h2></td></tr>
+<tr class="memitem:a804c49d4c75667873307dd52eca32d0a" id="r_a804c49d4c75667873307dd52eca32d0a"><td class="memItemLeft">std::array&lt; std::string, 32 &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a804c49d4c75667873307dd52eca32d0a">m_LayerNames</a></td></tr>
+<tr class="memitem:a58ec88671e9aec9fde35ef84fa09f864" id="r_a58ec88671e9aec9fde35ef84fa09f864"><td class="memItemLeft">std::array&lt; uint32_t, 32 &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a58ec88671e9aec9fde35ef84fa09f864">m_CollisionMatrix</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>レイヤー名とレイヤー間の衝突関係を管理するシングルトン。 </p>
+
+<p class="definition"> <a class="el" href="LayerManager_8h_source.html">LayerManager.h</a> の <a class="el" href="LayerManager_8h_source.html#l00023">23</a> 行目に定義があります。</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
+<a id="a0053db8e29d09f9c923845e43f62535d" name="a0053db8e29d09f9c923845e43f62535d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0053db8e29d09f9c923845e43f62535d">&#9670;&#160;</a></span>LayerManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::LayerManager::LayerManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="LayerManager_8cpp_source.html">LayerManager.cpp</a> の <a class="el" href="LayerManager_8cpp_source.html#l00016">16</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LayerManager_a0053db8e29d09f9c923845e43f62535d_icgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a8f4ae5e3e834728e4a27540ad0e8ca28" name="a8f4ae5e3e834728e4a27540ad0e8ca28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f4ae5e3e834728e4a27540ad0e8ca28">&#9670;&#160;</a></span>~LayerManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::LayerManager::~LayerManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="a33477af2edce8fb0c546a89dbba9b71f" name="a33477af2edce8fb0c546a89dbba9b71f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33477af2edce8fb0c546a89dbba9b71f">&#9670;&#160;</a></span>CanCollide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Span::LayerManager::CanCollide </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>layerA</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>layerB</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>レイヤー同士が衝突設定になっているか判定します。 </p>
+
+<p class="definition"> <a class="el" href="LayerManager_8cpp_source.html">LayerManager.cpp</a> の <a class="el" href="LayerManager_8cpp_source.html#l00040">40</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LayerManager_a33477af2edce8fb0c546a89dbba9b71f_icgraph.svg" width="598" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a9239a20ca838296684ae510cae5aa6a9" name="a9239a20ca838296684ae510cae5aa6a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9239a20ca838296684ae510cae5aa6a9">&#9670;&#160;</a></span>Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a0053db8e29d09f9c923845e43f62535d">LayerManager</a> &amp; Span::LayerManager::Get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="LayerManager_8h_source.html">LayerManager.h</a> の <a class="el" href="LayerManager_8h_source.html#l00026">26</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LayerManager_a9239a20ca838296684ae510cae5aa6a9_cgraph.svg" width="400" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LayerManager_a9239a20ca838296684ae510cae5aa6a9_icgraph.svg" width="630" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="afa9cc1f52fa944e4358a16cac63f4f60" name="afa9cc1f52fa944e4358a16cac63f4f60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa9cc1f52fa944e4358a16cac63f4f60">&#9670;&#160;</a></span>GetCollisionMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Span::LayerManager::GetCollisionMask </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>layerIndex</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定したレイヤーの物理衝突マスク(32bit)を取得します。 </p>
+
+<p class="definition"> <a class="el" href="LayerManager_8cpp_source.html">LayerManager.cpp</a> の <a class="el" href="LayerManager_8cpp_source.html#l00034">34</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LayerManager_afa9cc1f52fa944e4358a16cac63f4f60_icgraph.svg" width="598" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a5b0011a32b61df3de7f38722aeb83ead" name="a5b0011a32b61df3de7f38722aeb83ead"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b0011a32b61df3de7f38722aeb83ead">&#9670;&#160;</a></span>GetLayerName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; Span::LayerManager::GetLayerName </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>layerIndex</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>レイヤー名を取得します。 </p>
+
+<p class="definition"> <a class="el" href="LayerManager_8cpp_source.html">LayerManager.cpp</a> の <a class="el" href="LayerManager_8cpp_source.html#l00062">62</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LayerManager_a5b0011a32b61df3de7f38722aeb83ead_icgraph.svg" width="598" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a8e4b03d32ae100dafd9900edeae9f8d2" name="a8e4b03d32ae100dafd9900edeae9f8d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e4b03d32ae100dafd9900edeae9f8d2">&#9670;&#160;</a></span>IsValidLayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Span::LayerManager::IsValidLayer </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>layerIndex</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>そのレイヤーが有効 (名前が設定されているか) 判定します。 </p>
+
+<p class="definition"> <a class="el" href="LayerManager_8cpp_source.html">LayerManager.cpp</a> の <a class="el" href="LayerManager_8cpp_source.html#l00076">76</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ac8a238e94a5c45d9b27248678db35416" name="ac8a238e94a5c45d9b27248678db35416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8a238e94a5c45d9b27248678db35416">&#9670;&#160;</a></span>SetCollision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::LayerManager::SetCollision </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>layerA</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>layerB</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>canCollide</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>レイヤー間の衝突関係を設定します。 </p>
+
+<p class="definition"> <a class="el" href="LayerManager_8cpp_source.html">LayerManager.cpp</a> の <a class="el" href="LayerManager_8cpp_source.html#l00046">46</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LayerManager_ac8a238e94a5c45d9b27248678db35416_icgraph.svg" width="598" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a784ad5c267bcb06486007c4e75673a1b" name="a784ad5c267bcb06486007c4e75673a1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a784ad5c267bcb06486007c4e75673a1b">&#9670;&#160;</a></span>SetLayerName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::LayerManager::SetLayerName </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>layerIndex</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ユーザーレイヤー (8～31) の名前を設定します。 </p>
+
+<p class="definition"> <a class="el" href="LayerManager_8cpp_source.html">LayerManager.cpp</a> の <a class="el" href="LayerManager_8cpp_source.html#l00069">69</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LayerManager_a784ad5c267bcb06486007c4e75673a1b_icgraph.svg" width="598" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
+<a id="a58ec88671e9aec9fde35ef84fa09f864" name="a58ec88671e9aec9fde35ef84fa09f864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58ec88671e9aec9fde35ef84fa09f864">&#9670;&#160;</a></span>m_CollisionMatrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;uint32_t, 32&gt; Span::LayerManager::m_CollisionMatrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="LayerManager_8h_source.html">LayerManager.h</a> の <a class="el" href="LayerManager_8h_source.html#l00067">67</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a804c49d4c75667873307dd52eca32d0a" name="a804c49d4c75667873307dd52eca32d0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a804c49d4c75667873307dd52eca32d0a">&#9670;&#160;</a></span>m_LayerNames</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;std::string, 32&gt; Span::LayerManager::m_LayerNames</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="LayerManager_8h_source.html">LayerManager.h</a> の <a class="el" href="LayerManager_8h_source.html#l00066">66</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>Engine/Source/Runtime/Core/<a class="el" href="LayerManager_8h_source.html">LayerManager.h</a></li>
+<li>Engine/Source/Runtime/Core/<a class="el" href="LayerManager_8cpp_source.html">LayerManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceSpan.html">Span</a></li><li class="navelem"><a href="classSpan_1_1LayerManager.html">LayerManager</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

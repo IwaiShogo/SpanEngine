@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['w_0',['w',['../structSpan_1_1Vector4.html#afa3a55fc2cd9a6cada8e168b798efa8e',1,'Span::Vector4::w'],['../structSpan_1_1Quaternion.html#ab931b3dac6a116cff7470ffdcd1a64db',1,'Span::Quaternion::w']]],
-  ['width_1',['Width',['../structSpan_1_1WindowDesc.html#ac36034e45401ef5c779a7cd41eaf8ba0',1,'Span::WindowDesc']]],
-  ['width_2',['width',['../classSpan_1_1GraphicsContext.html#a3b9bf0727cc7aea7de42f9afe82e0c46',1,'Span::GraphicsContext::width'],['../classSpan_1_1RenderTarget.html#a78a0f4f8fa246f9e2deee9b1092bb6f9',1,'Span::RenderTarget::width'],['../classSpan_1_1Texture.html#ad4bffa9fb2e8830770ed4209ba6d362b',1,'Span::Texture::width'],['../classSpan_1_1Window.html#aa0ea22e00d585f4ddf405264723f52bc',1,'Span::Window::width']]],
-  ['window_3',['window',['../classSpan_1_1Application.html#acac29b85acb51a2c94f9febfa9427bc1',1,'Span::Application']]],
-  ['world_4',['World',['../structSpan_1_1TransformData.html#af5eb0294b4a8dc4080305b4c20c9bdfb',1,'Span::TransformData']]],
-  ['world_5',['world',['../classSpan_1_1Application.html#a6b218a6b6618fa3fff11183802b81f66',1,'Span::Application']]]
+  ['value_0',['Value',['../structSpan_1_1Layer.html#ad6133d10185e402cd6f0b94a565a9831',1,'Span::Layer::Value'],['../structSpan_1_1LocalToWorld.html#a2b5844413fcf24ef8eabecc9c0e4c568',1,'Span::LocalToWorld::Value'],['../structSpan_1_1Name.html#a223edf6234c8952cdf54d44ef175fdfe',1,'Span::Name::Value'],['../structSpan_1_1Tag.html#aa94c6043bfeb23f37040104a259502ac',1,'Span::Tag::Value']]],
+  ['velocity_1',['Velocity',['../structSpan_1_1EditorCamera.html#ab3b159c65d028f1bafbc402d28cf0a9b',1,'Span::EditorCamera']]],
+  ['vertexbuffer_2',['vertexBuffer',['../classSpan_1_1Mesh.html#ab5326828b5a500cf38a357fcfeee3381',1,'Span::Mesh']]],
+  ['vertexbufferview_3',['vertexBufferView',['../classSpan_1_1Mesh.html#a2b9c77cd3fe0c597c5c32d950a92f56d',1,'Span::Mesh']]],
+  ['vertexcount_4',['vertexCount',['../classSpan_1_1Mesh.html#a7a4a75126636a829da28adff5d416a50',1,'Span::Mesh']]],
+  ['vertexshader_5',['vertexShader',['../classSpan_1_1Material.html#a336bd3cb95f02a67f6103a950df586f8',1,'Span::Material']]],
+  ['viewmatrix_6',['viewMatrix',['../classSpan_1_1Renderer.html#af03a4b1bbb7c73258554f363991196c5',1,'Span::Renderer']]],
+  ['viewport_7',['viewport',['../classSpan_1_1GraphicsContext.html#a05b5966d30bb15770e8104d7d0183f1b',1,'Span::GraphicsContext']]],
+  ['vs_8',['vs',['../classSpan_1_1Renderer.html#ab1be30cd3501208577f218d42903df76',1,'Span::Renderer']]]
 ];

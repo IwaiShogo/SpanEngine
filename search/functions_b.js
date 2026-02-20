@@ -1,16 +1,14 @@
 var searchData=
 [
-  ['main_0',['main',['../EntryPoint_8h.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'EntryPoint.h']]],
-  ['matchesfilter_1',['MatchesFilter',['../classSpan_1_1ProjectBrowserPanel.html#a2ed9ba33e444c3cf9b807a2261fcacb3',1,'Span::ProjectBrowserPanel']]],
-  ['material_2',['Material',['../classSpan_1_1Material.html#aacda1f1b21599fe1d49a675745caf175',1,'Span::Material']]],
-  ['matrix4x4_3',['Matrix4x4',['../structSpan_1_1Matrix4x4.html#a431bf3af613c1029e6de25d64cfda6b7',1,'Span::Matrix4x4::Matrix4x4()'],['../structSpan_1_1Matrix4x4.html#a060b4f7603dd0c3b5b8c37d11b1d93e1',1,'Span::Matrix4x4::Matrix4x4(const Matrix4x4 &amp;)=default']]],
-  ['memoryarena_4',['MemoryArena',['../classSpan_1_1MemoryArena.html#a8a2b0aff129817bd9932641df578355b',1,'Span::MemoryArena']]],
-  ['mesh_5',['Mesh',['../classSpan_1_1Mesh.html#ada6aa82e26c3c023f295a9d85b90f0ca',1,'Span::Mesh::Mesh()=default'],['../classSpan_1_1Mesh.html#a7245f7b0279dae99ceeb763f24030a56',1,'Span::Mesh::Mesh(Mesh &amp;&amp;) noexcept=default'],['../classSpan_1_1Mesh.html#a4cb4987414415a68822200ac2fb68a36',1,'Span::Mesh::Mesh(const Mesh &amp;)=delete']]],
-  ['meshfilter_6',['MeshFilter',['../structSpan_1_1MeshFilter.html#a41bea58b7331829339ef8bb02da9e33e',1,'Span::MeshFilter::MeshFilter()=default'],['../structSpan_1_1MeshFilter.html#a9fe781d1cef7cb1a5cf29ff5fb858ad4',1,'Span::MeshFilter::MeshFilter(Mesh *m)']]],
-  ['meshrenderer_7',['MeshRenderer',['../structSpan_1_1MeshRenderer.html#a1d10adf9d9057255cfe6a04e7c8b80ae',1,'Span::MeshRenderer::MeshRenderer()=default'],['../structSpan_1_1MeshRenderer.html#a47c89928d42ad1e881e5a80b70d0cde0',1,'Span::MeshRenderer::MeshRenderer(Material *m)']]],
-  ['migrateentity_8',['MigrateEntity',['../classSpan_1_1World.html#a8c01f89c473a5da0aca8d152f248fc53',1,'Span::World']]],
-  ['min_9',['Min',['../structSpan_1_1Camera.html#a7d7398de74ff9dd2dfa791c508251062',1,'Span::Camera::Min(0.1f)'],['../structSpan_1_1Camera.html#a014e8eba964d808c5573ec1bc310ff57',1,'Span::Camera::Min(0.01f)'],['../structSpan_1_1Camera.html#a014e8eba964d808c5573ec1bc310ff57',1,'Span::Camera::Min(0.01f)'],['../namespaceSpan.html#a9822105b4bb016e1c0c580e617bd925a',1,'Span::Min()']]],
-  ['moveentitydata_10',['MoveEntityData',['../structSpan_1_1Chunk.html#a6bd9e470ec1f88ff4d5e7481a6608ccf',1,'Span::Chunk']]],
-  ['movefile_11',['MoveFile',['../classSpan_1_1EditorFileSystem.html#a491445bed939f1a114b59251787b8661',1,'Span::EditorFileSystem']]],
-  ['movefilecommand_12',['MoveFileCommand',['../classSpan_1_1MoveFileCommand.html#a701ec145b0b8f760af365b2fd30532f1',1,'Span::MoveFileCommand']]]
+  ['layer_0',['Layer',['../structSpan_1_1Layer.html#a32ba0a324cdfeb7328f5aec719c15fcd',1,'Span::Layer::Layer()=default'],['../structSpan_1_1Layer.html#a8f14704ff9ecb1fc47ffc4c9b182f5ea',1,'Span::Layer::Layer(uint8_t val)']]],
+  ['layermanager_1',['LayerManager',['../classSpan_1_1LayerManager.html#a0053db8e29d09f9c923845e43f62535d',1,'Span::LayerManager']]],
+  ['length_2',['Length',['../structSpan_1_1Vector2.html#a4562c34c0d9fda10cab79f8ab076438c',1,'Span::Vector2::Length()'],['../structSpan_1_1Vector3.html#a4d84dde93e6520ab1b1407f9d82d881e',1,'Span::Vector3::Length()']]],
+  ['lengthsquared_3',['LengthSquared',['../structSpan_1_1Vector2.html#aa6896267dd2a0f91e74443b32866898e',1,'Span::Vector2::LengthSquared()'],['../structSpan_1_1Vector3.html#a7c3f0c2ea10d0780a50fdb7e1a5dffee',1,'Span::Vector3::LengthSquared() const']]],
+  ['lerp_4',['Lerp',['../structSpan_1_1Vector3.html#a636702ff63ba665c96251f818180e173',1,'Span::Vector3::Lerp()'],['../namespaceSpan.html#abf375e5ec19260895ab2601db710d861',1,'Span::Lerp()']]],
+  ['load_5',['Load',['../classSpan_1_1Shader.html#a546bb2f333eab4df01ea6cf76262cba9',1,'Span::Shader::Load()'],['../classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1',1,'Span::ModelLoader::Load()']]],
+  ['loadorcreatemetadata_6',['LoadOrCreateMetadata',['../classSpan_1_1AssetSerializer.html#adea72d3eb1434b36473f6e0d38396451',1,'Span::AssetSerializer']]],
+  ['localtoworld_7',['LocalToWorld',['../structSpan_1_1LocalToWorld.html#a95689c156cd5dbfedd718f60b6b59ac2',1,'Span::LocalToWorld::LocalToWorld()'],['../structSpan_1_1LocalToWorld.html#aa8817b89dc2edd1f85e37d94008191b9',1,'Span::LocalToWorld::LocalToWorld(const Matrix4x4 &amp;matrix)']]],
+  ['log_8',['Log',['../classSpan_1_1Logger.html#ac37d5524ac74ce42898c30df5dfddbf5',1,'Span::Logger']]],
+  ['lookat_9',['LookAt',['../structSpan_1_1Transform.html#a22e91c428e57737b16a5e9281a28a610',1,'Span::Transform']]],
+  ['lookatlh_10',['LookAtLH',['../structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa',1,'Span::Matrix4x4']]]
 ];

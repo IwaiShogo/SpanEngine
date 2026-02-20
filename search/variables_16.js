@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['x_0',['x',['../structSpan_1_1Vector2.html#a83e6d1c272a9e958a8b6647f493ac08b',1,'Span::Vector2::x'],['../structSpan_1_1Vector3.html#a0bda19ad69e61f2bdf9640245af4e280',1,'Span::Vector3::x'],['../structSpan_1_1Vector4.html#a1446aa2df739d33a6a708e3f5b6c27a0',1,'Span::Vector4::x'],['../structSpan_1_1Quaternion.html#aea2b43ba77e07eaac55339b95f721600',1,'Span::Quaternion::x']]]
+  ['w_0',['w',['../structSpan_1_1Vector4.html#afa3a55fc2cd9a6cada8e168b798efa8e',1,'Span::Vector4::w'],['../structSpan_1_1Quaternion.html#ab931b3dac6a116cff7470ffdcd1a64db',1,'Span::Quaternion::w']]],
+  ['width_1',['Width',['../structSpan_1_1WindowDesc.html#ac36034e45401ef5c779a7cd41eaf8ba0',1,'Span::WindowDesc']]],
+  ['width_2',['width',['../classSpan_1_1GraphicsContext.html#a3b9bf0727cc7aea7de42f9afe82e0c46',1,'Span::GraphicsContext::width'],['../classSpan_1_1RenderTarget.html#a78a0f4f8fa246f9e2deee9b1092bb6f9',1,'Span::RenderTarget::width'],['../classSpan_1_1Texture.html#ad4bffa9fb2e8830770ed4209ba6d362b',1,'Span::Texture::width'],['../classSpan_1_1Window.html#aa0ea22e00d585f4ddf405264723f52bc',1,'Span::Window::width']]],
+  ['window_3',['window',['../classSpan_1_1Application.html#acac29b85acb51a2c94f9febfa9427bc1',1,'Span::Application']]],
+  ['world_4',['World',['../structSpan_1_1TransformData.html#af5eb0294b4a8dc4080305b4c20c9bdfb',1,'Span::TransformData']]],
+  ['world_5',['world',['../classSpan_1_1Application.html#a6b218a6b6618fa3fff11183802b81f66',1,'Span::Application']]]
 ];

@@ -6,6 +6,9 @@ var classSpan_1_1TagManager =
     [ "Get", "classSpan_1_1TagManager.html#ae095ba4c382a90f7c3a1437ab0d6fd2b", null ],
     [ "GetAllTags", "classSpan_1_1TagManager.html#a1c2524933291e329c200e9ecb13c3b98", null ],
     [ "HasTag", "classSpan_1_1TagManager.html#ab00b37a4de706f5e174054ec7467a71b", null ],
+    [ "IsProtectedTag", "classSpan_1_1TagManager.html#a4dff645832ba4c34eed8ef1eb0cd4020", null ],
+    [ "IsValidTagName", "classSpan_1_1TagManager.html#a9da96fc32e81c827f062630c5896516e", null ],
     [ "RemoveTag", "classSpan_1_1TagManager.html#a4f310a685303986ad9056e5551b3c7fd", null ],
+    [ "SortTags", "classSpan_1_1TagManager.html#aceb83ee83459d446fa2d42a67e9db5dd", null ],
     [ "m_Tags", "classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4", null ]
 ];

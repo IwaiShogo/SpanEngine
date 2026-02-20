@@ -115,6 +115,10 @@ Span::World 連携図</div>
 <tr class="memdesc:a1f597fc6f7555036c746fac5e9ba9039"><td class="mdescLeft">&#160;</td><td class="mdescRight">エンティティを削除します。  <br /></td></tr>
 <tr class="memitem:a5e0da52990e6715e2cc31a0d85913748" id="r_a5e0da52990e6715e2cc31a0d85913748"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a5e0da52990e6715e2cc31a0d85913748">IsAlive</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity) const</td></tr>
 <tr class="memdesc:a5e0da52990e6715e2cc31a0d85913748"><td class="mdescLeft">&#160;</td><td class="mdescRight">エンティティが現在有効かどうかを確認します。  <br /></td></tr>
+<tr class="memitem:ae4d421cde992dbec3adc02abbd744205" id="r_ae4d421cde992dbec3adc02abbd744205"><td class="memItemLeft">std::vector&lt; <a class="el" href="structSpan_1_1Entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ae4d421cde992dbec3adc02abbd744205">GetAllEntities</a> () const</td></tr>
+<tr class="memdesc:ae4d421cde992dbec3adc02abbd744205"><td class="mdescLeft">&#160;</td><td class="mdescRight">ワールド内の全てのエンティティを取得します。  <br /></td></tr>
+<tr class="memitem:a75ff3e35b55b9bb7a8fa4314ee0eb47a" id="r_a75ff3e35b55b9bb7a8fa4314ee0eb47a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a75ff3e35b55b9bb7a8fa4314ee0eb47a">Clear</a> ()</td></tr>
+<tr class="memdesc:a75ff3e35b55b9bb7a8fa4314ee0eb47a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ワールド内の全てのエンティティを削除し、初期状態に戻します。  <br /></td></tr>
 <tr class="memitem:a555e11829d3833ce35f444779c4c2369" id="r_a555e11829d3833ce35f444779c4c2369"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a555e11829d3833ce35f444779c4c2369 template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a555e11829d3833ce35f444779c4c2369">AddComponent</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity, const T &amp;initialValue=T())</td></tr>
 <tr class="memdesc:a555e11829d3833ce35f444779c4c2369"><td class="mdescLeft">&#160;</td><td class="mdescRight">既存のEntityに新しいコンポーネントを追加します。  <br /></td></tr>
@@ -169,7 +173,7 @@ Span::World 連携図</div>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。 </p>
 <p>WorldはECSパターンのコンテナであり、以下の役割を持ちます。 </p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md101"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md109"></a>
 🏗️ アーキテクチャ (Architecture)</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -181,7 +185,7 @@ Span::World 連携図</div>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyLeft"><b><a class="el" href="classSpan_1_1System.html" title="🧠 ゲームロジックを実装するための基底クラス。">System</a> Manager</b>  </td><td class="markdownTableBodyLeft">登録されたシステムの更新順序を制御し、実行します。  </td></tr>
 </table>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md102"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md110"></a>
 🔄 メモリフロー (Memory Flow)</h3>
 <ol type="1">
 <li><span class="tt"><a class="el" href="#a5e8a64b9e0f3715d21c43f92591e7d88" title="指定されたコンポーネントを持つ新しいエンティティを作成します。">CreateEntity</a></span> でエンティティを生成</li>
@@ -292,7 +296,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00163">163</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00191">191</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -301,7 +305,7 @@ template&lt;typename T&gt; </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a555e11829d3833ce35f444779c4c2369_icgraph.svg" width="634" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a555e11829d3833ce35f444779c4c2369_icgraph.svg" width="636" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -346,7 +350,42 @@ template&lt;typename T, typename... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>登録されたシステムへの生ポインタ </dd></dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00322">322</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00350">350</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a75ff3e35b55b9bb7a8fa4314ee0eb47a" name="a75ff3e35b55b9bb7a8fa4314ee0eb47a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75ff3e35b55b9bb7a8fa4314ee0eb47a">&#9670;&#160;</a></span>Clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::World::Clear </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ワールド内の全てのエンティティを削除し、初期状態に戻します。 </p>
+<p>シーンのロード前などに使用します。 </p>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00168">168</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a75ff3e35b55b9bb7a8fa4314ee0eb47a_cgraph.svg" width="100%" height="413"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -439,7 +478,7 @@ template&lt;typename... ComponentTypes&gt; </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a1f597fc6f7555036c746fac5e9ba9039_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a1f597fc6f7555036c746fac5e9ba9039_icgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -489,7 +528,7 @@ template&lt;typename... ComponentTypes, typename Func&gt; </div>
 <div class="line">    t.Position += v.Value * DeltaTime;</div>
 <div class="line">});</div>
 </div><!-- fragment --> 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00383">383</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00411">411</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -499,6 +538,41 @@ template&lt;typename... ComponentTypes, typename Func&gt; </div>
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_afd6041d6b68f1964882d1941fc0fddaf_icgraph.svg" width="634" height="358"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ae4d421cde992dbec3adc02abbd744205" name="ae4d421cde992dbec3adc02abbd744205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4d421cde992dbec3adc02abbd744205">&#9670;&#160;</a></span>GetAllEntities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structSpan_1_1Entity.html">Entity</a> &gt; Span::World::GetAllEntities </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ワールド内の全てのエンティティを取得します。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>有効なEntityハンドルのリスト </dd></dl>
+
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00153">153</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_ae4d421cde992dbec3adc02abbd744205_icgraph.svg" width="396" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -543,7 +617,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>コンポーネントへの参照。持っていない場合は <span class="tt">nullptr</span>。 </dd></dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00266">266</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00294">294</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -552,7 +626,7 @@ template&lt;typename T&gt; </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a0cebb4506e5366293854cde16a208677_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a0cebb4506e5366293854cde16a208677_icgraph.svg" width="100%" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -597,7 +671,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>コンポーネントへのポインタ。持っていない場合は <span class="tt">nullptr</span>。 </dd></dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00285">285</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00313">313</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -606,7 +680,7 @@ template&lt;typename T&gt; </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a637d963c8538b8ca6535bd1c6b88115c_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a637d963c8538b8ca6535bd1c6b88115c_icgraph.svg" width="100%" height="595"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -636,7 +710,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00471">471</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00499">499</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -677,7 +751,7 @@ template&lt;typename T&gt; </div>
 
 <p>指定したコンポーネントを持っているか確認します。 </p>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00248">248</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00276">276</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -716,7 +790,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00487">487</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00515">515</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -755,7 +829,7 @@ template&lt;typename... Ts&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00481">481</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00509">509</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -843,7 +917,7 @@ template&lt;typename... Ts&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00427">427</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00455">455</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -852,7 +926,7 @@ template&lt;typename... Ts&gt; </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a8c01f89c473a5da0aca8d152f248fc53_icgraph.svg" width="100%" height="412"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1World_a8c01f89c473a5da0aca8d152f248fc53_icgraph.svg" width="100%" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -896,7 +970,7 @@ template&lt;typename... ComponentTypes, typename Func&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00516">516</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00544">544</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -954,7 +1028,7 @@ template&lt;typename... ComponentTypes, typename Func, size_t... Indices&gt; </d
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00495">495</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00523">523</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1003,7 +1077,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00209">209</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00237">237</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1044,7 +1118,7 @@ template&lt;typename T&gt; </div>
 <p>コンポーネントの値を設定 (上書き) します。 </p>
 <dl class="section note"><dt>覚え書き</dt><dd>エンティティがそのコンポーネントを持っていない場合、処理はスキップされます。 </dd></dl>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00303">303</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00331">331</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1078,7 +1152,7 @@ template&lt;typename T&gt; </div>
 
 <p>全システムの終了処理を行い、リストをクリアします。 </p>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00353">353</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00381">381</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1130,7 +1204,7 @@ template&lt;typename T&gt; </div>
 <p>全システムのアクティブな <span class="tt">OnUpdate</span> を呼び出します。 </p>
 <p>通常、ゲームループの毎フレームで呼び出されます。 </p>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00339">339</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00367">367</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1155,7 +1229,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00416">416</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00444">444</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1181,7 +1255,7 @@ template&lt;typename T&gt; </div>
 
 <p>IDからメモリ位置への高速ルックアップテーブル </p>
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00422">422</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00450">450</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1205,7 +1279,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00415">415</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00443">443</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1229,7 +1303,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00419">419</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="World_8h_source.html">World.h</a> の <a class="el" href="World_8h_source.html#l00447">447</a> 行目に定義があります。</p>
 
 </div>
 </div>

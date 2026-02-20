@@ -113,9 +113,9 @@
 <g id="Node000006" class="node">
 <title>Node6</title>
 <g id="a_Node000006"><a xlink:href="classSpan_1_1HierarchyPanel.html#a6481eb57cd9f45cb3a094a26f35bbaa0" target="_top" xlink:title="毎フレーム呼ばれる描画関数。">
-<polygon fill="white" stroke="#666666" points="120,-194.5 0,-194.5 0,-164.5 120,-164.5 120,-194.5"/>
-<text text-anchor="start" x="8" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::HierarchyPanel</text>
-<text text-anchor="middle" x="60" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00">::OnImGuiRender</text>
+<polygon fill="white" stroke="#666666" points="120,-145.5 0,-145.5 0,-115.5 120,-115.5 120,-145.5"/>
+<text text-anchor="start" x="8" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::HierarchyPanel</text>
+<text text-anchor="middle" x="60" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">::OnImGuiRender</text>
 </a>
 </g>
 </g>
@@ -123,7 +123,7 @@
 <g id="edge5_Node000003_Node000006" class="edge">
 <title>Node3&#45;&gt;Node6</title>
 <g id="a_edge5_Node000003_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M558.99,-197.57C539.54,-202.3 516.3,-207.16 495,-209.5 361.36,-224.17 203.74,-203.94 120.1,-190.24"/>
+<path fill="none" stroke="#63b8ff" d="M558.99,-197.57C539.54,-202.3 516.3,-207.16 495,-209.5 344.34,-226.04 299.85,-220.23 156,-172.5 133.75,-165.12 109.6,-154.4 91.22,-145.64"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="559.94,-200.94 568.79,-195.11 558.24,-194.15 559.94,-200.94"/>
 </a>
 </g>
@@ -212,19 +212,19 @@
 </a>
 </g>
 </g>
-<!-- Node14 -->
-<g id="Node000014" class="node">
-<title>Node14</title>
-<g id="a_Node000014"><a xlink:href="classSpan_1_1World.html#a5d815ca319bd1f2756394cc107818c46" target="_top" xlink:title="エンティティから指定したコンポーネントを削除します。">
+<!-- Node15 -->
+<g id="Node000015" class="node">
+<title>Node15</title>
+<g id="a_Node000015"><a xlink:href="classSpan_1_1World.html#a5d815ca319bd1f2756394cc107818c46" target="_top" xlink:title="エンティティから指定したコンポーネントを削除します。">
 <polygon fill="white" stroke="#666666" points="495,-19 318,-19 318,0 495,0 495,-19"/>
 <text text-anchor="middle" x="406.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Span::World::RemoveComponent</text>
 </a>
 </g>
 </g>
-<!-- Node10&#45;&gt;Node14 -->
-<g id="edge16_Node000010_Node000014" class="edge">
-<title>Node10&#45;&gt;Node14</title>
-<g id="a_edge16_Node000010_Node000014"><a xlink:title=" ">
+<!-- Node10&#45;&gt;Node15 -->
+<g id="edge17_Node000010_Node000015" class="edge">
+<title>Node10&#45;&gt;Node15</title>
+<g id="a_edge17_Node000010_Node000015"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M542.51,-35.05C515.41,-29.92 483.82,-23.94 458.01,-19.06"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="542.18,-38.55 552.65,-36.97 543.48,-31.67 542.18,-38.55"/>
 </a>
@@ -233,10 +233,10 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="classSpan_1_1HierarchyPanel.html#a2c08f8c6e0cafaed96f7846d76ff2b09" target="_top" xlink:title="1つのエンティティとその子孫を再帰的に描画します。">
-<polygon fill="white" stroke="#666666" points="279,-146.5 159,-146.5 159,-116.5 279,-116.5 279,-146.5"/>
-<text text-anchor="start" x="167" y="-134.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::HierarchyPanel</text>
-<text text-anchor="middle" x="219" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00">::DrawEntityNode</text>
+<g id="a_Node000012"><a xlink:href="classSpan_1_1InspectorPanel.html#a6daa94024d0c4ef940d144af94519964" target="_top" xlink:title="エンティティ用のインスペクターを描画します。">
+<polygon fill="white" stroke="#666666" points="280,-61.5 158,-61.5 158,-31.5 280,-31.5 280,-61.5"/>
+<text text-anchor="start" x="166" y="-49.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::InspectorPanel</text>
+<text text-anchor="middle" x="219" y="-38.5" font-family="Helvetica,sans-Serif" font-size="10.00">::DrawEntityInspector</text>
 </a>
 </g>
 </g>
@@ -244,8 +244,27 @@
 <g id="edge12_Node000011_Node000012" class="edge">
 <title>Node11&#45;&gt;Node12</title>
 <g id="a_edge12_Node000011_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M336.58,-58.85C330.2,-60.77 323.91,-62.98 318,-65.5 287.62,-78.46 256.69,-101.22 237.92,-116.33"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="337.95,-62.11 346.65,-56.06 336.08,-55.36 337.95,-62.11"/>
+<path fill="none" stroke="#63b8ff" d="M318.61,-46.5C305.62,-46.5 292.48,-46.5 280.2,-46.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="318.98,-50 328.98,-46.5 318.98,-43 318.98,-50"/>
+</a>
+</g>
+</g>
+<!-- Node14 -->
+<g id="Node000014" class="node">
+<title>Node14</title>
+<g id="a_Node000014"><a xlink:href="classSpan_1_1HierarchyPanel.html#a2c08f8c6e0cafaed96f7846d76ff2b09" target="_top" xlink:title="1つのエンティティとその子孫を再帰的に描画します。">
+<polygon fill="white" stroke="#666666" points="279,-145.5 159,-145.5 159,-115.5 279,-115.5 279,-145.5"/>
+<text text-anchor="start" x="167" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::HierarchyPanel</text>
+<text text-anchor="middle" x="219" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">::DrawEntityNode</text>
+</a>
+</g>
+</g>
+<!-- Node11&#45;&gt;Node14 -->
+<g id="edge14_Node000011_Node000014" class="edge">
+<title>Node11&#45;&gt;Node14</title>
+<g id="a_edge14_Node000011_Node000014"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M336.6,-58.9C330.21,-60.81 323.92,-63 318,-65.5 287.91,-78.21 257.15,-100.43 238.31,-115.3"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="337.96,-62.15 346.67,-56.12 336.1,-55.4 337.96,-62.15"/>
 </a>
 </g>
 </g>
@@ -253,36 +272,36 @@
 <g id="Node000013" class="node">
 <title>Node13</title>
 <g id="a_Node000013"><a xlink:href="classSpan_1_1InspectorPanel.html#ae32fda6018a2e54f880e6708ac5b89fe" target="_top" xlink:title="毎フレーム呼ばれる描画関数。">
-<polygon fill="white" stroke="#666666" points="278,-61.5 160,-61.5 160,-31.5 278,-31.5 278,-61.5"/>
-<text text-anchor="start" x="168" y="-49.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::InspectorPanel</text>
-<text text-anchor="middle" x="219" y="-38.5" font-family="Helvetica,sans-Serif" font-size="10.00">::OnImGuiRender</text>
+<polygon fill="white" stroke="#666666" points="119,-61.5 1,-61.5 1,-31.5 119,-31.5 119,-61.5"/>
+<text text-anchor="start" x="9" y="-49.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::InspectorPanel</text>
+<text text-anchor="middle" x="60" y="-38.5" font-family="Helvetica,sans-Serif" font-size="10.00">::OnImGuiRender</text>
 </a>
 </g>
 </g>
-<!-- Node11&#45;&gt;Node13 -->
-<g id="edge15_Node000011_Node000013" class="edge">
-<title>Node11&#45;&gt;Node13</title>
-<g id="a_edge15_Node000011_Node000013"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M318.97,-46.5C305.16,-46.5 291.16,-46.5 278.2,-46.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="318.98,-50 328.98,-46.5 318.98,-43 318.98,-50"/>
+<!-- Node12&#45;&gt;Node13 -->
+<g id="edge13_Node000012_Node000013" class="edge">
+<title>Node12&#45;&gt;Node13</title>
+<g id="a_edge13_Node000012_Node000013"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M147.5,-46.5C137.98,-46.5 128.3,-46.5 119.02,-46.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="147.75,-50 157.75,-46.5 147.75,-43 147.75,-50"/>
 </a>
 </g>
 </g>
-<!-- Node12&#45;&gt;Node6 -->
-<g id="edge14_Node000012_Node000006" class="edge">
-<title>Node12&#45;&gt;Node6</title>
-<g id="a_edge14_Node000012_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M158.91,-149.57C142.81,-154.49 125.55,-159.77 110.07,-164.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="160.22,-152.83 168.75,-146.56 158.17,-146.13 160.22,-152.83"/>
+<!-- Node14&#45;&gt;Node6 -->
+<g id="edge16_Node000014_Node000006" class="edge">
+<title>Node14&#45;&gt;Node6</title>
+<g id="a_edge16_Node000014_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M148.49,-130.5C139.04,-130.5 129.42,-130.5 120.18,-130.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="148.65,-134 158.65,-130.5 148.64,-127 148.65,-134"/>
 </a>
 </g>
 </g>
-<!-- Node12&#45;&gt;Node12 -->
-<g id="edge13_Node000012_Node000012" class="edge">
-<title>Node12&#45;&gt;Node12</title>
-<g id="a_edge13_Node000012_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M246.66,-157.1C242.88,-161.47 233.66,-164.5 219,-164.5 194.31,-164.5 185.05,-155.91 191.23,-146.78"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="250.16,-156.81 246.77,-146.78 243.16,-156.73 250.16,-156.81"/>
+<!-- Node14&#45;&gt;Node14 -->
+<g id="edge15_Node000014_Node000014" class="edge">
+<title>Node14&#45;&gt;Node14</title>
+<g id="a_edge15_Node000014_Node000014"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M246.66,-156.1C242.88,-160.47 233.66,-163.5 219,-163.5 194.31,-163.5 185.05,-154.91 191.23,-145.78"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="250.16,-155.81 246.77,-145.78 243.16,-155.73 250.16,-155.81"/>
 </a>
 </g>
 </g>

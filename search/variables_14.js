@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['value_0',['Value',['../structSpan_1_1Layer.html#a693754f9d82b39c68a000678618a9904',1,'Span::Layer::Value'],['../structSpan_1_1LocalToWorld.html#a2b5844413fcf24ef8eabecc9c0e4c568',1,'Span::LocalToWorld::Value'],['../structSpan_1_1Name.html#a223edf6234c8952cdf54d44ef175fdfe',1,'Span::Name::Value'],['../structSpan_1_1Tag.html#aa94c6043bfeb23f37040104a259502ac',1,'Span::Tag::Value']]],
-  ['velocity_1',['Velocity',['../structSpan_1_1EditorCamera.html#ab3b159c65d028f1bafbc402d28cf0a9b',1,'Span::EditorCamera']]],
-  ['vertexbuffer_2',['vertexBuffer',['../classSpan_1_1Mesh.html#ab5326828b5a500cf38a357fcfeee3381',1,'Span::Mesh']]],
-  ['vertexbufferview_3',['vertexBufferView',['../classSpan_1_1Mesh.html#a2b9c77cd3fe0c597c5c32d950a92f56d',1,'Span::Mesh']]],
-  ['vertexcount_4',['vertexCount',['../classSpan_1_1Mesh.html#a7a4a75126636a829da28adff5d416a50',1,'Span::Mesh']]],
-  ['vertexshader_5',['vertexShader',['../classSpan_1_1Material.html#a336bd3cb95f02a67f6103a950df586f8',1,'Span::Material']]],
-  ['viewmatrix_6',['viewMatrix',['../classSpan_1_1Renderer.html#af03a4b1bbb7c73258554f363991196c5',1,'Span::Renderer']]],
-  ['viewport_7',['viewport',['../classSpan_1_1GraphicsContext.html#a05b5966d30bb15770e8104d7d0183f1b',1,'Span::GraphicsContext']]],
-  ['vs_8',['vs',['../classSpan_1_1Renderer.html#ab1be30cd3501208577f218d42903df76',1,'Span::Renderer']]]
+  ['up_0',['Up',['../structSpan_1_1Vector3.html#a6b74299445713044602688c5c14aa6d2',1,'Span::Vector3']]],
+  ['uploadbuffer_1',['uploadBuffer',['../classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a',1,'Span::Texture']]],
+  ['usedoffset_2',['usedOffset',['../classSpan_1_1MemoryArena.html#a029c90126f890269c315d7c8f34af0bd',1,'Span::MemoryArena']]],
+  ['usetexture_3',['useTexture',['../structSpan_1_1MaterialData.html#a9d1bff25941d1bddd389c32dc8c44f1d',1,'Span::MaterialData']]],
+  ['uv_4',['uv',['../structSpan_1_1Vertex.html#abac13f64d1c801dba33ee5ffac17474c',1,'Span::Vertex']]]
 ];

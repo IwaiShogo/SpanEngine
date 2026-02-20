@@ -14,7 +14,10 @@ var searchData=
   ['isenabled_11',['IsEnabled',['../classSpan_1_1System.html#a779e39d5ac0a7e503b3b26e4950ffff7',1,'Span::System']]],
   ['isnull_12',['IsNull',['../structSpan_1_1Entity.html#a2ccdecba28a3d0bd98174e83b573bbe3',1,'Span::Entity']]],
   ['isopen_13',['IsOpen',['../classSpan_1_1EditorPanel.html#aff44b6072075af32e53652f92d235829',1,'Span::EditorPanel']]],
-  ['isselected_14',['IsSelected',['../classSpan_1_1SelectionManager.html#a65d6aa36e0d09b69ff3914e6387d667d',1,'Span::SelectionManager']]],
-  ['istransparent_15',['IsTransparent',['../classSpan_1_1Material.html#abc4ee804b2e3c79090588ddcb26eef8f',1,'Span::Material']]],
-  ['isvalid_16',['IsValid',['../structSpan_1_1AssetMetadata.html#a83c8ed8bfd79a2aa90ed8d4e36b785b8',1,'Span::AssetMetadata']]]
+  ['isprotectedtag_14',['IsProtectedTag',['../classSpan_1_1TagManager.html#a4dff645832ba4c34eed8ef1eb0cd4020',1,'Span::TagManager']]],
+  ['isselected_15',['IsSelected',['../classSpan_1_1SelectionManager.html#a65d6aa36e0d09b69ff3914e6387d667d',1,'Span::SelectionManager']]],
+  ['istransparent_16',['IsTransparent',['../classSpan_1_1Material.html#abc4ee804b2e3c79090588ddcb26eef8f',1,'Span::Material']]],
+  ['isvalid_17',['IsValid',['../structSpan_1_1AssetMetadata.html#a83c8ed8bfd79a2aa90ed8d4e36b785b8',1,'Span::AssetMetadata']]],
+  ['isvalidlayer_18',['IsValidLayer',['../classSpan_1_1LayerManager.html#a8e4b03d32ae100dafd9900edeae9f8d2',1,'Span::LayerManager']]],
+  ['isvalidtagname_19',['IsValidTagName',['../classSpan_1_1TagManager.html#a9da96fc32e81c827f062630c5896516e',1,'Span::TagManager']]]
 ];

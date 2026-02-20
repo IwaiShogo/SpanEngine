@@ -1,21 +1,15 @@
 var searchData=
 [
-  ['s_5fdroppedfiles_0',['s_DroppedFiles',['../classSpan_1_1Input.html#a78236c32d169fc64f9b31bdf17b8a6ba',1,'Span::Input']]],
-  ['s_5finstance_1',['s_instance',['../classSpan_1_1Application.html#ad11362b1cf76eb9f2c48a3497e67c450',1,'Span::Application']]],
-  ['s_5flogfile_2',['s_LogFile',['../namespaceSpan.html#ad4a86ef64ab27c3f27b56242c873941a',1,'Span']]],
-  ['s_5frandomdevice_3',['s_RandomDevice',['../namespaceSpan.html#a086d008b6a56d176facbbfbfde8a1cc5',1,'Span']]],
-  ['s_5funiformdistribution_4',['s_UniformDistribution',['../namespaceSpan.html#a3b1c3d559ac672629a7459d8b6513225',1,'Span']]],
-  ['scale_5',['Scale',['../structSpan_1_1Transform.html#a9edefaff02e5a0d097f68fdad451819b',1,'Span::Transform']]],
-  ['scenebuffer_6',['sceneBuffer',['../classSpan_1_1Application.html#a20fcfd95e71f9aad3f84d68811cb6711',1,'Span::Application']]],
-  ['scissorrect_7',['scissorRect',['../classSpan_1_1GraphicsContext.html#a679cbfc1bcf66f0c58a21580a411bd2e',1,'Span::GraphicsContext']]],
-  ['scrollsensitivity_8',['ScrollSensitivity',['../structSpan_1_1EditorCamera.html#ac2c7f54b75e39f66a37dc9c6fcc29665',1,'Span::EditorCamera']]],
-  ['signature_9',['signature',['../classSpan_1_1Archetype.html#ac679093a9a9285da19dac5b95d82390c',1,'Span::Archetype']]],
-  ['sprintmultiplier_10',['SprintMultiplier',['../structSpan_1_1EditorCamera.html#affb215a9e35b3858f71955826a66ae22',1,'Span::EditorCamera']]],
-  ['srvhandle_11',['srvHandle',['../classSpan_1_1RenderTarget.html#aaa8924b8ea163eb4bd33413bcb444a6a',1,'Span::RenderTarget']]],
-  ['srvhandlecpu_12',['srvHandleCPU',['../classSpan_1_1Texture.html#ae174a75a471258f60f3b5f4a16ce96ba',1,'Span::Texture']]],
-  ['srvheap_13',['srvHeap',['../classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a',1,'Span::GuiManager::srvHeap'],['../classSpan_1_1RenderTarget.html#adf54d004fc942c41ac6e127ef1814268',1,'Span::RenderTarget::srvHeap'],['../classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc',1,'Span::Texture::srvHeap']]],
-  ['starttime_14',['startTime',['../classSpan_1_1Time.html#a7dac969430dda0c667a8b0ada4b0196e',1,'Span::Time']]],
-  ['stringvalue_15',['StringValue',['../structSpan_1_1Attribute.html#a98e11c6a540d8adc713e8f4cf68c3450',1,'Span::Attribute']]],
-  ['swapchain_16',['swapChain',['../classSpan_1_1GraphicsContext.html#a726c6e0ebea80e52d9533d6a17177f78',1,'Span::GraphicsContext']]],
-  ['systems_17',['systems',['../classSpan_1_1World.html#a06376d99845102a74f28840fe0e2812f',1,'Span::World']]]
+  ['receiveshadows_0',['ReceiveShadows',['../structSpan_1_1MeshRenderer.html#ac804e04843500d33b0cff109c9f5098a',1,'Span::MeshRenderer']]],
+  ['removefunc_1',['RemoveFunc',['../structSpan_1_1ComponentMetadata.html#a43d26ea0ea617c22bb3bcea736359fdf',1,'Span::ComponentMetadata']]],
+  ['renderer_2',['renderer',['../classSpan_1_1Application.html#a38177cabc8c37a3be8cb19c4bfd13b17',1,'Span::Application']]],
+  ['rendertargets_3',['renderTargets',['../classSpan_1_1GraphicsContext.html#add5aacb6ebc716ac254837a2bc61de9d',1,'Span::GraphicsContext']]],
+  ['resource_4',['resource',['../classSpan_1_1ConstantBuffer.html#a49d50882eddee173d07a680b3fecca97',1,'Span::ConstantBuffer::resource'],['../classSpan_1_1RenderTarget.html#a8fc923d13a57c3733de5f8935d898b2d',1,'Span::RenderTarget::resource'],['../classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab',1,'Span::Texture::resource']]],
+  ['right_5',['Right',['../structSpan_1_1Vector3.html#a91d58c181afda160b2e8bf5929e2d2a9',1,'Span::Vector3']]],
+  ['rootsignature_6',['rootSignature',['../classSpan_1_1Renderer.html#abfa0d54e67b7e2959819152a08dc0ee2',1,'Span::Renderer']]],
+  ['rotation_7',['Rotation',['../structSpan_1_1Transform.html#ac340e8d1ddf99199fa41f243c9e77820',1,'Span::Transform']]],
+  ['roughness_8',['Roughness',['../structSpan_1_1MaterialData.html#a2ffeb1ab4487a6724284c6cf51e675ab',1,'Span::MaterialData']]],
+  ['rtvdescriptorsize_9',['rtvDescriptorSize',['../classSpan_1_1GraphicsContext.html#abde099b31325f4627beb3112463ec504',1,'Span::GraphicsContext']]],
+  ['rtvhandle_10',['rtvHandle',['../classSpan_1_1RenderTarget.html#a5adb356295346fa447a09db782098de7',1,'Span::RenderTarget']]],
+  ['rtvheap_11',['rtvHeap',['../classSpan_1_1GraphicsContext.html#a0a3e1b6f8de36b2fe35533463c4a8743',1,'Span::GraphicsContext::rtvHeap'],['../classSpan_1_1RenderTarget.html#adf2f3f2adc6dee59a402de3fccb36114',1,'Span::RenderTarget::rtvHeap']]]
 ];

@@ -135,75 +135,121 @@ $(function(){initNavTree('TagManager_8h_source.html','',''); });
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a1c2524933291e329c200e9ecb13c3b98">   38</a></span>        <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; <a class="code hl_function" href="classSpan_1_1TagManager.html#a1c2524933291e329c200e9ecb13c3b98">GetAllTags</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>; }</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"></span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">        /**</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">         * @brief   新しいタグを追加します。</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">         * @param   tag 追加するタグ文字列</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">         * @return  true 追加成功 (または既に存在) / false 不正な文字列</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">         */</span></div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#ab7644020fd94453ad4c442afb8d1a3ac">   45</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1TagManager.html#ab7644020fd94453ad4c442afb8d1a3ac">AddTag</a>(<span class="keyword">const</span> std::string&amp; tag)</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">if</span> (tag.empty()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classSpan_1_1TagManager.html#ab00b37a4de706f5e174054ec7467a71b">HasTag</a>(tag)) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.push_back(tag);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">         * @brief   文字列がタブとして有効化(英数字とアンダースコアのみか)判定します。</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">         */</span></div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a9da96fc32e81c827f062630c5896516e">   43</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1TagManager.html#a9da96fc32e81c827f062630c5896516e">IsValidTagName</a>(<span class="keyword">const</span> std::string&amp; tag)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordflow">if</span> (tag.empty()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">return</span> std::all_of(tag.begin(), tag.end(), [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> c) { return std::isalnum(c) || c == <span class="stringliteral">&#39;_&#39;</span>; });</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        }</div>
 </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"></span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">        /**</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">         * @brief   指定したタグを削除します。(&quot;Untagged&quot;は削除不可)</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">         * @param   tag 削除するタグ文字列</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">         * @return  true 削除成功 / false 削除失敗 (存在しない、または保護されたタグ)</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">         */</span></div>
-<div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a4f310a685303986ad9056e5551b3c7fd">   59</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1TagManager.html#a4f310a685303986ad9056e5551b3c7fd">RemoveTag</a>(<span class="keyword">const</span> std::string&amp; tag)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordflow">if</span> (tag == <span class="stringliteral">&quot;Untagged&quot;</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keyword">auto</span> it = std::find(<a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.begin(), <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end(), tag);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end())</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.erase(it);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"></span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">         * @brief   システムが保護しているタグかどうか判定します(削除・変更不可)。</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">         */</span></div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a4dff645832ba4c34eed8ef1eb0cd4020">   52</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1TagManager.html#a4dff645832ba4c34eed8ef1eb0cd4020">IsProtectedTag</a>(<span class="keyword">const</span> std::string&amp; tag)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">return</span> tag == <span class="stringliteral">&quot;Untagged&quot;</span> || tag == <span class="stringliteral">&quot;Player&quot;</span> || tag == <span class="stringliteral">&quot;Enemy&quot;</span> || tag == <span class="stringliteral">&quot;MainCamera&quot;</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
+</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"></span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">         * @brief   新しいタグを追加します。</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">         * @param   tag 追加するタグ文字列</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">         * @return  true 追加成功 (または既に存在) / false 不正な文字列</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">         */</span></div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#ab7644020fd94453ad4c442afb8d1a3ac">   62</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1TagManager.html#ab7644020fd94453ad4c442afb8d1a3ac">AddTag</a>(<span class="keyword">const</span> std::string&amp; tag)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classSpan_1_1TagManager.html#a9da96fc32e81c827f062630c5896516e">IsValidTagName</a>(tag)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classSpan_1_1TagManager.html#ab00b37a4de706f5e174054ec7467a71b">HasTag</a>(tag)) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.push_back(tag);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <a class="code hl_function" href="classSpan_1_1TagManager.html#aceb83ee83459d446fa2d42a67e9db5dd">SortTags</a>();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
 </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"></span> </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">        /**</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">         * @brief   タグが存在するかどうかを確認します。</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">         * @param   tag 確認するタグ文字列</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">         * @return  true 存在する / false 存在しない</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">         * @brief   指定したタグを削除します。(保護されたタグは削除不可)</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">         * @param   tag 削除するタグ文字列</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">         * @return  true 削除成功 / false 削除失敗 (存在しない、または保護されたタグ)</span></div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">         */</span></div>
 <div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#ab00b37a4de706f5e174054ec7467a71b">   77</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1TagManager.html#ab00b37a4de706f5e174054ec7467a71b">HasTag</a>(<span class="keyword">const</span> std::string&amp; tag)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordflow">return</span> std::find(<a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.begin(), <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end(), tag) != <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a4f310a685303986ad9056e5551b3c7fd">   77</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1TagManager.html#a4f310a685303986ad9056e5551b3c7fd">RemoveTag</a>(<span class="keyword">const</span> std::string&amp; tag)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classSpan_1_1TagManager.html#a4dff645832ba4c34eed8ef1eb0cd4020">IsProtectedTag</a>(tag)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keyword">auto</span> it = std::find(<a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.begin(), <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end(), tag);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end())</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.erase(it);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        }</div>
 </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">private</span>:</div>
-<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a388a96608551c1a2a3a9a092c357f480">   83</a></span>        <a class="code hl_function" href="classSpan_1_1TagManager.html#a388a96608551c1a2a3a9a092c357f480">TagManager</a>()</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="comment">// デフォルトで用意される基本タグ</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a> = { <span class="stringliteral">&quot;Untagged&quot;</span>, <span class="stringliteral">&quot;Player&quot;</span>, <span class="stringliteral">&quot;Enemy&quot;</span>, <span class="stringliteral">&quot;MainCamera&quot;</span> };</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"></span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">         * @brief   タグが存在するかどうかを確認します。</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">         * @param   tag 確認するタグ文字列</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">         * @return  true 存在する / false 存在しない</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">         */</span></div>
+<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#ab00b37a4de706f5e174054ec7467a71b">   95</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1TagManager.html#ab00b37a4de706f5e174054ec7467a71b">HasTag</a>(<span class="keyword">const</span> std::string&amp; tag)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keywordflow">return</span> std::find(<a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.begin(), <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end(), tag) != <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end();</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        }</div>
 </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a19b26b7f1f386acaff136aa17f653e38">   88</a></span>        <a class="code hl_function" href="classSpan_1_1TagManager.html#a19b26b7f1f386acaff136aa17f653e38">~TagManager</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">   91</a></span>        std::vector&lt;std::string&gt; <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    };</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">private</span>:</div>
+<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a388a96608551c1a2a3a9a092c357f480">  101</a></span>        <a class="code hl_function" href="classSpan_1_1TagManager.html#a388a96608551c1a2a3a9a092c357f480">TagManager</a>()</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="comment">// デフォルトで用意される基本タグ</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a> = { <span class="stringliteral">&quot;Untagged&quot;</span>, <span class="stringliteral">&quot;Player&quot;</span>, <span class="stringliteral">&quot;Enemy&quot;</span>, <span class="stringliteral">&quot;MainCamera&quot;</span> };</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
 </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a19b26b7f1f386acaff136aa17f653e38">  106</a></span>        <a class="code hl_function" href="classSpan_1_1TagManager.html#a19b26b7f1f386acaff136aa17f653e38">~TagManager</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment"></span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">         * @brief   &quot;Untagged&quot; を必ず先頭にし、残りをアルファベット順にソートします。</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">         */</span></div>
+<div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#aceb83ee83459d446fa2d42a67e9db5dd">  111</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1TagManager.html#aceb83ee83459d446fa2d42a67e9db5dd">SortTags</a>()</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.empty()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keyword">auto</span> it = std::find(<a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.begin(), <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end(), <span class="stringliteral">&quot;Untagged&quot;</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end() &amp;&amp; it != <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.begin())</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                std::swap(<a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>[0], *it);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            }</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.size() &gt; 1)</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                std::sort(<a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.begin() + 1, <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>.end());</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            }</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        }</div>
+</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">  128</a></span>        std::vector&lt;std::string&gt; <a class="code hl_variable" href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">m_Tags</a>;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    };</div>
+</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>}</div>
 <div class="ttc" id="aclassSpan_1_1TagManager_html_a19b26b7f1f386acaff136aa17f653e38"><div class="ttname"><a href="classSpan_1_1TagManager.html#a19b26b7f1f386acaff136aa17f653e38">Span::TagManager::~TagManager</a></div><div class="ttdeci">~TagManager()=default</div></div>
 <div class="ttc" id="aclassSpan_1_1TagManager_html_a1c2524933291e329c200e9ecb13c3b98"><div class="ttname"><a href="classSpan_1_1TagManager.html#a1c2524933291e329c200e9ecb13c3b98">Span::TagManager::GetAllTags</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; &amp; GetAllTags() const</div><div class="ttdoc">登録されているすべてのタグリストを取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00038">TagManager.h:38</a></div></div>
-<div class="ttc" id="aclassSpan_1_1TagManager_html_a1e6bfba16a1b54af5937ff34c231b6e4"><div class="ttname"><a href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">Span::TagManager::m_Tags</a></div><div class="ttdeci">std::vector&lt; std::string &gt; m_Tags</div><div class="ttdef"><b>Definition</b> <a href="#l00091">TagManager.h:91</a></div></div>
-<div class="ttc" id="aclassSpan_1_1TagManager_html_a388a96608551c1a2a3a9a092c357f480"><div class="ttname"><a href="classSpan_1_1TagManager.html#a388a96608551c1a2a3a9a092c357f480">Span::TagManager::TagManager</a></div><div class="ttdeci">TagManager()</div><div class="ttdef"><b>Definition</b> <a href="#l00083">TagManager.h:83</a></div></div>
-<div class="ttc" id="aclassSpan_1_1TagManager_html_a4f310a685303986ad9056e5551b3c7fd"><div class="ttname"><a href="classSpan_1_1TagManager.html#a4f310a685303986ad9056e5551b3c7fd">Span::TagManager::RemoveTag</a></div><div class="ttdeci">bool RemoveTag(const std::string &amp;tag)</div><div class="ttdoc">指定したタグを削除します。(&quot;Untagged&quot;は削除不可)</div><div class="ttdef"><b>Definition</b> <a href="#l00059">TagManager.h:59</a></div></div>
-<div class="ttc" id="aclassSpan_1_1TagManager_html_ab00b37a4de706f5e174054ec7467a71b"><div class="ttname"><a href="classSpan_1_1TagManager.html#ab00b37a4de706f5e174054ec7467a71b">Span::TagManager::HasTag</a></div><div class="ttdeci">bool HasTag(const std::string &amp;tag) const</div><div class="ttdoc">タグが存在するかどうかを確認します。</div><div class="ttdef"><b>Definition</b> <a href="#l00077">TagManager.h:77</a></div></div>
-<div class="ttc" id="aclassSpan_1_1TagManager_html_ab7644020fd94453ad4c442afb8d1a3ac"><div class="ttname"><a href="classSpan_1_1TagManager.html#ab7644020fd94453ad4c442afb8d1a3ac">Span::TagManager::AddTag</a></div><div class="ttdeci">bool AddTag(const std::string &amp;tag)</div><div class="ttdoc">新しいタグを追加します。</div><div class="ttdef"><b>Definition</b> <a href="#l00045">TagManager.h:45</a></div></div>
+<div class="ttc" id="aclassSpan_1_1TagManager_html_a1e6bfba16a1b54af5937ff34c231b6e4"><div class="ttname"><a href="classSpan_1_1TagManager.html#a1e6bfba16a1b54af5937ff34c231b6e4">Span::TagManager::m_Tags</a></div><div class="ttdeci">std::vector&lt; std::string &gt; m_Tags</div><div class="ttdef"><b>Definition</b> <a href="#l00128">TagManager.h:128</a></div></div>
+<div class="ttc" id="aclassSpan_1_1TagManager_html_a388a96608551c1a2a3a9a092c357f480"><div class="ttname"><a href="classSpan_1_1TagManager.html#a388a96608551c1a2a3a9a092c357f480">Span::TagManager::TagManager</a></div><div class="ttdeci">TagManager()</div><div class="ttdef"><b>Definition</b> <a href="#l00101">TagManager.h:101</a></div></div>
+<div class="ttc" id="aclassSpan_1_1TagManager_html_a4dff645832ba4c34eed8ef1eb0cd4020"><div class="ttname"><a href="classSpan_1_1TagManager.html#a4dff645832ba4c34eed8ef1eb0cd4020">Span::TagManager::IsProtectedTag</a></div><div class="ttdeci">bool IsProtectedTag(const std::string &amp;tag) const</div><div class="ttdoc">システムが保護しているタグかどうか判定します(削除・変更不可)。</div><div class="ttdef"><b>Definition</b> <a href="#l00052">TagManager.h:52</a></div></div>
+<div class="ttc" id="aclassSpan_1_1TagManager_html_a4f310a685303986ad9056e5551b3c7fd"><div class="ttname"><a href="classSpan_1_1TagManager.html#a4f310a685303986ad9056e5551b3c7fd">Span::TagManager::RemoveTag</a></div><div class="ttdeci">bool RemoveTag(const std::string &amp;tag)</div><div class="ttdoc">指定したタグを削除します。(保護されたタグは削除不可)</div><div class="ttdef"><b>Definition</b> <a href="#l00077">TagManager.h:77</a></div></div>
+<div class="ttc" id="aclassSpan_1_1TagManager_html_a9da96fc32e81c827f062630c5896516e"><div class="ttname"><a href="classSpan_1_1TagManager.html#a9da96fc32e81c827f062630c5896516e">Span::TagManager::IsValidTagName</a></div><div class="ttdeci">bool IsValidTagName(const std::string &amp;tag) const</div><div class="ttdoc">文字列がタブとして有効化(英数字とアンダースコアのみか)判定します。</div><div class="ttdef"><b>Definition</b> <a href="#l00043">TagManager.h:43</a></div></div>
+<div class="ttc" id="aclassSpan_1_1TagManager_html_ab00b37a4de706f5e174054ec7467a71b"><div class="ttname"><a href="classSpan_1_1TagManager.html#ab00b37a4de706f5e174054ec7467a71b">Span::TagManager::HasTag</a></div><div class="ttdeci">bool HasTag(const std::string &amp;tag) const</div><div class="ttdoc">タグが存在するかどうかを確認します。</div><div class="ttdef"><b>Definition</b> <a href="#l00095">TagManager.h:95</a></div></div>
+<div class="ttc" id="aclassSpan_1_1TagManager_html_ab7644020fd94453ad4c442afb8d1a3ac"><div class="ttname"><a href="classSpan_1_1TagManager.html#ab7644020fd94453ad4c442afb8d1a3ac">Span::TagManager::AddTag</a></div><div class="ttdeci">bool AddTag(const std::string &amp;tag)</div><div class="ttdoc">新しいタグを追加します。</div><div class="ttdef"><b>Definition</b> <a href="#l00062">TagManager.h:62</a></div></div>
+<div class="ttc" id="aclassSpan_1_1TagManager_html_aceb83ee83459d446fa2d42a67e9db5dd"><div class="ttname"><a href="classSpan_1_1TagManager.html#aceb83ee83459d446fa2d42a67e9db5dd">Span::TagManager::SortTags</a></div><div class="ttdeci">void SortTags()</div><div class="ttdoc">&quot;Untagged&quot; を必ず先頭にし、残りをアルファベット順にソートします。</div><div class="ttdef"><b>Definition</b> <a href="#l00111">TagManager.h:111</a></div></div>
 <div class="ttc" id="aclassSpan_1_1TagManager_html_ae095ba4c382a90f7c3a1437ab0d6fd2b"><div class="ttname"><a href="classSpan_1_1TagManager.html#ae095ba4c382a90f7c3a1437ab0d6fd2b">Span::TagManager::Get</a></div><div class="ttdeci">static TagManager &amp; Get()</div><div class="ttdoc">TagManagerのシングルトンインスタンスを取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00028">TagManager.h:28</a></div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

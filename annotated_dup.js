@@ -1,6 +1,11 @@
 var annotated_dup =
 [
     [ "Span", "namespaceSpan.html", [
+      [ "Internal", "namespaceSpan_1_1Internal.html", [
+        [ "ImGuiVisitor", "structSpan_1_1Internal_1_1ImGuiVisitor.html", "structSpan_1_1Internal_1_1ImGuiVisitor" ],
+        [ "JsonSerializeVisitor", "structSpan_1_1Internal_1_1JsonSerializeVisitor.html", "structSpan_1_1Internal_1_1JsonSerializeVisitor" ],
+        [ "JsonDeserializeVisitor", "structSpan_1_1Internal_1_1JsonDeserializeVisitor.html", "structSpan_1_1Internal_1_1JsonDeserializeVisitor" ]
+      ] ],
       [ "FixedString", "structSpan_1_1FixedString.html", "structSpan_1_1FixedString" ],
       [ "Input", "classSpan_1_1Input.html", "classSpan_1_1Input" ],
       [ "Logger", "classSpan_1_1Logger.html", "classSpan_1_1Logger" ],
@@ -27,6 +32,7 @@ var annotated_dup =
       [ "SelectionManager", "classSpan_1_1SelectionManager.html", "classSpan_1_1SelectionManager" ],
       [ "DirectoryWatcher", "classSpan_1_1DirectoryWatcher.html", "classSpan_1_1DirectoryWatcher" ],
       [ "EditorFileSystem", "classSpan_1_1EditorFileSystem.html", "classSpan_1_1EditorFileSystem" ],
+      [ "FileDialog", "classSpan_1_1FileDialog.html", "classSpan_1_1FileDialog" ],
       [ "Application", "classSpan_1_1Application.html", "classSpan_1_1Application" ],
       [ "Active", "structSpan_1_1Active.html", "structSpan_1_1Active" ],
       [ "Layer", "structSpan_1_1Layer.html", "structSpan_1_1Layer" ],
@@ -39,6 +45,7 @@ var annotated_dup =
       [ "Camera", "structSpan_1_1Camera.html", "structSpan_1_1Camera" ],
       [ "MeshFilter", "structSpan_1_1MeshFilter.html", "structSpan_1_1MeshFilter" ],
       [ "MeshRenderer", "structSpan_1_1MeshRenderer.html", "structSpan_1_1MeshRenderer" ],
+      [ "LayerManager", "classSpan_1_1LayerManager.html", "classSpan_1_1LayerManager" ],
       [ "TagManager", "classSpan_1_1TagManager.html", "classSpan_1_1TagManager" ],
       [ "ComponentType", "classSpan_1_1ComponentType.html", "classSpan_1_1ComponentType" ],
       [ "ArchetypeSignature", "classSpan_1_1ArchetypeSignature.html", "classSpan_1_1ArchetypeSignature" ],
@@ -75,6 +82,7 @@ var annotated_dup =
       [ "AssetMetadata", "structSpan_1_1AssetMetadata.html", "structSpan_1_1AssetMetadata" ],
       [ "AssetRegistry", "classSpan_1_1AssetRegistry.html", "classSpan_1_1AssetRegistry" ],
       [ "AssetSerializer", "classSpan_1_1AssetSerializer.html", "classSpan_1_1AssetSerializer" ],
+      [ "SceneSerializer", "classSpan_1_1SceneSerializer.html", "classSpan_1_1SceneSerializer" ],
       [ "RelationshipSystem", "classSpan_1_1RelationshipSystem.html", "classSpan_1_1RelationshipSystem" ],
       [ "TransformSystem", "classSpan_1_1TransformSystem.html", "classSpan_1_1TransformSystem" ],
       [ "CameraSystem", "classSpan_1_1CameraSystem.html", "classSpan_1_1CameraSystem" ],

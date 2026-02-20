@@ -96,9 +96,6 @@ $(function(){initNavTree('ComponentRegistry_8h.html','',''); });
 <p>コンポーネントのメタデータ管理 (リフレクション)。  
 <a href="#details">[詳解]</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="Entity_8h_source.html">ECS/Kernel/Entity.h</a>&quot;</code><br />
-<code>#include &lt;functional&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
 <code>#include &quot;<a class="el" href="World_8h_source.html">ECS/Kernel/World.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 ComponentRegistry.h の依存先関係図:</div>
@@ -130,14 +127,14 @@ ComponentRegistry.h の依存先関係図:</div>
 <tr class="memitem:a936509841abf3411c6dae4ca675b811e" id="r_a936509841abf3411c6dae4ca675b811e"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a936509841abf3411c6dae4ca675b811e">Span::RemoveComponentFunc</a> = std::function&lt;void(<a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a>&amp;)&gt;</td></tr>
 <tr class="memitem:a6af56d259d0ccdc218e0cadc2dcd8e08" id="r_a6af56d259d0ccdc218e0cadc2dcd8e08"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a6af56d259d0ccdc218e0cadc2dcd8e08">Span::AddComponentFunc</a> = std::function&lt;void(<a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a>&amp;)&gt;</td></tr>
 <tr class="memitem:ad284dad2c8e86ac8f482272df541e612" id="r_ad284dad2c8e86ac8f482272df541e612"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#ad284dad2c8e86ac8f482272df541e612">Span::HasComponentFunc</a> = std::function&lt;bool(<a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a>&amp;)&gt;</td></tr>
+<tr class="memitem:a1af452253238a26e17628ad9ff4f05f2" id="r_a1af452253238a26e17628ad9ff4f05f2"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a1af452253238a26e17628ad9ff4f05f2">Span::SerializeComponentFunc</a> = std::function&lt;void(<a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a>&amp;, nlohmann::ordered_json&amp;)&gt;</td></tr>
+<tr class="memitem:a0236f1c76c5f0db3d3948294cd64ab53" id="r_a0236f1c76c5f0db3d3948294cd64ab53"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a0236f1c76c5f0db3d3948294cd64ab53">Span::DeserializeComponentFunc</a> = std::function&lt;void(<a class="el" href="structSpan_1_1Entity.html">Entity</a>, <a class="el" href="classSpan_1_1World.html">World</a>&amp;, const nlohmann::ordered_json&amp;)&gt;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>コンポーネントのメタデータ管理 (リフレクション)。 </p>
-<p><br  />
-</p>
 <hr  />
- <h2 class="doxsection"><a class="anchor" id="autotoc_md133"></a>
-autotoc_md133</h2>
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md141"></a>
+autotoc_md141</h2>
 <dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
 
 <p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> に定義があります。</p>

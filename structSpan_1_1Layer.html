@@ -105,21 +105,21 @@ Span::Layer 連携図</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:a349b7500e78377827b21231a67f8fb00" id="r_a349b7500e78377827b21231a67f8fb00"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a349b7500e78377827b21231a67f8fb00">Layer</a> ()</td></tr>
-<tr class="memitem:a5af67ab9347f1d0ea7ffa9df6f303b9a" id="r_a5af67ab9347f1d0ea7ffa9df6f303b9a"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a5af67ab9347f1d0ea7ffa9df6f303b9a">Layer</a> (int layerIndex)</td></tr>
+<tr class="memitem:a32ba0a324cdfeb7328f5aec719c15fcd" id="r_a32ba0a324cdfeb7328f5aec719c15fcd"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a32ba0a324cdfeb7328f5aec719c15fcd">Layer</a> ()=default</td></tr>
+<tr class="memitem:a8f14704ff9ecb1fc47ffc4c9b182f5ea" id="r_a8f14704ff9ecb1fc47ffc4c9b182f5ea"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a8f14704ff9ecb1fc47ffc4c9b182f5ea">Layer</a> (uint8_t val)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
-<tr class="memitem:a693754f9d82b39c68a000678618a9904" id="r_a693754f9d82b39c68a000678618a9904"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a693754f9d82b39c68a000678618a9904">Value</a> = 0</td></tr>
+<tr class="memitem:ad6133d10185e402cd6f0b94a565a9831" id="r_ad6133d10185e402cd6f0b94a565a9831"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ad6133d10185e402cd6f0b94a565a9831">Value</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>🍰 オブジェクトが所属するレイヤー番号 (0~31)。 </p>
 <p>物理衝突の判定マトリクスや、カメラの加リングマスク (描画対象選別) に使用されます。 </p>
 
-<p class="definition"> <a class="el" href="Layer_8h_source.html">Layer.h</a> の <a class="el" href="Layer_8h_source.html#l00033">33</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Layer_8h_source.html">Layer.h</a> の <a class="el" href="Layer_8h_source.html#l00023">23</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
-<a id="a349b7500e78377827b21231a67f8fb00" name="a349b7500e78377827b21231a67f8fb00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a349b7500e78377827b21231a67f8fb00">&#9670;&#160;</a></span>Layer() <span class="overload">[1/2]</span></h2>
+<a id="a32ba0a324cdfeb7328f5aec719c15fcd" name="a32ba0a324cdfeb7328f5aec719c15fcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32ba0a324cdfeb7328f5aec719c15fcd">&#9670;&#160;</a></span>Layer() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,17 +136,15 @@ Span::Layer 連携図</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Layer_8h_source.html">Layer.h</a> の <a class="el" href="Layer_8h_source.html#l00037">37</a> 行目に定義があります。</p>
-
 </div>
 </div>
-<a id="a5af67ab9347f1d0ea7ffa9df6f303b9a" name="a5af67ab9347f1d0ea7ffa9df6f303b9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5af67ab9347f1d0ea7ffa9df6f303b9a">&#9670;&#160;</a></span>Layer() <span class="overload">[2/2]</span></h2>
+<a id="a8f14704ff9ecb1fc47ffc4c9b182f5ea" name="a8f14704ff9ecb1fc47ffc4c9b182f5ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f14704ff9ecb1fc47ffc4c9b182f5ea">&#9670;&#160;</a></span>Layer() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,7 +155,7 @@ Span::Layer 連携図</div>
         <tr>
           <td class="memname">Span::Layer::Layer </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>layerIndex</em></span></td><td>)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>val</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -168,24 +166,24 @@ Span::Layer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Layer_8h_source.html">Layer.h</a> の <a class="el" href="Layer_8h_source.html#l00038">38</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Layer_8h_source.html">Layer.h</a> の <a class="el" href="Layer_8h_source.html#l00028">28</a> 行目に定義があります。</p>
 
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
-<a id="a693754f9d82b39c68a000678618a9904" name="a693754f9d82b39c68a000678618a9904"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a693754f9d82b39c68a000678618a9904">&#9670;&#160;</a></span>Value</h2>
+<a id="ad6133d10185e402cd6f0b94a565a9831" name="ad6133d10185e402cd6f0b94a565a9831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6133d10185e402cd6f0b94a565a9831">&#9670;&#160;</a></span>Value</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Span::Layer::Value = 0</td>
+          <td class="memname">uint8_t Span::Layer::Value = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Layer_8h_source.html">Layer.h</a> の <a class="el" href="Layer_8h_source.html#l00035">35</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Layer_8h_source.html">Layer.h</a> の <a class="el" href="Layer_8h_source.html#l00025">25</a> 行目に定義があります。</p>
 
 </div>
 </div>

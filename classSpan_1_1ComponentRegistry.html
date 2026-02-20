@@ -105,9 +105,9 @@ Span::ComponentRegistry 連携図</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静的公開メンバ関数</h2></td></tr>
-<tr class="memitem:ac0ba6b2d084b74ea22a9da579f59b88a" id="r_ac0ba6b2d084b74ea22a9da579f59b88a"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
-<tr class="memitem:ac0ba6b2d084b74ea22a9da579f59b88a template"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac0ba6b2d084b74ea22a9da579f59b88a">Register</a> (const std::string &amp;name, <a class="el" href="namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7">DrawComponentFunc</a> drawFunc, <a class="el" href="namespaceSpan.html#a6af56d259d0ccdc218e0cadc2dcd8e08">AddComponentFunc</a> addFunc, <a class="el" href="namespaceSpan.html#ad284dad2c8e86ac8f482272df541e612">HasComponentFunc</a> hasFunc)</td></tr>
-<tr class="memdesc:ac0ba6b2d084b74ea22a9da579f59b88a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネント型を登録します。  <br /></td></tr>
+<tr class="memitem:ac42781d9cddf073a5ce9b37ef594ec41" id="r_ac42781d9cddf073a5ce9b37ef594ec41"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:ac42781d9cddf073a5ce9b37ef594ec41 template"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac42781d9cddf073a5ce9b37ef594ec41">Register</a> (const std::string &amp;name, <a class="el" href="namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7">DrawComponentFunc</a> drawFunc, <a class="el" href="namespaceSpan.html#a6af56d259d0ccdc218e0cadc2dcd8e08">AddComponentFunc</a> addFunc, <a class="el" href="namespaceSpan.html#ad284dad2c8e86ac8f482272df541e612">HasComponentFunc</a> hasFunc, <a class="el" href="namespaceSpan.html#a1af452253238a26e17628ad9ff4f05f2">SerializeComponentFunc</a> serializeFunc, <a class="el" href="namespaceSpan.html#a0236f1c76c5f0db3d3948294cd64ab53">DeserializeComponentFunc</a> deserializeFunc)</td></tr>
+<tr class="memdesc:ac42781d9cddf073a5ce9b37ef594ec41"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネント型を登録します。  <br /></td></tr>
 <tr class="memitem:a8449d84d0096e3a92e226e510f0accb0" id="r_a8449d84d0096e3a92e226e510f0accb0"><td class="memItemLeft">static std::vector&lt; <a class="el" href="structSpan_1_1ComponentMetadata.html">ComponentMetadata</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a8449d84d0096e3a92e226e510f0accb0">GetAll</a> ()</td></tr>
 <tr class="memdesc:a8449d84d0096e3a92e226e510f0accb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">登録済みの全コンポーネント情報を取得します。  <br /></td></tr>
 </table><table class="memberdecls">
@@ -119,7 +119,7 @@ Span::ComponentRegistry 連携図</div>
 <div class="textblock"><p>📚 全コンポーネントのメタデータを管理する静的レジストリ。 </p>
 <p><span class="tt">SpanReflection</span> マクロによって、アプリ起動時に自動的に各コンポーネントの情報が登録されます。 Inspectorパネルは、このレジストリを参照してUIを構築します。 </p>
 
-<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00057">57</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00061">61</a> 行目に定義があります。</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="a8449d84d0096e3a92e226e510f0accb0" name="a8449d84d0096e3a92e226e510f0accb0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8449d84d0096e3a92e226e510f0accb0">&#9670;&#160;</a></span>GetAll()</h2>
@@ -146,7 +146,7 @@ Span::ComponentRegistry 連携図</div>
 
 <p>登録済みの全コンポーネント情報を取得します。 </p>
 
-<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00094">94</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00102">102</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -155,7 +155,7 @@ Span::ComponentRegistry 連携図</div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ComponentRegistry_a8449d84d0096e3a92e226e510f0accb0_icgraph.svg" width="407" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ComponentRegistry_a8449d84d0096e3a92e226e510f0accb0_icgraph.svg" width="100%" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -183,17 +183,17 @@ Span::ComponentRegistry 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00101">101</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00109">109</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ComponentRegistry_a888dafb7173154120394d2382b74e6bd_icgraph.svg" width="646" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ComponentRegistry_a888dafb7173154120394d2382b74e6bd_icgraph.svg" width="100%" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
-<a id="ac0ba6b2d084b74ea22a9da579f59b88a" name="ac0ba6b2d084b74ea22a9da579f59b88a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0ba6b2d084b74ea22a9da579f59b88a">&#9670;&#160;</a></span>Register()</h2>
+<a id="ac42781d9cddf073a5ce9b37ef594ec41" name="ac42781d9cddf073a5ce9b37ef594ec41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac42781d9cddf073a5ce9b37ef594ec41">&#9670;&#160;</a></span>Register()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,7 +221,17 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceSpan.html#ad284dad2c8e86ac8f482272df541e612">HasComponentFunc</a></td>          <td class="paramname"><span class="paramname"><em>hasFunc</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#ad284dad2c8e86ac8f482272df541e612">HasComponentFunc</a></td>          <td class="paramname"><span class="paramname"><em>hasFunc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a1af452253238a26e17628ad9ff4f05f2">SerializeComponentFunc</a></td>          <td class="paramname"><span class="paramname"><em>serializeFunc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a0236f1c76c5f0db3d3948294cd64ab53">DeserializeComponentFunc</a></td>          <td class="paramname"><span class="paramname"><em>deserializeFunc</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -246,11 +256,11 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00067">67</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a> の <a class="el" href="ComponentRegistry_8h_source.html#l00071">71</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ComponentRegistry_ac0ba6b2d084b74ea22a9da579f59b88a_cgraph.svg" width="440" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ComponentRegistry_ac42781d9cddf073a5ce9b37ef594ec41_cgraph.svg" width="440" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

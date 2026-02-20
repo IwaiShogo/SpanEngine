@@ -1,43 +1,51 @@
 <map id="Span::GuiManager::Initialize" name="Span::GuiManager::Initialize">
-<area shape="rect" id="Node000001" title="ImGuiコンテキストとバックエンドを初期化します。" alt="" coords="1147,670,1352,695"/>
-<area shape="rect" id="Node000002" href="$classSpan_1_1Application.html#a0c44e973ca5db1d23a02a2cee66f5c11" title=" " alt="" coords="956,663,1099,703"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1133,685,1099,685,1099,680,1133,680"/>
-<area shape="rect" id="Node000003" href="$classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e" title="シングルトンインスタンスの取得" alt="" coords="741,350,908,375"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1004,652,832,377,836,374,1008,650"/>
-<area shape="rect" id="Node000016" href="$classSpan_1_1Application.html#a095598d0c2e753bfb8d00acee435980f" title="シングルトンインスタンスのポインタ取得 (存在チェック用)" alt="" coords="744,670,905,695"/>
-<area shape="poly" id="edge22_Node000002_Node000016" title=" " alt="" coords="942,685,905,685,905,680,942,680"/>
-<area shape="rect" id="Node000004" href="$classSpan_1_1HierarchyPanel.html#a331d846c46df5f3346cfc7bb8c7a8e76" title="エンティティ上での右クリックメニューを描画します。" alt="" coords="513,5,673,45"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="816,337,804,282,780,209,743,133,719,97,692,66,665,48,668,43,695,62,724,94,748,130,785,207,809,280,822,336"/>
+<area shape="rect" id="Node000001" title="ImGuiコンテキストとバックエンドを初期化します。" alt="" coords="1161,819,1367,845"/>
+<area shape="rect" id="Node000002" href="$classSpan_1_1Application.html#a0c44e973ca5db1d23a02a2cee66f5c11" title=" " alt="" coords="971,812,1113,852"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1147,835,1114,835,1114,829,1147,829"/>
+<area shape="rect" id="Node000003" href="$classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e" title="シングルトンインスタンスの取得" alt="" coords="756,437,923,462"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1021,801,845,463,850,461,1026,799"/>
+<area shape="rect" id="Node000020" href="$classSpan_1_1Application.html#a095598d0c2e753bfb8d00acee435980f" title="シングルトンインスタンスのポインタ取得 (存在チェック用)" alt="" coords="759,819,920,845"/>
+<area shape="poly" id="edge26_Node000002_Node000020" title=" " alt="" coords="957,835,920,835,920,829,957,829"/>
+<area shape="rect" id="Node000004" href="$classSpan_1_1HierarchyPanel.html#a331d846c46df5f3346cfc7bb8c7a8e76" title="エンティティ上での右クリックメニューを描画します。" alt="" coords="521,5,681,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="834,423,826,353,806,257,790,206,768,155,740,108,706,66,679,47,683,43,710,62,745,105,773,153,795,204,811,256,831,352,839,423"/>
 <area shape="rect" id="Node000005" href="$classSpan_1_1HierarchyPanel.html#a2c08f8c6e0cafaed96f7846d76ff2b09" title="1つのエンティティとその子孫を再帰的に描画します。" alt="" coords="249,92,409,132"/>
-<area shape="poly" id="edge9_Node000003_Node000005" title=" " alt="" coords="816,337,804,285,781,222,765,190,744,159,720,132,692,110,657,93,619,82,579,76,539,74,462,81,396,95,395,89,461,76,539,69,580,71,620,77,658,88,695,106,724,128,749,156,769,187,786,220,809,284,822,335"/>
+<area shape="poly" id="edge9_Node000003_Node000005" title=" " alt="" coords="835,423,828,356,809,269,793,224,771,180,742,142,706,110,669,90,629,77,587,71,544,69,461,78,391,94,390,89,460,73,543,64,587,65,630,72,671,85,710,106,746,138,775,178,798,221,814,267,833,356,840,423"/>
 <area shape="rect" id="Node000006" href="$classSpan_1_1HierarchyPanel.html#a6481eb57cd9f45cb3a094a26f35bbaa0" title="毎フレーム呼ばれる描画関数。" alt="" coords="5,177,165,217"/>
-<area shape="poly" id="edge16_Node000003_Node000006" title=" " alt="" coords="804,341,758,289,727,264,692,244,624,219,553,201,480,190,408,183,274,182,166,190,166,184,274,177,409,178,481,184,554,196,626,214,694,239,730,259,762,285,808,337"/>
+<area shape="poly" id="edge18_Node000003_Node000006" title=" " alt="" coords="828,424,813,381,789,329,753,277,731,255,707,237,664,220,606,207,535,199,458,194,299,192,165,196,165,191,299,187,458,189,536,194,607,202,666,215,709,232,735,251,757,274,793,326,818,379,833,422"/>
 <area shape="rect" id="Node000007" href="$classSpan_1_1HierarchyPanel.html#a04888145be2266ef8385e234b79ec53a" title="何もない場所での右クリックメニュー (新規作成など) を描画します。" alt="" coords="213,235,445,275"/>
-<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="799,343,752,307,723,289,692,276,631,260,567,251,504,247,446,248,446,242,504,242,567,245,632,255,694,271,725,284,755,302,802,339"/>
-<area shape="rect" id="Node000008" href="$classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" title="選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。" alt="" coords="509,285,677,325"/>
-<area shape="poly" id="edge10_Node000003_Node000008" title=" " alt="" coords="759,349,674,328,675,323,760,344"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="825,425,808,389,782,348,749,307,729,290,707,276,676,262,644,251,576,238,508,235,446,238,445,233,508,230,576,233,645,246,678,257,709,271,732,286,752,303,787,344,813,387,830,423"/>
+<area shape="rect" id="Node000008" href="$classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" title="選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。" alt="" coords="517,285,685,325"/>
+<area shape="poly" id="edge10_Node000003_Node000008" title=" " alt="" coords="814,429,766,388,707,346,666,328,669,323,709,342,769,383,817,425"/>
 <area shape="rect" id="Node000009" href="$classSpan_1_1SceneViewPanel.html#aab2935de58bd68267a680cabd3656c9f" title="毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。" alt="" coords="245,343,413,383"/>
-<area shape="poly" id="edge18_Node000003_Node000009" title=" " alt="" coords="727,365,413,365,413,360,727,360"/>
-<area shape="rect" id="Node000010" href="$classSpan_1_1HierarchyPanel.html#af958ff25d0ba0576ae4848bbd01b2031" title="ドラッグ&amp;ドロップの受け入れ処理 (親子付け替え・並び替え)。" alt="" coords="513,120,673,160"/>
-<area shape="poly" id="edge12_Node000003_Node000010" title=" " alt="" coords="809,339,764,261,731,218,692,181,660,162,663,158,695,177,735,215,769,258,814,336"/>
-<area shape="rect" id="Node000011" href="$classSpan_1_1SceneViewPanel.html#afebf890816b85f92e9ed73de887b2354" title="外部またはブラウザからドロップされたファイルを処理します。" alt="" coords="509,400,677,440"/>
-<area shape="poly" id="edge14_Node000003_Node000011" title=" " alt="" coords="760,381,675,403,674,397,759,376"/>
-<area shape="rect" id="Node000012" href="$classSpan_1_1InspectorPanel.html#ae32fda6018a2e54f880e6708ac5b89fe" title="毎フレーム呼ばれる描画関数。" alt="" coords="515,464,672,504"/>
-<area shape="poly" id="edge17_Node000003_Node000012" title=" " alt="" coords="799,386,752,420,695,454,666,466,664,461,692,450,749,416,796,382"/>
-<area shape="rect" id="Node000013" href="$classSpan_1_1CameraSystem.html#a7f4bf0245dedd7a6245ef352246f7391" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="512,528,675,568"/>
-<area shape="poly" id="edge19_Node000003_Node000013" title=" " alt="" coords="811,388,765,453,732,488,695,518,673,530,670,525,692,514,728,484,760,449,807,385"/>
-<area shape="rect" id="Node000014" href="$classSpan_1_1EditorCameraSystem.html#ae933964fa5d0f299954c926cf63e091a" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="493,592,693,632"/>
-<area shape="poly" id="edge20_Node000003_Node000014" title=" " alt="" coords="817,390,800,431,775,483,740,536,695,582,676,594,673,590,692,578,735,533,770,480,796,429,812,388"/>
-<area shape="rect" id="Node000015" href="$classSpan_1_1RenderingSystem.html#aa0113a8f2b55129115c4da2c6ba449c4" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="505,656,682,696"/>
-<area shape="poly" id="edge21_Node000003_Node000015" title=" " alt="" coords="821,389,808,443,784,512,747,583,723,617,695,646,678,658,675,654,692,642,719,613,743,581,779,509,803,441,816,388"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="520,52,392,94,391,89,518,47"/>
+<area shape="poly" id="edge20_Node000003_Node000009" title=" " alt="" coords="804,432,759,409,707,391,631,375,552,366,413,362,413,357,553,361,632,370,709,385,761,404,807,427"/>
+<area shape="rect" id="Node000010" href="$classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec" title="ImGuiの描画コマンドを発行し、フレームを終了します。" alt="" coords="493,465,708,490"/>
+<area shape="poly" id="edge12_Node000003_Node000010" title=" " alt="" coords="742,463,708,467,708,462,742,458"/>
+<area shape="rect" id="Node000012" href="$classSpan_1_1HierarchyPanel.html#af958ff25d0ba0576ae4848bbd01b2031" title="ドラッグ&amp;ドロップの受け入れ処理 (親子付け替え・並び替え)。" alt="" coords="521,120,681,160"/>
+<area shape="poly" id="edge14_Node000003_Node000012" title=" " alt="" coords="830,424,816,373,792,308,755,240,733,208,706,181,678,162,681,158,710,177,737,205,760,237,796,306,821,372,835,423"/>
+<area shape="rect" id="Node000013" href="$classSpan_1_1SceneViewPanel.html#afebf890816b85f92e9ed73de887b2354" title="外部またはブラウザからドロップされたファイルを処理します。" alt="" coords="517,400,685,440"/>
+<area shape="poly" id="edge16_Node000003_Node000013" title=" " alt="" coords="742,440,685,433,685,428,742,435"/>
+<area shape="rect" id="Node000014" href="$classSpan_1_1InspectorPanel.html#ae32fda6018a2e54f880e6708ac5b89fe" title="毎フレーム呼ばれる描画関数。" alt="" coords="522,515,679,555"/>
+<area shape="poly" id="edge19_Node000003_Node000014" title=" " alt="" coords="797,470,709,505,673,517,671,512,707,500,795,465"/>
+<area shape="rect" id="Node000015" href="$classSpan_1_1CameraSystem.html#a7f4bf0245dedd7a6245ef352246f7391" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="519,579,682,619"/>
+<area shape="poly" id="edge21_Node000003_Node000015" title=" " alt="" coords="820,474,773,522,742,547,709,569,683,581,681,576,707,564,739,543,769,518,816,471"/>
+<area shape="rect" id="Node000016" href="$classSpan_1_1EditorCameraSystem.html#ae933964fa5d0f299954c926cf63e091a" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="501,643,701,683"/>
+<area shape="poly" id="edge22_Node000003_Node000016" title=" " alt="" coords="829,476,811,511,784,553,750,596,710,633,688,645,686,640,706,629,746,592,780,550,806,508,824,473"/>
+<area shape="rect" id="Node000017" href="$classSpan_1_1RenderingSystem.html#aa0113a8f2b55129115c4da2c6ba449c4" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="512,707,689,747"/>
+<area shape="poly" id="edge23_Node000003_Node000017" title=" " alt="" coords="834,476,819,523,794,583,758,644,735,672,710,697,691,709,688,704,706,693,731,668,754,641,789,580,814,521,829,474"/>
+<area shape="rect" id="Node000018" href="$classSpan_1_1FileDialog.html#aad45925d2e59cc65f1025f18104770e8" title="ファイルを開くダイアログを表示します。" alt="" coords="505,771,697,797"/>
+<area shape="poly" id="edge24_Node000003_Node000018" title=" " alt="" coords="838,476,827,535,804,612,788,653,767,692,741,729,710,761,689,774,686,769,706,757,737,726,762,689,783,650,799,610,821,534,832,475"/>
+<area shape="rect" id="Node000019" href="$classSpan_1_1FileDialog.html#a22c6ec8ccc13ed89cc79447ce8ff2468" title="ファイルを保存するダイアログを表示します。" alt="" coords="505,821,696,846"/>
+<area shape="poly" id="edge25_Node000003_Node000019" title=" " alt="" coords="839,476,832,544,811,634,795,683,773,730,745,773,710,811,692,823,690,818,706,807,741,770,768,727,790,681,806,633,826,543,834,475"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="525,52,394,94,392,89,523,47"/>
 <area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="371,80,356,73,329,71,306,73,292,77,287,83,289,91,284,92,281,82,289,73,305,67,329,65,358,68,373,75"/>
 <area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="260,139,144,180,142,175,258,134"/>
 <area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="230,234,165,219,166,213,231,229"/>
-<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="497,329,414,347,413,342,496,324"/>
-<area shape="poly" id="edge13_Node000010_Node000005" title=" " alt="" coords="500,133,409,123,410,118,500,127"/>
-<area shape="poly" id="edge15_Node000011_Node000009" title=" " alt="" coords="496,402,413,383,414,378,497,396"/>
-<area shape="rect" id="Node000017" href="$namespaceSpan.html#a3f4b8561d46e69596ba6a7c3177a92e7" title=" " alt="" coords="499,721,687,746"/>
-<area shape="poly" id="edge23_Node000016_Node000017" title=" " alt="" coords="753,701,653,723,651,718,752,696"/>
-<area shape="poly" id="edge24_Node000017_Node000002" title=" " alt="" coords="701,726,801,718,908,705,955,697,956,702,908,711,802,723,701,731"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="504,328,414,348,413,342,503,323"/>
+<area shape="rect" id="Node000011" href="$classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9" title="アプリケーションを実行します (ブロック関数)。" alt="" coords="245,465,413,490"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="479,480,414,480,414,475,479,475"/>
+<area shape="poly" id="edge15_Node000012_Node000005" title=" " alt="" coords="507,133,409,123,410,118,507,128"/>
+<area shape="poly" id="edge17_Node000013_Node000009" title=" " alt="" coords="503,402,413,383,414,378,504,397"/>
+<area shape="rect" id="Node000021" href="$namespaceSpan.html#a3f4b8561d46e69596ba6a7c3177a92e7" title=" " alt="" coords="507,870,695,895"/>
+<area shape="poly" id="edge27_Node000020_Node000021" title=" " alt="" coords="766,850,662,873,661,867,764,845"/>
+<area shape="poly" id="edge28_Node000021_Node000002" title=" " alt="" coords="708,875,812,867,922,855,970,846,971,851,923,860,813,873,709,880"/>
 </map>

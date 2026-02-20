@@ -4,5 +4,9 @@ var InspectorPanel_8cpp =
     [ "ICON_FA_FILE", "InspectorPanel_8cpp.html#a554328eb3a45c07b27defc4225934dd6", null ],
     [ "ICON_FA_FILES_O", "InspectorPanel_8cpp.html#a2dda25b7495de6f18c2d092e38f93f37", null ],
     [ "ICON_FA_IMAGE", "InspectorPanel_8cpp.html#a1d22890f336190cd1926bf6773952e73", null ],
+    [ "ICON_FA_PLUS", "InspectorPanel_8cpp.html#a6a63b07593bca0feef03627fd008033b", null ],
+    [ "ICON_FA_SEARCH", "InspectorPanel_8cpp.html#ad1de50dd25e55ca0ddfda9566df0dd05", null ],
+    [ "ICON_FA_TAGS", "InspectorPanel_8cpp.html#a361bd5f574aadf81d55c1e8fd5a35660", null ],
+    [ "ICON_FA_TRASH", "InspectorPanel_8cpp.html#ae5f58521b0e852292d7debf158be1a3b", null ],
     [ "Span::_reg", "namespaceSpan.html#a2ffd67e5c0ae55d0918e1924de043da2", null ]
 ];

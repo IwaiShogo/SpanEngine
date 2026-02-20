@@ -93,11 +93,19 @@ $(function(){initNavTree('namespaceSpan_1_1Internal.html','',''); });
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:ImGuiVisitor" id="r_ImGuiVisitor"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Internal_1_1ImGuiVisitor.html">ImGuiVisitor</a></td></tr>
+<tr class="memitem:JsonSerializeVisitor" id="r_JsonSerializeVisitor"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Internal_1_1JsonSerializeVisitor.html">JsonSerializeVisitor</a></td></tr>
+<tr class="memitem:JsonDeserializeVisitor" id="r_JsonDeserializeVisitor"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Internal_1_1JsonDeserializeVisitor.html">JsonDeserializeVisitor</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
 <tr class="memitem:ae18b71c51d88d168549fe9542ed952bb" id="r_ae18b71c51d88d168549fe9542ed952bb"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:ae18b71c51d88d168549fe9542ed952bb template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae18b71c51d88d168549fe9542ed952bb">DrawField</a> (const char *label, T &amp;value, const std::vector&lt; <a class="el" href="structSpan_1_1Attribute.html">Attribute</a> &gt; &amp;attrs)</td></tr>
 <tr class="memdesc:ae18b71c51d88d168549fe9542ed952bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">型に応じた描画ヘルパー関数  <br /></td></tr>
+<tr class="memitem:af5fb72e56e5d56613a811a2754229981" id="r_af5fb72e56e5d56613a811a2754229981"><td class="memTemplParams" colspan="2">template&lt;typename Visitor, typename T, typename... Attrs&gt; </td></tr>
+<tr class="memitem:af5fb72e56e5d56613a811a2754229981 template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af5fb72e56e5d56613a811a2754229981">ProcessField</a> (Visitor &amp;visitor, const char *name, T &amp;value, Attrs &amp;&amp;... attrs)</td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
 <a id="ae18b71c51d88d168549fe9542ed952bb" name="ae18b71c51d88d168549fe9542ed952bb"></a>
@@ -128,12 +136,52 @@ template&lt;typename T&gt; </div>
 
 <p>型に応じた描画ヘルパー関数 </p>
 
-<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00110">110</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00191">191</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_1_1Internal_ae18b71c51d88d168549fe9542ed952bb_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_1_1Internal_ae18b71c51d88d168549fe9542ed952bb_icgraph.svg" width="446" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="af5fb72e56e5d56613a811a2754229981" name="af5fb72e56e5d56613a811a2754229981"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5fb72e56e5d56613a811a2754229981">&#9670;&#160;</a></span>ProcessField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Visitor, typename T, typename... Attrs&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::Internal::ProcessField </td>
+          <td>(</td>
+          <td class="paramtype">Visitor &amp;</td>          <td class="paramname"><span class="paramname"><em>visitor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Attrs &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>attrs</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00098">98</a> 行目に定義があります。</p>
 
 </div>
 </div>

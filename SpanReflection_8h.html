@@ -99,11 +99,8 @@ $(function(){initNavTree('SpanReflection_8h.html','',''); });
 <code>#include &quot;<a class="el" href="ComponentRegistry_8h_source.html">ComponentRegistry.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ImGuiUI_8h_source.html">Editor/ImGui/ImGuiUI.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="FixedString_8h_source.html">Core/Containers/FixedString.h</a>&quot;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;type_traits&gt;</code><br />
-<code>#include &lt;cfloat&gt;</code><br />
 <code>#include &lt;magic_enum.hpp&gt;</code><br />
+<code>#include &lt;nlohmann/json.hpp&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 SpanReflection.h の依存先関係図:</div>
 <div class="dyncontent">
@@ -121,6 +118,9 @@ SpanReflection.h の依存先関係図:</div>
 クラス</h2></td></tr>
 <tr class="memitem:Span_3A_3Ais_5Ffixed_5Fstring_3C_20T_20_3E" id="r_Span_3A_3Ais_5Ffixed_5Fstring_3C_20T_20_3E"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1is__fixed__string.html">Span::is_fixed_string&lt; T &gt;</a></td></tr>
 <tr class="memitem:Span_3A_3Ais_5Ffixed_5Fstring_3C_20FixedString_3C_20N_20_3E_20_3E" id="r_Span_3A_3Ais_5Ffixed_5Fstring_3C_20FixedString_3C_20N_20_3E_20_3E"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1is__fixed__string_3_01FixedString_3_01N_01_4_01_4.html">Span::is_fixed_string&lt; FixedString&lt; N &gt; &gt;</a></td></tr>
+<tr class="memitem:Span_3A_3AInternal_3A_3AImGuiVisitor" id="r_Span_3A_3AInternal_3A_3AImGuiVisitor"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Internal_1_1ImGuiVisitor.html">Span::Internal::ImGuiVisitor</a></td></tr>
+<tr class="memitem:Span_3A_3AInternal_3A_3AJsonSerializeVisitor" id="r_Span_3A_3AInternal_3A_3AJsonSerializeVisitor"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Internal_1_1JsonSerializeVisitor.html">Span::Internal::JsonSerializeVisitor</a></td></tr>
+<tr class="memitem:Span_3A_3AInternal_3A_3AJsonDeserializeVisitor" id="r_Span_3A_3AInternal_3A_3AJsonDeserializeVisitor"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Internal_1_1JsonDeserializeVisitor.html">Span::Internal::JsonDeserializeVisitor</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 名前空間</h2></td></tr>
@@ -130,17 +130,16 @@ SpanReflection.h の依存先関係図:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 マクロ定義</h2></td></tr>
 <tr class="memitem:a73d73b391d2c696aa97e2f555064a4ad" id="r_a73d73b391d2c696aa97e2f555064a4ad"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a73d73b391d2c696aa97e2f555064a4ad">SPAN_INSPECTOR_BEGIN</a>(ComponentType)</td></tr>
-<tr class="memdesc:a73d73b391d2c696aa97e2f555064a4ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">インスペクターUI定義の開始マクロ  <br /></td></tr>
 <tr class="memitem:a6637ca0ed9083bc0f48fc532e4f3fa3e" id="r_a6637ca0ed9083bc0f48fc532e4f3fa3e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a6637ca0ed9083bc0f48fc532e4f3fa3e">SPAN_FIELD</a>(Variable, ...)</td></tr>
-<tr class="memdesc:a6637ca0ed9083bc0f48fc532e4f3fa3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">変数をインスペクターに表示します。  <br /></td></tr>
 <tr class="memitem:a03c56469341230c856b122f920371494" id="r_a03c56469341230c856b122f920371494"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a03c56469341230c856b122f920371494">SPAN_INSPECTOR_END</a>()</td></tr>
-<tr class="memdesc:a03c56469341230c856b122f920371494"><td class="mdescLeft">&#160;</td><td class="mdescRight">インスペクターUI定義の終了マクロ。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
 <tr class="memitem:ae18b71c51d88d168549fe9542ed952bb" id="r_ae18b71c51d88d168549fe9542ed952bb"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:ae18b71c51d88d168549fe9542ed952bb template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan_1_1Internal.html#ae18b71c51d88d168549fe9542ed952bb">Span::Internal::DrawField</a> (const char *label, T &amp;value, const std::vector&lt; <a class="el" href="structSpan_1_1Attribute.html">Attribute</a> &gt; &amp;attrs)</td></tr>
 <tr class="memdesc:ae18b71c51d88d168549fe9542ed952bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">型に応じた描画ヘルパー関数  <br /></td></tr>
+<tr class="memitem:af5fb72e56e5d56613a811a2754229981" id="r_af5fb72e56e5d56613a811a2754229981"><td class="memTemplParams" colspan="2">template&lt;typename Visitor, typename T, typename... Attrs&gt; </td></tr>
+<tr class="memitem:af5fb72e56e5d56613a811a2754229981 template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan_1_1Internal.html#af5fb72e56e5d56613a811a2754229981">Span::Internal::ProcessField</a> (Visitor &amp;visitor, const char *name, T &amp;value, Attrs &amp;&amp;... attrs)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 変数</h2></td></tr>
@@ -150,8 +149,8 @@ SpanReflection.h の依存先関係図:</div>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>コンポーネント定義用のリフレクションマクロ。 </p>
 <hr  />
- <h2 class="doxsection"><a class="anchor" id="autotoc_md137"></a>
-autotoc_md137</h2>
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md145"></a>
+autotoc_md145</h2>
 <dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
 
 <p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> に定義があります。</p>
@@ -174,24 +173,10 @@ autotoc_md137</h2>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>値:</b><div class="fragment"><div class="line">{ \</div>
-<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a>; \</div>
-<div class="line">    std::vector&lt;Attribute&gt; attrs = { __VA_ARGS__ }; \</div>
-<div class="line">    Span::Internal::DrawField(#Variable, Variable, attrs); \</div>
-<div class="line">}</div>
-<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<b>値:</b><div class="fragment"><div class="line"><a class="code hl_function" href="namespaceSpan_1_1Internal.html#af5fb72e56e5d56613a811a2754229981">Span::Internal::ProcessField</a>(visitor, #Variable, Variable, __VA_ARGS__);</div>
+<div class="ttc" id="anamespaceSpan_1_1Internal_html_af5fb72e56e5d56613a811a2754229981"><div class="ttname"><a href="namespaceSpan_1_1Internal.html#af5fb72e56e5d56613a811a2754229981">Span::Internal::ProcessField</a></div><div class="ttdeci">void ProcessField(Visitor &amp;visitor, const char *name, T &amp;value, Attrs &amp;&amp;... attrs)</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00098">SpanReflection.h:98</a></div></div>
 </div><!-- fragment -->
-<p>変数をインスペクターに表示します。 </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Variable</td><td>メンバ変数名 </td></tr>
-    <tr><td class="paramname">Label</td><td>UI上のラベル名 </td></tr>
-    <tr><td class="paramname">...</td><td>属性リスト (Range(0, 1), Tooltip("Help") 等) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00052">52</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00031">31</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -212,19 +197,10 @@ autotoc_md137</h2>
 <b>値:</b><div class="fragment"><div class="line"><span class="keyword">public</span>: \</div>
 <div class="line"><span class="keyword">using </span>_InspectorSelfType = ComponentType; \</div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* _GetInspectorName() { <span class="keywordflow">return</span> #ComponentType; } \</div>
-<div class="line"><span class="comment">/* UI描画関数 (InspectorPanelから呼ばれる) */</span> \</div>
-<div class="line"><span class="keywordtype">void</span> OnGui(<a class="code hl_class" href="structSpan_1_1Entity.html">Span::Entity</a> entity, <a class="code hl_struct" href="classSpan_1_1World.html">Span::World</a>&amp; world) { \</div>
-<div class="line">    <span class="keywordtype">bool</span> isRemoved = <span class="keyword">false</span>; \</div>
-<div class="line">    <span class="comment">/* ヘッダー描画 (折り畳み &amp; 右クリックメニュー) */</span> \</div>
-<div class="line">    if (<a class="code hl_function" href="classSpan_1_1ImGuiUI.html#a7406027629260cb8a8ab6110dcd20a6c">Span::ImGuiUI::DrawComponentHeader</a>(#ComponentType, isRemoved)) {</div>
-<div class="ttc" id="aclassSpan_1_1ImGuiUI_html_a7406027629260cb8a8ab6110dcd20a6c"><div class="ttname"><a href="classSpan_1_1ImGuiUI.html#a7406027629260cb8a8ab6110dcd20a6c">Span::ImGuiUI::DrawComponentHeader</a></div><div class="ttdeci">static bool DrawComponentHeader(const std::string &amp;name, bool &amp;isRemoved, bool defaultOpen=true)</div><div class="ttdoc">コンポーネント用の折り畳みヘッダーを描画します。</div><div class="ttdef"><b>Definition</b> <a href="ImGuiUI_8cpp_source.html#l00073">ImGuiUI.cpp:73</a></div></div>
-<div class="ttc" id="aclassSpan_1_1World_html"><div class="ttname"><a href="classSpan_1_1World.html">Span::World</a></div><div class="ttdoc">🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00055">World.h:56</a></div></div>
-<div class="ttc" id="astructSpan_1_1Entity_html"><div class="ttname"><a href="structSpan_1_1Entity.html">Span::Entity</a></div><div class="ttdoc">📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。</div><div class="ttdef"><b>Definition</b> <a href="Entity_8h_source.html#l00070">Entity.h:71</a></div></div>
+<div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Visitor&gt; \</div>
+<div class="line"><span class="keywordtype">void</span> Reflect(Visitor&amp; visitor) {</div>
 </div><!-- fragment -->
-<p>インスペクターUI定義の開始マクロ </p>
-<p>構造体の中に <span class="tt">OnGui</span> 関数と、自動登録用の静的構造体 <span class="tt">_AutoReg_Inspector</span> を生成します。 </p>
-
-<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00035">35</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00024">24</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -242,41 +218,8 @@ autotoc_md137</h2>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>値:</b><div class="fragment"><div class="line">        ImGui::TreePop(); \</div>
-<div class="line">    } \</div>
-<div class="line">    if (isRemoved) { \</div>
-<div class="line">        world.RemoveComponent&lt;_InspectorSelfType&gt;(entity); \</div>
-<div class="line">    } \</div>
-<div class="line">} \</div>
-<div class="line"><span class="comment">/* 自動登録用構造体 */</span> \</div>
-<div class="line"><span class="keyword">struct </span>_AutoReg_Inspector { \</div>
-<div class="line">    _AutoReg_Inspector() { \</div>
-<div class="line">        Span::ComponentRegistry::Register&lt;_InspectorSelfType&gt;( \</div>
-<div class="line">            _InspectorSelfType::_GetInspectorName(), \</div>
-<div class="line">            <span class="comment">/* Draw Func */</span> \</div>
-<div class="line">            [](<a class="code hl_enumvalue" href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f">Span::Entity</a> e, Span::World&amp; w) { \</div>
-<div class="line">                if (<span class="keyword">auto</span>* c = w.<a class="code hl_function" href="classSpan_1_1World.html#a637d963c8538b8ca6535bd1c6b88115c">GetComponentPtr</a>&lt;_InspectorSelfType&gt;(e)) c-&gt;OnGui(e, w); \</div>
-<div class="line">            }, \</div>
-<div class="line">            <span class="comment">/* Add Func */</span> \</div>
-<div class="line">            [](<a class="code hl_enumvalue" href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f">Span::Entity</a> e, Span::World&amp; w) { \</div>
-<div class="line">                if (!w.<a class="code hl_function" href="classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0">HasComponent</a>&lt;_InspectorSelfType&gt;(e)) w.<a class="code hl_function" href="classSpan_1_1World.html#a555e11829d3833ce35f444779c4c2369">AddComponent</a>&lt;_InspectorSelfType&gt;(e); \</div>
-<div class="line">            }, \</div>
-<div class="line">            <span class="comment">/* Has Func */</span> \</div>
-<div class="line">            [](<a class="code hl_enumvalue" href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f">Span::Entity</a> e, Span::World&amp; w) { \</div>
-<div class="line">                <span class="keywordflow">return</span> w.<a class="code hl_function" href="classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0">HasComponent</a>&lt;_InspectorSelfType&gt;(e); \</div>
-<div class="line">            } \</div>
-<div class="line">        ); \</div>
-<div class="line">    } \</div>
-<div class="line">}; \</div>
-<div class="line"><span class="keyword">inline</span> <span class="keyword">static</span> _AutoReg_Inspector _autoreg_inspector;</div>
-<div class="ttc" id="aclassSpan_1_1World_html_a059bbe879fcaf0a57d1b935be05810f0"><div class="ttname"><a href="classSpan_1_1World.html#a059bbe879fcaf0a57d1b935be05810f0">Span::World::HasComponent</a></div><div class="ttdeci">bool HasComponent(Entity entity)</div><div class="ttdoc">指定したコンポーネントを持っているか確認します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00248">World.h:248</a></div></div>
-<div class="ttc" id="aclassSpan_1_1World_html_a555e11829d3833ce35f444779c4c2369"><div class="ttname"><a href="classSpan_1_1World.html#a555e11829d3833ce35f444779c4c2369">Span::World::AddComponent</a></div><div class="ttdeci">void AddComponent(Entity entity, const T &amp;initialValue=T())</div><div class="ttdoc">既存のEntityに新しいコンポーネントを追加します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00163">World.h:163</a></div></div>
-<div class="ttc" id="aclassSpan_1_1World_html_a637d963c8538b8ca6535bd1c6b88115c"><div class="ttname"><a href="classSpan_1_1World.html#a637d963c8538b8ca6535bd1c6b88115c">Span::World::GetComponentPtr</a></div><div class="ttdeci">T * GetComponentPtr(Entity entity)</div><div class="ttdoc">コンポーネントへのポインタを取得します。</div><div class="ttdef"><b>Definition</b> <a href="World_8h_source.html#l00285">World.h:285</a></div></div>
-<div class="ttc" id="anamespaceSpan_html_ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f"><div class="ttname"><a href="namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f">Span::SelectionType::Entity</a></div><div class="ttdeci">@ Entity</div><div class="ttdoc">シーン上のEntityが選択されている</div><div class="ttdef"><b>Definition</b> <a href="SelectionManager_8h_source.html#l00027">SelectionManager.h:27</a></div></div>
-</div><!-- fragment -->
-<p>インスペクターUI定義の終了マクロ。 </p>
 
-<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00063">63</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00034">34</a> 行目に定義があります。</p>
 
 </div>
 </div>

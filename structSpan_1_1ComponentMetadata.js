@@ -1,9 +1,11 @@
 var structSpan_1_1ComponentMetadata =
 [
     [ "AddFunc", "structSpan_1_1ComponentMetadata.html#a4cedcd411cbb100c56d542b856279af6", null ],
+    [ "DeserializeFunc", "structSpan_1_1ComponentMetadata.html#a799e01dbbe0cbc4765aa723aa1abbdab", null ],
     [ "DrawFunc", "structSpan_1_1ComponentMetadata.html#a924a91448da37722c778ded258ac15ae", null ],
     [ "HasFunc", "structSpan_1_1ComponentMetadata.html#ad6350fc810d1bb0b2034c039a17971eb", null ],
     [ "Name", "structSpan_1_1ComponentMetadata.html#ac98160a5377e1d5708c727bd7aed64e9", null ],
     [ "Order", "structSpan_1_1ComponentMetadata.html#ae80c08df2974efc5d8d45d6ad76b6199", null ],
-    [ "RemoveFunc", "structSpan_1_1ComponentMetadata.html#a43d26ea0ea617c22bb3bcea736359fdf", null ]
+    [ "RemoveFunc", "structSpan_1_1ComponentMetadata.html#a43d26ea0ea617c22bb3bcea736359fdf", null ],
+    [ "SerializeFunc", "structSpan_1_1ComponentMetadata.html#a9deb602c49c9a5c2cabcfe8d0ed9b7ec", null ]
 ];

@@ -34,6 +34,7 @@ var hierarchy =
       [ "Span::is_fixed_string< FixedString< N > >", "structSpan_1_1is__fixed__string_3_01FixedString_3_01N_01_4_01_4.html", null ],
       [ "Span::is_fixed_string< T >", "structSpan_1_1is__fixed__string.html", null ]
     ] ],
+    [ "Span::FileDialog", "classSpan_1_1FileDialog.html", null ],
     [ "Span::FixedString&lt; N &gt;", "structSpan_1_1FixedString.html", null ],
     [ "Span::GraphicsContext", "classSpan_1_1GraphicsContext.html", null ],
     [ "Span::GuiManager", "classSpan_1_1GuiManager.html", null ],
@@ -46,8 +47,12 @@ var hierarchy =
       [ "Span::RenameFileCommand", "classSpan_1_1RenameFileCommand.html", null ]
     ] ],
     [ "Span::ImGuiUI", "classSpan_1_1ImGuiUI.html", null ],
+    [ "Span::Internal::ImGuiVisitor", "structSpan_1_1Internal_1_1ImGuiVisitor.html", null ],
     [ "Span::Input", "classSpan_1_1Input.html", null ],
+    [ "Span::Internal::JsonDeserializeVisitor", "structSpan_1_1Internal_1_1JsonDeserializeVisitor.html", null ],
+    [ "Span::Internal::JsonSerializeVisitor", "structSpan_1_1Internal_1_1JsonSerializeVisitor.html", null ],
     [ "Span::Layer", "structSpan_1_1Layer.html", null ],
+    [ "Span::LayerManager", "classSpan_1_1LayerManager.html", null ],
     [ "Span::LocalToWorld", "structSpan_1_1LocalToWorld.html", null ],
     [ "Span::Logger", "classSpan_1_1Logger.html", null ],
     [ "Span::Material", "classSpan_1_1Material.html", null ],
@@ -63,6 +68,7 @@ var hierarchy =
     [ "Span::Relationship", "structSpan_1_1Relationship.html", null ],
     [ "Span::Renderer", "classSpan_1_1Renderer.html", null ],
     [ "Span::RenderTarget", "classSpan_1_1RenderTarget.html", null ],
+    [ "Span::SceneSerializer", "classSpan_1_1SceneSerializer.html", null ],
     [ "Span::SelectionManager", "classSpan_1_1SelectionManager.html", null ],
     [ "Span::Shader", "classSpan_1_1Shader.html", null ],
     [ "Span::System", "classSpan_1_1System.html", [

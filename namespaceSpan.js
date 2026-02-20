@@ -1,8 +1,6 @@
 var namespaceSpan =
 [
-    [ "Internal", "namespaceSpan_1_1Internal.html", [
-      [ "DrawField", "namespaceSpan_1_1Internal.html#ae18b71c51d88d168549fe9542ed952bb", null ]
-    ] ],
+    [ "Internal", "namespaceSpan_1_1Internal.html", "namespaceSpan_1_1Internal" ],
     [ "FixedString", "structSpan_1_1FixedString.html", "structSpan_1_1FixedString" ],
     [ "Input", "classSpan_1_1Input.html", "classSpan_1_1Input" ],
     [ "Logger", "classSpan_1_1Logger.html", "classSpan_1_1Logger" ],
@@ -29,6 +27,7 @@ var namespaceSpan =
     [ "SelectionManager", "classSpan_1_1SelectionManager.html", "classSpan_1_1SelectionManager" ],
     [ "DirectoryWatcher", "classSpan_1_1DirectoryWatcher.html", "classSpan_1_1DirectoryWatcher" ],
     [ "EditorFileSystem", "classSpan_1_1EditorFileSystem.html", "classSpan_1_1EditorFileSystem" ],
+    [ "FileDialog", "classSpan_1_1FileDialog.html", "classSpan_1_1FileDialog" ],
     [ "Application", "classSpan_1_1Application.html", "classSpan_1_1Application" ],
     [ "Active", "structSpan_1_1Active.html", "structSpan_1_1Active" ],
     [ "Layer", "structSpan_1_1Layer.html", "structSpan_1_1Layer" ],
@@ -41,6 +40,7 @@ var namespaceSpan =
     [ "Camera", "structSpan_1_1Camera.html", "structSpan_1_1Camera" ],
     [ "MeshFilter", "structSpan_1_1MeshFilter.html", "structSpan_1_1MeshFilter" ],
     [ "MeshRenderer", "structSpan_1_1MeshRenderer.html", "structSpan_1_1MeshRenderer" ],
+    [ "LayerManager", "classSpan_1_1LayerManager.html", "classSpan_1_1LayerManager" ],
     [ "TagManager", "classSpan_1_1TagManager.html", "classSpan_1_1TagManager" ],
     [ "ComponentType", "classSpan_1_1ComponentType.html", "classSpan_1_1ComponentType" ],
     [ "ArchetypeSignature", "classSpan_1_1ArchetypeSignature.html", "classSpan_1_1ArchetypeSignature" ],
@@ -77,6 +77,7 @@ var namespaceSpan =
     [ "AssetMetadata", "structSpan_1_1AssetMetadata.html", "structSpan_1_1AssetMetadata" ],
     [ "AssetRegistry", "classSpan_1_1AssetRegistry.html", "classSpan_1_1AssetRegistry" ],
     [ "AssetSerializer", "classSpan_1_1AssetSerializer.html", "classSpan_1_1AssetSerializer" ],
+    [ "SceneSerializer", "classSpan_1_1SceneSerializer.html", "classSpan_1_1SceneSerializer" ],
     [ "RelationshipSystem", "classSpan_1_1RelationshipSystem.html", "classSpan_1_1RelationshipSystem" ],
     [ "TransformSystem", "classSpan_1_1TransformSystem.html", "classSpan_1_1TransformSystem" ],
     [ "CameraSystem", "classSpan_1_1CameraSystem.html", "classSpan_1_1CameraSystem" ],
@@ -85,6 +86,7 @@ var namespaceSpan =
     [ "AddComponentFunc", "namespaceSpan.html#a6af56d259d0ccdc218e0cadc2dcd8e08", null ],
     [ "AssetHandle", "namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446", null ],
     [ "ComponentTypeID", "namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd", null ],
+    [ "DeserializeComponentFunc", "namespaceSpan.html#a0236f1c76c5f0db3d3948294cd64ab53", null ],
     [ "DrawComponentFunc", "namespaceSpan.html#a093013dab8d39277e04bac7cc500fde7", null ],
     [ "HasComponentFunc", "namespaceSpan.html#ad284dad2c8e86ac8f482272df541e612", null ],
     [ "int16", "namespaceSpan.html#a5dcbce7d5da8a4232c7603685b85b391", null ],
@@ -92,6 +94,7 @@ var namespaceSpan =
     [ "int64", "namespaceSpan.html#aca56f7fb12365f1c73d650b4b5f84091", null ],
     [ "int8", "namespaceSpan.html#a22abb8fc8284de21b5e9d080a1836f46", null ],
     [ "RemoveComponentFunc", "namespaceSpan.html#a936509841abf3411c6dae4ca675b811e", null ],
+    [ "SerializeComponentFunc", "namespaceSpan.html#a1af452253238a26e17628ad9ff4f05f2", null ],
     [ "String256", "namespaceSpan.html#a5599ed78c75cf520c87d4e1da62d7f09", null ],
     [ "String32", "namespaceSpan.html#a3b6e367c9cc5f83dd664b2f937f5e75c", null ],
     [ "String64", "namespaceSpan.html#a1c9b49b553b2639b8e94564c39f9941d", null ],
@@ -183,13 +186,6 @@ var namespaceSpan =
       [ "Gamepad_DPad_Down", "namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fab16cff4b2dd52bb157004050dcc7e26f", null ],
       [ "Gamepad_DPad_Left", "namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8faf1ec23a0ef3b8cc847480ed5d1e9bcfa", null ],
       [ "Gamepad_DPad_Right", "namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fade1c390ad12eb3380658ccf9d89cf91b", null ]
-    ] ],
-    [ "LayerType", "namespaceSpan.html#a0218d3201263d090d434e06833479948", [
-      [ "Default", "namespaceSpan.html#a0218d3201263d090d434e06833479948a7a1920d61156abc05a60135aefe8bc67", null ],
-      [ "TransparetnFX", "namespaceSpan.html#a0218d3201263d090d434e06833479948a57d8711920a2544782a66c0cae62b5a3", null ],
-      [ "IgnoreRaycast", "namespaceSpan.html#a0218d3201263d090d434e06833479948ab582fa273f406bf860dc56449a5d83ba", null ],
-      [ "Water", "namespaceSpan.html#a0218d3201263d090d434e06833479948a27634ff8002b12e75d98e07ccd005d18", null ],
-      [ "UI", "namespaceSpan.html#a0218d3201263d090d434e06833479948a71ff71526d15db86eb50fcac245d183b", null ]
     ] ],
     [ "LogLevel", "namespaceSpan.html#a706679730aeab52031ed8774240027f2", [
       [ "Info", "namespaceSpan.html#a706679730aeab52031ed8774240027f2a4059b0251f66a18cb56f544728796875", null ],
