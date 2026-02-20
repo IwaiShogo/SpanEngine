@@ -26,6 +26,10 @@ namespace Span
 
 		Layer() = default;
 		Layer(uint8_t val) : Value(val) {}
+
+		SPAN_INSPECTOR_BEGIN(Layer)
+			SPAN_FIELD(Value, HideInInspector())
+		SPAN_INSPECTOR_END()
 	};
 }
 

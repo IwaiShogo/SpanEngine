@@ -30,6 +30,10 @@ namespace Span
 
 		LocalToWorld() : Value(Matrix4x4::Identity()) {}
 		LocalToWorld(const Matrix4x4& matrix) : Value(matrix) {}
+
+		SPAN_INSPECTOR_BEGIN(LocalToWorld)
+			SPAN_FIELD(Value, HideInInspector())
+		SPAN_INSPECTOR_END()
 	};
 }
 

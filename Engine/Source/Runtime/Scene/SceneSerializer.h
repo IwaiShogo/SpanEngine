@@ -14,6 +14,7 @@
 #pragma once
 
 #include "Runtime/ECS/Kernel/World.h"
+#include "Scene.h"
 
 namespace Span
 {
@@ -28,7 +29,7 @@ namespace Span
 		 * @brief	コンストラクタ。対象となるWorldの参照を受け取ります。
 		 * @param	world シリアライズ対象のWorld
 		 */
-		SceneSerializer(World& world);
+		SceneSerializer(Scene& scene);
 
 		/**
 		 * @brief	現在のWorldの状態を指定したファイルパス(.span)に保存します。
@@ -45,6 +46,6 @@ namespace Span
 		bool Deserialize(const std::filesystem::path& filepath);
 
 	private:
-		World& m_World;
+		Scene& m_Scene;
 	};
 }

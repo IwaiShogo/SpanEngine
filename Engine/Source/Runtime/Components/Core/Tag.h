@@ -32,6 +32,7 @@ namespace Span
 		bool operator==(const Tag& other) const { return Value == other.Value; }
 
 		SPAN_INSPECTOR_BEGIN(Tag)
+			SPAN_FIELD(Value, HideInInspector())
 		SPAN_INSPECTOR_END()
 	};
 }

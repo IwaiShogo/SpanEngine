@@ -1,0 +1,268 @@
+{
+    "SceneName": "Test",
+    "Metadata": {
+        "MainCameraGUID": 0,
+        "EditorCameraState": {
+            "Position": [
+                0.0,
+                5.0,
+                -10.0
+            ],
+            "Pitch": 15.0,
+            "Yaw": 0.0
+        }
+    },
+    "Entities": [
+        {
+            "EntityID": 0,
+            "Components": {
+                "Transform": {
+                    "Position": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "Scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ]
+                },
+                "Active": {
+                    "IsActive": true
+                },
+                "IDComponent": {
+                    "ID": 14767222961156508134
+                },
+                "Layer": {
+                    "Value": 0
+                },
+                "Name": {
+                    "Value": "Floor"
+                },
+                "Relationship": {
+                    "Parent": 4294967295,
+                    "FirstChild": 4294967295,
+                    "PrevSibling": 4294967295,
+                    "NextSibling": 4294967295
+                },
+                "Tag": {
+                    "Value": "Untagged"
+                },
+                "MeshRenderer": {
+                    "CastShadows": true,
+                    "ReceiveShadows": true
+                }
+            }
+        },
+        {
+            "EntityID": 1,
+            "Components": {
+                "Transform": {
+                    "Position": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "Scale": [
+                        0.009999999776482582,
+                        0.009999999776482582,
+                        0.009999999776482582
+                    ]
+                },
+                "Active": {
+                    "IsActive": true
+                },
+                "IDComponent": {
+                    "ID": 2122503611625594641
+                },
+                "Layer": {
+                    "Value": 0
+                },
+                "Name": {
+                    "Value": "Y Bot Model"
+                },
+                "Relationship": {
+                    "Parent": 4294967295,
+                    "FirstChild": 2,
+                    "PrevSibling": 4294967295,
+                    "NextSibling": 4294967295
+                },
+                "Tag": {
+                    "Value": "Untagged"
+                }
+            }
+        },
+        {
+            "EntityID": 2,
+            "Components": {
+                "Transform": {
+                    "Position": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "Scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ]
+                },
+                "Active": {
+                    "IsActive": true
+                },
+                "IDComponent": {
+                    "ID": 4066412773779121548
+                },
+                "Layer": {
+                    "Value": 0
+                },
+                "Name": {
+                    "Value": "Part_0"
+                },
+                "Relationship": {
+                    "Parent": 1,
+                    "FirstChild": 4294967295,
+                    "PrevSibling": 4294967295,
+                    "NextSibling": 3
+                },
+                "Tag": {
+                    "Value": "Untagged"
+                },
+                "MeshRenderer": {
+                    "CastShadows": true,
+                    "ReceiveShadows": true
+                }
+            }
+        },
+        {
+            "EntityID": 3,
+            "Components": {
+                "Transform": {
+                    "Position": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "Scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ]
+                },
+                "Active": {
+                    "IsActive": true
+                },
+                "IDComponent": {
+                    "ID": 4153379309126526762
+                },
+                "Layer": {
+                    "Value": 0
+                },
+                "Name": {
+                    "Value": "Part_1"
+                },
+                "Relationship": {
+                    "Parent": 1,
+                    "FirstChild": 4294967295,
+                    "PrevSibling": 2,
+                    "NextSibling": 4294967295
+                },
+                "Tag": {
+                    "Value": "Untagged"
+                },
+                "MeshRenderer": {
+                    "CastShadows": true,
+                    "ReceiveShadows": true
+                }
+            }
+        },
+        {
+            "EntityID": 4,
+            "Components": {
+                "Transform": {
+                    "Position": [
+                        0.0,
+                        2.0,
+                        -5.0
+                    ],
+                    "Rotation": [
+                        0.09853760898113251,
+                        0.0,
+                        -0.0,
+                        0.9951333403587341
+                    ],
+                    "Scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ]
+                },
+                "Active": {
+                    "IsActive": true
+                },
+                "IDComponent": {
+                    "ID": 2216264852283925336
+                },
+                "Layer": {
+                    "Value": 0
+                },
+                "Name": {
+                    "Value": "Main Camera"
+                },
+                "Relationship": {
+                    "Parent": 4294967295,
+                    "FirstChild": 4294967295,
+                    "PrevSibling": 4294967295,
+                    "NextSibling": 4294967295
+                },
+                "Tag": {
+                    "Value": "MainCamera"
+                },
+                "EditorCamera": {
+                    "MoveSpeed": 5.0,
+                    "SprintMultiplier": 4.0,
+                    "Velocity": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "Acceleration": 5.0,
+                    "ScrollSensitivity": 2.0,
+                    "IsFocused": true
+                },
+                "Camera": {
+                    "Type": 0,
+                    "Fov": 60.0,
+                    "OrthographicSize": 10.0,
+                    "NearClip": 0.10000000149011612,
+                    "FarClip": 1000.0
+                }
+            }
+        }
+    ]
+}

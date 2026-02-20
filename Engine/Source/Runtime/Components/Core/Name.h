@@ -32,10 +32,8 @@ namespace Span
 
 		bool operator==(const Name& other) const { return Value == other.Value; }
 
-		// NameはInspectorPanelのヘッダー部分で特別扱いして表示するため、
-		// ここでは通常のフィールドとしては表示しない設定にする (二重表示防止)
 		SPAN_INSPECTOR_BEGIN(Name)
-			// SPAN_FIELD(Value, "Name");	// Hide this
+			SPAN_FIELD(Value, HideInInspector())
 		SPAN_INSPECTOR_END()
 	};
 }

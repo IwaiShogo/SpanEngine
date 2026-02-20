@@ -138,8 +138,14 @@ namespace Span::Internal
 			else if constexpr (std::is_pointer_v<T>) {
 				// アセットポインタ等は現状スキップ
 			}
-			else {
+			else if constexpr (std::is_same_v<T, Span::Entity>) {
+				j[name] = value.ToUInt64();
+			}
+			else if constexpr (std::is_arithmetic_v<T> || std::is_same_v<T, std::string>) {
 				j[name] = value;
+			}
+			else {
+
 			}
 		}
 	};
@@ -178,8 +184,14 @@ namespace Span::Internal
 			else if constexpr (std::is_pointer_v<T>) {
 				// スキップ
 			}
-			else {
+			else if constexpr (std::is_same_v<T, Span::Entity>) {
+				value = Span::Entity::Null;
+			}
+			else if constexpr (std::is_arithmetic_v<T> || std::is_same_v<T, std::string>) {
 				value = j[name].get<T>();
+			}
+			else {
+
 			}
 		}
 	};

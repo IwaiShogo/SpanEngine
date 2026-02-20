@@ -1,9 +1,9 @@
 ﻿/*****************************************************************//**
  * @file	EntityBuilder.h
  * @brief	エンティティ生成を簡略化するヘルパークラス。
- * 
- * @details	
- * 
+ *
+ * @details
+ *
  * ------------------------------------------------------------
  * @author	Iwai Shogo
  * ------------------------------------------------------------
@@ -23,11 +23,11 @@ namespace Span
 	/**
 	 * @class	EntityBuilder
 	 * @brief	🔨 メソッドチェーンを利用して直感的にEntityを構築するビルダークラス。
-	 * 
+	 *
 	 * @details
 	 * 標準的なコンポーネント (Name, Transform等) を自動的に付与し、
 	 * fluent interface (流れるようなインターフェース) で初期値を設定できます。
-	 * 
+	 *
 	 * ### 📝 Usage
 	 * ```cpp
 	 * Entity player = EntityBuilder(world, "Player");
@@ -48,7 +48,7 @@ namespace Span
 			: m_world(world)
 		{
 			// デフォルトコンポーネントをセットで作成
-			m_entity = m_world->CreateEntity<Name, Tag, Layer, Transform, Relationship, Active>();
+			m_entity = m_world->CreateEntity<IDComponent, Name, Tag, Layer, Transform, Relationship, Active>();
 
 			// 初期値設定
 			Name& nameComp = m_world->GetComponent<Name>(m_entity);

@@ -122,7 +122,7 @@ namespace Span
 		graphicsContext.WaitForGpu();
 
 		// ワールド内のシステム終了処理
-		world.ShutdownSystem();
+		GetWorld().ShutdownSystem();
 
 		GuiManager::Shutdown();
 		sceneBuffer.Shutdown();
@@ -217,10 +217,10 @@ namespace Span
 				// Logic Update & ECS Draw
 				Time::Update();			// Time update
 				Input::Update();		// Input update
-				world.UpdateSystems();	// Systems update
+				GetWorld().UpdateSystems();	// Systems update
 				OnUpdate();				// User update
 
-				world.ForEach<Camera, Transform>([&](Entity, Camera&, Transform& t)
+				GetWorld().ForEach<Camera, Transform>([&](Entity, Camera&, Transform& t)
 				{
 					renderer.SetCameraPosition(t.Position);
 				});

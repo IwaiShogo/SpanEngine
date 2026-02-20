@@ -28,6 +28,13 @@ namespace Span
 		Entity FirstChild = Entity::Null;	///< 最初の子エンティティ
 		Entity PrevSibling = Entity::Null;	///< 前の兄弟
 		Entity NextSibling = Entity::Null;	///< 次の兄弟
+
+		SPAN_INSPECTOR_BEGIN(Relationship)
+			SPAN_FIELD(Parent, HideInInspector())
+			SPAN_FIELD(FirstChild, HideInInspector())
+			SPAN_FIELD(PrevSibling, HideInInspector())
+			SPAN_FIELD(NextSibling, HideInInspector())
+		SPAN_INSPECTOR_END()
 	};
 }
 

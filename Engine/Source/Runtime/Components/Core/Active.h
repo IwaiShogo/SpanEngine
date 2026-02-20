@@ -11,6 +11,8 @@
 
 #pragma once
 
+#include "Runtime/Reflection/SpanReflection.h"
+
 namespace Span
 {
 	/**
@@ -25,6 +27,10 @@ namespace Span
 
 		Active() = default;
 		Active(bool isActive) : IsActive(isActive) {}
+
+		SPAN_INSPECTOR_BEGIN(Active)
+			SPAN_FIELD(IsActive, HideInInspector())
+		SPAN_INSPECTOR_END()
 	};
 }
 

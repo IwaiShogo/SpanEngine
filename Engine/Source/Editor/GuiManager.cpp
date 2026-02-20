@@ -4,6 +4,7 @@
 
 #include "PanelManager.h"
 #include "Runtime/Scene/SceneSerializer.h"
+#include "Editor/Utils/FileDialog.h"
 
 #include <ImGuizmo.h>
 
@@ -124,6 +125,95 @@ namespace Span
 			}
 		}
 
+		bool requestNewScene = false;
+		bool requestOpenScene = false;
+		bool requestSaveScene = false;
+		bool requestSaveSceneAs = false;
+
+		bool ctrl = ImGui::GetIO().KeyCtrl;
+		bool shift = ImGui::GetIO().KeyShift;
+
+		if (ctrl && ImGui::IsKeyPressed(ImGuiKey_N)) requestNewScene = true;
+		if (ctrl && ImGui::IsKeyPressed(ImGuiKey_O)) requestOpenScene = true;
+		if (ctrl && ImGui::IsKeyPressed(ImGuiKey_S)) {
+			if (shift) requestSaveSceneAs = true;
+			else	   requestSaveScene = true;
+		}
+
+		if (ImGui::BeginMainMenuBar())
+		{
+			if (ImGui::BeginMenu("File"))
+			{
+				if (ImGui::MenuItem("New Scene", "Ctrl+N")) requestNewScene = true;
+				if (ImGui::MenuItem("Open Scene...", "Ctrl+O")) requestOpenScene = true;
+				ImGui::Separator();
+				if (ImGui::MenuItem("Save", "Ctrl+S")) requestSaveScene = true;
+				if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S")) requestSaveSceneAs = true;
+				ImGui::Separator();
+				if (ImGui::MenuItem("Exit", "Alt+F4")) Application::Get().Close();
+				ImGui::EndMenu();
+			}
+			if (ImGui::BeginMenu("Edit"))
+			{
+				ImGui::MenuItem("Undo", "Ctrl+Z", false, false);
+				ImGui::MenuItem("Redo", "Ctrl+Y", false, false);
+				ImGui::EndMenu();
+			}
+			ImGui::EndMainMenuBar();
+		}
+
+		// === ファイル操作の実行部 ===
+		static std::string currentScenePath = "";
+
+		if (requestNewScene)
+		{
+			Application::Get().GetActiveScene().ECSWorld.Clear();
+			Application::Get().GetActiveScene().Name = "Untitled";
+			currentScenePath = "";
+			SPAN_LOG("Created new empty scene.");
+		}
+
+		if (requestOpenScene)
+		{
+			// std::optional で受け取る
+			auto filepathOpt = FileDialog::OpenFile("Span Scene (*.span)\0*.span\0");
+			if (filepathOpt.has_value())
+			{
+				std::string filepath = filepathOpt.value();
+				SceneSerializer serializer(Application::Get().GetActiveScene());
+				if (serializer.Deserialize(filepath))
+				{
+					currentScenePath = filepath;
+					SPAN_LOG("Opened scene: %s", filepath.c_str());
+				}
+			}
+		}
+
+		if (requestSaveScene || requestSaveSceneAs)
+		{
+			std::string filepath = currentScenePath;
+
+			if (requestSaveSceneAs || filepath.empty())
+			{
+				auto filepathOpt = FileDialog::SaveFile("Span Scene (*.span)\0*.span\0");
+				if (filepathOpt.has_value()) filepath = filepathOpt.value();
+				else filepath = ""; // キャンセルされた場合
+			}
+
+			if (!filepath.empty())
+			{
+				if (filepath.find(".span") == std::string::npos) filepath += ".span";
+				SceneSerializer serializer(Application::Get().GetActiveScene());
+				Application::Get().GetActiveScene().Name = std::filesystem::path(filepath).stem().string();
+
+				if (serializer.Serialize(filepath))
+				{
+					currentScenePath = filepath;
+					SPAN_LOG("Saved scene to: %s", filepath.c_str());
+				}
+			}
+		}
+
 		ImGui::Render();
 
 		// ヒープをセットして描画
@@ -137,21 +227,6 @@ namespace Span
 		{
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault(nullptr, (void*)commandList);
-		}
-
-		if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_S))
-		{
-			// TODO: 現在のシーンファイルパスを取得する
-			std::filesystem::path scenePath = "Projects/Playground/Assets/Scenes/Main.span";
-
-			// フォルダが無ければ作成
-			std::filesystem::create_directories(scenePath.parent_path());
-
-			SceneSerializer serializer(Application::Get().GetWorld());
-			if (serializer.Serialize(scenePath))
-			{
-				SPAN_LOG("Scene saved successfully to {}", scenePath.string());
-			}
 		}
 	}
 

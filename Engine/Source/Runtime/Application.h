@@ -16,6 +16,7 @@
 #include "Graphics/Core/GraphicsContext.h"
 #include "Graphics/Core/RenderTarget.h"
 #include "ECS/Kernel/World.h"
+#include "Scene/Scene.h"
 
 namespace Span
 {
@@ -65,7 +66,8 @@ namespace Span
 
 		Window& GetWindow() { return window; }
 		Renderer& GetRenderer() { return renderer; }
-		World& GetWorld() { return world; }
+		World& GetWorld() { return activeScene.ECSWorld; }
+		Scene& GetActiveScene() { return activeScene;  }
 
 		/// @brief	エディタ表示用のシーン描画ターゲットを取得
 		RenderTarget& GetSceneBuffer() { return sceneBuffer; }
@@ -95,7 +97,7 @@ namespace Span
 		Window window;
 		GraphicsContext graphicsContext;
 		Renderer renderer;
-		World world;
+		Scene activeScene;
 
 		// Editor Support
 		RenderTarget sceneBuffer;	///< シーン描画用オフスクリーンバッファ

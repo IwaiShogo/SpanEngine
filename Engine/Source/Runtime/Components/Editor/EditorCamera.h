@@ -11,6 +11,7 @@
 
 #pragma once
 #include "ECS/Kernel/Entity.h"
+#include "Runtime/Reflection/SpanReflection.h"
 
 namespace Span
 {
@@ -39,6 +40,15 @@ namespace Span
 
 		// カメラが操作入力を受けるか
 		bool IsFocused = false;				///< フォーカスされているかのフラグ
+
+		SPAN_INSPECTOR_BEGIN(EditorCamera)
+			SPAN_FIELD(MoveSpeed, HideInInspector())
+			SPAN_FIELD(SprintMultiplier, HideInInspector())
+			SPAN_FIELD(Velocity, HideInInspector())
+			SPAN_FIELD(Acceleration, HideInInspector())
+			SPAN_FIELD(ScrollSensitivity, HideInInspector())
+			SPAN_FIELD(IsFocused, HideInInspector())
+		SPAN_INSPECTOR_END()
 	};
 }
 
