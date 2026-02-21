@@ -1,17 +1,22 @@
 <map id="Span::MeshRenderer" name="Span::MeshRenderer">
-<area shape="rect" id="Node000001" title="🖌 オブジェクトを画面に描画するための設定コンポーネント。" alt="" coords="286,1769,434,1875"/>
-<area shape="rect" id="Node000002" href="$classSpan_1_1Material.html" title="🎨 サーフェスの質感を定義するクラス。" alt="" coords="295,1413,425,1699"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="363,1699,363,1753,357,1753,357,1699"/>
-<area shape="rect" id="Node000003" href="$classSpan_1_1ConstantBuffer.html" title=" " alt="" coords="121,1060,306,1240"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="233,1240,251,1313,276,1388,290,1422,285,1424,271,1390,246,1315,228,1241"/>
-<area shape="rect" id="Node000004" href="$structSpan_1_1MaterialData.html" title="📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ構造体。" alt="" coords="5,741,144,887"/>
-<area shape="poly" id="edge6_Node000002_Node000004" title=" " alt="" coords="57,887,38,979,27,1090,27,1149,34,1209,47,1267,68,1322,87,1354,110,1385,164,1438,224,1482,282,1515,279,1520,221,1486,161,1442,106,1388,82,1357,63,1324,41,1268,28,1210,22,1150,22,1090,33,978,51,886"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="107,886,172,1044,168,1046,102,888"/>
-<area shape="rect" id="Node000005" href="$structSpan_1_1Vector3.html" title="3次元ベクトル (float x, y, z) 位置、方向、スケールなどに使用されます。" alt="" coords="7,5,143,671"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="77,671,77,725,72,725,72,671"/>
-<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="145,270,155,278,162,293,168,313,169,338,166,372,157,394,152,392,161,370,164,338,162,313,157,295,150,282,141,274"/>
-<area shape="rect" id="Node000006" href="$classSpan_1_1Texture.html" title="🖼 GPUテクスチャリソース。" alt="" coords="330,977,531,1323"/>
-<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="403,1323,390,1398,385,1397,398,1323"/>
-<area shape="rect" id="Node000007" href="$classSpan_1_1Shader.html" title="📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。" alt="" coords="556,1097,679,1203"/>
-<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="602,1204,578,1263,546,1324,494,1402,438,1472,434,1469,490,1399,542,1321,573,1260,597,1202"/>
+<area shape="rect" id="Node000001" title="🖌 オブジェクトを画面に描画するための設定コンポーネント。" alt="" coords="247,2209,395,2315"/>
+<area shape="rect" id="Node000002" href="$classSpan_1_1Material.html" title="🎨 PRBマテリアルを管理し、.matアセットとして機能するクラス" alt="" coords="228,1673,413,2139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="323,2139,323,2193,318,2193,318,2139"/>
+<area shape="rect" id="Node000003" href="$classSpan_1_1Texture.html" title="🖼 GPUテクスチャリソース。" alt="" coords="5,1137,207,1503"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="87,1503,92,1577,99,1613,110,1648,130,1693,156,1735,187,1775,218,1810,214,1814,182,1778,152,1738,125,1696,105,1650,94,1615,87,1577,82,1503"/>
+<area shape="rect" id="Node000004" href="$structSpan_1_1MaterialData.html" title="📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ (16バイト協会アライメント厳守)" alt="" coords="209,761,363,1047"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="282,1047,279,1137,275,1320,279,1503,292,1657,287,1657,274,1503,269,1320,274,1137,277,1047"/>
+<area shape="rect" id="Node000008" href="$classSpan_1_1ConstantBuffer.html" title=" " alt="" coords="355,1230,540,1410"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="344,1046,409,1213,404,1215,339,1048"/>
+<area shape="rect" id="Node000005" href="$structSpan_1_1Vector4.html" title="4次元ベクトル (float x, y, z, w) 色情報(RGBA)や同次座標で使用されます。" alt="" coords="91,195,193,481"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="143,481,154,607,167,673,185,736,204,781,199,783,179,738,161,674,149,608,138,481"/>
+<area shape="rect" id="Node000006" href="$structSpan_1_1Vector3.html" title="3次元ベクトル (float x, y, z) 位置、方向、スケールなどに使用されます。" alt="" coords="218,5,354,671"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="289,671,289,745,283,745,283,671"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="356,268,366,277,374,292,379,312,381,338,377,372,368,395,363,393,372,371,375,338,374,313,369,294,362,280,352,272"/>
+<area shape="rect" id="Node000007" href="$structSpan_1_1Vector2.html" title="2次元ベクトル (float x, y) UI座標やUV座標に使用されます。" alt="" coords="474,55,610,621"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="485,622,464,672,423,743,375,808,371,805,419,740,460,669,480,620"/>
+<area shape="poly" id="edge8_Node000007_Node000007" title=" " alt="" coords="612,268,622,277,630,292,635,312,637,338,633,372,624,395,619,393,628,371,631,338,630,313,625,294,618,280,608,272"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="431,1411,377,1658,372,1657,425,1410"/>
+<area shape="rect" id="Node000009" href="$classSpan_1_1Shader.html" title="📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。" alt="" coords="565,1267,687,1373"/>
+<area shape="poly" id="edge11_Node000002_Node000009" title=" " alt="" coords="622,1373,612,1432,596,1503,573,1578,542,1651,517,1692,489,1733,427,1806,423,1803,484,1730,513,1690,537,1648,568,1576,591,1501,607,1431,617,1372"/>
 </map>

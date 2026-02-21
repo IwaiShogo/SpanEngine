@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['y_0',['Y',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa57cec4137b614c87cb4e24a3d003a3e0',1,'Span']]],
-  ['y_1',['y',['../structSpan_1_1Vector2.html#a0550ccc0b374eed6fdb7f76e832d71f3',1,'Span::Vector2::y'],['../structSpan_1_1Vector3.html#ab1abeb0dc8be7e95491bf2c0bec89983',1,'Span::Vector3::y'],['../structSpan_1_1Vector4.html#a28e3e6c3a2555fe4cd3a90367bc4cfc2',1,'Span::Vector4::y'],['../structSpan_1_1Quaternion.html#a69adb0a970cb2926f677af6726c07672',1,'Span::Quaternion::y']]],
-  ['yaw_2',['Yaw',['../structSpan_1_1EditorCameraState.html#ae3ea816eee614932ff634dc09999295d',1,'Span::EditorCameraState']]]
+  ['z_0',['Z',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa21c2e59531c8710156d34a3c30ac81d5',1,'Span']]],
+  ['z_1',['z',['../structSpan_1_1Vector3.html#a20fbb380d1c4ef3fc1be2c4f4f73087b',1,'Span::Vector3::z'],['../structSpan_1_1Vector4.html#a20da582ae230836cec05de72d84aaec9',1,'Span::Vector4::z'],['../structSpan_1_1Quaternion.html#a6ce198c0a502e40c0f7943693aab0109',1,'Span::Quaternion::z']]],
+  ['zero_2',['Zero',['../structSpan_1_1Vector2.html#ac6ad4f4009d7cd39d2e4ef8b393a7fdb',1,'Span::Vector2::Zero'],['../structSpan_1_1Vector3.html#afbc86249a7f3e1ce9c96938fb7e02d67',1,'Span::Vector3::Zero']]]
 ];

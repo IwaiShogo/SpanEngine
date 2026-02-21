@@ -10,10 +10,8 @@ var searchData=
   ['isactive_7',['IsActive',['../structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d',1,'Span::Active']]],
   ['isconnected_8',['isConnected',['../classSpan_1_1Input.html#a71022fc319c804d8b0b35add448b5480',1,'Span::Input']]],
   ['iscursorlocked_9',['isCursorLocked',['../classSpan_1_1Input.html#accda29becf004edc2064997c78605d95',1,'Span::Input']]],
-  ['isdirty_10',['isDirty',['../classSpan_1_1Material.html#abf31d8c17fe0774fe579b219beb3f61a',1,'Span::Material']]],
-  ['isenabled_11',['isEnabled',['../classSpan_1_1System.html#afd59f8c8e127b729de4971b3c010f4f5',1,'Span::System']]],
-  ['isfocused_12',['IsFocused',['../structSpan_1_1EditorCamera.html#ae80ca3bd5f94684bba1149b6592fb004',1,'Span::EditorCamera']]],
-  ['isopen_13',['isOpen',['../classSpan_1_1EditorPanel.html#a3c42b2ab17e0708eaeff54afc8058b4a',1,'Span::EditorPanel']]],
-  ['isrunning_14',['isRunning',['../classSpan_1_1Application.html#aa17fc8fd214b0af747aa587b10479e0f',1,'Span::Application']]],
-  ['istransparent_15',['isTransparent',['../classSpan_1_1Material.html#ae90bba1bf26fdccd3d01b29db3434529',1,'Span::Material']]]
+  ['isenabled_10',['isEnabled',['../classSpan_1_1System.html#afd59f8c8e127b729de4971b3c010f4f5',1,'Span::System']]],
+  ['isfocused_11',['IsFocused',['../structSpan_1_1EditorCamera.html#ae80ca3bd5f94684bba1149b6592fb004',1,'Span::EditorCamera']]],
+  ['isopen_12',['isOpen',['../classSpan_1_1EditorPanel.html#a3c42b2ab17e0708eaeff54afc8058b4a',1,'Span::EditorPanel']]],
+  ['isrunning_13',['isRunning',['../classSpan_1_1Application.html#aa17fc8fd214b0af747aa587b10479e0f',1,'Span::Application']]]
 ];

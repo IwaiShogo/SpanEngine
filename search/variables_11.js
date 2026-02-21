@@ -9,7 +9,8 @@ var searchData=
   ['rootsignature_6',['rootSignature',['../classSpan_1_1Renderer.html#abfa0d54e67b7e2959819152a08dc0ee2',1,'Span::Renderer']]],
   ['rotation_7',['Rotation',['../structSpan_1_1Transform.html#ac340e8d1ddf99199fa41f243c9e77820',1,'Span::Transform']]],
   ['roughness_8',['Roughness',['../structSpan_1_1MaterialData.html#a2ffeb1ab4487a6724284c6cf51e675ab',1,'Span::MaterialData']]],
-  ['rtvdescriptorsize_9',['rtvDescriptorSize',['../classSpan_1_1GraphicsContext.html#abde099b31325f4627beb3112463ec504',1,'Span::GraphicsContext']]],
-  ['rtvhandle_10',['rtvHandle',['../classSpan_1_1RenderTarget.html#a5adb356295346fa447a09db782098de7',1,'Span::RenderTarget']]],
-  ['rtvheap_11',['rtvHeap',['../classSpan_1_1GraphicsContext.html#a0a3e1b6f8de36b2fe35533463c4a8743',1,'Span::GraphicsContext::rtvHeap'],['../classSpan_1_1RenderTarget.html#adf2f3f2adc6dee59a402de3fccb36114',1,'Span::RenderTarget::rtvHeap']]]
+  ['roughnessmapguid_9',['RoughnessMapGUID',['../classSpan_1_1Material.html#a0a09a7c2b980068aaad9712647938209',1,'Span::Material']]],
+  ['rtvdescriptorsize_10',['rtvDescriptorSize',['../classSpan_1_1GraphicsContext.html#abde099b31325f4627beb3112463ec504',1,'Span::GraphicsContext']]],
+  ['rtvhandle_11',['rtvHandle',['../classSpan_1_1RenderTarget.html#a5adb356295346fa447a09db782098de7',1,'Span::RenderTarget']]],
+  ['rtvheap_12',['rtvHeap',['../classSpan_1_1GraphicsContext.html#a0a3e1b6f8de36b2fe35533463c4a8743',1,'Span::GraphicsContext::rtvHeap'],['../classSpan_1_1RenderTarget.html#adf2f3f2adc6dee59a402de3fccb36114',1,'Span::RenderTarget::rtvHeap']]]
 ];

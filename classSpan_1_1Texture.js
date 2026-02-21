@@ -9,6 +9,7 @@ var classSpan_1_1Texture =
     [ "Initialize", "classSpan_1_1Texture.html#a4149a1e0df66fc08179a7e3b4a3f5d49", null ],
     [ "Shutdown", "classSpan_1_1Texture.html#a0739f7dfcb17e2ebcbab8bfd90c790ab", null ],
     [ "UploadTexture", "classSpan_1_1Texture.html#ab5b2e96515a5039d23eede237b966749", null ],
+    [ "Handle", "classSpan_1_1Texture.html#a01a9507d6da55a2ebb0994524fa94e4d", null ],
     [ "height", "classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6", null ],
     [ "m_FilePath", "classSpan_1_1Texture.html#a778802b18268802d37ebf7a89a5f39fc", null ],
     [ "resource", "classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab", null ],

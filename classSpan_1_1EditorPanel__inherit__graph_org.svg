@@ -75,28 +75,38 @@
 <g id="Node000003" class="node">
 <title>Node3</title>
 <g id="a_Node000003"><a xlink:href="classSpan_1_1InspectorPanel.html" target="_top" xlink:title="🕵️ 選択中のEntityが持つコンポーネントを列挙し、編集UIを提供するパネル。">
-<polygon fill="white" stroke="transparent" points="339.5,-266.5 199.5,-266.5 199.5,-127.5 339.5,-127.5 339.5,-266.5"/>
-<text text-anchor="start" x="218.5" y="-254" font-family="Helvetica,sans-Serif" font-size="10.00">Span::InspectorPanel</text>
-<text text-anchor="start" x="206" y="-239" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="216.5" y="-239" font-family="Helvetica,sans-Serif" font-size="10.00">m_OpenTagEditor</text>
-<text text-anchor="start" x="206" y="-224" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="216.5" y="-224" font-family="Helvetica,sans-Serif" font-size="10.00">m_OpenLayerEditor</text>
-<text text-anchor="start" x="203.5" y="-209" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="216.5" y="-209" font-family="Helvetica,sans-Serif" font-size="10.00">InspectorPanel()</text>
-<text text-anchor="start" x="203.5" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="216.5" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">OnImGuiRender()</text>
-<text text-anchor="start" x="206" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="216.5" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00">DrawAssetInspector()</text>
-<text text-anchor="start" x="206" y="-164" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="216.5" y="-164" font-family="Helvetica,sans-Serif" font-size="10.00">DrawEntityInspector()</text>
-<text text-anchor="start" x="206" y="-149" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="216.5" y="-149" font-family="Helvetica,sans-Serif" font-size="10.00">DrawTagEditorModal()</text>
-<text text-anchor="start" x="206" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="216.5" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00">DrawLayerEditorModal()</text>
-<polygon fill="#666666" stroke="#666666" points="199.5,-249 199.5,-249 339.5,-249 339.5,-249 199.5,-249"/>
-<polygon fill="#666666" stroke="#666666" points="199.5,-219 199.5,-219 214.5,-219 214.5,-219 199.5,-219"/>
-<polygon fill="#666666" stroke="#666666" points="214.5,-219 214.5,-219 339.5,-219 339.5,-219 214.5,-219"/>
-<polygon fill="none" stroke="#666666" points="199.5,-127.5 199.5,-266.5 339.5,-266.5 339.5,-127.5 199.5,-127.5"/>
+<polygon fill="white" stroke="transparent" points="339.5,-304 199.5,-304 199.5,-90 339.5,-90 339.5,-304"/>
+<text text-anchor="start" x="218.5" y="-292" font-family="Helvetica,sans-Serif" font-size="10.00">Span::InspectorPanel</text>
+<text text-anchor="start" x="206" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00">m_OpenTagEditor</text>
+<text text-anchor="start" x="206" y="-262" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-262" font-family="Helvetica,sans-Serif" font-size="10.00">m_OpenLayerEditor</text>
+<text text-anchor="start" x="206" y="-247" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-247" font-family="Helvetica,sans-Serif" font-size="10.00">m_IsLocked</text>
+<text text-anchor="start" x="206" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00">m_LockedType</text>
+<text text-anchor="start" x="206" y="-217" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-217" font-family="Helvetica,sans-Serif" font-size="10.00">m_LockedAssets</text>
+<text text-anchor="start" x="206" y="-202" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-202" font-family="Helvetica,sans-Serif" font-size="10.00">m_LockedEntity</text>
+<text text-anchor="start" x="203.5" y="-187" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="216.5" y="-187" font-family="Helvetica,sans-Serif" font-size="10.00">InspectorPanel()</text>
+<text text-anchor="start" x="203.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="216.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">OnImGuiRender()</text>
+<text text-anchor="start" x="206" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00">DrawAssetInspector()</text>
+<text text-anchor="start" x="206" y="-142" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-142" font-family="Helvetica,sans-Serif" font-size="10.00">DrawEntityInspector()</text>
+<text text-anchor="start" x="206" y="-127" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-127" font-family="Helvetica,sans-Serif" font-size="10.00">DrawMaterialEditor()</text>
+<text text-anchor="start" x="206" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00">DrawTagEditorModal()</text>
+<text text-anchor="start" x="206" y="-97" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="216.5" y="-97" font-family="Helvetica,sans-Serif" font-size="10.00">DrawLayerEditorModal()</text>
+<polygon fill="#666666" stroke="#666666" points="199.5,-287 199.5,-287 339.5,-287 339.5,-287 199.5,-287"/>
+<polygon fill="#666666" stroke="#666666" points="199.5,-197 199.5,-197 214.5,-197 214.5,-197 199.5,-197"/>
+<polygon fill="#666666" stroke="#666666" points="214.5,-197 214.5,-197 339.5,-197 339.5,-197 214.5,-197"/>
+<polygon fill="none" stroke="#666666" points="199.5,-90 199.5,-304 339.5,-304 339.5,-90 199.5,-90"/>
 </a>
 </g>
 </g>
@@ -104,7 +114,7 @@
 <g id="edge2_Node000001_Node000003" class="edge">
 <title>Node1&#45;&gt;Node3</title>
 <g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M327.86,-419.98C315.34,-372.37 299.52,-312.21 287.52,-266.53"/>
+<path fill="none" stroke="#63b8ff" d="M327.9,-420.15C318.6,-384.78 307.48,-342.46 297.44,-304.29"/>
 <polygon fill="none" stroke="#63b8ff" points="324.55,-421.15 330.47,-429.94 331.32,-419.37 324.55,-421.15"/>
 </a>
 </g>

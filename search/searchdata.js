@@ -1,16 +1,16 @@
 var indexSectionsWithContent =
 {
-  0: "1_abcdefghijklmnopqrstuvwxyz~⚠アパビメラリ使座操注計🌳🏗📁📊📏📝🔄🖱🖼🧠🧮",
+  0: "_abcdefghijklmnopqrstuvwxyz~⚠アパビメラリ使座操注計🌳🏗📁📊📏📝🔄🖱🖼🧠🧮",
   1: "acdefghijlmnpqrstvw",
   2: "s",
   3: "acdefghilmnprstw",
   4: "_abcdefghijlmnopqrstuvw~",
   5: "_abcdefghijklmnoprstuvwxyz",
   6: "acdhirsu",
-  7: "aklps",
+  7: "abcklps",
   8: "abcdefghijklmnopqrstuvwxyz",
   9: "insw",
-  10: "1abcdfilmprsu⚠アパビメラリ使座操注計🌳🏗📁📊📏📝🔄🖱🖼🧠🧮"
+  10: "abcdfilmprsu⚠アパビメラリ使座操注計🌳🏗📁📊📏📝🔄🖱🖼🧠🧮"
 };
 
 var indexSectionNames =

@@ -9,9 +9,11 @@ var searchData=
   ['icon_5ffa_5ffiles_5fo_6',['ICON_FA_FILES_O',['../InspectorPanel_8cpp.html#a2dda25b7495de6f18c2d092e38f93f37',1,'InspectorPanel.cpp']]],
   ['icon_5ffa_5ffolder_7',['ICON_FA_FOLDER',['../ProjectBrowserPanel_8cpp.html#a12cf8dc2dd604abb245b1b0651be544c',1,'ProjectBrowserPanel.cpp']]],
   ['icon_5ffa_5fimage_8',['ICON_FA_IMAGE',['../InspectorPanel_8cpp.html#a1d22890f336190cd1926bf6773952e73',1,'ICON_FA_IMAGE:&#160;InspectorPanel.cpp'],['../ProjectBrowserPanel_8cpp.html#a1d22890f336190cd1926bf6773952e73',1,'ICON_FA_IMAGE:&#160;ProjectBrowserPanel.cpp']]],
-  ['icon_5ffa_5fplus_9',['ICON_FA_PLUS',['../InspectorPanel_8cpp.html#a6a63b07593bca0feef03627fd008033b',1,'InspectorPanel.cpp']]],
-  ['icon_5ffa_5fsearch_10',['ICON_FA_SEARCH',['../InspectorPanel_8cpp.html#ad1de50dd25e55ca0ddfda9566df0dd05',1,'ICON_FA_SEARCH:&#160;InspectorPanel.cpp'],['../ProjectBrowserPanel_8cpp.html#ad1de50dd25e55ca0ddfda9566df0dd05',1,'ICON_FA_SEARCH:&#160;ProjectBrowserPanel.cpp']]],
-  ['icon_5ffa_5ftags_11',['ICON_FA_TAGS',['../InspectorPanel_8cpp.html#a361bd5f574aadf81d55c1e8fd5a35660',1,'InspectorPanel.cpp']]],
-  ['icon_5ffa_5ftrash_12',['ICON_FA_TRASH',['../InspectorPanel_8cpp.html#ae5f58521b0e852292d7debf158be1a3b',1,'ICON_FA_TRASH:&#160;InspectorPanel.cpp'],['../ProjectBrowserPanel_8cpp.html#ae5f58521b0e852292d7debf158be1a3b',1,'ICON_FA_TRASH:&#160;ProjectBrowserPanel.cpp']]],
-  ['imgui_5fdefine_5fmath_5foperators_13',['IMGUI_DEFINE_MATH_OPERATORS',['../GuiManager_8h.html#adf4d73301961430d50d7edd96f92ce38',1,'GuiManager.h']]]
+  ['icon_5ffa_5flock_9',['ICON_FA_LOCK',['../InspectorPanel_8cpp.html#a76709be7fc686a5da5965113da7ab15f',1,'InspectorPanel.cpp']]],
+  ['icon_5ffa_5fplus_10',['ICON_FA_PLUS',['../InspectorPanel_8cpp.html#a6a63b07593bca0feef03627fd008033b',1,'InspectorPanel.cpp']]],
+  ['icon_5ffa_5fsearch_11',['ICON_FA_SEARCH',['../InspectorPanel_8cpp.html#ad1de50dd25e55ca0ddfda9566df0dd05',1,'ICON_FA_SEARCH:&#160;InspectorPanel.cpp'],['../ProjectBrowserPanel_8cpp.html#ad1de50dd25e55ca0ddfda9566df0dd05',1,'ICON_FA_SEARCH:&#160;ProjectBrowserPanel.cpp']]],
+  ['icon_5ffa_5ftags_12',['ICON_FA_TAGS',['../InspectorPanel_8cpp.html#a361bd5f574aadf81d55c1e8fd5a35660',1,'InspectorPanel.cpp']]],
+  ['icon_5ffa_5ftrash_13',['ICON_FA_TRASH',['../InspectorPanel_8cpp.html#ae5f58521b0e852292d7debf158be1a3b',1,'ICON_FA_TRASH:&#160;InspectorPanel.cpp'],['../ProjectBrowserPanel_8cpp.html#ae5f58521b0e852292d7debf158be1a3b',1,'ICON_FA_TRASH:&#160;ProjectBrowserPanel.cpp']]],
+  ['icon_5ffa_5funlock_14',['ICON_FA_UNLOCK',['../InspectorPanel_8cpp.html#af6dba8653854ad70fca058d6a6dcaaa8',1,'InspectorPanel.cpp']]],
+  ['imgui_5fdefine_5fmath_5foperators_15',['IMGUI_DEFINE_MATH_OPERATORS',['../GuiManager_8h.html#adf4d73301961430d50d7edd96f92ce38',1,'GuiManager.h']]]
 ];

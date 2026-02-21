@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loglevel_0',['LogLevel',['../namespaceSpan.html#a706679730aeab52031ed8774240027f2',1,'Span']]]
+  ['cullmode_0',['CullMode',['../namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cc',1,'Span']]]
 ];

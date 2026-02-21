@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['使い方_0',['📝 使い方',['../structSpan_1_1Entity.html#autotoc_md99',1,'']]]
+  ['座標系と仕様_20coordinate_20system_0',['📏 座標系と仕様 (Coordinate System)',['../SpanMath_8h.html#autotoc_md9',1,'']]]
 ];

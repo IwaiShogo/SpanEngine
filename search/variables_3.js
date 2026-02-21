@@ -11,10 +11,11 @@ var searchData=
   ['commandlist_8',['commandList',['../classSpan_1_1GraphicsContext.html#aec6ac7aebd9ee118bcc910bb43cd1254',1,'Span::GraphicsContext::commandList'],['../classSpan_1_1Renderer.html#a7133eab1945ed9179bf98c2379e990dc',1,'Span::Renderer::commandList']]],
   ['commandqueue_9',['commandQueue',['../classSpan_1_1GraphicsContext.html#a843eb7403a2e6f8f799224ba084b0226',1,'Span::GraphicsContext']]],
   ['componenttypes_10',['componentTypes',['../classSpan_1_1ArchetypeSignature.html#a67d99e9308a77f8c938ecbeff42a6cbb',1,'Span::ArchetypeSignature']]],
-  ['constantbuffer_11',['constantBuffer',['../classSpan_1_1Renderer.html#a318e6efeb9dcf3761072a97103a9b54f',1,'Span::Renderer::constantBuffer'],['../classSpan_1_1Material.html#a07a69a39285482670c3f6da308e849b9',1,'Span::Material::constantBuffer']]],
+  ['constantbuffer_11',['constantBuffer',['../classSpan_1_1Renderer.html#a318e6efeb9dcf3761072a97103a9b54f',1,'Span::Renderer']]],
   ['constantbufferindex_12',['constantBufferIndex',['../classSpan_1_1Renderer.html#af593a2174b046ad060ad6fe70af71f36',1,'Span::Renderer']]],
   ['context_13',['context',['../classSpan_1_1Renderer.html#a104c859dbad9750fc0848280c7d271ec',1,'Span::Renderer']]],
   ['count_14',['Count',['../structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d',1,'Span::Chunk']]],
   ['currentstate_15',['currentState',['../classSpan_1_1RenderTarget.html#a573a1102c9303b7c67fd99bc0e7489d0',1,'Span::RenderTarget']]],
-  ['currenttype_16',['currentType',['../classSpan_1_1SelectionManager.html#a927ddf6ff02dc3a128708289278d55ca',1,'Span::SelectionManager']]]
+  ['currenttype_16',['currentType',['../classSpan_1_1SelectionManager.html#a927ddf6ff02dc3a128708289278d55ca',1,'Span::SelectionManager']]],
+  ['cutoff_17',['Cutoff',['../structSpan_1_1MaterialData.html#a2c681cdc9093bbd9eff6605e2c92ef3c',1,'Span::MaterialData']]]
 ];

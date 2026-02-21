@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🌳_20リンクリスト構造_0',['🌳 リンクリスト構造',['../classSpan_1_1RelationshipSystem.html#autotoc_md168',1,'']]]
+  ['🏗️_20アーキテクチャ_20architecture_0',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md111',1,'']]]
 ];

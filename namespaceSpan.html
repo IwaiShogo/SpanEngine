@@ -222,9 +222,9 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:Renderer" id="r_Renderer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Renderer.html">Renderer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🖌 描画コマンドの発行を担うクラス。  <a href="classSpan_1_1Renderer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:MaterialData" id="r_MaterialData"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ構造体。  <a href="structSpan_1_1MaterialData.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ (16バイト協会アライメント厳守)  <a href="structSpan_1_1MaterialData.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Material" id="r_Material"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Material.html">Material</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎨 サーフェスの質感を定義するクラス。  <a href="classSpan_1_1Material.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎨 PRBマテリアルを管理し、.matアセットとして機能するクラス  <a href="classSpan_1_1Material.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Vertex" id="r_Vertex"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1Vertex.html">Vertex</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">頂点フォーマット。  <a href="structSpan_1_1Vertex.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Mesh" id="r_Mesh"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Mesh.html">Mesh</a></td></tr>
@@ -396,6 +396,16 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 , <a class="el" href="#ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0">Pixel</a>
  }</td></tr>
 <tr class="memdesc:ac6d174c183a792e0102f9c0ca931920d"><td class="mdescLeft">&#160;</td><td class="mdescRight">シェーダーの種類  <a href="#ac6d174c183a792e0102f9c0ca931920d">[詳解]</a><br /></td></tr>
+<tr class="memitem:a767a1576d488be4c5098a130d6a2d6a0" id="r_a767a1576d488be4c5098a130d6a2d6a0"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#a767a1576d488be4c5098a130d6a2d6a0">BlendMode</a> { <a class="el" href="#a767a1576d488be4c5098a130d6a2d6a0afaa90538de35640e4b1e31ccf35b6eb5">Opaque</a> = 0
+, <a class="el" href="#a767a1576d488be4c5098a130d6a2d6a0a3d971943089a3388c01fb297a32d9ba7">Transparent</a>
+, <a class="el" href="#a767a1576d488be4c5098a130d6a2d6a0a330be5af6c8bafc8ce5c74fa208c5015">Cutout</a>
+ }</td></tr>
+<tr class="memdesc:a767a1576d488be4c5098a130d6a2d6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">マテリアルの描画モード  <a href="#a767a1576d488be4c5098a130d6a2d6a0">[詳解]</a><br /></td></tr>
+<tr class="memitem:a30d45a2a9c19c81995f3e771062c11cc" id="r_a30d45a2a9c19c81995f3e771062c11cc"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#a30d45a2a9c19c81995f3e771062c11cc">CullMode</a> { <a class="el" href="#a30d45a2a9c19c81995f3e771062c11cca0557fa923dcee4d0f86b1409f5c2167f">Back</a> = 0
+, <a class="el" href="#a30d45a2a9c19c81995f3e771062c11cca5835bab1ade0060909e31a06af2e2cde">Front</a>
+, <a class="el" href="#a30d45a2a9c19c81995f3e771062c11cca6adf97f83acf6453d4a6a4b1070f3754">None</a>
+ }</td></tr>
+<tr class="memdesc:a30d45a2a9c19c81995f3e771062c11cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">ポリゴンのカリングモード  <a href="#a30d45a2a9c19c81995f3e771062c11cc">[詳解]</a><br /></td></tr>
 <tr class="memitem:a00c320c889b6c836e32c17b01071d257" id="r_a00c320c889b6c836e32c17b01071d257"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#a00c320c889b6c836e32c17b01071d257">AttributeType</a> { <br />
 &#160;&#160;<a class="el" href="#a00c320c889b6c836e32c17b01071d257a6adf97f83acf6453d4a6a4b1070f3754">None</a>
 , <a class="el" href="#a00c320c889b6c836e32c17b01071d257a87ba2ecc8b6915e8bd6f5089918229fd">Range</a>
@@ -955,6 +965,68 @@ Constants &amp; Helpers</h2></td></tr>
 </table>
 
 <p class="definition"> <a class="el" href="Input_8h_source.html">Input.h</a> の <a class="el" href="Input_8h_source.html#l00043">43</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a767a1576d488be4c5098a130d6a2d6a0" name="a767a1576d488be4c5098a130d6a2d6a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a767a1576d488be4c5098a130d6a2d6a0">&#9670;&#160;</a></span>BlendMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a767a1576d488be4c5098a130d6a2d6a0">Span::BlendMode</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>マテリアルの描画モード </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a767a1576d488be4c5098a130d6a2d6a0afaa90538de35640e4b1e31ccf35b6eb5" name="a767a1576d488be4c5098a130d6a2d6a0afaa90538de35640e4b1e31ccf35b6eb5"></a>Opaque&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a767a1576d488be4c5098a130d6a2d6a0a3d971943089a3388c01fb297a32d9ba7" name="a767a1576d488be4c5098a130d6a2d6a0a3d971943089a3388c01fb297a32d9ba7"></a>Transparent&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a767a1576d488be4c5098a130d6a2d6a0a330be5af6c8bafc8ce5c74fa208c5015" name="a767a1576d488be4c5098a130d6a2d6a0a330be5af6c8bafc8ce5c74fa208c5015"></a>Cutout&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00023">23</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a30d45a2a9c19c81995f3e771062c11cc" name="a30d45a2a9c19c81995f3e771062c11cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30d45a2a9c19c81995f3e771062c11cc">&#9670;&#160;</a></span>CullMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a30d45a2a9c19c81995f3e771062c11cc">Span::CullMode</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ポリゴンのカリングモード </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a30d45a2a9c19c81995f3e771062c11cca0557fa923dcee4d0f86b1409f5c2167f" name="a30d45a2a9c19c81995f3e771062c11cca0557fa923dcee4d0f86b1409f5c2167f"></a>Back&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30d45a2a9c19c81995f3e771062c11cca5835bab1ade0060909e31a06af2e2cde" name="a30d45a2a9c19c81995f3e771062c11cca5835bab1ade0060909e31a06af2e2cde"></a>Front&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30d45a2a9c19c81995f3e771062c11cca6adf97f83acf6453d4a6a4b1070f3754" name="a30d45a2a9c19c81995f3e771062c11cca6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00026">26</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2011,7 +2083,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00088">88</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00089">89</a> 行目に定義があります。</p>
 
 </div>
 </div>

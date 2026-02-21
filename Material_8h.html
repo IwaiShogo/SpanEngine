@@ -98,12 +98,13 @@ $(function(){initNavTree('Material_8h.html','',''); });
 <div class="textblock"><code>#include &quot;<a class="el" href="CoreMinimal_8h_source.html">Core/CoreMinimal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="SpanMath_8h_source.html">Core/Math/SpanMath.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ConstantBuffer_8h_source.html">Graphics/Core/ConstantBuffer.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Texture_8h_source.html">Texture.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Shader_8h_source.html">Graphics/Core/Shader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Texture_8h_source.html">Graphics/Resources/Texture.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="AssetMetadata_8h_source.html">Resource/AssetMetadata.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Material.h の依存先関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="Material_8h__incl.svg" width="100%" height="503"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="Material_8h__incl.svg" width="100%" height="514"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 被依存関係図:</div>
@@ -116,19 +117,32 @@ Material.h の依存先関係図:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 クラス</h2></td></tr>
 <tr class="memitem:Span_3A_3AMaterialData" id="r_Span_3A_3AMaterialData"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1MaterialData.html">Span::MaterialData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ構造体。  <a href="structSpan_1_1MaterialData.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ (16バイト協会アライメント厳守)  <a href="structSpan_1_1MaterialData.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Span_3A_3AMaterial" id="r_Span_3A_3AMaterial"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Material.html">Span::Material</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎨 サーフェスの質感を定義するクラス。  <a href="classSpan_1_1Material.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎨 PRBマテリアルを管理し、.matアセットとして機能するクラス  <a href="classSpan_1_1Material.html#details">[詳解]</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 名前空間</h2></td></tr>
 <tr class="memitem:Span" id="r_Span"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html">Span</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+列挙型</h2></td></tr>
+<tr class="memitem:a767a1576d488be4c5098a130d6a2d6a0" id="r_a767a1576d488be4c5098a130d6a2d6a0"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0">Span::BlendMode</a> { <a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0afaa90538de35640e4b1e31ccf35b6eb5">Span::Opaque</a> = 0
+, <a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0a3d971943089a3388c01fb297a32d9ba7">Span::Transparent</a>
+, <a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0a330be5af6c8bafc8ce5c74fa208c5015">Span::Cutout</a>
+ }</td></tr>
+<tr class="memdesc:a767a1576d488be4c5098a130d6a2d6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">マテリアルの描画モード  <a href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0">[詳解]</a><br /></td></tr>
+<tr class="memitem:a30d45a2a9c19c81995f3e771062c11cc" id="r_a30d45a2a9c19c81995f3e771062c11cc"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cc">Span::CullMode</a> { <a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cca0557fa923dcee4d0f86b1409f5c2167f">Span::Back</a> = 0
+, <a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cca5835bab1ade0060909e31a06af2e2cde">Span::Front</a>
+, <a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cca6adf97f83acf6453d4a6a4b1070f3754">Span::None</a>
+ }</td></tr>
+<tr class="memdesc:a30d45a2a9c19c81995f3e771062c11cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">ポリゴンのカリングモード  <a href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cc">[詳解]</a><br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>PBRマテリアルのパラメータ管理。 </p>
 <hr  />
- <h2 class="doxsection"><a class="anchor" id="autotoc_md133"></a>
-autotoc_md133</h2>
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md135"></a>
+autotoc_md135</h2>
 <dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
 
 <p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> に定義があります。</p>

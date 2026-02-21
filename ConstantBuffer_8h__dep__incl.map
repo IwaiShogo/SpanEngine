@@ -1,72 +1,124 @@
 <map id="Engine/Source/Runtime/Graphics/Core/ConstantBuffer.h" name="Engine/Source/Runtime/Graphics/Core/ConstantBuffer.h">
-<area shape="rect" id="Node000001" title="DirectX 12 定数バッファ (CBV) のラッパークラス" alt="" coords="1491,5,1721,45"/>
-<area shape="rect" id="Node000002" href="$Renderer_8h.html" title="描画パイプラインの構築と実行。" alt="" coords="1261,181,1434,221"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1556,54,1483,96,1421,141,1371,183,1367,179,1418,137,1481,91,1553,49"/>
-<area shape="rect" id="Node000015" href="$SpanEngine_8h.html" title=" " alt="" coords="1347,475,1553,500"/>
-<area shape="poly" id="edge43_Node000001_Node000015" title=" " alt="" coords="1724,46,1833,71,1940,105,1987,126,2024,148,2049,173,2056,186,2058,200,2058,298,2055,327,2047,350,2033,368,2016,383,1971,406,1916,429,1850,449,1755,464,1554,483,1553,477,1755,459,1848,444,1914,424,1968,401,2013,378,2029,365,2042,347,2050,326,2053,298,2053,200,2051,188,2044,176,2021,152,1984,130,1939,110,1831,76,1723,51"/>
-<area shape="rect" id="Node000023" href="$Material_8h.html" title="PBRマテリアルのパラメータ管理。" alt="" coords="1494,93,1718,133"/>
-<area shape="poly" id="edge33_Node000001_Node000023" title=" " alt="" coords="1609,59,1609,93,1603,93,1603,59"/>
-<area shape="rect" id="Node000003" href="$GuiManager_8h.html" title="ImGuiのライフサイクルとレンダリング管理。" alt="" coords="383,379,539,419"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1247,220,1107,242,953,272,716,329,525,382,524,377,715,324,952,267,1107,237,1246,215"/>
-<area shape="rect" id="Node000011" href="$Application_8h.html" title="エンジンのメインループとライフサイクル管理。" alt="" coords="965,277,1138,317"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="1275,228,1112,279,1110,274,1274,223"/>
-<area shape="poly" id="edge32_Node000002_Node000015" title=" " alt="" coords="1392,226,1448,267,1473,295,1498,322,1519,335,1538,342,1556,352,1571,371,1580,399,1578,413,1571,428,1557,445,1539,459,1501,477,1498,472,1537,454,1553,441,1566,425,1573,412,1575,400,1566,373,1552,356,1536,347,1517,340,1495,326,1469,299,1444,271,1389,231"/>
-<area shape="rect" id="Node000021" href="$RenderingSystem_8h.html" title="描画コマンド発行システム。" alt="" coords="1343,372,1557,427"/>
-<area shape="poly" id="edge31_Node000002_Node000021" title=" " alt="" coords="1291,230,1268,248,1251,271,1242,297,1244,309,1251,322,1265,335,1287,347,1348,369,1346,374,1285,352,1262,339,1247,326,1239,311,1237,297,1246,268,1265,244,1288,226"/>
-<area shape="rect" id="Node000022" href="$Renderer_8cpp.html" title=" " alt="" coords="1261,277,1434,317"/>
-<area shape="poly" id="edge30_Node000002_Node000022" title=" " alt="" coords="1350,235,1350,277,1345,277,1345,235"/>
-<area shape="rect" id="Node000004" href="$GuiManager_8cpp.html" title=" " alt="" coords="5,555,161,595"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="408,428,126,558,123,553,406,423"/>
-<area shape="rect" id="Node000005" href="$Application_8cpp.html" title=" " alt="" coords="1087,555,1261,595"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="494,426,546,465,578,483,611,498,678,518,736,529,789,534,839,534,943,532,1004,536,1074,545,1108,553,1107,558,1074,551,1003,541,943,537,839,539,789,539,736,535,677,523,609,502,576,488,544,469,491,430"/>
-<area shape="rect" id="Node000006" href="$SpanEditor_8h.html" title=" " alt="" coords="343,475,541,500"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="456,433,447,475,442,474,451,432"/>
-<area shape="rect" id="Node000007" href="$HierarchyPanel_8cpp.html" title=" " alt="" coords="639,548,842,603"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="496,501,650,545,649,551,495,507"/>
-<area shape="rect" id="Node000008" href="$InspectorPanel_8cpp.html" title=" " alt="" coords="867,548,1063,603"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="552,499,696,519,854,545,867,548,866,553,854,551,695,524,551,504"/>
-<area shape="rect" id="Node000009" href="$ProjectBrowserPanel_8cpp.html" title="ProjectBrowserPanelの実装。" alt="" coords="186,548,373,603"/>
-<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="409,509,330,550,328,546,407,504"/>
-<area shape="rect" id="Node000010" href="$SceneViewPanel_8cpp.html" title=" " alt="" coords="397,548,615,603"/>
-<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="461,509,489,546,484,550,457,513"/>
-<area shape="poly" id="edge12_Node000011_Node000005" title=" " alt="" coords="951,315,743,346,659,362,621,374,613,387,611,399,613,412,621,425,1103,553,1102,558,618,429,608,414,605,399,608,385,618,370,658,357,742,341,950,309"/>
-<area shape="rect" id="Node000012" href="$FileDialog_8cpp.html" title="FileDialogの実装" alt="" coords="1163,379,1319,419"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="1100,321,1206,377,1204,382,1098,326"/>
-<area shape="rect" id="Node000013" href="$EntryPoint_8h.html" title="アプリケーションのエントリーポイント (main関数)。" alt="" coords="965,379,1138,419"/>
-<area shape="poly" id="edge13_Node000011_Node000013" title=" " alt="" coords="1054,331,1054,379,1049,379,1049,331"/>
-<area shape="rect" id="Node000014" href="$CameraSystem_8h.html" title="カメラ行列の更新とレンダラーへの適用。" alt="" coords="631,379,890,419"/>
-<area shape="poly" id="edge14_Node000011_Node000014" title=" " alt="" coords="985,324,816,382,814,377,984,319"/>
-<area shape="poly" id="edge29_Node000011_Node000015" title=" " alt="" coords="1001,326,975,347,955,373,945,401,947,413,954,425,972,434,1006,444,1108,459,1346,478,1346,484,1107,464,1005,449,970,439,951,429,942,414,940,400,950,371,971,343,997,322"/>
-<area shape="poly" id="edge27_Node000011_Node000021" title=" " alt="" coords="1140,317,1347,369,1346,375,1138,323"/>
-<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="876,419,909,424,1144,453,1347,474,1346,479,1143,459,908,429,875,424"/>
-<area shape="poly" id="edge16_Node000015_Node000004" title=" " alt="" coords="1333,493,1069,499,735,510,410,527,276,538,174,551,141,558,140,553,174,545,276,533,410,522,734,505,1068,494,1333,488"/>
-<area shape="poly" id="edge23_Node000015_Node000005" title=" " alt="" coords="1401,507,1236,558,1234,553,1399,502"/>
-<area shape="poly" id="edge18_Node000015_Node000007" title=" " alt="" coords="1333,499,1111,518,982,532,854,551,843,553,842,547,854,545,981,527,1110,512,1333,493"/>
-<area shape="poly" id="edge19_Node000015_Node000008" title=" " alt="" coords="1354,505,1222,525,1076,551,1063,553,1062,548,1075,545,1221,519,1353,499"/>
-<area shape="poly" id="edge20_Node000015_Node000009" title=" " alt="" coords="1333,491,1150,493,913,502,649,520,516,533,385,551,373,553,372,547,384,545,515,528,649,514,913,496,1149,488,1333,485"/>
-<area shape="poly" id="edge21_Node000015_Node000010" title=" " alt="" coords="1333,495,1014,511,821,528,628,551,616,552,615,547,627,545,820,522,1013,506,1332,489"/>
-<area shape="rect" id="Node000016" href="$ImGuiUI_8cpp.html" title=" " alt="" coords="1971,555,2127,595"/>
-<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="1567,494,1752,513,1856,527,1959,545,1989,553,1988,558,1957,551,1855,533,1751,518,1567,500"/>
-<area shape="rect" id="Node000017" href="$EditorFileSystem_8cpp.html" title="EditorFileSystemの実装。" alt="" coords="2151,555,2349,595"/>
-<area shape="poly" id="edge22_Node000015_Node000017" title=" " alt="" coords="1567,491,1830,509,1985,524,2140,545,2178,553,2177,558,2139,551,1985,530,1830,514,1567,496"/>
-<area shape="rect" id="Node000018" href="$AssetRegistry_8cpp.html" title="AssetRegistryの実装。" alt="" coords="1285,555,1490,595"/>
-<area shape="poly" id="edge24_Node000015_Node000018" title=" " alt="" coords="1436,513,1404,556,1399,553,1431,509"/>
-<area shape="rect" id="Node000019" href="$AssetSerializer_8cpp.html" title="AssetSerializerの実装。" alt="" coords="1514,555,1727,595"/>
-<area shape="poly" id="edge25_Node000015_Node000019" title=" " alt="" coords="1486,504,1584,553,1582,558,1484,509"/>
-<area shape="rect" id="Node000020" href="$SceneSerializer_8cpp.html" title="SceneSerializerの実装。" alt="" coords="1751,555,1946,595"/>
-<area shape="poly" id="edge26_Node000015_Node000020" title=" " alt="" coords="1522,500,1740,545,1772,553,1770,558,1739,551,1521,505"/>
-<area shape="poly" id="edge28_Node000021_Node000015" title=" " alt="" coords="1453,440,1453,474,1447,474,1447,440"/>
-<area shape="poly" id="edge37_Node000023_Node000002" title=" " alt="" coords="1537,140,1405,184,1403,179,1535,135"/>
-<area shape="poly" id="edge42_Node000023_Node000015" title=" " alt="" coords="1732,118,1807,125,1880,137,1942,154,1965,166,1981,180,1987,190,1987,200,1982,222,1971,291,1953,345,1938,369,1919,390,1895,410,1863,429,1807,448,1728,463,1554,482,1553,477,1727,458,1806,443,1861,424,1892,406,1916,386,1934,366,1948,343,1966,290,1977,221,1982,200,1982,192,1977,183,1962,170,1940,159,1879,142,1806,130,1731,123"/>
-<area shape="rect" id="Node000024" href="$MeshRenderer_8h.html" title="メッシュの描画設定とマテリアル参照。" alt="" coords="1509,269,1682,324"/>
-<area shape="poly" id="edge34_Node000023_Node000024" title=" " alt="" coords="1542,142,1518,160,1499,183,1493,201,1499,220,1519,246,1544,267,1541,271,1515,250,1494,223,1488,201,1494,180,1514,156,1539,138"/>
-<area shape="rect" id="Node000025" href="$Material_8cpp.html" title=" " alt="" coords="1728,181,1967,221"/>
-<area shape="poly" id="edge38_Node000023_Node000025" title=" " alt="" coords="1673,135,1795,179,1794,184,1671,140"/>
-<area shape="rect" id="Node000026" href="$AssetManager_8h.html" title="エンジン全域のアセットライフサイクルを管理するシングルトン。" alt="" coords="1509,181,1703,221"/>
-<area shape="poly" id="edge39_Node000023_Node000026" title=" " alt="" coords="1609,147,1609,181,1603,181,1603,147"/>
-<area shape="poly" id="edge36_Node000024_Node000015" title=" " alt="" coords="1616,336,1623,358,1626,382,1625,406,1615,428,1599,445,1580,459,1538,477,1536,472,1578,455,1596,442,1610,425,1619,405,1621,382,1618,359,1611,338"/>
-<area shape="poly" id="edge35_Node000024_Node000021" title=" " alt="" coords="1548,334,1490,374,1487,370,1545,330"/>
-<area shape="poly" id="edge41_Node000026_Node000015" title=" " alt="" coords="1717,220,1855,246,1906,258,1930,267,1940,282,1942,296,1939,311,1931,326,1895,367,1852,400,1804,427,1753,448,1701,464,1649,475,1554,487,1553,482,1648,470,1699,459,1751,443,1802,422,1849,396,1891,363,1926,322,1934,309,1937,296,1935,284,1927,271,1905,263,1854,251,1716,225"/>
-<area shape="rect" id="Node000027" href="$AssetManager_8cpp.html" title="AssetManagerの実装。" alt="" coords="1707,277,1916,317"/>
-<area shape="poly" id="edge40_Node000026_Node000027" title=" " alt="" coords="1661,224,1771,274,1769,279,1659,229"/>
+<area shape="rect" id="Node000001" title="DirectX 12 定数バッファ (CBV) のラッパークラス" alt="" coords="2533,5,2763,45"/>
+<area shape="rect" id="Node000002" href="$Renderer_8h.html" title="描画パイプラインの構築と実行。" alt="" coords="2561,269,2735,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2651,59,2651,269,2645,269,2645,59"/>
+<area shape="rect" id="Node000015" href="$SpanEngine_8h.html" title=" " alt="" coords="1613,563,1819,588"/>
+<area shape="poly" id="edge81_Node000001_Node000015" title=" " alt="" coords="2777,42,2845,62,2878,76,2908,93,2934,114,2954,138,2967,167,2972,200,2972,386,2965,433,2957,451,2945,467,2913,493,2869,517,2845,526,2808,533,2703,546,2566,556,2409,564,2083,573,1820,576,1820,571,2083,568,2409,559,2566,551,2703,541,2807,528,2843,521,2867,512,2910,488,2941,463,2952,449,2960,431,2967,386,2967,200,2962,168,2949,141,2930,117,2905,97,2875,80,2843,67,2775,47"/>
+<area shape="rect" id="Node000023" href="$Material_8h.html" title="PBRマテリアルのパラメータ管理。" alt="" coords="2203,93,2427,133"/>
+<area shape="poly" id="edge33_Node000001_Node000023" title=" " alt="" coords="2562,51,2388,96,2387,91,2561,46"/>
+<area shape="rect" id="Node000003" href="$GuiManager_8h.html" title="ImGuiのライフサイクルとレンダリング管理。" alt="" coords="3007,467,3163,507"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2748,299,2843,319,2892,335,2939,355,2979,380,3016,410,3071,465,3067,469,3013,414,2976,385,2936,360,2890,340,2841,324,2747,304"/>
+<area shape="rect" id="Node000011" href="$Application_8h.html" title="エンジンのメインループとライフサイクル管理。" alt="" coords="2463,365,2636,405"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="2620,321,2571,367,2567,363,2616,317"/>
+<area shape="poly" id="edge32_Node000002_Node000015" title=" " alt="" coords="2749,298,2777,306,2803,318,2828,334,2848,356,2857,387,2861,435,2857,483,2852,503,2844,517,2829,524,2800,530,2706,541,2420,558,2089,569,1820,575,1820,570,2089,564,2420,553,2706,536,2799,525,2827,519,2841,513,2848,501,2852,483,2855,435,2852,388,2843,359,2824,339,2801,323,2775,311,2748,303"/>
+<area shape="rect" id="Node000021" href="$RenderingSystem_8h.html" title="描画コマンド発行システム。" alt="" coords="2188,460,2401,515"/>
+<area shape="poly" id="edge31_Node000002_Node000021" title=" " alt="" coords="2559,316,2505,335,2452,360,2414,383,2379,411,2322,462,2318,458,2376,406,2411,379,2449,355,2503,330,2558,311"/>
+<area shape="rect" id="Node000022" href="$Renderer_8cpp.html" title=" " alt="" coords="2660,365,2833,405"/>
+<area shape="poly" id="edge30_Node000002_Node000022" title=" " alt="" coords="2680,317,2729,363,2725,367,2676,321"/>
+<area shape="rect" id="Node000004" href="$GuiManager_8cpp.html" title=" " alt="" coords="2293,643,2449,683"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="3054,518,2997,557,2963,576,2928,591,2859,610,2800,621,2747,625,2697,625,2593,624,2532,628,2462,639,2431,646,2430,641,2461,633,2532,623,2592,619,2697,620,2747,620,2799,616,2858,605,2926,585,2961,571,2994,552,3051,514"/>
+<area shape="rect" id="Node000005" href="$Application_8cpp.html" title=" " alt="" coords="2095,643,2268,683"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="3033,516,2928,565,2903,579,2877,591,2788,611,2712,622,2645,626,2581,625,2449,623,2372,627,2282,639,2247,646,2246,641,2281,633,2371,622,2449,617,2581,619,2644,620,2712,617,2787,606,2875,585,2901,575,2925,560,3031,511"/>
+<area shape="rect" id="Node000006" href="$SpanEditor_8h.html" title=" " alt="" coords="2995,563,3194,588"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="3092,521,3096,562,3091,562,3086,521"/>
+<area shape="rect" id="Node000007" href="$HierarchyPanel_8cpp.html" title=" " alt="" coords="2716,636,2919,691"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="3045,595,2903,639,2901,633,3044,590"/>
+<area shape="rect" id="Node000008" href="$InspectorPanel_8cpp.html" title=" " alt="" coords="2943,636,3139,691"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="3083,601,3060,637,3055,635,3078,598"/>
+<area shape="rect" id="Node000009" href="$ProjectBrowserPanel_8cpp.html" title="ProjectBrowserPanelの実装。" alt="" coords="3164,636,3351,691"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="3130,592,3209,634,3207,638,3127,597"/>
+<area shape="rect" id="Node000010" href="$SceneViewPanel_8cpp.html" title=" " alt="" coords="2473,636,2692,691"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="2997,593,2704,639,2693,641,2692,636,2704,633,2996,587"/>
+<area shape="poly" id="edge12_Node000011_Node000005" title=" " alt="" coords="2634,406,2649,409,2679,415,2707,416,2757,415,2780,417,2802,424,2824,437,2845,458,2854,473,2857,487,2854,502,2845,516,2815,550,2784,577,2754,597,2723,612,2692,622,2660,627,2595,630,2451,623,2370,625,2282,639,2252,646,2251,641,2281,633,2370,619,2451,617,2595,625,2660,622,2691,616,2721,607,2751,592,2781,572,2811,546,2841,513,2849,500,2851,487,2849,475,2841,462,2820,441,2800,428,2779,422,2757,421,2707,422,2679,420,2647,415,2633,411"/>
+<area shape="rect" id="Node000012" href="$FileDialog_8cpp.html" title="FileDialogの実装" alt="" coords="2674,467,2830,507"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="2601,408,2715,465,2713,470,2598,413"/>
+<area shape="rect" id="Node000013" href="$EntryPoint_8h.html" title="アプリケーションのエントリーポイント (main関数)。" alt="" coords="2476,467,2649,507"/>
+<area shape="poly" id="edge13_Node000011_Node000013" title=" " alt="" coords="2556,418,2563,467,2558,468,2551,418"/>
+<area shape="rect" id="Node000014" href="$CameraSystem_8h.html" title="カメラ行列の更新とレンダラーへの適用。" alt="" coords="1753,467,2012,507"/>
+<area shape="poly" id="edge14_Node000011_Node000014" title=" " alt="" coords="2450,404,2008,470,2007,465,2449,398"/>
+<area shape="poly" id="edge29_Node000011_Node000015" title=" " alt="" coords="2518,416,2466,462,2443,492,2432,505,2415,517,2366,534,2302,547,2141,565,1969,574,1819,577,1819,572,1969,569,2141,560,2301,542,2365,529,2412,512,2429,501,2439,489,2462,458,2514,412"/>
+<area shape="poly" id="edge27_Node000011_Node000021" title=" " alt="" coords="2490,412,2362,462,2360,457,2488,407"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="1835,516,1739,565,1737,560,1833,511"/>
+<area shape="poly" id="edge16_Node000015_Node000004" title=" " alt="" coords="1833,580,2042,599,2162,614,2281,633,2312,641,2310,646,2279,639,2161,619,2042,604,1833,586"/>
+<area shape="poly" id="edge23_Node000015_Node000005" title=" " alt="" coords="1815,587,1943,607,2083,633,2114,641,2113,646,2082,639,1942,612,1814,593"/>
+<area shape="poly" id="edge18_Node000015_Node000007" title=" " alt="" coords="1833,575,2004,579,2221,588,2463,606,2704,633,2716,635,2715,640,2704,639,2462,611,2221,594,2004,584,1833,580"/>
+<area shape="poly" id="edge19_Node000015_Node000008" title=" " alt="" coords="1833,577,2402,597,2708,613,2931,633,2944,635,2943,641,2930,639,2707,618,2402,602,1833,582"/>
+<area shape="poly" id="edge20_Node000015_Node000009" title=" " alt="" coords="1833,576,2508,593,2881,610,3035,621,3152,633,3164,635,3163,641,3152,639,3034,626,2880,615,2508,598,1833,581"/>
+<area shape="poly" id="edge21_Node000015_Node000010" title=" " alt="" coords="1833,579,2120,596,2291,612,2462,633,2473,635,2473,640,2461,639,2290,617,2119,602,1833,584"/>
+<area shape="rect" id="Node000016" href="$ImGuiUI_8cpp.html" title=" " alt="" coords="1693,643,1849,683"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="1733,598,1761,641,1756,644,1728,601"/>
+<area shape="rect" id="Node000017" href="$EditorFileSystem_8cpp.html" title="EditorFileSystemの実装。" alt="" coords="1873,643,2071,683"/>
+<area shape="poly" id="edge22_Node000015_Node000017" title=" " alt="" coords="1765,590,1916,641,1915,646,1763,595"/>
+<area shape="rect" id="Node000018" href="$AssetRegistry_8cpp.html" title="AssetRegistryの実装。" alt="" coords="1007,643,1212,683"/>
+<area shape="poly" id="edge24_Node000015_Node000018" title=" " alt="" coords="1599,590,1422,610,1224,639,1187,646,1186,641,1224,633,1421,605,1598,585"/>
+<area shape="rect" id="Node000019" href="$AssetSerializer_8cpp.html" title="AssetSerializerの実装。" alt="" coords="1236,643,1449,683"/>
+<area shape="poly" id="edge25_Node000015_Node000019" title=" " alt="" coords="1653,594,1425,646,1424,641,1652,589"/>
+<area shape="rect" id="Node000020" href="$SceneSerializer_8cpp.html" title="SceneSerializerの実装。" alt="" coords="1473,643,1668,683"/>
+<area shape="poly" id="edge26_Node000015_Node000020" title=" " alt="" coords="1686,597,1604,645,1601,641,1683,593"/>
+<area shape="poly" id="edge28_Node000021_Node000015" title=" " alt="" coords="2175,516,2170,517,1984,545,1820,565,1819,560,1984,540,2169,512,2174,511"/>
+<area shape="poly" id="edge37_Node000023_Node000002" title=" " alt="" coords="2364,137,2613,267,2611,272,2362,142"/>
+<area shape="poly" id="edge80_Node000023_Node000015" title=" " alt="" coords="2189,120,1645,136,1286,150,917,168,569,191,279,219,166,235,80,252,26,270,12,280,8,289,8,386,9,427,14,459,29,487,57,512,81,520,127,527,276,540,483,550,726,557,1229,567,1612,571,1612,576,1229,572,725,563,483,555,276,545,126,533,79,525,55,517,25,490,9,461,4,427,3,386,3,287,8,276,23,266,79,247,165,230,278,214,569,186,916,163,1286,145,1644,131,2189,115"/>
+<area shape="rect" id="Node000024" href="$MeshRenderer_8h.html" title="メッシュの描画設定とマテリアル参照。" alt="" coords="2172,357,2345,412"/>
+<area shape="poly" id="edge34_Node000023_Node000024" title=" " alt="" coords="2336,144,2354,179,2368,221,2373,267,2370,289,2362,311,2342,338,2315,359,2311,355,2338,334,2358,308,2365,288,2368,266,2363,222,2349,181,2332,146"/>
+<area shape="rect" id="Node000025" href="$Material_8cpp.html" title="Materialの実装。" alt="" coords="1882,181,2121,221"/>
+<area shape="poly" id="edge38_Node000023_Node000025" title=" " alt="" coords="2233,140,2071,184,2069,179,2232,134"/>
+<area shape="rect" id="Node000026" href="$AssetManager_8h.html" title="エンジン全域のアセットライフサイクルを管理するシングルトン。" alt="" coords="2145,181,2340,221"/>
+<area shape="poly" id="edge39_Node000023_Node000026" title=" " alt="" coords="2292,146,2261,183,2257,179,2288,142"/>
+<area shape="poly" id="edge36_Node000024_Node000015" title=" " alt="" coords="2221,423,2178,462,2151,492,2139,505,2120,517,2065,535,1988,549,1820,569,1819,563,1988,544,2064,529,2118,512,2136,501,2148,489,2174,458,2217,419"/>
+<area shape="poly" id="edge35_Node000024_Node000021" title=" " alt="" coords="2275,424,2288,459,2283,461,2270,426"/>
+<area shape="poly" id="edge79_Node000026_Node000015" title=" " alt="" coords="2182,230,2153,248,2129,271,2108,303,2098,335,2095,366,2095,397,2094,428,2088,458,2074,488,2048,517,2010,536,1953,551,1886,562,1820,570,1819,564,1886,557,1952,546,2008,531,2045,513,2070,485,2083,456,2088,427,2089,397,2090,366,2093,334,2104,301,2125,268,2150,244,2179,225"/>
+<area shape="rect" id="Node000027" href="$SpanReflection_8h.html" title="コンポーネント定義用のリフレクションマクロ。" alt="" coords="1014,269,1218,309"/>
+<area shape="poly" id="edge40_Node000026_Node000027" title=" " alt="" coords="2132,224,1870,250,1615,268,1218,287,1218,282,1614,263,1870,245,2131,219"/>
+<area shape="rect" id="Node000041" href="$AssetManager_8cpp.html" title="AssetManagerの実装。" alt="" coords="2138,269,2347,309"/>
+<area shape="poly" id="edge78_Node000026_Node000041" title=" " alt="" coords="2245,235,2245,269,2240,269,2240,235"/>
+<area shape="poly" id="edge77_Node000027_Node000015" title=" " alt="" coords="1000,293,806,296,576,306,462,314,359,326,271,341,205,360,142,389,114,407,90,426,73,447,64,468,67,490,82,513,103,522,147,530,293,545,496,555,735,562,1232,570,1613,571,1613,577,1232,575,734,568,496,560,292,550,146,536,101,527,78,517,62,492,59,467,68,444,86,423,111,403,140,385,203,355,270,336,358,320,462,309,575,300,806,291,1000,288"/>
+<area shape="poly" id="edge76_Node000027_Node000024" title=" " alt="" coords="1232,293,1607,315,1841,333,2075,355,2172,367,2171,372,2074,360,1840,338,1607,321,1232,299"/>
+<area shape="rect" id="Node000028" href="$Active_8h.html" title="エンティティの有効/無効フラグ。" alt="" coords="242,365,441,405"/>
+<area shape="poly" id="edge41_Node000027_Node000028" title=" " alt="" coords="1001,300,749,322,601,339,454,360,416,367,415,362,453,355,600,333,748,317,1000,295"/>
+<area shape="rect" id="Node000030" href="$IDComponent_8h.html" title="エンティティの一意な識別子 (UUID) を保持するコンポーネント。" alt="" coords="93,467,339,507"/>
+<area shape="poly" id="edge45_Node000027_Node000030" title=" " alt="" coords="1000,294,792,298,551,308,438,317,342,328,271,342,247,350,233,359,217,383,211,413,211,442,214,467,209,467,205,442,205,412,212,381,229,355,245,346,269,337,341,323,438,311,550,303,792,293,1000,289"/>
+<area shape="rect" id="Node000031" href="$Layer_8h.html" title="物理演算やレンダリングのレイヤー分け。" alt="" coords="465,365,658,405"/>
+<area shape="poly" id="edge47_Node000027_Node000031" title=" " alt="" coords="1001,308,844,330,671,360,637,367,636,362,670,355,843,325,1000,303"/>
+<area shape="rect" id="Node000032" href="$Name_8h.html" title="エンティティの名前" alt="" coords="683,365,880,405"/>
+<area shape="poly" id="edge50_Node000027_Node000032" title=" " alt="" coords="1036,316,850,367,848,362,1035,310"/>
+<area shape="rect" id="Node000033" href="$Tag_8h.html" title="エンティティのタグ分類" alt="" coords="905,365,1085,405"/>
+<area shape="poly" id="edge53_Node000027_Node000033" title=" " alt="" coords="1082,320,1021,367,1018,362,1079,316"/>
+<area shape="rect" id="Node000034" href="$Transform_8h.html" title="位置、回転、拡大縮小を管理するコンポーネント。" alt="" coords="1387,365,1610,405"/>
+<area shape="poly" id="edge56_Node000027_Node000034" title=" " alt="" coords="1207,310,1422,362,1421,367,1206,315"/>
+<area shape="rect" id="Node000038" href="$EditorCamera_8h.html" title="エディタビューポート用の制御カメラタグ。" alt="" coords="1109,365,1363,405"/>
+<area shape="poly" id="edge66_Node000027_Node000038" title=" " alt="" coords="1153,316,1213,362,1210,367,1150,320"/>
+<area shape="rect" id="Node000039" href="$Camera_8h.html" title="レンダリング視点を定義するカメラコンポーネント。" alt="" coords="1635,357,1808,412"/>
+<area shape="poly" id="edge69_Node000027_Node000039" title=" " alt="" coords="1232,299,1416,321,1623,355,1635,357,1634,362,1622,360,1416,326,1231,304"/>
+<area shape="rect" id="Node000040" href="$MeshFilter_8h.html" title="描画する形状 (メッシュ) への参照。" alt="" coords="1889,357,2063,412"/>
+<area shape="poly" id="edge73_Node000027_Node000040" title=" " alt="" coords="1232,296,1501,320,1820,355,1890,365,1889,370,1820,360,1501,325,1232,302"/>
+<area shape="poly" id="edge44_Node000028_Node000015" title=" " alt="" coords="363,414,407,467,437,493,470,512,537,528,652,540,974,558,1330,567,1612,571,1612,576,1330,572,974,563,652,545,536,533,468,517,434,497,404,471,359,417"/>
+<area shape="rect" id="Node000029" href="$EntityBuilder_8h.html" title="エンティティ生成を簡略化するヘルパークラス。" alt="" coords="515,467,709,507"/>
+<area shape="poly" id="edge42_Node000028_Node000029" title=" " alt="" coords="406,407,562,465,560,470,404,412"/>
+<area shape="poly" id="edge43_Node000029_Node000015" title=" " alt="" coords="701,507,728,512,976,540,1223,557,1443,567,1612,571,1612,576,1443,572,1222,563,976,545,728,517,700,513"/>
+<area shape="poly" id="edge46_Node000030_Node000015" title=" " alt="" coords="321,507,358,512,536,530,718,544,1074,562,1386,570,1613,572,1612,577,1386,575,1074,567,718,549,536,535,357,517,320,512"/>
+<area shape="poly" id="edge49_Node000031_Node000015" title=" " alt="" coords="528,416,504,439,485,464,478,490,480,502,487,513,502,519,533,526,637,538,955,555,1319,565,1612,570,1612,576,1319,571,955,560,637,543,533,531,500,524,484,517,475,504,472,490,480,462,500,435,524,412"/>
+<area shape="poly" id="edge48_Node000031_Node000029" title=" " alt="" coords="579,416,605,466,600,468,575,418"/>
+<area shape="poly" id="edge52_Node000032_Node000015" title=" " alt="" coords="689,411,569,441,524,454,504,462,497,475,493,488,496,500,504,513,519,519,550,526,652,537,964,555,1323,565,1612,570,1612,575,1323,570,964,560,651,543,549,531,517,524,501,517,491,502,488,488,492,473,501,458,522,449,567,436,687,405"/>
+<area shape="poly" id="edge51_Node000032_Node000029" title=" " alt="" coords="739,414,645,470,642,465,737,409"/>
+<area shape="poly" id="edge55_Node000033_Node000015" title=" " alt="" coords="908,411,842,435,816,448,801,462,793,475,790,488,792,500,801,513,815,523,841,531,917,546,1020,557,1141,565,1397,572,1613,572,1613,578,1397,577,1140,570,1020,562,916,552,839,537,813,527,797,517,787,502,785,488,788,474,797,458,813,444,840,430,906,406"/>
+<area shape="poly" id="edge54_Node000033_Node000029" title=" " alt="" coords="911,411,684,470,683,465,909,406"/>
+<area shape="poly" id="edge62_Node000034_Node000014" title=" " alt="" coords="1584,406,1811,465,1810,470,1583,411"/>
+<area shape="poly" id="edge65_Node000034_Node000015" title=" " alt="" coords="1563,408,1604,430,1643,458,1667,484,1687,513,1713,561,1709,564,1683,516,1663,488,1640,462,1601,434,1561,413"/>
+<area shape="poly" id="edge57_Node000034_Node000029" title=" " alt="" coords="1404,410,1376,415,1222,434,1101,443,980,449,824,463,710,476,709,471,824,457,979,444,1100,437,1221,429,1376,409,1403,405"/>
+<area shape="rect" id="Node000035" href="$RelationshipSystem_8h.html" title="エンティティ間の親子・兄弟関係 (階層構造) を操作するシステム。" alt="" coords="835,467,1098,507"/>
+<area shape="poly" id="edge58_Node000034_Node000035" title=" " alt="" coords="1399,410,1376,415,1071,470,1070,465,1376,409,1398,405"/>
+<area shape="rect" id="Node000036" href="$TransformSystem_8h.html" title="ローカル座標からワールド座標への変換行列計算" alt="" coords="1382,467,1629,507"/>
+<area shape="poly" id="edge60_Node000034_Node000036" title=" " alt="" coords="1503,418,1507,467,1501,467,1498,418"/>
+<area shape="rect" id="Node000037" href="$EditorCameraSystem_8h.html" title="エディタ用フリーカメラの操作システム" alt="" coords="1122,460,1358,515"/>
+<area shape="poly" id="edge63_Node000034_Node000037" title=" " alt="" coords="1438,412,1308,462,1307,457,1436,407"/>
+<area shape="poly" id="edge59_Node000035_Node000015" title=" " alt="" coords="1078,507,1111,512,1382,543,1613,564,1612,569,1382,549,1110,517,1077,512"/>
+<area shape="poly" id="edge61_Node000036_Node000015" title=" " alt="" coords="1565,510,1689,560,1687,565,1563,515"/>
+<area shape="poly" id="edge64_Node000037_Node000015" title=" " alt="" coords="1372,512,1647,560,1646,565,1371,517"/>
+<area shape="poly" id="edge68_Node000038_Node000015" title=" " alt="" coords="1124,410,1098,415,989,427,880,439,839,449,813,464,808,473,808,484,813,497,826,513,840,522,865,531,938,545,1038,556,1154,564,1403,571,1613,572,1613,578,1402,576,1154,569,1038,561,938,551,863,536,838,527,822,517,809,500,802,484,803,471,809,460,837,444,879,434,988,422,1097,409,1123,404"/>
+<area shape="poly" id="edge67_Node000038_Node000037" title=" " alt="" coords="1240,418,1242,460,1236,460,1235,418"/>
+<area shape="poly" id="edge70_Node000039_Node000014" title=" " alt="" coords="1776,417,1854,465,1851,469,1773,421"/>
+<area shape="poly" id="edge72_Node000039_Node000015" title=" " alt="" coords="1723,426,1719,563,1714,563,1718,426"/>
+<area shape="poly" id="edge71_Node000039_Node000037" title=" " alt="" coords="1621,415,1495,440,1371,463,1359,465,1358,460,1370,457,1494,435,1620,410"/>
+<area shape="poly" id="edge75_Node000040_Node000015" title=" " alt="" coords="2010,422,2024,444,2034,469,2036,494,2026,516,2013,528,1993,538,1942,553,1882,564,1820,571,1819,565,1881,558,1941,548,1991,533,2010,523,2022,513,2031,493,2029,470,2020,447,2006,424"/>
+<area shape="poly" id="edge74_Node000040_Node000021" title=" " alt="" coords="2073,414,2212,457,2211,462,2071,419"/>
 </map>

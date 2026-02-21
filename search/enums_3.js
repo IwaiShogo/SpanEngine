@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['projectiontype_0',['ProjectionType',['../namespaceSpan.html#acf4814db50cb33df2e35d9ea4e8d8a00',1,'Span']]]
+  ['key_0',['Key',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8f',1,'Span']]]
 ];

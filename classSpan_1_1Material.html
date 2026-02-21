@@ -93,7 +93,7 @@ $(function(){initNavTree('classSpan_1_1Material.html','','classSpan_1_1Material-
 </div><!--header-->
 <div class="contents">
 
-<p>🎨 サーフェスの質感を定義するクラス。  
+<p>🎨 PRBマテリアルを管理し、.matアセットとして機能するクラス  
  <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="Material_8h_source.html">Material.h</a>&gt;</code></p>
@@ -108,43 +108,69 @@ Span::Material 連携図</div>
 <tr class="memitem:aacda1f1b21599fe1d49a675745caf175" id="r_aacda1f1b21599fe1d49a675745caf175"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aacda1f1b21599fe1d49a675745caf175">Material</a> ()</td></tr>
 <tr class="memitem:a44f446bbf9cfe99b923dbb4b5cd3279d" id="r_a44f446bbf9cfe99b923dbb4b5cd3279d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a44f446bbf9cfe99b923dbb4b5cd3279d">~Material</a> ()</td></tr>
 <tr class="memitem:a2b920fe1642aae29b0f2aca9b09cbeba" id="r_a2b920fe1642aae29b0f2aca9b09cbeba"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2b920fe1642aae29b0f2aca9b09cbeba">Initialize</a> (ID3D12Device *device)</td></tr>
-<tr class="memdesc:a2b920fe1642aae29b0f2aca9b09cbeba"><td class="mdescLeft">&#160;</td><td class="mdescRight">マテリアル用定数バッファを初期化します。  <br /></td></tr>
+<tr class="memdesc:a2b920fe1642aae29b0f2aca9b09cbeba"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPUリソースの初期化  <br /></td></tr>
 <tr class="memitem:abc41360520a1ece7ca832b6695c51089" id="r_abc41360520a1ece7ca832b6695c51089"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abc41360520a1ece7ca832b6695c51089">Shutdown</a> ()</td></tr>
-<tr class="memdesc:abc41360520a1ece7ca832b6695c51089"><td class="mdescLeft">&#160;</td><td class="mdescRight">終了処理  <br /></td></tr>
+<tr class="memdesc:abc41360520a1ece7ca832b6695c51089"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPUリソースの解放  <br /></td></tr>
 <tr class="memitem:a879a957f83f3a9a274b3415614ffe18f" id="r_a879a957f83f3a9a274b3415614ffe18f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a879a957f83f3a9a274b3415614ffe18f">Update</a> ()</td></tr>
 <tr class="memdesc:a879a957f83f3a9a274b3415614ffe18f"><td class="mdescLeft">&#160;</td><td class="mdescRight">変更がある場合、データをGPUへ転送します。  <br /></td></tr>
-<tr class="memitem:ae11ac1235816e7bb51406afe24266196" id="r_ae11ac1235816e7bb51406afe24266196"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae11ac1235816e7bb51406afe24266196">SetAlbedo</a> (const <a class="el" href="structSpan_1_1Vector3.html">Vector3</a> &amp;color)</td></tr>
-<tr class="memitem:a454c1fcdbe56044eff6d9f3b91b0823d" id="r_a454c1fcdbe56044eff6d9f3b91b0823d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a454c1fcdbe56044eff6d9f3b91b0823d">SetRoughness</a> (float roughness)</td></tr>
-<tr class="memitem:ad9f2e51ef13aa3b5d4da98284c1c6427" id="r_ad9f2e51ef13aa3b5d4da98284c1c6427"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad9f2e51ef13aa3b5d4da98284c1c6427">SetMetallic</a> (float metallic)</td></tr>
-<tr class="memitem:ad4ecfde2490617f3c651be84ea8d5351" id="r_ad4ecfde2490617f3c651be84ea8d5351"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad4ecfde2490617f3c651be84ea8d5351">SetOpacity</a> (float opacity)</td></tr>
-<tr class="memitem:ad4a62723096dafd4efb9881f055a3c26" id="r_ad4a62723096dafd4efb9881f055a3c26"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad4a62723096dafd4efb9881f055a3c26">SetTexture</a> (<a class="el" href="classSpan_1_1Texture.html">Texture</a> *tex)</td></tr>
-<tr class="memdesc:ad4a62723096dafd4efb9881f055a3c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">テクスチャを使用するかどうかのフラグを設定  <br /></td></tr>
-<tr class="memitem:a86c0606bf8664d79712976e16867afda" id="r_a86c0606bf8664d79712976e16867afda"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a86c0606bf8664d79712976e16867afda">GetTexture</a> () const</td></tr>
-<tr class="memitem:abc4ee804b2e3c79090588ddcb26eef8f" id="r_abc4ee804b2e3c79090588ddcb26eef8f"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#abc4ee804b2e3c79090588ddcb26eef8f">IsTransparent</a> () const</td></tr>
-<tr class="memdesc:abc4ee804b2e3c79090588ddcb26eef8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">マテリアルが透明か  <br /></td></tr>
+<tr class="memitem:ac1ad98a9d8fdea157446dfa1ac6b8868" id="r_ac1ad98a9d8fdea157446dfa1ac6b8868"><td class="memItemLeft">D3D12_GPU_VIRTUAL_ADDRESS&#160;</td><td class="memItemRight"><a class="el" href="#ac1ad98a9d8fdea157446dfa1ac6b8868">GetGPUVirtualAddress</a> () const</td></tr>
+<tr class="memdesc:ac1ad98a9d8fdea157446dfa1ac6b8868"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPU仮想アドレスの取得  <br /></td></tr>
+<tr class="memitem:a5de9ef8504ae701154b1120753c76eaf" id="r_a5de9ef8504ae701154b1120753c76eaf"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a5de9ef8504ae701154b1120753c76eaf">Serialize</a> (const std::filesystem::path &amp;filepath)</td></tr>
+<tr class="memdesc:a5de9ef8504ae701154b1120753c76eaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">マテリアルを .mat ファイルとして保存します。  <br /></td></tr>
+<tr class="memitem:aef6c61d1f5b84393aae8a35d49cbfdfb" id="r_aef6c61d1f5b84393aae8a35d49cbfdfb"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aef6c61d1f5b84393aae8a35d49cbfdfb">Deserialize</a> (const std::filesystem::path &amp;filepath)</td></tr>
+<tr class="memdesc:aef6c61d1f5b84393aae8a35d49cbfdfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">.mat ファイルからマテリアルを読み込みます。  <br /></td></tr>
+<tr class="memitem:ad9003f93ab66eb68d215cd050e753bc8" id="r_ad9003f93ab66eb68d215cd050e753bc8"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0">BlendMode</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad9003f93ab66eb68d215cd050e753bc8">GetBlendMode</a> () const</td></tr>
+<tr class="memitem:a2590203bb827afff5f3148b3a2f70cb0" id="r_a2590203bb827afff5f3148b3a2f70cb0"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2590203bb827afff5f3148b3a2f70cb0">SetBlendMode</a> (<a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0">BlendMode</a> mode)</td></tr>
+<tr class="memitem:a1618fd8c497938babfc1f3e897ae8574" id="r_a1618fd8c497938babfc1f3e897ae8574"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cc">CullMode</a>&#160;</td><td class="memItemRight"><a class="el" href="#a1618fd8c497938babfc1f3e897ae8574">GetCullMode</a> () const</td></tr>
+<tr class="memitem:aa6ede86a49291cbb75f53023abde76e1" id="r_aa6ede86a49291cbb75f53023abde76e1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa6ede86a49291cbb75f53023abde76e1">SetCullMode</a> (<a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cc">CullMode</a> mode)</td></tr>
+<tr class="memitem:ae1e7880fe5ea02d424367473e4603590" id="r_ae1e7880fe5ea02d424367473e4603590"><td class="memItemLeft"><a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ae1e7880fe5ea02d424367473e4603590">GetData</a> ()</td></tr>
+<tr class="memitem:a407a072710c487daf1441e9a7f8c1ce7" id="r_a407a072710c487daf1441e9a7f8c1ce7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a407a072710c487daf1441e9a7f8c1ce7">SetAlbedoMap</a> (<a class="el" href="classSpan_1_1Texture.html">Texture</a> *tex)</td></tr>
+<tr class="memitem:a3ba10d9608ecf1b7807e11fe1ded9718" id="r_a3ba10d9608ecf1b7807e11fe1ded9718"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3ba10d9608ecf1b7807e11fe1ded9718">SetNormalMap</a> (<a class="el" href="classSpan_1_1Texture.html">Texture</a> *tex)</td></tr>
+<tr class="memitem:ad9927d465b111f557f2a4dc79fe597f1" id="r_ad9927d465b111f557f2a4dc79fe597f1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad9927d465b111f557f2a4dc79fe597f1">SetMetallicMap</a> (<a class="el" href="classSpan_1_1Texture.html">Texture</a> *tex)</td></tr>
+<tr class="memitem:a2c864b8a7061e8b99f29de7bdc6cbbcc" id="r_a2c864b8a7061e8b99f29de7bdc6cbbcc"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2c864b8a7061e8b99f29de7bdc6cbbcc">SetRoughnessMap</a> (<a class="el" href="classSpan_1_1Texture.html">Texture</a> *tex)</td></tr>
+<tr class="memitem:acdfc7b91917bfc6f2f514c8827781fdf" id="r_acdfc7b91917bfc6f2f514c8827781fdf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#acdfc7b91917bfc6f2f514c8827781fdf">SetAOMap</a> (<a class="el" href="classSpan_1_1Texture.html">Texture</a> *tex)</td></tr>
+<tr class="memitem:a1fd5495592054bc2232c7a35f599ea07" id="r_a1fd5495592054bc2232c7a35f599ea07"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1fd5495592054bc2232c7a35f599ea07">SetEmissiveMap</a> (<a class="el" href="classSpan_1_1Texture.html">Texture</a> *tex)</td></tr>
+<tr class="memitem:a88e607ee1549839bf30d9b43d788c509" id="r_a88e607ee1549839bf30d9b43d788c509"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a88e607ee1549839bf30d9b43d788c509">GetAlbedoMap</a> () const</td></tr>
+<tr class="memitem:ae5aefeb9744213a3a4973d9180ffcaf8" id="r_ae5aefeb9744213a3a4973d9180ffcaf8"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ae5aefeb9744213a3a4973d9180ffcaf8">GetNormalMap</a> () const</td></tr>
+<tr class="memitem:aa2be29da476461b6fe0921efd286e374" id="r_aa2be29da476461b6fe0921efd286e374"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aa2be29da476461b6fe0921efd286e374">GetMetallicMap</a> () const</td></tr>
+<tr class="memitem:a78f6b453f3e2252990741d88ba1aed03" id="r_a78f6b453f3e2252990741d88ba1aed03"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a78f6b453f3e2252990741d88ba1aed03">GetRoughnessMap</a> () const</td></tr>
+<tr class="memitem:ad7569721f0bc47da673b5c13a4f336cc" id="r_ad7569721f0bc47da673b5c13a4f336cc"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ad7569721f0bc47da673b5c13a4f336cc">GetAOMap</a> () const</td></tr>
+<tr class="memitem:aa4cc5eef369e687cde86fb2bfc3620c1" id="r_aa4cc5eef369e687cde86fb2bfc3620c1"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aa4cc5eef369e687cde86fb2bfc3620c1">GetEmissiveMap</a> () const</td></tr>
 <tr class="memitem:a735426c2b29d6e13732546a5dcac5810" id="r_a735426c2b29d6e13732546a5dcac5810"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a735426c2b29d6e13732546a5dcac5810">SetShaders</a> (<a class="el" href="classSpan_1_1Shader.html">Shader</a> *vs, <a class="el" href="classSpan_1_1Shader.html">Shader</a> *ps)</td></tr>
-<tr class="memdesc:a735426c2b29d6e13732546a5dcac5810"><td class="mdescLeft">&#160;</td><td class="mdescRight">シェーダー割り当て  <br /></td></tr>
 <tr class="memitem:a417116d19a0bc680282a569baacae326" id="r_a417116d19a0bc680282a569baacae326"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a417116d19a0bc680282a569baacae326">GetVertexShader</a> () const</td></tr>
 <tr class="memitem:ac42bf222bab218fa24a4e49fce5ee322" id="r_ac42bf222bab218fa24a4e49fce5ee322"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ac42bf222bab218fa24a4e49fce5ee322">GetPixelShader</a> () const</td></tr>
-<tr class="memitem:ac1ad98a9d8fdea157446dfa1ac6b8868" id="r_ac1ad98a9d8fdea157446dfa1ac6b8868"><td class="memItemLeft">D3D12_GPU_VIRTUAL_ADDRESS&#160;</td><td class="memItemRight"><a class="el" href="#ac1ad98a9d8fdea157446dfa1ac6b8868">GetGPUVirtualAddress</a> () const</td></tr>
-<tr class="memdesc:ac1ad98a9d8fdea157446dfa1ac6b8868"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPUアドレス取得  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+公開変数類</h2></td></tr>
+<tr class="memitem:a0fb54edc13fb7ee920f1f980cfc1bd89" id="r_a0fb54edc13fb7ee920f1f980cfc1bd89"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a0fb54edc13fb7ee920f1f980cfc1bd89">Name</a> = &quot;New Material&quot;</td></tr>
+<tr class="memitem:aa282ccbad6231a7fb344e91e1da1428b" id="r_aa282ccbad6231a7fb344e91e1da1428b"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#aa282ccbad6231a7fb344e91e1da1428b">AlbedoMapGUID</a> = 0</td></tr>
+<tr class="memitem:a380783706b22d443427f2314574d40f2" id="r_a380783706b22d443427f2314574d40f2"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#a380783706b22d443427f2314574d40f2">NormalMapGUID</a> = 0</td></tr>
+<tr class="memitem:a5d2ae29e36f47e16507bf7a73aa3b9ab" id="r_a5d2ae29e36f47e16507bf7a73aa3b9ab"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#a5d2ae29e36f47e16507bf7a73aa3b9ab">MetallicMapGUID</a> = 0</td></tr>
+<tr class="memitem:a0a09a7c2b980068aaad9712647938209" id="r_a0a09a7c2b980068aaad9712647938209"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#a0a09a7c2b980068aaad9712647938209">RoughnessMapGUID</a> = 0</td></tr>
+<tr class="memitem:a3170eed47ab63bbb64b9af730f095852" id="r_a3170eed47ab63bbb64b9af730f095852"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#a3170eed47ab63bbb64b9af730f095852">AOMapGUID</a> = 0</td></tr>
+<tr class="memitem:ac9575239a42a0b3fa1ede6fce337f3e4" id="r_ac9575239a42a0b3fa1ede6fce337f3e4"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#ac9575239a42a0b3fa1ede6fce337f3e4">EmissiveMapGUID</a> = 0</td></tr>
+<tr class="memitem:a2cbae670575138d182b64ddce1772c9a" id="r_a2cbae670575138d182b64ddce1772c9a"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446">AssetHandle</a>&#160;</td><td class="memItemRight"><a class="el" href="#a2cbae670575138d182b64ddce1772c9a">Handle</a> = 0</td></tr>
+<tr class="memitem:aad353d49998a7e6353874b3d95cb9c27" id="r_aad353d49998a7e6353874b3d95cb9c27"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aad353d49998a7e6353874b3d95cb9c27">m_AlbedoMap</a> = nullptr</td></tr>
+<tr class="memitem:a98587fb4c3d08037746544389e4f1d53" id="r_a98587fb4c3d08037746544389e4f1d53"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a98587fb4c3d08037746544389e4f1d53">m_NormalMap</a> = nullptr</td></tr>
+<tr class="memitem:a83bdb9eb30445be9d663bdbef77a4ea5" id="r_a83bdb9eb30445be9d663bdbef77a4ea5"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a83bdb9eb30445be9d663bdbef77a4ea5">m_MetallicMap</a> = nullptr</td></tr>
+<tr class="memitem:add4eb3a3bd8d389f5f9d4effd5ebf83a" id="r_add4eb3a3bd8d389f5f9d4effd5ebf83a"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#add4eb3a3bd8d389f5f9d4effd5ebf83a">m_RoughnessMap</a> = nullptr</td></tr>
+<tr class="memitem:a4669dd9e03160f215aeb72fb446eeb08" id="r_a4669dd9e03160f215aeb72fb446eeb08"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a4669dd9e03160f215aeb72fb446eeb08">m_AOMap</a> = nullptr</td></tr>
+<tr class="memitem:aa5cb9810f5a601a6a0c9aaa1b004f7aa" id="r_aa5cb9810f5a601a6a0c9aaa1b004f7aa"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aa5cb9810f5a601a6a0c9aaa1b004f7aa">m_EmissiveMap</a> = nullptr</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
-<tr class="memitem:a07a69a39285482670c3f6da308e849b9" id="r_a07a69a39285482670c3f6da308e849b9"><td class="memItemLeft"><a class="el" href="classSpan_1_1ConstantBuffer.html">ConstantBuffer</a>&lt; <a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a> &gt; *&#160;</td><td class="memItemRight"><a class="el" href="#a07a69a39285482670c3f6da308e849b9">constantBuffer</a> = nullptr</td></tr>
-<tr class="memitem:a780f39af36119c4dfcadb79eabfb1589" id="r_a780f39af36119c4dfcadb79eabfb1589"><td class="memItemLeft"><a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a>&#160;</td><td class="memItemRight"><a class="el" href="#a780f39af36119c4dfcadb79eabfb1589">data</a></td></tr>
-<tr class="memitem:a1dfcd44822116041f894a4a132076642" id="r_a1dfcd44822116041f894a4a132076642"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a1dfcd44822116041f894a4a132076642">texture</a> = nullptr</td></tr>
-<tr class="memitem:a336bd3cb95f02a67f6103a950df586f8" id="r_a336bd3cb95f02a67f6103a950df586f8"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a336bd3cb95f02a67f6103a950df586f8">vertexShader</a> = nullptr</td></tr>
-<tr class="memitem:a22ed086b40c97544e2c2b54cd987c068" id="r_a22ed086b40c97544e2c2b54cd987c068"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a22ed086b40c97544e2c2b54cd987c068">pixelShader</a> = nullptr</td></tr>
-<tr class="memitem:abf31d8c17fe0774fe579b219beb3f61a" id="r_abf31d8c17fe0774fe579b219beb3f61a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#abf31d8c17fe0774fe579b219beb3f61a">isDirty</a> = true</td></tr>
-<tr class="memdesc:abf31d8c17fe0774fe579b219beb3f61a"><td class="mdescLeft">&#160;</td><td class="mdescRight">データに変更があったか  <br /></td></tr>
-<tr class="memitem:ae90bba1bf26fdccd3d01b29db3434529" id="r_ae90bba1bf26fdccd3d01b29db3434529"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ae90bba1bf26fdccd3d01b29db3434529">isTransparent</a> = false</td></tr>
+<tr class="memitem:a3bd3735f054e44d9a51e9d30491999b0" id="r_a3bd3735f054e44d9a51e9d30491999b0"><td class="memItemLeft"><a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3bd3735f054e44d9a51e9d30491999b0">m_Data</a></td></tr>
+<tr class="memitem:ab357b0863973f2d949b20680a1c29a48" id="r_ab357b0863973f2d949b20680a1c29a48"><td class="memItemLeft"><a class="el" href="classSpan_1_1ConstantBuffer.html">ConstantBuffer</a>&lt; <a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a> &gt; *&#160;</td><td class="memItemRight"><a class="el" href="#ab357b0863973f2d949b20680a1c29a48">m_ConstantBuffer</a> = nullptr</td></tr>
+<tr class="memitem:a10312234646f7db5d05f02c39d6273b3" id="r_a10312234646f7db5d05f02c39d6273b3"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a10312234646f7db5d05f02c39d6273b3">m_IsDirty</a> = true</td></tr>
+<tr class="memitem:a4882b3f11e213bed88b7f6780cd21083" id="r_a4882b3f11e213bed88b7f6780cd21083"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0">BlendMode</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4882b3f11e213bed88b7f6780cd21083">m_BlendMode</a> = <a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0afaa90538de35640e4b1e31ccf35b6eb5">BlendMode::Opaque</a></td></tr>
+<tr class="memitem:aefe3bb1fcfffbcdfd23a56bd520aa4ce" id="r_aefe3bb1fcfffbcdfd23a56bd520aa4ce"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cc">CullMode</a>&#160;</td><td class="memItemRight"><a class="el" href="#aefe3bb1fcfffbcdfd23a56bd520aa4ce">m_CullMode</a> = <a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cca0557fa923dcee4d0f86b1409f5c2167f">CullMode::Back</a></td></tr>
+<tr class="memitem:a8e899b43bd884773ba7f551310ef649a" id="r_a8e899b43bd884773ba7f551310ef649a"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a8e899b43bd884773ba7f551310ef649a">m_VertexShader</a> = nullptr</td></tr>
+<tr class="memitem:a888c8f7895d16ddfff0d5828e206ba23" id="r_a888c8f7895d16ddfff0d5828e206ba23"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a888c8f7895d16ddfff0d5828e206ba23">m_PixelShader</a> = nullptr</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock"><p>🎨 サーフェスの質感を定義するクラス。 </p>
-<p>CPU側のパラメータ変更を検知し、描画用にGPUの定数バッファへ転送します。 <span class="tt"><a class="el" href="#a879a957f83f3a9a274b3415614ffe18f" title="変更がある場合、データをGPUへ転送します。">Update()</a></span> を呼び出すことで <span class="tt"><a class="el" href="#abf31d8c17fe0774fe579b219beb3f61a" title="データに変更があったか">isDirty</a></span> フラグをチェックし、必要な時だけVRAM書き込みを行います。 </p>
+<div class="textblock"><p>🎨 PRBマテリアルを管理し、.matアセットとして機能するクラス </p>
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00058">58</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00061">61</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="aacda1f1b21599fe1d49a675745caf175" name="aacda1f1b21599fe1d49a675745caf175"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aacda1f1b21599fe1d49a675745caf175">&#9670;&#160;</a></span>Material()</h2>
@@ -161,7 +187,7 @@ Span::Material 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00005">5</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00016">16</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -180,7 +206,7 @@ Span::Material 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00010">10</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00027">27</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -190,6 +216,216 @@ Span::Material 連携図</div>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="aef6c61d1f5b84393aae8a35d49cbfdfb" name="aef6c61d1f5b84393aae8a35d49cbfdfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef6c61d1f5b84393aae8a35d49cbfdfb">&#9670;&#160;</a></span>Deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Span::Material::Deserialize </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>filepath</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>.mat ファイルからマテリアルを読み込みます。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>読み込み元パス </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功すれば true </dd></dl>
+
+<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00099">99</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a88e607ee1549839bf30d9b43d788c509" name="a88e607ee1549839bf30d9b43d788c509"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88e607ee1549839bf30d9b43d788c509">&#9670;&#160;</a></span>GetAlbedoMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a> * Span::Material::GetAlbedoMap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00129">129</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_a88e607ee1549839bf30d9b43d788c509_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ad7569721f0bc47da673b5c13a4f336cc" name="ad7569721f0bc47da673b5c13a4f336cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7569721f0bc47da673b5c13a4f336cc">&#9670;&#160;</a></span>GetAOMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a> * Span::Material::GetAOMap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00133">133</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_ad7569721f0bc47da673b5c13a4f336cc_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ad9003f93ab66eb68d215cd050e753bc8" name="ad9003f93ab66eb68d215cd050e753bc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9003f93ab66eb68d215cd050e753bc8">&#9670;&#160;</a></span>GetBlendMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0">BlendMode</a> Span::Material::GetBlendMode </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00110">110</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_ad9003f93ab66eb68d215cd050e753bc8_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a1618fd8c497938babfc1f3e897ae8574" name="a1618fd8c497938babfc1f3e897ae8574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1618fd8c497938babfc1f3e897ae8574">&#9670;&#160;</a></span>GetCullMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cc">CullMode</a> Span::Material::GetCullMode </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00113">113</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ae1e7880fe5ea02d424367473e4603590" name="ae1e7880fe5ea02d424367473e4603590"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1e7880fe5ea02d424367473e4603590">&#9670;&#160;</a></span>GetData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a> &amp; Span::Material::GetData </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00117">117</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="aa4cc5eef369e687cde86fb2bfc3620c1" name="aa4cc5eef369e687cde86fb2bfc3620c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4cc5eef369e687cde86fb2bfc3620c1">&#9670;&#160;</a></span>GetEmissiveMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a> * Span::Material::GetEmissiveMap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00134">134</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_aa4cc5eef369e687cde86fb2bfc3620c1_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="ac1ad98a9d8fdea157446dfa1ac6b8868" name="ac1ad98a9d8fdea157446dfa1ac6b8868"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac1ad98a9d8fdea157446dfa1ac6b8868">&#9670;&#160;</a></span>GetGPUVirtualAddress()</h2>
 
@@ -205,13 +441,77 @@ Span::Material 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p>GPUアドレス取得 </p>
+<p>GPU仮想アドレスの取得 </p>
 
-<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00039">39</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00056">56</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_ac1ad98a9d8fdea157446dfa1ac6b8868_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="aa2be29da476461b6fe0921efd286e374" name="aa2be29da476461b6fe0921efd286e374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2be29da476461b6fe0921efd286e374">&#9670;&#160;</a></span>GetMetallicMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a> * Span::Material::GetMetallicMap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00131">131</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_aa2be29da476461b6fe0921efd286e374_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ae5aefeb9744213a3a4973d9180ffcaf8" name="ae5aefeb9744213a3a4973d9180ffcaf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5aefeb9744213a3a4973d9180ffcaf8">&#9670;&#160;</a></span>GetNormalMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a> * Span::Material::GetNormalMap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00130">130</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_ae5aefeb9744213a3a4973d9180ffcaf8_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -239,12 +539,12 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00111">111</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00147">147</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="a86c0606bf8664d79712976e16867afda" name="a86c0606bf8664d79712976e16867afda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86c0606bf8664d79712976e16867afda">&#9670;&#160;</a></span>GetTexture()</h2>
+<a id="a78f6b453f3e2252990741d88ba1aed03" name="a78f6b453f3e2252990741d88ba1aed03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78f6b453f3e2252990741d88ba1aed03">&#9670;&#160;</a></span>GetRoughnessMap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,7 +553,7 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a> * Span::Material::GetTexture </td>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a> * Span::Material::GetRoughnessMap </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -266,11 +566,11 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00103">103</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00132">132</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_a86c0606bf8664d79712976e16867afda_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_a78f6b453f3e2252990741d88ba1aed03_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -298,7 +598,7 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00110">110</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00146">146</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -317,54 +617,47 @@ Span::Material 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p>マテリアル用定数バッファを初期化します。 </p>
+<p>GPUリソースの初期化 </p>
+
+<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00032">32</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a5de9ef8504ae701154b1120753c76eaf" name="a5de9ef8504ae701154b1120753c76eaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5de9ef8504ae701154b1120753c76eaf">&#9670;&#160;</a></span>Serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Span::Material::Serialize </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>filepath</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>マテリアルを .mat ファイルとして保存します。 </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">device</td><td>D3D12デバイス </td></tr>
+    <tr><td class="paramname">filepath</td><td>保存先パス </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功すれば true </dd></dl>
 
-<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00015">15</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="abc4ee804b2e3c79090588ddcb26eef8f" name="abc4ee804b2e3c79090588ddcb26eef8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc4ee804b2e3c79090588ddcb26eef8f">&#9670;&#160;</a></span>IsTransparent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Span::Material::IsTransparent </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>マテリアルが透明か </p>
-
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00106">106</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00061">61</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_abc4ee804b2e3c79090588ddcb26eef8f_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Material_a5de9ef8504ae701154b1120753c76eaf_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
-<a id="ae11ac1235816e7bb51406afe24266196" name="ae11ac1235816e7bb51406afe24266196"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae11ac1235816e7bb51406afe24266196">&#9670;&#160;</a></span>SetAlbedo()</h2>
+<a id="a407a072710c487daf1441e9a7f8c1ce7" name="a407a072710c487daf1441e9a7f8c1ce7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a407a072710c487daf1441e9a7f8c1ce7">&#9670;&#160;</a></span>SetAlbedoMap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -373,9 +666,9 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Span::Material::SetAlbedo </td>
+          <td class="memname">void Span::Material::SetAlbedoMap </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structSpan_1_1Vector3.html">Vector3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>color</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>tex</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -386,12 +679,12 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00084">84</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00122">122</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="ad9f2e51ef13aa3b5d4da98284c1c6427" name="ad9f2e51ef13aa3b5d4da98284c1c6427"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9f2e51ef13aa3b5d4da98284c1c6427">&#9670;&#160;</a></span>SetMetallic()</h2>
+<a id="acdfc7b91917bfc6f2f514c8827781fdf" name="acdfc7b91917bfc6f2f514c8827781fdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdfc7b91917bfc6f2f514c8827781fdf">&#9670;&#160;</a></span>SetAOMap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -400,9 +693,9 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Span::Material::SetMetallic </td>
+          <td class="memname">void Span::Material::SetAOMap </td>
           <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>metallic</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>tex</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -413,12 +706,12 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00086">86</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00126">126</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="ad4ecfde2490617f3c651be84ea8d5351" name="ad4ecfde2490617f3c651be84ea8d5351"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4ecfde2490617f3c651be84ea8d5351">&#9670;&#160;</a></span>SetOpacity()</h2>
+<a id="a2590203bb827afff5f3148b3a2f70cb0" name="a2590203bb827afff5f3148b3a2f70cb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2590203bb827afff5f3148b3a2f70cb0">&#9670;&#160;</a></span>SetBlendMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -427,9 +720,9 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Span::Material::SetOpacity </td>
+          <td class="memname">void Span::Material::SetBlendMode </td>
           <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>opacity</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0">BlendMode</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -440,12 +733,12 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00088">88</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00111">111</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="a454c1fcdbe56044eff6d9f3b91b0823d" name="a454c1fcdbe56044eff6d9f3b91b0823d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a454c1fcdbe56044eff6d9f3b91b0823d">&#9670;&#160;</a></span>SetRoughness()</h2>
+<a id="aa6ede86a49291cbb75f53023abde76e1" name="aa6ede86a49291cbb75f53023abde76e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6ede86a49291cbb75f53023abde76e1">&#9670;&#160;</a></span>SetCullMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -454,9 +747,9 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Span::Material::SetRoughness </td>
+          <td class="memname">void Span::Material::SetCullMode </td>
           <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>roughness</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cc">CullMode</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -467,7 +760,115 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00085">85</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00114">114</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a1fd5495592054bc2232c7a35f599ea07" name="a1fd5495592054bc2232c7a35f599ea07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fd5495592054bc2232c7a35f599ea07">&#9670;&#160;</a></span>SetEmissiveMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::Material::SetEmissiveMap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>tex</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00127">127</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ad9927d465b111f557f2a4dc79fe597f1" name="ad9927d465b111f557f2a4dc79fe597f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9927d465b111f557f2a4dc79fe597f1">&#9670;&#160;</a></span>SetMetallicMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::Material::SetMetallicMap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>tex</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00124">124</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a3ba10d9608ecf1b7807e11fe1ded9718" name="a3ba10d9608ecf1b7807e11fe1ded9718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ba10d9608ecf1b7807e11fe1ded9718">&#9670;&#160;</a></span>SetNormalMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::Material::SetNormalMap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>tex</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00123">123</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a2c864b8a7061e8b99f29de7bdc6cbbcc" name="a2c864b8a7061e8b99f29de7bdc6cbbcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c864b8a7061e8b99f29de7bdc6cbbcc">&#9670;&#160;</a></span>SetRoughnessMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::Material::SetRoughnessMap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>tex</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00125">125</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -498,38 +899,7 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p>シェーダー割り当て </p>
-
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00109">109</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="ad4a62723096dafd4efb9881f055a3c26" name="ad4a62723096dafd4efb9881f055a3c26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4a62723096dafd4efb9881f055a3c26">&#9670;&#160;</a></span>SetTexture()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Span::Material::SetTexture </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>tex</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>テクスチャを使用するかどうかのフラグを設定 </p>
-
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00097">97</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00145">145</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -548,9 +918,9 @@ Span::Material 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p>終了処理 </p>
+<p>GPUリソースの解放 </p>
 
-<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00021">21</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00038">38</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -577,7 +947,7 @@ Span::Material 連携図</div>
 <p>変更がある場合、データをGPUへ転送します。 </p>
 <dl class="section note"><dt>覚え書き</dt><dd>毎フレーム描画前に呼び出してください。 </dd></dl>
 
-<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00030">30</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8cpp_source.html">Material.cpp</a> の <a class="el" href="Material_8cpp_source.html#l00047">47</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -587,8 +957,104 @@ Span::Material 連携図</div>
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
-<a id="a07a69a39285482670c3f6da308e849b9" name="a07a69a39285482670c3f6da308e849b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07a69a39285482670c3f6da308e849b9">&#9670;&#160;</a></span>constantBuffer</h2>
+<a id="aa282ccbad6231a7fb344e91e1da1428b" name="aa282ccbad6231a7fb344e91e1da1428b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa282ccbad6231a7fb344e91e1da1428b">&#9670;&#160;</a></span>AlbedoMapGUID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t Span::Material::AlbedoMapGUID = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00137">137</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a3170eed47ab63bbb64b9af730f095852" name="a3170eed47ab63bbb64b9af730f095852"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3170eed47ab63bbb64b9af730f095852">&#9670;&#160;</a></span>AOMapGUID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t Span::Material::AOMapGUID = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00141">141</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ac9575239a42a0b3fa1ede6fce337f3e4" name="ac9575239a42a0b3fa1ede6fce337f3e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9575239a42a0b3fa1ede6fce337f3e4">&#9670;&#160;</a></span>EmissiveMapGUID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t Span::Material::EmissiveMapGUID = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00142">142</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a2cbae670575138d182b64ddce1772c9a" name="a2cbae670575138d182b64ddce1772c9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cbae670575138d182b64ddce1772c9a">&#9670;&#160;</a></span>Handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446">AssetHandle</a> Span::Material::Handle = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00149">149</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="aad353d49998a7e6353874b3d95cb9c27" name="aad353d49998a7e6353874b3d95cb9c27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad353d49998a7e6353874b3d95cb9c27">&#9670;&#160;</a></span>m_AlbedoMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a>* Span::Material::m_AlbedoMap = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00151">151</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a4669dd9e03160f215aeb72fb446eeb08" name="a4669dd9e03160f215aeb72fb446eeb08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4669dd9e03160f215aeb72fb446eeb08">&#9670;&#160;</a></span>m_AOMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a>* Span::Material::m_AOMap = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00155">155</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a4882b3f11e213bed88b7f6780cd21083" name="a4882b3f11e213bed88b7f6780cd21083"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4882b3f11e213bed88b7f6780cd21083">&#9670;&#160;</a></span>m_BlendMode</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -597,7 +1063,7 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSpan_1_1ConstantBuffer.html">ConstantBuffer</a>&lt;<a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a>&gt;* Span::Material::constantBuffer = nullptr</td>
+          <td class="memname"><a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0">BlendMode</a> Span::Material::m_BlendMode = <a class="el" href="namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0afaa90538de35640e4b1e31ccf35b6eb5">BlendMode::Opaque</a></td>
         </tr>
       </table>
   </td>
@@ -607,12 +1073,12 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00117">117</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00163">163</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="a780f39af36119c4dfcadb79eabfb1589" name="a780f39af36119c4dfcadb79eabfb1589"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a780f39af36119c4dfcadb79eabfb1589">&#9670;&#160;</a></span>data</h2>
+<a id="ab357b0863973f2d949b20680a1c29a48" name="ab357b0863973f2d949b20680a1c29a48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab357b0863973f2d949b20680a1c29a48">&#9670;&#160;</a></span>m_ConstantBuffer</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -621,7 +1087,7 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a> Span::Material::data</td>
+          <td class="memname"><a class="el" href="classSpan_1_1ConstantBuffer.html">ConstantBuffer</a>&lt;<a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a>&gt;* Span::Material::m_ConstantBuffer = nullptr</td>
         </tr>
       </table>
   </td>
@@ -631,12 +1097,12 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00118">118</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00160">160</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="abf31d8c17fe0774fe579b219beb3f61a" name="abf31d8c17fe0774fe579b219beb3f61a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf31d8c17fe0774fe579b219beb3f61a">&#9670;&#160;</a></span>isDirty</h2>
+<a id="aefe3bb1fcfffbcdfd23a56bd520aa4ce" name="aefe3bb1fcfffbcdfd23a56bd520aa4ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefe3bb1fcfffbcdfd23a56bd520aa4ce">&#9670;&#160;</a></span>m_CullMode</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -645,7 +1111,7 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Span::Material::isDirty = true</td>
+          <td class="memname"><a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cc">CullMode</a> Span::Material::m_CullMode = <a class="el" href="namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cca0557fa923dcee4d0f86b1409f5c2167f">CullMode::Back</a></td>
         </tr>
       </table>
   </td>
@@ -655,14 +1121,12 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p>データに変更があったか </p>
-
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00125">125</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00164">164</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="ae90bba1bf26fdccd3d01b29db3434529" name="ae90bba1bf26fdccd3d01b29db3434529"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae90bba1bf26fdccd3d01b29db3434529">&#9670;&#160;</a></span>isTransparent</h2>
+<a id="a3bd3735f054e44d9a51e9d30491999b0" name="a3bd3735f054e44d9a51e9d30491999b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bd3735f054e44d9a51e9d30491999b0">&#9670;&#160;</a></span>m_Data</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -671,7 +1135,7 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Span::Material::isTransparent = false</td>
+          <td class="memname"><a class="el" href="structSpan_1_1MaterialData.html">MaterialData</a> Span::Material::m_Data</td>
         </tr>
       </table>
   </td>
@@ -681,12 +1145,28 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00126">126</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00159">159</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="a22ed086b40c97544e2c2b54cd987c068" name="a22ed086b40c97544e2c2b54cd987c068"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22ed086b40c97544e2c2b54cd987c068">&#9670;&#160;</a></span>pixelShader</h2>
+<a id="aa5cb9810f5a601a6a0c9aaa1b004f7aa" name="aa5cb9810f5a601a6a0c9aaa1b004f7aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5cb9810f5a601a6a0c9aaa1b004f7aa">&#9670;&#160;</a></span>m_EmissiveMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a>* Span::Material::m_EmissiveMap = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00156">156</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a10312234646f7db5d05f02c39d6273b3" name="a10312234646f7db5d05f02c39d6273b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10312234646f7db5d05f02c39d6273b3">&#9670;&#160;</a></span>m_IsDirty</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -695,7 +1175,7 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::Material::pixelShader = nullptr</td>
+          <td class="memname">bool Span::Material::m_IsDirty = true</td>
         </tr>
       </table>
   </td>
@@ -705,12 +1185,44 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00123">123</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00161">161</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="a1dfcd44822116041f894a4a132076642" name="a1dfcd44822116041f894a4a132076642"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1dfcd44822116041f894a4a132076642">&#9670;&#160;</a></span>texture</h2>
+<a id="a83bdb9eb30445be9d663bdbef77a4ea5" name="a83bdb9eb30445be9d663bdbef77a4ea5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83bdb9eb30445be9d663bdbef77a4ea5">&#9670;&#160;</a></span>m_MetallicMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a>* Span::Material::m_MetallicMap = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00153">153</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a98587fb4c3d08037746544389e4f1d53" name="a98587fb4c3d08037746544389e4f1d53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98587fb4c3d08037746544389e4f1d53">&#9670;&#160;</a></span>m_NormalMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a>* Span::Material::m_NormalMap = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00152">152</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a888c8f7895d16ddfff0d5828e206ba23" name="a888c8f7895d16ddfff0d5828e206ba23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a888c8f7895d16ddfff0d5828e206ba23">&#9670;&#160;</a></span>m_PixelShader</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -719,7 +1231,7 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a>* Span::Material::texture = nullptr</td>
+          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::Material::m_PixelShader = nullptr</td>
         </tr>
       </table>
   </td>
@@ -729,12 +1241,28 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00119">119</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00167">167</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="a336bd3cb95f02a67f6103a950df586f8" name="a336bd3cb95f02a67f6103a950df586f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a336bd3cb95f02a67f6103a950df586f8">&#9670;&#160;</a></span>vertexShader</h2>
+<a id="add4eb3a3bd8d389f5f9d4effd5ebf83a" name="add4eb3a3bd8d389f5f9d4effd5ebf83a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add4eb3a3bd8d389f5f9d4effd5ebf83a">&#9670;&#160;</a></span>m_RoughnessMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Texture.html">Texture</a>* Span::Material::m_RoughnessMap = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00154">154</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a8e899b43bd884773ba7f551310ef649a" name="a8e899b43bd884773ba7f551310ef649a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e899b43bd884773ba7f551310ef649a">&#9670;&#160;</a></span>m_VertexShader</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -743,7 +1271,7 @@ Span::Material 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::Material::vertexShader = nullptr</td>
+          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::Material::m_VertexShader = nullptr</td>
         </tr>
       </table>
   </td>
@@ -753,7 +1281,71 @@ Span::Material 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00122">122</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00166">166</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a5d2ae29e36f47e16507bf7a73aa3b9ab" name="a5d2ae29e36f47e16507bf7a73aa3b9ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d2ae29e36f47e16507bf7a73aa3b9ab">&#9670;&#160;</a></span>MetallicMapGUID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t Span::Material::MetallicMapGUID = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00139">139</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a0fb54edc13fb7ee920f1f980cfc1bd89" name="a0fb54edc13fb7ee920f1f980cfc1bd89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fb54edc13fb7ee920f1f980cfc1bd89">&#9670;&#160;</a></span>Name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Span::Material::Name = &quot;New Material&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00108">108</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a380783706b22d443427f2314574d40f2" name="a380783706b22d443427f2314574d40f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a380783706b22d443427f2314574d40f2">&#9670;&#160;</a></span>NormalMapGUID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t Span::Material::NormalMapGUID = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00138">138</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a0a09a7c2b980068aaad9712647938209" name="a0a09a7c2b980068aaad9712647938209"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a09a7c2b980068aaad9712647938209">&#9670;&#160;</a></span>RoughnessMapGUID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t Span::Material::RoughnessMapGUID = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00140">140</a> 行目に定義があります。</p>
 
 </div>
 </div>

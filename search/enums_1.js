@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['key_0',['Key',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8f',1,'Span']]]
+  ['blendmode_0',['BlendMode',['../namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0',1,'Span']]]
 ];

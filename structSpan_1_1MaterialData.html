@@ -93,7 +93,7 @@ $(function(){initNavTree('structSpan_1_1MaterialData.html','','structSpan_1_1Mat
 </div><!--header-->
 <div class="contents">
 
-<p>📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ構造体。  
+<p>📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ (16バイト協会アライメント厳守)  
  <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="Material_8h_source.html">Material.h</a>&gt;</code></p>
@@ -105,58 +105,203 @@ Span::MaterialData 連携図</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
-<tr class="memitem:aa361f1922d18999eb46092a1b8926806" id="r_aa361f1922d18999eb46092a1b8926806"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector3.html">Vector3</a>&#160;</td><td class="memItemRight"><a class="el" href="#aa361f1922d18999eb46092a1b8926806">Albedo</a> = { 1.0f, 1.0f, 1.0f }</td></tr>
-<tr class="memdesc:aa361f1922d18999eb46092a1b8926806"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベースカラー  <br /></td></tr>
+<tr class="memitem:ad4283c7c5adfee07bf93a25ebe3c4188" id="r_ad4283c7c5adfee07bf93a25ebe3c4188"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector4.html">Vector4</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad4283c7c5adfee07bf93a25ebe3c4188">AlbedoColor</a> = { 1.0f, 1.0f, 1.0f, 1.0f }</td></tr>
+<tr class="memdesc:ad4283c7c5adfee07bf93a25ebe3c4188"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベースカラーと不透明度  <br /></td></tr>
+<tr class="memitem:a5a4e5da46915dcd36f8b73205fcc2982" id="r_a5a4e5da46915dcd36f8b73205fcc2982"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector3.html">Vector3</a>&#160;</td><td class="memItemRight"><a class="el" href="#a5a4e5da46915dcd36f8b73205fcc2982">EmissiveColor</a> = { 0.0f, 0.0f, 0.0f }</td></tr>
+<tr class="memdesc:a5a4e5da46915dcd36f8b73205fcc2982"><td class="mdescLeft">&#160;</td><td class="mdescRight">発光カラー  <br /></td></tr>
 <tr class="memitem:a2ffeb1ab4487a6724284c6cf51e675ab" id="r_a2ffeb1ab4487a6724284c6cf51e675ab"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a2ffeb1ab4487a6724284c6cf51e675ab">Roughness</a> = 0.5f</td></tr>
-<tr class="memdesc:a2ffeb1ab4487a6724284c6cf51e675ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">粗さ (0 = ツルツル, 1 = ザラザラ)  <br /></td></tr>
+<tr class="memdesc:a2ffeb1ab4487a6724284c6cf51e675ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">表面の粗さ  <br /></td></tr>
 <tr class="memitem:a0e80c9957e5059ae569d207b6585d4c3" id="r_a0e80c9957e5059ae569d207b6585d4c3"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a0e80c9957e5059ae569d207b6585d4c3">Metallic</a> = 0.0f</td></tr>
-<tr class="memdesc:a0e80c9957e5059ae569d207b6585d4c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">金属度 (0 = 非金属, 1 = 金属)  <br /></td></tr>
-<tr class="memitem:acbd84907242393aecc097a33aa4d91f4" id="r_acbd84907242393aecc097a33aa4d91f4"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#acbd84907242393aecc097a33aa4d91f4">Opacity</a> = 1.0f</td></tr>
-<tr class="memdesc:acbd84907242393aecc097a33aa4d91f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">透明度 (1 = 不透明, 0 = 透明)  <br /></td></tr>
-<tr class="memitem:a9d1bff25941d1bddd389c32dc8c44f1d" id="r_a9d1bff25941d1bddd389c32dc8c44f1d"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a9d1bff25941d1bddd389c32dc8c44f1d">useTexture</a> = 0.0f</td></tr>
-<tr class="memdesc:a9d1bff25941d1bddd389c32dc8c44f1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">1.0fならテクスチャ使用  <br /></td></tr>
-<tr class="memitem:a9ebedd6958cdc9001e8d07009d1f1143" id="r_a9ebedd6958cdc9001e8d07009d1f1143"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a9ebedd6958cdc9001e8d07009d1f1143">Padding</a></td></tr>
-<tr class="memdesc:a9ebedd6958cdc9001e8d07009d1f1143"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト数合わせ  <br /></td></tr>
+<tr class="memdesc:a0e80c9957e5059ae569d207b6585d4c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">金属度  <br /></td></tr>
+<tr class="memitem:a86a241720a499a79c7eb60f420ec1dd9" id="r_a86a241720a499a79c7eb60f420ec1dd9"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a86a241720a499a79c7eb60f420ec1dd9">AO</a> = 1.0f</td></tr>
+<tr class="memdesc:a86a241720a499a79c7eb60f420ec1dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">環境遮蔽(アンビエントオクルーション)強度  <br /></td></tr>
+<tr class="memitem:a2c681cdc9093bbd9eff6605e2c92ef3c" id="r_a2c681cdc9093bbd9eff6605e2c92ef3c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a2c681cdc9093bbd9eff6605e2c92ef3c">Cutoff</a> = 0.5f</td></tr>
+<tr class="memdesc:a2c681cdc9093bbd9eff6605e2c92ef3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cutoutモード時のアルファ閾値  <br /></td></tr>
+<tr class="memitem:a05e893df71b73574f17e899b79b7780e" id="r_a05e893df71b73574f17e899b79b7780e"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a05e893df71b73574f17e899b79b7780e">Padding1</a></td></tr>
+<tr class="memdesc:a05e893df71b73574f17e899b79b7780e"><td class="mdescLeft">&#160;</td><td class="mdescRight">アライメント用  <br /></td></tr>
+<tr class="memitem:a0ab1fe5c34324fa7b9073274be5a95b2" id="r_a0ab1fe5c34324fa7b9073274be5a95b2"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a0ab1fe5c34324fa7b9073274be5a95b2">Tiling</a> = { 1.0f, 1.0f }</td></tr>
+<tr class="memdesc:a0ab1fe5c34324fa7b9073274be5a95b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">UVタイリング  <br /></td></tr>
+<tr class="memitem:af44bf5f0aa894ca189436330c1eaefa0" id="r_af44bf5f0aa894ca189436330c1eaefa0"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#af44bf5f0aa894ca189436330c1eaefa0">Offset</a> = { 0.0f, 0.0f }</td></tr>
+<tr class="memdesc:af44bf5f0aa894ca189436330c1eaefa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">UVオフセット  <br /></td></tr>
+<tr class="memitem:a51097e5f341f40a9a69726c8e8fa9e42" id="r_a51097e5f341f40a9a69726c8e8fa9e42"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a51097e5f341f40a9a69726c8e8fa9e42">HasAlbedoMap</a> = 0</td></tr>
+<tr class="memitem:ad7095d9558059e5e4bb67549f97f87fd" id="r_ad7095d9558059e5e4bb67549f97f87fd"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ad7095d9558059e5e4bb67549f97f87fd">HasNormalMap</a> = 0</td></tr>
+<tr class="memitem:a60e5ad14d668c1f4f27277b1ce7472f7" id="r_a60e5ad14d668c1f4f27277b1ce7472f7"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a60e5ad14d668c1f4f27277b1ce7472f7">HasMetallicMap</a> = 0</td></tr>
+<tr class="memitem:abd58f6355e25672763ee56d30c5de4f1" id="r_abd58f6355e25672763ee56d30c5de4f1"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#abd58f6355e25672763ee56d30c5de4f1">HasRoughnessMap</a> = 0</td></tr>
+<tr class="memitem:a93daea48372b1ae72d8d19ceba5a4cc8" id="r_a93daea48372b1ae72d8d19ceba5a4cc8"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a93daea48372b1ae72d8d19ceba5a4cc8">HasAOMap</a> = 0</td></tr>
+<tr class="memitem:ab99623ee77529221363553bd8a7409d6" id="r_ab99623ee77529221363553bd8a7409d6"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ab99623ee77529221363553bd8a7409d6">HasEmissiveMap</a> = 0</td></tr>
+<tr class="memitem:a4db8dca4ea8c0dc1dceed33c4e1e6412" id="r_a4db8dca4ea8c0dc1dceed33c4e1e6412"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a4db8dca4ea8c0dc1dceed33c4e1e6412">Padding2</a> [2]</td></tr>
+<tr class="memdesc:a4db8dca4ea8c0dc1dceed33c4e1e6412"><td class="mdescLeft">&#160;</td><td class="mdescRight">アライメント用  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
-<div class="textblock"><p>📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ構造体。 </p>
-<p>HLSLの <span class="tt">cbuffer</span> は 16バイト(float4) 境界でパッキングされるため、 C++側でもパディングを入れてサイズを合わせる必要があります。</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md134"></a>
-📏 Memory Layout (16-byte alignment)</h3>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadLeft">Offset  </th><th class="markdownTableHeadLeft">Size  </th><th class="markdownTableHeadLeft">Field  </th><th class="markdownTableHeadLeft">Description  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft">0  </td><td class="markdownTableBodyLeft">12  </td><td class="markdownTableBodyLeft"><b>Albedo</b>  </td><td class="markdownTableBodyLeft">ベースカラー (RGB)  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft">12  </td><td class="markdownTableBodyLeft">4  </td><td class="markdownTableBodyLeft"><b>Roughness</b>  </td><td class="markdownTableBodyLeft">粗さ  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft">16  </td><td class="markdownTableBodyLeft">4  </td><td class="markdownTableBodyLeft"><b>Metallic</b>  </td><td class="markdownTableBodyLeft">金属度  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft">20  </td><td class="markdownTableBodyLeft">4  </td><td class="markdownTableBodyLeft"><b>Opacity</b>  </td><td class="markdownTableBodyLeft">不透明度  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft">24  </td><td class="markdownTableBodyLeft">4  </td><td class="markdownTableBodyLeft"><b>useTexture</b>  </td><td class="markdownTableBodyLeft">テクスチャ使用フラグ (boolの代わりにfloat使用)  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft">28  </td><td class="markdownTableBodyLeft">4  </td><td class="markdownTableBodyLeft"><em>Padding</em>  </td><td class="markdownTableBodyLeft">アライメント調整用  </td></tr>
-</table>
+<div class="textblock"><p>📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ (16バイト協会アライメント厳守) </p>
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00039">39</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00032">32</a> 行目に定義があります。</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
-<a id="aa361f1922d18999eb46092a1b8926806" name="aa361f1922d18999eb46092a1b8926806"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa361f1922d18999eb46092a1b8926806">&#9670;&#160;</a></span>Albedo</h2>
+<a id="ad4283c7c5adfee07bf93a25ebe3c4188" name="ad4283c7c5adfee07bf93a25ebe3c4188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4283c7c5adfee07bf93a25ebe3c4188">&#9670;&#160;</a></span>AlbedoColor</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structSpan_1_1Vector3.html">Vector3</a> Span::MaterialData::Albedo = { 1.0f, 1.0f, 1.0f }</td>
+          <td class="memname"><a class="el" href="structSpan_1_1Vector4.html">Vector4</a> Span::MaterialData::AlbedoColor = { 1.0f, 1.0f, 1.0f, 1.0f }</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>ベースカラー </p>
+<p>ベースカラーと不透明度 </p>
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00041">41</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00034">34</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a86a241720a499a79c7eb60f420ec1dd9" name="a86a241720a499a79c7eb60f420ec1dd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86a241720a499a79c7eb60f420ec1dd9">&#9670;&#160;</a></span>AO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::MaterialData::AO = 1.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>環境遮蔽(アンビエントオクルーション)強度 </p>
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00039">39</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a2c681cdc9093bbd9eff6605e2c92ef3c" name="a2c681cdc9093bbd9eff6605e2c92ef3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c681cdc9093bbd9eff6605e2c92ef3c">&#9670;&#160;</a></span>Cutoff</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::MaterialData::Cutoff = 0.5f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cutoutモード時のアルファ閾値 </p>
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00040">40</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a5a4e5da46915dcd36f8b73205fcc2982" name="a5a4e5da46915dcd36f8b73205fcc2982"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a4e5da46915dcd36f8b73205fcc2982">&#9670;&#160;</a></span>EmissiveColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSpan_1_1Vector3.html">Vector3</a> Span::MaterialData::EmissiveColor = { 0.0f, 0.0f, 0.0f }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>発光カラー </p>
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00035">35</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a51097e5f341f40a9a69726c8e8fa9e42" name="a51097e5f341f40a9a69726c8e8fa9e42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51097e5f341f40a9a69726c8e8fa9e42">&#9670;&#160;</a></span>HasAlbedoMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Span::MaterialData::HasAlbedoMap = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00047">47</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a93daea48372b1ae72d8d19ceba5a4cc8" name="a93daea48372b1ae72d8d19ceba5a4cc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93daea48372b1ae72d8d19ceba5a4cc8">&#9670;&#160;</a></span>HasAOMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Span::MaterialData::HasAOMap = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00052">52</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ab99623ee77529221363553bd8a7409d6" name="ab99623ee77529221363553bd8a7409d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab99623ee77529221363553bd8a7409d6">&#9670;&#160;</a></span>HasEmissiveMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Span::MaterialData::HasEmissiveMap = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00053">53</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a60e5ad14d668c1f4f27277b1ce7472f7" name="a60e5ad14d668c1f4f27277b1ce7472f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60e5ad14d668c1f4f27277b1ce7472f7">&#9670;&#160;</a></span>HasMetallicMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Span::MaterialData::HasMetallicMap = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00049">49</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ad7095d9558059e5e4bb67549f97f87fd" name="ad7095d9558059e5e4bb67549f97f87fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7095d9558059e5e4bb67549f97f87fd">&#9670;&#160;</a></span>HasNormalMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Span::MaterialData::HasNormalMap = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00048">48</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="abd58f6355e25672763ee56d30c5de4f1" name="abd58f6355e25672763ee56d30c5de4f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd58f6355e25672763ee56d30c5de4f1">&#9670;&#160;</a></span>HasRoughnessMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Span::MaterialData::HasRoughnessMap = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00050">50</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -172,45 +317,63 @@ Span::MaterialData 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p>金属度 (0 = 非金属, 1 = 金属) </p>
+<p>金属度 </p>
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00038">38</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="af44bf5f0aa894ca189436330c1eaefa0" name="af44bf5f0aa894ca189436330c1eaefa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af44bf5f0aa894ca189436330c1eaefa0">&#9670;&#160;</a></span>Offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a> Span::MaterialData::Offset = { 0.0f, 0.0f }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>UVオフセット </p>
 
 <p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00044">44</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="acbd84907242393aecc097a33aa4d91f4" name="acbd84907242393aecc097a33aa4d91f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbd84907242393aecc097a33aa4d91f4">&#9670;&#160;</a></span>Opacity</h2>
+<a id="a05e893df71b73574f17e899b79b7780e" name="a05e893df71b73574f17e899b79b7780e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05e893df71b73574f17e899b79b7780e">&#9670;&#160;</a></span>Padding1</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Span::MaterialData::Opacity = 1.0f</td>
+          <td class="memname">float Span::MaterialData::Padding1</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>透明度 (1 = 不透明, 0 = 透明) </p>
+<p>アライメント用 </p>
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00045">45</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00041">41</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="a9ebedd6958cdc9001e8d07009d1f1143" name="a9ebedd6958cdc9001e8d07009d1f1143"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ebedd6958cdc9001e8d07009d1f1143">&#9670;&#160;</a></span>Padding</h2>
+<a id="a4db8dca4ea8c0dc1dceed33c4e1e6412" name="a4db8dca4ea8c0dc1dceed33c4e1e6412"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4db8dca4ea8c0dc1dceed33c4e1e6412">&#9670;&#160;</a></span>Padding2</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Span::MaterialData::Padding</td>
+          <td class="memname">int Span::MaterialData::Padding2[2]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>バイト数合わせ </p>
+<p>アライメント用 </p>
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00047">47</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00054">54</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -226,27 +389,27 @@ Span::MaterialData 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p>粗さ (0 = ツルツル, 1 = ザラザラ) </p>
+<p>表面の粗さ </p>
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00042">42</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00036">36</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="a9d1bff25941d1bddd389c32dc8c44f1d" name="a9d1bff25941d1bddd389c32dc8c44f1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d1bff25941d1bddd389c32dc8c44f1d">&#9670;&#160;</a></span>useTexture</h2>
+<a id="a0ab1fe5c34324fa7b9073274be5a95b2" name="a0ab1fe5c34324fa7b9073274be5a95b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ab1fe5c34324fa7b9073274be5a95b2">&#9670;&#160;</a></span>Tiling</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Span::MaterialData::useTexture = 0.0f</td>
+          <td class="memname"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a> Span::MaterialData::Tiling = { 1.0f, 1.0f }</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>1.0fならテクスチャ使用 </p>
+<p>UVタイリング </p>
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00046">46</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00043">43</a> 行目に定義があります。</p>
 
 </div>
 </div>

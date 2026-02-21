@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['メモリフロー_20memory_20flow_0',['🔄 メモリフロー (Memory Flow)',['../classSpan_1_1World.html#autotoc_md112',1,'']]],
-  ['メモリレイアウト_20chunk_20memory_20layout_1',['🧠 メモリレイアウト (Chunk Memory Layout)',['../classSpan_1_1Archetype.html#autotoc_md90',1,'']]],
-  ['メモリ構造_20memory_20layout_2',['🧠 メモリ構造 (Memory Layout)',['../structSpan_1_1Chunk.html#autotoc_md95',1,'']]]
+  ['ライフサイクル_0',['ライフサイクル',['../classSpan_1_1EntityManager.html#autotoc_md105',1,'🔄 ライフサイクル'],['../classSpan_1_1System.html#autotoc_md108',1,'🔄 ライフサイクル']]]
 ];

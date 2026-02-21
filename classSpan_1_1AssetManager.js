@@ -5,6 +5,8 @@ var classSpan_1_1AssetManager =
     [ "Get", "classSpan_1_1AssetManager.html#a8b80e59ea529e23c8c8f5280d136fbf0", null ],
     [ "GetDefaultMaterial", "classSpan_1_1AssetManager.html#a98a270b7faf1990407f7082143e437d6", null ],
     [ "GetEditorThumbnail", "classSpan_1_1AssetManager.html#ac48434b5c664ed46069ac3d95aadfefb", null ],
+    [ "GetMaterial", "classSpan_1_1AssetManager.html#afea5c55a143ce55fd19b8fedc4e578f5", null ],
+    [ "GetMaterial", "classSpan_1_1AssetManager.html#a6d21e48b9d53035bbd83c5ae91ec083b", null ],
     [ "GetMesh", "classSpan_1_1AssetManager.html#a8013680152c26b9e11618a2bb207eff0", null ],
     [ "GetMesh", "classSpan_1_1AssetManager.html#ade6d0e8b7b3467e28cfd5af72896c89b", null ],
     [ "GetTexture", "classSpan_1_1AssetManager.html#a8ad360aa2a6d909bfafc96484d426a0f", null ],
@@ -17,7 +19,8 @@ var classSpan_1_1AssetManager =
     [ "m_DefaultPS", "classSpan_1_1AssetManager.html#ad6f877c76b663dd9a32a96a17591c4b8", null ],
     [ "m_DefaultVS", "classSpan_1_1AssetManager.html#a1c4e55ff549fa45b42879f4a9e79c6e3", null ],
     [ "m_Device", "classSpan_1_1AssetManager.html#a49bc31a549ed1b0d29e6b415e6d6929c", null ],
+    [ "m_MaterialCache", "classSpan_1_1AssetManager.html#a657a4b5dda27acd497f2a51b0bee9aa5", null ],
     [ "m_MeshCache", "classSpan_1_1AssetManager.html#aaeebb63f3f2f7c39fcc5e316d8fd9626", null ],
-    [ "m_Mutex", "classSpan_1_1AssetManager.html#a1ff7c3f2bd2fd890a93b8fdb344738fa", null ],
+    [ "m_Mutex", "classSpan_1_1AssetManager.html#a5ebdc903db9faa99d3ef94d333ed2e0a", null ],
     [ "m_TextureCache", "classSpan_1_1AssetManager.html#a0c3010b269dd61f53b30408b538ff59e", null ]
 ];

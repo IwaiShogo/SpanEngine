@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🖱_20操作_0',['🖱 操作',['../classSpan_1_1SceneViewPanel.html#autotoc_md38',1,'']]]
+  ['🖼_20swap_20chain_20double_20buffering_0',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md121',1,'']]]
 ];

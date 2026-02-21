@@ -140,6 +140,16 @@ var namespaceSpan =
       [ "LeftTrigger", "namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803dac412c6d19da2afaf2dc8891f5bcb8901", null ],
       [ "RightTrigger", "namespaceSpan.html#a51b25b4cd8ab95471e6318a07609803da837ed99a897594cef0d37403a18f0df0", null ]
     ] ],
+    [ "BlendMode", "namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0", [
+      [ "Opaque", "namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0afaa90538de35640e4b1e31ccf35b6eb5", null ],
+      [ "Transparent", "namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0a3d971943089a3388c01fb297a32d9ba7", null ],
+      [ "Cutout", "namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0a330be5af6c8bafc8ce5c74fa208c5015", null ]
+    ] ],
+    [ "CullMode", "namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cc", [
+      [ "Back", "namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cca0557fa923dcee4d0f86b1409f5c2167f", null ],
+      [ "Front", "namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cca5835bab1ade0060909e31a06af2e2cde", null ],
+      [ "None", "namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cca6adf97f83acf6453d4a6a4b1070f3754", null ]
+    ] ],
     [ "Key", "namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8f", [
       [ "None", "namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "MouseLeft", "namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fabce0118bd8f5bf5e7f849dff486de57f", null ],
