@@ -82,6 +82,13 @@ namespace Span
 		uint32 GetWidth() const { return width; }
 		uint32 GetHeight() const { return height; }
 
+		// ImGui / Shader Access
+		/**
+		 * @brief	ImGui にテクスチャとして渡すための GPU ハンドルを取得します。
+		 * @return	void* にキャストされた GPU ディスクリプタハンドル
+		 */
+		void* GetImGuiTextureID() const;
+
 	private:
 		// ビューの作成
 		void CreateViews(ID3D12Device* device);

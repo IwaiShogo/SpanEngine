@@ -491,6 +491,24 @@ namespace Span
 		}
 
 		ImGui::Spacing();
+
+		// プレビューのレンダリングと表示
+		Renderer& renderer = Application::Get().GetRenderer();
+		m_MaterialPreviewer.Initialize(renderer.GetDevice());
+		m_MaterialPreviewer.Render(renderer.GetCommandList(), &renderer, editMaterial.get());
+
+		// ImGui 上にプレビューテクスチャを中央ぞろえで描画
+		if (void* texID = m_MaterialPreviewer.GetTextureID())
+		{
+			float windowWidth = ImGui::GetWindowSize().x;
+			float imageSize = 256.0f;
+			ImGui::SetCursorPosX((windowWidth - imageSize) * 0.5f);
+
+			// 角を少し丸くする
+			ImGui::Image((ImTextureID)texID, ImVec2(imageSize, imageSize), ImVec2(0, 0), ImVec2(1, 1), ImVec4(1, 1, 1, 1), ImVec4(0.3f, 0.3f, 0.3f, 1.0f));
+			ImGui::Spacing();
+		}
+
 		ImGui::SeparatorText("Render Settings");
 
 		// --- レンダーステート ---

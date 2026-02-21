@@ -77,6 +77,9 @@ namespace Span
 
 		// 📊 Getters
 		// ============================================================
+		GraphicsContext* GetContext() const { return context; }
+		Matrix4x4 GetViewMatrix() const { return viewMatrix; }
+		Matrix4x4 GetProjectionMatrix() const { return projectionMatrix; }
 
 		ID3D12GraphicsCommandList* GetCommandList() const { return commandList; }
 		ID3D12Device* GetDevice() const { return context ? context->GetDevice() : nullptr; }

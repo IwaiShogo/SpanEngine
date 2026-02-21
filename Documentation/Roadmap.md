@@ -3,85 +3,88 @@
 ## 🏁 Phase 1: エディタ基盤とデータ永続化 (Foundation & Serialization)
 **目標:** 「アセット管理・設定・保存・復帰」の完全なサイクルを確立し、エディタとしての信頼性を確保する。
 
-### 1. Project Browser Polish (Current Focus)
-- [x] **Asset Inspector:**
-  - Project Browserでファイルを選択した際、Inspectorパネルにその詳細情報を表示する。
-  - テクスチャ解像度、モデルの頂点数、GUIDなどの確認。
-- [x] **Directory Watcher (Hot Reload):**
-  - エクスプローラー側でのファイル追加・削除・変更をリアルタイムに検知し、Project Browserを自動更新する。
+### 1. Project Browser & Asset System
+- [x] **Asset Inspector:** アセットの詳細情報（GUID、設定など）の表示。
+- [x] **Directory Watcher (Hot Reload):** 外部でのファイル変更を検知し自動更新。
+- [x] **Asset Manager:** キャッシュ機構、GUIDベースの参照解決の実装。
 
 ### 2. Global Managers (Tag & Layer)
-- [x] **Tag Manager:**
-  - ゲーム内で使用するタグ（Player, Enemy, UIなど）を文字列リストとして一元管理するシステム。
-  - Inspectorでプルダウン選択できるようにする。
-- [x] **Layer Manager:**
-  - 物理衝突やレンダリング可視性を制御するためのレイヤー定義（Default, Transparent, UI, Waterなど）。
-  - 衝突マトリクス（どのレイヤーとどのレイヤーが衝突するか）の設定UI。
+- [x] **Tag Manager:** タグの文字列管理とInspectorでの割り当て。
+- [x] **Layer Manager:** 物理・描画用のレイヤー定義と衝突マトリクスUI。
 
-### 3. Scene Serialization (Scene System)
-- [ ] **Scene Format (.span):**
-  - 現在のメモリ内Entityリストだけでなく、**「シーン全体の設定」**をJSON/YAML形式で保存・読み込み可能にする。
-  - **保存対象:**
-    - **Entity Graph:** 全EntityとComponentのパラメータ、親子関係。
-    - **Scene Settings:** 環境光設定、スカイボックス参照、Ambient Light設定。
-    - **Definitions:** そのシーンで使用されているローカルなレイヤー設定やタグ情報。
-    - **Lightmap References:** ベイクされたライトマップへの参照データ。
-- [ ] **Scene Hierarchy Panel:**
-  - シーン間移動、複数シーンの加算ロード（Additive Load）への対応準備。
-
-### 4. Material Asset System
-- [ ] **Material Editor (.mat):**
-  - コードでの生成から脱却し、アセットとしてマテリアルを定義する。
-  - **保存データ:**
-    - **Shader Reference:** 使用するシェーダーパス。
-    - **Texture Slots:** Albedo, Normal, Roughness, Metallic, AO などのテクスチャ参照(GUID)。
-    - **Parameters:** 色(Color), スカラー値(Float), ベクトル値(Vector4) のパラメータ群。
-    - **Render States:** カリングモード(Front/Back/None)、ブレンドモード(Opaque/Transparent)、深度テスト設定。
-  - Inspector上で`.mat`ファイルを編集し、MeshRendererにドラッグ＆ドロップで即座に反映させる。
+### 3. Material Asset System
+- [x] **Material Editor (.mat):** アセットとしてのマテリアル定義。
+- [x] **PBR Shader Foundation:** HLSLでのCook-Torrance BRDF、6テクスチャスロット対応。
+- [ ] **Asset Preview Pipeline:** Inspector内でマテリアルやモデルの球体/サムネイルをリアルタイム描画するオフスクリーンレンダリング。
 
 ---
 
-## 🎮 Phase 2: ゲームプレイ機能の実装 (Gameplay Foundation)
+## 💡 Phase 2: 高度なライティングと環境構築 (Lighting & Environment)
+**目標:** PBRマテリアルのポテンシャルを100%引き出し、シーンの「画作り」を完成させる。
+
+### 1. Environment & IBL (Image-Based Lighting)
+- [ ] **Skybox System:** HDRIテクスチャを用いたスカイボックスの描画。
+- [ ] **IBL Pipeline:** - 環境マップから Irradiance Map (拡散反射) と Pre-filter Map (鏡面反射)、BRDF LUTの事前計算(コンピュートシェーダー)。
+  - PBRシェーダーに環境光を統合し、金属(Metallic)の完全な反射を実現。
+
+### 2. Dynamic Lighting System
+- [ ] **Light Components:**
+  - `DirectionalLight`: 太陽光。CSM (Cascaded Shadow Maps) による広範囲シャドウ。
+  - `PointLight`: 全方位光源。距離減衰とOmnidirectional Shadow Map。
+  - `SpotLight`: 円錐状光源。角度、減衰設定。
+- [ ] **Forward+/Deferred Rendering:** 多数のライトを効率的に処理するためのレンダリングパスの構築。
+
+---
+
+## 📦 Phase 3: シーン管理と世界構築 (Scene Management)
+**目標:** 作成した環境とエンティティ群を「一つの世界」として完全に保存・復元・遷移させる。
+
+### 1. Advanced Scene Serialization
+- [ ] **Scene Format (.span) の完全化:** 以下の要素を全てJSON/YAMLでシリアライズする。
+  - **[Meta]**: フォーマットバージョン、シーン名、GUID。
+  - **[Environment Settings]**: 
+    - SkyboxマテリアルGUID、Ambient Color設定、Global Fog（霧）設定。
+  - **[Render Settings]**: 
+    - メインカメラのEntity GUID、Post-Processing Profile GUID。
+  - **[Entities]**: 
+    - 全EntityのID、親子関係(Relationship)、全Componentデータ（LightやCamera設定含む）。
+  - **[Definitions]**:
+    - そのシーンローカルで使用するタグ・レイヤー設定（※将来的にProject Settingsへ移行も検討）。
+
+### 2. Scene Management System
+- [ ] **Scene Runtime Operations:**
+  - `LoadScene(path)`: 現在のシーンを破棄し、新しいシーンをロードする。
+  - `LoadSceneAdditive(path)`: 現在のシーンを維持したまま、別シーンを重ねてロードする（オープンワールドやUIオーバーレイ用）。
+- [ ] **Scene Hierarchy Panel Polish:**
+  - エンティティのドラッグ＆ドロップによる親子関係構築。
+  - シーン間のエンティティ移動。
+
+---
+
+## 🎮 Phase 4: ゲームプレイ機能の実装 (Gameplay Foundation)
 **目標:** 「静的なシーン」を「インタラクティブなゲーム」に変えるための動的な仕組みを導入する。
 
 ### 1. Physics Integration
 - [ ] **Physics Engine:** PhysX または Jolt Physics の統合。
-- [ ] **Components:**
-  - `RigidBody`: 物理挙動（重力、速度）の付与。
-  - `Colliders`: Box, Sphere, Capsule, MeshCollider の実装。
-- [ ] **Simulation:** FixedUpdateループの実装と、物理世界のシミュレーション同期。
+- [ ] **Components:** `RigidBody` (重力、速度)、`BoxCollider`, `SphereCollider`, `MeshCollider`。
+- [ ] **Simulation:** FixedUpdateループの実装と、物理世界のTransform同期。
 
 ### 2. Scripting System
-- [ ] **Native Scripting (C++ Hot Reload):**
-  - ゲームロジックをDLLとして分離し、エディタを再起動せずにロジックを更新・リロードする仕組み。
-- [ ] **Managed Scripting (C# - Optional):**
-  - Mono または .NET Core をホスティングし、Unityライクなスクリプト環境を提供する。
+- [ ] **Native Scripting (C++ Hot Reload):** ゲームロジックをDLLとして分離し、エディタを再起動せずにロジックを更新。
+- [ ] **Managed Scripting (C# - Optional):** Mono または .NET Core をホスティング。
 
 ### 3. Input System
-- [ ] **Input Action Mapping:**
-  - キーボードやゲームパッドの生の入力を、「Jump」「Fire」などの抽象的なアクションにマッピングするシステム。
+- [ ] **Input Action Mapping:** キーボードやパッドの生入力を「Jump」「Fire」などのアクションにマッピングするシステム。
 
 ---
 
-## 🎨 Phase 3: グラフィックス品質と製品化 (Graphics & Polish)
-**目標:** 商用エンジンに比肩するレンダリング品質と、ゲームとしての出力機能を備える。
+## 🎬 Phase 5: グラフィックス品質と製品化 (Graphics & Polish)
+**目標:** 商用エンジンに比肩する最終品質と、ゲームとしての出力機能を備える。
 
-### 1. Advanced Lighting System
-- [ ] **Dynamic Lights:**
-  - **Directional Light:** 太陽光シミュレーション。CSM (Cascaded Shadow Maps) による広範囲シャドウ。
-  - **Point Light:** 全方位光源。減衰（Attenuation）とシャドウマップのサポート。
-  - **Spot Light:** 円錐状光源。角度、範囲、ソフトエッジの設定。
-  - **Area Light:** 矩形光源（リアルタイム近似またはベイク用）。
-- [ ] **Light Baking (Global Illumination):**
-  - **Lightmapper:** 静的オブジェクトのライティングを計算し、ライトマップテクスチャに焼き付ける機能（UV2展開含む）。
-  - **Light Probes:** ライトマップを持たない動的オブジェクトに対して、ベイクされた間接光情報を適用する仕組み。
-  - **Reflection Probes:** 周囲の環境をキャプチャし、金属表面の反射をリアルにする。
+### 1. Post Processing Stack
+- [ ] **Effects:** Bloom, Tone Mapping (ACES), Color Grading, Vignette, Depth of Field。
+- [ ] **PostProcess Volume:** シーンの特定領域に入るとポストエフェクトが滑らかに切り替わる仕組み。
 
-### 2. Advanced Rendering (PBR & PostFx)
-- [ ] **PBR Pipeline:** 完全な物理ベースレンダリング（Albedo, Normal, Metallic, Roughness, AO）の実装。
-- [ ] **Image Based Lighting (IBL):** HDRIスカイボックスからの環境光サンプリング。
-- [ ] **Post Processing:** Bloom, Tone Mapping (ACES), Color Grading, Vignette, Depth of Field。
-
-### 3. Build System
+### 2. Build System
 - [ ] **Standalone Build:**
-  - エディタ機能を除外し、ゲーム実行に必要なランタイムとアセットのみをパッケージ化した `.exe` を出力する機能。
+  - エディタ機能を除外し、ゲーム実行に必要なランタイムとアセット（パック化）のみを `.exe` として出力するパッケージング機能。

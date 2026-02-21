@@ -13,6 +13,7 @@
 #include "Editor/SelectionManager.h"
 #include "Editor/Panels/EditorPanel.h"
 #include "ECS/Kernel/Entity.h"
+#include "MaterialPreviewer.h"
 
 namespace Span
 {
@@ -74,6 +75,8 @@ namespace Span
 		SelectionType m_LockedType = SelectionType::None;
 		std::vector<std::filesystem::path> m_LockedAssets;
 		Entity m_LockedEntity = Entity::Null;
+
+		MaterialPreviewer m_MaterialPreviewer;
 	};
 }
 
