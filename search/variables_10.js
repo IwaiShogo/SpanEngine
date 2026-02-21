@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['padding1_0',['Padding1',['../structSpan_1_1MaterialData.html#a05e893df71b73574f17e899b79b7780e',1,'Span::MaterialData']]],
-  ['padding2_1',['Padding2',['../structSpan_1_1MaterialData.html#a4db8dca4ea8c0dc1dceed33c4e1e6412',1,'Span::MaterialData']]],
+  ['padding1_0',['Padding1',['../structSpan_1_1GlobalLightData.html#a9515a0ffe7b25fc2e5f5259e9a6e1592',1,'Span::GlobalLightData::Padding1'],['../structSpan_1_1MaterialData.html#a05e893df71b73574f17e899b79b7780e',1,'Span::MaterialData::Padding1']]],
+  ['padding2_1',['Padding2',['../structSpan_1_1GlobalLightData.html#a27b02e5804c7ded9b5a0d0f6361c868e',1,'Span::GlobalLightData::Padding2'],['../structSpan_1_1MaterialData.html#a4db8dca4ea8c0dc1dceed33c4e1e6412',1,'Span::MaterialData::Padding2']]],
   ['panels_2',['panels',['../classSpan_1_1GuiManager.html#a2958abd2a5c96e0010580233350a8a38',1,'Span::GuiManager']]],
   ['parent_3',['Parent',['../structSpan_1_1Relationship.html#a1a1b2f5afd78543f84bdc2993f69201d',1,'Span::Relationship']]],
   ['pi_4',['PI',['../namespaceSpan.html#af4fc42a9402477b7586237d036530a3d',1,'Span']]],

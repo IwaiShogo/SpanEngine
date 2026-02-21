@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Components/Graphics/DirectionalLight.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('DirectionalLight_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">DirectionalLight.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="DirectionalLight_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    DirectionalLight.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   シーン全体に降り注ぐ平行光源 (太陽光) のコンポーネント。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="SpanMath_8h.html">Core/Math/SpanMath.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="SpanReflection_8h.html">Runtime/Reflection/SpanReflection.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * @struct  DirectionalLight</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     * @brief   ☀️ 距離による減衰の無い平行光源 (Directional Light) コンポーネント。</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">     * @details</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">     * Entity が持つ Transform コンポーネントの Rotation (回転) を「光の向き」として使用します。</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">     * 基本的にシーン内に1つだけアクティブなものが存在することを想定します。</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structSpan_1_1DirectionalLight.html">   27</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="structSpan_1_1DirectionalLight.html#aee0b8bd7f0be9be82285c528f54475c7">DirectionalLight</a></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structSpan_1_1DirectionalLight.html#aa27501980267de73a0af33fa09d29fc3">   29</a></span>        <a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a> <a class="code hl_variable" href="structSpan_1_1DirectionalLight.html#aa27501980267de73a0af33fa09d29fc3">Color</a> = { 1.0f, 1.0f, 1.0f };   <span class="comment">///&lt; 光の基本色 (RGB)</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structSpan_1_1DirectionalLight.html#a53bfbdd3341c3d23002170e532df36f1">   30</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structSpan_1_1DirectionalLight.html#a53bfbdd3341c3d23002170e532df36f1">Intensity</a> = 3.0f;                 <span class="comment">///&lt; 光の強さ (輝度)</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structSpan_1_1DirectionalLight.html#a8bf88c4d4e914e7bfb72679e0bcc8f92">   32</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="structSpan_1_1DirectionalLight.html#a8bf88c4d4e914e7bfb72679e0bcc8f92">CastShadows</a> = <span class="keyword">true</span>;                <span class="comment">///&lt; 影を生成するかどうか</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structSpan_1_1DirectionalLight.html#aee0b8bd7f0be9be82285c528f54475c7">   34</a></span>        <a class="code hl_function" href="structSpan_1_1DirectionalLight.html#aee0b8bd7f0be9be82285c528f54475c7">DirectionalLight</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_define" href="SpanReflection_8h.html#a73d73b391d2c696aa97e2f555064a4ad">SPAN_INSPECTOR_BEGIN</a>(<a class="code hl_function" href="structSpan_1_1DirectionalLight.html#aee0b8bd7f0be9be82285c528f54475c7">DirectionalLight</a>)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <a class="code hl_define" href="SpanReflection_8h.html#a6637ca0ed9083bc0f48fc532e4f3fa3e">SPAN_FIELD</a>(<a class="code hl_variable" href="structSpan_1_1DirectionalLight.html#aa27501980267de73a0af33fa09d29fc3">Color</a>)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <a class="code hl_define" href="SpanReflection_8h.html#a6637ca0ed9083bc0f48fc532e4f3fa3e">SPAN_FIELD</a>(<a class="code hl_variable" href="structSpan_1_1DirectionalLight.html#a53bfbdd3341c3d23002170e532df36f1">Intensity</a>, <a class="code hl_function" href="namespaceSpan.html#a9822105b4bb016e1c0c580e617bd925a">Min</a>(0.0f))</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <a class="code hl_define" href="SpanReflection_8h.html#a6637ca0ed9083bc0f48fc532e4f3fa3e">SPAN_FIELD</a>(<a class="code hl_variable" href="structSpan_1_1DirectionalLight.html#a8bf88c4d4e914e7bfb72679e0bcc8f92">CastShadows</a>)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_define" href="SpanReflection_8h.html#a03c56469341230c856b122f920371494">SPAN_INSPECTOR_END</a>()</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    };</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aSpanMath_8h_html"><div class="ttname"><a href="SpanMath_8h.html">SpanMath.h</a></div><div class="ttdoc">算術ライブラリ (Vector, Matrix, Quaternion)。</div></div>
+<div class="ttc" id="aSpanReflection_8h_html"><div class="ttname"><a href="SpanReflection_8h.html">SpanReflection.h</a></div><div class="ttdoc">コンポーネント定義用のリフレクションマクロ。</div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a03c56469341230c856b122f920371494"><div class="ttname"><a href="SpanReflection_8h.html#a03c56469341230c856b122f920371494">SPAN_INSPECTOR_END</a></div><div class="ttdeci">#define SPAN_INSPECTOR_END()</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00035">SpanReflection.h:35</a></div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a6637ca0ed9083bc0f48fc532e4f3fa3e"><div class="ttname"><a href="SpanReflection_8h.html#a6637ca0ed9083bc0f48fc532e4f3fa3e">SPAN_FIELD</a></div><div class="ttdeci">#define SPAN_FIELD(Variable,...)</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00032">SpanReflection.h:32</a></div></div>
+<div class="ttc" id="aSpanReflection_8h_html_a73d73b391d2c696aa97e2f555064a4ad"><div class="ttname"><a href="SpanReflection_8h.html#a73d73b391d2c696aa97e2f555064a4ad">SPAN_INSPECTOR_BEGIN</a></div><div class="ttdeci">#define SPAN_INSPECTOR_BEGIN(ComponentType)</div><div class="ttdef"><b>Definition</b> <a href="SpanReflection_8h_source.html#l00025">SpanReflection.h:25</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a9822105b4bb016e1c0c580e617bd925a"><div class="ttname"><a href="namespaceSpan.html#a9822105b4bb016e1c0c580e617bd925a">Span::Min</a></div><div class="ttdeci">Attribute Min(float min)</div><div class="ttdoc">変数の最小値を制限します。</div><div class="ttdef"><b>Definition</b> <a href="SpanAttributes_8h_source.html#l00059">SpanAttributes.h:59</a></div></div>
+<div class="ttc" id="astructSpan_1_1DirectionalLight_html_a53bfbdd3341c3d23002170e532df36f1"><div class="ttname"><a href="structSpan_1_1DirectionalLight.html#a53bfbdd3341c3d23002170e532df36f1">Span::DirectionalLight::Intensity</a></div><div class="ttdeci">float Intensity</div><div class="ttdoc">光の強さ (輝度)</div><div class="ttdef"><b>Definition</b> <a href="#l00030">DirectionalLight.h:30</a></div></div>
+<div class="ttc" id="astructSpan_1_1DirectionalLight_html_a8bf88c4d4e914e7bfb72679e0bcc8f92"><div class="ttname"><a href="structSpan_1_1DirectionalLight.html#a8bf88c4d4e914e7bfb72679e0bcc8f92">Span::DirectionalLight::CastShadows</a></div><div class="ttdeci">bool CastShadows</div><div class="ttdoc">影を生成するかどうか</div><div class="ttdef"><b>Definition</b> <a href="#l00032">DirectionalLight.h:32</a></div></div>
+<div class="ttc" id="astructSpan_1_1DirectionalLight_html_aa27501980267de73a0af33fa09d29fc3"><div class="ttname"><a href="structSpan_1_1DirectionalLight.html#aa27501980267de73a0af33fa09d29fc3">Span::DirectionalLight::Color</a></div><div class="ttdeci">Vector3 Color</div><div class="ttdoc">光の基本色 (RGB)</div><div class="ttdef"><b>Definition</b> <a href="#l00029">DirectionalLight.h:29</a></div></div>
+<div class="ttc" id="astructSpan_1_1DirectionalLight_html_aee0b8bd7f0be9be82285c528f54475c7"><div class="ttname"><a href="structSpan_1_1DirectionalLight.html#aee0b8bd7f0be9be82285c528f54475c7">Span::DirectionalLight::DirectionalLight</a></div><div class="ttdeci">DirectionalLight()=default</div></div>
+<div class="ttc" id="astructSpan_1_1Vector3_html"><div class="ttname"><a href="structSpan_1_1Vector3.html">Span::Vector3</a></div><div class="ttdoc">3次元ベクトル (float x, y, z) 位置、方向、スケールなどに使用されます。</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00114">SpanMath.h:115</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_68e5ee02315a150ea198303cea974c1f.html">Components</a></li><li class="navelem"><a href="dir_93521a01de8dca83834ef41ed7808424.html">Graphics</a></li><li class="navelem"><a href="DirectionalLight_8h.html">DirectionalLight.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

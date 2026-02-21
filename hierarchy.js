@@ -16,6 +16,7 @@ var hierarchy =
     [ "Span::ComponentRegistry", "classSpan_1_1ComponentRegistry.html", null ],
     [ "Span::ComponentType&lt; T &gt;", "classSpan_1_1ComponentType.html", null ],
     [ "Span::ConstantBuffer&lt; T &gt;", "classSpan_1_1ConstantBuffer.html", null ],
+    [ "Span::DirectionalLight", "structSpan_1_1DirectionalLight.html", null ],
     [ "Span::DirectoryWatcher", "classSpan_1_1DirectoryWatcher.html", null ],
     [ "Span::EditorCamera", "structSpan_1_1EditorCamera.html", null ],
     [ "Span::EditorCameraState", "structSpan_1_1EditorCameraState.html", null ],
@@ -31,12 +32,14 @@ var hierarchy =
     [ "Span::EntityID", "structSpan_1_1EntityID.html", null ],
     [ "Span::EntityLocation", "structSpan_1_1EntityLocation.html", null ],
     [ "Span::EntityManager", "classSpan_1_1EntityManager.html", null ],
+    [ "Span::EnvironmentSettings", "structSpan_1_1EnvironmentSettings.html", null ],
     [ "std::false_type", null, [
       [ "Span::is_fixed_string< FixedString< N > >", "structSpan_1_1is__fixed__string_3_01FixedString_3_01N_01_4_01_4.html", null ],
       [ "Span::is_fixed_string< T >", "structSpan_1_1is__fixed__string.html", null ]
     ] ],
     [ "Span::FileDialog", "classSpan_1_1FileDialog.html", null ],
     [ "Span::FixedString&lt; N &gt;", "structSpan_1_1FixedString.html", null ],
+    [ "Span::GlobalLightData", "structSpan_1_1GlobalLightData.html", null ],
     [ "Span::GraphicsContext", "classSpan_1_1GraphicsContext.html", null ],
     [ "Span::GuiManager", "classSpan_1_1GuiManager.html", null ],
     [ "std::hash&lt; Span::EntityID &gt;", "structstd_1_1hash_3_01Span_1_1EntityID_01_4.html", null ],

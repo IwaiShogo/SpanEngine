@@ -1,8 +1,8 @@
 var searchData=
 [
   ['p_0',['P',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa44c29edb103a2872f519ad0c9a0fdaaa',1,'Span']]],
-  ['padding1_1',['Padding1',['../structSpan_1_1MaterialData.html#a05e893df71b73574f17e899b79b7780e',1,'Span::MaterialData']]],
-  ['padding2_2',['Padding2',['../structSpan_1_1MaterialData.html#a4db8dca4ea8c0dc1dceed33c4e1e6412',1,'Span::MaterialData']]],
+  ['padding1_1',['Padding1',['../structSpan_1_1GlobalLightData.html#a9515a0ffe7b25fc2e5f5259e9a6e1592',1,'Span::GlobalLightData::Padding1'],['../structSpan_1_1MaterialData.html#a05e893df71b73574f17e899b79b7780e',1,'Span::MaterialData::Padding1']]],
+  ['padding2_2',['Padding2',['../structSpan_1_1GlobalLightData.html#a27b02e5804c7ded9b5a0d0f6361c868e',1,'Span::GlobalLightData::Padding2'],['../structSpan_1_1MaterialData.html#a4db8dca4ea8c0dc1dceed33c4e1e6412',1,'Span::MaterialData::Padding2']]],
   ['panelmanager_2eh_3',['PanelManager.h',['../PanelManager_8h.html',1,'']]],
   ['panels_4',['panels',['../classSpan_1_1GuiManager.html#a2958abd2a5c96e0010580233350a8a38',1,'Span::GuiManager']]],
   ['parent_5',['Parent',['../structSpan_1_1Relationship.html#a1a1b2f5afd78543f84bdc2993f69201d',1,'Span::Relationship']]],
@@ -22,7 +22,7 @@ var searchData=
   ['prevkeystates_19',['prevKeyStates',['../classSpan_1_1Input.html#a1f464da6aee16f6ddc82b780a1ae08dd',1,'Span::Input']]],
   ['prevmouseposition_20',['prevMousePosition',['../classSpan_1_1Input.html#a3b08ba6c179cf73626a1d343926b4d04',1,'Span::Input']]],
   ['prevsibling_21',['PrevSibling',['../structSpan_1_1Relationship.html#adb73bb8bf7205f7e1d37f50e3a06dffe',1,'Span::Relationship']]],
-  ['process_22',['🔄 Upload Process',['../classSpan_1_1Texture.html#autotoc_md144',1,'']]],
+  ['process_22',['🔄 Upload Process',['../classSpan_1_1Texture.html#autotoc_md146',1,'']]],
   ['processchunk_23',['ProcessChunk',['../classSpan_1_1World.html#af5701baf0c3d17c6cc72333001c9def1',1,'Span::World']]],
   ['processchunk_5fimpl_24',['ProcessChunk_Impl',['../classSpan_1_1World.html#abf57371dde3a4dcdc84fae0acb3bf88f',1,'Span::World']]],
   ['processfield_25',['ProcessField',['../namespaceSpan_1_1Internal.html#af5fb72e56e5d56613a811a2754229981',1,'Span::Internal']]],

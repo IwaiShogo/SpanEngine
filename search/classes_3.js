@@ -9,5 +9,6 @@ var searchData=
   ['entitybuilder_6',['EntityBuilder',['../classSpan_1_1EntityBuilder.html',1,'Span']]],
   ['entityid_7',['EntityID',['../structSpan_1_1EntityID.html',1,'Span']]],
   ['entitylocation_8',['EntityLocation',['../structSpan_1_1EntityLocation.html',1,'Span']]],
-  ['entitymanager_9',['EntityManager',['../classSpan_1_1EntityManager.html',1,'Span']]]
+  ['entitymanager_9',['EntityManager',['../classSpan_1_1EntityManager.html',1,'Span']]],
+  ['environmentsettings_10',['EnvironmentSettings',['../structSpan_1_1EnvironmentSettings.html',1,'Span']]]
 ];

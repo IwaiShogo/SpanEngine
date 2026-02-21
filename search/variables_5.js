@@ -7,5 +7,7 @@ var searchData=
   ['entitylocationmap_4',['entityLocationMap',['../classSpan_1_1World.html#aa4900466246de55e1285617e82da3db5',1,'Span::World']]],
   ['entitymanager_5',['entityManager',['../classSpan_1_1World.html#a756621ec548408d3d8e438d91d701d64',1,'Span::World']]],
   ['entityselections_6',['entitySelections',['../classSpan_1_1SelectionManager.html#a0ec6ec6dc9e08204c26adc1404f0c149',1,'Span::SelectionManager']]],
-  ['entitysize_7',['entitySize',['../classSpan_1_1Archetype.html#aba45aa9225749156ea021eb1d7ad06a5',1,'Span::Archetype']]]
+  ['entitysize_7',['entitySize',['../classSpan_1_1Archetype.html#aba45aa9225749156ea021eb1d7ad06a5',1,'Span::Archetype']]],
+  ['environment_8',['Environment',['../classSpan_1_1Scene.html#a05689aa3986a5f72f2ecea707f6e4bf5',1,'Span::Scene']]],
+  ['exposure_9',['Exposure',['../structSpan_1_1EnvironmentSettings.html#a7a88beeb169f3b6de40fc7de4f5914f6',1,'Span::EnvironmentSettings']]]
 ];

@@ -117,13 +117,14 @@ var searchData=
   ['getwidth_114',['GetWidth',['../classSpan_1_1RenderTarget.html#a1c37114e2901e7350d9f8911603fdcab',1,'Span::RenderTarget::GetWidth()'],['../classSpan_1_1Window.html#ab241cca9643bb67391cd09877050440c',1,'Span::Window::GetWidth()']]],
   ['getwindow_115',['GetWindow',['../classSpan_1_1Application.html#a90cfcdb2cad09285b6142360f3262f1f',1,'Span::Application']]],
   ['getworld_116',['GetWorld',['../classSpan_1_1Application.html#a42e065e188c6e225983aad97d576865c',1,'Span::Application::GetWorld()'],['../classSpan_1_1System.html#adda3b04cc8e931689a3e86a5cf91b16e',1,'Span::System::GetWorld()']]],
-  ['goback_117',['GoBack',['../classSpan_1_1ProjectBrowserPanel.html#ab1579d0e551c9206c67a9b4bee9bb57c',1,'Span::ProjectBrowserPanel']]],
-  ['goforward_118',['GoForward',['../classSpan_1_1ProjectBrowserPanel.html#aa6a90afca01fba00f70706c033f592dc',1,'Span::ProjectBrowserPanel']]],
-  ['graphicscontext_119',['GraphicsContext',['../classSpan_1_1GraphicsContext.html',1,'Span::GraphicsContext'],['../classSpan_1_1GraphicsContext.html#a8be8bf60243c473cd1b7fda332c5c2df',1,'Span::GraphicsContext::GraphicsContext()']]],
-  ['graphicscontext_120',['graphicsContext',['../classSpan_1_1Application.html#a90d28617b1780ccc246c6b9341f1fdd9',1,'Span::Application']]],
-  ['graphicscontext_2ecpp_121',['GraphicsContext.cpp',['../GraphicsContext_8cpp.html',1,'']]],
-  ['graphicscontext_2eh_122',['GraphicsContext.h',['../GraphicsContext_8h.html',1,'']]],
-  ['guimanager_123',['GuiManager',['../classSpan_1_1GuiManager.html',1,'Span']]],
-  ['guimanager_2ecpp_124',['GuiManager.cpp',['../GuiManager_8cpp.html',1,'']]],
-  ['guimanager_2eh_125',['GuiManager.h',['../GuiManager_8h.html',1,'']]]
+  ['globallightdata_117',['GlobalLightData',['../structSpan_1_1GlobalLightData.html',1,'Span']]],
+  ['goback_118',['GoBack',['../classSpan_1_1ProjectBrowserPanel.html#ab1579d0e551c9206c67a9b4bee9bb57c',1,'Span::ProjectBrowserPanel']]],
+  ['goforward_119',['GoForward',['../classSpan_1_1ProjectBrowserPanel.html#aa6a90afca01fba00f70706c033f592dc',1,'Span::ProjectBrowserPanel']]],
+  ['graphicscontext_120',['GraphicsContext',['../classSpan_1_1GraphicsContext.html',1,'Span::GraphicsContext'],['../classSpan_1_1GraphicsContext.html#a8be8bf60243c473cd1b7fda332c5c2df',1,'Span::GraphicsContext::GraphicsContext()']]],
+  ['graphicscontext_121',['graphicsContext',['../classSpan_1_1Application.html#a90d28617b1780ccc246c6b9341f1fdd9',1,'Span::Application']]],
+  ['graphicscontext_2ecpp_122',['GraphicsContext.cpp',['../GraphicsContext_8cpp.html',1,'']]],
+  ['graphicscontext_2eh_123',['GraphicsContext.h',['../GraphicsContext_8h.html',1,'']]],
+  ['guimanager_124',['GuiManager',['../classSpan_1_1GuiManager.html',1,'Span']]],
+  ['guimanager_2ecpp_125',['GuiManager.cpp',['../GuiManager_8cpp.html',1,'']]],
+  ['guimanager_2eh_126',['GuiManager.h',['../GuiManager_8h.html',1,'']]]
 ];

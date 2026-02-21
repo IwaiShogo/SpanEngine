@@ -1,15 +1,17 @@
 <map id="Engine/Source/Runtime/Scene/Scene.h" name="Engine/Source/Runtime/Scene/Scene.h">
-<area shape="rect" id="Node000001" title="ゲームシーン全体を管理するコンテナクラス。" alt="" coords="2041,5,2215,45"/>
-<area shape="rect" id="Node000002" href="$World_8h.html" title="ECSワールド (シーン) の管理クラス。" alt="" coords="2053,93,2203,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2131,46,2131,79,2125,79,2125,46"/>
+<area shape="rect" id="Node000001" title="ゲームシーン全体を管理するコンテナクラス。" alt="" coords="2076,5,2249,45"/>
+<area shape="rect" id="Node000002" href="$World_8h.html" title="ECSワールド (シーン) の管理クラス。" alt="" coords="2031,93,2182,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2152,47,2129,83,2124,80,2148,44"/>
+<area shape="rect" id="Node000051" href="$EnvironmentSettings_8h.html" title="シーンの環境光、スカイボックス、フォグなどの設定データ" alt="" coords="2195,255,2365,280"/>
+<area shape="poly" id="edge57_Node000001_Node000051" title=" " alt="" coords="2174,44,2271,241,2266,243,2169,47"/>
 <area shape="rect" id="Node000003" href="$CoreMinimal_8h.html" title="エンジンの標準インクルードファイル。" alt="" coords="1898,475,2049,500"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2186,131,2223,151,2255,180,2270,201,2278,220,2281,266,2281,342,2276,376,2260,405,2236,428,2206,446,2171,460,2135,471,2063,484,2062,478,2134,466,2170,455,2203,441,2232,423,2255,401,2271,374,2276,342,2276,266,2273,221,2265,203,2251,183,2220,155,2183,136"/>
-<area shape="rect" id="Node000043" href="$EntityManager_8h.html" title="エンティティIDのライフサイクル管理クラス" alt="" coords="1708,255,1836,280"/>
-<area shape="poly" id="edge43_Node000002_Node000043" title=" " alt="" coords="2083,136,1966,184,1811,252,1809,247,1964,179,2081,131"/>
-<area shape="rect" id="Node000045" href="$ArchetypeManager_8h.html" title="アーキタイプの生成と管理を行うクラス" alt="" coords="1978,181,2134,207"/>
-<area shape="poly" id="edge46_Node000002_Node000045" title=" " alt="" coords="2113,135,2078,173,2074,169,2109,132"/>
-<area shape="rect" id="Node000050" href="$System_8h.html" title="ECSシステム (ロジック) の基底クラス。" alt="" coords="2159,181,2241,207"/>
-<area shape="poly" id="edge56_Node000002_Node000050" title=" " alt="" coords="2147,132,2182,169,2178,173,2143,135"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2120,132,2145,191,2156,228,2160,266,2160,342,2157,389,2150,408,2134,429,2098,456,2056,473,2054,468,2095,451,2130,425,2145,406,2152,388,2155,342,2155,266,2151,229,2140,192,2115,135"/>
+<area shape="rect" id="Node000043" href="$EntityManager_8h.html" title="エンティティIDのライフサイクル管理クラス" alt="" coords="1587,255,1715,280"/>
+<area shape="poly" id="edge43_Node000002_Node000043" title=" " alt="" coords="2049,136,1901,184,1698,253,1696,248,1899,179,2047,131"/>
+<area shape="rect" id="Node000045" href="$ArchetypeManager_8h.html" title="アーキタイプの生成と管理を行うクラス" alt="" coords="1913,181,2069,207"/>
+<area shape="poly" id="edge46_Node000002_Node000045" title=" " alt="" coords="2080,136,2021,176,2018,171,2077,131"/>
+<area shape="rect" id="Node000050" href="$System_8h.html" title="ECSシステム (ロジック) の基底クラス。" alt="" coords="2037,401,2120,427"/>
+<area shape="poly" id="edge55_Node000002_Node000050" title=" " alt="" coords="2108,134,2084,388,2078,387,2102,134"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="5,548,99,573"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1898,492,1546,497,1036,508,510,525,287,537,113,551,113,545,286,531,510,520,1036,502,1546,492,1898,487"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="123,548,178,573"/>
@@ -89,21 +91,20 @@
 <area shape="rect" id="Node000042" href="$Logger_8h.html" title="デバッグログ出力システム" alt="" coords="4079,548,4183,573"/>
 <area shape="poly" id="edge41_Node000003_Node000042" title=" " alt="" coords="2049,487,2443,491,3023,502,3618,519,3867,531,4055,545,4065,547,4065,552,4054,551,3866,536,3617,525,3023,507,2443,497,2049,492"/>
 <area shape="poly" id="edge42_Node000042_Node000003" title=" " alt="" coords="4078,551,3891,537,3643,525,3050,507,2468,497,2062,492,2062,487,2468,492,3051,502,3643,519,3891,531,4078,545"/>
-<area shape="rect" id="Node000044" href="$Entity_8h.html" title="ECSにおけるオブジェクトの識別子 (ID) を定義します。" alt="" coords="1722,401,1793,427"/>
-<area shape="poly" id="edge44_Node000043_Node000044" title=" " alt="" coords="1771,281,1760,328,1758,388,1753,387,1755,328,1766,280"/>
-<area shape="poly" id="edge45_Node000044_Node000003" title=" " alt="" coords="1793,424,1926,468,1925,473,1791,429"/>
-<area shape="poly" id="edge47_Node000045_Node000003" title=" " alt="" coords="2073,205,2100,229,2130,265,2152,307,2156,330,2155,354,2145,395,2137,411,2122,429,2084,455,2042,473,2040,468,2081,451,2118,425,2133,408,2140,393,2149,353,2151,330,2147,309,2125,267,2096,233,2069,209"/>
-<area shape="rect" id="Node000046" href="$Archetype_8h.html" title="ECSのメモリレイアウト定義 (アーキタイプ) を行うクラス。" alt="" coords="1939,255,2039,280"/>
-<area shape="poly" id="edge48_Node000045_Node000046" title=" " alt="" coords="2047,209,2011,246,2008,243,2043,205"/>
-<area shape="poly" id="edge49_Node000046_Node000003" title=" " alt="" coords="1963,282,1932,301,1918,314,1908,329,1902,347,1901,365,1911,402,1932,435,1954,463,1950,466,1927,438,1906,404,1896,365,1897,346,1903,327,1914,311,1929,297,1960,278"/>
-<area shape="rect" id="Node000047" href="$ComponentType_8h.html" title="コンポーネント型システム (Type to Mapping)。" alt="" coords="1918,328,2141,353"/>
-<area shape="poly" id="edge50_Node000046_Node000047" title=" " alt="" coords="1998,279,2018,315,2014,317,1994,282"/>
-<area shape="rect" id="Node000049" href="$Chunk_8h.html" title="ECSのメモリブロック (チャンク) 定義。" alt="" coords="1769,328,1844,353"/>
-<area shape="poly" id="edge53_Node000046_Node000049" title=" " alt="" coords="1961,283,1850,325,1848,320,1959,278"/>
-<area shape="poly" id="edge51_Node000047_Node000003" title=" " alt="" coords="2025,355,2001,402,1982,462,1977,460,1996,400,2020,352"/>
-<area shape="rect" id="Node000048" title=" " alt="" coords="2011,401,2109,427"/>
-<area shape="poly" id="edge52_Node000047_Node000048" title=" " alt="" coords="2037,353,2052,388,2047,390,2032,355"/>
-<area shape="poly" id="edge54_Node000049_Node000003" title=" " alt="" coords="1814,352,1834,387,1865,425,1897,449,1932,467,1930,472,1894,453,1861,429,1829,390,1810,355"/>
-<area shape="poly" id="edge55_Node000049_Node000044" title=" " alt="" coords="1801,355,1775,392,1771,389,1796,352"/>
-<area shape="poly" id="edge57_Node000050_Node000003" title=" " alt="" coords="2204,207,2206,248,2202,308,2196,340,2186,372,2172,402,2151,429,2132,445,2110,458,2063,476,2061,471,2108,453,2129,441,2147,425,2167,399,2181,370,2191,339,2197,307,2201,248,2199,207"/>
+<area shape="rect" id="Node000044" href="$Entity_8h.html" title="ECSにおけるオブジェクトの識別子 (ID) を定義します。" alt="" coords="1601,401,1671,427"/>
+<area shape="poly" id="edge44_Node000043_Node000044" title=" " alt="" coords="1649,281,1639,328,1637,388,1632,387,1633,328,1644,280"/>
+<area shape="poly" id="edge45_Node000044_Node000003" title=" " alt="" coords="1672,420,1906,469,1905,474,1671,425"/>
+<area shape="poly" id="edge47_Node000045_Node000003" title=" " alt="" coords="2000,206,2012,232,2026,268,2035,310,2033,354,2013,414,1989,464,1985,462,2008,412,2028,353,2030,311,2021,270,2008,234,1995,208"/>
+<area shape="rect" id="Node000046" href="$Archetype_8h.html" title="ECSのメモリレイアウト定義 (アーキタイプ) を行うクラス。" alt="" coords="1818,255,1918,280"/>
+<area shape="poly" id="edge48_Node000045_Node000046" title=" " alt="" coords="1972,209,1901,250,1898,245,1970,204"/>
+<area shape="poly" id="edge49_Node000046_Node000003" title=" " alt="" coords="1842,282,1818,296,1797,312,1784,332,1783,342,1786,352,1815,391,1852,424,1892,449,1930,467,1928,472,1890,453,1849,428,1811,395,1782,355,1778,342,1779,330,1793,309,1815,291,1840,278"/>
+<area shape="rect" id="Node000047" href="$ComponentType_8h.html" title="コンポーネント型システム (Type to Mapping)。" alt="" coords="1797,328,2019,353"/>
+<area shape="poly" id="edge50_Node000046_Node000047" title=" " alt="" coords="1877,279,1897,315,1892,317,1872,282"/>
+<area shape="rect" id="Node000049" href="$Chunk_8h.html" title="ECSのメモリブロック (チャンク) 定義。" alt="" coords="1648,328,1723,353"/>
+<area shape="poly" id="edge52_Node000046_Node000049" title=" " alt="" coords="1840,283,1729,325,1727,320,1838,278"/>
+<area shape="poly" id="edge51_Node000047_Node000003" title=" " alt="" coords="1916,353,1965,461,1960,463,1911,355"/>
+<area shape="poly" id="edge53_Node000049_Node000003" title=" " alt="" coords="1692,353,1711,389,1725,408,1743,425,1776,444,1812,458,1885,476,1884,481,1810,463,1774,449,1740,429,1721,412,1706,392,1687,355"/>
+<area shape="poly" id="edge54_Node000049_Node000044" title=" " alt="" coords="1679,355,1654,392,1650,389,1675,352"/>
+<area shape="poly" id="edge56_Node000050_Node000003" title=" " alt="" coords="2063,429,2003,469,2000,465,2060,424"/>
+<area shape="poly" id="edge58_Node000051_Node000003" title=" " alt="" coords="2278,281,2265,311,2244,351,2215,393,2178,429,2151,446,2122,459,2063,477,2061,471,2120,454,2148,441,2174,425,2211,389,2240,348,2261,309,2273,279"/>
 </map>
