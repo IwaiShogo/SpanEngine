@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['アーキテクチャ_20architecture_0',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md111',1,'']]]
+  ['アーキテクチャ_20architecture_0',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md115',1,'']]]
 ];

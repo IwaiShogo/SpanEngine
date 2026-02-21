@@ -1,31 +1,77 @@
 <map id="Span::InspectorPanel::DrawAssetInspector" name="Span::InspectorPanel::DrawAssetInspector">
-<area shape="rect" id="Node000001" title="アセット用のインスペクターを描画します。" alt="" coords="5,168,165,208"/>
-<area shape="rect" id="Node000002" href="$classSpan_1_1InspectorPanel.html#acbecd010da050d28a48148287775259a" title="マテリアルアセット用のプロパティエディタを描画します。" alt="" coords="221,168,378,208"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,185,207,185,207,191,165,191"/>
-<area shape="rect" id="Node000004" href="$classSpan_1_1AssetManager.html#a8b80e59ea529e23c8c8f5280d136fbf0" title="シングルトンインスタンスを取得します。" alt="" coords="433,70,620,95"/>
-<area shape="poly" id="edge15_Node000001_Node000004" title=" " alt="" coords="164,165,213,153,456,96,457,101,214,159,166,171"/>
-<area shape="rect" id="Node000013" href="$classSpan_1_1EditorFileSystem.html#abd004be9e3bb4f680bffa5722f82aa34" title="指定されたファイルを関連付けられたアプリで開きます。" alt="" coords="213,232,385,272"/>
-<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="154,206,219,225,218,231,152,211"/>
-<area shape="rect" id="Node000003" href="$classSpan_1_1SelectionManager.html#acccb37ec1649ef94d6ef3b58b4f966d9" title="全ての選択 (Entity及びAsset) を解除します。" alt="" coords="437,299,616,339"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="366,206,387,218,403,233,412,248,420,263,435,278,454,290,451,295,432,282,416,266,407,251,399,237,384,222,364,210"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="328,166,375,135,432,106,455,97,457,102,434,110,378,140,330,170"/>
-<area shape="rect" id="Node000006" href="$classSpan_1_1AssetManager.html#afea5c55a143ce55fd19b8fedc4e578f5" title="GUIDでマテリアルを取得 (推奨)" alt="" coords="449,184,604,224"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="379,191,436,195,435,200,378,196"/>
-<area shape="rect" id="Node000010" href="$classSpan_1_1AssetManager.html#a8ad360aa2a6d909bfafc96484d426a0f" title="GUIDでテクスチャを取得 (推奨)" alt="" coords="680,299,835,339"/>
-<area shape="poly" id="edge12_Node000002_Node000010" title=" " alt="" coords="353,206,434,233,668,294,666,299,433,239,352,211"/>
-<area shape="rect" id="Node000011" href="$classSpan_1_1SelectionManager.html#ac56e7157c03c2c1f488a3bd5d72788c0" title="選択リストをクリアし、指定したAssetのみを選択状態にします (Click担当)。" alt="" coords="437,120,616,160"/>
-<area shape="poly" id="edge13_Node000002_Node000011" title=" " alt="" coords="378,169,423,159,424,164,379,174"/>
-<area shape="rect" id="Node000005" href="$classSpan_1_1AssetManager.html#a9d65496b728f9a4fef2a5334d5a8ad56" title=" " alt="" coords="680,5,835,45"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="578,67,666,45,668,50,579,73"/>
-<area shape="rect" id="Node000007" href="$classSpan_1_1AssetRegistry.html#a2b83eeb5aa2e6d4c807d4e4a11db563c" title=" " alt="" coords="895,178,1077,203"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="601,181,668,169,757,164,847,169,891,174,891,179,846,175,757,169,668,175,602,187"/>
-<area shape="rect" id="Node000008" href="$classSpan_1_1AssetManager.html#a98a270b7faf1990407f7082143e437d6" title="デフォルト (標準) のマテリアルを取得します。 シェーダーやマテリアルが存在しない場合は内部で生成します。" alt="" coords="680,184,835,224"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="605,201,666,201,666,207,605,207"/>
-<area shape="rect" id="Node000009" href="$classSpan_1_1AssetRegistry.html#a3cae91f52d3d29c67936e289d1244319" title=" " alt="" coords="910,271,1062,311"/>
-<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="605,220,669,233,897,274,896,279,667,239,604,225"/>
-<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="584,222,621,240,646,259,669,278,694,291,691,295,667,282,642,263,619,245,581,227"/>
-<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="793,296,949,208,952,212,795,301"/>
-<area shape="poly" id="edge11_Node000010_Node000009" title=" " alt="" coords="835,307,896,299,896,304,836,312"/>
-<area shape="rect" id="Node000012" href="$classSpan_1_1SelectionManager.html#a01590b8a12222e57fa622d22c3ffb484" title=" " alt="" coords="668,69,847,109"/>
-<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="616,118,654,109,655,114,617,123"/>
+<area shape="rect" id="Node000001" title="アセット用のインスペクターを描画します。" alt="" coords="5,295,165,335"/>
+<area shape="rect" id="Node000002" href="$classSpan_1_1InspectorPanel.html#acbecd010da050d28a48148287775259a" title="マテリアルアセット用のプロパティエディタを描画します。" alt="" coords="221,295,378,335"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,312,207,312,207,317,165,317"/>
+<area shape="rect" id="Node000008" href="$classSpan_1_1AssetManager.html#a8b80e59ea529e23c8c8f5280d136fbf0" title="シングルトンインスタンスを取得します。" alt="" coords="960,21,1147,46"/>
+<area shape="poly" id="edge40_Node000001_Node000008" title=" " alt="" coords="105,292,157,244,234,180,328,117,380,90,432,68,499,48,568,34,638,24,707,18,837,15,947,20,946,25,837,20,707,23,638,29,569,39,500,54,434,73,382,95,331,122,237,185,160,248,108,296"/>
+<area shape="rect" id="Node000034" href="$classSpan_1_1EditorFileSystem.html#abd004be9e3bb4f680bffa5722f82aa34" title="指定されたファイルを関連付けられたアプリで開きます。" alt="" coords="213,359,385,399"/>
+<area shape="poly" id="edge41_Node000001_Node000034" title=" " alt="" coords="154,332,219,352,218,357,152,337"/>
+<area shape="rect" id="Node000003" href="$classSpan_1_1SelectionManager.html#acccb37ec1649ef94d6ef3b58b4f966d9" title="全ての選択 (Entity及びAsset) を解除します。" alt="" coords="465,147,644,187"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="318,293,367,248,399,224,432,203,462,189,464,194,435,208,402,228,371,252,322,297"/>
+<area shape="rect" id="Node000004" href="$classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e" title="シングルトンインスタンスの取得" alt="" coords="471,273,638,298"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="378,303,457,294,458,299,378,308"/>
+<area shape="poly" id="edge26_Node000002_Node000008" title=" " alt="" coords="344,292,432,257,505,238,569,227,680,218,732,211,785,197,840,172,901,133,917,114,924,95,932,75,949,55,958,50,961,54,952,59,936,77,929,97,921,117,904,137,843,177,786,202,733,216,680,223,569,233,506,243,434,263,346,297"/>
+<area shape="rect" id="Node000025" href="$classSpan_1_1Renderer.html#a7d4af82aad655792beaefde3a43a7ef8" title=" " alt="" coords="433,459,676,485"/>
+<area shape="poly" id="edge27_Node000002_Node000025" title=" " alt="" coords="370,333,387,345,398,358,405,371,411,397,417,422,424,433,435,445,445,451,441,455,432,449,420,437,412,424,406,398,400,373,394,361,384,349,367,337"/>
+<area shape="rect" id="Node000026" href="$classSpan_1_1Renderer.html#a8f2e7f1cdf49225bcce44409d176b8b9" title=" " alt="" coords="456,509,653,534"/>
+<area shape="poly" id="edge28_Node000002_Node000026" title=" " alt="" coords="372,333,387,345,401,365,408,385,410,423,413,461,420,478,435,495,446,503,442,507,432,499,416,481,408,462,405,424,403,386,397,367,383,349,369,337"/>
+<area shape="rect" id="Node000027" href="$classSpan_1_1AssetManager.html#afea5c55a143ce55fd19b8fedc4e578f5" title="GUIDでマテリアルを取得 (推奨)" alt="" coords="477,395,632,435"/>
+<area shape="poly" id="edge29_Node000002_Node000027" title=" " alt="" coords="355,332,386,344,493,387,491,392,384,349,354,337"/>
+<area shape="rect" id="Node000030" href="$classSpan_1_1AssetManager.html#a8ad360aa2a6d909bfafc96484d426a0f" title="GUIDでテクスチャを取得 (推奨)" alt="" coords="736,396,891,436"/>
+<area shape="poly" id="edge37_Node000002_Node000030" title=" " alt="" coords="379,325,518,349,677,380,724,391,722,396,675,385,517,354,378,330"/>
+<area shape="rect" id="Node000031" href="$classSpan_1_1Application.html#a405d83887371210b9a67e940727689da" title=" " alt="" coords="483,559,626,599"/>
+<area shape="poly" id="edge36_Node000002_Node000031" title=" " alt="" coords="373,333,387,345,405,371,412,397,413,423,411,448,409,473,410,497,418,521,435,545,452,558,472,567,469,572,449,562,431,549,413,523,405,498,403,473,405,448,408,423,407,398,400,373,383,348,370,337"/>
+<area shape="rect" id="Node000032" href="$classSpan_1_1SelectionManager.html#ac56e7157c03c2c1f488a3bd5d72788c0" title="選択リストをクリアし、指定したAssetのみを選択状態にします (Click担当)。" alt="" coords="465,83,644,123"/>
+<area shape="poly" id="edge38_Node000002_Node000032" title=" " alt="" coords="307,293,326,258,353,215,389,170,432,132,451,122,454,126,435,137,393,174,357,218,330,261,312,296"/>
+<area shape="rect" id="Node000005" href="$classSpan_1_1Application.html#a0c44e973ca5db1d23a02a2cee66f5c11" title=" " alt="" coords="742,261,885,301"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="638,281,728,280,728,285,638,287"/>
+<area shape="rect" id="Node000006" href="$namespaceSpan.html#a3f4b8561d46e69596ba6a7c3177a92e7" title=" " alt="" coords="959,319,1147,345"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="886,294,980,314,979,319,885,299"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="878,259,901,241,916,217,922,194,922,148,921,125,923,102,931,78,949,56,953,52,956,56,953,59,936,81,928,103,926,125,927,148,928,195,921,220,905,244,881,263"/>
+<area shape="rect" id="Node000010" href="$classSpan_1_1AssetManager.html#a69ad0e84f0e86f10a14693275d0872f2" title="マネージャーを初期化します。" alt="" coords="976,369,1131,409"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="847,299,896,327,952,355,970,362,968,367,950,360,893,332,845,304"/>
+<area shape="rect" id="Node000019" href="$classSpan_1_1GuiManager.html#ab78e1a284f6d5aced7912c00ab43c559" title="ImGuiコンテキストとバックエンドを初期化します。" alt="" coords="951,70,1156,95"/>
+<area shape="poly" id="edge20_Node000005_Node000019" title=" " alt="" coords="876,259,901,241,913,224,919,207,922,173,927,139,934,121,949,105,954,101,957,105,953,109,939,124,932,140,928,173,924,208,918,226,905,245,880,263"/>
+<area shape="rect" id="Node000022" href="$classSpan_1_1Input.html#aac6e8f1cf694b484ed01742f2d16d63c" title=" " alt="" coords="974,119,1133,145"/>
+<area shape="poly" id="edge23_Node000005_Node000022" title=" " alt="" coords="873,259,901,241,917,219,923,197,931,175,949,154,960,147,963,151,952,158,935,178,928,199,921,222,905,245,876,264"/>
+<area shape="rect" id="Node000023" href="$classSpan_1_1Logger.html#a557d77ccfa31551817d7b28d985866c8" title="ロガーを初期化し、ログファイルを開きます。" alt="" coords="968,169,1139,194"/>
+<area shape="poly" id="edge24_Node000005_Node000023" title=" " alt="" coords="865,259,901,240,925,221,949,203,967,196,969,201,952,208,928,225,904,245,867,264"/>
+<area shape="rect" id="Node000024" href="$classSpan_1_1Time.html#ae9e018cd0d5a3b34b773e80c750860e7" title="初期化（エンジン起動時）" alt="" coords="974,218,1133,243"/>
+<area shape="poly" id="edge25_Node000005_Node000024" title=" " alt="" coords="885,264,979,244,980,249,886,269"/>
+<area shape="rect" id="Node000007" href="$classSpan_1_1Application.html#a095598d0c2e753bfb8d00acee435980f" title="シングルトンインスタンスのポインタ取得 (存在チェック用)" alt="" coords="1233,294,1394,319"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1147,320,1219,313,1219,318,1148,326"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="1232,305,899,288,899,283,1232,300"/>
+<area shape="rect" id="Node000009" href="$classSpan_1_1AssetManager.html#a9d65496b728f9a4fef2a5334d5a8ad56" title=" " alt="" coords="1236,5,1391,45"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="1147,28,1222,25,1222,31,1147,33"/>
+<area shape="rect" id="Node000011" href="$classSpan_1_1AssetRegistry.html#a2b83eeb5aa2e6d4c807d4e4a11db563c" title=" " alt="" coords="1222,434,1405,459"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="1131,404,1242,428,1241,434,1130,409"/>
+<area shape="rect" id="Node000012" href="$classSpan_1_1AssetRegistry.html#a71c0e006b41117cb0b296adaf0de1c56" title="指定ディレクトリ以下の全アセットをスキャンし、レジストリを構築します。" alt="" coords="1237,369,1389,409"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="1131,387,1223,387,1223,392,1131,392"/>
+<area shape="rect" id="Node000013" href="$classSpan_1_1AssetRegistry.html#a432dbe6ae1b0ab930bd903d93ad5a734" title="パスからアセット情報を登録・更新します (ファイル移動/作成時用)。" alt="" coords="1471,369,1623,409"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="1390,387,1457,387,1457,392,1390,392"/>
+<area shape="rect" id="Node000014" href="$structSpan_1_1AssetMetadata.html#a83c8ed8bfd79a2aa90ed8d4e36b785b8" title=" " alt="" coords="1923,333,2083,373"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="1623,381,1909,358,1910,363,1623,386"/>
+<area shape="rect" id="Node000015" href="$classSpan_1_1AssetSerializer.html#adea72d3eb1434b36473f6e0d38396451" title="指定したアセットのメタデータを取得します。 .metaファイルが存在しない場合は、新規にGUIDを生成して作成します。" alt="" coords="1671,397,1852,437"/>
+<area shape="poly" id="edge15_Node000013_Node000015" title=" " alt="" coords="1623,397,1657,401,1657,406,1622,402"/>
+<area shape="poly" id="edge17_Node000015_Node000014" title=" " alt="" coords="1837,395,1914,374,1915,379,1838,400"/>
+<area shape="rect" id="Node000016" href="$classSpan_1_1AssetSerializer.html#a39e6a3bea02531fc2c31683a27d52061" title="拡張子から汗ッとタイプを推論します。" alt="" coords="1900,461,2107,501"/>
+<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="1838,435,1915,455,1914,460,1837,440"/>
+<area shape="rect" id="Node000017" href="$namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136" title=" " alt="" coords="1943,526,2063,551"/>
+<area shape="poly" id="edge18_Node000015_Node000017" title=" " alt="" coords="1787,435,1838,474,1901,511,1931,522,1929,527,1899,516,1835,478,1784,440"/>
+<area shape="rect" id="Node000018" href="$classSpan_1_1AssetSerializer.html#a0eb09ea936ef7cf65184977a5809ef6b" title="メタデータをファイルに保存する。" alt="" coords="1924,397,2083,437"/>
+<area shape="poly" id="edge19_Node000015_Node000018" title=" " alt="" coords="1852,415,1910,415,1910,420,1852,420"/>
+<area shape="rect" id="Node000020" href="$classSpan_1_1GuiManager.html#a79fd10d93a58b741c10bd8c8477afc0a" title="管理対象のエディタパネルを追加します。" alt="" coords="1209,70,1418,95"/>
+<area shape="poly" id="edge21_Node000019_Node000020" title=" " alt="" coords="1156,80,1195,80,1195,85,1156,85"/>
+<area shape="rect" id="Node000021" href="$classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0" title="フォントや配色などのスタイル設定を適用します。" alt="" coords="1204,119,1423,145"/>
+<area shape="poly" id="edge22_Node000019_Node000021" title=" " alt="" coords="1121,93,1233,114,1232,119,1120,98"/>
+<area shape="poly" id="edge30_Node000027_Node000011" title=" " alt="" coords="633,429,677,446,702,464,711,473,725,482,840,531,889,547,936,557,983,560,1034,558,1090,549,1155,533,1192,520,1227,503,1284,465,1287,470,1230,507,1194,525,1157,539,1091,554,1035,563,983,566,935,562,888,552,838,536,723,486,708,477,698,468,675,450,632,434"/>
+<area shape="rect" id="Node000028" href="$classSpan_1_1AssetManager.html#a98a270b7faf1990407f7082143e437d6" title="デフォルト (標準) のマテリアルを取得します。 シェーダーやマテリアルが存在しない場合は内部で生成します。" alt="" coords="736,599,891,639"/>
+<area shape="poly" id="edge31_Node000027_Node000028" title=" " alt="" coords="633,422,657,431,678,446,692,463,699,479,704,512,708,545,714,562,726,578,739,589,735,593,722,582,709,564,702,547,699,513,694,481,687,465,674,450,654,436,631,427"/>
+<area shape="rect" id="Node000029" href="$classSpan_1_1AssetRegistry.html#a3cae91f52d3d29c67936e289d1244319" title=" " alt="" coords="977,484,1129,524"/>
+<area shape="poly" id="edge32_Node000027_Node000029" title=" " alt="" coords="633,428,724,445,964,487,963,492,724,451,632,433"/>
+<area shape="poly" id="edge33_Node000027_Node000030" title=" " alt="" coords="632,412,722,413,722,418,632,418"/>
+<area shape="poly" id="edge34_Node000030_Node000011" title=" " alt="" coords="891,418,1208,438,1208,443,891,423"/>
+<area shape="poly" id="edge35_Node000030_Node000029" title=" " alt="" coords="870,434,986,477,984,482,868,439"/>
+<area shape="rect" id="Node000033" href="$classSpan_1_1SelectionManager.html#a01590b8a12222e57fa622d22c3ffb484" title=" " alt="" coords="724,83,903,123"/>
+<area shape="poly" id="edge39_Node000032_Node000033" title=" " alt="" coords="644,100,710,100,710,105,644,105"/>
 </map>

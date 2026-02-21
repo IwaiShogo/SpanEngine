@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Editor/Panels/Inspector/MaterialPreviewer.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('MaterialPreviewer_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MaterialPreviewer.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MaterialPreviewer_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    MaterialPreviewer.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   マテリアルプレビュー用のオフスクリーンレンダリング管理。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * 専用の RenderTarget とプロシージャルな球体メッシュを持ち、</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * Inspector 上にマテリアルのリアルタイムプレビューを提供します。</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="RenderTarget_8h.html">Runtime/Graphics/Core/RenderTarget.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="Mesh_8h.html">Runtime/Graphics/Resources/Mesh.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="Material_8h.html">Runtime/Graphics/Resources/Material.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="Renderer_8h.html">Runtime/Graphics/Renderer.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">     * @class   MaterialPreviewer</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">     * @brief   🎨 インスペクタ用のマテリアル球体プレビューア</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html">   27</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#a58526df4858ea152754eec244c00c7e1">MaterialPreviewer</a></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html#a58526df4858ea152754eec244c00c7e1">   30</a></span>        <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#a58526df4858ea152754eec244c00c7e1">MaterialPreviewer</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#aba93448bfcda28992cf56ecf2ce028c5">~MaterialPreviewer</a>();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"></span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">         * @brief   プレビューアを初期化します。</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">         * @param   device DX12デバイス</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#a0ecc6d1cd5ee23301a91c8dccf03b867">Initialize</a>(ID3D12Device* device);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#a315e0a055e9db125304ab500bd08e20a">Shutdown</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"></span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">         * @brief   オフスクリーンターゲットに球体を描画します。</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">         * @param   cmdList コマンドリスト</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">         * @param   renderer メインレンダラー</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">         * @param   material 適用するマテリアル</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8">Render</a>(ID3D12GraphicsCommandList* cmdList, <a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>* renderer, <a class="code hl_class" href="classSpan_1_1Material.html">Material</a>* material);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"></span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">         * @brief   描画結果のテクスチャIDを取得します。</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html#a5b1ce4769a2eaaa6096b1f43ca72d897">   51</a></span>        <span class="keywordtype">void</span>* <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#a5b1ce4769a2eaaa6096b1f43ca72d897">GetTextureID</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.GetImGuiTextureID(); }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#ad58bc22014bf1edfe485782a1e264dce">GenerateSphereMesh</a>(ID3D12Device* device);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">   57</a></span>        <a class="code hl_class" href="classSpan_1_1RenderTarget.html">RenderTarget</a> <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html#ab90e059d5ba9d6b83ac2ca29f0024e4a">   58</a></span>        <a class="code hl_class" href="classSpan_1_1Mesh.html">Mesh</a>* <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#ab90e059d5ba9d6b83ac2ca29f0024e4a">m_SphereMesh</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html#a001a48fcb3fb68fc3412f8716346bba2">   59</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a001a48fcb3fb68fc3412f8716346bba2">m_IsInitialized</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    };</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aMaterial_8h_html"><div class="ttname"><a href="Material_8h.html">Material.h</a></div><div class="ttdoc">PBRマテリアルのパラメータ管理。</div></div>
+<div class="ttc" id="aMesh_8h_html"><div class="ttname"><a href="Mesh_8h.html">Mesh.h</a></div><div class="ttdoc">3Dモデルの形状データ (頂点バッファ) 管理。</div></div>
+<div class="ttc" id="aRenderTarget_8h_html"><div class="ttname"><a href="RenderTarget_8h.html">RenderTarget.h</a></div><div class="ttdoc">レンダリングターゲット (RTV) とシェーダーリソース (SRV) の管理。</div></div>
+<div class="ttc" id="aRenderer_8h_html"><div class="ttname"><a href="Renderer_8h.html">Renderer.h</a></div><div class="ttdoc">描画パイプラインの構築と実行。</div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a001a48fcb3fb68fc3412f8716346bba2"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a001a48fcb3fb68fc3412f8716346bba2">Span::MaterialPreviewer::m_IsInitialized</a></div><div class="ttdeci">bool m_IsInitialized</div><div class="ttdef"><b>Definition</b> <a href="#l00059">MaterialPreviewer.h:59</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a0ecc6d1cd5ee23301a91c8dccf03b867"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a0ecc6d1cd5ee23301a91c8dccf03b867">Span::MaterialPreviewer::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device)</div><div class="ttdoc">プレビューアを初期化します。</div><div class="ttdef"><b>Definition</b> <a href="MaterialPreviewer_8cpp_source.html#l00022">MaterialPreviewer.cpp:22</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a315e0a055e9db125304ab500bd08e20a"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a315e0a055e9db125304ab500bd08e20a">Span::MaterialPreviewer::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="MaterialPreviewer_8cpp_source.html#l00034">MaterialPreviewer.cpp:34</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a38d6b2674661dcea398258a06931ed0f"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">Span::MaterialPreviewer::m_RenderTarget</a></div><div class="ttdeci">RenderTarget m_RenderTarget</div><div class="ttdef"><b>Definition</b> <a href="#l00057">MaterialPreviewer.h:57</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a58526df4858ea152754eec244c00c7e1"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a58526df4858ea152754eec244c00c7e1">Span::MaterialPreviewer::MaterialPreviewer</a></div><div class="ttdeci">MaterialPreviewer()=default</div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a5b1ce4769a2eaaa6096b1f43ca72d897"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a5b1ce4769a2eaaa6096b1f43ca72d897">Span::MaterialPreviewer::GetTextureID</a></div><div class="ttdeci">void * GetTextureID() const</div><div class="ttdoc">描画結果のテクスチャIDを取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00051">MaterialPreviewer.h:51</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a7af64e04a1aae97d04d3a2bbe15f50a8"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8">Span::MaterialPreviewer::Render</a></div><div class="ttdeci">void Render(ID3D12GraphicsCommandList *cmdList, Renderer *renderer, Material *material)</div><div class="ttdoc">オフスクリーンターゲットに球体を描画します。</div><div class="ttdef"><b>Definition</b> <a href="MaterialPreviewer_8cpp_source.html#l00041">MaterialPreviewer.cpp:41</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_ab90e059d5ba9d6b83ac2ca29f0024e4a"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#ab90e059d5ba9d6b83ac2ca29f0024e4a">Span::MaterialPreviewer::m_SphereMesh</a></div><div class="ttdeci">Mesh * m_SphereMesh</div><div class="ttdef"><b>Definition</b> <a href="#l00058">MaterialPreviewer.h:58</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_aba93448bfcda28992cf56ecf2ce028c5"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#aba93448bfcda28992cf56ecf2ce028c5">Span::MaterialPreviewer::~MaterialPreviewer</a></div><div class="ttdeci">~MaterialPreviewer()</div><div class="ttdef"><b>Definition</b> <a href="MaterialPreviewer_8cpp_source.html#l00017">MaterialPreviewer.cpp:17</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_ad58bc22014bf1edfe485782a1e264dce"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#ad58bc22014bf1edfe485782a1e264dce">Span::MaterialPreviewer::GenerateSphereMesh</a></div><div class="ttdeci">void GenerateSphereMesh(ID3D12Device *device)</div><div class="ttdef"><b>Definition</b> <a href="MaterialPreviewer_8cpp_source.html#l00096">MaterialPreviewer.cpp:96</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Material_html"><div class="ttname"><a href="classSpan_1_1Material.html">Span::Material</a></div><div class="ttdoc">🎨 PRBマテリアルを管理し、.matアセットとして機能するクラス</div><div class="ttdef"><b>Definition</b> <a href="Material_8h_source.html#l00061">Material.h:62</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Mesh_html"><div class="ttname"><a href="classSpan_1_1Mesh.html">Span::Mesh</a></div><div class="ttdoc">📦 頂点データをGPUメモリ (Vertex Buffer) に保持するクラス。</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00038">Mesh.h:39</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderTarget_html"><div class="ttname"><a href="classSpan_1_1RenderTarget.html">Span::RenderTarget</a></div><div class="ttdoc">🎯 描画対象となるテクスチャリソース。</div><div class="ttdef"><b>Definition</b> <a href="RenderTarget_8h_source.html#l00032">RenderTarget.h:33</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html"><div class="ttname"><a href="classSpan_1_1Renderer.html">Span::Renderer</a></div><div class="ttdoc">🖌 描画コマンドの発行を担うクラス。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00039">Renderer.h:40</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_c6cb6fb3292d721ac39edcf45c3f2a55.html">Editor</a></li><li class="navelem"><a href="dir_bcba414dde695aa9b94bbe05564e6e5d.html">Panels</a></li><li class="navelem"><a href="dir_b6b1c143615c8369fe6c6b8386f9603d.html">Inspector</a></li><li class="navelem"><a href="MaterialPreviewer_8h.html">MaterialPreviewer.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

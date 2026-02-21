@@ -11,6 +11,7 @@ var classSpan_1_1InspectorPanel =
     [ "m_LockedAssets", "classSpan_1_1InspectorPanel.html#aecb8aad56e7c3a24613f32ab6da77e7c", null ],
     [ "m_LockedEntity", "classSpan_1_1InspectorPanel.html#a3ea3e42a326beb35274040b103034704", null ],
     [ "m_LockedType", "classSpan_1_1InspectorPanel.html#a8abf62cbc3e492c49fec19f9c91263be", null ],
+    [ "m_MaterialPreviewer", "classSpan_1_1InspectorPanel.html#a4d2a7ee840d9644b98b9a8207ecb289f", null ],
     [ "m_OpenLayerEditor", "classSpan_1_1InspectorPanel.html#a2aba609bb550783f3b3865f73da45a3c", null ],
     [ "m_OpenTagEditor", "classSpan_1_1InspectorPanel.html#a3591bf08401c9eb422c7844fb31020a0", null ]
 ];

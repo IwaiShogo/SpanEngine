@@ -7,6 +7,7 @@ var classSpan_1_1RenderTarget =
     [ "CreateViews", "classSpan_1_1RenderTarget.html#a12eb7f6380faef5204ff0cfd55ac44a9", null ],
     [ "GetDSV", "classSpan_1_1RenderTarget.html#ae8e2d92546a10fdbc5497c6f6ca5615e", null ],
     [ "GetHeight", "classSpan_1_1RenderTarget.html#a6565669f186c92debef9d162e7b9c14c", null ],
+    [ "GetImGuiTextureID", "classSpan_1_1RenderTarget.html#a6a3e75e6947b2d0704ac5ea397758dcc", null ],
     [ "GetResource", "classSpan_1_1RenderTarget.html#af7ea58758e6016e4015554913d7fabfb", null ],
     [ "GetRTV", "classSpan_1_1RenderTarget.html#a1ad31493e7d5c69d29a4d0f6ca9a07b4", null ],
     [ "GetSRV", "classSpan_1_1RenderTarget.html#a3149f0c570573ab2973d7bc21a6dd14d", null ],

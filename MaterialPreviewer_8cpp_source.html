@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Editor/Panels/Inspector/MaterialPreviewer.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('MaterialPreviewer_8cpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MaterialPreviewer.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MaterialPreviewer_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    MaterialPreviewer.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   MaterialPreviewerの実装。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="MaterialPreviewer_8h.html">MaterialPreviewer.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="Application_8h.html">Runtime/Application.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html#aba93448bfcda28992cf56ecf2ce028c5">   17</a></span>    <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#aba93448bfcda28992cf56ecf2ce028c5">MaterialPreviewer::~MaterialPreviewer</a>()</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#a315e0a055e9db125304ab500bd08e20a">Shutdown</a>();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
+</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html#a0ecc6d1cd5ee23301a91c8dccf03b867">   22</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#a0ecc6d1cd5ee23301a91c8dccf03b867">MaterialPreviewer::Initialize</a>(ID3D12Device* device)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a001a48fcb3fb68fc3412f8716346bba2">m_IsInitialized</a>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="comment">// 256x256 の高解像度プレビューターゲット</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.Initialize(device, 256, 256, DXGI_FORMAT_R8G8B8A8_UNORM)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#ad58bc22014bf1edfe485782a1e264dce">GenerateSphereMesh</a>(device);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a001a48fcb3fb68fc3412f8716346bba2">m_IsInitialized</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    }</div>
+</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html#a315e0a055e9db125304ab500bd08e20a">   34</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#a315e0a055e9db125304ab500bd08e20a">MaterialPreviewer::Shutdown</a>()</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.Shutdown();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_define" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a>(<a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#ab90e059d5ba9d6b83ac2ca29f0024e4a">m_SphereMesh</a>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a001a48fcb3fb68fc3412f8716346bba2">m_IsInitialized</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
+</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8">   41</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8">MaterialPreviewer::Render</a>(ID3D12GraphicsCommandList* cmdList, <a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>* renderer, <a class="code hl_class" href="classSpan_1_1Material.html">Material</a>* material)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a001a48fcb3fb68fc3412f8716346bba2">m_IsInitialized</a> || !material || !renderer || !cmdList) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="comment">// --- 1. 元の状態（カメラ行列）を保存 ---</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> oldView = renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a333cb4a9e8db91602609815c0d5237dd">GetViewMatrix</a>();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> oldProj = renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a4763d852f768394d7272e03a2e4d32e4">GetProjectionMatrix</a>();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="comment">// --- 2. プレビュー用レンダーターゲットの設定 ---</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.TransitionToRenderTarget(cmdList);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        D3D12_CPU_DESCRIPTOR_HANDLE rtv = <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.GetRTV();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        D3D12_CPU_DESCRIPTOR_HANDLE dsv = <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.GetDSV();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        cmdList-&gt;OMSetRenderTargets(1, &amp;rtv, FALSE, &amp;dsv);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> clearColor[] = { 0.15f, 0.15f, 0.15f, 1.0f };</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        cmdList-&gt;ClearRenderTargetView(rtv, clearColor, 0, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        cmdList-&gt;ClearDepthStencilView(dsv, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        D3D12_VIEWPORT vp = { 0.0f, 0.0f, (float)<a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.GetWidth(), (float)<a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.GetHeight(), 0.0f, 1.0f };</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        D3D12_RECT scissor = { 0, 0, (long)<a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.GetWidth(), (long)<a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.GetHeight() };</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        cmdList-&gt;RSSetViewports(1, &amp;vp);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        cmdList-&gt;RSSetScissorRects(1, &amp;scissor);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="comment">// --- 3. プレビュー専用カメラで球体を描画 ---</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> proj = <a class="code hl_function" href="structSpan_1_1Matrix4x4.html#afe0101ccded226fc963d79f61111a6ed">Matrix4x4::PerspectiveFovLH</a>(45.0f, 1.0f, 0.1f, 100.0f);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> view = <a class="code hl_function" href="structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa">Matrix4x4::LookAtLH</a>(<a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a>(0, 0, -3.0f), <a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a>(0, 0, 0), <a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a>(0, 1, 0));</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a5c4ce1187eccfa4c75acd068c4ae9706">SetCamera</a>(view, proj);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> world = <a class="code hl_function" href="structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557">Matrix4x4::Identity</a>();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#ade1cd95fe5d2e6aa78493393ce39c767">DrawMesh</a>(<a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#ab90e059d5ba9d6b83ac2ca29f0024e4a">m_SphereMesh</a>, material, world);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="comment">// --- 4. 状態を元に戻す ---</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="comment">// 4-a. SRVとして読めるように状態遷移</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">m_RenderTarget</a>.TransitionToShaderResource(cmdList);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">// 4-b. カメラを元のメインカメラに戻す</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a5c4ce1187eccfa4c75acd068c4ae9706">SetCamera</a>(oldView, oldProj);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="comment">// 4-c. 描画先をメイン画面（バックバッファ）に戻す</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">if</span> (renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a377035eefc48745e3d15bcceae5f885a">GetContext</a>())</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a377035eefc48745e3d15bcceae5f885a">GetContext</a>()-&gt;<a class="code hl_function" href="classSpan_1_1GraphicsContext.html#a30d20086e646e5db11d178a8d549d20d">SetRenderTargetToBackBuffer</a>(cmdList);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="comment">// 4-d. ビューポートとシザーを元のメイン画面のサイズに戻す</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordtype">float</span> mainWidth = (float)<a class="code hl_function" href="classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e">Application::Get</a>().GetWindow().GetWidth();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordtype">float</span> mainHeight = (float)<a class="code hl_function" href="classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e">Application::Get</a>().GetWindow().GetHeight();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        D3D12_VIEWPORT mainVp = { 0.0f, 0.0f, mainWidth, mainHeight, 0.0f, 1.0f };</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        D3D12_RECT mainScissor = { 0, 0, (long)mainWidth, (<span class="keywordtype">long</span>)mainHeight };</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        cmdList-&gt;RSSetViewports(1, &amp;mainVp);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        cmdList-&gt;RSSetScissorRects(1, &amp;mainScissor);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
+</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="foldopen" id="foldopen00096" data-start="{" data-end="}">
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classSpan_1_1MaterialPreviewer.html#ad58bc22014bf1edfe485782a1e264dce">   96</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1MaterialPreviewer.html#ad58bc22014bf1edfe485782a1e264dce">MaterialPreviewer::GenerateSphereMesh</a>(ID3D12Device* device)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <a class="code hl_variable" href="classSpan_1_1MaterialPreviewer.html#ab90e059d5ba9d6b83ac2ca29f0024e4a">m_SphereMesh</a> = <a class="code hl_function" href="classSpan_1_1Mesh.html#af6eda3dd586a593a9d13770d220c7d3f">Mesh::CreateSphere</a>(device, 64, 64);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    }</div>
+</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
+<div class="ttc" id="aApplication_8h_html"><div class="ttname"><a href="Application_8h.html">Application.h</a></div><div class="ttdoc">エンジンのメインループとライフサイクル管理。</div></div>
+<div class="ttc" id="aCoreMinimal_8h_html_a4b8b2bed986c06c207ebac140ba65a7a"><div class="ttname"><a href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a></div><div class="ttdeci">#define SAFE_DELETE(x)</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00114">CoreMinimal.h:114</a></div></div>
+<div class="ttc" id="aMaterialPreviewer_8h_html"><div class="ttname"><a href="MaterialPreviewer_8h.html">MaterialPreviewer.h</a></div><div class="ttdoc">マテリアルプレビュー用のオフスクリーンレンダリング管理。</div></div>
+<div class="ttc" id="aclassSpan_1_1Application_html_ae2e9eaebe90ffdf55cfef9d74ccbce3e"><div class="ttname"><a href="classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e">Span::Application::Get</a></div><div class="ttdeci">static Application &amp; Get()</div><div class="ttdoc">シングルトンインスタンスの取得</div><div class="ttdef"><b>Definition</b> <a href="Application_8h_source.html#l00038">Application.h:38</a></div></div>
+<div class="ttc" id="aclassSpan_1_1GraphicsContext_html_a30d20086e646e5db11d178a8d549d20d"><div class="ttname"><a href="classSpan_1_1GraphicsContext.html#a30d20086e646e5db11d178a8d549d20d">Span::GraphicsContext::SetRenderTargetToBackBuffer</a></div><div class="ttdeci">void SetRenderTargetToBackBuffer(ID3D12GraphicsCommandList *commandList)</div><div class="ttdoc">現在のレンダーターゲットをバックバッファ (スワップチェーン) に戻します。 オフスクリーン描画からメイン描画に戻る際に使用します。</div><div class="ttdef"><b>Definition</b> <a href="GraphicsContext_8cpp_source.html#l00274">GraphicsContext.cpp:274</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a001a48fcb3fb68fc3412f8716346bba2"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a001a48fcb3fb68fc3412f8716346bba2">Span::MaterialPreviewer::m_IsInitialized</a></div><div class="ttdeci">bool m_IsInitialized</div><div class="ttdef"><b>Definition</b> <a href="MaterialPreviewer_8h_source.html#l00059">MaterialPreviewer.h:59</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a0ecc6d1cd5ee23301a91c8dccf03b867"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a0ecc6d1cd5ee23301a91c8dccf03b867">Span::MaterialPreviewer::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device)</div><div class="ttdoc">プレビューアを初期化します。</div><div class="ttdef"><b>Definition</b> <a href="#l00022">MaterialPreviewer.cpp:22</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a315e0a055e9db125304ab500bd08e20a"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a315e0a055e9db125304ab500bd08e20a">Span::MaterialPreviewer::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="#l00034">MaterialPreviewer.cpp:34</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a38d6b2674661dcea398258a06931ed0f"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a38d6b2674661dcea398258a06931ed0f">Span::MaterialPreviewer::m_RenderTarget</a></div><div class="ttdeci">RenderTarget m_RenderTarget</div><div class="ttdef"><b>Definition</b> <a href="MaterialPreviewer_8h_source.html#l00057">MaterialPreviewer.h:57</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_a7af64e04a1aae97d04d3a2bbe15f50a8"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8">Span::MaterialPreviewer::Render</a></div><div class="ttdeci">void Render(ID3D12GraphicsCommandList *cmdList, Renderer *renderer, Material *material)</div><div class="ttdoc">オフスクリーンターゲットに球体を描画します。</div><div class="ttdef"><b>Definition</b> <a href="#l00041">MaterialPreviewer.cpp:41</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_ab90e059d5ba9d6b83ac2ca29f0024e4a"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#ab90e059d5ba9d6b83ac2ca29f0024e4a">Span::MaterialPreviewer::m_SphereMesh</a></div><div class="ttdeci">Mesh * m_SphereMesh</div><div class="ttdef"><b>Definition</b> <a href="MaterialPreviewer_8h_source.html#l00058">MaterialPreviewer.h:58</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_aba93448bfcda28992cf56ecf2ce028c5"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#aba93448bfcda28992cf56ecf2ce028c5">Span::MaterialPreviewer::~MaterialPreviewer</a></div><div class="ttdeci">~MaterialPreviewer()</div><div class="ttdef"><b>Definition</b> <a href="#l00017">MaterialPreviewer.cpp:17</a></div></div>
+<div class="ttc" id="aclassSpan_1_1MaterialPreviewer_html_ad58bc22014bf1edfe485782a1e264dce"><div class="ttname"><a href="classSpan_1_1MaterialPreviewer.html#ad58bc22014bf1edfe485782a1e264dce">Span::MaterialPreviewer::GenerateSphereMesh</a></div><div class="ttdeci">void GenerateSphereMesh(ID3D12Device *device)</div><div class="ttdef"><b>Definition</b> <a href="#l00096">MaterialPreviewer.cpp:96</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Material_html"><div class="ttname"><a href="classSpan_1_1Material.html">Span::Material</a></div><div class="ttdoc">🎨 PRBマテリアルを管理し、.matアセットとして機能するクラス</div><div class="ttdef"><b>Definition</b> <a href="Material_8h_source.html#l00061">Material.h:62</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Mesh_html_af6eda3dd586a593a9d13770d220c7d3f"><div class="ttname"><a href="classSpan_1_1Mesh.html#af6eda3dd586a593a9d13770d220c7d3f">Span::Mesh::CreateSphere</a></div><div class="ttdeci">static Mesh * CreateSphere(ID3D12Device *device, int slices=16, int stacks=16)</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00111">Mesh.cpp:111</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html"><div class="ttname"><a href="classSpan_1_1Renderer.html">Span::Renderer</a></div><div class="ttdoc">🖌 描画コマンドの発行を担うクラス。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00039">Renderer.h:40</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html_a333cb4a9e8db91602609815c0d5237dd"><div class="ttname"><a href="classSpan_1_1Renderer.html#a333cb4a9e8db91602609815c0d5237dd">Span::Renderer::GetViewMatrix</a></div><div class="ttdeci">Matrix4x4 GetViewMatrix() const</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00081">Renderer.h:81</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html_a377035eefc48745e3d15bcceae5f885a"><div class="ttname"><a href="classSpan_1_1Renderer.html#a377035eefc48745e3d15bcceae5f885a">Span::Renderer::GetContext</a></div><div class="ttdeci">GraphicsContext * GetContext() const</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00080">Renderer.h:80</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html_a4763d852f768394d7272e03a2e4d32e4"><div class="ttname"><a href="classSpan_1_1Renderer.html#a4763d852f768394d7272e03a2e4d32e4">Span::Renderer::GetProjectionMatrix</a></div><div class="ttdeci">Matrix4x4 GetProjectionMatrix() const</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00082">Renderer.h:82</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html_a5c4ce1187eccfa4c75acd068c4ae9706"><div class="ttname"><a href="classSpan_1_1Renderer.html#a5c4ce1187eccfa4c75acd068c4ae9706">Span::Renderer::SetCamera</a></div><div class="ttdeci">void SetCamera(const Matrix4x4 &amp;view, const Matrix4x4 projection)</div><div class="ttdoc">Camera</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8cpp_source.html#l00198">Renderer.cpp:198</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html_ade1cd95fe5d2e6aa78493393ce39c767"><div class="ttname"><a href="classSpan_1_1Renderer.html#ade1cd95fe5d2e6aa78493393ce39c767">Span::Renderer::DrawMesh</a></div><div class="ttdeci">void DrawMesh(Mesh *mesh, Material *material, const Matrix4x4 &amp;worldMatrix)</div><div class="ttdoc">メッシュ描画コマンドの発行。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8cpp_source.html#l00142">Renderer.cpp:142</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html">Span::Matrix4x4</a></div><div class="ttdoc">4x4 行列 (Row-Major)</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00303">SpanMath.h:304</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html_a89c2ef7e5d64bc5015019811d0c88dfa"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa">Span::Matrix4x4::LookAtLH</a></div><div class="ttdeci">static Matrix4x4 LookAtLH(const Vector3 &amp;eye, const Vector3 &amp;focus, const Vector3 &amp;up)</div><div class="ttdoc">ビュー行列作成 (左手系: Z+が奥)</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00370">SpanMath.h:370</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html_a9c4e6a6d01ebda4b0b5818a910afa557"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557">Span::Matrix4x4::Identity</a></div><div class="ttdeci">static Matrix4x4 Identity()</div><div class="ttdoc">単位行列</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00331">SpanMath.h:331</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html_afe0101ccded226fc963d79f61111a6ed"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html#afe0101ccded226fc963d79f61111a6ed">Span::Matrix4x4::PerspectiveFovLH</a></div><div class="ttdeci">static Matrix4x4 PerspectiveFovLH(float fovAngleY, float aspectRatio, float nearZ, float farZ)</div><div class="ttdoc">透視投影行列作成 (左手系)</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00378">SpanMath.h:378</a></div></div>
+<div class="ttc" id="astructSpan_1_1Vector3_html"><div class="ttname"><a href="structSpan_1_1Vector3.html">Span::Vector3</a></div><div class="ttdoc">3次元ベクトル (float x, y, z) 位置、方向、スケールなどに使用されます。</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00114">SpanMath.h:115</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_c6cb6fb3292d721ac39edcf45c3f2a55.html">Editor</a></li><li class="navelem"><a href="dir_bcba414dde695aa9b94bbe05564e6e5d.html">Panels</a></li><li class="navelem"><a href="dir_b6b1c143615c8369fe6c6b8386f9603d.html">Inspector</a></li><li class="navelem"><a href="MaterialPreviewer_8cpp.html">MaterialPreviewer.cpp</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

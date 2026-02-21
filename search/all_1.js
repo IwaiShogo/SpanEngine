@@ -35,7 +35,7 @@ var searchData=
   ['archetypemanager_2eh_32',['ArchetypeManager.h',['../ArchetypeManager_8h.html',1,'']]],
   ['archetypes_33',['archetypes',['../classSpan_1_1ArchetypeManager.html#a645659a380e6e245fa76b29caf5e2a64',1,'Span::ArchetypeManager']]],
   ['archetypesignature_34',['ArchetypeSignature',['../classSpan_1_1ArchetypeSignature.html',1,'Span']]],
-  ['architecture_35',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md111',1,'']]],
+  ['architecture_35',['🏗️ アーキテクチャ (Architecture)',['../classSpan_1_1World.html#autotoc_md115',1,'']]],
   ['aspectratiotype_36',['AspectRatioType',['../namespaceSpan.html#a12c7c5c268a27e26bd54df1f069ed577',1,'Span']]],
   ['asset_37',['Asset',['../namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa26e9054be7f40079575582b7ad3f7363',1,'Span']]],
   ['assethandle_38',['AssetHandle',['../namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446',1,'Span']]],

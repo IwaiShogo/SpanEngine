@@ -59,6 +59,7 @@ var hierarchy =
     [ "Span::Logger", "classSpan_1_1Logger.html", null ],
     [ "Span::Material", "classSpan_1_1Material.html", null ],
     [ "Span::MaterialData", "structSpan_1_1MaterialData.html", null ],
+    [ "Span::MaterialPreviewer", "classSpan_1_1MaterialPreviewer.html", null ],
     [ "Span::Matrix4x4", "structSpan_1_1Matrix4x4.html", null ],
     [ "Span::MemoryArena", "classSpan_1_1MemoryArena.html", null ],
     [ "Span::Mesh", "classSpan_1_1Mesh.html", null ],
