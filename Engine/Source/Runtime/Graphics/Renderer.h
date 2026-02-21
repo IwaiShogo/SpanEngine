@@ -17,6 +17,7 @@
 #include "Resources/Mesh.h"
 #include "Resources/Material.h"
 #include "Core/Math/SpanMath.h"
+#include "Runtime/Scene/EnvironmentSettings.h"
 
 namespace Span
 {
@@ -25,6 +26,16 @@ namespace Span
 	{
 		Matrix4x4 MVP;		///< Model-View-Projection Matrix
 		Matrix4x4 World;	///< World Matrix (for lighting)
+	};
+
+	struct alignas(16) GlobalLightData
+	{
+		Vector3 LightDirection = { 0.0f, -1.0f, 1.0f };
+		float Padding1;
+		Vector3 LightColor = { 1.0f, 1.0f, 1.0f };
+		float AmbientIntensity = 1.0f;
+		Vector3 CameraPosition = { 0.0f, 0.0f, 0.0f };
+		float Padding2;
 	};
 
 	/**
@@ -54,6 +65,13 @@ namespace Span
 		void OnResize(uint32 width, uint32 height);
 
 		/**
+		 * @brief	プロシージャルスカイボックスを描画します。
+		 * @param	cmd コマンドリスト
+		 * @param	env 環境設定データ
+		 */
+		void RenderSkybox(ID3D12GraphicsCommandList* cmd, const EnvironmentSettings& env);
+
+		/**
 		 * @brief	メッシュ描画コマンドの発行。
 		 * @param	mesh 描画するメッシュ
 		 * @param	material 適用マテリアル
@@ -71,6 +89,9 @@ namespace Span
 		/// @brief	カメラ位置のセッター
 		void SetCameraPosition(const Vector3& pos) { cameraPosition = pos; }
 		/// @}
+
+		/// @brief	ライト情報をRendererにセットする関数
+		void SetGlobalLightData(const Vector3& direction, const Vector3& color, float ambientIntensity);
 
 		/// @brief	GPUの処理完了を待機する
 		void WaitForGPU();
@@ -96,6 +117,13 @@ namespace Span
 		bool CreateRootSignature();
 		bool CreatePipelineState();
 		bool CreateConstantBuffer();
+
+		// Skybox Resources
+		bool InitializeSkyboxResources();
+		ComPtr<ID3D12PipelineState> m_skyboxPSO;
+		ComPtr<ID3D12RootSignature> m_skyboxRootSignature;
+		Shader* m_skyboxVS = nullptr;
+		Shader* m_skyboxPS = nullptr;
 
 	private:
 		GraphicsContext* context = nullptr; // 所有権はApplicationが持つ
@@ -132,5 +160,9 @@ namespace Span
 		ComPtr<ID3D12Fence> m_waitFence;
 		HANDLE m_waitEvent = nullptr;
 		uint64_t m_waitFenceValue = 0;
+
+		// ライト用定数バッファ
+		ConstantBuffer<GlobalLightData>* m_LightBuffer = nullptr;
+		GlobalLightData m_CurrentLightData;
 	};
 }

@@ -11,6 +11,7 @@
 
 #pragma once
 #include "Runtime/ECS/Kernel/World.h"
+#include "EnvironmentSettings.h"
 
 namespace Span
 {
@@ -41,5 +42,6 @@ namespace Span
 		// --- Scene Metadata ---
 		uint64_t MainCameraGUID = 0;
 		EditorCameraState EditorCamera;
+		EnvironmentSettings Environment;
 	};
 }

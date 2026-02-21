@@ -140,6 +140,8 @@ namespace Span
 			else	   requestSaveScene = true;
 		}
 
+		static bool s_ShowEnvironmentSettings = false;
+
 		if (ImGui::BeginMainMenuBar())
 		{
 			if (ImGui::BeginMenu("File"))
@@ -157,6 +159,11 @@ namespace Span
 			{
 				ImGui::MenuItem("Undo", "Ctrl+Z", false, false);
 				ImGui::MenuItem("Redo", "Ctrl+Y", false, false);
+				ImGui::EndMenu();
+			}
+			if (ImGui::BeginMenu("Window"))
+			{
+				ImGui::MenuItem("Environment Settings", nullptr, &s_ShowEnvironmentSettings);
 				ImGui::EndMenu();
 			}
 			ImGui::EndMainMenuBar();
@@ -212,6 +219,60 @@ namespace Span
 					SPAN_LOG("Saved scene to: %s", filepath.c_str());
 				}
 			}
+		}
+
+		if (s_ShowEnvironmentSettings)
+		{
+			ImGui::SetNextWindowSize(ImVec2(400, 500), ImGuiCond_FirstUseEver);
+			if (ImGui::Begin("Environment Sttings", &s_ShowEnvironmentSettings))
+			{
+				auto& env = Application::Get().GetActiveScene().Environment;
+
+				ImGui::SeparatorText("Skybox");
+
+				ImGui::Checkbox("Use Procedural Sky", &env.UseProceduralSky);
+
+				ImGui::SameLine();
+				if (ImGui::Button("Reset Colors"))
+				{
+					env.SkyTopColor[0] = 0.35f; env.SkyTopColor[1] = 0.5f; env.SkyTopColor[2] = 0.7f;
+					env.SkyHorizonColor[0] = 0.7f; env.SkyHorizonColor[1] = 0.75f; env.SkyHorizonColor[2] = 0.8f;
+					env.SkyBottomColor[0] = 0.2f; env.SkyBottomColor[1] = 0.2f; env.SkyBottomColor[2] = 0.2f;
+				}
+
+				if (env.UseProceduralSky)
+				{
+					ImGui::Indent();
+					ImGui::ColorEdit3("Top Color", env.SkyTopColor);
+					ImGui::ColorEdit3("Horizon Color", env.SkyHorizonColor);
+					ImGui::ColorEdit3("Bottom Color", env.SkyBottomColor);
+					ImGui::Unindent();
+				}
+				else
+				{
+					ImGui::Indent();
+					ImGui::Text("HDRI Texture");
+					// 将来的にここに HDRI テクスチャのドロップスロットを実装
+					ImGui::Unindent();
+				}
+
+				ImGui::Spacing();
+				ImGui::SeparatorText("Lighting & Camera Exposure");
+
+				ImGui::SliderFloat("Ambient Intensity", &env.AmbientIntensity, 0.0f, 5.0f);
+				ImGui::SliderFloat("Exposure", &env.Exposure, 0.1f, 10.0f);
+
+				// 将来拡張用
+				ImGui::Spacing();
+				ImGui::SeparatorText("Fog (Coming Soon)");
+				ImGui::BeginDisabled();
+				bool fogEnable = false;
+				float fogColor[3] = { 0.5f, 0.5f, 0.5f };
+				ImGui::Checkbox("Enable Fog", &fogEnable);
+				ImGui::ColorEdit3("Fog Color", fogColor);
+				ImGui::EndDisabled();
+			}
+			ImGui::End();
 		}
 
 		ImGui::Render();
@@ -274,7 +335,7 @@ namespace Span
 		style.ScrollbarRounding = 4.0f;
 		style.TabRounding       = 4.0f;
 
-		// 色のカスタマイズ (Unity 2021+ Dark Theme風)
+		// 色のカスタマイズ (Dark Theme風)
 		ImVec4* colors = style.Colors;
 
 		// 背景色: 少しマットなダークグレー

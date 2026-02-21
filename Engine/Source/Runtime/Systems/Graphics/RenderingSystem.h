@@ -13,12 +13,14 @@
 #include "ECS/Kernel/System.h"
 #include "ECS/Kernel/World.h"
 #include "Runtime/Application.h"
+#include "Runtime/Scene/Scene.h"
 #include "Graphics/Renderer.h"
 
 // Components
 #include "Components/Core/LocalToWorld.h"
 #include "Components/Graphics/MeshFilter.h"
 #include "Components/Graphics/MeshRenderer.h"
+#include "Components/Graphics/DirectionalLight.h"
 
 namespace Span
 {
@@ -39,6 +41,22 @@ namespace Span
 			Renderer& renderer = Application::Get().GetRenderer();
 			auto world = GetWorld();
 
+			// 0. ライト情報の収集と送信
+			Vector3 lightDir = { 0.0f, -1.0f, 1.0f };
+			Vector3 lightColor = { 1.0f, 1.0f, 1.0f };
+			float ambient = Application::Get().GetActiveScene().Environment.AmbientIntensity;
+
+			world->ForEach<DirectionalLight, LocalToWorld>(
+				[&](Entity, DirectionalLight& dl, LocalToWorld& ltw)
+				{
+					lightDir = Vector3(ltw.Value.m[2][0], ltw.Value.m[2][1], ltw.Value.m[2][2]);
+					lightDir.Normalized();
+
+					lightColor = dl.Color * dl.Intensity;
+				}
+			);
+			renderer.SetGlobalLightData(lightDir, lightColor, ambient);
+
 			// --------------------------------------------------------
 			// パス1: 不透明 (Opaque) の描画
 			// 先に奥にある不透明な物体を描画して、深度バッファを埋めます。
@@ -54,6 +72,14 @@ namespace Span
 					}
 				}
 			);
+
+			// --------------------------------------------------------
+			// パス1.5: スカイボックス (Skybox) の描画
+			// 不透明なオブジェクトで深度が書き込まれた後に行うことで、
+			// 隠れている空のピクセルの描画をスキップし最適化します。
+			// --------------------------------------------------------
+			EnvironmentSettings& env = Application::Get().GetActiveScene().Environment;
+			renderer.RenderSkybox(renderer.GetCommandList(), env);
 
 			// --------------------------------------------------------
 			// パス2: 透明 (Transparent) の描画

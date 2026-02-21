@@ -8,7 +8,6 @@ cbuffer TransformBuffer : register(b0)
 	matrix World;
 };
 
-// C++側の MaterialData 構造体と完全に一致させること (16バイト境界)
 cbuffer MaterialBuffer : register(b1)
 {
 	float4 AlbedoColor;
@@ -33,8 +32,18 @@ cbuffer MaterialBuffer : register(b1)
 	int Padding2[2];
 };
 
-// テクスチャとサンプラー (順序はRenderer.cppのDescriptorTableへのセット順に依存)
-// 今回はRenderer側で「テクスチャの配列(Table)」として渡す設計に変更します。
+cbuffer LightBuffer : register(b2)
+{
+	float3 LightDirection;
+	float LightPadding1;
+
+	float3 LightColor;
+	float AmbientIntensity;
+
+	float3 CameraPosition;
+	float LightPadding2;
+}
+
 Texture2D t_Albedo : register(t0);
 Texture2D t_Normal : register(t1);
 Texture2D t_Metallic : register(t2);
@@ -49,7 +58,6 @@ struct VSInput
 	float3 position : POSITION;
 	float3 normal : NORMAL;
 	float2 uv : TEXCOORD0;
-	// ※必要に応じて TANGENT などを追加
 };
 
 struct PSInput
@@ -180,7 +188,7 @@ float4 PSMain(PSInput input) : SV_TARGET
 	}
 
 	// --- 2. PBR Lighting Setup ---
-	float3 V = normalize(float3(0.0f, 2.0f, -5.0f) - input.worldPos); // カメラ位置 (本来はCBから渡す)
+	float3 V = normalize(CameraPosition - input.worldPos);
 
 	// F0 (基本反射率): 非金属は0.04、金属はAlbedoの色を使用
 	float3 F0 = float3(0.04, 0.04, 0.04);
@@ -188,9 +196,9 @@ float4 PSMain(PSInput input) : SV_TARGET
 
 	float3 Lo = float3(0.0, 0.0, 0.0);
 
-	// --- 3. Directional Light 計算 (仮の単一光源) ---
-	float3 LDir = normalize(float3(1.0, 1.0, -1.0));
-	float3 LColor = float3(1.0, 1.0, 1.0) * 3.0; // 光の強さ
+	// --- 3. Directional Light 計算 ---
+	float3 LDir = normalize(-LightDirection);
+	float3 LColor = LightColor; // 光の強さ
 
 	float3 H = normalize(V + LDir);
 	float NdotL = max(dot(N, LDir), 0.0);
@@ -213,7 +221,7 @@ float4 PSMain(PSInput input) : SV_TARGET
 	Lo += (kD * albedo.rgb / PI + specular) * LColor * NdotL;
 
 	// --- 4. Ambient & Final Color ---
-	float3 ambient = float3(0.03, 0.03, 0.03) * albedo.rgb * aoMap; // 簡易環境光
+	float3 ambient = float3(0.03, 0.03, 0.03) * albedo.rgb * aoMap * AmbientIntensity;
 	float3 color = ambient + Lo + emissive;
 
 	// HDR Tone Mapping (Reinhard) & Gamma Correction

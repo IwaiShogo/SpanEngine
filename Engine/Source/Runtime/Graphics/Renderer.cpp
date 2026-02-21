@@ -58,6 +58,11 @@ namespace Span
 
 		if (!InitializeGridResources()) return false;
 
+		if (!InitializeSkyboxResources()) return false;
+
+		m_LightBuffer = new ConstantBuffer<GlobalLightData>();
+		if (!m_LightBuffer->Initialize(context->GetDevice())) return false;
+
 		SPAN_LOG("Renderer Initialized Successfully!");
 		return true;
 	}
@@ -89,6 +94,17 @@ namespace Span
 		SAFE_DELETE(m_gridPlane);
 		m_gridPSO.Reset();
 		m_gridRootSignature.Reset();
+
+		SAFE_DELETE(m_skyboxVS);
+		SAFE_DELETE(m_skyboxPS);
+		m_skyboxPSO.Reset();
+		m_skyboxRootSignature.Reset();
+
+		if (m_LightBuffer)
+		{
+			m_LightBuffer->Shutdown();
+			SAFE_DELETE(m_LightBuffer);
+		}
 	}
 
 	ID3D12GraphicsCommandList* Renderer::BeginFrame()
@@ -167,6 +183,12 @@ namespace Span
 		commandList->SetGraphicsRootConstantBufferView(0, cbAddress);
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
 
+		// スロット8: LightData CBV (b2) をセット
+		if (m_LightBuffer)
+		{
+			commandList->SetGraphicsRootConstantBufferView(8, m_LightBuffer->GetGPUVirtualAddress());
+		}
+
 		// スロット2～7: Textures (t0~t5)
 		Texture* textures[6] = {
 			material->GetAlbedoMap(),
@@ -201,6 +223,16 @@ namespace Span
 		projectionMatrix = projection;
 	}
 
+	void Renderer::SetGlobalLightData(const Vector3& direction, const Vector3& color, float ambientIntensity)
+	{
+		m_CurrentLightData.LightDirection = direction;
+		m_CurrentLightData.LightColor = color;
+		m_CurrentLightData.AmbientIntensity = ambientIntensity;
+		m_CurrentLightData.CameraPosition = cameraPosition;
+
+		if (m_LightBuffer) m_LightBuffer->Update(m_CurrentLightData);
+	}
+
 	void Renderer::WaitForGPU()
 	{
 		if (!context || !context->GetCommandQueue() || !m_waitFence) return;
@@ -223,7 +255,7 @@ namespace Span
 	bool Renderer::CreateRootSignature()
 	{
 		// ルートパラメータ定義 (CBV x2, Table x1)
-		D3D12_ROOT_PARAMETER rootParameters[8];
+		D3D12_ROOT_PARAMETER rootParameters[9];
 
 		// [0] Transform (b0)
 		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -252,6 +284,11 @@ namespace Span
 			rootParameters[2 + i].DescriptorTable.pDescriptorRanges = &ranges[i];
 			rootParameters[2 + i].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 		}
+
+		rootParameters[8].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[8].Descriptor.ShaderRegister = 2;
+		rootParameters[8].Descriptor.RegisterSpace = 0;
+		rootParameters[8].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
 		// サンプラー (Static Sampler)
 		D3D12_STATIC_SAMPLER_DESC sampler = {};
@@ -548,5 +585,128 @@ namespace Span
 		cmd->SetGraphicsRootConstantBufferView(0, constantBuffer->GetGPUVirtualAddress());
 
 		m_gridPlane->Draw(cmd);
+	}
+
+	bool Renderer::InitializeSkyboxResources()
+	{
+		auto device = context->GetDevice();
+
+		// 1. シェーダーの読み込み
+		m_skyboxVS = new Shader();
+		if (!m_skyboxVS->Load(L"Skybox.hlsl", ShaderType::Vertex, "VSMain")) return false;
+
+		m_skyboxPS = new Shader();
+		if (!m_skyboxPS->Load(L"Skybox.hlsl", ShaderType::Pixel, "PSMain")) return false;
+
+		// 2. Root Signature (カメラ情報 b0 と 環境色設定 b1)
+		D3D12_ROOT_PARAMETER rootParameters[2];
+
+		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[0].Descriptor.ShaderRegister = 0; // b0
+		rootParameters[0].Descriptor.RegisterSpace = 0;
+		rootParameters[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
+
+		rootParameters[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[1].Descriptor.ShaderRegister = 1; // b1
+		rootParameters[1].Descriptor.RegisterSpace = 0;
+		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+
+		D3D12_ROOT_SIGNATURE_DESC rootSigDesc = {};
+		rootSigDesc.NumParameters = 2;
+		rootSigDesc.pParameters = rootParameters;
+		rootSigDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
+
+		ComPtr<ID3DBlob> signature, error;
+		if (FAILED(D3D12SerializeRootSignature(&rootSigDesc, D3D_ROOT_SIGNATURE_VERSION_1, &signature, &error))) return false;
+		if (FAILED(device->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&m_skyboxRootSignature)))) return false;
+
+		// 3. Pipeline State Object (PSO)
+		D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
+		psoDesc.pRootSignature = m_skyboxRootSignature.Get();
+		psoDesc.VS = m_skyboxVS->GetBytecode();
+		psoDesc.PS = m_skyboxPS->GetBytecode();
+
+		// 入力レイアウトなし
+		psoDesc.InputLayout = { nullptr, 0 };
+
+		psoDesc.RasterizerState.FillMode = D3D12_FILL_MODE_SOLID;
+		psoDesc.RasterizerState.CullMode = D3D12_CULL_MODE_NONE;
+		psoDesc.RasterizerState.DepthClipEnable = TRUE;
+
+		psoDesc.BlendState.RenderTarget[0].BlendEnable = FALSE;
+		psoDesc.BlendState.RenderTarget[0].RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
+
+		// 深度テストを LESS_EQUAL に設定
+		psoDesc.DepthStencilState.DepthEnable = TRUE;
+		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;
+		psoDesc.DepthStencilState.DepthFunc = D3D12_COMPARISON_FUNC_LESS_EQUAL;
+
+		psoDesc.SampleMask = UINT_MAX;
+		psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+		psoDesc.NumRenderTargets = 1;
+		psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
+		psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
+		psoDesc.SampleDesc.Count = 1;
+
+		if (FAILED(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&m_skyboxPSO)))) return false;
+
+		return true;
+	}
+
+	void Renderer::RenderSkybox(ID3D12GraphicsCommandList* cmd, const EnvironmentSettings& env)
+	{
+		if (!m_skyboxPSO || !env.UseProceduralSky) return;
+		if (constantBufferIndex + 2 >= MAX_OBJECTS) return;
+
+		// C++側のデータ構造定義 (16バイトアライメント)
+		struct SkyboxCameraCB {
+			Matrix4x4 InvView;
+			Matrix4x4 InvProj;
+			Vector3 CamPos;
+			float padding;
+		};
+
+		struct SkyboxSettingsCB {
+			Vector3 TopColor; float pad1;
+			Vector3 HorizonColor; float pad2;
+			Vector3 BottomColor; float pad3;
+		};
+
+		// 1. カメラデータの準備
+		SkyboxCameraCB camData;
+		camData.InvView.FromXM(XMMatrixTranspose(XMMatrixInverse(nullptr, viewMatrix.ToXM())));
+		camData.InvProj.FromXM(XMMatrixTranspose(XMMatrixInverse(nullptr, projectionMatrix.ToXM())));
+		camData.CamPos = cameraPosition;
+
+		// 2. 環境色データの準備
+		SkyboxSettingsCB settingsData;
+		settingsData.TopColor = Vector3(env.SkyTopColor[0], env.SkyTopColor[1], env.SkyTopColor[2]);
+		settingsData.HorizonColor = Vector3(env.SkyHorizonColor[0], env.SkyHorizonColor[1], env.SkyHorizonColor[2]);
+		settingsData.BottomColor = Vector3(env.SkyBottomColor[0], env.SkyBottomColor[1], env.SkyBottomColor[2]);
+
+		// 定数バッファへコピー
+		UINT8* destCam = mappedConstantBuffer + (constantBufferIndex * CB_OBJ_SIZE);
+		memcpy(destCam, &camData, sizeof(SkyboxCameraCB));
+		D3D12_GPU_VIRTUAL_ADDRESS cbCamAddress = constantBuffer->GetGPUVirtualAddress() + (constantBufferIndex * CB_OBJ_SIZE);
+		constantBufferIndex++;
+
+		UINT8* destSet = mappedConstantBuffer + (constantBufferIndex * CB_OBJ_SIZE);
+		memcpy(destSet, &settingsData, sizeof(SkyboxSettingsCB));
+		D3D12_GPU_VIRTUAL_ADDRESS cbSetAddress = constantBuffer->GetGPUVirtualAddress() + (constantBufferIndex * CB_OBJ_SIZE);
+		constantBufferIndex++;
+
+		// 3. 描画コマンドの発行
+		cmd->SetPipelineState(m_skyboxPSO.Get());
+		cmd->SetGraphicsRootSignature(m_skyboxRootSignature.Get());
+
+		cmd->SetGraphicsRootConstantBufferView(0, cbCamAddress);
+		cmd->SetGraphicsRootConstantBufferView(1, cbSetAddress);
+
+		// 頂点バッファを無効化し、3つの頂点(フルスクリーンQuad)を生成させる
+		cmd->IASetVertexBuffers(0, 0, nullptr);
+		cmd->IASetIndexBuffer(nullptr);
+		cmd->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		cmd->DrawInstanced(3, 1, 0, 0);
 	}
 }
