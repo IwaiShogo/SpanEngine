@@ -61,6 +61,11 @@ namespace Span
 		 */
 		std::shared_ptr<Mesh> GetMesh(AssetHandle handle);
 
+		/**
+		 * @brief	GUIDでマテリアルを取得 (推奨)
+		 */
+		std::shared_ptr<Material> GetMaterial(AssetHandle handle);
+
 		// --- Legacy / Helper API (Path Base) ---
 
 		/**
@@ -76,6 +81,11 @@ namespace Span
 		 * @return	読み込まれたメッシュのリストへのポインタ。
 		 */
 		std::shared_ptr<Mesh> GetMesh(const std::string& path);
+
+		/**
+		 * @brief	パスでマテリアルを取得 (キャッシュ対応)。
+		 */
+		std::shared_ptr<Material> GetMaterial(const std::string& path);
 
 		/**
 		 * @brief	デフォルト (標準) のマテリアルを取得します。
@@ -100,6 +110,8 @@ namespace Span
 		std::unordered_map<AssetHandle, std::shared_ptr<Texture>> m_TextureCache;
 		// Mesh Cache
 		std::unordered_map<AssetHandle, std::shared_ptr<Mesh>> m_MeshCache;
+		// Material Cache
+		std::unordered_map<AssetHandle, std::shared_ptr<Material>> m_MaterialCache;
 
 		// デフォルトリソースのキャッシュ
 		std::shared_ptr<Shader> m_DefaultVS;	// Vertex Shader
@@ -109,6 +121,6 @@ namespace Span
 		// Thread safety
 		ID3D12Device* m_Device = nullptr;
 		ID3D12CommandQueue* m_CommandQueue = nullptr;
-		std::mutex m_Mutex;
+		std::recursive_mutex m_Mutex;
 	};
 }

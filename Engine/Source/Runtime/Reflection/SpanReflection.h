@@ -14,6 +14,7 @@
 #include "ComponentRegistry.h"
 #include "Editor/ImGui/ImGuiUI.h"
 #include "Core/Containers/FixedString.h"
+#include "Runtime/Resource/AssetManager.h"
 
 #include <magic_enum.hpp>
 #include <nlohmann/json.hpp>
@@ -135,6 +136,9 @@ namespace Span::Internal
 			else if constexpr (std::is_same_v<T, Quaternion>) {
 				j[name] = { value.x, value.y, value.z, value.w };
 			}
+			else if constexpr (std::is_same_v<T, Span::Material*>) {
+				j[name] = value ? value->Handle : 0;
+			}
 			else if constexpr (std::is_pointer_v<T>) {
 				// アセットポインタ等は現状スキップ
 			}
@@ -179,6 +183,17 @@ namespace Span::Internal
 				auto arr = j[name];
 				if (arr.is_array() && arr.size() >= 4) {
 					value.x = arr[0]; value.y = arr[1]; value.z = arr[2]; value.w = arr[3];
+				}
+			}
+			else if constexpr (std::is_same_v<T, Span::Material*>) {
+				uint64_t guid = j[name].get<uint64_t>();
+				if (guid != 0)
+				{
+					value = Span::AssetManager::Get().GetMaterial(guid).get();
+				}
+				else
+				{
+					value = nullptr;
 				}
 			}
 			else if constexpr (std::is_pointer_v<T>) {

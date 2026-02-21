@@ -54,14 +54,14 @@ public:
 		{
 			Material* gray = new Material();
 			gray->Initialize(device);
-			gray->SetAlbedo(Vector3(0.5f, 0.5f, 0.5f));
-			gray->SetRoughness(0.8f);
-			if (testTexture) gray->SetTexture(testTexture); // テクスチャ適用
+			gray->GetData().AlbedoColor = Vector4(1.0f, 0.5f, 0.3f, 1.0f);
+			gray->GetData().Roughness = 0.5f;
+			if (testTexture) gray->SetAlbedoMap(testTexture); // テクスチャ適用
 			m_materials.push_back(gray);
 
 			Material* white = new Material();
 			white->Initialize(device);
-			white->SetAlbedo(Vector3(1.0f, 1.0f, 1.0f));
+			white->GetData().AlbedoColor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 			m_materials.push_back(white);
 		}
 

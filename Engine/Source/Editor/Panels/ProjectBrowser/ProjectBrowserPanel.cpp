@@ -595,7 +595,7 @@ namespace Span
 					EditorFileSystem::OpenExternal(preferredPath);
 				}
 			}
-			else if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+			else if (ImGui::IsMouseReleased(ImGuiMouseButton_Left) && !ImGui::IsMouseDragPastThreshold(ImGuiMouseButton_Left))
 			{
 				bool ctrl = ImGui::GetIO().KeyCtrl;
 				SelectItem(path, ctrl);
@@ -701,8 +701,17 @@ namespace Span
 				ImGui::Separator();
 				if (ImGui::MenuItem("Material", ".mat"))
 				{
-					std::string content = "{\n\t\"Shader\": \"Basic.hlsl\",\n\t\"Albedo\": [1.0, 1.0, 1.0]\n}";
-					CreateFileFromTemplate("NewMaterial.mat", content);
+					std::filesystem::path newPath = m_CurrentDirectory / "NewMaterial.mat";
+					int i = 1;
+					while (std::filesystem::exists(newPath))
+					{
+						newPath = m_CurrentDirectory / ("NewMaterial_" + std::to_string(i++) + ".mat");
+					}
+
+					// デフォルトの完全なマテリアルデータを生成して保存
+					Material newMat;
+					newMat.Name = newPath.stem().string();
+					newMat.Serialize(newPath);
 				}
 				if (ImGui::MenuItem("Scene", ".span"))
 				{

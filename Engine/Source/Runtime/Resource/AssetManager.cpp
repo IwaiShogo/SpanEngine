@@ -34,7 +34,7 @@ namespace Span
 
 	void AssetManager::Shutdown()
 	{
-		std::lock_guard<std::mutex> lock(m_Mutex);
+		std::lock_guard<std::recursive_mutex> lock(m_Mutex);
 
 		// 全テクスチャの明示的な解放
 		for (auto& [key, texture] : m_TextureCache)
@@ -43,6 +43,7 @@ namespace Span
 		}
 		m_TextureCache.clear();
 		m_MeshCache.clear();
+		m_MaterialCache.clear();
 
 		m_DefaultMaterial.reset();
 		m_DefaultVS.reset();
@@ -57,7 +58,7 @@ namespace Span
 	{
 		if (handle == 0) return nullptr;
 
-		std::lock_guard<std::mutex> lock(m_Mutex);
+		std::lock_guard<std::recursive_mutex> lock(m_Mutex);
 
 		// 1. キャッシュ確認
 		auto it = m_TextureCache.find(handle);
@@ -76,6 +77,7 @@ namespace Span
 		auto texture = std::make_shared<Texture>();
 		if (texture->Initialize(m_Device, m_CommandQueue, path.string()))
 		{
+			texture->Handle = handle;
 			m_TextureCache[handle] = texture;
 			return texture;
 		}
@@ -86,7 +88,7 @@ namespace Span
 	std::shared_ptr<Mesh> AssetManager::GetMesh(AssetHandle handle)
 	{
 		if (handle == 0) return nullptr;
-		std::lock_guard<std::mutex> lock(m_Mutex);
+		std::lock_guard<std::recursive_mutex> lock(m_Mutex);
 
 		if (m_MeshCache.find(handle) != m_MeshCache.end()) return m_MeshCache[handle];
 
@@ -108,6 +110,45 @@ namespace Span
 			return m_MeshCache[handle];
 		}
 		return nullptr;
+	}
+
+	std::shared_ptr<Material> AssetManager::GetMaterial(AssetHandle handle)
+	{
+		if (handle == 0) return nullptr;
+		std::lock_guard<std::recursive_mutex> lock(m_Mutex);
+
+		// 1. キャッシュ確認
+		auto it = m_MaterialCache.find(handle);
+		if (it != m_MaterialCache.end()) return it->second;
+
+		// 2. パス解決
+		const auto& path = AssetRegistry::Get().GetPath(handle);
+		if (path.empty()) return nullptr;
+
+		// 3. ロード
+		auto material = std::make_shared<Material>();
+		if (material->Deserialize(path))
+		{
+			material->Handle = handle;
+
+			if (material->AlbedoMapGUID != 0) material->SetAlbedoMap(GetTexture(material->AlbedoMapGUID).get());
+			if (material->NormalMapGUID != 0) material->SetNormalMap(GetTexture(material->NormalMapGUID).get());
+			if (material->MetallicMapGUID != 0) material->SetMetallicMap(GetTexture(material->MetallicMapGUID).get());
+			if (material->RoughnessMapGUID != 0) material->SetRoughnessMap(GetTexture(material->RoughnessMapGUID).get());
+			if (material->AOMapGUID != 0) material->SetAOMap(GetTexture(material->AOMapGUID).get());
+			if (material->EmissiveMapGUID != 0) material->SetEmissiveMap(GetTexture(material->EmissiveMapGUID).get());
+
+			// デフォルトシェーダーの割り当て
+			auto defaultMat = GetDefaultMaterial();
+			if (defaultMat)
+			{
+				material->SetShaders(defaultMat->GetVertexShader(), defaultMat->GetPixelShader());
+			}
+
+			material->Initialize(m_Device);
+			m_MaterialCache[handle] = material;
+			return material;
+		}
 	}
 
 	std::shared_ptr<Texture> AssetManager::GetTexture(const std::string& path)
@@ -149,9 +190,25 @@ namespace Span
 		return GetMesh(handle);
 	}
 
+	std::shared_ptr<Material> AssetManager::GetMaterial(const std::string& path)
+	{
+		AssetHandle handle = AssetRegistry::Get().GetHandle(path);
+		if (handle == 0)
+		{
+			AssetMetadata meta = AssetSerializer::LoadOrCreateMetadata(path);
+			if (meta.IsValid())
+			{
+				AssetRegistry::Get().RegisterAsset(path);
+				handle = meta.Handle;
+			}
+			else return nullptr;
+		}
+		return GetMaterial(handle);
+	}
+
 	std::shared_ptr<Material> AssetManager::GetDefaultMaterial()
 	{
-		std::lock_guard<std::mutex> lock(m_Mutex);
+		std::lock_guard<std::recursive_mutex> lock(m_Mutex);
 
 		if (m_DefaultMaterial)
 		{
@@ -186,7 +243,7 @@ namespace Span
 			m_DefaultMaterial->SetShaders(m_DefaultVS.get(), m_DefaultPS.get());
 
 			// 色などを設定
-			m_DefaultMaterial->SetAlbedo({ 1.0f, 1.0f, 1.0f });
+			m_DefaultMaterial->GetData().AlbedoColor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 			m_DefaultMaterial->Update();
 
 			SPAN_LOG("Default Material Created.");

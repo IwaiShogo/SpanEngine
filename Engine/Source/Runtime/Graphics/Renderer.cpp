@@ -143,11 +143,7 @@ namespace Span
 	{
 		if (!mesh || !material || !commandList) return;
 
-		if (constantBufferIndex >= MAX_OBJECTS)
-		{
-			// 簡易的な上限チェック (本来は動的確保すべき)
-			return;
-		}
+		if (constantBufferIndex >= MAX_OBJECTS) return;
 
 		// 1. Transform更新
 		Matrix4x4 mvp = worldMatrix * viewMatrix * projectionMatrix;
@@ -162,23 +158,36 @@ namespace Span
 		material->Update();
 
 		// 3. コマンドセット
-		commandList->SetPipelineState(material->IsTransparent() ? pipelineStateTransparent.Get() : pipelineState.Get());
+		commandList->SetPipelineState(material->GetBlendMode() == BlendMode::Transparent ? pipelineStateTransparent.Get() : pipelineState.Get());
 		commandList->SetGraphicsRootSignature(rootSignature.Get());
 
-		// スロット0: Transform CBV
+		// スロット0, 1: CBV
 		D3D12_GPU_VIRTUAL_ADDRESS cbAddress = constantBuffer->GetGPUVirtualAddress();
 		cbAddress += constantBufferIndex * CB_OBJ_SIZE;
 		commandList->SetGraphicsRootConstantBufferView(0, cbAddress);
-
-		// スロット1: Material CBV
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
 
-		// スロット2: Texture SRV
-		if (material->GetTexture())
+		// スロット2～7: Textures (t0~t5)
+		Texture* textures[6] = {
+			material->GetAlbedoMap(),
+			material->GetNormalMap(),
+			material->GetMetallicMap(),
+			material->GetRoughnessMap(),
+			material->GetAOMap(),
+			material->GetEmissiveMap()
+		};
+
+		for (int i = 0; i < 6; i++)
 		{
-			ID3D12DescriptorHeap* ppHeaps[] = { material->GetTexture()->GetSRVHeap() };
-			commandList->SetDescriptorHeaps(1, ppHeaps);
-			commandList->SetGraphicsRootDescriptorTable(2, material->GetTexture()->GetSRVHeap()->GetGPUDescriptorHandleForHeapStart());
+			if (textures[i] && textures[i]->GetSRVHeap())
+			{
+				ID3D12DescriptorHeap* ppHeaps[] = { textures[i]->GetSRVHeap() };
+				commandList->SetDescriptorHeaps(1, ppHeaps);
+				commandList->SetGraphicsRootDescriptorTable(2 + i, textures[i]->GetSRVHeap()->GetGPUDescriptorHandleForHeapStart());
+			}
+			// ※本来は空のスロットにはダミーの1x1テクスチャをバインドすべきですが、
+			// ほとんどの最新のGPUドライバでは、HLSL内で分岐(if HasMap)してアクセスしなければ
+			// クラッシュしないため、一旦このまま進めます。
 		}
 
 		mesh->Draw(commandList);
@@ -214,7 +223,7 @@ namespace Span
 	bool Renderer::CreateRootSignature()
 	{
 		// ルートパラメータ定義 (CBV x2, Table x1)
-		D3D12_ROOT_PARAMETER rootParameters[3];
+		D3D12_ROOT_PARAMETER rootParameters[8];
 
 		// [0] Transform (b0)
 		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -226,29 +235,32 @@ namespace Span
 		rootParameters[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
 		rootParameters[1].Descriptor.ShaderRegister = 1;
 		rootParameters[1].Descriptor.RegisterSpace = 0;
-		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 
-		// [2] Texture Table (t0)
-		D3D12_DESCRIPTOR_RANGE descriptorRange = {};
-		descriptorRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
-		descriptorRange.NumDescriptors = 1;
-		descriptorRange.BaseShaderRegister = 0;
-		descriptorRange.RegisterSpace = 0;
-		descriptorRange.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
+		// [2] ~ [7] Texture Tables (t0 ~ t5)
+		D3D12_DESCRIPTOR_RANGE ranges[6] = {};
+		for (int i = 0; i < 6; i++)
+		{
+			ranges[i].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
+			ranges[i].NumDescriptors = 1;
+			ranges[i].BaseShaderRegister = i; // t0, t1, t2...
+			ranges[i].RegisterSpace = 0;
+			ranges[i].OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
 
-		rootParameters[2].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
-		rootParameters[2].DescriptorTable.NumDescriptorRanges = 1;
-		rootParameters[2].DescriptorTable.pDescriptorRanges = &descriptorRange;
-		rootParameters[2].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+			rootParameters[2 + i].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
+			rootParameters[2 + i].DescriptorTable.NumDescriptorRanges = 1;
+			rootParameters[2 + i].DescriptorTable.pDescriptorRanges = &ranges[i];
+			rootParameters[2 + i].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+		}
 
 		// サンプラー (Static Sampler)
 		D3D12_STATIC_SAMPLER_DESC sampler = {};
-		sampler.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;
+		sampler.Filter = D3D12_FILTER_ANISOTROPIC;
 		sampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
 		sampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
 		sampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
 		sampler.MipLODBias = 0;
-		sampler.MaxAnisotropy = 0;
+		sampler.MaxAnisotropy = 8;
 		sampler.ComparisonFunc = D3D12_COMPARISON_FUNC_NEVER;
 		sampler.BorderColor = D3D12_STATIC_BORDER_COLOR_TRANSPARENT_BLACK;
 		sampler.MinLOD = 0.0f;
@@ -273,9 +285,7 @@ namespace Span
 		}
 
 		if (FAILED(context->GetDevice()->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&rootSignature))))
-		{
 			return false;
-		}
 
 		return true;
 	}

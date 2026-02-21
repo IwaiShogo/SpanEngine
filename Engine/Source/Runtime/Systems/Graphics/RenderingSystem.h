@@ -48,7 +48,7 @@ namespace Span
 				{
 					if (!mf.mesh || !mr.material) return;
 
-					if (!mr.material->IsTransparent())
+					if (mr.material->GetBlendMode() != BlendMode::Transparent)
 					{
 						renderer.DrawMesh(mf.mesh, mr.material, ltw.Value);
 					}
@@ -64,7 +64,7 @@ namespace Span
 				{
 					if (!mf.mesh || !mr.material) return;
 
-					if (mr.material->IsTransparent())
+					if (mr.material->GetBlendMode() == BlendMode::Transparent)
 					{
 						renderer.DrawMesh(mf.mesh, mr.material, ltw.Value);
 					}

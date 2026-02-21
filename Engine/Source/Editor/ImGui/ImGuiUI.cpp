@@ -146,6 +146,6 @@ namespace Span
 	{
 		std::string name = material ? "Material Asset" : "None";
 		DrawAssetSlot(label, material, name, { ".mat" },
-			[](const std::string& path) { return std::shared_ptr<Material>(nullptr); /* TODO: AssetManager::GetMaterial */ });
+			[](const std::string& path) { return AssetManager::Get().GetMaterial(path); });
 	}
 }

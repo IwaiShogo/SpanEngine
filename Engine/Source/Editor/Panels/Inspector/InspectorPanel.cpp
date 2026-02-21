@@ -4,6 +4,7 @@
 #include <SpanEditor.h>
 
 #include "Editor/Utils/EditorFileSystem.h"
+#include "Editor/Commands/FileCommands.h"
 #include "Runtime/Core/TagManager.h"
 #include "Runtime/Core/LayerManager.h"
 
@@ -35,6 +36,12 @@
 #ifndef ICON_FA_PLUS
 #define ICON_FA_PLUS "[+]"
 #endif
+#ifndef ICON_FA_LOCK
+#define ICON_FA_LOCK "[L]"
+#endif
+#ifndef ICON_FA_UNLOCK
+#define ICON_FA_UNLOCK "[U]"
+#endif
 
 namespace Span
 {
@@ -44,8 +51,31 @@ namespace Span
 	{
 		ImGui::Begin("Inspector", &isOpen);
 
+		// ロック機能のトグルボタン
+		float lockBtnWidth = 30.0f;
+		ImGui::SameLine(ImGui::GetWindowWidth() - lockBtnWidth - ImGui::GetStyle().WindowPadding.x);
+
+		if (m_IsLocked)
+		{
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8f, 0.3f, 0.3f, 1.0f));
+			if (ImGui::Button(ICON_FA_LOCK, ImVec2(lockBtnWidth, 0))) m_IsLocked = false;
+			ImGui::PopStyleColor();
+			if (ImGui::IsItemHovered()) ImGui::SetTooltip("Unlock Inspector");
+		}
+		else
+		{
+			if (ImGui::Button(ICON_FA_UNLOCK, ImVec2(lockBtnWidth, 0)))
+			{
+				m_IsLocked = true;
+				m_LockedType = SelectionManager::GetType();
+				if (m_LockedType == SelectionType::Asset) m_LockedAssets = SelectionManager::GetAssetSelections();
+				if (m_LockedType == SelectionType::Entity) m_LockedEntity = SelectionManager::GetPrimaryEntity();
+			}
+			if (ImGui::IsItemHovered()) ImGui::SetTooltip("Lock Inspector");
+		}
+
 		// 1. 選択タイプの取得
-		SelectionType type = SelectionManager::GetType();
+		SelectionType type = m_IsLocked ? m_LockedType : SelectionManager::GetType();
 
 		if (type == SelectionType::None)
 		{
@@ -55,18 +85,19 @@ namespace Span
 		else if (type == SelectionType::Asset)
 		{
 			// アセットインスペクターの描画
-			const auto& assets = SelectionManager::GetAssetSelections();
+			const auto& assets = m_IsLocked ? m_LockedAssets : SelectionManager::GetAssetSelections();
 			DrawAssetInspector(assets);
 		}
 		else if (type == SelectionType::Entity)
 		{
 			// 1. 選択ターゲットの取得
-			Entity selected = SelectionManager::GetPrimaryEntity();
+			Entity selected = m_IsLocked ? m_LockedEntity : SelectionManager::GetPrimaryEntity();
 			World& world = Application::Get().GetWorld();
 
 			if (selected.IsNull() || !world.IsAlive(selected))
 			{
 				ImGui::TextDisabled("Invalid Entity");
+				m_IsLocked = false;
 			}
 			else
 			{
@@ -170,13 +201,7 @@ namespace Span
 			ImGui::TextColored(ImVec4(0.4f, 1.0f, 0.4f, 1.0f), "Type: Material");
 			ImGui::Spacing();
 
-			if (ImGui::Button("Open in Material Editor", ImVec2(-1, 0)))
-			{
-				// TODO: Open Material Editor Window
-			}
-
-			// 簡易プロパティ編集 (JSONパースが必要)
-			// 本格実装ではAssetManager経由でMaterialインスタンスを取得して描画する
+			DrawMaterialEditor(path);
 		}
 		else if (ext == ".cpp" || ext == ".h")
 		{
@@ -377,7 +402,7 @@ namespace Span
 			auto& meta = components[i];
 
 			// 基本コンポーネントはリストに出さない
-			if (meta.Name == "Name" || meta.Name == "Tag" || meta.Name == "Layer" || meta.Name == "Active") continue;
+			if (meta.Name == "Name" || meta.Name == "Tag" || meta.Name == "Layer" || meta.Name == "Active" || meta.Name == "LocalToWorld" || meta.Name == "Relationship" || meta.Name == "IDComponent") continue;
 
 			ImGui::PushID(i);
 
@@ -419,6 +444,190 @@ namespace Span
 				}
 			}
 			ImGui::EndPopup();
+		}
+	}
+
+	void InspectorPanel::DrawMaterialEditor(const std::filesystem::path& path)
+	{
+		ImGui::Separator();
+		ImGui::Spacing();
+
+		// AssetManagerからマテリアルを取得
+		auto editMaterial = AssetManager::Get().GetMaterial(path.string());
+		if (!editMaterial)
+		{
+			ImGui::TextColored(ImVec4(1, 0, 0, 1), "Failed to load Material");
+			return;
+		}
+
+		bool isChanged = false;
+
+		// --- ヘッダー ---
+		std::string fileNameOnly = path.stem().string();
+		char nameBuf[256];
+		strncpy_s(nameBuf, fileNameOnly.c_str(), sizeof(nameBuf) - 1);
+
+		if (ImGui::InputText("Material Name", nameBuf, sizeof(nameBuf), ImGuiInputTextFlags_EnterReturnsTrue))
+		{
+			std::string newName = nameBuf;
+			if (!newName.empty() && newName != fileNameOnly)
+			{
+				std::filesystem::path newPath = path.parent_path() / (newName + ".mat");
+
+				// 時差氏のリネーム処理
+				if (!std::filesystem::exists(newPath))
+				{
+					std::filesystem::rename(path, newPath);
+					SelectionManager::Clear();
+					SelectionManager::SelectAsset(newPath);
+					SPAN_LOG("Material renamed to: %s", newName.c_str());
+					return;
+				}
+				else
+				{
+					SPAN_ERROR("A file with that name already exists!");
+				}
+			}
+		}
+
+		ImGui::Spacing();
+		ImGui::SeparatorText("Render Settings");
+
+		// --- レンダーステート ---
+		int blendMode = static_cast<int>(editMaterial->GetBlendMode());
+		if (ImGui::Combo("Blend Mode", &blendMode, "Opaque\0Transparent\0Cutout\0"))
+		{
+			editMaterial->SetBlendMode(static_cast<BlendMode>(blendMode));
+			isChanged = true;
+		}
+
+		int cullMode = static_cast<int>(editMaterial->GetCullMode());
+		if (ImGui::Combo("Cull Mode", &cullMode, "Back\0Front\0None\0"))
+		{
+			editMaterial->SetCullMode(static_cast<CullMode>(cullMode));
+			isChanged = true;
+		}
+
+		ImGui::Spacing();
+		ImGui::SeparatorText("PBR Properties & Texture");
+
+		// --- PBR パラメータ & テクスチャスロット---
+		MaterialData& data = editMaterial->GetData();
+
+		auto DrawPBRSlot = [&](const char* label, float* colorOrValue, Texture* currentTex, uint64_t& texGUID, std::function<void(Texture*)> setter, int colorComps)
+		{
+			ImGui::PushID(label);
+
+			// 1. サムネイルボタンの描画
+			ImVec2 texSize(48.0f, 48.0f);
+			void* texID = currentTex ? currentTex->GetImGuiTextureID() : nullptr;
+
+			if (texID)
+			{
+				if (ImGui::ImageButton("##texBtn", (ImTextureID)texID, texSize, ImVec2(0, 0), ImVec2(1, 1), ImVec4(0, 0, 0, 0), ImVec4(1, 1, 1, 1))) {}
+			}
+			else
+			{
+				ImGui::Button("None", texSize);
+			}
+
+			// ドラッグ＆ドロップの受け入れ
+			if (ImGui::BeginDragDropTarget())
+			{
+				if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM"))
+				{
+					const wchar_t* pathStr = (const wchar_t*)payload->Data;
+					std::filesystem::path droppedPath(pathStr);
+					std::string ext = droppedPath.extension().string();
+
+					if (ext == ".png" || ext == ".jpg" || ext == ".jpeg" || ext == ".tga")
+					{
+						auto tex = AssetManager::Get().GetTexture(droppedPath.string());
+						if (tex)
+						{
+							setter(tex.get());
+							texGUID = tex->Handle;
+							isChanged = true;
+						}
+					}
+				}
+				ImGui::EndDragDropTarget();
+			}
+
+			// 右クリックでテクスチャのクリア
+			if (ImGui::BeginPopupContextItem("TexClearMenu"))
+			{
+				if (ImGui::MenuItem("Clear Texture"))
+				{
+					setter(nullptr);
+					texGUID = 0;
+					isChanged = true;
+				}
+				ImGui::EndPopup();
+			}
+
+			ImGui::SameLine();
+
+			// 2. ラベルとプロパティの描画
+			ImGui::BeginGroup();
+			ImGui::Text("%s", label);
+
+			if (colorOrValue != nullptr)
+			{
+				ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
+				if (colorComps == 4)
+				{
+					if (ImGui::ColorEdit4("##Color", colorOrValue, ImGuiColorEditFlags_NoInputs)) isChanged = true;
+				}
+				else if (colorComps == 3) // Emissive用 (Vector3)
+				{
+					if (ImGui::ColorEdit3("##Color", colorOrValue, ImGuiColorEditFlags_NoInputs)) isChanged = true;
+				}
+				else
+				{
+					if (ImGui::SliderFloat("##Value", colorOrValue, 0.0f, 1.0f)) isChanged = true;
+				}
+			}
+			ImGui::EndGroup();
+
+			ImGui::PopID();
+			ImGui::Spacing();
+		};
+
+		DrawPBRSlot("Albedo", &data.AlbedoColor.x, editMaterial->GetAlbedoMap(), editMaterial->AlbedoMapGUID, [&](Texture* t) { editMaterial->SetAlbedoMap(t); }, true);
+		DrawPBRSlot("Metallic", &data.Metallic, editMaterial->GetMetallicMap(), editMaterial->MetallicMapGUID, [&](Texture* t) { editMaterial->SetMetallicMap(t); }, false);
+		DrawPBRSlot("Roughness", &data.Roughness, editMaterial->GetRoughnessMap(), editMaterial->RoughnessMapGUID, [&](Texture* t) { editMaterial->SetRoughnessMap(t); }, false);
+		DrawPBRSlot("Normal", nullptr, editMaterial->GetNormalMap(), editMaterial->NormalMapGUID, [&](Texture* t) { editMaterial->SetNormalMap(t); }, false);
+		DrawPBRSlot("AO", &data.AO, editMaterial->GetAOMap(), editMaterial->AOMapGUID, [&](Texture* t) { editMaterial->SetAOMap(t); }, false);
+		DrawPBRSlot("Emissive", &data.EmissiveColor.x, editMaterial->GetEmissiveMap(), editMaterial->EmissiveMapGUID, [&](Texture* t) { editMaterial->SetEmissiveMap(t); }, 3);
+
+		if (editMaterial->GetBlendMode() == BlendMode::Cutout)
+		{
+			if (ImGui::SliderFloat("Alpha Cutoff", &data.Cutoff, 0.0f, 1.0f)) isChanged = true;
+		}
+
+		ImGui::Spacing();
+		ImGui::SeparatorText("UV Settings");
+
+		float tiling[2] = { data.Tiling.x, data.Tiling.y };
+		if (ImGui::DragFloat2("Tiling", tiling, 0.01f))
+		{
+			data.Tiling = { tiling[0], tiling[1] };
+			isChanged = true;
+		}
+
+		float offset[2] = { data.Offset.x, data.Offset.y };
+		if (ImGui::DragFloat2("Offset", offset, 0.01f))
+		{
+			data.Offset = { offset[0], offset[1] };
+			isChanged = true;
+		}
+
+		// 値が変更されたら即座に .mat ファイルに保存
+		if (isChanged)
+		{
+			editMaterial->Update();
+			editMaterial->Serialize(path);
 		}
 	}
 

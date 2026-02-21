@@ -11,6 +11,7 @@
 
 #pragma once
 #include "Core/CoreMinimal.h"
+#include "Runtime/Resource/AssetMetadata.h"
 
 namespace Span
 {
@@ -65,6 +66,8 @@ namespace Span
 
 		/// @brief	パスの取得
 		const std::string& GetPath() const { return m_FilePath; }
+
+		AssetHandle Handle = 0;
 
 	private:
 		// 画像データをGPUバッファへアップロードするヘルパー関数
