@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Graphics/Core/ShadowMap.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('ShadowMap_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ShadowMap.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ShadowMap_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    ShadowMap.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   シャドウマッピング用の深度テクスチャ管理。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">     * @class   ShadowMap</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">     * @brief   🌑 影の判定に使用する深度(Depth)専用のテクスチャ</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html">   21</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classSpan_1_1ShadowMap.html#a0a7aff6bc9ae097d4d2ab9ab150c0084">ShadowMap</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#a0a7aff6bc9ae097d4d2ab9ab150c0084">   24</a></span>        <a class="code hl_function" href="classSpan_1_1ShadowMap.html#a0a7aff6bc9ae097d4d2ab9ab150c0084">ShadowMap</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#a5fbffaff79accd3ff72d44d31be79ec5">   25</a></span>        <a class="code hl_function" href="classSpan_1_1ShadowMap.html#a5fbffaff79accd3ff72d44d31be79ec5">~ShadowMap</a>() { <a class="code hl_function" href="classSpan_1_1ShadowMap.html#a12b59ebe50c7e2dede22cd9e54358cf1">Shutdown</a>(); }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"></span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">         * @brief   シャドウマップを初期化します。</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">         * @param   device DX12デバイス</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">         * @param   width テクスチャの幅</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">         * @param   height テクスチャの高さ</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1ShadowMap.html#a8144037e8df6653a4b5794988e243689">Initialize</a>(ID3D12Device* device, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1ShadowMap.html#a12b59ebe50c7e2dede22cd9e54358cf1">Shutdown</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="comment">// --- Getters ---</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        D3D12_CPU_DESCRIPTOR_HANDLE <a class="code hl_function" href="classSpan_1_1ShadowMap.html#a8d09de69e495f6ce00e517b16955e66d">GetDSV</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        D3D12_GPU_DESCRIPTOR_HANDLE <a class="code hl_function" href="classSpan_1_1ShadowMap.html#aaa48643ff0f6f24d6ff1af46ffa6398e">GetSRV</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#af987352f614203d2e9c8e1a37375a401">   39</a></span>        ID3D12DescriptorHeap* <a class="code hl_function" href="classSpan_1_1ShadowMap.html#af987352f614203d2e9c8e1a37375a401">GetSRVHeap</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1ShadowMap.html#af85b16e670aa2c6be8f4534d965ea620">m_srvHeap</a>.Get(); }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#a46ef2b378fc41736c2495fcc1a53e3f5">   40</a></span>        ID3D12Resource* <a class="code hl_function" href="classSpan_1_1ShadowMap.html#a46ef2b378fc41736c2495fcc1a53e3f5">GetResource</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1ShadowMap.html#a942c3a99f563f7272f24988d7452f9b1">m_resource</a>.Get(); }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#a44f49d337011bc3a1f1de608478c2d5d">   42</a></span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="code hl_function" href="classSpan_1_1ShadowMap.html#a44f49d337011bc3a1f1de608478c2d5d">GetWidth</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1ShadowMap.html#ad4131cee1270b25cf09c9819b4ed2c49">m_width</a>; }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#a218cae1c2fe52a88278f9415221bc176">   43</a></span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="code hl_function" href="classSpan_1_1ShadowMap.html#a218cae1c2fe52a88278f9415221bc176">GetHeight</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1ShadowMap.html#adad917eb2b4cf2a41903aadf32b1eec5">m_height</a>; }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#ad4131cee1270b25cf09c9819b4ed2c49">   46</a></span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="code hl_variable" href="classSpan_1_1ShadowMap.html#ad4131cee1270b25cf09c9819b4ed2c49">m_width</a> = 0;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#adad917eb2b4cf2a41903aadf32b1eec5">   47</a></span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="code hl_variable" href="classSpan_1_1ShadowMap.html#adad917eb2b4cf2a41903aadf32b1eec5">m_height</a> = 0;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#a942c3a99f563f7272f24988d7452f9b1">   49</a></span>        ComPtr&lt;ID3D12Resource&gt; <a class="code hl_variable" href="classSpan_1_1ShadowMap.html#a942c3a99f563f7272f24988d7452f9b1">m_resource</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#af85b16e670aa2c6be8f4534d965ea620">   50</a></span>        ComPtr&lt;ID3D12DescriptorHeap&gt; <a class="code hl_variable" href="classSpan_1_1ShadowMap.html#af85b16e670aa2c6be8f4534d965ea620">m_srvHeap</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowMap.html#a5e43ba45c6f725f3fb3892e48ce01f95">   51</a></span>        ComPtr&lt;ID3D12DescriptorHeap&gt; <a class="code hl_variable" href="classSpan_1_1ShadowMap.html#a5e43ba45c6f725f3fb3892e48ce01f95">m_dsvHeap</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    };</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_a0a7aff6bc9ae097d4d2ab9ab150c0084"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#a0a7aff6bc9ae097d4d2ab9ab150c0084">Span::ShadowMap::ShadowMap</a></div><div class="ttdeci">ShadowMap()=default</div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_a12b59ebe50c7e2dede22cd9e54358cf1"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#a12b59ebe50c7e2dede22cd9e54358cf1">Span::ShadowMap::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="ShadowMap_8cpp_source.html#l00085">ShadowMap.cpp:85</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_a218cae1c2fe52a88278f9415221bc176"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#a218cae1c2fe52a88278f9415221bc176">Span::ShadowMap::GetHeight</a></div><div class="ttdeci">uint32 GetHeight() const</div><div class="ttdef"><b>Definition</b> <a href="#l00043">ShadowMap.h:43</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_a44f49d337011bc3a1f1de608478c2d5d"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#a44f49d337011bc3a1f1de608478c2d5d">Span::ShadowMap::GetWidth</a></div><div class="ttdeci">uint32 GetWidth() const</div><div class="ttdef"><b>Definition</b> <a href="#l00042">ShadowMap.h:42</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_a46ef2b378fc41736c2495fcc1a53e3f5"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#a46ef2b378fc41736c2495fcc1a53e3f5">Span::ShadowMap::GetResource</a></div><div class="ttdeci">ID3D12Resource * GetResource() const</div><div class="ttdef"><b>Definition</b> <a href="#l00040">ShadowMap.h:40</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_a5e43ba45c6f725f3fb3892e48ce01f95"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#a5e43ba45c6f725f3fb3892e48ce01f95">Span::ShadowMap::m_dsvHeap</a></div><div class="ttdeci">ComPtr&lt; ID3D12DescriptorHeap &gt; m_dsvHeap</div><div class="ttdef"><b>Definition</b> <a href="#l00051">ShadowMap.h:51</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_a5fbffaff79accd3ff72d44d31be79ec5"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#a5fbffaff79accd3ff72d44d31be79ec5">Span::ShadowMap::~ShadowMap</a></div><div class="ttdeci">~ShadowMap()</div><div class="ttdef"><b>Definition</b> <a href="#l00025">ShadowMap.h:25</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_a8144037e8df6653a4b5794988e243689"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#a8144037e8df6653a4b5794988e243689">Span::ShadowMap::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device, uint32 width, uint32 height)</div><div class="ttdoc">シャドウマップを初期化します。</div><div class="ttdef"><b>Definition</b> <a href="ShadowMap_8cpp_source.html#l00017">ShadowMap.cpp:17</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_a8d09de69e495f6ce00e517b16955e66d"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#a8d09de69e495f6ce00e517b16955e66d">Span::ShadowMap::GetDSV</a></div><div class="ttdeci">D3D12_CPU_DESCRIPTOR_HANDLE GetDSV() const</div><div class="ttdef"><b>Definition</b> <a href="ShadowMap_8cpp_source.html#l00092">ShadowMap.cpp:92</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_a942c3a99f563f7272f24988d7452f9b1"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#a942c3a99f563f7272f24988d7452f9b1">Span::ShadowMap::m_resource</a></div><div class="ttdeci">ComPtr&lt; ID3D12Resource &gt; m_resource</div><div class="ttdef"><b>Definition</b> <a href="#l00049">ShadowMap.h:49</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_aaa48643ff0f6f24d6ff1af46ffa6398e"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#aaa48643ff0f6f24d6ff1af46ffa6398e">Span::ShadowMap::GetSRV</a></div><div class="ttdeci">D3D12_GPU_DESCRIPTOR_HANDLE GetSRV() const</div><div class="ttdef"><b>Definition</b> <a href="ShadowMap_8cpp_source.html#l00097">ShadowMap.cpp:97</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_ad4131cee1270b25cf09c9819b4ed2c49"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#ad4131cee1270b25cf09c9819b4ed2c49">Span::ShadowMap::m_width</a></div><div class="ttdeci">uint32 m_width</div><div class="ttdef"><b>Definition</b> <a href="#l00046">ShadowMap.h:46</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_adad917eb2b4cf2a41903aadf32b1eec5"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#adad917eb2b4cf2a41903aadf32b1eec5">Span::ShadowMap::m_height</a></div><div class="ttdeci">uint32 m_height</div><div class="ttdef"><b>Definition</b> <a href="#l00047">ShadowMap.h:47</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_af85b16e670aa2c6be8f4534d965ea620"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#af85b16e670aa2c6be8f4534d965ea620">Span::ShadowMap::m_srvHeap</a></div><div class="ttdeci">ComPtr&lt; ID3D12DescriptorHeap &gt; m_srvHeap</div><div class="ttdef"><b>Definition</b> <a href="#l00050">ShadowMap.h:50</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html_af987352f614203d2e9c8e1a37375a401"><div class="ttname"><a href="classSpan_1_1ShadowMap.html#af987352f614203d2e9c8e1a37375a401">Span::ShadowMap::GetSRVHeap</a></div><div class="ttdeci">ID3D12DescriptorHeap * GetSRVHeap() const</div><div class="ttdef"><b>Definition</b> <a href="#l00039">ShadowMap.h:39</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00101">CoreMinimal.h:101</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_6091cbee3e268cbb682ad3d3f55cf8b5.html">Graphics</a></li><li class="navelem"><a href="dir_04c83e55f1dd055cbf491646f5a1a5df.html">Core</a></li><li class="navelem"><a href="ShadowMap_8h.html">ShadowMap.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

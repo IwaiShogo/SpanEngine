@@ -23,7 +23,7 @@ var classSpan_1_1Renderer =
     [ "RenderSkybox", "classSpan_1_1Renderer.html#a495df74d64b1c6ff9ad6bf4211af77c0", null ],
     [ "SetCamera", "classSpan_1_1Renderer.html#a5c4ce1187eccfa4c75acd068c4ae9706", null ],
     [ "SetCameraPosition", "classSpan_1_1Renderer.html#a71be0eee9cc8ed6fe09585504a75a9ba", null ],
-    [ "SetGlobalLightData", "classSpan_1_1Renderer.html#a713e8aa2f5f3a941d01c2eea6bc2758a", null ],
+    [ "SetGlobalLightData", "classSpan_1_1Renderer.html#a2f4264efe9f273f5c6606f58f9950329", null ],
     [ "SetProjectionMatrix", "classSpan_1_1Renderer.html#a5aa890d3923dc44aaad013a4ccfd6e6f", null ],
     [ "SetViewMatrix", "classSpan_1_1Renderer.html#ab68c216c97bb1b27727509638a772dfd", null ],
     [ "Shutdown", "classSpan_1_1Renderer.html#a972b5f4ae6840169849e403c7634afd0", null ],

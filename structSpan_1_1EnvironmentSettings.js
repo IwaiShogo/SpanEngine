@@ -1,6 +1,7 @@
 var structSpan_1_1EnvironmentSettings =
 [
     [ "AmbientIntensity", "structSpan_1_1EnvironmentSettings.html#ac593759e086d177eca277e9ac867cc26", null ],
+    [ "EnvReflectionIntensity", "structSpan_1_1EnvironmentSettings.html#a6ff1216f19d7180436f71edc9cab64f8", null ],
     [ "Exposure", "structSpan_1_1EnvironmentSettings.html#a7a88beeb169f3b6de40fc7de4f5914f6", null ],
     [ "SkyBottomColor", "structSpan_1_1EnvironmentSettings.html#a6a3c4b288796a91a7da08f68a8999427", null ],
     [ "SkyboxHDRI", "structSpan_1_1EnvironmentSettings.html#acc1874aaa537f685c9ead4f9583b81fa", null ],

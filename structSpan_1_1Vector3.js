@@ -9,6 +9,8 @@ var structSpan_1_1Vector3 =
     [ "Length", "structSpan_1_1Vector3.html#a4d84dde93e6520ab1b1407f9d82d881e", null ],
     [ "LengthSquared", "structSpan_1_1Vector3.html#a7c3f0c2ea10d0780a50fdb7e1a5dffee", null ],
     [ "Lerp", "structSpan_1_1Vector3.html#a636702ff63ba665c96251f818180e173", null ],
+    [ "Normalize", "structSpan_1_1Vector3.html#ad292c1f2a680e5e02bf8d3ba0be67b79", null ],
+    [ "Normalize", "structSpan_1_1Vector3.html#aef4eb0408856991e853d0e0c8644bf96", null ],
     [ "Normalized", "structSpan_1_1Vector3.html#aabe270fd26b1d874df94a455faef13c5", null ],
     [ "operator*", "structSpan_1_1Vector3.html#a9729500317b93907948bae240455f20a", null ],
     [ "operator*=", "structSpan_1_1Vector3.html#a70467db1ef439e5103d113914987562b", null ],

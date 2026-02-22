@@ -43,5 +43,6 @@ var searchData=
   ['orthographic_40',['Orthographic',['../namespaceSpan.html#acf4814db50cb33df2e35d9ea4e8d8a00a03424250432f2aa71de95579d2c0eaeb',1,'Span']]],
   ['orthographiclh_41',['OrthographicLH',['../structSpan_1_1Matrix4x4.html#a20cfae49484e70f982ecfd6285f694e1',1,'Span::Matrix4x4']]],
   ['orthographicsize_42',['OrthographicSize',['../structSpan_1_1Camera.html#a636016ce8ac1f2b81e78861848bff615',1,'Span::Camera']]],
-  ['ownerarchetype_43',['OwnerArchetype',['../structSpan_1_1Chunk.html#a5f085ad45cb9c83847d4c712ae8dc026',1,'Span::Chunk']]]
+  ['outerconeangle_43',['OuterConeAngle',['../structSpan_1_1SpotLight.html#ab0a256794b73293225dddf0cacc37bdc',1,'Span::SpotLight::OuterConeAngle'],['../structSpan_1_1LightDataGPU.html#ac2cbe51a36ab6401eeb88bc8053cadaa',1,'Span::LightDataGPU::OuterConeAngle']]],
+  ['ownerarchetype_44',['OwnerArchetype',['../structSpan_1_1Chunk.html#a5f085ad45cb9c83847d4c712ae8dc026',1,'Span::Chunk']]]
 ];

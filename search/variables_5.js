@@ -9,5 +9,6 @@ var searchData=
   ['entityselections_6',['entitySelections',['../classSpan_1_1SelectionManager.html#a0ec6ec6dc9e08204c26adc1404f0c149',1,'Span::SelectionManager']]],
   ['entitysize_7',['entitySize',['../classSpan_1_1Archetype.html#aba45aa9225749156ea021eb1d7ad06a5',1,'Span::Archetype']]],
   ['environment_8',['Environment',['../classSpan_1_1Scene.html#a05689aa3986a5f72f2ecea707f6e4bf5',1,'Span::Scene']]],
-  ['exposure_9',['Exposure',['../structSpan_1_1EnvironmentSettings.html#a7a88beeb169f3b6de40fc7de4f5914f6',1,'Span::EnvironmentSettings']]]
+  ['envreflectionintensity_9',['EnvReflectionIntensity',['../structSpan_1_1GlobalLightData.html#a725075e0e8914397b3bad0383c8b632e',1,'Span::GlobalLightData::EnvReflectionIntensity'],['../structSpan_1_1EnvironmentSettings.html#a6ff1216f19d7180436f71edc9cab64f8',1,'Span::EnvironmentSettings::EnvReflectionIntensity']]],
+  ['exposure_10',['Exposure',['../structSpan_1_1GlobalLightData.html#a8ea8a25df2a250314d2f26350d180c92',1,'Span::GlobalLightData::Exposure'],['../structSpan_1_1EnvironmentSettings.html#a7a88beeb169f3b6de40fc7de4f5914f6',1,'Span::EnvironmentSettings::Exposure']]]
 ];

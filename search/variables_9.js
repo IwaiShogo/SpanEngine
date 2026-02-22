@@ -6,13 +6,14 @@ var searchData=
   ['imguiwantcapturemouse_3',['imGuiWantCaptureMouse',['../classSpan_1_1Input.html#acdef424779ca6f413ce70bc0d676eb80',1,'Span::Input']]],
   ['index_4',['Index',['../structSpan_1_1EntityID.html#a5f5fc1c1934e149030ade20670d890bc',1,'Span::EntityID']]],
   ['indexinchunk_5',['IndexInChunk',['../structSpan_1_1EntityLocation.html#a1f6d0bb4b0d557a714228b61f625f964',1,'Span::EntityLocation']]],
-  ['intensity_6',['Intensity',['../structSpan_1_1DirectionalLight.html#a53bfbdd3341c3d23002170e532df36f1',1,'Span::DirectionalLight']]],
-  ['is_5ffixed_5fstring_5fv_7',['is_fixed_string_v',['../namespaceSpan.html#a145b8dc890551fcd9c17ad183b945a13',1,'Span']]],
-  ['isactive_8',['IsActive',['../structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d',1,'Span::Active']]],
-  ['isconnected_9',['isConnected',['../classSpan_1_1Input.html#a71022fc319c804d8b0b35add448b5480',1,'Span::Input']]],
-  ['iscursorlocked_10',['isCursorLocked',['../classSpan_1_1Input.html#accda29becf004edc2064997c78605d95',1,'Span::Input']]],
-  ['isenabled_11',['isEnabled',['../classSpan_1_1System.html#afd59f8c8e127b729de4971b3c010f4f5',1,'Span::System']]],
-  ['isfocused_12',['IsFocused',['../structSpan_1_1EditorCamera.html#ae80ca3bd5f94684bba1149b6592fb004',1,'Span::EditorCamera']]],
-  ['isopen_13',['isOpen',['../classSpan_1_1EditorPanel.html#a3c42b2ab17e0708eaeff54afc8058b4a',1,'Span::EditorPanel']]],
-  ['isrunning_14',['isRunning',['../classSpan_1_1Application.html#aa17fc8fd214b0af747aa587b10479e0f',1,'Span::Application']]]
+  ['innerconeangle_6',['InnerConeAngle',['../structSpan_1_1SpotLight.html#a80b6bdc71b61f6dff293474a9adfc0cd',1,'Span::SpotLight::InnerConeAngle'],['../structSpan_1_1LightDataGPU.html#a6042980e043a0f0a6b0ab9461271a121',1,'Span::LightDataGPU::InnerConeAngle']]],
+  ['intensity_7',['Intensity',['../structSpan_1_1DirectionalLight.html#a53bfbdd3341c3d23002170e532df36f1',1,'Span::DirectionalLight::Intensity'],['../structSpan_1_1PointLight.html#aca44282c13c92fe2e6b50fbab72135b6',1,'Span::PointLight::Intensity'],['../structSpan_1_1SpotLight.html#afaabec04c180c98c4bd74ff3e3680b70',1,'Span::SpotLight::Intensity'],['../structSpan_1_1LightDataGPU.html#a1af94a939c07447f543ebfbb194cf0fd',1,'Span::LightDataGPU::Intensity']]],
+  ['is_5ffixed_5fstring_5fv_8',['is_fixed_string_v',['../namespaceSpan.html#a145b8dc890551fcd9c17ad183b945a13',1,'Span']]],
+  ['isactive_9',['IsActive',['../structSpan_1_1Active.html#a945b5904265b6e02779f88bd1915eb4d',1,'Span::Active']]],
+  ['isconnected_10',['isConnected',['../classSpan_1_1Input.html#a71022fc319c804d8b0b35add448b5480',1,'Span::Input']]],
+  ['iscursorlocked_11',['isCursorLocked',['../classSpan_1_1Input.html#accda29becf004edc2064997c78605d95',1,'Span::Input']]],
+  ['isenabled_12',['isEnabled',['../classSpan_1_1System.html#afd59f8c8e127b729de4971b3c010f4f5',1,'Span::System']]],
+  ['isfocused_13',['IsFocused',['../structSpan_1_1EditorCamera.html#ae80ca3bd5f94684bba1149b6592fb004',1,'Span::EditorCamera']]],
+  ['isopen_14',['isOpen',['../classSpan_1_1EditorPanel.html#a3c42b2ab17e0708eaeff54afc8058b4a',1,'Span::EditorPanel']]],
+  ['isrunning_15',['isRunning',['../classSpan_1_1Application.html#aa17fc8fd214b0af747aa587b10479e0f',1,'Span::Application']]]
 ];

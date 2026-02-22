@@ -1,0 +1,542 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Span::ShadowMap クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classSpan_1_1ShadowMap.html','','classSpan_1_1ShadowMap-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Span::ShadowMap クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>🌑 影の判定に使用する深度(Depth)専用のテクスチャ  
+ <a href="#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a>&gt;</code></p>
+<div class="dynheader">
+Span::ShadowMap 連携図</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ShadowMap__coll__graph.svg" width="144" height="336"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a0a7aff6bc9ae097d4d2ab9ab150c0084" id="r_a0a7aff6bc9ae097d4d2ab9ab150c0084"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a0a7aff6bc9ae097d4d2ab9ab150c0084">ShadowMap</a> ()=default</td></tr>
+<tr class="memitem:a5fbffaff79accd3ff72d44d31be79ec5" id="r_a5fbffaff79accd3ff72d44d31be79ec5"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a5fbffaff79accd3ff72d44d31be79ec5">~ShadowMap</a> ()</td></tr>
+<tr class="memitem:a8144037e8df6653a4b5794988e243689" id="r_a8144037e8df6653a4b5794988e243689"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a8144037e8df6653a4b5794988e243689">Initialize</a> (ID3D12Device *device, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height)</td></tr>
+<tr class="memdesc:a8144037e8df6653a4b5794988e243689"><td class="mdescLeft">&#160;</td><td class="mdescRight">シャドウマップを初期化します。  <br /></td></tr>
+<tr class="memitem:a12b59ebe50c7e2dede22cd9e54358cf1" id="r_a12b59ebe50c7e2dede22cd9e54358cf1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a12b59ebe50c7e2dede22cd9e54358cf1">Shutdown</a> ()</td></tr>
+<tr class="memitem:a8d09de69e495f6ce00e517b16955e66d" id="r_a8d09de69e495f6ce00e517b16955e66d"><td class="memItemLeft">D3D12_CPU_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight"><a class="el" href="#a8d09de69e495f6ce00e517b16955e66d">GetDSV</a> () const</td></tr>
+<tr class="memitem:aaa48643ff0f6f24d6ff1af46ffa6398e" id="r_aaa48643ff0f6f24d6ff1af46ffa6398e"><td class="memItemLeft">D3D12_GPU_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight"><a class="el" href="#aaa48643ff0f6f24d6ff1af46ffa6398e">GetSRV</a> () const</td></tr>
+<tr class="memitem:af987352f614203d2e9c8e1a37375a401" id="r_af987352f614203d2e9c8e1a37375a401"><td class="memItemLeft">ID3D12DescriptorHeap *&#160;</td><td class="memItemRight"><a class="el" href="#af987352f614203d2e9c8e1a37375a401">GetSRVHeap</a> () const</td></tr>
+<tr class="memitem:a46ef2b378fc41736c2495fcc1a53e3f5" id="r_a46ef2b378fc41736c2495fcc1a53e3f5"><td class="memItemLeft">ID3D12Resource *&#160;</td><td class="memItemRight"><a class="el" href="#a46ef2b378fc41736c2495fcc1a53e3f5">GetResource</a> () const</td></tr>
+<tr class="memitem:a44f49d337011bc3a1f1de608478c2d5d" id="r_a44f49d337011bc3a1f1de608478c2d5d"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a44f49d337011bc3a1f1de608478c2d5d">GetWidth</a> () const</td></tr>
+<tr class="memitem:a218cae1c2fe52a88278f9415221bc176" id="r_a218cae1c2fe52a88278f9415221bc176"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a218cae1c2fe52a88278f9415221bc176">GetHeight</a> () const</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+非公開変数類</h2></td></tr>
+<tr class="memitem:ad4131cee1270b25cf09c9819b4ed2c49" id="r_ad4131cee1270b25cf09c9819b4ed2c49"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad4131cee1270b25cf09c9819b4ed2c49">m_width</a> = 0</td></tr>
+<tr class="memitem:adad917eb2b4cf2a41903aadf32b1eec5" id="r_adad917eb2b4cf2a41903aadf32b1eec5"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#adad917eb2b4cf2a41903aadf32b1eec5">m_height</a> = 0</td></tr>
+<tr class="memitem:a942c3a99f563f7272f24988d7452f9b1" id="r_a942c3a99f563f7272f24988d7452f9b1"><td class="memItemLeft">ComPtr&lt; ID3D12Resource &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a942c3a99f563f7272f24988d7452f9b1">m_resource</a></td></tr>
+<tr class="memitem:af85b16e670aa2c6be8f4534d965ea620" id="r_af85b16e670aa2c6be8f4534d965ea620"><td class="memItemLeft">ComPtr&lt; ID3D12DescriptorHeap &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af85b16e670aa2c6be8f4534d965ea620">m_srvHeap</a></td></tr>
+<tr class="memitem:a5e43ba45c6f725f3fb3892e48ce01f95" id="r_a5e43ba45c6f725f3fb3892e48ce01f95"><td class="memItemLeft">ComPtr&lt; ID3D12DescriptorHeap &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a5e43ba45c6f725f3fb3892e48ce01f95">m_dsvHeap</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>🌑 影の判定に使用する深度(Depth)専用のテクスチャ </p>
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00021">21</a> 行目に定義があります。</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
+<a id="a0a7aff6bc9ae097d4d2ab9ab150c0084" name="a0a7aff6bc9ae097d4d2ab9ab150c0084"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a7aff6bc9ae097d4d2ab9ab150c0084">&#9670;&#160;</a></span>ShadowMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::ShadowMap::ShadowMap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5fbffaff79accd3ff72d44d31be79ec5" name="a5fbffaff79accd3ff72d44d31be79ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fbffaff79accd3ff72d44d31be79ec5">&#9670;&#160;</a></span>~ShadowMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::ShadowMap::~ShadowMap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00025">25</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ShadowMap_a5fbffaff79accd3ff72d44d31be79ec5_cgraph.svg" width="511" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="a8d09de69e495f6ce00e517b16955e66d" name="a8d09de69e495f6ce00e517b16955e66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d09de69e495f6ce00e517b16955e66d">&#9670;&#160;</a></span>GetDSV()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">D3D12_CPU_DESCRIPTOR_HANDLE Span::ShadowMap::GetDSV </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8cpp_source.html">ShadowMap.cpp</a> の <a class="el" href="ShadowMap_8cpp_source.html#l00092">92</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a218cae1c2fe52a88278f9415221bc176" name="a218cae1c2fe52a88278f9415221bc176"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a218cae1c2fe52a88278f9415221bc176">&#9670;&#160;</a></span>GetHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> Span::ShadowMap::GetHeight </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00043">43</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a46ef2b378fc41736c2495fcc1a53e3f5" name="a46ef2b378fc41736c2495fcc1a53e3f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46ef2b378fc41736c2495fcc1a53e3f5">&#9670;&#160;</a></span>GetResource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID3D12Resource * Span::ShadowMap::GetResource </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00040">40</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="aaa48643ff0f6f24d6ff1af46ffa6398e" name="aaa48643ff0f6f24d6ff1af46ffa6398e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa48643ff0f6f24d6ff1af46ffa6398e">&#9670;&#160;</a></span>GetSRV()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">D3D12_GPU_DESCRIPTOR_HANDLE Span::ShadowMap::GetSRV </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8cpp_source.html">ShadowMap.cpp</a> の <a class="el" href="ShadowMap_8cpp_source.html#l00097">97</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="af987352f614203d2e9c8e1a37375a401" name="af987352f614203d2e9c8e1a37375a401"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af987352f614203d2e9c8e1a37375a401">&#9670;&#160;</a></span>GetSRVHeap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID3D12DescriptorHeap * Span::ShadowMap::GetSRVHeap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00039">39</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a44f49d337011bc3a1f1de608478c2d5d" name="a44f49d337011bc3a1f1de608478c2d5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44f49d337011bc3a1f1de608478c2d5d">&#9670;&#160;</a></span>GetWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> Span::ShadowMap::GetWidth </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00042">42</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a8144037e8df6653a4b5794988e243689" name="a8144037e8df6653a4b5794988e243689"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8144037e8df6653a4b5794988e243689">&#9670;&#160;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Span::ShadowMap::Initialize </td>
+          <td>(</td>
+          <td class="paramtype">ID3D12Device *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>シャドウマップを初期化します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>DX12デバイス </td></tr>
+    <tr><td class="paramname">width</td><td>テクスチャの幅 </td></tr>
+    <tr><td class="paramname">height</td><td>テクスチャの高さ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="ShadowMap_8cpp_source.html">ShadowMap.cpp</a> の <a class="el" href="ShadowMap_8cpp_source.html#l00017">17</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a12b59ebe50c7e2dede22cd9e54358cf1" name="a12b59ebe50c7e2dede22cd9e54358cf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b59ebe50c7e2dede22cd9e54358cf1">&#9670;&#160;</a></span>Shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::ShadowMap::Shutdown </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8cpp_source.html">ShadowMap.cpp</a> の <a class="el" href="ShadowMap_8cpp_source.html#l00085">85</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1ShadowMap_a12b59ebe50c7e2dede22cd9e54358cf1_icgraph.svg" width="511" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
+<a id="a5e43ba45c6f725f3fb3892e48ce01f95" name="a5e43ba45c6f725f3fb3892e48ce01f95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e43ba45c6f725f3fb3892e48ce01f95">&#9670;&#160;</a></span>m_dsvHeap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D12DescriptorHeap&gt; Span::ShadowMap::m_dsvHeap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00051">51</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="adad917eb2b4cf2a41903aadf32b1eec5" name="adad917eb2b4cf2a41903aadf32b1eec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adad917eb2b4cf2a41903aadf32b1eec5">&#9670;&#160;</a></span>m_height</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> Span::ShadowMap::m_height = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00047">47</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a942c3a99f563f7272f24988d7452f9b1" name="a942c3a99f563f7272f24988d7452f9b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a942c3a99f563f7272f24988d7452f9b1">&#9670;&#160;</a></span>m_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D12Resource&gt; Span::ShadowMap::m_resource</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00049">49</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="af85b16e670aa2c6be8f4534d965ea620" name="af85b16e670aa2c6be8f4534d965ea620"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af85b16e670aa2c6be8f4534d965ea620">&#9670;&#160;</a></span>m_srvHeap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D12DescriptorHeap&gt; Span::ShadowMap::m_srvHeap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00050">50</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ad4131cee1270b25cf09c9819b4ed2c49" name="ad4131cee1270b25cf09c9819b4ed2c49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4131cee1270b25cf09c9819b4ed2c49">&#9670;&#160;</a></span>m_width</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> Span::ShadowMap::m_width = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a> の <a class="el" href="ShadowMap_8h_source.html#l00046">46</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>Engine/Source/Runtime/Graphics/Core/<a class="el" href="ShadowMap_8h_source.html">ShadowMap.h</a></li>
+<li>Engine/Source/Runtime/Graphics/Core/<a class="el" href="ShadowMap_8cpp_source.html">ShadowMap.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceSpan.html">Span</a></li><li class="navelem"><a href="classSpan_1_1ShadowMap.html">ShadowMap</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

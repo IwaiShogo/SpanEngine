@@ -6,5 +6,7 @@ var dir_04c83e55f1dd055cbf491646f5a1a5df =
     [ "RenderTarget.cpp", "RenderTarget_8cpp.html", null ],
     [ "RenderTarget.h", "RenderTarget_8h.html", "RenderTarget_8h" ],
     [ "Shader.cpp", "Shader_8cpp.html", null ],
-    [ "Shader.h", "Shader_8h.html", "Shader_8h" ]
+    [ "Shader.h", "Shader_8h.html", "Shader_8h" ],
+    [ "ShadowMap.cpp", "ShadowMap_8cpp.html", null ],
+    [ "ShadowMap.h", "ShadowMap_8h.html", "ShadowMap_8h" ]
 ];

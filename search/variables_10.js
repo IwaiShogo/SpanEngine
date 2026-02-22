@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['padding1_0',['Padding1',['../structSpan_1_1GlobalLightData.html#a9515a0ffe7b25fc2e5f5259e9a6e1592',1,'Span::GlobalLightData::Padding1'],['../structSpan_1_1MaterialData.html#a05e893df71b73574f17e899b79b7780e',1,'Span::MaterialData::Padding1']]],
-  ['padding2_1',['Padding2',['../structSpan_1_1GlobalLightData.html#a27b02e5804c7ded9b5a0d0f6361c868e',1,'Span::GlobalLightData::Padding2'],['../structSpan_1_1MaterialData.html#a4db8dca4ea8c0dc1dceed33c4e1e6412',1,'Span::MaterialData::Padding2']]],
+  ['padding1_0',['Padding1',['../structSpan_1_1LightDataGPU.html#a39fe8470da4f6fb8e48cbf5beaaf4330',1,'Span::LightDataGPU::Padding1'],['../structSpan_1_1MaterialData.html#a05e893df71b73574f17e899b79b7780e',1,'Span::MaterialData::Padding1']]],
+  ['padding2_1',['Padding2',['../structSpan_1_1LightDataGPU.html#a48c3e1970c4692606fa852848428c31e',1,'Span::LightDataGPU::Padding2'],['../structSpan_1_1MaterialData.html#a4db8dca4ea8c0dc1dceed33c4e1e6412',1,'Span::MaterialData::Padding2']]],
   ['panels_2',['panels',['../classSpan_1_1GuiManager.html#a2958abd2a5c96e0010580233350a8a38',1,'Span::GuiManager']]],
   ['parent_3',['Parent',['../structSpan_1_1Relationship.html#a1a1b2f5afd78543f84bdc2993f69201d',1,'Span::Relationship']]],
   ['pi_4',['PI',['../namespaceSpan.html#af4fc42a9402477b7586237d036530a3d',1,'Span']]],
   ['pipelinestate_5',['pipelineState',['../classSpan_1_1Renderer.html#a0f3a402bbc31fc23bd3671acd54515d1',1,'Span::Renderer']]],
   ['pipelinestatetransparent_6',['pipelineStateTransparent',['../classSpan_1_1Renderer.html#aa0177b5d73e6e4ad2790ec40ab398936',1,'Span::Renderer']]],
   ['pitch_7',['Pitch',['../structSpan_1_1EditorCameraState.html#a52d9f0ae73debaf8894dce0bbffa3d3c',1,'Span::EditorCameraState']]],
-  ['position_8',['Position',['../structSpan_1_1Transform.html#a8ef17302f26b199237a1d7db7a3920e2',1,'Span::Transform::Position'],['../structSpan_1_1EditorCameraState.html#a16942c196aeb0c1e39d15c410c9c275f',1,'Span::EditorCameraState::Position']]],
+  ['position_8',['Position',['../structSpan_1_1Transform.html#a8ef17302f26b199237a1d7db7a3920e2',1,'Span::Transform::Position'],['../structSpan_1_1LightDataGPU.html#a975abee9c40d3df4476d1c1695230400',1,'Span::LightDataGPU::Position'],['../structSpan_1_1EditorCameraState.html#a16942c196aeb0c1e39d15c410c9c275f',1,'Span::EditorCameraState::Position']]],
   ['position_9',['position',['../structSpan_1_1Vertex.html#a8494e55dfa8086fdce795d93cbbb1214',1,'Span::Vertex']]],
   ['prevgamepadstates_10',['prevGamepadStates',['../classSpan_1_1Input.html#ad586c63785ad77f894bfba1f4f2244cb',1,'Span::Input']]],
   ['prevkeystates_11',['prevKeyStates',['../classSpan_1_1Input.html#a1f464da6aee16f6ddc82b780a1ae08dd',1,'Span::Input']]],

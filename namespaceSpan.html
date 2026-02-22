@@ -183,6 +183,10 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 描画に使用する3Dモデルデータ (頂点バッファ) を保持するコンポーネント。  <a href="structSpan_1_1MeshFilter.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:MeshRenderer" id="r_MeshRenderer"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1MeshRenderer.html">MeshRenderer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🖌 オブジェクトを画面に描画するための設定コンポーネント。  <a href="structSpan_1_1MeshRenderer.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:PointLight" id="r_PointLight"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1PointLight.html">PointLight</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">一点から全方位に広がり、距離によって減衰する光源。  <a href="structSpan_1_1PointLight.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SpotLight" id="r_SpotLight"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1SpotLight.html">SpotLight</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定の方向を円錐状に照らす光源。  <a href="structSpan_1_1SpotLight.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:LayerManager" id="r_LayerManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1LayerManager.html">LayerManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">レイヤー名とレイヤー間の衝突関係を管理するシングルトン。  <a href="classSpan_1_1LayerManager.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:TagManager" id="r_TagManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1TagManager.html">TagManager</a></td></tr>
@@ -219,10 +223,13 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎯 描画対象となるテクスチャリソース。  <a href="classSpan_1_1RenderTarget.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Shader" id="r_Shader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Shader.html">Shader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。  <a href="classSpan_1_1Shader.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:ShadowMap" id="r_ShadowMap"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ShadowMap.html">ShadowMap</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🌑 影の判定に使用する深度(Depth)専用のテクスチャ  <a href="classSpan_1_1ShadowMap.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:ModelLoader" id="r_ModelLoader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ModelLoader.html">ModelLoader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🏗️ Assimpライブラリを使用したモデルローダー。  <a href="classSpan_1_1ModelLoader.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:TransformData" id="r_TransformData"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1TransformData.html">TransformData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトごとの変換行列データ  <a href="structSpan_1_1TransformData.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:LightDataGPU" id="r_LightDataGPU"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1LightDataGPU.html">LightDataGPU</a></td></tr>
 <tr class="memitem:GlobalLightData" id="r_GlobalLightData"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1GlobalLightData.html">GlobalLightData</a></td></tr>
 <tr class="memitem:Renderer" id="r_Renderer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Renderer.html">Renderer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🖌 描画コマンドの発行を担うクラス。  <a href="classSpan_1_1Renderer.html#details">[詳解]</a><br /></td></tr>
@@ -483,6 +490,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:a51dc0b6d0daae8cf8e6841254d8dc062"><td class="mdescLeft">&#160;</td><td class="mdescRight">1つのチャンクが確保する固定メモリサイズ (16KB)  <br /></td></tr>
 <tr class="memitem:a20540fd2e2d58f1722c48a6f1c6d1af5" id="r_a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="memItemLeft">static const <a class="el" href="structSpan_1_1EntityID.html">EntityID</a>&#160;</td><td class="memItemRight"><a class="el" href="#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a> = { UINT32_MAX, 0 }</td></tr>
 <tr class="memdesc:a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Null (無効) として扱うための定数ID  <br /></td></tr>
+<tr class="memitem:af38ddf0fe302cffbe8ff15c6d5dcd194" id="r_af38ddf0fe302cffbe8ff15c6d5dcd194"><td class="memItemLeft">constexpr int&#160;</td><td class="memItemRight"><a class="el" href="#af38ddf0fe302cffbe8ff15c6d5dcd194">MAX_LIGHTS</a> = 16</td></tr>
 <tr class="memitem:a145b8dc890551fcd9c17ad183b945a13" id="r_a145b8dc890551fcd9c17ad183b945a13"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a145b8dc890551fcd9c17ad183b945a13 template"><td class="memItemLeft">constexpr bool&#160;</td><td class="memItemRight"><a class="el" href="#a145b8dc890551fcd9c17ad183b945a13">is_fixed_string_v</a> = <a class="el" href="structSpan_1_1is__fixed__string.html">is_fixed_string</a>&lt;T&gt;::value</td></tr>
 <tr class="memitem:a086d008b6a56d176facbbfbfde8a1cc5" id="r_a086d008b6a56d176facbbfbfde8a1cc5"><td class="memItemLeft">static std::random_device&#160;</td><td class="memItemRight"><a class="el" href="#a086d008b6a56d176facbbfbfde8a1cc5">s_RandomDevice</a></td></tr>
@@ -500,8 +508,12 @@ Constants &amp; Helpers</h2></td></tr>
 <tr class="memdesc:aab3b565f31423405c3fdb453380bc937"><td class="mdescLeft">&#160;</td><td class="mdescRight">度数法(Degree) を 弧度法(Radian) に変換  <br /></td></tr>
 <tr class="memitem:a2e4930a806963e7ab8c6c60031c41fe8" id="r_a2e4930a806963e7ab8c6c60031c41fe8"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a2e4930a806963e7ab8c6c60031c41fe8">ToRadians</a> (float degrees)</td></tr>
 <tr class="memdesc:a2e4930a806963e7ab8c6c60031c41fe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">度数法(Degree) を 弧度法(Radian) に変換  <br /></td></tr>
+<tr class="memitem:a899e5fe0468d51e59990a01787f1ca56" id="r_a899e5fe0468d51e59990a01787f1ca56"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a899e5fe0468d51e59990a01787f1ca56">Deg2Rad</a> (float degrees)</td></tr>
+<tr class="memdesc:a899e5fe0468d51e59990a01787f1ca56"><td class="mdescLeft">&#160;</td><td class="mdescRight">度数法(Degree) を 弧度法(Radian) に変換  <br /></td></tr>
 <tr class="memitem:a6d290667947dd9fb137877008986c724" id="r_a6d290667947dd9fb137877008986c724"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a6d290667947dd9fb137877008986c724">ToDegrees</a> (float radians)</td></tr>
 <tr class="memdesc:a6d290667947dd9fb137877008986c724"><td class="mdescLeft">&#160;</td><td class="mdescRight">弧度法(Radian) を 度数法(Degree) に変換  <br /></td></tr>
+<tr class="memitem:a215060dd2b0816541094487b790df3ee" id="r_a215060dd2b0816541094487b790df3ee"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a215060dd2b0816541094487b790df3ee">Rad2Deg</a> (float radians)</td></tr>
+<tr class="memdesc:a215060dd2b0816541094487b790df3ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">度数法(Degree) を 弧度法(Radian) に変換  <br /></td></tr>
 <tr class="memitem:a8cdcfa1b4931700b369b8017666cd36a" id="r_a8cdcfa1b4931700b369b8017666cd36a"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a8cdcfa1b4931700b369b8017666cd36a template"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="#a8cdcfa1b4931700b369b8017666cd36a">Clamp</a> (T value, T min, T max)</td></tr>
 <tr class="memdesc:a8cdcfa1b4931700b369b8017666cd36a"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を指定範囲に制限します  <br /></td></tr>
@@ -1421,7 +1433,7 @@ template&lt;typename T&gt; </div>
 
 <p>値を指定範囲に制限します </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00054">54</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00056">56</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1487,6 +1499,45 @@ template&lt;typename T&gt; </div>
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a1f3752f6a0fd409523c07eff247645bf_icgraph.svg" width="292" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a899e5fe0468d51e59990a01787f1ca56" name="a899e5fe0468d51e59990a01787f1ca56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a899e5fe0468d51e59990a01787f1ca56">&#9670;&#160;</a></span>Deg2Rad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::Deg2Rad </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>degrees</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>度数法(Degree) を 弧度法(Radian) に変換 </p>
+
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00048">48</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a899e5fe0468d51e59990a01787f1ca56_cgraph.svg" width="308" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a899e5fe0468d51e59990a01787f1ca56_icgraph.svg" width="358" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -1641,7 +1692,7 @@ template&lt;typename T&gt; </div>
 
 <p>線形補間 (Linear Interpolation) </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00058">58</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00060">60</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1671,6 +1722,45 @@ template&lt;typename T&gt; </div>
 <p>変数の最小値を制限します。 </p>
 
 <p class="definition"> <a class="el" href="SpanAttributes_8h_source.html">SpanAttributes.h</a> の <a class="el" href="SpanAttributes_8h_source.html#l00059">59</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a9822105b4bb016e1c0c580e617bd925a_icgraph.svg" width="346" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a215060dd2b0816541094487b790df3ee" name="a215060dd2b0816541094487b790df3ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a215060dd2b0816541094487b790df3ee">&#9670;&#160;</a></span>Rad2Deg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::Rad2Deg </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>radians</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>度数法(Degree) を 弧度法(Radian) に変換 </p>
+
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00052">52</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a215060dd2b0816541094487b790df3ee_cgraph.svg" width="311" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1942,11 +2032,11 @@ template&lt;typename T&gt; </div>
 
 <p>弧度法(Radian) を 度数法(Degree) に変換 </p>
 
-<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00050">50</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SpanMath_8h_source.html">SpanMath.h</a> の <a class="el" href="SpanMath_8h_source.html#l00051">51</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a6d290667947dd9fb137877008986c724_icgraph.svg" width="624" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a6d290667947dd9fb137877008986c724_icgraph.svg" width="624" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -2009,7 +2099,7 @@ template&lt;typename T&gt; </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a2e4930a806963e7ab8c6c60031c41fe8_icgraph.svg" width="636" height="240"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespaceSpan_a2e4930a806963e7ab8c6c60031c41fe8_icgraph.svg" width="636" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -2091,6 +2181,30 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition"> <a class="el" href="SpanReflection_8h_source.html">SpanReflection.h</a> の <a class="el" href="SpanReflection_8h_source.html#l00089">89</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="af38ddf0fe302cffbe8ff15c6d5dcd194" name="af38ddf0fe302cffbe8ff15c6d5dcd194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af38ddf0fe302cffbe8ff15c6d5dcd194">&#9670;&#160;</a></span>MAX_LIGHTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Span::MAX_LIGHTS = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00049">49</a> 行目に定義があります。</p>
 
 </div>
 </div>

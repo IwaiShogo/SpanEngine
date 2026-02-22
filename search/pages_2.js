@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['chain_20double_20buffering_0',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md127',1,'']]],
-  ['chunk_20memory_20layout_1',['🧠 メモリレイアウト (Chunk Memory Layout)',['../classSpan_1_1Archetype.html#autotoc_md96',1,'']]],
+  ['chain_20double_20buffering_0',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md131',1,'']]],
+  ['chunk_20memory_20layout_1',['🧠 メモリレイアウト (Chunk Memory Layout)',['../classSpan_1_1Archetype.html#autotoc_md100',1,'']]],
   ['coordinate_20system_2',['📏 座標系と仕様 (Coordinate System)',['../SpanMath_8h.html#autotoc_md9',1,'']]]
 ];
