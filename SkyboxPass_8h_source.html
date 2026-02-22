@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Graphics/Passes/SkyboxPass.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('SkyboxPass_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">SkyboxPass.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="SkyboxPass_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    SkyboxPass.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   プロシージャルスカイボックス描画パス。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="Shader_8h.html">Graphics/Core/Shader.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="EnvironmentSettings_8h.html">Runtime/Scene/EnvironmentSettings.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="Renderer_8h.html">Graphics/Renderer.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"></span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">     * @class   SkyboxPass</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">     * @brief   プロシージャルスカイボックス描画パス。</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classSpan_1_1SkyboxPass.html">   26</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classSpan_1_1SkyboxPass.html#aa308872889a99540c59e199ffe4ca27f">SkyboxPass</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classSpan_1_1SkyboxPass.html#aa308872889a99540c59e199ffe4ca27f">   29</a></span>        <a class="code hl_function" href="classSpan_1_1SkyboxPass.html#aa308872889a99540c59e199ffe4ca27f">SkyboxPass</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classSpan_1_1SkyboxPass.html#a35668212e9715d53ec6ac385715c41c5">   30</a></span>        <a class="code hl_function" href="classSpan_1_1SkyboxPass.html#a35668212e9715d53ec6ac385715c41c5">~SkyboxPass</a>() { <a class="code hl_function" href="classSpan_1_1SkyboxPass.html#aa525162d4934baf4b1dc2dddb304e9ff">Shutdown</a>(); }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1SkyboxPass.html#a6d8b01d9feeccd8f2befab41602071e4">Initialize</a>(ID3D12Device* device);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SkyboxPass.html#aa525162d4934baf4b1dc2dddb304e9ff">Shutdown</a>();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"></span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">         * @brief   スカイボックスを描画します。RendererのCBVアロケータを使用します。</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SkyboxPass.html#a9677684c5a00fe85e59773989c5f4fc2">Render</a>(<a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>* renderer, ID3D12GraphicsCommandList* cmd, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1EnvironmentSettings.html">EnvironmentSettings</a>&amp; env, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&amp; view, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&amp; proj, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a>&amp; camPos);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classSpan_1_1SkyboxPass.html#a568b56db70c48e9400f4350db3dd9366">   41</a></span>        ComPtr&lt;ID3D12PipelineState&gt; <a class="code hl_variable" href="classSpan_1_1SkyboxPass.html#a568b56db70c48e9400f4350db3dd9366">m_pso</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classSpan_1_1SkyboxPass.html#aff5794c55db127901a3bc35d95d5ba20">   42</a></span>        ComPtr&lt;ID3D12RootSignature&gt; <a class="code hl_variable" href="classSpan_1_1SkyboxPass.html#aff5794c55db127901a3bc35d95d5ba20">m_rootSignature</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classSpan_1_1SkyboxPass.html#ad5c5f441ff2b3ee1450a50cdac26b460">   43</a></span>        <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>* <a class="code hl_variable" href="classSpan_1_1SkyboxPass.html#ad5c5f441ff2b3ee1450a50cdac26b460">m_shaderVS</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classSpan_1_1SkyboxPass.html#ab50bf74c36ff43973247dd1dc5c75b28">   44</a></span>        <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>* <a class="code hl_variable" href="classSpan_1_1SkyboxPass.html#ab50bf74c36ff43973247dd1dc5c75b28">m_shaderPS</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    };</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aEnvironmentSettings_8h_html"><div class="ttname"><a href="EnvironmentSettings_8h.html">EnvironmentSettings.h</a></div><div class="ttdoc">シーンの環境光、スカイボックス、フォグなどの設定データ</div></div>
+<div class="ttc" id="aRenderer_8h_html"><div class="ttname"><a href="Renderer_8h.html">Renderer.h</a></div><div class="ttdoc">描画パイプラインの構築と実行。</div></div>
+<div class="ttc" id="aShader_8h_html"><div class="ttname"><a href="Shader_8h.html">Shader.h</a></div><div class="ttdoc">HLSLシェーダーのロードとコンパイル管理。</div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html"><div class="ttname"><a href="classSpan_1_1Renderer.html">Span::Renderer</a></div><div class="ttdoc">🖌 描画コマンドの発行を担うクラス。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00088">Renderer.h:89</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Shader_html"><div class="ttname"><a href="classSpan_1_1Shader.html">Span::Shader</a></div><div class="ttdoc">📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。</div><div class="ttdef"><b>Definition</b> <a href="Shader_8h_source.html#l00036">Shader.h:37</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SkyboxPass_html_a35668212e9715d53ec6ac385715c41c5"><div class="ttname"><a href="classSpan_1_1SkyboxPass.html#a35668212e9715d53ec6ac385715c41c5">Span::SkyboxPass::~SkyboxPass</a></div><div class="ttdeci">~SkyboxPass()</div><div class="ttdef"><b>Definition</b> <a href="#l00030">SkyboxPass.h:30</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SkyboxPass_html_a568b56db70c48e9400f4350db3dd9366"><div class="ttname"><a href="classSpan_1_1SkyboxPass.html#a568b56db70c48e9400f4350db3dd9366">Span::SkyboxPass::m_pso</a></div><div class="ttdeci">ComPtr&lt; ID3D12PipelineState &gt; m_pso</div><div class="ttdef"><b>Definition</b> <a href="#l00041">SkyboxPass.h:41</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SkyboxPass_html_a6d8b01d9feeccd8f2befab41602071e4"><div class="ttname"><a href="classSpan_1_1SkyboxPass.html#a6d8b01d9feeccd8f2befab41602071e4">Span::SkyboxPass::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device)</div><div class="ttdef"><b>Definition</b> <a href="SkyboxPass_8cpp_source.html#l00016">SkyboxPass.cpp:16</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SkyboxPass_html_a9677684c5a00fe85e59773989c5f4fc2"><div class="ttname"><a href="classSpan_1_1SkyboxPass.html#a9677684c5a00fe85e59773989c5f4fc2">Span::SkyboxPass::Render</a></div><div class="ttdeci">void Render(Renderer *renderer, ID3D12GraphicsCommandList *cmd, const EnvironmentSettings &amp;env, const Matrix4x4 &amp;view, const Matrix4x4 &amp;proj, const Vector3 &amp;camPos)</div><div class="ttdoc">スカイボックスを描画します。RendererのCBVアロケータを使用します。</div><div class="ttdef"><b>Definition</b> <a href="SkyboxPass_8cpp_source.html#l00075">SkyboxPass.cpp:75</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SkyboxPass_html_aa308872889a99540c59e199ffe4ca27f"><div class="ttname"><a href="classSpan_1_1SkyboxPass.html#aa308872889a99540c59e199ffe4ca27f">Span::SkyboxPass::SkyboxPass</a></div><div class="ttdeci">SkyboxPass()=default</div></div>
+<div class="ttc" id="aclassSpan_1_1SkyboxPass_html_aa525162d4934baf4b1dc2dddb304e9ff"><div class="ttname"><a href="classSpan_1_1SkyboxPass.html#aa525162d4934baf4b1dc2dddb304e9ff">Span::SkyboxPass::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="SkyboxPass_8cpp_source.html#l00067">SkyboxPass.cpp:67</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SkyboxPass_html_ab50bf74c36ff43973247dd1dc5c75b28"><div class="ttname"><a href="classSpan_1_1SkyboxPass.html#ab50bf74c36ff43973247dd1dc5c75b28">Span::SkyboxPass::m_shaderPS</a></div><div class="ttdeci">Shader * m_shaderPS</div><div class="ttdef"><b>Definition</b> <a href="#l00044">SkyboxPass.h:44</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SkyboxPass_html_ad5c5f441ff2b3ee1450a50cdac26b460"><div class="ttname"><a href="classSpan_1_1SkyboxPass.html#ad5c5f441ff2b3ee1450a50cdac26b460">Span::SkyboxPass::m_shaderVS</a></div><div class="ttdeci">Shader * m_shaderVS</div><div class="ttdef"><b>Definition</b> <a href="#l00043">SkyboxPass.h:43</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SkyboxPass_html_aff5794c55db127901a3bc35d95d5ba20"><div class="ttname"><a href="classSpan_1_1SkyboxPass.html#aff5794c55db127901a3bc35d95d5ba20">Span::SkyboxPass::m_rootSignature</a></div><div class="ttdeci">ComPtr&lt; ID3D12RootSignature &gt; m_rootSignature</div><div class="ttdef"><b>Definition</b> <a href="#l00042">SkyboxPass.h:42</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="astructSpan_1_1EnvironmentSettings_html"><div class="ttname"><a href="structSpan_1_1EnvironmentSettings.html">Span::EnvironmentSettings</a></div><div class="ttdoc">🌏 シーン全体の環境 (空、光、雰囲気) を定義するデータ。</div><div class="ttdef"><b>Definition</b> <a href="EnvironmentSettings_8h_source.html#l00021">EnvironmentSettings.h:22</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html">Span::Matrix4x4</a></div><div class="ttdoc">4x4 行列 (Row-Major)</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00315">SpanMath.h:316</a></div></div>
+<div class="ttc" id="astructSpan_1_1Vector3_html"><div class="ttname"><a href="structSpan_1_1Vector3.html">Span::Vector3</a></div><div class="ttdoc">3次元ベクトル (float x, y, z) 位置、方向、スケールなどに使用されます。</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00116">SpanMath.h:117</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_6091cbee3e268cbb682ad3d3f55cf8b5.html">Graphics</a></li><li class="navelem"><a href="dir_8351ef56a0e0768b20aa52a37aad994e.html">Passes</a></li><li class="navelem"><a href="SkyboxPass_8h.html">SkyboxPass.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -115,6 +115,10 @@ Span::DirectionalLight 連携図</div>
 <tr class="memdesc:a53bfbdd3341c3d23002170e532df36f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">光の強さ (輝度)  <br /></td></tr>
 <tr class="memitem:a8bf88c4d4e914e7bfb72679e0bcc8f92" id="r_a8bf88c4d4e914e7bfb72679e0bcc8f92"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a8bf88c4d4e914e7bfb72679e0bcc8f92">CastShadows</a> = true</td></tr>
 <tr class="memdesc:a8bf88c4d4e914e7bfb72679e0bcc8f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">影を生成するかどうか  <br /></td></tr>
+<tr class="memitem:ae50ec51c08a0662ad1aaadaa8f4994e7" id="r_ae50ec51c08a0662ad1aaadaa8f4994e7"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ae50ec51c08a0662ad1aaadaa8f4994e7">ShadowAreaSize</a> = 50.0f</td></tr>
+<tr class="memdesc:ae50ec51c08a0662ad1aaadaa8f4994e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">影を描画する四角形の幅と高さ  <br /></td></tr>
+<tr class="memitem:adf4da750dd3e6ce72964ded4a46ea92f" id="r_adf4da750dd3e6ce72964ded4a46ea92f"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#adf4da750dd3e6ce72964ded4a46ea92f">ShadowMaxDistance</a> = 200.0f</td></tr>
+<tr class="memdesc:adf4da750dd3e6ce72964ded4a46ea92f"><td class="mdescLeft">&#160;</td><td class="mdescRight">影を描画する奥行き  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>☀️ 距離による減衰の無い平行光源 (Directional Light) コンポーネント。 </p>
@@ -147,7 +151,7 @@ Span::DirectionalLight 連携図</div>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1DirectionalLight_aee0b8bd7f0be9be82285c528f54475c7_cgraph.svg" width="176" height="75"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="structSpan_1_1DirectionalLight_aee0b8bd7f0be9be82285c528f54475c7_cgraph.svg" width="327" height="75"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
@@ -209,6 +213,42 @@ Span::DirectionalLight 連携図</div>
 <p>光の強さ (輝度) </p>
 
 <p class="definition"> <a class="el" href="DirectionalLight_8h_source.html">DirectionalLight.h</a> の <a class="el" href="DirectionalLight_8h_source.html#l00030">30</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ae50ec51c08a0662ad1aaadaa8f4994e7" name="ae50ec51c08a0662ad1aaadaa8f4994e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae50ec51c08a0662ad1aaadaa8f4994e7">&#9670;&#160;</a></span>ShadowAreaSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::DirectionalLight::ShadowAreaSize = 50.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>影を描画する四角形の幅と高さ </p>
+
+<p class="definition"> <a class="el" href="DirectionalLight_8h_source.html">DirectionalLight.h</a> の <a class="el" href="DirectionalLight_8h_source.html#l00034">34</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="adf4da750dd3e6ce72964ded4a46ea92f" name="adf4da750dd3e6ce72964ded4a46ea92f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf4da750dd3e6ce72964ded4a46ea92f">&#9670;&#160;</a></span>ShadowMaxDistance</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::DirectionalLight::ShadowMaxDistance = 200.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>影を描画する奥行き </p>
+
+<p class="definition"> <a class="el" href="DirectionalLight_8h_source.html">DirectionalLight.h</a> の <a class="el" href="DirectionalLight_8h_source.html#l00035">35</a> 行目に定義があります。</p>
 
 </div>
 </div>

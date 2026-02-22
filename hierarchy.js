@@ -41,6 +41,7 @@ var hierarchy =
     [ "Span::FixedString&lt; N &gt;", "structSpan_1_1FixedString.html", null ],
     [ "Span::GlobalLightData", "structSpan_1_1GlobalLightData.html", null ],
     [ "Span::GraphicsContext", "classSpan_1_1GraphicsContext.html", null ],
+    [ "Span::GridPass", "classSpan_1_1GridPass.html", null ],
     [ "Span::GuiManager", "classSpan_1_1GuiManager.html", null ],
     [ "std::hash&lt; Span::EntityID &gt;", "structstd_1_1hash_3_01Span_1_1EntityID_01_4.html", null ],
     [ "Span::ICommand", "classSpan_1_1ICommand.html", [
@@ -81,6 +82,8 @@ var hierarchy =
     [ "Span::SelectionManager", "classSpan_1_1SelectionManager.html", null ],
     [ "Span::Shader", "classSpan_1_1Shader.html", null ],
     [ "Span::ShadowMap", "classSpan_1_1ShadowMap.html", null ],
+    [ "Span::ShadowPass", "classSpan_1_1ShadowPass.html", null ],
+    [ "Span::SkyboxPass", "classSpan_1_1SkyboxPass.html", null ],
     [ "Span::SpotLight", "structSpan_1_1SpotLight.html", null ],
     [ "Span::System", "classSpan_1_1System.html", [
       [ "Span::CameraSystem", "classSpan_1_1CameraSystem.html", null ],

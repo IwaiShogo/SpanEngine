@@ -13,7 +13,8 @@ var structSpan_1_1MaterialData =
     [ "Metallic", "structSpan_1_1MaterialData.html#a0e80c9957e5059ae569d207b6585d4c3", null ],
     [ "Offset", "structSpan_1_1MaterialData.html#af44bf5f0aa894ca189436330c1eaefa0", null ],
     [ "Padding1", "structSpan_1_1MaterialData.html#a05e893df71b73574f17e899b79b7780e", null ],
-    [ "Padding2", "structSpan_1_1MaterialData.html#a4db8dca4ea8c0dc1dceed33c4e1e6412", null ],
+    [ "Padding2", "structSpan_1_1MaterialData.html#a5936aee77b79e8b528b5a23695218033", null ],
+    [ "Padding3", "structSpan_1_1MaterialData.html#a5feb41e1e038e4c03f532b2f65df5442", null ],
     [ "Roughness", "structSpan_1_1MaterialData.html#a2ffeb1ab4487a6724284c6cf51e675ab", null ],
     [ "Tiling", "structSpan_1_1MaterialData.html#a0ab1fe5c34324fa7b9073274be5a95b2", null ]
 ];

@@ -4,9 +4,10 @@ var searchData=
   ['back_1',['Back',['../structSpan_1_1Vector3.html#a51e83060eb4799090622d1dc79193d9a',1,'Span::Vector3::Back'],['../namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cca0557fa923dcee4d0f86b1409f5c2167f',1,'Span::Back']]],
   ['barrier_20state_20flow_2',['🔄 Resource Barrier State Flow',['../classSpan_1_1RenderTarget.html#autotoc_md134',1,'']]],
   ['beginframe_3',['BeginFrame',['../classSpan_1_1GuiManager.html#af6528ac5ab8ba075fd24a944d36e8f53',1,'Span::GuiManager::BeginFrame()'],['../classSpan_1_1GraphicsContext.html#a31c19d8990c3bbcd795aa3100d260c27',1,'Span::GraphicsContext::BeginFrame()'],['../classSpan_1_1Renderer.html#a115f51ead73d011860bb7fe9c510a9a2',1,'Span::Renderer::BeginFrame()']]],
-  ['bit_20layout_4',['📊 ビットレイアウト (Bit Layout)',['../structSpan_1_1EntityID.html#autotoc_md108',1,'']]],
-  ['blendmode_5',['BlendMode',['../namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0',1,'Span']]],
-  ['blob_6',['blob',['../classSpan_1_1Shader.html#a310a6d51aa8d8384146ca65de3f4e842',1,'Span::Shader']]],
-  ['buffering_7',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md131',1,'']]],
-  ['build_8',['Build',['../classSpan_1_1EntityBuilder.html#ac4c98235d0c84a0e376062638163134b',1,'Span::EntityBuilder']]]
+  ['beginpass_4',['BeginPass',['../classSpan_1_1ShadowPass.html#a75a31c0ea2bca0ca144f942f204c4ff0',1,'Span::ShadowPass']]],
+  ['bit_20layout_5',['📊 ビットレイアウト (Bit Layout)',['../structSpan_1_1EntityID.html#autotoc_md108',1,'']]],
+  ['blendmode_6',['BlendMode',['../namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0',1,'Span']]],
+  ['blob_7',['blob',['../classSpan_1_1Shader.html#a310a6d51aa8d8384146ca65de3f4e842',1,'Span::Shader']]],
+  ['buffering_8',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md131',1,'']]],
+  ['build_9',['Build',['../classSpan_1_1EntityBuilder.html#ac4c98235d0c84a0e376062638163134b',1,'Span::EntityBuilder']]]
 ];

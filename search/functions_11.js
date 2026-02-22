@@ -12,15 +12,13 @@ var searchData=
   ['removetag_9',['RemoveTag',['../classSpan_1_1TagManager.html#a4f310a685303986ad9056e5551b3c7fd',1,'Span::TagManager']]],
   ['renamefile_10',['RenameFile',['../classSpan_1_1EditorFileSystem.html#ac03b1ddd9c217dbe4f01ca5b6dab601b',1,'Span::EditorFileSystem']]],
   ['renamefilecommand_11',['RenameFileCommand',['../classSpan_1_1RenameFileCommand.html#abfc66b98a6138ddd613d6bbc6203d25a',1,'Span::RenameFileCommand']]],
-  ['render_12',['Render',['../classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8',1,'Span::MaterialPreviewer']]],
+  ['render_12',['Render',['../classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8',1,'Span::MaterialPreviewer::Render()'],['../classSpan_1_1GridPass.html#a6c9935038729d01352c0cb424bc1e913',1,'Span::GridPass::Render()'],['../classSpan_1_1SkyboxPass.html#a9677684c5a00fe85e59773989c5f4fc2',1,'Span::SkyboxPass::Render()']]],
   ['renderer_13',['Renderer',['../classSpan_1_1Renderer.html#ad9b8a2800b6e801528fc3507162ef123',1,'Span::Renderer']]],
-  ['rendergrid_14',['RenderGrid',['../classSpan_1_1Renderer.html#a14853b9d12e17ca45984be8f2fc5adbe',1,'Span::Renderer']]],
-  ['renderskybox_15',['RenderSkybox',['../classSpan_1_1Renderer.html#a495df74d64b1c6ff9ad6bf4211af77c0',1,'Span::Renderer']]],
-  ['rendertarget_16',['RenderTarget',['../classSpan_1_1RenderTarget.html#a80d2525153dae704614d9ae9bbd8ee29',1,'Span::RenderTarget']]],
-  ['reset_17',['Reset',['../classSpan_1_1MemoryArena.html#ae1e5aee7a56ae1113ded9b6bfcfec909',1,'Span::MemoryArena']]],
-  ['resetconsolecolor_18',['ResetConsoleColor',['../classSpan_1_1Logger.html#a597edce5826978973afddf5dbcd25a1f',1,'Span::Logger']]],
-  ['resetcursortocenter_19',['ResetCursorToCenter',['../classSpan_1_1Input.html#af45cd4df00ba60ee6d0e03c85dc6ba80',1,'Span::Input']]],
-  ['resize_20',['Resize',['../classSpan_1_1RenderTarget.html#aebe62bcc80108f67f68d0ee0eb579cfb',1,'Span::RenderTarget']]],
-  ['rotation_21',['Rotation',['../structSpan_1_1Matrix4x4.html#a14547be89d9d77aba82522e5180c80df',1,'Span::Matrix4x4']]],
-  ['run_22',['Run',['../classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9',1,'Span::Application']]]
+  ['rendertarget_14',['RenderTarget',['../classSpan_1_1RenderTarget.html#a80d2525153dae704614d9ae9bbd8ee29',1,'Span::RenderTarget']]],
+  ['reset_15',['Reset',['../classSpan_1_1MemoryArena.html#ae1e5aee7a56ae1113ded9b6bfcfec909',1,'Span::MemoryArena']]],
+  ['resetconsolecolor_16',['ResetConsoleColor',['../classSpan_1_1Logger.html#a597edce5826978973afddf5dbcd25a1f',1,'Span::Logger']]],
+  ['resetcursortocenter_17',['ResetCursorToCenter',['../classSpan_1_1Input.html#af45cd4df00ba60ee6d0e03c85dc6ba80',1,'Span::Input']]],
+  ['resize_18',['Resize',['../classSpan_1_1RenderTarget.html#aebe62bcc80108f67f68d0ee0eb579cfb',1,'Span::RenderTarget']]],
+  ['rotation_19',['Rotation',['../structSpan_1_1Matrix4x4.html#a14547be89d9d77aba82522e5180c80df',1,'Span::Matrix4x4']]],
+  ['run_20',['Run',['../classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9',1,'Span::Application']]]
 ];

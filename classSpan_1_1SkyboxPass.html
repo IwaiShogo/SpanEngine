@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Span::SkyboxPass クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classSpan_1_1SkyboxPass.html','','classSpan_1_1SkyboxPass-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Span::SkyboxPass クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>プロシージャルスカイボックス描画パス。  
+ <a href="#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="SkyboxPass_8h_source.html">SkyboxPass.h</a>&gt;</code></p>
+<div class="dynheader">
+Span::SkyboxPass 連携図</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SkyboxPass__coll__graph.svg" width="175" height="372"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:aa308872889a99540c59e199ffe4ca27f" id="r_aa308872889a99540c59e199ffe4ca27f"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aa308872889a99540c59e199ffe4ca27f">SkyboxPass</a> ()=default</td></tr>
+<tr class="memitem:a35668212e9715d53ec6ac385715c41c5" id="r_a35668212e9715d53ec6ac385715c41c5"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a35668212e9715d53ec6ac385715c41c5">~SkyboxPass</a> ()</td></tr>
+<tr class="memitem:a6d8b01d9feeccd8f2befab41602071e4" id="r_a6d8b01d9feeccd8f2befab41602071e4"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6d8b01d9feeccd8f2befab41602071e4">Initialize</a> (ID3D12Device *device)</td></tr>
+<tr class="memitem:aa525162d4934baf4b1dc2dddb304e9ff" id="r_aa525162d4934baf4b1dc2dddb304e9ff"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa525162d4934baf4b1dc2dddb304e9ff">Shutdown</a> ()</td></tr>
+<tr class="memitem:a9677684c5a00fe85e59773989c5f4fc2" id="r_a9677684c5a00fe85e59773989c5f4fc2"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9677684c5a00fe85e59773989c5f4fc2">Render</a> (<a class="el" href="classSpan_1_1Renderer.html">Renderer</a> *renderer, ID3D12GraphicsCommandList *cmd, const <a class="el" href="structSpan_1_1EnvironmentSettings.html">EnvironmentSettings</a> &amp;env, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;view, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;proj, const <a class="el" href="structSpan_1_1Vector3.html">Vector3</a> &amp;camPos)</td></tr>
+<tr class="memdesc:a9677684c5a00fe85e59773989c5f4fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカイボックスを描画します。RendererのCBVアロケータを使用します。  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+非公開変数類</h2></td></tr>
+<tr class="memitem:a568b56db70c48e9400f4350db3dd9366" id="r_a568b56db70c48e9400f4350db3dd9366"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a568b56db70c48e9400f4350db3dd9366">m_pso</a></td></tr>
+<tr class="memitem:aff5794c55db127901a3bc35d95d5ba20" id="r_aff5794c55db127901a3bc35d95d5ba20"><td class="memItemLeft">ComPtr&lt; ID3D12RootSignature &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aff5794c55db127901a3bc35d95d5ba20">m_rootSignature</a></td></tr>
+<tr class="memitem:ad5c5f441ff2b3ee1450a50cdac26b460" id="r_ad5c5f441ff2b3ee1450a50cdac26b460"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ad5c5f441ff2b3ee1450a50cdac26b460">m_shaderVS</a> = nullptr</td></tr>
+<tr class="memitem:ab50bf74c36ff43973247dd1dc5c75b28" id="r_ab50bf74c36ff43973247dd1dc5c75b28"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ab50bf74c36ff43973247dd1dc5c75b28">m_shaderPS</a> = nullptr</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>プロシージャルスカイボックス描画パス。 </p>
+
+<p class="definition"> <a class="el" href="SkyboxPass_8h_source.html">SkyboxPass.h</a> の <a class="el" href="SkyboxPass_8h_source.html#l00026">26</a> 行目に定義があります。</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
+<a id="aa308872889a99540c59e199ffe4ca27f" name="aa308872889a99540c59e199ffe4ca27f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa308872889a99540c59e199ffe4ca27f">&#9670;&#160;</a></span>SkyboxPass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::SkyboxPass::SkyboxPass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35668212e9715d53ec6ac385715c41c5" name="a35668212e9715d53ec6ac385715c41c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35668212e9715d53ec6ac385715c41c5">&#9670;&#160;</a></span>~SkyboxPass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::SkyboxPass::~SkyboxPass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SkyboxPass_8h_source.html">SkyboxPass.h</a> の <a class="el" href="SkyboxPass_8h_source.html#l00030">30</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SkyboxPass_a35668212e9715d53ec6ac385715c41c5_cgraph.svg" width="416" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="a6d8b01d9feeccd8f2befab41602071e4" name="a6d8b01d9feeccd8f2befab41602071e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d8b01d9feeccd8f2befab41602071e4">&#9670;&#160;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Span::SkyboxPass::Initialize </td>
+          <td>(</td>
+          <td class="paramtype">ID3D12Device *</td>          <td class="paramname"><span class="paramname"><em>device</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SkyboxPass_8cpp_source.html">SkyboxPass.cpp</a> の <a class="el" href="SkyboxPass_8cpp_source.html#l00016">16</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a9677684c5a00fe85e59773989c5f4fc2" name="a9677684c5a00fe85e59773989c5f4fc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9677684c5a00fe85e59773989c5f4fc2">&#9670;&#160;</a></span>Render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::SkyboxPass::Render </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Renderer.html">Renderer</a> *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D12GraphicsCommandList *</td>          <td class="paramname"><span class="paramname"><em>cmd</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structSpan_1_1EnvironmentSettings.html">EnvironmentSettings</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>env</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>view</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>proj</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structSpan_1_1Vector3.html">Vector3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>camPos</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>スカイボックスを描画します。RendererのCBVアロケータを使用します。 </p>
+
+<p class="definition"> <a class="el" href="SkyboxPass_8cpp_source.html">SkyboxPass.cpp</a> の <a class="el" href="SkyboxPass_8cpp_source.html#l00075">75</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SkyboxPass_a9677684c5a00fe85e59773989c5f4fc2_cgraph.svg" width="460" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aa525162d4934baf4b1dc2dddb304e9ff" name="aa525162d4934baf4b1dc2dddb304e9ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa525162d4934baf4b1dc2dddb304e9ff">&#9670;&#160;</a></span>Shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::SkyboxPass::Shutdown </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SkyboxPass_8cpp_source.html">SkyboxPass.cpp</a> の <a class="el" href="SkyboxPass_8cpp_source.html#l00067">67</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SkyboxPass_aa525162d4934baf4b1dc2dddb304e9ff_icgraph.svg" width="416" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
+<a id="a568b56db70c48e9400f4350db3dd9366" name="a568b56db70c48e9400f4350db3dd9366"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a568b56db70c48e9400f4350db3dd9366">&#9670;&#160;</a></span>m_pso</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D12PipelineState&gt; Span::SkyboxPass::m_pso</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SkyboxPass_8h_source.html">SkyboxPass.h</a> の <a class="el" href="SkyboxPass_8h_source.html#l00041">41</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="aff5794c55db127901a3bc35d95d5ba20" name="aff5794c55db127901a3bc35d95d5ba20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff5794c55db127901a3bc35d95d5ba20">&#9670;&#160;</a></span>m_rootSignature</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D12RootSignature&gt; Span::SkyboxPass::m_rootSignature</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SkyboxPass_8h_source.html">SkyboxPass.h</a> の <a class="el" href="SkyboxPass_8h_source.html#l00042">42</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ab50bf74c36ff43973247dd1dc5c75b28" name="ab50bf74c36ff43973247dd1dc5c75b28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab50bf74c36ff43973247dd1dc5c75b28">&#9670;&#160;</a></span>m_shaderPS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::SkyboxPass::m_shaderPS = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SkyboxPass_8h_source.html">SkyboxPass.h</a> の <a class="el" href="SkyboxPass_8h_source.html#l00044">44</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ad5c5f441ff2b3ee1450a50cdac26b460" name="ad5c5f441ff2b3ee1450a50cdac26b460"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5c5f441ff2b3ee1450a50cdac26b460">&#9670;&#160;</a></span>m_shaderVS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::SkyboxPass::m_shaderVS = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SkyboxPass_8h_source.html">SkyboxPass.h</a> の <a class="el" href="SkyboxPass_8h_source.html#l00043">43</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>Engine/Source/Runtime/Graphics/Passes/<a class="el" href="SkyboxPass_8h_source.html">SkyboxPass.h</a></li>
+<li>Engine/Source/Runtime/Graphics/Passes/<a class="el" href="SkyboxPass_8cpp_source.html">SkyboxPass.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceSpan.html">Span</a></li><li class="navelem"><a href="classSpan_1_1SkyboxPass.html">SkyboxPass</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

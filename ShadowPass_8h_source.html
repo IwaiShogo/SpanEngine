@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Graphics/Passes/ShadowPass.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('ShadowPass_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ShadowPass.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ShadowPass_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    ShadowPass.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   Directional Light からのシャドウマップ生成パス。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="Shader_8h.html">Graphics/Core/Shader.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="ShadowMap_8h.html">Graphics/Core/ShadowMap.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="Mesh_8h.html">Graphics/Resources/Mesh.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="Renderer_8h.html">Graphics/Renderer.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"></span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">     * @class   ShadowPass</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">     * @brief   Directional Light からのシャドウマップ生成パス。</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html">   27</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classSpan_1_1ShadowPass.html#aad895df659a1cfb90c557d4e690c13ea">ShadowPass</a></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html#aad895df659a1cfb90c557d4e690c13ea">   30</a></span>        <a class="code hl_function" href="classSpan_1_1ShadowPass.html#aad895df659a1cfb90c557d4e690c13ea">ShadowPass</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html#aa9a66a1fa605a153da72e4433b810967">   31</a></span>        <a class="code hl_function" href="classSpan_1_1ShadowPass.html#aa9a66a1fa605a153da72e4433b810967">~ShadowPass</a>() { <a class="code hl_function" href="classSpan_1_1ShadowPass.html#a7d706ca7ac02e2de8d0d5b720bb38c7f">Shutdown</a>(); }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1ShadowPass.html#a34a187756fad179068f0a2c952ba62b3">Initialize</a>(ID3D12Device* device);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1ShadowPass.html#a7d706ca7ac02e2de8d0d5b720bb38c7f">Shutdown</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"></span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">         * @brief   シャドウマップ描画の準備（レンダーターゲット切り替え・クリア）</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1ShadowPass.html#a75a31c0ea2bca0ca144f942f204c4ff0">BeginPass</a>(ID3D12GraphicsCommandList* cmd);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"></span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">         * @brief   影を落とすメッシュをシャドウマップに描画します。</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1ShadowPass.html#ad0d01ba786fcc778564d0c0e37a83d31">DrawMesh</a>(<a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>* renderer, ID3D12GraphicsCommandList* cmd, <a class="code hl_class" href="classSpan_1_1Mesh.html">Mesh</a>* mesh, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&amp; worldMatrix);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"></span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">         * @brief   シャドウマップ描画の終了（リソースステートの復帰）</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1ShadowPass.html#a9100eafbd8d2f2124cd23a9691a15029">EndPass</a>(ID3D12GraphicsCommandList* cmd);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html#af088333fbe518287b0ded946c964ab0f">   51</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1ShadowPass.html#af088333fbe518287b0ded946c964ab0f">SetLightSpaceMatrix</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&amp; lsm) { <a class="code hl_variable" href="classSpan_1_1ShadowPass.html#a0e4c05cdf4ebe1a0fab3235a96bc3e1c">m_lightSpaceMatrix</a> = lsm; }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html#ad71b3e8fce644f8b4ac3778adb9b1fcf">   52</a></span>        <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_function" href="classSpan_1_1ShadowPass.html#ad71b3e8fce644f8b4ac3778adb9b1fcf">GetLightSpaceMatrix</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1ShadowPass.html#a0e4c05cdf4ebe1a0fab3235a96bc3e1c">m_lightSpaceMatrix</a>; }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html#a205fe2125787f71dff4718c0ea60f970">   53</a></span>        <a class="code hl_class" href="classSpan_1_1ShadowMap.html">ShadowMap</a>* <a class="code hl_function" href="classSpan_1_1ShadowPass.html#a205fe2125787f71dff4718c0ea60f970">GetShadowMap</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1ShadowPass.html#a6df418f4fc3cb3b6b2280091088cdfc6">m_shadowMap</a>; }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html#a6df418f4fc3cb3b6b2280091088cdfc6">   56</a></span>        <a class="code hl_class" href="classSpan_1_1ShadowMap.html">ShadowMap</a>* <a class="code hl_variable" href="classSpan_1_1ShadowPass.html#a6df418f4fc3cb3b6b2280091088cdfc6">m_shadowMap</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html#a29caee1b126cb9bc1d91499116a16abd">   57</a></span>        ComPtr&lt;ID3D12PipelineState&gt; <a class="code hl_variable" href="classSpan_1_1ShadowPass.html#a29caee1b126cb9bc1d91499116a16abd">m_pso</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html#a22f2e9d4778c7a56eae1706df56328ca">   58</a></span>        ComPtr&lt;ID3D12RootSignature&gt; <a class="code hl_variable" href="classSpan_1_1ShadowPass.html#a22f2e9d4778c7a56eae1706df56328ca">m_rootSignature</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html#a117cf0f7774aae65a09d12ebd6d62825">   59</a></span>        <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>* <a class="code hl_variable" href="classSpan_1_1ShadowPass.html#a117cf0f7774aae65a09d12ebd6d62825">m_shaderVS</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classSpan_1_1ShadowPass.html#a0e4c05cdf4ebe1a0fab3235a96bc3e1c">   60</a></span>        <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_variable" href="classSpan_1_1ShadowPass.html#a0e4c05cdf4ebe1a0fab3235a96bc3e1c">m_lightSpaceMatrix</a> = <a class="code hl_function" href="structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557">Matrix4x4::Identity</a>();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    };</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aMesh_8h_html"><div class="ttname"><a href="Mesh_8h.html">Mesh.h</a></div><div class="ttdoc">3Dモデルの形状データ (頂点バッファ) 管理。</div></div>
+<div class="ttc" id="aRenderer_8h_html"><div class="ttname"><a href="Renderer_8h.html">Renderer.h</a></div><div class="ttdoc">描画パイプラインの構築と実行。</div></div>
+<div class="ttc" id="aShader_8h_html"><div class="ttname"><a href="Shader_8h.html">Shader.h</a></div><div class="ttdoc">HLSLシェーダーのロードとコンパイル管理。</div></div>
+<div class="ttc" id="aShadowMap_8h_html"><div class="ttname"><a href="ShadowMap_8h.html">ShadowMap.h</a></div><div class="ttdoc">シャドウマッピング用の深度テクスチャ管理。</div></div>
+<div class="ttc" id="aclassSpan_1_1Mesh_html"><div class="ttname"><a href="classSpan_1_1Mesh.html">Span::Mesh</a></div><div class="ttdoc">📦 頂点データをGPUメモリ (Vertex Buffer) に保持するクラス。</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00038">Mesh.h:39</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html"><div class="ttname"><a href="classSpan_1_1Renderer.html">Span::Renderer</a></div><div class="ttdoc">🖌 描画コマンドの発行を担うクラス。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00088">Renderer.h:89</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Shader_html"><div class="ttname"><a href="classSpan_1_1Shader.html">Span::Shader</a></div><div class="ttdoc">📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。</div><div class="ttdef"><b>Definition</b> <a href="Shader_8h_source.html#l00036">Shader.h:37</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowMap_html"><div class="ttname"><a href="classSpan_1_1ShadowMap.html">Span::ShadowMap</a></div><div class="ttdoc">🌑 影の判定に使用する深度(Depth)専用のテクスチャ</div><div class="ttdef"><b>Definition</b> <a href="ShadowMap_8h_source.html#l00021">ShadowMap.h:22</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_a0e4c05cdf4ebe1a0fab3235a96bc3e1c"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#a0e4c05cdf4ebe1a0fab3235a96bc3e1c">Span::ShadowPass::m_lightSpaceMatrix</a></div><div class="ttdeci">Matrix4x4 m_lightSpaceMatrix</div><div class="ttdef"><b>Definition</b> <a href="#l00060">ShadowPass.h:60</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_a117cf0f7774aae65a09d12ebd6d62825"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#a117cf0f7774aae65a09d12ebd6d62825">Span::ShadowPass::m_shaderVS</a></div><div class="ttdeci">Shader * m_shaderVS</div><div class="ttdef"><b>Definition</b> <a href="#l00059">ShadowPass.h:59</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_a205fe2125787f71dff4718c0ea60f970"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#a205fe2125787f71dff4718c0ea60f970">Span::ShadowPass::GetShadowMap</a></div><div class="ttdeci">ShadowMap * GetShadowMap() const</div><div class="ttdef"><b>Definition</b> <a href="#l00053">ShadowPass.h:53</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_a22f2e9d4778c7a56eae1706df56328ca"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#a22f2e9d4778c7a56eae1706df56328ca">Span::ShadowPass::m_rootSignature</a></div><div class="ttdeci">ComPtr&lt; ID3D12RootSignature &gt; m_rootSignature</div><div class="ttdef"><b>Definition</b> <a href="#l00058">ShadowPass.h:58</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_a29caee1b126cb9bc1d91499116a16abd"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#a29caee1b126cb9bc1d91499116a16abd">Span::ShadowPass::m_pso</a></div><div class="ttdeci">ComPtr&lt; ID3D12PipelineState &gt; m_pso</div><div class="ttdef"><b>Definition</b> <a href="#l00057">ShadowPass.h:57</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_a34a187756fad179068f0a2c952ba62b3"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#a34a187756fad179068f0a2c952ba62b3">Span::ShadowPass::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device)</div><div class="ttdef"><b>Definition</b> <a href="ShadowPass_8cpp_source.html#l00016">ShadowPass.cpp:16</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_a6df418f4fc3cb3b6b2280091088cdfc6"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#a6df418f4fc3cb3b6b2280091088cdfc6">Span::ShadowPass::m_shadowMap</a></div><div class="ttdeci">ShadowMap * m_shadowMap</div><div class="ttdef"><b>Definition</b> <a href="#l00056">ShadowPass.h:56</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_a75a31c0ea2bca0ca144f942f204c4ff0"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#a75a31c0ea2bca0ca144f942f204c4ff0">Span::ShadowPass::BeginPass</a></div><div class="ttdeci">void BeginPass(ID3D12GraphicsCommandList *cmd)</div><div class="ttdoc">シャドウマップ描画の準備（レンダーターゲット切り替え・クリア）</div><div class="ttdef"><b>Definition</b> <a href="ShadowPass_8cpp_source.html#l00078">ShadowPass.cpp:78</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_a7d706ca7ac02e2de8d0d5b720bb38c7f"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#a7d706ca7ac02e2de8d0d5b720bb38c7f">Span::ShadowPass::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="ShadowPass_8cpp_source.html#l00070">ShadowPass.cpp:70</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_a9100eafbd8d2f2124cd23a9691a15029"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#a9100eafbd8d2f2124cd23a9691a15029">Span::ShadowPass::EndPass</a></div><div class="ttdeci">void EndPass(ID3D12GraphicsCommandList *cmd)</div><div class="ttdoc">シャドウマップ描画の終了（リソースステートの復帰）</div><div class="ttdef"><b>Definition</b> <a href="ShadowPass_8cpp_source.html#l00102">ShadowPass.cpp:102</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_aa9a66a1fa605a153da72e4433b810967"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#aa9a66a1fa605a153da72e4433b810967">Span::ShadowPass::~ShadowPass</a></div><div class="ttdeci">~ShadowPass()</div><div class="ttdef"><b>Definition</b> <a href="#l00031">ShadowPass.h:31</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_aad895df659a1cfb90c557d4e690c13ea"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#aad895df659a1cfb90c557d4e690c13ea">Span::ShadowPass::ShadowPass</a></div><div class="ttdeci">ShadowPass()=default</div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_ad0d01ba786fcc778564d0c0e37a83d31"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#ad0d01ba786fcc778564d0c0e37a83d31">Span::ShadowPass::DrawMesh</a></div><div class="ttdeci">void DrawMesh(Renderer *renderer, ID3D12GraphicsCommandList *cmd, Mesh *mesh, const Matrix4x4 &amp;worldMatrix)</div><div class="ttdoc">影を落とすメッシュをシャドウマップに描画します。</div><div class="ttdef"><b>Definition</b> <a href="ShadowPass_8cpp_source.html#l00114">ShadowPass.cpp:114</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_ad71b3e8fce644f8b4ac3778adb9b1fcf"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#ad71b3e8fce644f8b4ac3778adb9b1fcf">Span::ShadowPass::GetLightSpaceMatrix</a></div><div class="ttdeci">Matrix4x4 GetLightSpaceMatrix() const</div><div class="ttdef"><b>Definition</b> <a href="#l00052">ShadowPass.h:52</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html_af088333fbe518287b0ded946c964ab0f"><div class="ttname"><a href="classSpan_1_1ShadowPass.html#af088333fbe518287b0ded946c964ab0f">Span::ShadowPass::SetLightSpaceMatrix</a></div><div class="ttdeci">void SetLightSpaceMatrix(const Matrix4x4 &amp;lsm)</div><div class="ttdef"><b>Definition</b> <a href="#l00051">ShadowPass.h:51</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html">Span::Matrix4x4</a></div><div class="ttdoc">4x4 行列 (Row-Major)</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00315">SpanMath.h:316</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html_a9c4e6a6d01ebda4b0b5818a910afa557"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557">Span::Matrix4x4::Identity</a></div><div class="ttdeci">static Matrix4x4 Identity()</div><div class="ttdoc">単位行列</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00343">SpanMath.h:343</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_6091cbee3e268cbb682ad3d3f55cf8b5.html">Graphics</a></li><li class="navelem"><a href="dir_8351ef56a0e0768b20aa52a37aad994e.html">Passes</a></li><li class="navelem"><a href="ShadowPass_8h.html">ShadowPass.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

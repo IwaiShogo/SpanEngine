@@ -6,8 +6,9 @@ var searchData=
   ['deserializefunc_3',['DeserializeFunc',['../structSpan_1_1ComponentMetadata.html#a799e01dbbe0cbc4765aa723aa1abbdab',1,'Span::ComponentMetadata']]],
   ['device_4',['device',['../classSpan_1_1GraphicsContext.html#a3c16daba9944015d6b67fbe31111175a',1,'Span::GraphicsContext']]],
   ['direction_5',['Direction',['../structSpan_1_1LightDataGPU.html#a0d3573bac21768e59e8e31fff5650826',1,'Span::LightDataGPU']]],
-  ['down_6',['Down',['../structSpan_1_1Vector3.html#a174d5e36f77185f411c98c3cb05def5d',1,'Span::Vector3']]],
-  ['drawfunc_7',['DrawFunc',['../structSpan_1_1ComponentMetadata.html#a924a91448da37722c778ded258ac15ae',1,'Span::ComponentMetadata']]],
-  ['dsvhandle_8',['dsvHandle',['../classSpan_1_1RenderTarget.html#a4043c2b7d76d78ffc06aac32f3aea073',1,'Span::RenderTarget']]],
-  ['dsvheap_9',['dsvHeap',['../classSpan_1_1GraphicsContext.html#a2fc33be1d471e8db9de18b01ed683622',1,'Span::GraphicsContext::dsvHeap'],['../classSpan_1_1RenderTarget.html#a5c8bf9fa451f96a4557616a1b3328881',1,'Span::RenderTarget::dsvHeap']]]
+  ['directionallightspacematrix_6',['DirectionalLightSpaceMatrix',['../structSpan_1_1GlobalLightData.html#a9a6f55cb81f6ec146737f552a9ecccf8',1,'Span::GlobalLightData']]],
+  ['down_7',['Down',['../structSpan_1_1Vector3.html#a174d5e36f77185f411c98c3cb05def5d',1,'Span::Vector3']]],
+  ['drawfunc_8',['DrawFunc',['../structSpan_1_1ComponentMetadata.html#a924a91448da37722c778ded258ac15ae',1,'Span::ComponentMetadata']]],
+  ['dsvhandle_9',['dsvHandle',['../classSpan_1_1RenderTarget.html#a4043c2b7d76d78ffc06aac32f3aea073',1,'Span::RenderTarget']]],
+  ['dsvheap_10',['dsvHeap',['../classSpan_1_1GraphicsContext.html#a2fc33be1d471e8db9de18b01ed683622',1,'Span::GraphicsContext::dsvHeap'],['../classSpan_1_1RenderTarget.html#a5c8bf9fa451f96a4557616a1b3328881',1,'Span::RenderTarget::dsvHeap']]]
 ];

@@ -115,23 +115,25 @@ Span::Renderer 連携図</div>
 <tr class="memitem:a677d1565f7c6df08b393f328801ca419" id="r_a677d1565f7c6df08b393f328801ca419"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a677d1565f7c6df08b393f328801ca419">EndFrame</a> ()</td></tr>
 <tr class="memitem:ada758d36ee04899a810ded43723ed03c" id="r_ada758d36ee04899a810ded43723ed03c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ada758d36ee04899a810ded43723ed03c">OnResize</a> (<a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height)</td></tr>
 <tr class="memdesc:ada758d36ee04899a810ded43723ed03c"><td class="mdescLeft">&#160;</td><td class="mdescRight">リサイズ対応  <br /></td></tr>
-<tr class="memitem:a495df74d64b1c6ff9ad6bf4211af77c0" id="r_a495df74d64b1c6ff9ad6bf4211af77c0"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a495df74d64b1c6ff9ad6bf4211af77c0">RenderSkybox</a> (ID3D12GraphicsCommandList *cmd, const <a class="el" href="structSpan_1_1EnvironmentSettings.html">EnvironmentSettings</a> &amp;env)</td></tr>
-<tr class="memdesc:a495df74d64b1c6ff9ad6bf4211af77c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">プロシージャルスカイボックスを描画します。  <br /></td></tr>
+<tr class="memitem:aa87900a29a85f5505342bd5416da6872" id="r_aa87900a29a85f5505342bd5416da6872"><td class="memItemLeft"><a class="el" href="classSpan_1_1GridPass.html">GridPass</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aa87900a29a85f5505342bd5416da6872">GetGridPass</a> () const</td></tr>
+<tr class="memitem:a6bdde74e21fadcd3bf7a0c4f3c4cdd91" id="r_a6bdde74e21fadcd3bf7a0c4f3c4cdd91"><td class="memItemLeft"><a class="el" href="classSpan_1_1SkyboxPass.html">SkyboxPass</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a6bdde74e21fadcd3bf7a0c4f3c4cdd91">GetSkyboxPass</a> () const</td></tr>
+<tr class="memitem:a6a8aac16d671b1f7fa70d4e5f3e41a67" id="r_a6a8aac16d671b1f7fa70d4e5f3e41a67"><td class="memItemLeft"><a class="el" href="classSpan_1_1ShadowPass.html">ShadowPass</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a6a8aac16d671b1f7fa70d4e5f3e41a67">GetShadowPass</a> () const</td></tr>
 <tr class="memitem:ade1cd95fe5d2e6aa78493393ce39c767" id="r_ade1cd95fe5d2e6aa78493393ce39c767"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ade1cd95fe5d2e6aa78493393ce39c767">DrawMesh</a> (<a class="el" href="classSpan_1_1Mesh.html">Mesh</a> *mesh, <a class="el" href="classSpan_1_1Material.html">Material</a> *material, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;worldMatrix)</td></tr>
 <tr class="memdesc:ade1cd95fe5d2e6aa78493393ce39c767"><td class="mdescLeft">&#160;</td><td class="mdescRight">メッシュ描画コマンドの発行。  <br /></td></tr>
 <tr class="memitem:a2f4264efe9f273f5c6606f58f9950329" id="r_a2f4264efe9f273f5c6606f58f9950329"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2f4264efe9f273f5c6606f58f9950329">SetGlobalLightData</a> (const std::vector&lt; <a class="el" href="structSpan_1_1LightDataGPU.html">LightDataGPU</a> &gt; &amp;lights, const <a class="el" href="structSpan_1_1EnvironmentSettings.html">EnvironmentSettings</a> &amp;env)</td></tr>
 <tr class="memdesc:a2f4264efe9f273f5c6606f58f9950329"><td class="mdescLeft">&#160;</td><td class="mdescRight">ライト情報をRendererにセットする関数  <br /></td></tr>
 <tr class="memitem:a9951ae576370519a3d75314107d5f36b" id="r_a9951ae576370519a3d75314107d5f36b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9951ae576370519a3d75314107d5f36b">WaitForGPU</a> ()</td></tr>
 <tr class="memdesc:a9951ae576370519a3d75314107d5f36b"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPUの処理完了を待機する  <br /></td></tr>
+<tr class="memitem:a5ee526eb262da98fad30d48b97e51d88" id="r_a5ee526eb262da98fad30d48b97e51d88"><td class="memItemLeft">D3D12_GPU_VIRTUAL_ADDRESS&#160;</td><td class="memItemRight"><a class="el" href="#a5ee526eb262da98fad30d48b97e51d88">AllocateCBV</a> (const void *data, size_t sizeInBytes)</td></tr>
+<tr class="memdesc:a5ee526eb262da98fad30d48b97e51d88"><td class="mdescLeft">&#160;</td><td class="mdescRight">動的定数バッファのメモリを確保し、データをコピーしてGPUアドレスを返します。  <br /></td></tr>
 <tr class="memitem:a377035eefc48745e3d15bcceae5f885a" id="r_a377035eefc48745e3d15bcceae5f885a"><td class="memItemLeft"><a class="el" href="classSpan_1_1GraphicsContext.html">GraphicsContext</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a377035eefc48745e3d15bcceae5f885a">GetContext</a> () const</td></tr>
 <tr class="memitem:a333cb4a9e8db91602609815c0d5237dd" id="r_a333cb4a9e8db91602609815c0d5237dd"><td class="memItemLeft"><a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&#160;</td><td class="memItemRight"><a class="el" href="#a333cb4a9e8db91602609815c0d5237dd">GetViewMatrix</a> () const</td></tr>
 <tr class="memitem:a4763d852f768394d7272e03a2e4d32e4" id="r_a4763d852f768394d7272e03a2e4d32e4"><td class="memItemLeft"><a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4763d852f768394d7272e03a2e4d32e4">GetProjectionMatrix</a> () const</td></tr>
+<tr class="memitem:a9718aa3122f79215e6010854d8e13b57" id="r_a9718aa3122f79215e6010854d8e13b57"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector3.html">Vector3</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9718aa3122f79215e6010854d8e13b57">GetCameraPosition</a> () const</td></tr>
 <tr class="memitem:a7d4af82aad655792beaefde3a43a7ef8" id="r_a7d4af82aad655792beaefde3a43a7ef8"><td class="memItemLeft">ID3D12GraphicsCommandList *&#160;</td><td class="memItemRight"><a class="el" href="#a7d4af82aad655792beaefde3a43a7ef8">GetCommandList</a> () const</td></tr>
 <tr class="memitem:a8f2e7f1cdf49225bcce44409d176b8b9" id="r_a8f2e7f1cdf49225bcce44409d176b8b9"><td class="memItemLeft">ID3D12Device *&#160;</td><td class="memItemRight"><a class="el" href="#a8f2e7f1cdf49225bcce44409d176b8b9">GetDevice</a> () const</td></tr>
 <tr class="memitem:ab3ea9054a52c2b70efc69ea87aeb2ec1" id="r_ab3ea9054a52c2b70efc69ea87aeb2ec1"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#ab3ea9054a52c2b70efc69ea87aeb2ec1">GetFrameCount</a> () const</td></tr>
 <tr class="memitem:abcf344a9488f1c415de7368b1efc597a" id="r_abcf344a9488f1c415de7368b1efc597a"><td class="memItemLeft">ID3D12CommandQueue *&#160;</td><td class="memItemRight"><a class="el" href="#abcf344a9488f1c415de7368b1efc597a">GetCommandQueue</a> () const</td></tr>
-<tr class="memitem:a2b81054583f9bc3f3f9ba0354fddb807" id="r_a2b81054583f9bc3f3f9ba0354fddb807"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2b81054583f9bc3f3f9ba0354fddb807">InitializeGridResources</a> ()</td></tr>
-<tr class="memitem:a14853b9d12e17ca45984be8f2fc5adbe" id="r_a14853b9d12e17ca45984be8f2fc5adbe"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a14853b9d12e17ca45984be8f2fc5adbe">RenderGrid</a> (ID3D12GraphicsCommandList *cmd)</td></tr>
 <tr id="pub-methods-0" class="groupHeader"><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a5c4ce1187eccfa4c75acd068c4ae9706" id="r_a5c4ce1187eccfa4c75acd068c4ae9706"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5c4ce1187eccfa4c75acd068c4ae9706">SetCamera</a> (const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;view, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> projection)</td></tr>
 <tr class="memdesc:a5c4ce1187eccfa4c75acd068c4ae9706"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structSpan_1_1Camera.html" title="📷 シーンを撮影するための投影設定を保持するコンポーネント。">Camera</a>  <br /></td></tr>
@@ -147,14 +149,9 @@ Span::Renderer 連携図</div>
 <tr class="memitem:ad3f3bd2250901be44d4783caaded1056" id="r_ad3f3bd2250901be44d4783caaded1056"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ad3f3bd2250901be44d4783caaded1056">CreateRootSignature</a> ()</td></tr>
 <tr class="memitem:a8f24a79917231207aa5a1608999dafcd" id="r_a8f24a79917231207aa5a1608999dafcd"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a8f24a79917231207aa5a1608999dafcd">CreatePipelineState</a> ()</td></tr>
 <tr class="memitem:a1b98dec76bcb198eae9473a8c28331cf" id="r_a1b98dec76bcb198eae9473a8c28331cf"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a1b98dec76bcb198eae9473a8c28331cf">CreateConstantBuffer</a> ()</td></tr>
-<tr class="memitem:acbc624d5b565984492ffd63b55cdceb2" id="r_acbc624d5b565984492ffd63b55cdceb2"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#acbc624d5b565984492ffd63b55cdceb2">InitializeSkyboxResources</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
-<tr class="memitem:ac7557f55494d3fcea4b15a06bd7235dd" id="r_ac7557f55494d3fcea4b15a06bd7235dd"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac7557f55494d3fcea4b15a06bd7235dd">m_skyboxPSO</a></td></tr>
-<tr class="memitem:ae12cfcaf823d327fa7129907dd1597a9" id="r_ae12cfcaf823d327fa7129907dd1597a9"><td class="memItemLeft">ComPtr&lt; ID3D12RootSignature &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ae12cfcaf823d327fa7129907dd1597a9">m_skyboxRootSignature</a></td></tr>
-<tr class="memitem:aa51a022f19ba8fa8e0ead7a9bc03d732" id="r_aa51a022f19ba8fa8e0ead7a9bc03d732"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aa51a022f19ba8fa8e0ead7a9bc03d732">m_skyboxVS</a> = nullptr</td></tr>
-<tr class="memitem:a819e4d15a288b00f3aa306a529475a2d" id="r_a819e4d15a288b00f3aa306a529475a2d"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a819e4d15a288b00f3aa306a529475a2d">m_skyboxPS</a> = nullptr</td></tr>
 <tr class="memitem:a104c859dbad9750fc0848280c7d271ec" id="r_a104c859dbad9750fc0848280c7d271ec"><td class="memItemLeft"><a class="el" href="classSpan_1_1GraphicsContext.html">GraphicsContext</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a104c859dbad9750fc0848280c7d271ec">context</a> = nullptr</td></tr>
 <tr class="memitem:a7133eab1945ed9179bf98c2379e990dc" id="r_a7133eab1945ed9179bf98c2379e990dc"><td class="memItemLeft">ID3D12GraphicsCommandList *&#160;</td><td class="memItemRight"><a class="el" href="#a7133eab1945ed9179bf98c2379e990dc">commandList</a> = nullptr</td></tr>
 <tr class="memitem:abfa0d54e67b7e2959819152a08dc0ee2" id="r_abfa0d54e67b7e2959819152a08dc0ee2"><td class="memItemLeft">ComPtr&lt; ID3D12RootSignature &gt;&#160;</td><td class="memItemRight"><a class="el" href="#abfa0d54e67b7e2959819152a08dc0ee2">rootSignature</a></td></tr>
@@ -168,15 +165,14 @@ Span::Renderer 連携図</div>
 <tr class="memitem:af03a4b1bbb7c73258554f363991196c5" id="r_af03a4b1bbb7c73258554f363991196c5"><td class="memItemLeft"><a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&#160;</td><td class="memItemRight"><a class="el" href="#af03a4b1bbb7c73258554f363991196c5">viewMatrix</a></td></tr>
 <tr class="memitem:a85117e6d23730b9c77f5a748eecce3b8" id="r_a85117e6d23730b9c77f5a748eecce3b8"><td class="memItemLeft"><a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&#160;</td><td class="memItemRight"><a class="el" href="#a85117e6d23730b9c77f5a748eecce3b8">projectionMatrix</a></td></tr>
 <tr class="memitem:ad698e7011441a21320dbf3513e4f3517" id="r_ad698e7011441a21320dbf3513e4f3517"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector3.html">Vector3</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad698e7011441a21320dbf3513e4f3517">cameraPosition</a></td></tr>
-<tr class="memitem:a2bb038ba927ad95b920a89ace41d7d2c" id="r_a2bb038ba927ad95b920a89ace41d7d2c"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2bb038ba927ad95b920a89ace41d7d2c">m_gridPSO</a></td></tr>
-<tr class="memitem:a2d25aa577dfc156b5cdbf3734e98b447" id="r_a2d25aa577dfc156b5cdbf3734e98b447"><td class="memItemLeft">ComPtr&lt; ID3D12RootSignature &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2d25aa577dfc156b5cdbf3734e98b447">m_gridRootSignature</a></td></tr>
-<tr class="memitem:a878481558df10fa26916810265fab45e" id="r_a878481558df10fa26916810265fab45e"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a878481558df10fa26916810265fab45e">m_gridShader</a> = nullptr</td></tr>
-<tr class="memitem:a027019c836a0e7a35acc1c7edda19611" id="r_a027019c836a0e7a35acc1c7edda19611"><td class="memItemLeft"><a class="el" href="classSpan_1_1Mesh.html">Mesh</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a027019c836a0e7a35acc1c7edda19611">m_gridPlane</a> = nullptr</td></tr>
 <tr class="memitem:a49fb70c5a33a5a9d9f1a41b966c87d7a" id="r_a49fb70c5a33a5a9d9f1a41b966c87d7a"><td class="memItemLeft">ComPtr&lt; ID3D12Fence &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a49fb70c5a33a5a9d9f1a41b966c87d7a">m_waitFence</a></td></tr>
 <tr class="memitem:a087bc8bf8fd98f2aae7c55e945fa2eaa" id="r_a087bc8bf8fd98f2aae7c55e945fa2eaa"><td class="memItemLeft">HANDLE&#160;</td><td class="memItemRight"><a class="el" href="#a087bc8bf8fd98f2aae7c55e945fa2eaa">m_waitEvent</a> = nullptr</td></tr>
 <tr class="memitem:a4c4f4459dccf6728aa8ffb1cfa4f2966" id="r_a4c4f4459dccf6728aa8ffb1cfa4f2966"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#a4c4f4459dccf6728aa8ffb1cfa4f2966">m_waitFenceValue</a> = 0</td></tr>
 <tr class="memitem:a0203d5c81207d4177d6751e8d6459b98" id="r_a0203d5c81207d4177d6751e8d6459b98"><td class="memItemLeft"><a class="el" href="classSpan_1_1ConstantBuffer.html">ConstantBuffer</a>&lt; <a class="el" href="structSpan_1_1GlobalLightData.html">GlobalLightData</a> &gt; *&#160;</td><td class="memItemRight"><a class="el" href="#a0203d5c81207d4177d6751e8d6459b98">m_LightBuffer</a> = nullptr</td></tr>
 <tr class="memitem:ac937d425dc999bac8f42928a042f27d2" id="r_ac937d425dc999bac8f42928a042f27d2"><td class="memItemLeft"><a class="el" href="structSpan_1_1GlobalLightData.html">GlobalLightData</a>&#160;</td><td class="memItemRight"><a class="el" href="#ac937d425dc999bac8f42928a042f27d2">m_CurrentLightData</a></td></tr>
+<tr class="memitem:adcdb2408c5b8238a3a3cc1e7c0d65384" id="r_adcdb2408c5b8238a3a3cc1e7c0d65384"><td class="memItemLeft">std::unique_ptr&lt; <a class="el" href="classSpan_1_1GridPass.html">GridPass</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#adcdb2408c5b8238a3a3cc1e7c0d65384">m_gridPass</a></td></tr>
+<tr class="memitem:aebed6433d28bab11fa0cbbfe0ab5c420" id="r_aebed6433d28bab11fa0cbbfe0ab5c420"><td class="memItemLeft">std::unique_ptr&lt; <a class="el" href="classSpan_1_1SkyboxPass.html">SkyboxPass</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aebed6433d28bab11fa0cbbfe0ab5c420">m_skyboxPass</a></td></tr>
+<tr class="memitem:a6d1e61f4d34fbe40dbbb6b1e89ed24ab" id="r_a6d1e61f4d34fbe40dbbb6b1e89ed24ab"><td class="memItemLeft">std::unique_ptr&lt; <a class="el" href="classSpan_1_1ShadowPass.html">ShadowPass</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a6d1e61f4d34fbe40dbbb6b1e89ed24ab">m_shadowPass</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 静的非公開変数類</h2></td></tr>
@@ -191,7 +187,7 @@ Span::Renderer 連携図</div>
 <li><b>Descriptor Heap</b>: テクスチャや定数バッファのカタログ。 </li>
 </ul>
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00077">77</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00088">88</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="ad9b8a2800b6e801528fc3507162ef123" name="ad9b8a2800b6e801528fc3507162ef123"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad9b8a2800b6e801528fc3507162ef123">&#9670;&#160;</a></span>Renderer()</h2>
@@ -208,7 +204,7 @@ Span::Renderer 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00007">7</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00012">12</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -232,7 +228,7 @@ Span::Renderer 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00013">13</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00018">18</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -242,6 +238,37 @@ Span::Renderer 連携図</div>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="a5ee526eb262da98fad30d48b97e51d88" name="a5ee526eb262da98fad30d48b97e51d88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ee526eb262da98fad30d48b97e51d88">&#9670;&#160;</a></span>AllocateCBV()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">D3D12_GPU_VIRTUAL_ADDRESS Span::Renderer::AllocateCBV </td>
+          <td>(</td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>sizeInBytes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>動的定数バッファのメモリを確保し、データをコピーしてGPUアドレスを返します。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>成功時はGPUアドレス。容量オーバー時は 0 を返します。 </dd></dl>
+
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00076">76</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a5ee526eb262da98fad30d48b97e51d88_icgraph.svg" width="100%" height="477"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="a115f51ead73d011860bb7fe9c510a9a2" name="a115f51ead73d011860bb7fe9c510a9a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a115f51ead73d011860bb7fe9c510a9a2">&#9670;&#160;</a></span>BeginFrame()</h2>
 
@@ -259,7 +286,12 @@ Span::Renderer 連携図</div>
 
 <p>フレーム終了処理 </p>
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00110">110</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00089">89</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a115f51ead73d011860bb7fe9c510a9a2_cgraph.svg" width="475" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -286,7 +318,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00414">414</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00338">338</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -318,7 +350,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00351">351</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00280">280</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -350,7 +382,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00276">276</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00198">198</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -393,7 +425,7 @@ Span::Renderer 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00158">158</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00117">117</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -422,7 +454,39 @@ Span::Renderer 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00143">143</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00108">108</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a9718aa3122f79215e6010854d8e13b57" name="a9718aa3122f79215e6010854d8e13b57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9718aa3122f79215e6010854d8e13b57">&#9670;&#160;</a></span>GetCameraPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSpan_1_1Vector3.html">Vector3</a> Span::Renderer::GetCameraPosition </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00146">146</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a9718aa3122f79215e6010854d8e13b57_icgraph.svg" width="439" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -449,7 +513,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00132">132</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00147">147</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -481,7 +545,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00135">135</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00150">150</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -508,7 +572,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00128">128</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00143">143</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -540,7 +604,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00133">133</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00148">148</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -572,7 +636,39 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00134">134</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00149">149</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="aa87900a29a85f5505342bd5416da6872" name="aa87900a29a85f5505342bd5416da6872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa87900a29a85f5505342bd5416da6872">&#9670;&#160;</a></span>GetGridPass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1GridPass.html">GridPass</a> * Span::Renderer::GetGridPass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00106">106</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_aa87900a29a85f5505342bd5416da6872_icgraph.svg" width="444" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -599,11 +695,75 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00130">130</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00145">145</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a4763d852f768394d7272e03a2e4d32e4_icgraph.svg" width="458" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a4763d852f768394d7272e03a2e4d32e4_icgraph.svg" width="458" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a6a8aac16d671b1f7fa70d4e5f3e41a67" name="a6a8aac16d671b1f7fa70d4e5f3e41a67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a8aac16d671b1f7fa70d4e5f3e41a67">&#9670;&#160;</a></span>GetShadowPass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1ShadowPass.html">ShadowPass</a> * Span::Renderer::GetShadowPass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00108">108</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a6a8aac16d671b1f7fa70d4e5f3e41a67_icgraph.svg" width="468" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a6bdde74e21fadcd3bf7a0c4f3c4cdd91" name="a6bdde74e21fadcd3bf7a0c4f3c4cdd91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bdde74e21fadcd3bf7a0c4f3c4cdd91">&#9670;&#160;</a></span>GetSkyboxPass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1SkyboxPass.html">SkyboxPass</a> * Span::Renderer::GetSkyboxPass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00107">107</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a6bdde74e21fadcd3bf7a0c4f3c4cdd91_icgraph.svg" width="464" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -631,11 +791,11 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00129">129</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00144">144</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a333cb4a9e8db91602609815c0d5237dd_icgraph.svg" width="467" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a333cb4a9e8db91602609815c0d5237dd_icgraph.svg" width="467" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -657,72 +817,11 @@ Span::Renderer 連携図</div>
 
 <p>フレーム開始処理 </p>
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00018">18</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00020">20</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a69d729ceadccffbf66343b02cd2aaac8_cgraph.svg" width="100%" height="530"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a2b81054583f9bc3f3f9ba0354fddb807" name="a2b81054583f9bc3f3f9ba0354fddb807"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b81054583f9bc3f3f9ba0354fddb807">&#9670;&#160;</a></span>InitializeGridResources()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Span::Renderer::InitializeGridResources </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00445">445</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a2b81054583f9bc3f3f9ba0354fddb807_cgraph.svg" width="443" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a2b81054583f9bc3f3f9ba0354fddb807_icgraph.svg" width="430" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="acbc624d5b565984492ffd63b55cdceb2" name="acbc624d5b565984492ffd63b55cdceb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbc624d5b565984492ffd63b55cdceb2">&#9670;&#160;</a></span>InitializeSkyboxResources()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Span::Renderer::InitializeSkyboxResources </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00611">611</a> 行目に定義があります。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_acbc624d5b565984492ffd63b55cdceb2_icgraph.svg" width="430" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a69d729ceadccffbf66343b02cd2aaac8_cgraph.svg" width="475" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -748,63 +847,7 @@ Span::Renderer 連携図</div>
 
 <p>リサイズ対応 </p>
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00150">150</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a14853b9d12e17ca45984be8f2fc5adbe" name="a14853b9d12e17ca45984be8f2fc5adbe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14853b9d12e17ca45984be8f2fc5adbe">&#9670;&#160;</a></span>RenderGrid()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Span::Renderer::RenderGrid </td>
-          <td>(</td>
-          <td class="paramtype">ID3D12GraphicsCommandList *</td>          <td class="paramname"><span class="paramname"><em>cmd</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00599">599</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a495df74d64b1c6ff9ad6bf4211af77c0" name="a495df74d64b1c6ff9ad6bf4211af77c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a495df74d64b1c6ff9ad6bf4211af77c0">&#9670;&#160;</a></span>RenderSkybox()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Span::Renderer::RenderSkybox </td>
-          <td>(</td>
-          <td class="paramtype">ID3D12GraphicsCommandList *</td>          <td class="paramname"><span class="paramname"><em>cmd</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structSpan_1_1EnvironmentSettings.html">EnvironmentSettings</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>env</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>プロシージャルスカイボックスを描画します。 </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cmd</td><td>コマンドリスト </td></tr>
-    <tr><td class="paramname">env</td><td>環境設定データ </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00677">677</a> 行目に定義があります。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a495df74d64b1c6ff9ad6bf4211af77c0_icgraph.svg" width="459" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00115">115</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -830,7 +873,7 @@ Span::Renderer 連携図</div>
 <p><a class="el" href="structSpan_1_1Camera.html" title="📷 シーンを撮影するための投影設定を保持するコンポーネント。">Camera</a> </p>
 <p>カメラ情報を更新します。 </p>
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00220">220</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00157">157</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -869,7 +912,7 @@ Span::Renderer 連携図</div>
 
 <p>カメラ位置のセッター </p>
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00117">117</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00126">126</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -894,7 +937,7 @@ Span::Renderer 連携図</div>
 
 <p>ライト情報をRendererにセットする関数 </p>
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00235">235</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00165">165</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -929,7 +972,7 @@ Span::Renderer 連携図</div>
 <p><a class="el" href="structSpan_1_1Camera.html" title="📷 シーンを撮影するための投影設定を保持するコンポーネント。">Camera</a> </p>
 <p>カメラ情報を更新します。 </p>
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00114">114</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00123">123</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -959,7 +1002,7 @@ Span::Renderer 連携図</div>
 <p><a class="el" href="structSpan_1_1Camera.html" title="📷 シーンを撮影するための投影設定を保持するコンポーネント。">Camera</a> </p>
 <p>カメラ情報を更新します。 </p>
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00113">113</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00122">122</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -978,7 +1021,7 @@ Span::Renderer 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00070">70</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00055">55</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1009,7 +1052,7 @@ Span::Renderer 連携図</div>
 
 <p>GPUの処理完了を待機する </p>
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00257">257</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00185">185</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -1039,7 +1082,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00178">178</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00179">179</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1063,7 +1106,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00170">170</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00171">171</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1087,7 +1130,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00157">157</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00160">160</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1111,7 +1154,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00171">171</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00172">172</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1135,7 +1178,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00173">173</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00174">174</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1159,7 +1202,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00156">156</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00159">159</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1183,12 +1226,12 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00193">193</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00188">188</a> 行目に定義があります。</p>
 
 </div>
 </div>
-<a id="a027019c836a0e7a35acc1c7edda19611" name="a027019c836a0e7a35acc1c7edda19611"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a027019c836a0e7a35acc1c7edda19611">&#9670;&#160;</a></span>m_gridPlane</h2>
+<a id="adcdb2408c5b8238a3a3cc1e7c0d65384" name="adcdb2408c5b8238a3a3cc1e7c0d65384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcdb2408c5b8238a3a3cc1e7c0d65384">&#9670;&#160;</a></span>m_gridPass</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1197,7 +1240,7 @@ Span::Renderer 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSpan_1_1Mesh.html">Mesh</a>* Span::Renderer::m_gridPlane = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSpan_1_1GridPass.html">GridPass</a>&gt; Span::Renderer::m_gridPass</td>
         </tr>
       </table>
   </td>
@@ -1207,79 +1250,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00184">184</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a2bb038ba927ad95b920a89ace41d7d2c" name="a2bb038ba927ad95b920a89ace41d7d2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bb038ba927ad95b920a89ace41d7d2c">&#9670;&#160;</a></span>m_gridPSO</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ComPtr&lt;ID3D12PipelineState&gt; Span::Renderer::m_gridPSO</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00181">181</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a2d25aa577dfc156b5cdbf3734e98b447" name="a2d25aa577dfc156b5cdbf3734e98b447"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d25aa577dfc156b5cdbf3734e98b447">&#9670;&#160;</a></span>m_gridRootSignature</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ComPtr&lt;ID3D12RootSignature&gt; Span::Renderer::m_gridRootSignature</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00182">182</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a878481558df10fa26916810265fab45e" name="a878481558df10fa26916810265fab45e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a878481558df10fa26916810265fab45e">&#9670;&#160;</a></span>m_gridShader</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::Renderer::m_gridShader = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00183">183</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00191">191</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1303,103 +1274,55 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00187">187</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a6d1e61f4d34fbe40dbbb6b1e89ed24ab" name="a6d1e61f4d34fbe40dbbb6b1e89ed24ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d1e61f4d34fbe40dbbb6b1e89ed24ab">&#9670;&#160;</a></span>m_shadowPass</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSpan_1_1ShadowPass.html">ShadowPass</a>&gt; Span::Renderer::m_shadowPass</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00193">193</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="aebed6433d28bab11fa0cbbfe0ab5c420" name="aebed6433d28bab11fa0cbbfe0ab5c420"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebed6433d28bab11fa0cbbfe0ab5c420">&#9670;&#160;</a></span>m_skyboxPass</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSpan_1_1SkyboxPass.html">SkyboxPass</a>&gt; Span::Renderer::m_skyboxPass</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 <p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00192">192</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a819e4d15a288b00f3aa306a529475a2d" name="a819e4d15a288b00f3aa306a529475a2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a819e4d15a288b00f3aa306a529475a2d">&#9670;&#160;</a></span>m_skyboxPS</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::Renderer::m_skyboxPS = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00153">153</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="ac7557f55494d3fcea4b15a06bd7235dd" name="ac7557f55494d3fcea4b15a06bd7235dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7557f55494d3fcea4b15a06bd7235dd">&#9670;&#160;</a></span>m_skyboxPSO</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ComPtr&lt;ID3D12PipelineState&gt; Span::Renderer::m_skyboxPSO</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00150">150</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="ae12cfcaf823d327fa7129907dd1597a9" name="ae12cfcaf823d327fa7129907dd1597a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae12cfcaf823d327fa7129907dd1597a9">&#9670;&#160;</a></span>m_skyboxRootSignature</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ComPtr&lt;ID3D12RootSignature&gt; Span::Renderer::m_skyboxRootSignature</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00151">151</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="aa51a022f19ba8fa8e0ead7a9bc03d732" name="aa51a022f19ba8fa8e0ead7a9bc03d732"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa51a022f19ba8fa8e0ead7a9bc03d732">&#9670;&#160;</a></span>m_skyboxVS</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::Renderer::m_skyboxVS = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00152">152</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1423,7 +1346,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00188">188</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00183">183</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1447,7 +1370,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00187">187</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00182">182</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1471,7 +1394,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00189">189</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00184">184</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1495,7 +1418,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00172">172</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00173">173</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1519,7 +1442,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00169">169</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00170">170</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1543,7 +1466,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00161">161</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00164">164</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1567,7 +1490,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00162">162</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00165">165</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1591,7 +1514,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00177">177</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00178">178</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1615,7 +1538,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00166">166</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00167">167</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1639,7 +1562,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00160">160</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00163">163</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1663,7 +1586,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00176">176</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00177">177</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1687,7 +1610,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00165">165</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00166">166</a> 行目に定義があります。</p>
 
 </div>
 </div>
