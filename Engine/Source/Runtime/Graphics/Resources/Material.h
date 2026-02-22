@@ -51,7 +51,8 @@ namespace Span
 
 		int HasAOMap = 0;
 		int HasEmissiveMap = 0;
-		int Padding2[2];									///< アライメント用
+		int Padding2;
+		int Padding3;
 	};
 
 	/**

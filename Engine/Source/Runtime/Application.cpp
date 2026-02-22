@@ -4,6 +4,7 @@
 #include "Editor/GuiManager.h"
 
 #include "Editor/Panels/SceneView/SceneViewPanel.h"
+#include "Runtime/Graphics/Passes/GridPass.h"
 
 namespace Span
 {
@@ -224,9 +225,6 @@ namespace Span
 				{
 					renderer.SetCameraPosition(t.Position);
 				});
-
-				// グリッド描画
-				renderer.RenderGrid(cmd);
 
 				// バリア: RTV -> SRV
 				sceneBuffer.TransitionToShaderResource(cmd);

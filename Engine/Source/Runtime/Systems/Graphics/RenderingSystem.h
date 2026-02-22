@@ -16,6 +16,11 @@
 #include "Runtime/Scene/Scene.h"
 #include "Graphics/Renderer.h"
 
+// Render Passes
+#include "Graphics/Passes/ShadowPass.h"
+#include "Graphics/Passes/GridPass.h"
+#include "Graphics/Passes/SkyboxPass.h"
+
 // Components
 #include "Components/Core/LocalToWorld.h"
 #include "Components/Graphics/MeshFilter.h"
@@ -41,12 +46,19 @@ namespace Span
 		{
 			// アプリケーションからレンダラーを取得
 			Renderer& renderer = Application::Get().GetRenderer();
+			ID3D12GraphicsCommandList* cmd = renderer.GetCommandList();
 			auto world = GetWorld();
 
 			EnvironmentSettings& env = Application::Get().GetActiveScene().Environment;
 
-			// 1. 全ライト情報を収集するリスト
+			// 1. Light Collection & Shadow Matrix Collection
+			// ============================================================
 			std::vector<LightDataGPU> activeLights;
+			Vector3 mainLightDir = Vector3::Down;
+			bool mainLightCastShadows = true;
+
+			float shadowArea = 50.0f;
+			float shadowDist = 200.0f;
 
 			// A. Directional Light
 			world->ForEach<DirectionalLight, LocalToWorld>(
@@ -58,6 +70,10 @@ namespace Span
 					ld.Color = dl.Color;
 					ld.Intensity = dl.Intensity;
 					activeLights.push_back(ld);
+					mainLightDir = ld.Direction;
+					mainLightCastShadows = dl.CastShadows;
+					shadowArea = dl.ShadowAreaSize;
+					shadowDist = dl.ShadowMaxDistance;
 				}
 			);
 
@@ -92,12 +108,79 @@ namespace Span
 				}
 			);
 
+			// 1. 太陽のカメラを、常に「現在のプレイヤー(カメラ)の位置」に追従させる
+			Vector3 camPos = renderer.GetCameraPosition();
+			Vector3 lightTarget = camPos;
+
+			// 2. ターゲットから光の逆方向へ十分な距離を離してカメラを置く
+			Vector3 lightPos = lightTarget - mainLightDir * (shadowDist * 0.5f);
+
+			// 3. 上方向ベクトルの計算
+			Vector3 up = Vector3::Up;
+			if (std::abs(Vector3::Dot(mainLightDir, Vector3::Up)) > 0.999f) up = Vector3::Forward;
+
+			Matrix4x4 lightView = Matrix4x4::LookAtLH(lightPos, lightTarget, up);
+
+			// 4. 投影範囲
+			Matrix4x4 lightProj = Matrix4x4::OrthographicLH(shadowArea, shadowArea, 1.0f, shadowDist);
+
+			Matrix4x4 lightSpaceMatrix = lightView * lightProj;
+
+			if (auto shadowPass = renderer.GetShadowPass())
+			{
+				shadowPass->SetLightSpaceMatrix(lightSpaceMatrix);
+			}
+
+			// ライトデータをメインパス用に転送
 			renderer.SetGlobalLightData(activeLights, env);
 
-			// --------------------------------------------------------
-			// パス1: 不透明 (Opaque) の描画
-			// 先に奥にある不透明な物体を描画して、深度バッファを埋めます。
-			// --------------------------------------------------------
+			// 2. Shadow Pass
+			// ============================================================
+			if (auto shadowPass = renderer.GetShadowPass())
+			{
+				if (mainLightCastShadows)
+				{
+					shadowPass->BeginPass(cmd);
+
+					world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
+						[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
+						{
+							if (mf.mesh && mr.material && mr.material->GetBlendMode() != BlendMode::Transparent)
+							{
+								if (mr.CastShadows)
+								{
+									shadowPass->DrawMesh(&renderer, cmd, mf.mesh, ltw.Value);
+								}
+							}
+						}
+					);
+
+					shadowPass->EndPass(cmd);
+				}
+				else
+				{
+					shadowPass->BeginPass(cmd);
+					shadowPass->EndPass(cmd);
+				}
+			}
+
+			// メインレンダーターゲットの復元
+			auto& sceneBuffer = Application::Get().GetSceneBuffer();
+
+			// 描画先をSceneBufferに戻す
+			D3D12_CPU_DESCRIPTOR_HANDLE rtv = sceneBuffer.GetRTV();
+			D3D12_CPU_DESCRIPTOR_HANDLE dsv = sceneBuffer.GetDSV();
+			cmd->OMSetRenderTargets(1, &rtv, FALSE, &dsv);
+
+			// 描画範囲をSceneBufferのサイズに戻す
+			D3D12_VIEWPORT vp = { 0.0f, 0.0f, (float)sceneBuffer.GetWidth(), (float)sceneBuffer.GetHeight(), 0.0f, 1.0f };
+			D3D12_RECT scissor = { 0, 0, (long)sceneBuffer.GetWidth(), (long)sceneBuffer.GetHeight() };
+			cmd->RSSetViewports(1, &vp);
+			cmd->RSSetScissorRects(1, &scissor);
+
+			// 3. Main Pass (Opaque -> Skybox -> Transparent)
+			// ============================================================
+			// Opaque
 			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
 				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
 				{
@@ -110,17 +193,13 @@ namespace Span
 				}
 			);
 
-			// --------------------------------------------------------
-			// パス1.5: スカイボックス (Skybox) の描画
-			// 不透明なオブジェクトで深度が書き込まれた後に行うことで、
-			// 隠れている空のピクセルの描画をスキップし最適化します。
-			// --------------------------------------------------------
-			renderer.RenderSkybox(renderer.GetCommandList(), env);
+			// Skybox
+			if (auto skyboxPass = renderer.GetSkyboxPass())
+			{
+				skyboxPass->Render(&renderer, cmd, env, renderer.GetViewMatrix(), renderer.GetProjectionMatrix(), renderer.GetCameraPosition());
+			}
 
-			// --------------------------------------------------------
-			// パス2: 透明 (Transparent) の描画
-			// 不透明な物体の上に重ねて描画します（深度書き込みなし）。
-			// --------------------------------------------------------
+			// Transparent
 			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
 				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
 				{
@@ -132,6 +211,24 @@ namespace Span
 					}
 				}
 			);
+
+			// 4. Editor Pass (Grid)
+			// ============================================================
+			if (auto gridPass = renderer.GetGridPass())
+			{
+				struct SceneCB { Matrix4x4 view; Matrix4x4 proj; Vector3 camPos; float pad; };
+				SceneCB sceneData = {
+					renderer.GetViewMatrix().Transpose(),
+					renderer.GetProjectionMatrix().Transpose(),
+					renderer.GetCameraPosition(), 0.0f
+				};
+
+				D3D12_GPU_VIRTUAL_ADDRESS cbAddr = renderer.AllocateCBV(&sceneData, sizeof(SceneCB));
+				if (cbAddr != 0)
+				{
+					gridPass->Render(cmd, cbAddr);
+				}
+			}
 		}
 	};
 }

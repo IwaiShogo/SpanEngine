@@ -29,7 +29,8 @@ cbuffer MaterialBuffer : register(b1)
 
 	int HasAOMap;
 	int HasEmissiveMap;
-	int Padding2[2];
+	int Padding2;
+	int Padding3;
 };
 
 // =========================================================================
@@ -66,6 +67,7 @@ cbuffer LightBuffer : register(b2)
 	float3 SkyBottomColor;
 	int ActiveLightCount;
 
+	Matrix DirectionalLightSpaceMatrix;
 	LightData Lights[16];	// 最大16個
 }
 
@@ -77,6 +79,9 @@ Texture2D t_AO : register(t4);
 Texture2D t_Emissive : register(t5);
 
 SamplerState g_sampler : register(s0);
+
+Texture2D t_ShadowMap : register(t6);
+SamplerComparisonState g_shadowSampler : register(s1);
 
 struct VSInput
 {
@@ -183,6 +188,37 @@ float3 FresnelSchlickRoughness(float cosTheta, float3 F0, float roughness)
 	return F0 + (max(float3(1.0 - roughness, 1.0 - roughness, 1.0 - roughness), F0) - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
 }
 
+float CalculateShadow(float4 worldPos, float3 N)
+{
+	worldPos.xyz += N * 0.1f;
+
+	float4 lightSpacePos = mul(worldPos, DirectionalLightSpaceMatrix);
+	lightSpacePos.xyz /= lightSpacePos.w;
+
+	float2 shadowUV;
+	shadowUV.x = lightSpacePos.x * 0.5f + 0.5f;
+	shadowUV.y = -lightSpacePos.y * 0.5f + 0.5f;
+
+	if (shadowUV.x < 0.0f || shadowUV.x > 1.0f || shadowUV.y < 0.0f || shadowUV.y > 1.0f)
+		return 1.0f;
+
+	float currentDepth = lightSpacePos.z - 0.0001f;
+
+	float shadow = 0.0f;
+	float2 texelSize = 1.0f / 4096.0f;
+	
+	for (int x = -1; x <= 1; ++x)
+	{
+		for (int y = -1; y <= 1; ++y)
+		{
+			float2 offset = float2(x, y) * texelSize;
+			shadow += t_ShadowMap.SampleCmpLevelZero(g_shadowSampler, shadowUV + offset, currentDepth);
+		}
+	}
+	
+	return shadow / 9.0f;
+}
+
 // =========================================================================
 // Pixel Shader
 // =========================================================================
@@ -246,6 +282,8 @@ float4 PSMain(PSInput input) : SV_TARGET
 	float3 Lo = float3(0.0, 0.0, 0.0);
 
 	// 3. 全ライトのループ計算
+	float shadowFactor = CalculateShadow(float4(input.worldPos, 1.0f), N);
+	
 	for (int i = 0; i < ActiveLightCount; ++i)
 	{
 		LightData light = Lights[i];
@@ -285,6 +323,11 @@ float4 PSMain(PSInput input) : SV_TARGET
 
 		float3 radiance = light.Color * light.Intensity * attenuation;
 
+		if (light.Type == 0)
+		{
+			radiance *= shadowFactor;
+		}
+		
 		// BRDFの計算
 		float3 H = normalize(V + LDir);
 		float NdotL = max(dot(N, LDir), 0.0);

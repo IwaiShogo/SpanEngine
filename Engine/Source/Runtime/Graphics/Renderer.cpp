@@ -2,6 +2,11 @@
 #include "Resources/Texture.h"
 #include "Core/Log/Logger.h"
 
+// Passのインクルード
+#include "Passes/GridPass.h"
+#include "Passes/SkyboxPass.h"
+#include "Passes/ShadowPass.h"
+
 namespace Span
 {
 	Renderer::Renderer()
@@ -10,132 +15,92 @@ namespace Span
 		projectionMatrix = Matrix4x4::Identity();
 	}
 
-	Renderer::~Renderer()
-	{
-		Shutdown();
-	}
+	Renderer::~Renderer() { Shutdown(); }
 
 	bool Renderer::Initialize(GraphicsContext* inContext)
 	{
 		this->context = inContext;
-		if (!context)
-		{
-			SPAN_ERROR("Renderer initialized with null context!");
-			return false;
-		}
-
+		if (!context) return false;
 		auto device = context->GetDevice();
 
-		// 同期用フェンスの作成
-		if (FAILED(device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&m_waitFence))))
-		{
-			SPAN_ERROR("Failed to create Wait Fence");
-			return false;
-		}
+		if (FAILED(device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&m_waitFence)))) return false;
 		m_waitEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
-		if (!m_waitEvent)
-		{
-			SPAN_ERROR("Failed to create Wait Event");
-			return false;
-		}
 		m_waitFenceValue = 1;
 
-		// 1. Root Signature (入力レイアウト定義)
 		if (!CreateRootSignature()) return false;
 
-		// 2. Shader Load
-		vs = new Shader();
-		if (!vs->Load(L"Basic.hlsl", ShaderType::Vertex, "VSMain")) return false;
+		vs = new Shader(); if (!vs->Load(L"Basic.hlsl", ShaderType::Vertex, "VSMain")) return false;
+		ps = new Shader(); if (!ps->Load(L"Basic.hlsl", ShaderType::Pixel, "PSMain")) return false;
 
-		ps = new Shader();
-		if (!ps->Load(L"Basic.hlsl", ShaderType::Pixel, "PSMain")) return false;
-
-		// 3. PSO (描画設定)
 		if (!CreatePipelineState()) return false;
-
-		// 4. 定数バッファ (動的書き換え用)
 		if (!CreateConstantBuffer()) return false;
 
-		if (!InitializeGridResources()) return false;
+		// --- Passes Initialization ---
+		m_gridPass = std::make_unique<GridPass>();
+		if (!m_gridPass->Initialize(device)) return false;
 
-		if (!InitializeSkyboxResources()) return false;
+		m_skyboxPass = std::make_unique<SkyboxPass>();
+		if (!m_skyboxPass->Initialize(device)) return false;
+
+		m_shadowPass = std::make_unique<ShadowPass>();
+		if (!m_shadowPass->Initialize(device)) return false;
 
 		m_LightBuffer = new ConstantBuffer<GlobalLightData>();
-		if (!m_LightBuffer->Initialize(context->GetDevice())) return false;
+		if (!m_LightBuffer->Initialize(device)) return false;
 
-		SPAN_LOG("Renderer Initialized Successfully!");
+		SPAN_LOG("Renderer Initialized Successfully with Render Passes!");
 		return true;
 	}
 
 	void Renderer::Shutdown()
 	{
-		// 同期用オブジェクトの開放
 		WaitForGPU();
-
-		if (m_waitEvent)
-		{
-			CloseHandle(m_waitEvent);
-			m_waitEvent = nullptr;
-		}
+		if (m_waitEvent) { CloseHandle(m_waitEvent); m_waitEvent = nullptr; }
 		m_waitFence.Reset();
 
 		SAFE_DELETE(vs);
 		SAFE_DELETE(ps);
-
 		rootSignature.Reset();
 		pipelineState.Reset();
 		pipelineStateTransparent.Reset();
-
 		constantBuffer.Reset();
 
+		m_gridPass.reset();
+		m_skyboxPass.reset();
+		m_shadowPass.reset();
+
+		if (m_LightBuffer) { m_LightBuffer->Shutdown(); SAFE_DELETE(m_LightBuffer); }
 		context = nullptr;
+	}
 
-		SAFE_DELETE(m_gridShader);
-		SAFE_DELETE(m_gridPlane);
-		m_gridPSO.Reset();
-		m_gridRootSignature.Reset();
+	D3D12_GPU_VIRTUAL_ADDRESS Renderer::AllocateCBV(const void* data, size_t sizeInBytes)
+	{
+		if (constantBufferIndex >= MAX_OBJECTS) return 0;
 
-		SAFE_DELETE(m_skyboxVS);
-		SAFE_DELETE(m_skyboxPS);
-		m_skyboxPSO.Reset();
-		m_skyboxRootSignature.Reset();
+		UINT8* dest = mappedConstantBuffer + (constantBufferIndex * CB_OBJ_SIZE);
+		memcpy(dest, data, sizeInBytes);
 
-		if (m_LightBuffer)
-		{
-			m_LightBuffer->Shutdown();
-			SAFE_DELETE(m_LightBuffer);
-		}
+		D3D12_GPU_VIRTUAL_ADDRESS addr = constantBuffer->GetGPUVirtualAddress() + (constantBufferIndex * CB_OBJ_SIZE);
+		constantBufferIndex++;
+
+		return addr;
 	}
 
 	ID3D12GraphicsCommandList* Renderer::BeginFrame()
 	{
 		if (!context) return nullptr;
-
 		commandList = context->BeginFrame();
 
-		// 共通設定: RootSignature, PSO, Viewport, Topology
 		commandList->SetGraphicsRootSignature(rootSignature.Get());
 		commandList->SetPipelineState(pipelineState.Get());
 		commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-		// インデックスのリセット
 		constantBufferIndex = 0;
 
-		// シーン定数バッファの更新
-		struct SceneCB
-		{
-			Matrix4x4 view;
-			Matrix4x4 proj;
-			Vector3 camPos;
-			float padding;
-		};
-		SceneCB sceneData;
-		sceneData.view = viewMatrix.Transpose();
-		sceneData.proj = projectionMatrix.Transpose();
-		sceneData.camPos = cameraPosition;
+		struct SceneCB { Matrix4x4 view; Matrix4x4 proj; Vector3 camPos; float pad; };
+		SceneCB sceneData = { viewMatrix.Transpose(), projectionMatrix.Transpose(), cameraPosition, 0.0f };
 
-		memcpy(mappedConstantBuffer + (constantBufferIndex * CB_OBJ_SIZE), &sceneData, sizeof(SceneCB));
-		constantBufferIndex++;
+		AllocateCBV(&sceneData, sizeof(SceneCB));
 
 		return commandList;
 	}
@@ -147,89 +112,54 @@ namespace Span
 		commandList = nullptr;
 	}
 
-	void Renderer::OnResize(uint32 width, uint32 height)
-	{
-		if (context)
-		{
-			context->OnResize(width, height);
-		}
-	}
+	void Renderer::OnResize(uint32 width, uint32 height) { if (context) context->OnResize(width, height); }
 
 	void Renderer::DrawMesh(Mesh* mesh, Material* material, const Matrix4x4& worldMatrix)
 	{
 		if (!mesh || !material || !commandList) return;
 
-		if (constantBufferIndex >= MAX_OBJECTS) return;
-
-		// 1. Transform更新
 		Matrix4x4 mvp = worldMatrix * viewMatrix * projectionMatrix;
 		TransformData data;
 		data.MVP.FromXM(XMMatrixTranspose(mvp.ToXM()));
 		data.World.FromXM(XMMatrixTranspose(worldMatrix.ToXM()));
 
-		UINT8* dest = mappedConstantBuffer + (constantBufferIndex * CB_OBJ_SIZE);
-		memcpy(dest, &data, sizeof(TransformData));
+		D3D12_GPU_VIRTUAL_ADDRESS cbAddr = AllocateCBV(&data, sizeof(TransformData));
+		if (cbAddr == 0) return;
 
-		// 2. Material更新
 		material->Update();
-
-		// 3. コマンドセット
 		commandList->SetPipelineState(material->GetBlendMode() == BlendMode::Transparent ? pipelineStateTransparent.Get() : pipelineState.Get());
 		commandList->SetGraphicsRootSignature(rootSignature.Get());
 
-		// スロット0, 1: CBV
-		D3D12_GPU_VIRTUAL_ADDRESS cbAddress = constantBuffer->GetGPUVirtualAddress();
-		cbAddress += constantBufferIndex * CB_OBJ_SIZE;
-		commandList->SetGraphicsRootConstantBufferView(0, cbAddress);
+		commandList->SetGraphicsRootConstantBufferView(0, cbAddr);
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
 
-		// スロット8: LightData CBV (b2) をセット
-		if (m_LightBuffer)
-		{
-			commandList->SetGraphicsRootConstantBufferView(8, m_LightBuffer->GetGPUVirtualAddress());
-		}
+		if (m_LightBuffer) commandList->SetGraphicsRootConstantBufferView(9, m_LightBuffer->GetGPUVirtualAddress());
 
-		// スロット2～7: Textures (t0~t5)
-		Texture* textures[6] = {
-			material->GetAlbedoMap(),
-			material->GetNormalMap(),
-			material->GetMetallicMap(),
-			material->GetRoughnessMap(),
-			material->GetAOMap(),
-			material->GetEmissiveMap()
-		};
-
-		for (int i = 0; i < 6; i++)
-		{
-			if (textures[i] && textures[i]->GetSRVHeap())
-			{
+		Texture* textures[6] = { material->GetAlbedoMap(), material->GetNormalMap(), material->GetMetallicMap(), material->GetRoughnessMap(), material->GetAOMap(), material->GetEmissiveMap() };
+		for (int i = 0; i < 6; i++) {
+			if (textures[i] && textures[i]->GetSRVHeap()) {
 				ID3D12DescriptorHeap* ppHeaps[] = { textures[i]->GetSRVHeap() };
 				commandList->SetDescriptorHeaps(1, ppHeaps);
 				commandList->SetGraphicsRootDescriptorTable(2 + i, textures[i]->GetSRVHeap()->GetGPUDescriptorHandleForHeapStart());
 			}
-			// ※本来は空のスロットにはダミーの1x1テクスチャをバインドすべきですが、
-			// ほとんどの最新のGPUドライバでは、HLSL内で分岐(if HasMap)してアクセスしなければ
-			// クラッシュしないため、一旦このまま進めます。
+		}
+
+		if (m_shadowPass && m_shadowPass->GetShadowMap())
+		{
+			ID3D12DescriptorHeap* shadowHeaps[] = { m_shadowPass->GetShadowMap()->GetSRVHeap() };
+			commandList->SetDescriptorHeaps(1, shadowHeaps);
+			commandList->SetGraphicsRootDescriptorTable(8, m_shadowPass->GetShadowMap()->GetSRV());
 		}
 
 		mesh->Draw(commandList);
-
-		constantBufferIndex++;
 	}
 
 	void Renderer::SetCamera(const Matrix4x4& view, const Matrix4x4 projection)
 	{
-		viewMatrix = view;
-		projectionMatrix = projection;
-
+		viewMatrix = view; projectionMatrix = projection;
 		DirectX::XMVECTOR det;
 		DirectX::XMMATRIX invView = DirectX::XMMatrixInverse(&det, view.ToXM());
-
-		cameraPosition = Vector3(
-			DirectX::XMVectorGetX(invView.r[3]),
-			DirectX::XMVectorGetY(invView.r[3]),
-			DirectX::XMVectorGetZ(invView.r[3])
-		);
+		cameraPosition = Vector3(DirectX::XMVectorGetX(invView.r[3]), DirectX::XMVectorGetY(invView.r[3]), DirectX::XMVectorGetZ(invView.r[3]));
 	}
 
 	void Renderer::SetGlobalLightData(const std::vector<LightDataGPU>& lights, const EnvironmentSettings& env)
@@ -238,18 +168,16 @@ namespace Span
 		m_CurrentLightData.Exposure = env.Exposure;
 		m_CurrentLightData.AmbientIntensity = env.AmbientIntensity;
 		m_CurrentLightData.EnvReflectionIntensity = env.EnvReflectionIntensity;
-
-		// IBL用の空の色
 		m_CurrentLightData.SkyTopColor = Vector3(env.SkyTopColor[0], env.SkyTopColor[1], env.SkyTopColor[2]);
 		m_CurrentLightData.SkyHorizonColor = Vector3(env.SkyHorizonColor[0], env.SkyHorizonColor[1], env.SkyHorizonColor[2]);
 		m_CurrentLightData.SkyBottomColor = Vector3(env.SkyBottomColor[0], env.SkyBottomColor[1], env.SkyBottomColor[2]);
 
-		// ライトデータを配列にコピー
-		m_CurrentLightData.ActiveLightCount = std::min((int)lights.size(), MAX_LIGHTS);
-		for (int i = 0; i < m_CurrentLightData.ActiveLightCount; ++i)
-		{
-			m_CurrentLightData.Lights[i] = lights[i];
+		if (m_shadowPass) {
+			m_CurrentLightData.DirectionalLightSpaceMatrix = m_shadowPass->GetLightSpaceMatrix().Transpose();
 		}
+
+		m_CurrentLightData.ActiveLightCount = std::min((int)lights.size(), MAX_LIGHTS);
+		for (int i = 0; i < m_CurrentLightData.ActiveLightCount; ++i) m_CurrentLightData.Lights[i] = lights[i];
 
 		if (m_LightBuffer) m_LightBuffer->Update(m_CurrentLightData);
 	}
@@ -257,17 +185,11 @@ namespace Span
 	void Renderer::WaitForGPU()
 	{
 		if (!context || !context->GetCommandQueue() || !m_waitFence) return;
-
 		ID3D12CommandQueue* queue = context->GetCommandQueue();
-
-		// 次の値をシグナル
 		const uint64_t fenceToWaitFor = m_waitFenceValue;
 		queue->Signal(m_waitFence.Get(), fenceToWaitFor);
 		m_waitFenceValue++;
-
-		// GPUがここまで到達するのを待つ
-		if (m_waitFence->GetCompletedValue() < fenceToWaitFor)
-		{
+		if (m_waitFence->GetCompletedValue() < fenceToWaitFor) {
 			m_waitFence->SetEventOnCompletion(fenceToWaitFor, m_waitEvent);
 			WaitForSingleObject(m_waitEvent, INFINITE);
 		}
@@ -275,8 +197,7 @@ namespace Span
 
 	bool Renderer::CreateRootSignature()
 	{
-		// ルートパラメータ定義 (CBV x2, Table x1)
-		D3D12_ROOT_PARAMETER rootParameters[9];
+		D3D12_ROOT_PARAMETER rootParameters[10];
 
 		// [0] Transform (b0)
 		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -290,13 +211,13 @@ namespace Span
 		rootParameters[1].Descriptor.RegisterSpace = 0;
 		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 
-		// [2] ~ [7] Texture Tables (t0 ~ t5)
-		D3D12_DESCRIPTOR_RANGE ranges[6] = {};
-		for (int i = 0; i < 6; i++)
+		// [2] ~ [8] Texture Tables (t0 ~ t6) : PBR(6枚) + ShadowMap(1枚)
+		D3D12_DESCRIPTOR_RANGE ranges[7] = {};
+		for (int i = 0; i < 7; i++)
 		{
 			ranges[i].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
 			ranges[i].NumDescriptors = 1;
-			ranges[i].BaseShaderRegister = i; // t0, t1, t2...
+			ranges[i].BaseShaderRegister = i;
 			ranges[i].RegisterSpace = 0;
 			ranges[i].OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
 
@@ -306,12 +227,14 @@ namespace Span
 			rootParameters[2 + i].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 		}
 
-		rootParameters[8].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		rootParameters[8].Descriptor.ShaderRegister = 2;
-		rootParameters[8].Descriptor.RegisterSpace = 0;
-		rootParameters[8].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+		// [9] LightBuffer (b2)
+		rootParameters[9].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[9].Descriptor.ShaderRegister = 2;
+		rootParameters[9].Descriptor.RegisterSpace = 0;
+		rootParameters[9].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
-		// サンプラー (Static Sampler)
+		// --- Samplers ---
+		// s0: 通常のテクスチャサンプラー
 		D3D12_STATIC_SAMPLER_DESC sampler = {};
 		sampler.Filter = D3D12_FILTER_ANISOTROPIC;
 		sampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
@@ -327,34 +250,39 @@ namespace Span
 		sampler.RegisterSpace = 0;
 		sampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
+		// s1: 影判定用の比較サンプラー (PCF用)
+		D3D12_STATIC_SAMPLER_DESC shadowSampler = {};
+		shadowSampler.Filter = D3D12_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR;
+		shadowSampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;
+		shadowSampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;
+		shadowSampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;
+		shadowSampler.ComparisonFunc = D3D12_COMPARISON_FUNC_LESS_EQUAL;
+		shadowSampler.ShaderRegister = 1;
+		shadowSampler.RegisterSpace = 0;
+		shadowSampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+
+		D3D12_STATIC_SAMPLER_DESC samplers[] = { sampler, shadowSampler };
+
 		D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
 		rootSignatureDesc.NumParameters = _countof(rootParameters);
 		rootSignatureDesc.pParameters = rootParameters;
-		rootSignatureDesc.NumStaticSamplers = 1;
-		rootSignatureDesc.pStaticSamplers = &sampler;
+		rootSignatureDesc.NumStaticSamplers = _countof(samplers);
+		rootSignatureDesc.pStaticSamplers = samplers;
 		rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
 
-		ComPtr<ID3DBlob> signature;
-		ComPtr<ID3DBlob> error;
-		if (FAILED(D3D12SerializeRootSignature(&rootSignatureDesc, D3D_ROOT_SIGNATURE_VERSION_1, &signature, &error)))
-		{
-			SPAN_ERROR("RootSignature Serialize Failed: %s", (char*)error->GetBufferPointer());
-			return false;
-		}
-
-		if (FAILED(context->GetDevice()->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&rootSignature))))
-			return false;
+		ComPtr<ID3DBlob> signature, error;
+		if (FAILED(D3D12SerializeRootSignature(&rootSignatureDesc, D3D_ROOT_SIGNATURE_VERSION_1, &signature, &error))) return false;
+		if (FAILED(context->GetDevice()->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&rootSignature)))) return false;
 
 		return true;
 	}
 
 	bool Renderer::CreatePipelineState()
 	{
-		D3D12_INPUT_ELEMENT_DESC inputElementDescs[] =
-		{
-			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0,	 D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
-			{ "NORMAL",	  0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
-			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,	  0, 24, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
+		D3D12_INPUT_ELEMENT_DESC inputElementDescs[] = {
+			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0,  D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
+			{ "NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
+			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 24, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
 		};
 
 		D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
@@ -362,14 +290,19 @@ namespace Span
 		psoDesc.pRootSignature = rootSignature.Get();
 		psoDesc.VS = vs->GetBytecode();
 		psoDesc.PS = ps->GetBytecode();
+
+		// Rasterizer State
 		psoDesc.RasterizerState.FillMode = D3D12_FILL_MODE_SOLID;
 		psoDesc.RasterizerState.CullMode = D3D12_CULL_MODE_BACK;
 		psoDesc.RasterizerState.DepthClipEnable = TRUE;
-		psoDesc.BlendState.AlphaToCoverageEnable = FALSE;
-		psoDesc.BlendState.IndependentBlendEnable = FALSE;
+
+		// Depth Stencil State
 		psoDesc.DepthStencilState.DepthEnable = TRUE;
 		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ALL;
 		psoDesc.DepthStencilState.DepthFunc = D3D12_COMPARISON_FUNC_LESS;
+
+		psoDesc.BlendState.AlphaToCoverageEnable = FALSE;
+		psoDesc.BlendState.IndependentBlendEnable = FALSE;
 		psoDesc.SampleMask = UINT_MAX;
 		psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 		psoDesc.NumRenderTargets = 1;
@@ -377,19 +310,14 @@ namespace Span
 		psoDesc.SampleDesc.Count = 1;
 		psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
 
-		// 1. Opaque PSO
+		// 1. Opaque PSO (不透明)
 		D3D12_RENDER_TARGET_BLEND_DESC opaqueBlend = {};
 		opaqueBlend.BlendEnable = FALSE;
 		opaqueBlend.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
 		psoDesc.BlendState.RenderTarget[0] = opaqueBlend;
+		if (FAILED(context->GetDevice()->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&pipelineState)))) return false;
 
-		if (FAILED(context->GetDevice()->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&pipelineState))))
-		{
-			SPAN_ERROR("Failed to create Opaque PSO");
-			return false;
-		}
-
-		// 2. Transparent PSO
+		// 2. Transparent PSO (半透明)
 		D3D12_RENDER_TARGET_BLEND_DESC transBlend = {};
 		transBlend.BlendEnable = TRUE;
 		transBlend.SrcBlend = D3D12_BLEND_SRC_ALPHA;
@@ -400,13 +328,9 @@ namespace Span
 		transBlend.BlendOpAlpha = D3D12_BLEND_OP_ADD;
 		transBlend.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
 		psoDesc.BlendState.RenderTarget[0] = transBlend;
-		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO; // 深度書き込みなし
+		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO; // 半透明は深度を書き込まない
 
-		if (FAILED(context->GetDevice()->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&pipelineStateTransparent))))
-		{
-			SPAN_ERROR("Failed to create Transparent PSO");
-			return false;
-		}
+		if (FAILED(context->GetDevice()->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&pipelineStateTransparent)))) return false;
 
 		return true;
 	}
@@ -431,303 +355,14 @@ namespace Span
 
 		if (FAILED(context->GetDevice()->CreateCommittedResource(
 			&heapProps, D3D12_HEAP_FLAG_NONE, &resourceDesc,
-			D3D12_RESOURCE_STATE_GENERIC_READ, nullptr,
-			IID_PPV_ARGS(&constantBuffer))))
+			D3D12_RESOURCE_STATE_GENERIC_READ, nullptr, IID_PPV_ARGS(&constantBuffer))))
 		{
 			return false;
 		}
 
 		D3D12_RANGE readRange = { 0, 0 };
 		constantBuffer->Map(0, &readRange, reinterpret_cast<void**>(&mappedConstantBuffer));
-		return true;
-	}
-
-	bool Renderer::InitializeGridResources()
-	{
-		auto device = context->GetDevice();
-
-		// 1. シェーダー読み込み
-		Shader* gridVS = new Shader();
-		if (!gridVS->Load(L"EditorGrid.hlsl", ShaderType::Vertex, "VSMain"))
-		{
-			SPAN_ERROR("Failed to load EditorGrid VS");
-			return false;
-		}
-
-		Shader* gridPS = new Shader();
-		if (!gridPS->Load(L"EditorGrid.hlsl", ShaderType::Pixel, "PSMain"))
-		{
-			SPAN_ERROR("Failed to load EditorGrid PS");
-			delete gridVS;
-			return false;
-		}
-
-		m_gridShader = gridVS;
-
-		// 2. Root Signature (カメラCBVのみ)
-		D3D12_ROOT_PARAMETER slotRootParameter[1];
-		slotRootParameter[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		slotRootParameter[0].Descriptor.ShaderRegister = 0; // b0
-		slotRootParameter[0].Descriptor.RegisterSpace = 0;
-		slotRootParameter[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
-
-		D3D12_ROOT_SIGNATURE_DESC rootSigDesc = {};
-		rootSigDesc.NumParameters = 1;
-		rootSigDesc.pParameters = slotRootParameter;
-		rootSigDesc.NumStaticSamplers = 0;
-		rootSigDesc.pStaticSamplers = nullptr;
-		rootSigDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
-
-		ComPtr<ID3DBlob> signature;
-		ComPtr<ID3DBlob> error;
-		if (FAILED(D3D12SerializeRootSignature(&rootSigDesc, D3D_ROOT_SIGNATURE_VERSION_1, &signature, &error)))
-			return false;
-
-		if (FAILED(device->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&m_gridRootSignature))))
-			return false;
-
-		// 3. PSO
-		D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
-		psoDesc.pRootSignature = m_gridRootSignature.Get();
-		psoDesc.VS = gridVS->GetBytecode();
-		psoDesc.PS = gridPS->GetBytecode();
-
-		// Blend State
-		D3D12_BLEND_DESC blendDesc = {};
-		blendDesc.AlphaToCoverageEnable = FALSE;
-		blendDesc.IndependentBlendEnable = FALSE;
-		blendDesc.RenderTarget[0].BlendEnable = TRUE;
-		blendDesc.RenderTarget[0].LogicOpEnable = FALSE;
-		blendDesc.RenderTarget[0].SrcBlend = D3D12_BLEND_SRC_ALPHA;
-		blendDesc.RenderTarget[0].DestBlend = D3D12_BLEND_INV_SRC_ALPHA;
-		blendDesc.RenderTarget[0].BlendOp = D3D12_BLEND_OP_ADD;
-		blendDesc.RenderTarget[0].SrcBlendAlpha = D3D12_BLEND_ONE;
-		blendDesc.RenderTarget[0].DestBlendAlpha = D3D12_BLEND_ZERO;
-		blendDesc.RenderTarget[0].BlendOpAlpha = D3D12_BLEND_OP_ADD;
-		blendDesc.RenderTarget[0].LogicOp = D3D12_LOGIC_OP_NOOP;
-		blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
-		psoDesc.BlendState = blendDesc;
-
-		// Rasterizer State
-		D3D12_RASTERIZER_DESC rasterDesc = {};
-		rasterDesc.FillMode = D3D12_FILL_MODE_SOLID;
-		rasterDesc.CullMode = D3D12_CULL_MODE_NONE; // 両面描画
-		rasterDesc.FrontCounterClockwise = FALSE;
-		rasterDesc.DepthBias = D3D12_DEFAULT_DEPTH_BIAS;
-		rasterDesc.DepthBiasClamp = D3D12_DEFAULT_DEPTH_BIAS_CLAMP;
-		rasterDesc.SlopeScaledDepthBias = D3D12_DEFAULT_SLOPE_SCALED_DEPTH_BIAS;
-		rasterDesc.DepthClipEnable = TRUE;
-		rasterDesc.MultisampleEnable = FALSE;
-		rasterDesc.AntialiasedLineEnable = FALSE;
-		rasterDesc.ForcedSampleCount = 0;
-		rasterDesc.ConservativeRaster = D3D12_CONSERVATIVE_RASTERIZATION_MODE_OFF;
-		psoDesc.RasterizerState = rasterDesc;
-
-		// Depth Stencil State
-		D3D12_DEPTH_STENCIL_DESC depthDesc = {};
-		depthDesc.DepthEnable = TRUE;
-		depthDesc.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO; // 書き込みなし (半透明)
-		depthDesc.DepthFunc = D3D12_COMPARISON_FUNC_LESS;
-		depthDesc.StencilEnable = FALSE;
-		psoDesc.DepthStencilState = depthDesc;
-
-		// Input Layout
-		D3D12_INPUT_ELEMENT_DESC inputLayout[] = {
-			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
-			{ "NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
-			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 24, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
-		};
-		psoDesc.InputLayout = { inputLayout, _countof(inputLayout) };
-
-		psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
-		psoDesc.NumRenderTargets = 1;
-		psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
-		psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
-		psoDesc.SampleDesc.Count = 1;
-		psoDesc.SampleMask = UINT_MAX;
-
-		if (FAILED(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&m_gridPSO))))
-		{
-			SPAN_ERROR("Failed to create Grid PSO");
-			delete gridPS;
-			return false;
-		}
-
-		delete gridPS;
-
-		// 4. 平面メッシュ作成 (巨大な板)
-		float size = 2000.0f;
-
-		// Y軸の太さと高さ
-		float yW = 0.05f;  // 幅
-		float yH = 1000.0f; // 高さ
-
-		std::vector<Vertex> vertices = {
-			// --- 床面 (Normal = 0,1,0) ---
-			{ { -size, 0.0f,  size }, { 0,1,0 }, { 0.0f, 1.0f } },
-			{ {	 size, 0.0f,  size }, { 0,1,0 }, { 1.0f, 1.0f } },
-			{ { -size, 0.0f, -size }, { 0,1,0 }, { 0.0f, 0.0f } },
-			{ { -size, 0.0f, -size }, { 0,1,0 }, { 0.0f, 0.0f } },
-			{ {	 size, 0.0f,  size }, { 0,1,0 }, { 1.0f, 1.0f } },
-			{ {	 size, 0.0f, -size }, { 0,1,0 }, { 1.0f, 0.0f } },
-
-			// --- Y軸 (Normal = 1,0,0) ---
-			// 十字にクロスした板を作成して、どの角度からも見えるようにする
-			// 1枚目 (Z方向に向いた板)
-			{ { -yW, 0.0f, 0.0f }, { 1,0,0 }, { 0,0 } },
-			{ {	 yW, 0.0f, 0.0f }, { 1,0,0 }, { 1,0 } },
-			{ { -yW,  yH, 0.0f }, { 1,0,0 }, { 0,1 } },
-			{ { -yW,  yH, 0.0f }, { 1,0,0 }, { 0,1 } },
-			{ {	 yW, 0.0f, 0.0f }, { 1,0,0 }, { 1,0 } },
-			{ {	 yW,  yH, 0.0f }, { 1,0,0 }, { 1,1 } },
-
-			// 2枚目 (X方向に向いた板)
-			{ { 0.0f, 0.0f, -yW }, { 1,0,0 }, { 0,0 } },
-			{ { 0.0f, 0.0f,	 yW }, { 1,0,0 }, { 1,0 } },
-			{ { 0.0f,  yH, -yW }, { 1,0,0 }, { 0,1 } },
-			{ { 0.0f,  yH, -yW }, { 1,0,0 }, { 0,1 } },
-			{ { 0.0f, 0.0f,	 yW }, { 1,0,0 }, { 1,0 } },
-			{ { 0.0f,  yH,	yW }, { 1,0,0 }, { 1,1 } },
-		};
-
-		m_gridPlane = new Mesh();
-		m_gridPlane->Initialize(device, vertices);
 
 		return true;
-	}
-
-	void Renderer::RenderGrid(ID3D12GraphicsCommandList* cmd)
-	{
-		if (!m_gridPSO || !m_gridPlane) return;
-
-		cmd->SetPipelineState(m_gridPSO.Get());
-		cmd->SetGraphicsRootSignature(m_gridRootSignature.Get());
-
-		cmd->SetGraphicsRootConstantBufferView(0, constantBuffer->GetGPUVirtualAddress());
-
-		m_gridPlane->Draw(cmd);
-	}
-
-	bool Renderer::InitializeSkyboxResources()
-	{
-		auto device = context->GetDevice();
-
-		// 1. シェーダーの読み込み
-		m_skyboxVS = new Shader();
-		if (!m_skyboxVS->Load(L"Skybox.hlsl", ShaderType::Vertex, "VSMain")) return false;
-
-		m_skyboxPS = new Shader();
-		if (!m_skyboxPS->Load(L"Skybox.hlsl", ShaderType::Pixel, "PSMain")) return false;
-
-		// 2. Root Signature (カメラ情報 b0 と 環境色設定 b1)
-		D3D12_ROOT_PARAMETER rootParameters[2];
-
-		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		rootParameters[0].Descriptor.ShaderRegister = 0; // b0
-		rootParameters[0].Descriptor.RegisterSpace = 0;
-		rootParameters[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
-
-		rootParameters[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		rootParameters[1].Descriptor.ShaderRegister = 1; // b1
-		rootParameters[1].Descriptor.RegisterSpace = 0;
-		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
-
-		D3D12_ROOT_SIGNATURE_DESC rootSigDesc = {};
-		rootSigDesc.NumParameters = 2;
-		rootSigDesc.pParameters = rootParameters;
-		rootSigDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
-
-		ComPtr<ID3DBlob> signature, error;
-		if (FAILED(D3D12SerializeRootSignature(&rootSigDesc, D3D_ROOT_SIGNATURE_VERSION_1, &signature, &error))) return false;
-		if (FAILED(device->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&m_skyboxRootSignature)))) return false;
-
-		// 3. Pipeline State Object (PSO)
-		D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
-		psoDesc.pRootSignature = m_skyboxRootSignature.Get();
-		psoDesc.VS = m_skyboxVS->GetBytecode();
-		psoDesc.PS = m_skyboxPS->GetBytecode();
-
-		// 入力レイアウトなし
-		psoDesc.InputLayout = { nullptr, 0 };
-
-		psoDesc.RasterizerState.FillMode = D3D12_FILL_MODE_SOLID;
-		psoDesc.RasterizerState.CullMode = D3D12_CULL_MODE_NONE;
-		psoDesc.RasterizerState.DepthClipEnable = TRUE;
-
-		psoDesc.BlendState.RenderTarget[0].BlendEnable = FALSE;
-		psoDesc.BlendState.RenderTarget[0].RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
-
-		// 深度テストを LESS_EQUAL に設定
-		psoDesc.DepthStencilState.DepthEnable = TRUE;
-		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;
-		psoDesc.DepthStencilState.DepthFunc = D3D12_COMPARISON_FUNC_LESS_EQUAL;
-
-		psoDesc.SampleMask = UINT_MAX;
-		psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
-		psoDesc.NumRenderTargets = 1;
-		psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
-		psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
-		psoDesc.SampleDesc.Count = 1;
-
-		if (FAILED(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&m_skyboxPSO)))) return false;
-
-		return true;
-	}
-
-	void Renderer::RenderSkybox(ID3D12GraphicsCommandList* cmd, const EnvironmentSettings& env)
-	{
-		if (!m_skyboxPSO || !env.UseProceduralSky) return;
-		if (constantBufferIndex + 2 >= MAX_OBJECTS) return;
-
-		// C++側のデータ構造定義 (16バイトアライメント)
-		struct SkyboxCameraCB {
-			Matrix4x4 InvView;
-			Matrix4x4 InvProj;
-			Vector3 CamPos;
-			float padding;
-		};
-
-		struct SkyboxSettingsCB {
-			Vector3 TopColor; float pad1;
-			Vector3 HorizonColor; float pad2;
-			Vector3 BottomColor; float pad3;
-		};
-
-		// 1. カメラデータの準備
-		SkyboxCameraCB camData;
-		camData.InvView.FromXM(XMMatrixTranspose(XMMatrixInverse(nullptr, viewMatrix.ToXM())));
-		camData.InvProj.FromXM(XMMatrixTranspose(XMMatrixInverse(nullptr, projectionMatrix.ToXM())));
-		camData.CamPos = cameraPosition;
-
-		// 2. 環境色データの準備
-		SkyboxSettingsCB settingsData;
-		settingsData.TopColor = Vector3(env.SkyTopColor[0], env.SkyTopColor[1], env.SkyTopColor[2]);
-		settingsData.HorizonColor = Vector3(env.SkyHorizonColor[0], env.SkyHorizonColor[1], env.SkyHorizonColor[2]);
-		settingsData.BottomColor = Vector3(env.SkyBottomColor[0], env.SkyBottomColor[1], env.SkyBottomColor[2]);
-
-		// 定数バッファへコピー
-		UINT8* destCam = mappedConstantBuffer + (constantBufferIndex * CB_OBJ_SIZE);
-		memcpy(destCam, &camData, sizeof(SkyboxCameraCB));
-		D3D12_GPU_VIRTUAL_ADDRESS cbCamAddress = constantBuffer->GetGPUVirtualAddress() + (constantBufferIndex * CB_OBJ_SIZE);
-		constantBufferIndex++;
-
-		UINT8* destSet = mappedConstantBuffer + (constantBufferIndex * CB_OBJ_SIZE);
-		memcpy(destSet, &settingsData, sizeof(SkyboxSettingsCB));
-		D3D12_GPU_VIRTUAL_ADDRESS cbSetAddress = constantBuffer->GetGPUVirtualAddress() + (constantBufferIndex * CB_OBJ_SIZE);
-		constantBufferIndex++;
-
-		// 3. 描画コマンドの発行
-		cmd->SetPipelineState(m_skyboxPSO.Get());
-		cmd->SetGraphicsRootSignature(m_skyboxRootSignature.Get());
-
-		cmd->SetGraphicsRootConstantBufferView(0, cbCamAddress);
-		cmd->SetGraphicsRootConstantBufferView(1, cbSetAddress);
-
-		// 頂点バッファを無効化し、3つの頂点(フルスクリーンQuad)を生成させる
-		cmd->IASetVertexBuffers(0, 0, nullptr);
-		cmd->IASetIndexBuffer(nullptr);
-		cmd->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
-		cmd->DrawInstanced(3, 1, 0, 0);
 	}
 }

@@ -11,21 +11,29 @@
 
 #pragma once
 #include "Core/CoreMinimal.h"
+#include "Core/Math/SpanMath.h"
 #include "Core/GraphicsContext.h"
 #include "Core/Shader.h"
 #include "Core/ConstantBuffer.h"
 #include "Resources/Mesh.h"
 #include "Resources/Material.h"
-#include "Core/Math/SpanMath.h"
 #include "Runtime/Scene/EnvironmentSettings.h"
+
+// 前方宣言
+namespace Span
+{
+	class GridPass;
+	class SkyboxPass;
+	class ShadowPass;
+}
 
 namespace Span
 {
 	/// @brief	オブジェクトごとの変換行列データ
 	struct TransformData
 	{
-		Matrix4x4 MVP;		///< Model-View-Projection Matrix
-		Matrix4x4 World;	///< World Matrix (for lighting)
+		Matrix4x4 MVP;
+		Matrix4x4 World;
 	};
 
 	struct alignas(16) LightDataGPU
@@ -61,6 +69,9 @@ namespace Span
 		Vector3 SkyBottomColor = { 0.2f, 0.2f, 0.2f };
 		int ActiveLightCount = 0;
 
+		// 光の視点の行列
+		Matrix4x4 DirectionalLightSpaceMatrix;
+
 		// ライトの配列
 		LightDataGPU Lights[MAX_LIGHTS];
 	};
@@ -91,12 +102,10 @@ namespace Span
 		/// @brief	リサイズ対応
 		void OnResize(uint32 width, uint32 height);
 
-		/**
-		 * @brief	プロシージャルスカイボックスを描画します。
-		 * @param	cmd コマンドリスト
-		 * @param	env 環境設定データ
-		 */
-		void RenderSkybox(ID3D12GraphicsCommandList* cmd, const EnvironmentSettings& env);
+		// 各Passの取得ゲッター
+		GridPass* GetGridPass() const { return m_gridPass.get(); }
+		SkyboxPass* GetSkyboxPass() const { return m_skyboxPass.get(); }
+		ShadowPass* GetShadowPass() const { return m_shadowPass.get(); }
 
 		/**
 		 * @brief	メッシュ描画コマンドの発行。
@@ -123,21 +132,22 @@ namespace Span
 		/// @brief	GPUの処理完了を待機する
 		void WaitForGPU();
 
+		/**
+		 * @brief	動的定数バッファのメモリを確保し、データをコピーしてGPUアドレスを返します。
+		 * @return	成功時はGPUアドレス。容量オーバー時は 0 を返します。
+		 */
+		D3D12_GPU_VIRTUAL_ADDRESS AllocateCBV(const void* data, size_t sizeInBytes);
+
 		// 📊 Getters
 		// ============================================================
 		GraphicsContext* GetContext() const { return context; }
 		Matrix4x4 GetViewMatrix() const { return viewMatrix; }
 		Matrix4x4 GetProjectionMatrix() const { return projectionMatrix; }
-
+		Vector3 GetCameraPosition() const { return cameraPosition; }
 		ID3D12GraphicsCommandList* GetCommandList() const { return commandList; }
 		ID3D12Device* GetDevice() const { return context ? context->GetDevice() : nullptr; }
 		uint32 GetFrameCount() const { return context ? context->GetFrameCount() : 2; }
 		ID3D12CommandQueue* GetCommandQueue() const { return context ? context->GetCommandQueue() : nullptr; }
-
-		// グリッド用リソース初期化
-		bool InitializeGridResources();
-		// グリッド描画コマンド
-		void RenderGrid(ID3D12GraphicsCommandList* cmd);
 
 	private:
 		// 内部初期化関数
@@ -145,29 +155,20 @@ namespace Span
 		bool CreatePipelineState();
 		bool CreateConstantBuffer();
 
-		// Skybox Resources
-		bool InitializeSkyboxResources();
-		ComPtr<ID3D12PipelineState> m_skyboxPSO;
-		ComPtr<ID3D12RootSignature> m_skyboxRootSignature;
-		Shader* m_skyboxVS = nullptr;
-		Shader* m_skyboxPS = nullptr;
-
 	private:
-		GraphicsContext* context = nullptr; // 所有権はApplicationが持つ
-		ID3D12GraphicsCommandList* commandList = nullptr; // Contextからフレームごとに借りる
+		GraphicsContext* context = nullptr;
+		ID3D12GraphicsCommandList* commandList = nullptr;
 
-		// Pipeline Objects
+		// Main Pass Objects
 		ComPtr<ID3D12RootSignature> rootSignature;
 		ComPtr<ID3D12PipelineState> pipelineState;			  // 不透明用
 		ComPtr<ID3D12PipelineState> pipelineStateTransparent; // 透明用
-
-		// Shaders
 		Shader* vs = nullptr;
 		Shader* ps = nullptr;
 
-		// Per-Object Constant Buffer (Dynamic)
+		// Dynamic CBV Memory Pool
 		static const uint32 MAX_OBJECTS = 10000;
-		static const uint32 CB_OBJ_SIZE = 256; // 256バイトアライメント
+		static const uint32 CB_OBJ_SIZE = 256;
 		ComPtr<ID3D12Resource> constantBuffer;
 		UINT8* mappedConstantBuffer = nullptr;
 		uint32 constantBufferIndex = 0;
@@ -177,12 +178,6 @@ namespace Span
 		Matrix4x4 projectionMatrix;
 		Vector3 cameraPosition;
 
-		// Grid Resources
-		ComPtr<ID3D12PipelineState> m_gridPSO;
-		ComPtr<ID3D12RootSignature> m_gridRootSignature;
-		Shader* m_gridShader = nullptr;
-		Mesh* m_gridPlane = nullptr;
-
 		// 同期用オブジェクト
 		ComPtr<ID3D12Fence> m_waitFence;
 		HANDLE m_waitEvent = nullptr;
@@ -191,5 +186,10 @@ namespace Span
 		// ライト用定数バッファ
 		ConstantBuffer<GlobalLightData>* m_LightBuffer = nullptr;
 		GlobalLightData m_CurrentLightData;
+
+		// Render Passes
+		std::unique_ptr<GridPass> m_gridPass;
+		std::unique_ptr<SkyboxPass> m_skyboxPass;
+		std::unique_ptr<ShadowPass> m_shadowPass;
 	};
 }

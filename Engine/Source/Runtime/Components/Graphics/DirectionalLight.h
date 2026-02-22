@@ -31,12 +31,17 @@ namespace Span
 
 		bool CastShadows = true;				///< 影を生成するかどうか
 
+		float ShadowAreaSize = 50.0f;			///< 影を描画する四角形の幅と高さ
+		float ShadowMaxDistance = 200.0f;		///< 影を描画する奥行き
+
 		DirectionalLight() = default;
 
 		SPAN_INSPECTOR_BEGIN(DirectionalLight)
 			SPAN_FIELD(Color)
 			SPAN_FIELD(Intensity, Min(0.0f))
 			SPAN_FIELD(CastShadows)
+			SPAN_FIELD(ShadowAreaSize, Range(10.0f, 500.0f))
+			SPAN_FIELD(ShadowMaxDistance, Range(50.0f, 1000.0f))
 		SPAN_INSPECTOR_END()
 	};
 }
