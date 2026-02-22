@@ -612,11 +612,11 @@ namespace Span
 			ImGui::Spacing();
 		};
 
-		DrawPBRSlot("Albedo", &data.AlbedoColor.x, editMaterial->GetAlbedoMap(), editMaterial->AlbedoMapGUID, [&](Texture* t) { editMaterial->SetAlbedoMap(t); }, true);
-		DrawPBRSlot("Metallic", &data.Metallic, editMaterial->GetMetallicMap(), editMaterial->MetallicMapGUID, [&](Texture* t) { editMaterial->SetMetallicMap(t); }, false);
-		DrawPBRSlot("Roughness", &data.Roughness, editMaterial->GetRoughnessMap(), editMaterial->RoughnessMapGUID, [&](Texture* t) { editMaterial->SetRoughnessMap(t); }, false);
-		DrawPBRSlot("Normal", nullptr, editMaterial->GetNormalMap(), editMaterial->NormalMapGUID, [&](Texture* t) { editMaterial->SetNormalMap(t); }, false);
-		DrawPBRSlot("AO", &data.AO, editMaterial->GetAOMap(), editMaterial->AOMapGUID, [&](Texture* t) { editMaterial->SetAOMap(t); }, false);
+		DrawPBRSlot("Albedo", &data.AlbedoColor.x, editMaterial->GetAlbedoMap(), editMaterial->AlbedoMapGUID, [&](Texture* t) { editMaterial->SetAlbedoMap(t); }, 4);
+		DrawPBRSlot("Metallic", &data.Metallic, editMaterial->GetMetallicMap(), editMaterial->MetallicMapGUID, [&](Texture* t) { editMaterial->SetMetallicMap(t); }, 0);
+		DrawPBRSlot("Roughness", &data.Roughness, editMaterial->GetRoughnessMap(), editMaterial->RoughnessMapGUID, [&](Texture* t) { editMaterial->SetRoughnessMap(t); }, 0);
+		DrawPBRSlot("Normal", nullptr, editMaterial->GetNormalMap(), editMaterial->NormalMapGUID, [&](Texture* t) { editMaterial->SetNormalMap(t); }, 0);
+		DrawPBRSlot("AO", &data.AO, editMaterial->GetAOMap(), editMaterial->AOMapGUID, [&](Texture* t) { editMaterial->SetAOMap(t); }, 0);
 		DrawPBRSlot("Emissive", &data.EmissiveColor.x, editMaterial->GetEmissiveMap(), editMaterial->EmissiveMapGUID, [&](Texture* t) { editMaterial->SetEmissiveMap(t); }, 3);
 
 		if (editMaterial->GetBlendMode() == BlendMode::Cutout)

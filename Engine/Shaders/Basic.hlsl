@@ -32,16 +32,41 @@ cbuffer MaterialBuffer : register(b1)
 	int Padding2[2];
 };
 
+// =========================================================================
+// GPU Light Data Structures
+// =========================================================================
+struct LightData
+{
+	float3 Color;
+	float Intensity;
+
+	float3 Position;
+	float Range;
+
+	float3 Direction;
+	int Type;	// 0: Dir, 1: Point, 2: Spot
+
+	float InnerConeAngle;
+	float OuterConeAngle;
+	float Padding1;
+	float Padding2;
+};
+
 cbuffer LightBuffer : register(b2)
 {
-	float3 LightDirection;
-	float LightPadding1;
-
-	float3 LightColor;
-	float AmbientIntensity;
-
 	float3 CameraPosition;
-	float LightPadding2;
+	float Exposure;
+
+	float3 SkyTopColor;
+	float AmbientIntensity;
+	
+	float3 SkyHorizonColor;
+	float EnvReflectionIntensity;
+	
+	float3 SkyBottomColor;
+	int ActiveLightCount;
+
+	LightData Lights[16];	// 最大16個
 }
 
 Texture2D t_Albedo : register(t0);
@@ -117,6 +142,16 @@ float3 FresnelSchlick(float cosTheta, float3 F0)
 	return F0 + (1.0 - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
 }
 
+float3 ACESFilm(float3 x)
+{
+	float a = 2.51f;
+	float b = 0.03f;
+	float c = 2.43f;
+	float d = 0.59f;
+	float e = 0.14f;
+	return clamp((x * (a * x + b)) / (x * (c * x + d) + e), 0.0, 1.0);
+}
+
 // =========================================================================
 // Vertex Shader
 // =========================================================================
@@ -132,6 +167,20 @@ PSInput VSMain(VSInput input)
 	output.uv = (input.uv * Tiling) + Offset;
 
 	return output;
+}
+
+float3 SampleSky(float3 dir)
+{
+	float height = dir.y;
+	if (height > 0.0f)
+		return lerp(SkyHorizonColor, SkyTopColor, pow(height, 0.4f));
+	else
+		return lerp(SkyHorizonColor, SkyBottomColor, pow(-height, 0.4f));
+}
+
+float3 FresnelSchlickRoughness(float cosTheta, float3 F0, float roughness)
+{
+	return F0 + (max(float3(1.0 - roughness, 1.0 - roughness, 1.0 - roughness), F0) - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
 }
 
 // =========================================================================
@@ -152,11 +201,11 @@ float4 PSMain(PSInput input) : SV_TARGET
 
 	float meta = Metallic;
 	if (HasMetallicMap)
-		meta *= t_Metallic.Sample(g_sampler, input.uv).r;
+		meta *= t_Metallic.Sample(g_sampler, input.uv).b;
 
 	float rough = Roughness;
 	if (HasRoughnessMap)
-		rough *= t_Roughness.Sample(g_sampler, input.uv).r;
+		rough *= t_Roughness.Sample(g_sampler, input.uv).g;
 
 	float aoMap = AO;
 	if (HasAOMap)
@@ -196,36 +245,100 @@ float4 PSMain(PSInput input) : SV_TARGET
 
 	float3 Lo = float3(0.0, 0.0, 0.0);
 
-	// --- 3. Directional Light 計算 ---
-	float3 LDir = normalize(-LightDirection);
-	float3 LColor = LightColor; // 光の強さ
+	// 3. 全ライトのループ計算
+	for (int i = 0; i < ActiveLightCount; ++i)
+	{
+		LightData light = Lights[i];
+		float3 LDir;
+		float attenuation = 1.0f;
 
-	float3 H = normalize(V + LDir);
-	float NdotL = max(dot(N, LDir), 0.0);
+		// ライトの種類に応じた計算
+		if (light.Type == 0)	// Directional Light
+		{
+			LDir = normalize(-light.Direction);
+		}
+		else if (light.Type == 1 || light.Type == 2)	// Point or Spot Light
+		{
+			float3 lightVec = light.Position - input.worldPos;
+			float distance = max(length(lightVec), 0.0001);
+			LDir = lightVec / distance;
 
-	// Cook-Torrance BRDF
-	float NDF = DistributionGGX(N, H, rough);
-	float G = GeometrySmith(N, V, LDir, rough);
-	float3 F = FresnelSchlick(max(dot(H, V), 0.0), F0);
+			// 距離減衰
+			float distanceSquare = distance * distance;
+			float rangeSquare = light.Range * light.Range;
+			float distanceAttenuation = max(0.0, 1.0 - pow(distance / light.Range, 4.0));
+			distanceAttenuation = (distanceAttenuation * distanceAttenuation) / (distanceSquare + 1.0);
+			attenuation = distanceAttenuation;
 
-	float3 numerator = NDF * G * F;
-	float denominator = 4.0 * max(dot(N, V), 0.0) * NdotL + 0.0001; // 0除算防止
-	float3 specular = numerator / denominator;
+			// Spot Light 固有の角度減衰
+			if (light.Type == 2)
+			{
+				float theta = dot(LDir, normalize(-light.Direction));
+				float epsilon = light.InnerConeAngle - light.OuterConeAngle;
+				float spotIntensity = clamp((theta - light.OuterConeAngle) / max(epsilon, 0.001), 0.0, 1.0);
+				attenuation *= spotIntensity * spotIntensity;
+			}
+		}
 
-	// エネルギー保存の法則
-	float3 kS = F;
-	float3 kD = float3(1.0, 1.0, 1.0) - kS;
-	kD *= 1.0 - meta;
+		// 光が届かない場合は計算スキップ
+		if (attenuation <= 0.0f) continue;
 
-	// 出力される光の量
-	Lo += (kD * albedo.rgb / PI + specular) * LColor * NdotL;
+		float3 radiance = light.Color * light.Intensity * attenuation;
 
-	// --- 4. Ambient & Final Color ---
-	float3 ambient = float3(0.03, 0.03, 0.03) * albedo.rgb * aoMap * AmbientIntensity;
+		// BRDFの計算
+		float3 H = normalize(V + LDir);
+		float NdotL = max(dot(N, LDir), 0.0);
+
+		// Cook-Torrance BRDF
+		float NDF = DistributionGGX(N, H, rough);
+		float G = GeometrySmith(N, V, LDir, rough);
+		float3 F = FresnelSchlick(max(dot(H, V), 0.0), F0);
+
+		float3 numerator = NDF * G * F;
+		float denominator = 4.0 * max(dot(N, V), 0.0) * NdotL + 0.0001;
+		float3 specular = numerator / denominator;
+
+		// エネルギー保存の法則
+		float3 kS = F;
+		float3 kD = float3(1.0, 1.0, 1.0) - kS;
+		kD *= 1.0 - meta;
+
+		// 出力される光の量
+		Lo += (kD * albedo.rgb / PI + specular) * radiance * NdotL;
+	}
+
+	// --- 4. Procedural IBL ---
+	float3 R = reflect(-V, N);	// 反射ベクトル
+
+	// Diffuse (拡散環境光): 法線方向の空の光
+	float3 irradiance = SampleSky(N) * AmbientIntensity;
+	float3 diffuse = irradiance * albedo.rgb;
+
+	// Specular (鏡面環境反射): 粗さに応じてサンプリング方向をR(鏡)からN(拡散)へぼかす
+	float3 specularDir = normalize(lerp(R, N, rough));
+	float3 prefilteredColor = SampleSky(specularDir) * AmbientIntensity;
+
+	// ラフネスを考慮したフレネル反射
+	float3 F_env = FresnelSchlickRoughness(max(dot(N, V), 0.0), F0, rough);
+	float3 envSpecular = prefilteredColor * F_env * EnvReflectionIntensity;
+
+	// メタル度に応じてDiffuse環境光を減らす
+	float3 kS_env = F_env;
+	float3 kD_env = 1.0 - kS_env;
+	kD_env *= 1.0 - meta;
+
+	// 最終的なアンビエント
+	float3 ambient = (kD_env * diffuse + envSpecular) * aoMap;
+
+	// --- 5. Final Color ---
 	float3 color = ambient + Lo + emissive;
 
-	// HDR Tone Mapping (Reinhard) & Gamma Correction
-	color = color / (color + float3(1.0, 1.0, 1.0));
+	color *= Exposure;
+
+	// ACES
+	color = ACESFilm(color);
+
+	// Gamma Correction
 	color = pow(color, float3(1.0 / 2.2, 1.0 / 2.2, 1.0 / 2.2));
 
 	return float4(color, albedo.a);

@@ -31,6 +31,7 @@ namespace Span
 
 		// --- Lighting & Ambient ---
 		float AmbientIntensity = 1.0f;
+		float EnvReflectionIntensity = 1.0f;
 		float Exposure = 1.0f;	// トーンマッピング用
 	};
 }

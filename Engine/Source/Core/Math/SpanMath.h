@@ -45,9 +45,11 @@ namespace Span
 
 	/// @brief	度数法(Degree) を 弧度法(Radian) に変換
 	inline float ToRadians(float degrees) { return degrees * (PI / 180.0f); }
+	inline float Deg2Rad(float degrees) { return ToRadians(degrees); }	// エイリアス
 
 	/// @brief	弧度法(Radian) を 度数法(Degree) に変換
 	inline float ToDegrees(float radians) { return radians * (180.0f / PI); }
+	inline float Rad2Deg(float radians) { return ToDegrees(radians); }	// エイリアス
 
 	/// @brief	値を指定範囲に制限します
 	template<typename T>
@@ -169,6 +171,16 @@ namespace Span
 		Vector3 Normalized() const
 		{
 			Vector3 r; r.FromXM(XMVector3Normalize(ToXM())); return r;
+		}
+
+		void Normalize()
+		{
+			FromXM(XMVector3Normalize(ToXM()));
+		}
+
+		static Vector3 Normalize(const Vector3& v)
+		{
+			Vector3 r; r.FromXM(XMVector3Normalize(v.ToXM())); return r;
 		}
 
 		static Vector3 Lerp(const Vector3& a, const Vector3& b, float t)

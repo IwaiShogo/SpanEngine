@@ -240,12 +240,14 @@ namespace Span
 					env.SkyBottomColor[0] = 0.2f; env.SkyBottomColor[1] = 0.2f; env.SkyBottomColor[2] = 0.2f;
 				}
 
+				ImGuiColorEditFlags hdrFlags = ImGuiColorEditFlags_Float | ImGuiColorEditFlags_HDR;
+
 				if (env.UseProceduralSky)
 				{
 					ImGui::Indent();
-					ImGui::ColorEdit3("Top Color", env.SkyTopColor);
-					ImGui::ColorEdit3("Horizon Color", env.SkyHorizonColor);
-					ImGui::ColorEdit3("Bottom Color", env.SkyBottomColor);
+					ImGui::ColorEdit3("Top Color", env.SkyTopColor, hdrFlags);
+					ImGui::ColorEdit3("Horizon Color", env.SkyHorizonColor, hdrFlags);
+					ImGui::ColorEdit3("Bottom Color", env.SkyBottomColor, hdrFlags);
 					ImGui::Unindent();
 				}
 				else
@@ -260,6 +262,7 @@ namespace Span
 				ImGui::SeparatorText("Lighting & Camera Exposure");
 
 				ImGui::SliderFloat("Ambient Intensity", &env.AmbientIntensity, 0.0f, 5.0f);
+				ImGui::SliderFloat("Reflection Intensity", &env.EnvReflectionIntensity, 0.0f, 10.0f);
 				ImGui::SliderFloat("Exposure", &env.Exposure, 0.1f, 10.0f);
 
 				// 将来拡張用

@@ -38,7 +38,7 @@
                     "IsActive": true
                 },
                 "IDComponent": {
-                    "ID": 14767222961156508134
+                    "ID": 14246806637658741431
                 },
                 "Layer": {
                     "Value": 0
@@ -56,6 +56,7 @@
                     "Value": "Untagged"
                 },
                 "MeshRenderer": {
+                    "material": 0,
                     "CastShadows": true,
                     "ReceiveShadows": true
                 }
@@ -86,7 +87,7 @@
                     "IsActive": true
                 },
                 "IDComponent": {
-                    "ID": 2122503611625594641
+                    "ID": 9961942797928219166
                 },
                 "Layer": {
                     "Value": 0
@@ -130,7 +131,7 @@
                     "IsActive": true
                 },
                 "IDComponent": {
-                    "ID": 4066412773779121548
+                    "ID": 3337771106645638331
                 },
                 "Layer": {
                     "Value": 0
@@ -148,6 +149,7 @@
                     "Value": "Untagged"
                 },
                 "MeshRenderer": {
+                    "material": 0,
                     "CastShadows": true,
                     "ReceiveShadows": true
                 }
@@ -178,7 +180,7 @@
                     "IsActive": true
                 },
                 "IDComponent": {
-                    "ID": 4153379309126526762
+                    "ID": 5862760295355788116
                 },
                 "Layer": {
                     "Value": 0
@@ -196,6 +198,7 @@
                     "Value": "Untagged"
                 },
                 "MeshRenderer": {
+                    "material": 0,
                     "CastShadows": true,
                     "ReceiveShadows": true
                 }
@@ -206,15 +209,15 @@
             "Components": {
                 "Transform": {
                     "Position": [
-                        0.0,
-                        2.0,
-                        -5.0
+                        3.4594106674194336,
+                        2.079429864883423,
+                        -5.815991401672363
                     ],
                     "Rotation": [
-                        0.09853760898113251,
-                        0.0,
-                        -0.0,
-                        0.9951333403587341
+                        0.017506906762719154,
+                        -0.4581391215324402,
+                        0.009025475941598415,
+                        0.8886622190475464
                     ],
                     "Scale": [
                         1.0,
@@ -226,7 +229,7 @@
                     "IsActive": true
                 },
                 "IDComponent": {
-                    "ID": 2216264852283925336
+                    "ID": 16267374812849660792
                 },
                 "Layer": {
                     "Value": 0
@@ -261,6 +264,108 @@
                     "OrthographicSize": 10.0,
                     "NearClip": 0.10000000149011612,
                     "FarClip": 1000.0
+                }
+            }
+        },
+        {
+            "EntityID": 5,
+            "Components": {
+                "Transform": {
+                    "Position": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "Scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ]
+                },
+                "Active": {
+                    "IsActive": true
+                },
+                "IDComponent": {
+                    "ID": 3567705179595614879
+                },
+                "Layer": {
+                    "Value": 0
+                },
+                "Name": {
+                    "Value": "GameObject"
+                },
+                "Relationship": {
+                    "Parent": 4294967295,
+                    "FirstChild": 4294967295,
+                    "PrevSibling": 4294967295,
+                    "NextSibling": 4294967295
+                },
+                "Tag": {
+                    "Value": "Untagged"
+                },
+                "DirectionalLight": {
+                    "Color": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "Intensity": 3.0,
+                    "CastShadows": true
+                }
+            }
+        },
+        {
+            "EntityID": 6,
+            "Components": {
+                "Transform": {
+                    "Position": [
+                        0.0,
+                        1.5610407590866089,
+                        -2.047361135482788
+                    ],
+                    "Rotation": [
+                        -0.0,
+                        0.0,
+                        -0.0,
+                        1.0
+                    ],
+                    "Scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ]
+                },
+                "Active": {
+                    "IsActive": true
+                },
+                "IDComponent": {
+                    "ID": 15998977362004243508
+                },
+                "Layer": {
+                    "Value": 0
+                },
+                "Name": {
+                    "Value": "DamagedHelmet"
+                },
+                "Relationship": {
+                    "Parent": 4294967295,
+                    "FirstChild": 4294967295,
+                    "PrevSibling": 4294967295,
+                    "NextSibling": 4294967295
+                },
+                "Tag": {
+                    "Value": "Untagged"
+                },
+                "MeshRenderer": {
+                    "material": 12582528379594187234,
+                    "CastShadows": true,
+                    "ReceiveShadows": true
                 }
             }
         }

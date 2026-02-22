@@ -221,14 +221,35 @@ namespace Span
 	{
 		viewMatrix = view;
 		projectionMatrix = projection;
+
+		DirectX::XMVECTOR det;
+		DirectX::XMMATRIX invView = DirectX::XMMatrixInverse(&det, view.ToXM());
+
+		cameraPosition = Vector3(
+			DirectX::XMVectorGetX(invView.r[3]),
+			DirectX::XMVectorGetY(invView.r[3]),
+			DirectX::XMVectorGetZ(invView.r[3])
+		);
 	}
 
-	void Renderer::SetGlobalLightData(const Vector3& direction, const Vector3& color, float ambientIntensity)
+	void Renderer::SetGlobalLightData(const std::vector<LightDataGPU>& lights, const EnvironmentSettings& env)
 	{
-		m_CurrentLightData.LightDirection = direction;
-		m_CurrentLightData.LightColor = color;
-		m_CurrentLightData.AmbientIntensity = ambientIntensity;
 		m_CurrentLightData.CameraPosition = cameraPosition;
+		m_CurrentLightData.Exposure = env.Exposure;
+		m_CurrentLightData.AmbientIntensity = env.AmbientIntensity;
+		m_CurrentLightData.EnvReflectionIntensity = env.EnvReflectionIntensity;
+
+		// IBL用の空の色
+		m_CurrentLightData.SkyTopColor = Vector3(env.SkyTopColor[0], env.SkyTopColor[1], env.SkyTopColor[2]);
+		m_CurrentLightData.SkyHorizonColor = Vector3(env.SkyHorizonColor[0], env.SkyHorizonColor[1], env.SkyHorizonColor[2]);
+		m_CurrentLightData.SkyBottomColor = Vector3(env.SkyBottomColor[0], env.SkyBottomColor[1], env.SkyBottomColor[2]);
+
+		// ライトデータを配列にコピー
+		m_CurrentLightData.ActiveLightCount = std::min((int)lights.size(), MAX_LIGHTS);
+		for (int i = 0; i < m_CurrentLightData.ActiveLightCount; ++i)
+		{
+			m_CurrentLightData.Lights[i] = lights[i];
+		}
 
 		if (m_LightBuffer) m_LightBuffer->Update(m_CurrentLightData);
 	}

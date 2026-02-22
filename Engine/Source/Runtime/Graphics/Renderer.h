@@ -28,14 +28,41 @@ namespace Span
 		Matrix4x4 World;	///< World Matrix (for lighting)
 	};
 
+	struct alignas(16) LightDataGPU
+	{
+		Vector3 Color;
+		float Intensity;
+
+		Vector3 Position;
+		float Range;
+
+		Vector3 Direction;
+		int Type;	// 0: Directional, 1: Point, 2: Spot
+
+		float InnerConeAngle;
+		float OuterConeAngle;
+		float Padding1;
+		float Padding2;
+	};
+
+	// 最大ライト数
+	constexpr int MAX_LIGHTS = 16;
+
 	struct alignas(16) GlobalLightData
 	{
-		Vector3 LightDirection = { 0.0f, -1.0f, 1.0f };
-		float Padding1;
-		Vector3 LightColor = { 1.0f, 1.0f, 1.0f };
-		float AmbientIntensity = 1.0f;
 		Vector3 CameraPosition = { 0.0f, 0.0f, 0.0f };
-		float Padding2;
+		float Exposure = 1.0f;
+
+		// IBL用 (空の色)
+		Vector3 SkyTopColor = { 0.35f, 0.5f, 0.7f };
+		float AmbientIntensity = 1.0f;
+		Vector3 SkyHorizonColor = { 0.7f, 0.75f, 0.8f };
+		float EnvReflectionIntensity = 2.0f;
+		Vector3 SkyBottomColor = { 0.2f, 0.2f, 0.2f };
+		int ActiveLightCount = 0;
+
+		// ライトの配列
+		LightDataGPU Lights[MAX_LIGHTS];
 	};
 
 	/**
@@ -91,7 +118,7 @@ namespace Span
 		/// @}
 
 		/// @brief	ライト情報をRendererにセットする関数
-		void SetGlobalLightData(const Vector3& direction, const Vector3& color, float ambientIntensity);
+		void SetGlobalLightData(const std::vector<LightDataGPU>& lights, const EnvironmentSettings& env);
 
 		/// @brief	GPUの処理完了を待機する
 		void WaitForGPU();

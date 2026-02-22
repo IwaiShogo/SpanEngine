@@ -21,6 +21,8 @@
 #include "Components/Graphics/MeshFilter.h"
 #include "Components/Graphics/MeshRenderer.h"
 #include "Components/Graphics/DirectionalLight.h"
+#include "Components/Graphics/PointLight.h"
+#include "Components/Graphics/SpotLight.h"
 
 namespace Span
 {
@@ -41,21 +43,56 @@ namespace Span
 			Renderer& renderer = Application::Get().GetRenderer();
 			auto world = GetWorld();
 
-			// 0. ライト情報の収集と送信
-			Vector3 lightDir = { 0.0f, -1.0f, 1.0f };
-			Vector3 lightColor = { 1.0f, 1.0f, 1.0f };
-			float ambient = Application::Get().GetActiveScene().Environment.AmbientIntensity;
+			EnvironmentSettings& env = Application::Get().GetActiveScene().Environment;
 
+			// 1. 全ライト情報を収集するリスト
+			std::vector<LightDataGPU> activeLights;
+
+			// A. Directional Light
 			world->ForEach<DirectionalLight, LocalToWorld>(
 				[&](Entity, DirectionalLight& dl, LocalToWorld& ltw)
 				{
-					lightDir = Vector3(ltw.Value.m[2][0], ltw.Value.m[2][1], ltw.Value.m[2][2]);
-					lightDir.Normalized();
-
-					lightColor = dl.Color * dl.Intensity;
+					LightDataGPU ld = {};
+					ld.Type = 0;
+					ld.Direction = Vector3::Normalize(Vector3(ltw.Value.m[2][0], ltw.Value.m[2][1], ltw.Value.m[2][2]));
+					ld.Color = dl.Color;
+					ld.Intensity = dl.Intensity;
+					activeLights.push_back(ld);
 				}
 			);
-			renderer.SetGlobalLightData(lightDir, lightColor, ambient);
+
+			// B. Point Light
+			world->ForEach<PointLight, LocalToWorld>(
+				[&](Entity, PointLight& pl, LocalToWorld& ltw)
+				{
+					LightDataGPU ld = {};
+					ld.Type = 1;
+					ld.Position = Vector3(ltw.Value.m[3][0], ltw.Value.m[3][1], ltw.Value.m[3][2]);
+					ld.Color = pl.Color;
+					ld.Intensity = pl.Intensity;
+					ld.Range = pl.Range;
+					activeLights.push_back(ld);
+				}
+			);
+
+			// C. Spot Light
+			world->ForEach<SpotLight, LocalToWorld>(
+				[&](Entity, SpotLight& sl, LocalToWorld& ltw)
+				{
+					LightDataGPU ld = {};
+					ld.Type = 2;
+					ld.Position = Vector3(ltw.Value.m[3][0], ltw.Value.m[3][1], ltw.Value.m[3][2]);
+					ld.Direction = Vector3::Normalize(Vector3(ltw.Value.m[2][0], ltw.Value.m[2][1], ltw.Value.m[2][2]));
+					ld.Color = sl.Color;
+					ld.Intensity = sl.Intensity;
+					ld.Range = sl.Range;
+					ld.InnerConeAngle = std::cos(Deg2Rad(sl.InnerConeAngle));
+					ld.OuterConeAngle = std::cos(Deg2Rad(sl.OuterConeAngle));
+					activeLights.push_back(ld);
+				}
+			);
+
+			renderer.SetGlobalLightData(activeLights, env);
 
 			// --------------------------------------------------------
 			// パス1: 不透明 (Opaque) の描画
@@ -78,7 +115,6 @@ namespace Span
 			// 不透明なオブジェクトで深度が書き込まれた後に行うことで、
 			// 隠れている空のピクセルの描画をスキップし最適化します。
 			// --------------------------------------------------------
-			EnvironmentSettings& env = Application::Get().GetActiveScene().Environment;
 			renderer.RenderSkybox(renderer.GetCommandList(), env);
 
 			// --------------------------------------------------------
