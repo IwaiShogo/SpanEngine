@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Editor/Panels/Environment/EnvironmentPanel.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('EnvironmentPanel_8cpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EnvironmentPanel.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="EnvironmentPanel_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    EnvironmentPanel.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   EnvironmentPanelの実装。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="EnvironmentPanel_8h.html">EnvironmentPanel.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="PanelManager_8h.html">Editor/PanelManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="Application_8h.html">Runtime/Application.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;imgui.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;imgui_internal.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespaceSpan.html#aeb6ba3ab09cf6f4150180bb903b09502">   21</a></span>    <span class="keyword">static</span> AutoRegisterPanel&lt;EnvironmentPanel&gt; <a class="code hl_function" href="namespaceSpan.html#aeb6ba3ab09cf6f4150180bb903b09502">_reg_env</a>(<span class="stringliteral">&quot;EnvironmentPanel&quot;</span>);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classSpan_1_1EnvironmentPanel.html#a647d214d41986805758297c505e08c17">   23</a></span>    <a class="code hl_function" href="classSpan_1_1EnvironmentPanel.html#a647d214d41986805758297c505e08c17">EnvironmentPanel::EnvironmentPanel</a>()</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        : <a class="code hl_function" href="classSpan_1_1EditorPanel.html#a53c2cb1d331dca6a442575055d09a515">EditorPanel</a>(<span class="stringliteral">&quot;Environment Settings&quot;</span>)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_variable" href="classSpan_1_1EditorPanel.html#a3c42b2ab17e0708eaeff54afc8058b4a">isOpen</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
+</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classSpan_1_1EnvironmentPanel.html#ac56f4aa5c10de85d9dc9bf2d7a497a54">   29</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1EnvironmentPanel.html#ac56f4aa5c10de85d9dc9bf2d7a497a54">EnvironmentPanel::OnImGuiRender</a>()</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="comment">// ウィンドウの初期サイズを設定</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        ImGui::SetNextWindowSize(ImVec2(400, 500), ImGuiCond_FirstUseEver);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">if</span> (ImGui::Begin(<a class="code hl_variable" href="classSpan_1_1EditorPanel.html#ae47b5777434e86ea69207a5249ec52c3">title</a>.c_str(), &amp;<a class="code hl_variable" href="classSpan_1_1EditorPanel.html#a3c42b2ab17e0708eaeff54afc8058b4a">isOpen</a>))</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="comment">// 現在のアクティブシーンから環境設定を取得</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="keyword">auto</span>&amp; env = <a class="code hl_function" href="classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e">Application::Get</a>().<a class="code hl_function" href="classSpan_1_1Application.html#a113c6b1503b5d70d7a49181576ef7453">GetActiveScene</a>().<a class="code hl_variable" href="classSpan_1_1Scene.html#a05689aa3986a5f72f2ecea707f6e4bf5">Environment</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4, 4));</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="comment">// --- Skybox Settings ---</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">if</span> (ImGui::CollapsingHeader(<span class="stringliteral">&quot;Skybox Settings&quot;</span>, ImGuiTreeNodeFlags_DefaultOpen))</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                ImGui::Indent(10.0f);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <span class="keyword">const</span> <span class="keywordtype">char</span>* modeStrings[] = { <span class="stringliteral">&quot;Procedural (3-Color Gradient)&quot;</span>, <span class="stringliteral">&quot;HDRI (High Dynamic Range Image)&quot;</span> };</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                <span class="keywordtype">int</span> currentMode = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(env.Mode);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <span class="keywordflow">if</span> (ImGui::Combo(<span class="stringliteral">&quot;Sky Mode&quot;</span>, &amp;currentMode, modeStrings, IM_ARRAYSIZE(modeStrings)))</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                    env.Mode = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespaceSpan.html#ae998cbdcb20205c3ef84161a94a804f6">SkyboxMode</a><span class="keyword">&gt;</span>(currentMode);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                ImGui::Spacing();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                <span class="keywordflow">if</span> (env.Mode == <a class="code hl_enumvalue" href="namespaceSpan.html#ae998cbdcb20205c3ef84161a94a804f6a4b729261cf45327870528920781485f4">SkyboxMode::Procedural</a>)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                    ImGuiColorEditFlags hdrFlags = ImGuiColorEditFlags_Float | ImGuiColorEditFlags_HDR;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                    ImGui::ColorEdit3(<span class="stringliteral">&quot;Top Color&quot;</span>, &amp;env.SkyTopColor.x, hdrFlags);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                    ImGui::ColorEdit3(<span class="stringliteral">&quot;Horizon Color&quot;</span>, &amp;env.SkyHorizonColor.x, hdrFlags);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                    ImGui::ColorEdit3(<span class="stringliteral">&quot;Bottom Color&quot;</span>, &amp;env.SkyBottomColor.x, hdrFlags);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                    <span class="keywordflow">if</span> (ImGui::Button(<span class="stringliteral">&quot;Reset Colors&quot;</span>))</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                        env.SkyTopColor = { 0.35f, 0.5f, 0.7f };</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                        env.SkyHorizonColor = { 0.7f, 0.75f, 0.8f };</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                        env.SkyBottomColor = { 0.2f, 0.2f, 0.2f };</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                    }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (env.Mode == <a class="code hl_enumvalue" href="namespaceSpan.html#ae998cbdcb20205c3ef84161a94a804f6a4cf15a2066c299b2f4cdf5b2264e9ae6">SkyboxMode::HDRI</a>)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                    <span class="keywordtype">char</span> pathBuffer[256];</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                    strcpy_s(pathBuffer, env.HDRIPath.c_str());</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                    ImGui::Text(<span class="stringliteral">&quot;HDRI Asset Path&quot;</span>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                    ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x - 40.0f);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                    <span class="keywordflow">if</span> (ImGui::InputText(<span class="stringliteral">&quot;##HDRIPath&quot;</span>, pathBuffer, <span class="keyword">sizeof</span>(pathBuffer)))</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                    {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                        env.HDRIPath = pathBuffer;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                    }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                    ImGui::SameLine();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                    <span class="keywordflow">if</span> (ImGui::Button(<span class="stringliteral">&quot;X&quot;</span>, ImVec2(30, 0))) { env.HDRIPath = <span class="stringliteral">&quot;&quot;</span>; }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                    <span class="comment">// D&amp;Dサポート</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                    <span class="keywordflow">if</span> (ImGui::BeginDragDropTarget())</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                    {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                        <span class="keywordflow">if</span> (<span class="keyword">const</span> ImGuiPayload* payload = ImGui::AcceptDragDropPayload(<span class="stringliteral">&quot;CONTENT_BROWSER_ITEM&quot;</span>))</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                        {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                            <span class="keyword">const</span> <span class="keywordtype">wchar_t</span>* path = (<span class="keyword">const</span> <span class="keywordtype">wchar_t</span>*)payload-&gt;Data;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                            std::wstring ws(path);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                            env.HDRIPath = std::string(ws.begin(), ws.end());</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                        }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                        ImGui::EndDragDropTarget();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                    }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                    ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1.0f), <span class="stringliteral">&quot;Tip: Drop .hdr file here&quot;</span>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                ImGui::Unindent(10.0f);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="comment">// --- Global Lighting Settings ---</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordflow">if</span> (ImGui::CollapsingHeader(<span class="stringliteral">&quot;Global Lighting&quot;</span>, ImGuiTreeNodeFlags_DefaultOpen))</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                ImGui::Indent(10.0f);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                ImGui::SliderFloat(<span class="stringliteral">&quot;Camera Exposure&quot;</span>, &amp;env.Exposure, 0.1f, 10.0f, <span class="stringliteral">&quot;%.2f&quot;</span>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                ImGui::SliderFloat(<span class="stringliteral">&quot;Ambient Intensity&quot;</span>, &amp;env.AmbientIntensity, 0.0f, 5.0f, <span class="stringliteral">&quot;%.2f&quot;</span>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                ImGui::SliderFloat(<span class="stringliteral">&quot;Reflection Intensity&quot;</span>, &amp;env.EnvReflectionIntensity, 0.0f, 10.0f, <span class="stringliteral">&quot;%.2f&quot;</span>);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                ImGui::Unindent(10.0f);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            ImGui::PopStyleVar();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        ImGui::End();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    }</div>
+</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}</div>
+<div class="ttc" id="aApplication_8h_html"><div class="ttname"><a href="Application_8h.html">Application.h</a></div><div class="ttdoc">エンジンのメインループとライフサイクル管理。</div></div>
+<div class="ttc" id="aEnvironmentPanel_8h_html"><div class="ttname"><a href="EnvironmentPanel_8h.html">EnvironmentPanel.h</a></div><div class="ttdoc">シーンの環境設定を編集するパネル</div></div>
+<div class="ttc" id="aPanelManager_8h_html"><div class="ttname"><a href="PanelManager_8h.html">PanelManager.h</a></div><div class="ttdoc">エディタパネルのファクトリーと自動登録システム。</div></div>
+<div class="ttc" id="aclassSpan_1_1Application_html_a113c6b1503b5d70d7a49181576ef7453"><div class="ttname"><a href="classSpan_1_1Application.html#a113c6b1503b5d70d7a49181576ef7453">Span::Application::GetActiveScene</a></div><div class="ttdeci">Scene &amp; GetActiveScene()</div><div class="ttdef"><b>Definition</b> <a href="Application_8h_source.html#l00070">Application.h:70</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Application_html_ae2e9eaebe90ffdf55cfef9d74ccbce3e"><div class="ttname"><a href="classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e">Span::Application::Get</a></div><div class="ttdeci">static Application &amp; Get()</div><div class="ttdoc">シングルトンインスタンスの取得</div><div class="ttdef"><b>Definition</b> <a href="Application_8h_source.html#l00038">Application.h:38</a></div></div>
+<div class="ttc" id="aclassSpan_1_1EditorPanel_html_a3c42b2ab17e0708eaeff54afc8058b4a"><div class="ttname"><a href="classSpan_1_1EditorPanel.html#a3c42b2ab17e0708eaeff54afc8058b4a">Span::EditorPanel::isOpen</a></div><div class="ttdeci">bool isOpen</div><div class="ttdoc">表示フラグ</div><div class="ttdef"><b>Definition</b> <a href="EditorPanel_8h_source.html#l00056">EditorPanel.h:56</a></div></div>
+<div class="ttc" id="aclassSpan_1_1EditorPanel_html_a53c2cb1d331dca6a442575055d09a515"><div class="ttname"><a href="classSpan_1_1EditorPanel.html#a53c2cb1d331dca6a442575055d09a515">Span::EditorPanel::EditorPanel</a></div><div class="ttdeci">EditorPanel(const std::string &amp;title)</div><div class="ttdoc">コンストラクタ。</div><div class="ttdef"><b>Definition</b> <a href="EditorPanel_8h_source.html#l00033">EditorPanel.h:33</a></div></div>
+<div class="ttc" id="aclassSpan_1_1EditorPanel_html_ae47b5777434e86ea69207a5249ec52c3"><div class="ttname"><a href="classSpan_1_1EditorPanel.html#ae47b5777434e86ea69207a5249ec52c3">Span::EditorPanel::title</a></div><div class="ttdeci">std::string title</div><div class="ttdoc">パネルタイトル</div><div class="ttdef"><b>Definition</b> <a href="EditorPanel_8h_source.html#l00055">EditorPanel.h:55</a></div></div>
+<div class="ttc" id="aclassSpan_1_1EnvironmentPanel_html_a647d214d41986805758297c505e08c17"><div class="ttname"><a href="classSpan_1_1EnvironmentPanel.html#a647d214d41986805758297c505e08c17">Span::EnvironmentPanel::EnvironmentPanel</a></div><div class="ttdeci">EnvironmentPanel()</div><div class="ttdef"><b>Definition</b> <a href="#l00023">EnvironmentPanel.cpp:23</a></div></div>
+<div class="ttc" id="aclassSpan_1_1EnvironmentPanel_html_ac56f4aa5c10de85d9dc9bf2d7a497a54"><div class="ttname"><a href="classSpan_1_1EnvironmentPanel.html#ac56f4aa5c10de85d9dc9bf2d7a497a54">Span::EnvironmentPanel::OnImGuiRender</a></div><div class="ttdeci">void OnImGuiRender() override</div><div class="ttdoc">毎フレーム呼ばれる描画関数。</div><div class="ttdef"><b>Definition</b> <a href="#l00029">EnvironmentPanel.cpp:29</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Scene_html_a05689aa3986a5f72f2ecea707f6e4bf5"><div class="ttname"><a href="classSpan_1_1Scene.html#a05689aa3986a5f72f2ecea707f6e4bf5">Span::Scene::Environment</a></div><div class="ttdeci">EnvironmentSettings Environment</div><div class="ttdef"><b>Definition</b> <a href="Scene_8h_source.html#l00045">Scene.h:45</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_ae998cbdcb20205c3ef84161a94a804f6"><div class="ttname"><a href="namespaceSpan.html#ae998cbdcb20205c3ef84161a94a804f6">Span::SkyboxMode</a></div><div class="ttdeci">SkyboxMode</div><div class="ttdoc">スカイボックスのモード</div><div class="ttdef"><b>Definition</b> <a href="EnvironmentSettings_8h_source.html#l00022">EnvironmentSettings.h:23</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_ae998cbdcb20205c3ef84161a94a804f6a4b729261cf45327870528920781485f4"><div class="ttname"><a href="namespaceSpan.html#ae998cbdcb20205c3ef84161a94a804f6a4b729261cf45327870528920781485f4">Span::SkyboxMode::Procedural</a></div><div class="ttdeci">@ Procedural</div><div class="ttdoc">3色グラデーション</div><div class="ttdef"><b>Definition</b> <a href="EnvironmentSettings_8h_source.html#l00024">EnvironmentSettings.h:24</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_ae998cbdcb20205c3ef84161a94a804f6a4cf15a2066c299b2f4cdf5b2264e9ae6"><div class="ttname"><a href="namespaceSpan.html#ae998cbdcb20205c3ef84161a94a804f6a4cf15a2066c299b2f4cdf5b2264e9ae6">Span::SkyboxMode::HDRI</a></div><div class="ttdeci">@ HDRI</div><div class="ttdoc">パノラマHDR画像</div><div class="ttdef"><b>Definition</b> <a href="EnvironmentSettings_8h_source.html#l00025">EnvironmentSettings.h:25</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_aeb6ba3ab09cf6f4150180bb903b09502"><div class="ttname"><a href="namespaceSpan.html#aeb6ba3ab09cf6f4150180bb903b09502">Span::_reg_env</a></div><div class="ttdeci">static AutoRegisterPanel&lt; EnvironmentPanel &gt; _reg_env(&quot;EnvironmentPanel&quot;)</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_c6cb6fb3292d721ac39edcf45c3f2a55.html">Editor</a></li><li class="navelem"><a href="dir_bcba414dde695aa9b94bbe05564e6e5d.html">Panels</a></li><li class="navelem"><a href="dir_fa467ae75a1f5f36808a07ff3c43dba1.html">Environment</a></li><li class="navelem"><a href="EnvironmentPanel_8cpp.html">EnvironmentPanel.cpp</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

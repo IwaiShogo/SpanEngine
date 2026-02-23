@@ -20,6 +20,7 @@ var namespaceSpan =
     [ "GuiManager", "classSpan_1_1GuiManager.html", "classSpan_1_1GuiManager" ],
     [ "ImGuiUI", "classSpan_1_1ImGuiUI.html", "classSpan_1_1ImGuiUI" ],
     [ "EditorPanel", "classSpan_1_1EditorPanel.html", "classSpan_1_1EditorPanel" ],
+    [ "EnvironmentPanel", "classSpan_1_1EnvironmentPanel.html", "classSpan_1_1EnvironmentPanel" ],
     [ "HierarchyPanel", "classSpan_1_1HierarchyPanel.html", "classSpan_1_1HierarchyPanel" ],
     [ "InspectorPanel", "classSpan_1_1InspectorPanel.html", "classSpan_1_1InspectorPanel" ],
     [ "MaterialPreviewer", "classSpan_1_1MaterialPreviewer.html", "classSpan_1_1MaterialPreviewer" ],
@@ -61,6 +62,7 @@ var namespaceSpan =
     [ "World", "classSpan_1_1World.html", "classSpan_1_1World" ],
     [ "ConstantBuffer", "classSpan_1_1ConstantBuffer.html", "classSpan_1_1ConstantBuffer" ],
     [ "GraphicsContext", "classSpan_1_1GraphicsContext.html", "classSpan_1_1GraphicsContext" ],
+    [ "IBLBuilder", "classSpan_1_1IBLBuilder.html", "classSpan_1_1IBLBuilder" ],
     [ "RenderTarget", "classSpan_1_1RenderTarget.html", "classSpan_1_1RenderTarget" ],
     [ "Shader", "classSpan_1_1Shader.html", "classSpan_1_1Shader" ],
     [ "ShadowMap", "classSpan_1_1ShadowMap.html", "classSpan_1_1ShadowMap" ],
@@ -228,11 +230,17 @@ var namespaceSpan =
     ] ],
     [ "ShaderType", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920d", [
       [ "Vertex", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6", null ],
-      [ "Pixel", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0", null ]
+      [ "Pixel", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0", null ],
+      [ "Compute", "namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920daa623a8d0366bf079411aa30be45b2d10", null ]
+    ] ],
+    [ "SkyboxMode", "namespaceSpan.html#ae998cbdcb20205c3ef84161a94a804f6", [
+      [ "Procedural", "namespaceSpan.html#ae998cbdcb20205c3ef84161a94a804f6a4b729261cf45327870528920781485f4", null ],
+      [ "HDRI", "namespaceSpan.html#ae998cbdcb20205c3ef84161a94a804f6a4cf15a2066c299b2f4cdf5b2264e9ae6", null ]
     ] ],
     [ "_reg", "namespaceSpan.html#a2ffd67e5c0ae55d0918e1924de043da2", null ],
     [ "_reg", "namespaceSpan.html#ace337f7269a75fc3dbdba7e232c99043", null ],
     [ "_reg", "namespaceSpan.html#aacd65e503c27c8b9ac1d74cc035daa11", null ],
+    [ "_reg_env", "namespaceSpan.html#aeb6ba3ab09cf6f4150180bb903b09502", null ],
     [ "_reg_hierarchy", "namespaceSpan.html#ab70254134b06676ef075109a54d3c433", null ],
     [ "CalcConstantBufferByteSize", "namespaceSpan.html#a4fe00a2b184d928db9704896aa281ee9", null ],
     [ "Clamp", "namespaceSpan.html#a8cdcfa1b4931700b369b8017666cd36a", null ],

@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Graphics/Core/IBLBuilder.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('IBLBuilder_8cpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">IBLBuilder.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="IBLBuilder_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    IBLBuilder.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   IBL用テクスチャの生成実装。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="IBLBuilder_8h.html">IBLBuilder.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#a04cd5881e9334a5d99f1f83a1eb9dae3">   16</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#a04cd5881e9334a5d99f1f83a1eb9dae3">IBLBuilder::Initialize</a>(ID3D12Device* device)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="comment">// 1. Compute Shader のロード</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a79089d6accce66111ae39689fc61a5e1">m_equirectToCubemapCS</a> = <span class="keyword">new</span> <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a79089d6accce66111ae39689fc61a5e1">m_equirectToCubemapCS</a>-&gt;Load(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587">L</a><span class="stringliteral">&quot;EquirectangularToCubemap.hlsl&quot;</span>, <a class="code hl_enumvalue" href="namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920daa623a8d0366bf079411aa30be45b2d10">ShaderType::Compute</a>, <span class="stringliteral">&quot;CSMain&quot;</span>))</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <a class="code hl_define" href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a>(<span class="stringliteral">&quot;Failed to load EquirectangularToCubemap Compute Shader.&quot;</span>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        }</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="comment">// 2. Compute Root Signature の作成</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        D3D12_DESCRIPTOR_RANGE srvRange = {};</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        srvRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        srvRange.NumDescriptors = 1;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        srvRange.BaseShaderRegister = 0;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        srvRange.RegisterSpace = 0;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        srvRange.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        D3D12_DESCRIPTOR_RANGE uavRange = {};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        uavRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_UAV;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        uavRange.NumDescriptors = 1;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        uavRange.BaseShaderRegister = 0;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        uavRange.RegisterSpace = 0;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        uavRange.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        D3D12_ROOT_PARAMETER rootParameters[2];</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        rootParameters[0].DescriptorTable.NumDescriptorRanges = 1;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        rootParameters[0].DescriptorTable.pDescriptorRanges = &amp;srvRange;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        rootParameters[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        rootParameters[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        rootParameters[1].DescriptorTable.NumDescriptorRanges = 1;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        rootParameters[1].DescriptorTable.pDescriptorRanges = &amp;uavRange;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="comment">// サンプラー</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        D3D12_STATIC_SAMPLER_DESC sampler = {};</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        sampler.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        sampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        sampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        sampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        sampler.MipLODBias = 0;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        sampler.MaxAnisotropy = 1;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        sampler.ComparisonFunc = D3D12_COMPARISON_FUNC_NEVER;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        sampler.MinLOD = 0.0f;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        sampler.MaxLOD = D3D12_FLOAT32_MAX;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        sampler.ShaderRegister = 0; <span class="comment">// s0</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        sampler.RegisterSpace = 0;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        sampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        D3D12_ROOT_SIGNATURE_DESC rootSigDesc = {};</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        rootSigDesc.NumParameters = _countof(rootParameters);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        rootSigDesc.pParameters = rootParameters;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        rootSigDesc.NumStaticSamplers = 1;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        rootSigDesc.pStaticSamplers = &amp;sampler;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        rootSigDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_NONE;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        ComPtr&lt;ID3DBlob&gt; signature, error;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">if</span> (FAILED(D3D12SerializeRootSignature(&amp;rootSigDesc, D3D_ROOT_SIGNATURE_VERSION_1, &amp;signature, &amp;error)))</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <a class="code hl_define" href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a>(<span class="stringliteral">&quot;IBLBuilder RootSignature Serialize Failed: %s&quot;</span>, (<span class="keywordtype">char</span>*)error-&gt;GetBufferPointer());</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateRootSignature(0, signature-&gt;GetBufferPointer(), signature-&gt;GetBufferSize(), IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>))))</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="comment">// 3. Compute Pipeline State Object (PSO) の作成</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        D3D12_COMPUTE_PIPELINE_STATE_DESC psoDesc = {};</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        psoDesc.pRootSignature = <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Get();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        psoDesc.CS = <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a79089d6accce66111ae39689fc61a5e1">m_equirectToCubemapCS</a>-&gt;GetBytecode();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateComputePipelineState(&amp;psoDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#ae40584f87ef27bb37deb53b8e1b58761">m_equirectToCubemapPSO</a>))))</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <a class="code hl_define" href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a>(<span class="stringliteral">&quot;Failed to create IBLBuilder Compute PSO.&quot;</span>);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <a class="code hl_define" href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a>(<span class="stringliteral">&quot;IBLBuilder Initialized Successfully.&quot;</span>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
+</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#add9e97fb896f767e24aa6cda5334cef5">   99</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#add9e97fb896f767e24aa6cda5334cef5">IBLBuilder::Shutdown</a>()</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_define" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a>(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a79089d6accce66111ae39689fc61a5e1">m_equirectToCubemapCS</a>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#ae40584f87ef27bb37deb53b8e1b58761">m_equirectToCubemapPSO</a>.Reset();</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Reset();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    }</div>
+</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#ae49f8044ac7ae74396afad74b9d93d96">  106</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#ae49f8044ac7ae74396afad74b9d93d96">IBLBuilder::GenerateCubemapFromPanorama</a>(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE panoramaSRV, <a class="code hl_class" href="classSpan_1_1Texture.html">Texture</a>* outCubemap, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> cubemapSize)</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordflow">if</span> (!device || !cmd || !outCubemap) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="comment">// 1. 一時的なディスクリプタヒープを2枠作成</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        heapDesc.NumDescriptors = 2;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        ComPtr&lt;ID3D12DescriptorHeap&gt; tempHeap;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        device-&gt;CreateDescriptorHeap(&amp;heapDesc, IID_PPV_ARGS(&amp;tempHeap));</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> descriptorSize = device-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        D3D12_CPU_DESCRIPTOR_HANDLE destHandle = tempHeap-&gt;GetCPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="comment">// 2. カタログにテクスチャの情報をコピー</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">// [0] 入力パノラマ画像をコピー</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        device-&gt;CopyDescriptorsSimple(1, destHandle, panoramaSRV, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="comment">// [1] 出力Cubemapをコピー</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        destHandle.ptr += descriptorSize;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        device-&gt;CopyDescriptorsSimple(1, destHandle, outCubemap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#acf5cf9a1983bf79f7ab4a66d647aac96">GetUAVCPU</a>(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="comment">// 3. この一時カタログをGPUにセット</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        ID3D12DescriptorHeap* heaps[] = { tempHeap.Get() };</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        cmd-&gt;SetDescriptorHeaps(1, heaps);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#ae40584f87ef27bb37deb53b8e1b58761">m_equirectToCubemapPSO</a>.Get());</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        cmd-&gt;SetComputeRootSignature(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Get());</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="comment">// 4. スロットにカタログの住所を教える</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = tempHeap-&gt;GetGPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        cmd-&gt;SetComputeRootDescriptorTable(0, gpuHandle);   <span class="comment">// t0: パノラマ</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        gpuHandle.ptr += descriptorSize;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        cmd-&gt;SetComputeRootDescriptorTable(1, gpuHandle);   <span class="comment">// u0: Cubemap</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="comment">// 5. Compute Shader を起動</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsX = cubemapSize / 8;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsY = cubemapSize / 8;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsZ = 6;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        cmd-&gt;Dispatch(threadGroupsX, threadGroupsY, threadGroupsZ);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    }</div>
+</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html_a4b8b2bed986c06c207ebac140ba65a7a"><div class="ttname"><a href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a></div><div class="ttdeci">#define SAFE_DELETE(x)</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00114">CoreMinimal.h:114</a></div></div>
+<div class="ttc" id="aIBLBuilder_8h_html"><div class="ttname"><a href="IBLBuilder_8h.html">IBLBuilder.h</a></div><div class="ttdoc">IBL(Image-Based Lighting)用テクスチャをGPU上で生成するビルダークラス。</div></div>
+<div class="ttc" id="aLogger_8h_html_a1b7ff4efe93a9030e55f7598d493448c"><div class="ttname"><a href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a></div><div class="ttdeci">#define SPAN_LOG(Format,...)</div><div class="ttdoc">通常ログを出力します。</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00069">Logger.h:69</a></div></div>
+<div class="ttc" id="aLogger_8h_html_a64e6317fa96d76ed26e6c4c79ec2d9b6"><div class="ttname"><a href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a></div><div class="ttdeci">#define SPAN_ERROR(Format,...)</div><div class="ttdoc">エラーログを出力します (赤色)。</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00075">Logger.h:75</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a04cd5881e9334a5d99f1f83a1eb9dae3"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a04cd5881e9334a5d99f1f83a1eb9dae3">Span::IBLBuilder::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device)</div><div class="ttdoc">IBLBuilderを初期化し、必要なCompute Shaderをロードします。</div><div class="ttdef"><b>Definition</b> <a href="#l00016">IBLBuilder.cpp:16</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a79089d6accce66111ae39689fc61a5e1"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a79089d6accce66111ae39689fc61a5e1">Span::IBLBuilder::m_equirectToCubemapCS</a></div><div class="ttdeci">Shader * m_equirectToCubemapCS</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00071">IBLBuilder.h:71</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_aa60e40f7ae9269b5b58ad27e5286099b"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">Span::IBLBuilder::m_computeRootSignature</a></div><div class="ttdeci">ComPtr&lt; ID3D12RootSignature &gt; m_computeRootSignature</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00069">IBLBuilder.h:69</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_add9e97fb896f767e24aa6cda5334cef5"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#add9e97fb896f767e24aa6cda5334cef5">Span::IBLBuilder::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdoc">終了処理。ロードしたシェーダーやルートシグネチャを解放します。</div><div class="ttdef"><b>Definition</b> <a href="#l00099">IBLBuilder.cpp:99</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_ae40584f87ef27bb37deb53b8e1b58761"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#ae40584f87ef27bb37deb53b8e1b58761">Span::IBLBuilder::m_equirectToCubemapPSO</a></div><div class="ttdeci">ComPtr&lt; ID3D12PipelineState &gt; m_equirectToCubemapPSO</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00070">IBLBuilder.h:70</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_ae49f8044ac7ae74396afad74b9d93d96"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#ae49f8044ac7ae74396afad74b9d93d96">Span::IBLBuilder::GenerateCubemapFromPanorama</a></div><div class="ttdeci">void GenerateCubemapFromPanorama(ID3D12Device *device, ID3D12GraphicsCommandList *cmd, D3D12_CPU_DESCRIPTOR_HANDLE panoramaSRV, Texture *outCubemap, uint32 cubemapSize)</div><div class="ttdoc">パノラマHDRテクスチャをCubemapに変換します。</div><div class="ttdef"><b>Definition</b> <a href="#l00106">IBLBuilder.cpp:106</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Shader_html"><div class="ttname"><a href="classSpan_1_1Shader.html">Span::Shader</a></div><div class="ttdoc">📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。</div><div class="ttdef"><b>Definition</b> <a href="Shader_8h_source.html#l00037">Shader.h:38</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Texture_html"><div class="ttname"><a href="classSpan_1_1Texture.html">Span::Texture</a></div><div class="ttdoc">🖼 GPUテクスチャリソース。</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00030">Texture.h:31</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Texture_html_acf5cf9a1983bf79f7ab4a66d647aac96"><div class="ttname"><a href="classSpan_1_1Texture.html#acf5cf9a1983bf79f7ab4a66d647aac96">Span::Texture::GetUAVCPU</a></div><div class="ttdeci">D3D12_CPU_DESCRIPTOR_HANDLE GetUAVCPU() const</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00075">Texture.h:75</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00101">CoreMinimal.h:101</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587"><div class="ttname"><a href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587">Span::Key::L</a></div><div class="ttdeci">@ L</div><div class="ttdef"><b>Definition</b> <a href="Input_8h_source.html#l00028">Input.h:28</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_ac6d174c183a792e0102f9c0ca931920daa623a8d0366bf079411aa30be45b2d10"><div class="ttname"><a href="namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920daa623a8d0366bf079411aa30be45b2d10">Span::ShaderType::Compute</a></div><div class="ttdeci">@ Compute</div><div class="ttdef"><b>Definition</b> <a href="Shader_8h_source.html#l00022">Shader.h:22</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_6091cbee3e268cbb682ad3d3f55cf8b5.html">Graphics</a></li><li class="navelem"><a href="dir_04c83e55f1dd055cbf491646f5a1a5df.html">Core</a></li><li class="navelem"><a href="IBLBuilder_8cpp.html">IBLBuilder.cpp</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

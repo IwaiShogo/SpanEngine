@@ -10,5 +10,7 @@ var searchData=
   ['entitymanager_2ecpp_7',['EntityManager.cpp',['../EntityManager_8cpp.html',1,'']]],
   ['entitymanager_2eh_8',['EntityManager.h',['../EntityManager_8h.html',1,'']]],
   ['entrypoint_2eh_9',['EntryPoint.h',['../EntryPoint_8h.html',1,'']]],
-  ['environmentsettings_2eh_10',['EnvironmentSettings.h',['../EnvironmentSettings_8h.html',1,'']]]
+  ['environmentpanel_2ecpp_10',['EnvironmentPanel.cpp',['../EnvironmentPanel_8cpp.html',1,'']]],
+  ['environmentpanel_2eh_11',['EnvironmentPanel.h',['../EnvironmentPanel_8h.html',1,'']]],
+  ['environmentsettings_2eh_12',['EnvironmentSettings.h',['../EnvironmentSettings_8h.html',1,'']]]
 ];

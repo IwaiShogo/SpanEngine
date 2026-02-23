@@ -109,8 +109,8 @@ Span::SkyboxPass 連携図</div>
 <tr class="memitem:a35668212e9715d53ec6ac385715c41c5" id="r_a35668212e9715d53ec6ac385715c41c5"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a35668212e9715d53ec6ac385715c41c5">~SkyboxPass</a> ()</td></tr>
 <tr class="memitem:a6d8b01d9feeccd8f2befab41602071e4" id="r_a6d8b01d9feeccd8f2befab41602071e4"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6d8b01d9feeccd8f2befab41602071e4">Initialize</a> (ID3D12Device *device)</td></tr>
 <tr class="memitem:aa525162d4934baf4b1dc2dddb304e9ff" id="r_aa525162d4934baf4b1dc2dddb304e9ff"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa525162d4934baf4b1dc2dddb304e9ff">Shutdown</a> ()</td></tr>
-<tr class="memitem:a9677684c5a00fe85e59773989c5f4fc2" id="r_a9677684c5a00fe85e59773989c5f4fc2"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9677684c5a00fe85e59773989c5f4fc2">Render</a> (<a class="el" href="classSpan_1_1Renderer.html">Renderer</a> *renderer, ID3D12GraphicsCommandList *cmd, const <a class="el" href="structSpan_1_1EnvironmentSettings.html">EnvironmentSettings</a> &amp;env, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;view, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;proj, const <a class="el" href="structSpan_1_1Vector3.html">Vector3</a> &amp;camPos)</td></tr>
-<tr class="memdesc:a9677684c5a00fe85e59773989c5f4fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカイボックスを描画します。RendererのCBVアロケータを使用します。  <br /></td></tr>
+<tr class="memitem:af1afdca89ea3cd26dba659c722c700ce" id="r_af1afdca89ea3cd26dba659c722c700ce"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af1afdca89ea3cd26dba659c722c700ce">Render</a> (<a class="el" href="classSpan_1_1Renderer.html">Renderer</a> *renderer, ID3D12GraphicsCommandList *cmd, const <a class="el" href="structSpan_1_1EnvironmentSettings.html">EnvironmentSettings</a> &amp;env, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;view, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;proj, const <a class="el" href="structSpan_1_1Vector3.html">Vector3</a> &amp;camPos, <a class="el" href="classSpan_1_1Texture.html">Texture</a> *envCubemap)</td></tr>
+<tr class="memdesc:af1afdca89ea3cd26dba659c722c700ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカイボックスを描画します。RendererのCBVアロケータを使用します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
@@ -201,8 +201,8 @@ Span::SkyboxPass 連携図</div>
 
 </div>
 </div>
-<a id="a9677684c5a00fe85e59773989c5f4fc2" name="a9677684c5a00fe85e59773989c5f4fc2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9677684c5a00fe85e59773989c5f4fc2">&#9670;&#160;</a></span>Render()</h2>
+<a id="af1afdca89ea3cd26dba659c722c700ce" name="af1afdca89ea3cd26dba659c722c700ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1afdca89ea3cd26dba659c722c700ce">&#9670;&#160;</a></span>Render()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,18 +235,23 @@ Span::SkyboxPass 連携図</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structSpan_1_1Vector3.html">Vector3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>camPos</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="structSpan_1_1Vector3.html">Vector3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>camPos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>envCubemap</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>スカイボックスを描画します。RendererのCBVアロケータを使用します。 </p>
 
-<p class="definition"> <a class="el" href="SkyboxPass_8cpp_source.html">SkyboxPass.cpp</a> の <a class="el" href="SkyboxPass_8cpp_source.html#l00075">75</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SkyboxPass_8cpp_source.html">SkyboxPass.cpp</a> の <a class="el" href="SkyboxPass_8cpp_source.html#l00102">102</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SkyboxPass_a9677684c5a00fe85e59773989c5f4fc2_cgraph.svg" width="460" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SkyboxPass_af1afdca89ea3cd26dba659c722c700ce_cgraph.svg" width="460" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -266,7 +271,7 @@ Span::SkyboxPass 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="SkyboxPass_8cpp_source.html">SkyboxPass.cpp</a> の <a class="el" href="SkyboxPass_8cpp_source.html#l00067">67</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="SkyboxPass_8cpp_source.html">SkyboxPass.cpp</a> の <a class="el" href="SkyboxPass_8cpp_source.html#l00094">94</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">

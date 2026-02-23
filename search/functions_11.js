@@ -12,7 +12,7 @@ var searchData=
   ['removetag_9',['RemoveTag',['../classSpan_1_1TagManager.html#a4f310a685303986ad9056e5551b3c7fd',1,'Span::TagManager']]],
   ['renamefile_10',['RenameFile',['../classSpan_1_1EditorFileSystem.html#ac03b1ddd9c217dbe4f01ca5b6dab601b',1,'Span::EditorFileSystem']]],
   ['renamefilecommand_11',['RenameFileCommand',['../classSpan_1_1RenameFileCommand.html#abfc66b98a6138ddd613d6bbc6203d25a',1,'Span::RenameFileCommand']]],
-  ['render_12',['Render',['../classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8',1,'Span::MaterialPreviewer::Render()'],['../classSpan_1_1GridPass.html#a6c9935038729d01352c0cb424bc1e913',1,'Span::GridPass::Render()'],['../classSpan_1_1SkyboxPass.html#a9677684c5a00fe85e59773989c5f4fc2',1,'Span::SkyboxPass::Render()']]],
+  ['render_12',['Render',['../classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8',1,'Span::MaterialPreviewer::Render()'],['../classSpan_1_1GridPass.html#a6c9935038729d01352c0cb424bc1e913',1,'Span::GridPass::Render()'],['../classSpan_1_1SkyboxPass.html#af1afdca89ea3cd26dba659c722c700ce',1,'Span::SkyboxPass::Render()']]],
   ['renderer_13',['Renderer',['../classSpan_1_1Renderer.html#ad9b8a2800b6e801528fc3507162ef123',1,'Span::Renderer']]],
   ['rendertarget_14',['RenderTarget',['../classSpan_1_1RenderTarget.html#a80d2525153dae704614d9ae9bbd8ee29',1,'Span::RenderTarget']]],
   ['reset_15',['Reset',['../classSpan_1_1MemoryArena.html#ae1e5aee7a56ae1113ded9b6bfcfec909',1,'Span::MemoryArena']]],

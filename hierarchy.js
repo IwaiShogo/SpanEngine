@@ -22,6 +22,7 @@ var hierarchy =
     [ "Span::EditorCameraState", "structSpan_1_1EditorCameraState.html", null ],
     [ "Span::EditorFileSystem", "classSpan_1_1EditorFileSystem.html", null ],
     [ "Span::EditorPanel", "classSpan_1_1EditorPanel.html", [
+      [ "Span::EnvironmentPanel", "classSpan_1_1EnvironmentPanel.html", null ],
       [ "Span::HierarchyPanel", "classSpan_1_1HierarchyPanel.html", null ],
       [ "Span::InspectorPanel", "classSpan_1_1InspectorPanel.html", null ],
       [ "Span::ProjectBrowserPanel", "classSpan_1_1ProjectBrowserPanel.html", null ],
@@ -44,6 +45,7 @@ var hierarchy =
     [ "Span::GridPass", "classSpan_1_1GridPass.html", null ],
     [ "Span::GuiManager", "classSpan_1_1GuiManager.html", null ],
     [ "std::hash&lt; Span::EntityID &gt;", "structstd_1_1hash_3_01Span_1_1EntityID_01_4.html", null ],
+    [ "Span::IBLBuilder", "classSpan_1_1IBLBuilder.html", null ],
     [ "Span::ICommand", "classSpan_1_1ICommand.html", [
       [ "Span::CreateDirectoryCommand", "classSpan_1_1CreateDirectoryCommand.html", null ],
       [ "Span::CreateFileCommand", "classSpan_1_1CreateFileCommand.html", null ],

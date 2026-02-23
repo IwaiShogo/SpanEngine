@@ -1,5 +1,6 @@
 var searchData=
 [
   ['_5freg_0',['_reg',['../namespaceSpan.html#a2ffd67e5c0ae55d0918e1924de043da2',1,'Span::_reg(&quot;Inspector&quot;)'],['../namespaceSpan.html#ace337f7269a75fc3dbdba7e232c99043',1,'Span::_reg(&quot;Project Browser&quot;)'],['../namespaceSpan.html#aacd65e503c27c8b9ac1d74cc035daa11',1,'Span::_reg(&quot;Scene&quot;)']]],
-  ['_5freg_5fhierarchy_1',['_reg_hierarchy',['../namespaceSpan.html#ab70254134b06676ef075109a54d3c433',1,'Span']]]
+  ['_5freg_5fenv_1',['_reg_env',['../namespaceSpan.html#aeb6ba3ab09cf6f4150180bb903b09502',1,'Span']]],
+  ['_5freg_5fhierarchy_2',['_reg_hierarchy',['../namespaceSpan.html#ab70254134b06676ef075109a54d3c433',1,'Span']]]
 ];

@@ -137,6 +137,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎛️ エディタ独自のUIパーツを提供する静的クラス。  <a href="classSpan_1_1ImGuiUI.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:EditorPanel" id="r_EditorPanel"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1EditorPanel.html">EditorPanel</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🖼 全てのエディタパネルの基底クラス。  <a href="classSpan_1_1EditorPanel.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:EnvironmentPanel" id="r_EnvironmentPanel"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1EnvironmentPanel.html">EnvironmentPanel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">⛅ シーンの環境光、Skybox、露出などを調整するエディタウィンドウ。  <a href="classSpan_1_1EnvironmentPanel.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:HierarchyPanel" id="r_HierarchyPanel"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1HierarchyPanel.html">HierarchyPanel</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🌳 シーン上の全エンティティをツリー形式で表示するパネル。  <a href="classSpan_1_1HierarchyPanel.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:InspectorPanel" id="r_InspectorPanel"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1InspectorPanel.html">InspectorPanel</a></td></tr>
@@ -219,6 +221,8 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 CPUからGPUへデータを送信するための定数バッファ。  <a href="classSpan_1_1ConstantBuffer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:GraphicsContext" id="r_GraphicsContext"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1GraphicsContext.html">GraphicsContext</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎮 GPUコンテキストのラッパー。描画パイプラインの基盤。  <a href="classSpan_1_1GraphicsContext.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:IBLBuilder" id="r_IBLBuilder"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1IBLBuilder.html">IBLBuilder</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🌌 パノラマHDR画像からPBRに必要なIBLテクスチャ群を生成するユーティリティ。  <a href="classSpan_1_1IBLBuilder.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:RenderTarget" id="r_RenderTarget"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎯 描画対象となるテクスチャリソース。  <a href="classSpan_1_1RenderTarget.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Shader" id="r_Shader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Shader.html">Shader</a></td></tr>
@@ -414,6 +418,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:acf4814db50cb33df2e35d9ea4e8d8a00"><td class="mdescLeft">&#160;</td><td class="mdescRight">投影モード定義  <a href="#acf4814db50cb33df2e35d9ea4e8d8a00">[詳解]</a><br /></td></tr>
 <tr class="memitem:ac6d174c183a792e0102f9c0ca931920d" id="r_ac6d174c183a792e0102f9c0ca931920d"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#ac6d174c183a792e0102f9c0ca931920d">ShaderType</a> { <a class="el" href="#ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6">Vertex</a>
 , <a class="el" href="#ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0">Pixel</a>
+, <a class="el" href="#ac6d174c183a792e0102f9c0ca931920daa623a8d0366bf079411aa30be45b2d10">Compute</a>
  }</td></tr>
 <tr class="memdesc:ac6d174c183a792e0102f9c0ca931920d"><td class="mdescLeft">&#160;</td><td class="mdescRight">シェーダーの種類  <a href="#ac6d174c183a792e0102f9c0ca931920d">[詳解]</a><br /></td></tr>
 <tr class="memitem:a767a1576d488be4c5098a130d6a2d6a0" id="r_a767a1576d488be4c5098a130d6a2d6a0"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#a767a1576d488be4c5098a130d6a2d6a0">BlendMode</a> { <a class="el" href="#a767a1576d488be4c5098a130d6a2d6a0afaa90538de35640e4b1e31ccf35b6eb5">Opaque</a> = 0
@@ -453,6 +458,10 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <br />
  }</td></tr>
 <tr class="memdesc:a371e826f9987adf5be5f3e54e7af0b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">アセットの種類を識別するための列挙型。  <a href="#a371e826f9987adf5be5f3e54e7af0b25">[詳解]</a><br /></td></tr>
+<tr class="memitem:ae998cbdcb20205c3ef84161a94a804f6" id="r_ae998cbdcb20205c3ef84161a94a804f6"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#ae998cbdcb20205c3ef84161a94a804f6">SkyboxMode</a> { <a class="el" href="#ae998cbdcb20205c3ef84161a94a804f6a4b729261cf45327870528920781485f4">Procedural</a> = 0
+, <a class="el" href="#ae998cbdcb20205c3ef84161a94a804f6a4cf15a2066c299b2f4cdf5b2264e9ae6">HDRI</a> = 1
+ }</td></tr>
+<tr class="memdesc:ae998cbdcb20205c3ef84161a94a804f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカイボックスのモード  <a href="#ae998cbdcb20205c3ef84161a94a804f6">[詳解]</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
@@ -462,6 +471,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memitem:a247e3d3dd552cb352584f6b968a21bd1 template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a247e3d3dd552cb352584f6b968a21bd1">SafeRelease</a> (T *&amp;ptr)</td></tr>
 <tr class="memitem:ae79449040cc75c359f5829b808fb2a57" id="r_ae79449040cc75c359f5829b808fb2a57"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae79449040cc75c359f5829b808fb2a57">GetGamepadIndex</a> (<a class="el" href="#aa350a9ffb8abcc7152b348bf09b86d8f">Key</a> key)</td></tr>
 <tr class="memitem:a2ef8a3c6c287dbf431e5d2d344b7d4cc" id="r_a2ef8a3c6c287dbf431e5d2d344b7d4cc"><td class="memItemLeft">std::filesystem::path&#160;</td><td class="memItemRight"><a class="el" href="#a2ef8a3c6c287dbf431e5d2d344b7d4cc">GetTrashPath</a> (const std::filesystem::path &amp;originalPath)</td></tr>
+<tr class="memitem:aeb6ba3ab09cf6f4150180bb903b09502" id="r_aeb6ba3ab09cf6f4150180bb903b09502"><td class="memItemLeft">static AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1EnvironmentPanel.html">EnvironmentPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aeb6ba3ab09cf6f4150180bb903b09502">_reg_env</a> (&quot;EnvironmentPanel&quot;)</td></tr>
 <tr class="memitem:ab70254134b06676ef075109a54d3c433" id="r_ab70254134b06676ef075109a54d3c433"><td class="memItemLeft">static AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1HierarchyPanel.html">HierarchyPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab70254134b06676ef075109a54d3c433">_reg_hierarchy</a> (&quot;Hierarchy&quot;)</td></tr>
 <tr class="memitem:a2ffd67e5c0ae55d0918e1924de043da2" id="r_a2ffd67e5c0ae55d0918e1924de043da2"><td class="memItemLeft">static AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1InspectorPanel.html">InspectorPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2ffd67e5c0ae55d0918e1924de043da2">_reg</a> (&quot;Inspector&quot;)</td></tr>
 <tr class="memitem:ace337f7269a75fc3dbdba7e232c99043" id="r_ace337f7269a75fc3dbdba7e232c99043"><td class="memItemLeft">static AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1ProjectBrowserPanel.html">ProjectBrowserPanel</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ace337f7269a75fc3dbdba7e232c99043">_reg</a> (&quot;Project Browser&quot;)</td></tr>
@@ -1253,13 +1263,46 @@ Constants &amp; Helpers</h2></td></tr>
 
 <p>シェーダーの種類 </p>
 <table class="fieldtable">
-<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6" name="ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6"></a>Vertex&#160;</td><td class="fielddoc"><p>頂点シェーダー (vs_5_0) </p>
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6" name="ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6"></a>Vertex&#160;</td><td class="fielddoc"><p>頂点シェーダー </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0" name="ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0"></a>Pixel&#160;</td><td class="fielddoc"><p>ピクセルシェーダー (vs_5_0) </p>
+<tr><td class="fieldname"><a id="ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0" name="ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0"></a>Pixel&#160;</td><td class="fielddoc"><p>ピクセルシェーダー </p>
 </td></tr>
+<tr><td class="fieldname"><a id="ac6d174c183a792e0102f9c0ca931920daa623a8d0366bf079411aa30be45b2d10" name="ac6d174c183a792e0102f9c0ca931920daa623a8d0366bf079411aa30be45b2d10"></a>Compute&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 <p class="definition"> <a class="el" href="Shader_8h_source.html">Shader.h</a> の <a class="el" href="Shader_8h_source.html#l00018">18</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ae998cbdcb20205c3ef84161a94a804f6" name="ae998cbdcb20205c3ef84161a94a804f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae998cbdcb20205c3ef84161a94a804f6">&#9670;&#160;</a></span>SkyboxMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#ae998cbdcb20205c3ef84161a94a804f6">Span::SkyboxMode</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>スカイボックスのモード </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ae998cbdcb20205c3ef84161a94a804f6a4b729261cf45327870528920781485f4" name="ae998cbdcb20205c3ef84161a94a804f6a4b729261cf45327870528920781485f4"></a>Procedural&#160;</td><td class="fielddoc"><p>3色グラデーション </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae998cbdcb20205c3ef84161a94a804f6a4cf15a2066c299b2f4cdf5b2264e9ae6" name="ae998cbdcb20205c3ef84161a94a804f6a4cf15a2066c299b2f4cdf5b2264e9ae6"></a>HDRI&#160;</td><td class="fielddoc"><p>パノラマHDR画像 </p>
+</td></tr>
+</table>
+
+<p class="definition"> <a class="el" href="EnvironmentSettings_8h_source.html">EnvironmentSettings.h</a> の <a class="el" href="EnvironmentSettings_8h_source.html#l00022">22</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1327,6 +1370,31 @@ Constants &amp; Helpers</h2></td></tr>
           <td class="memname">AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1SceneViewPanel.html">SceneViewPanel</a> &gt; Span::_reg </td>
           <td>(</td>
           <td class="paramtype">&quot;Scene&quot;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb6ba3ab09cf6f4150180bb903b09502" name="aeb6ba3ab09cf6f4150180bb903b09502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb6ba3ab09cf6f4150180bb903b09502">&#9670;&#160;</a></span>_reg_env()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AutoRegisterPanel&lt; <a class="el" href="classSpan_1_1EnvironmentPanel.html">EnvironmentPanel</a> &gt; Span::_reg_env </td>
+          <td>(</td>
+          <td class="paramtype">&quot;EnvironmentPanel&quot;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

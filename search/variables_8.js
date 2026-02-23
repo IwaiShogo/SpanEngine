@@ -9,7 +9,8 @@ var searchData=
   ['hasmetallicmap_6',['HasMetallicMap',['../structSpan_1_1MaterialData.html#a60e5ad14d668c1f4f27277b1ce7472f7',1,'Span::MaterialData']]],
   ['hasnormalmap_7',['HasNormalMap',['../structSpan_1_1MaterialData.html#ad7095d9558059e5e4bb67549f97f87fd',1,'Span::MaterialData']]],
   ['hasroughnessmap_8',['HasRoughnessMap',['../structSpan_1_1MaterialData.html#abd58f6355e25672763ee56d30c5de4f1',1,'Span::MaterialData']]],
-  ['height_9',['Height',['../structSpan_1_1WindowDesc.html#aac08d89553d3b8035353fccaec19c9d9',1,'Span::WindowDesc']]],
-  ['height_10',['height',['../classSpan_1_1GraphicsContext.html#aaaddcb875742327d39925d6663e51b3a',1,'Span::GraphicsContext::height'],['../classSpan_1_1RenderTarget.html#a04c440b3a562ca83de2fea0a91dab0bb',1,'Span::RenderTarget::height'],['../classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6',1,'Span::Texture::height'],['../classSpan_1_1Window.html#a235ef7aea03644d4d837583c3a3802c1',1,'Span::Window::height']]],
-  ['hwnd_11',['hWnd',['../classSpan_1_1Input.html#a894733c1ea68a084e5cf9ab8f0bcb999',1,'Span::Input::hWnd'],['../classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515',1,'Span::Window::hWnd']]]
+  ['hdripath_9',['HDRIPath',['../structSpan_1_1EnvironmentSettings.html#a38f84c8ab120ff2e4b19f2e0aab44922',1,'Span::EnvironmentSettings']]],
+  ['height_10',['Height',['../structSpan_1_1WindowDesc.html#aac08d89553d3b8035353fccaec19c9d9',1,'Span::WindowDesc']]],
+  ['height_11',['height',['../classSpan_1_1GraphicsContext.html#aaaddcb875742327d39925d6663e51b3a',1,'Span::GraphicsContext::height'],['../classSpan_1_1RenderTarget.html#a04c440b3a562ca83de2fea0a91dab0bb',1,'Span::RenderTarget::height'],['../classSpan_1_1Texture.html#a1556b35304b4e78640e769fd06a782e6',1,'Span::Texture::height'],['../classSpan_1_1Window.html#a235ef7aea03644d4d837583c3a3802c1',1,'Span::Window::height']]],
+  ['hwnd_12',['hWnd',['../classSpan_1_1Input.html#a894733c1ea68a084e5cf9ab8f0bcb999',1,'Span::Input::hWnd'],['../classSpan_1_1Window.html#aa2fb9e56e345f56bed7e66812e199515',1,'Span::Window::hWnd']]]
 ];
