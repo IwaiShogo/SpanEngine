@@ -138,6 +138,9 @@ namespace Span
 		/// @brief	ライト情報をRendererにセットする関数
 		void SetGlobalLightData(const std::vector<LightDataGPU>& lights, const EnvironmentSettings& env);
 
+		bool LoadEnvironmentMap(const std::string& filepath);
+		Texture* GetEnvironmentCubemap() const { return m_envCubemap.get(); }
+
 		/// @brief	GPUの処理完了を待機する
 		void WaitForGPU();
 
@@ -202,5 +205,9 @@ namespace Span
 		std::unique_ptr<ShadowPass> m_dirShadowPass;
 		std::unique_ptr<ShadowPass> m_spotShadowPass;
 		std::unique_ptr<ShadowPass> m_pointShadowPass;
+
+		// Environment
+		std::unique_ptr<Texture> m_envCubemap;
+		std::string m_currentLoadedHDRI = "";
 	};
 }

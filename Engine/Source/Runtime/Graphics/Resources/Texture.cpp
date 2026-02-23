@@ -6,26 +6,39 @@
 
 namespace Span
 {
-	Texture::Texture() {}
-	Texture::~Texture() { Shutdown(); }
-
 	void Texture::Shutdown()
 	{
 		resource.Reset();
-		uploadBuffer.Reset(); // アップロードが終われば解放して良いが、今回は保持
+		uploadBuffer.Reset();
 		srvHeap.Reset();
+		uavHeap.Reset();
 	}
 
 	bool Texture::Initialize(ID3D12Device* device, ID3D12CommandQueue* commandQueue, const std::string& filepath)
 	{
 		SPAN_LOG("Loading Texture: %s", filepath.c_str());
-
 		m_FilePath = filepath;
 
-		// 1. stb_image で画像読み込み
+		// 拡張子でHDRかどうかを判定
+		m_IsHDR = (filepath.length() > 4 && filepath.substr(filepath.length() - 4) == ".hdr");
+
 		int w, h, channels;
-		// RGBA (4チャンネル) で強制的に読み込む
-		unsigned char* data = stbi_load(filepath.c_str(), &w, &h, &channels, 4);
+		void* data = nullptr;
+		DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		uint64_t bytesPerPixel = 4;
+
+		if (m_IsHDR)
+		{
+			// HDR画像は float の配列として読み込む
+			data = stbi_loadf(filepath.c_str(), &w, &h, &channels, 4);
+			format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+			bytesPerPixel = 16;
+		}
+		else
+		{
+			// LDR画像は unsigned char 配列として読み込む
+			data = stbi_load(filepath.c_str(), &w, &h, &channels, 4);
+		}
 
 		if (!data)
 		{
@@ -37,7 +50,7 @@ namespace Span
 		height = static_cast<uint32_t>(h);
 
 		// 2. GPUへアップロード
-		if (!UploadTexture(device, commandQueue, data, width, height, 4))
+		if (!UploadTexture(device, commandQueue, data, width, height, bytesPerPixel, format))
 		{
 			stbi_image_free(data);
 			return false;
@@ -61,7 +74,7 @@ namespace Span
 		// 4. SRV (ビュー) の作成
 		D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
 		srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-		srvDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		srvDesc.Format = format;
 		srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
 		srvDesc.Texture2D.MipLevels = 1;
 
@@ -71,13 +84,64 @@ namespace Span
 		return true;
 	}
 
+	bool Texture::InitializeAsCubemap(ID3D12Device* device, uint32_t size)
+	{
+		width = size;
+		height = size;
+		m_IsHDR = true;
+
+		D3D12_RESOURCE_DESC desc = {};
+		desc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
+		desc.Width = size;
+		desc.Height = size;
+		desc.DepthOrArraySize = 6;
+		desc.MipLevels = 1;
+		desc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+		desc.SampleDesc.Count = 1;
+		desc.Flags = D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS;
+
+		D3D12_HEAP_PROPERTIES heapProps = { D3D12_HEAP_TYPE_DEFAULT };
+		if (FAILED(device->CreateCommittedResource(&heapProps, D3D12_HEAP_FLAG_NONE, &desc,
+			D3D12_RESOURCE_STATE_UNORDERED_ACCESS, nullptr, IID_PPV_ARGS(&resource)))) return false;
+
+		// UAV (書き込み用) ヒープとビューの作成
+		D3D12_DESCRIPTOR_HEAP_DESC uavHeapDesc = {};
+		uavHeapDesc.NumDescriptors = 1;
+		uavHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
+		uavHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
+		device->CreateDescriptorHeap(&uavHeapDesc, IID_PPV_ARGS(&uavHeap));
+
+		D3D12_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};
+		uavDesc.Format = desc.Format;
+		uavDesc.ViewDimension = D3D12_UAV_DIMENSION_TEXTURE2DARRAY;
+		uavDesc.Texture2DArray.ArraySize = 6;
+		device->CreateUnorderedAccessView(resource.Get(), nullptr, &uavDesc, uavHeap->GetCPUDescriptorHandleForHeapStart());
+
+		// SRV (読み込み用) ヒープとビューの作成
+		D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
+		srvHeapDesc.NumDescriptors = 1;
+		srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
+		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
+		device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap));
+
+		D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+		srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+		srvDesc.Format = desc.Format;
+		srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURECUBE;
+		srvDesc.TextureCube.MipLevels = 1;
+		srvHandleCPU = srvHeap->GetCPUDescriptorHandleForHeapStart();
+		device->CreateShaderResourceView(resource.Get(), &srvDesc, srvHandleCPU);
+
+		return true;
+	}
+
 	bool Texture::UploadTexture(ID3D12Device* device, ID3D12CommandQueue* commandQueue,
-		const void* initialData, uint64_t w, uint64_t h, uint64_t bytesPerPixel)
+		const void* initialData, uint64_t w, uint64_t h, uint64_t bytesPerPixel, DXGI_FORMAT format)
 	{
 		// リソース記述
 		D3D12_RESOURCE_DESC textureDesc = {};
 		textureDesc.MipLevels = 1;
-		textureDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		textureDesc.Format = format;
 		textureDesc.Width = w;
 		textureDesc.Height = h;
 		textureDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
@@ -87,7 +151,6 @@ namespace Span
 		textureDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
 
 		// 1. デフォルトヒープ（VRAM）にテクスチャリソースを作成
-		// 初期状態は COPY_DEST (コピー先) にする
 		D3D12_HEAP_PROPERTIES defaultHeap = { D3D12_HEAP_TYPE_DEFAULT };
 
 		if (FAILED(device->CreateCommittedResource(
@@ -106,7 +169,6 @@ namespace Span
 		D3D12_PLACED_SUBRESOURCE_FOOTPRINT footprint;
 		UINT64 rowSizeInBytes;
 		UINT numRows;
-
 		device->GetCopyableFootprints(&textureDesc, 0, 1, 0, &footprint, &numRows, &rowSizeInBytes, &uploadBufferSize);
 
 		// 3. アップロードヒープ（CPU書き込み可）のリソース作成
@@ -150,7 +212,6 @@ namespace Span
 		uploadBuffer->Unmap(0, nullptr);
 
 		// 5. コマンドリストを作ってコピー命令を発行
-		// (本来はRendererのコマンドリストを使うべきだが、初期化用として一時的に作成)
 		ComPtr<ID3D12CommandAllocator> cmdAlloc;
 		ComPtr<ID3D12GraphicsCommandList> cmdList;
 		device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&cmdAlloc));
@@ -179,11 +240,11 @@ namespace Span
 
 		cmdList->Close();
 
-		// 実行して待機 (簡易同期)
+		// 実行して待機
 		ID3D12CommandList* ppCommandLists[] = { cmdList.Get() };
 		commandQueue->ExecuteCommandLists(1, ppCommandLists);
 
-		// フェンス同期 (待機)
+		// フェンス同期
 		ComPtr<ID3D12Fence> fence;
 		device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence));
 		commandQueue->Signal(fence.Get(), 1);

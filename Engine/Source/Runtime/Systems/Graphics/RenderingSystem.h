@@ -48,8 +48,13 @@ namespace Span
 			Renderer& renderer = Application::Get().GetRenderer();
 			ID3D12GraphicsCommandList* cmd = renderer.GetCommandList();
 			auto world = GetWorld();
-
 			EnvironmentSettings& env = Application::Get().GetActiveScene().Environment;
+
+			// HDRIの動的ロード監視
+			if (env.Mode == SkyboxMode::HDRI && !env.HDRIPath.empty())
+			{
+				renderer.LoadEnvironmentMap(env.HDRIPath);
+			}
 
 			// 1. Light Collection & Shadow Matrix Collection
 			// ============================================================
@@ -255,7 +260,7 @@ namespace Span
 			// Skybox
 			if (auto skyboxPass = renderer.GetSkyboxPass())
 			{
-				skyboxPass->Render(&renderer, cmd, env, renderer.GetViewMatrix(), renderer.GetProjectionMatrix(), renderer.GetCameraPosition());
+				skyboxPass->Render(&renderer, cmd, env, renderer.GetViewMatrix(), renderer.GetProjectionMatrix(), renderer.GetCameraPosition(), renderer.GetEnvironmentCubemap());
 			}
 
 			// Transparent

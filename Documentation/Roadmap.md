@@ -24,7 +24,7 @@
 ### 1. Dynamic Lighting & Shadows
 - [x] **Light Components:** Directional, Point, Spot の基礎実装。
 - [x] **Shadow Mapping:** Directional / Spot Light の影 (Texture2DArray)。
-- [ ] **Omnidirectional Shadows:** Point Light の影 (TextureCube)。
+- [x] **Omnidirectional Shadows:** Point Light の影 (TextureCube)。
 - [ ] **Forward+ Shading:** Compute Shaderを用いたライトのカリング。数千のライトを配置しても処理落ちしない極限の最適化。
 - [ ] **Area Lights (LTC):** 面積を持った光源（蛍光灯や窓ガラス）の正確なPBR計算。
 

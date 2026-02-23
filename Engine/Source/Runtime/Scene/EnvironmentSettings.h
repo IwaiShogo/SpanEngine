@@ -11,9 +11,20 @@
 
 #pragma once
 #include "Core/CoreMinimal.h"
+#include "Core/Math/SpanMath.h"
 
 namespace Span
 {
+	/**
+	 * @enum	SkyboxMode
+	 * @brief	スカイボックスのモード
+	 */
+	enum class SkyboxMode
+	{
+		Procedural = 0,	///< 3色グラデーション
+		HDRI = 1		///< パノラマHDR画像
+	};
+
 	/**
 	 * @struct	EnvironmentSettings
 	 * @brief	🌏 シーン全体の環境 (空、光、雰囲気) を定義するデータ。
@@ -21,17 +32,17 @@ namespace Span
 	struct EnvironmentSettings
 	{
 		// --- Skybox Settings ---
-		bool UseProceduralSky = true;
-		uint64_t SkyboxHDRI = 0;
+		SkyboxMode Mode = SkyboxMode::Procedural;
+		std::string HDRIPath = "";	// 空の時は何もロードしない
 
 		// デフォルトの3色グラデーション
-		float SkyTopColor[3] = { 0.35f, 0.5f, 0.7f };		// 青色
-		float SkyHorizonColor[3] = { 0.7f, 0.75f, 0.8f };	// 薄い水色/グレー
-		float SkyBottomColor[3] = { 0.2f, 0.2f, 0.2f };		// 暗いグレー
+		Vector3 SkyTopColor = { 0.35f, 0.5f, 0.7f };		// 青色
+		Vector3 SkyHorizonColor = { 0.7f, 0.75f, 0.8f };	// 薄い水色/グレー
+		Vector3 SkyBottomColor = { 0.2f, 0.2f, 0.2f };		// 暗いグレー
 
 		// --- Lighting & Ambient ---
-		float AmbientIntensity = 1.0f;
-		float EnvReflectionIntensity = 1.0f;
-		float Exposure = 1.0f;	// トーンマッピング用
+		float Exposure = 1.0f;					///< カメラの露出 (画面全体の明るさ)
+		float AmbientIntensity = 1.0f;			///< 環境光の強さ
+		float EnvReflectionIntensity = 1.0f;	///< 反射の強さ
 	};
 }

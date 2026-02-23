@@ -11,14 +11,19 @@ namespace Span
 #endif
 
 		// シェーダーモデルの指定 (vs_5_0, ps_5_0)
-		std::string target = (type == ShaderType::Vertex) ? "vs_5_0" : "ps_5_0";
+		std::string target;
+		switch (type)
+		{
+		case ShaderType::Vertex:	target = "vs_5_0"; break;
+		case ShaderType::Pixel:		target = "ps_5_0"; break;
+		case ShaderType::Compute:	target = "cs_5_0"; break;
+		default:					target = "ps_5_0"; break;
+		}
 
-		// パス解決 (実行ファイルからの相対パス)
-		// ビルド後の構成に合わせて調整が必要だが、今回はシンプルに "Shaders/" を探す
+		// パス解決
 		std::wstring path = L"Shaders/" + filename;
 		if (!std::filesystem::exists(path))
 		{
-			// デバッガから実行した場合、カレントディレクトリがズレることがあるため親も探す
 			path = L"../../Engine/Shaders/" + filename;
 		}
 

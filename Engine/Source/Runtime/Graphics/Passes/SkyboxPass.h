@@ -35,7 +35,7 @@ namespace Span
 		/**
 		 * @brief	スカイボックスを描画します。RendererのCBVアロケータを使用します。
 		 */
-		void Render(Renderer* renderer, ID3D12GraphicsCommandList* cmd, const EnvironmentSettings& env, const Matrix4x4& view, const Matrix4x4& proj, const Vector3& camPos);
+		void Render(Renderer* renderer, ID3D12GraphicsCommandList* cmd, const EnvironmentSettings& env, const Matrix4x4& view, const Matrix4x4& proj, const Vector3& camPos, Texture* envCubemap);
 
 	private:
 		ComPtr<ID3D12PipelineState> m_pso;

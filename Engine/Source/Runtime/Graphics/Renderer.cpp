@@ -1,6 +1,7 @@
 ﻿#include "Renderer.h"
 #include "Resources/Texture.h"
 #include "Core/Log/Logger.h"
+#include "Graphics/Core/IBLBuilder.h"
 
 // Passのインクルード
 #include "Passes/GridPass.h"
@@ -189,9 +190,9 @@ namespace Span
 		m_CurrentLightData.Exposure = env.Exposure;
 		m_CurrentLightData.AmbientIntensity = env.AmbientIntensity;
 		m_CurrentLightData.EnvReflectionIntensity = env.EnvReflectionIntensity;
-		m_CurrentLightData.SkyTopColor = Vector3(env.SkyTopColor[0], env.SkyTopColor[1], env.SkyTopColor[2]);
-		m_CurrentLightData.SkyHorizonColor = Vector3(env.SkyHorizonColor[0], env.SkyHorizonColor[1], env.SkyHorizonColor[2]);
-		m_CurrentLightData.SkyBottomColor = Vector3(env.SkyBottomColor[0], env.SkyBottomColor[1], env.SkyBottomColor[2]);
+		m_CurrentLightData.SkyTopColor = env.SkyTopColor;
+		m_CurrentLightData.SkyHorizonColor = env.SkyHorizonColor;
+		m_CurrentLightData.SkyBottomColor = env.SkyTopColor;
 
 		// 行列の初期化
 		m_CurrentLightData.DirectionalLightSpaceMatrix = Matrix4x4::Identity().Transpose();
@@ -208,6 +209,63 @@ namespace Span
 		}
 
 		if (m_LightBuffer) m_LightBuffer->Update(m_CurrentLightData);
+	}
+
+	bool Renderer::LoadEnvironmentMap(const std::string& filepath)
+	{
+		if (filepath.empty() || m_currentLoadedHDRI == filepath) return true;
+
+		auto device = context->GetDevice();
+		auto queue = context->GetCommandQueue();
+
+		// 1. パノラマHDRI画像を読み込む (.hdr)
+		Texture panoramaTex;
+		if (!panoramaTex.Initialize(device, queue, filepath))
+		{
+			SPAN_ERROR("Failed to load HDRI: %s", filepath.c_str());
+			return false;
+		}
+
+		// 2. 出力先の空の Cubemap を作成
+		m_envCubemap = std::make_unique<Texture>();
+		if (!m_envCubemap->InitializeAsCubemap(device, 1024)) return false;
+
+		// 3. Builderの初期化
+		IBLBuilder builder;
+		if (!builder.Initialize(device)) return false;
+
+		// 4. Compute Shader用の1回限りのコマンドリストを作成
+		ComPtr<ID3D12CommandAllocator> cmdAlloc;
+		ComPtr<ID3D12GraphicsCommandList> cmdList;
+		device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&cmdAlloc));
+		device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, cmdAlloc.Get(), nullptr, IID_PPV_ARGS(&cmdList));
+
+		// 5. 変換処理
+		builder.GenerateCubemapFromPanorama(device, cmdList.Get(), panoramaTex.GetCPUDescriptorHandle(), m_envCubemap.get(), 1024);
+
+		// 6. コマンドリストを閉じて実行
+		cmdList->Close();
+		ID3D12CommandList* ppCommandLists[] = { cmdList.Get() };
+		queue->ExecuteCommandLists(1, ppCommandLists);
+
+		// GPUの完了を待機
+		ComPtr<ID3D12Fence> fence;
+		device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence));
+		queue->Signal(fence.Get(), 1);
+
+		HANDLE fenceEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
+		if (fence->GetCompletedValue() < 1)
+		{
+			fence->SetEventOnCompletion(1, fenceEvent);
+			WaitForSingleObject(fenceEvent, INFINITE);
+		}
+		CloseHandle(fenceEvent);
+
+		builder.Shutdown();
+
+		m_currentLoadedHDRI = filepath;
+		SPAN_LOG("Environment Cubemap generated successfully from %s", filepath.c_str());
+		return true;
 	}
 
 	void Renderer::WaitForGPU()

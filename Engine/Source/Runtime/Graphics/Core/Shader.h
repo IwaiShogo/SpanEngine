@@ -17,8 +17,9 @@ namespace Span
 	/// @brief	シェーダーの種類
 	enum class ShaderType
 	{
-		Vertex,	///< 頂点シェーダー (vs_5_0)
-		Pixel	///< ピクセルシェーダー (vs_5_0)
+		Vertex,		///< 頂点シェーダー
+		Pixel,		///< ピクセルシェーダー
+		Compute,
 	};
 
 	/**
