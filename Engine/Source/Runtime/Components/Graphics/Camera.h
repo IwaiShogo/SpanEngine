@@ -32,7 +32,7 @@ namespace Span
 	 */
 	struct Camera
 	{
-		ProjectionType Type = ProjectionType::Perspective;	// デフォルトは投資投影
+		ProjectionType Type = ProjectionType::Perspective;	// デフォルトは透視投影
 
 		float Fov = 45.0f;				///< Perspective用の画角
 		float OrthographicSize = 10.0f;	///< Ortho用のサイズ (縦の範囲)

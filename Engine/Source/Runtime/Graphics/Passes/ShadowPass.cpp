@@ -13,10 +13,10 @@
 
 namespace Span
 {
-	bool ShadowPass::Initialize(ID3D12Device* device)
+	bool ShadowPass::Initialize(ID3D12Device* device, uint32 width, uint32 height, uint32 arraySize, bool isCube)
 	{
 		m_shadowMap = new ShadowMap();
-		if (!m_shadowMap->Initialize(device, 4096, 4096)) return false;
+		if (!m_shadowMap->Initialize(device, width, height, arraySize, isCube)) return false;
 
 		m_shaderVS = new Shader();
 		if (!m_shaderVS->Load(L"Shadow.hlsl", ShaderType::Vertex, "VSMain")) return false;
@@ -49,7 +49,7 @@ namespace Span
 		psoDesc.PS = { nullptr, 0 }; // 深度のみ書き込むのでPS不要
 
 		psoDesc.RasterizerState.FillMode = D3D12_FILL_MODE_SOLID;
-		psoDesc.RasterizerState.CullMode = D3D12_CULL_MODE_FRONT; // シャドウアクネ防止
+		psoDesc.RasterizerState.CullMode = D3D12_CULL_MODE_FRONT;
 		psoDesc.RasterizerState.DepthClipEnable = TRUE;
 		psoDesc.RasterizerState.DepthBias = 0;
 		psoDesc.RasterizerState.DepthBiasClamp = 0.0f;
@@ -86,7 +86,14 @@ namespace Span
 		barrier.Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
 		cmd->ResourceBarrier(1, &barrier);
 
-		D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = m_shadowMap->GetDSV();
+		cmd->SetPipelineState(m_pso.Get());
+		cmd->SetGraphicsRootSignature(m_rootSignature.Get());
+	}
+
+	void ShadowPass::SetRenderTarget(ID3D12GraphicsCommandList* cmd, uint32 sliceIndex)
+	{
+		if (!m_shadowMap || !cmd) return;
+		D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = m_shadowMap->GetDSV(sliceIndex);
 		cmd->OMSetRenderTargets(0, nullptr, FALSE, &dsvHandle);
 		cmd->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 
@@ -94,9 +101,6 @@ namespace Span
 		D3D12_RECT scissor = { 0, 0, (long)m_shadowMap->GetWidth(), (long)m_shadowMap->GetHeight() };
 		cmd->RSSetViewports(1, &vp);
 		cmd->RSSetScissorRects(1, &scissor);
-
-		cmd->SetPipelineState(m_pso.Get());
-		cmd->SetGraphicsRootSignature(m_rootSignature.Get());
 	}
 
 	void ShadowPass::EndPass(ID3D12GraphicsCommandList* cmd)
@@ -111,12 +115,12 @@ namespace Span
 		cmd->ResourceBarrier(1, &barrier);
 	}
 
-	void ShadowPass::DrawMesh(Renderer* renderer, ID3D12GraphicsCommandList* cmd, Mesh* mesh, const Matrix4x4& worldMatrix)
+	void ShadowPass::DrawMesh(Renderer* renderer, ID3D12GraphicsCommandList* cmd, Mesh* mesh, const Matrix4x4& worldMatrix, const Matrix4x4& lightSpaceMatrix)
 	{
 		if (!mesh || !cmd) return;
 
 		TransformData data;
-		Matrix4x4 mvp = worldMatrix * m_lightSpaceMatrix;
+		Matrix4x4 mvp = worldMatrix * lightSpaceMatrix;
 		data.MVP.FromXM(XMMatrixTranspose(mvp.ToXM()));
 		data.World.FromXM(XMMatrixTranspose(worldMatrix.ToXM()));
 

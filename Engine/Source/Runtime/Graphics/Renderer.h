@@ -38,19 +38,26 @@ namespace Span
 
 	struct alignas(16) LightDataGPU
 	{
+		// 16 bytes
 		Vector3 Color;
 		float Intensity;
 
+		// 16 bytes
 		Vector3 Position;
 		float Range;
 
+		// 16 bytes
 		Vector3 Direction;
 		int Type;	// 0: Directional, 1: Point, 2: Spot
 
+		// 16 bytes
 		float InnerConeAngle;
 		float OuterConeAngle;
-		float Padding1;
-		float Padding2;
+		int CastShadows;	// 1: 影あり, 0: なし
+		int ShadowIndex;	// 影のテクスチャ配列インデックス (影なしの場合は -1)
+
+		// 64 bytes
+		Matrix4x4 ShadowMatrix;
 	};
 
 	// 最大ライト数
@@ -105,7 +112,9 @@ namespace Span
 		// 各Passの取得ゲッター
 		GridPass* GetGridPass() const { return m_gridPass.get(); }
 		SkyboxPass* GetSkyboxPass() const { return m_skyboxPass.get(); }
-		ShadowPass* GetShadowPass() const { return m_shadowPass.get(); }
+		ShadowPass* GetDirShadowPass() const { return m_dirShadowPass.get(); }
+		ShadowPass* GetSpotShadowPass() const { return m_spotShadowPass.get(); }
+		ShadowPass* GetPointShadowPass() const { return m_pointShadowPass.get(); }
 
 		/**
 		 * @brief	メッシュ描画コマンドの発行。
@@ -190,6 +199,8 @@ namespace Span
 		// Render Passes
 		std::unique_ptr<GridPass> m_gridPass;
 		std::unique_ptr<SkyboxPass> m_skyboxPass;
-		std::unique_ptr<ShadowPass> m_shadowPass;
+		std::unique_ptr<ShadowPass> m_dirShadowPass;
+		std::unique_ptr<ShadowPass> m_spotShadowPass;
+		std::unique_ptr<ShadowPass> m_pointShadowPass;
 	};
 }

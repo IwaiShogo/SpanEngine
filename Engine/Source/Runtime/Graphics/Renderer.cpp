@@ -42,8 +42,14 @@ namespace Span
 		m_skyboxPass = std::make_unique<SkyboxPass>();
 		if (!m_skyboxPass->Initialize(device)) return false;
 
-		m_shadowPass = std::make_unique<ShadowPass>();
-		if (!m_shadowPass->Initialize(device)) return false;
+		m_dirShadowPass = std::make_unique<ShadowPass>();
+		if (!m_dirShadowPass->Initialize(device, 4096, 4096, 1)) return false;
+
+		m_spotShadowPass = std::make_unique<ShadowPass>();
+		if (!m_spotShadowPass->Initialize(device, 1024, 1024, 4)) return false;
+
+		m_pointShadowPass = std::make_unique<ShadowPass>();
+		if (!m_pointShadowPass->Initialize(device, 1024, 1024, 6, true)) return false;
 
 		m_LightBuffer = new ConstantBuffer<GlobalLightData>();
 		if (!m_LightBuffer->Initialize(device)) return false;
@@ -67,7 +73,8 @@ namespace Span
 
 		m_gridPass.reset();
 		m_skyboxPass.reset();
-		m_shadowPass.reset();
+		m_dirShadowPass.reset();
+		m_spotShadowPass.reset();
 
 		if (m_LightBuffer) { m_LightBuffer->Shutdown(); SAFE_DELETE(m_LightBuffer); }
 		context = nullptr;
@@ -133,7 +140,7 @@ namespace Span
 		commandList->SetGraphicsRootConstantBufferView(0, cbAddr);
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
 
-		if (m_LightBuffer) commandList->SetGraphicsRootConstantBufferView(9, m_LightBuffer->GetGPUVirtualAddress());
+		if (m_LightBuffer) commandList->SetGraphicsRootConstantBufferView(11, m_LightBuffer->GetGPUVirtualAddress());
 
 		Texture* textures[6] = { material->GetAlbedoMap(), material->GetNormalMap(), material->GetMetallicMap(), material->GetRoughnessMap(), material->GetAOMap(), material->GetEmissiveMap() };
 		for (int i = 0; i < 6; i++) {
@@ -144,11 +151,25 @@ namespace Span
 			}
 		}
 
-		if (m_shadowPass && m_shadowPass->GetShadowMap())
+		if (m_dirShadowPass && m_dirShadowPass->GetShadowMap())
 		{
-			ID3D12DescriptorHeap* shadowHeaps[] = { m_shadowPass->GetShadowMap()->GetSRVHeap() };
+			ID3D12DescriptorHeap* shadowHeaps[] = { m_dirShadowPass->GetShadowMap()->GetSRVHeap() };
 			commandList->SetDescriptorHeaps(1, shadowHeaps);
-			commandList->SetGraphicsRootDescriptorTable(8, m_shadowPass->GetShadowMap()->GetSRV());
+			commandList->SetGraphicsRootDescriptorTable(8, m_dirShadowPass->GetShadowMap()->GetSRV());
+		}
+
+		if (m_spotShadowPass && m_spotShadowPass->GetShadowMap())
+		{
+			ID3D12DescriptorHeap* shadowHeaps[] = { m_spotShadowPass->GetShadowMap()->GetSRVHeap() };
+			commandList->SetDescriptorHeaps(1, shadowHeaps);
+			commandList->SetGraphicsRootDescriptorTable(9, m_spotShadowPass->GetShadowMap()->GetSRV());
+		}
+
+		if (m_pointShadowPass && m_pointShadowPass->GetShadowMap())
+		{
+			ID3D12DescriptorHeap* shadowHeaps[] = { m_pointShadowPass->GetShadowMap()->GetSRVHeap() };
+			commandList->SetDescriptorHeaps(1, shadowHeaps);
+			commandList->SetGraphicsRootDescriptorTable(10, m_pointShadowPass->GetShadowMap()->GetSRV());
 		}
 
 		mesh->Draw(commandList);
@@ -172,12 +193,19 @@ namespace Span
 		m_CurrentLightData.SkyHorizonColor = Vector3(env.SkyHorizonColor[0], env.SkyHorizonColor[1], env.SkyHorizonColor[2]);
 		m_CurrentLightData.SkyBottomColor = Vector3(env.SkyBottomColor[0], env.SkyBottomColor[1], env.SkyBottomColor[2]);
 
-		if (m_shadowPass) {
-			m_CurrentLightData.DirectionalLightSpaceMatrix = m_shadowPass->GetLightSpaceMatrix().Transpose();
-		}
+		// 行列の初期化
+		m_CurrentLightData.DirectionalLightSpaceMatrix = Matrix4x4::Identity().Transpose();
 
 		m_CurrentLightData.ActiveLightCount = std::min((int)lights.size(), MAX_LIGHTS);
-		for (int i = 0; i < m_CurrentLightData.ActiveLightCount; ++i) m_CurrentLightData.Lights[i] = lights[i];
+		for (int i = 0; i < m_CurrentLightData.ActiveLightCount; ++i)
+		{
+			m_CurrentLightData.Lights[i] = lights[i];
+
+			if (lights[i].Type == 0)
+			{
+				m_CurrentLightData.DirectionalLightSpaceMatrix = lights[i].ShadowMatrix.Transpose();
+			}
+		}
 
 		if (m_LightBuffer) m_LightBuffer->Update(m_CurrentLightData);
 	}
@@ -197,7 +225,7 @@ namespace Span
 
 	bool Renderer::CreateRootSignature()
 	{
-		D3D12_ROOT_PARAMETER rootParameters[10];
+		D3D12_ROOT_PARAMETER rootParameters[12];
 
 		// [0] Transform (b0)
 		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -211,9 +239,9 @@ namespace Span
 		rootParameters[1].Descriptor.RegisterSpace = 0;
 		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 
-		// [2] ~ [8] Texture Tables (t0 ~ t6) : PBR(6枚) + ShadowMap(1枚)
-		D3D12_DESCRIPTOR_RANGE ranges[7] = {};
-		for (int i = 0; i < 7; i++)
+		// [2] ~ [9] Texture Tables (t0 ~ t7) : PBR(6) + DirShadow(1) + SpotShadowArray(1)
+		D3D12_DESCRIPTOR_RANGE ranges[9] = {};
+		for (int i = 0; i < 9; i++)
 		{
 			ranges[i].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
 			ranges[i].NumDescriptors = 1;
@@ -227,11 +255,11 @@ namespace Span
 			rootParameters[2 + i].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 		}
 
-		// [9] LightBuffer (b2)
-		rootParameters[9].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		rootParameters[9].Descriptor.ShaderRegister = 2;
-		rootParameters[9].Descriptor.RegisterSpace = 0;
-		rootParameters[9].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+		// [10] LightBuffer (b2)
+		rootParameters[11].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[11].Descriptor.ShaderRegister = 2;
+		rootParameters[11].Descriptor.RegisterSpace = 0;
+		rootParameters[11].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
 		// --- Samplers ---
 		// s0: 通常のテクスチャサンプラー

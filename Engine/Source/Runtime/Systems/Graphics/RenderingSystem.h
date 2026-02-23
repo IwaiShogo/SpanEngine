@@ -54,30 +54,69 @@ namespace Span
 			// 1. Light Collection & Shadow Matrix Collection
 			// ============================================================
 			std::vector<LightDataGPU> activeLights;
-			Vector3 mainLightDir = Vector3::Down;
-			bool mainLightCastShadows = true;
 
-			float shadowArea = 50.0f;
-			float shadowDist = 200.0f;
+			// --- Directional Light ---
+			Matrix4x4 dirLightMatrix = Matrix4x4::Identity();
+			bool dirLightCastShadow = false;
 
-			// A. Directional Light
 			world->ForEach<DirectionalLight, LocalToWorld>(
 				[&](Entity, DirectionalLight& dl, LocalToWorld& ltw)
 				{
 					LightDataGPU ld = {};
 					ld.Type = 0;
 					ld.Direction = Vector3::Normalize(Vector3(ltw.Value.m[2][0], ltw.Value.m[2][1], ltw.Value.m[2][2]));
-					ld.Color = dl.Color;
-					ld.Intensity = dl.Intensity;
+					ld.Color = dl.Color; ld.Intensity = dl.Intensity; ld.CastShadows = dl.CastShadows ? 1 : 0;
+
+					// 行列計算
+					Vector3 lightTarget = renderer.GetCameraPosition();
+					Vector3 lightPos = lightTarget - ld.Direction * (dl.ShadowMaxDistance * 0.5f);
+					Vector3 up = (std::abs(Vector3::Dot(ld.Direction, Vector3::Up)) > 0.999f) ? Vector3::Forward : Vector3::Up;
+					dirLightMatrix = Matrix4x4::LookAtLH(lightPos, lightTarget, up) * Matrix4x4::OrthographicLH(dl.ShadowAreaSize, dl.ShadowAreaSize, 1.0f, dl.ShadowMaxDistance);
+
+					ld.ShadowMatrix = dirLightMatrix;
 					activeLights.push_back(ld);
-					mainLightDir = ld.Direction;
-					mainLightCastShadows = dl.CastShadows;
-					shadowArea = dl.ShadowAreaSize;
-					shadowDist = dl.ShadowMaxDistance;
+					dirLightCastShadow = dl.CastShadows;
 				}
 			);
 
-			// B. Point Light
+			// --- Spot Light ---
+			int spotShadowCount = 0;
+
+			world->ForEach<SpotLight, LocalToWorld>(
+				[&](Entity, SpotLight& sl, LocalToWorld& ltw)
+				{
+					LightDataGPU ld = {};
+					ld.Type = 2;
+					ld.Position = Vector3(ltw.Value.m[3][0], ltw.Value.m[3][1], ltw.Value.m[3][2]);
+					ld.Direction = Vector3::Normalize(Vector3(ltw.Value.m[2][0], ltw.Value.m[2][1], ltw.Value.m[2][2]));
+					ld.Color = sl.Color; ld.Intensity = sl.Intensity; ld.Range = sl.Range;
+					ld.InnerConeAngle = std::cos(Deg2Rad(sl.InnerConeAngle)); ld.OuterConeAngle = std::cos(Deg2Rad(sl.OuterConeAngle));
+					ld.CastShadows = sl.CastShadows ? 1 : 0;
+					ld.ShadowIndex = -1;
+
+					// 影を落とす設定で、かつ最大数(4)未満なら行列を計算
+					if (sl.CastShadows && spotShadowCount < 4)
+					{
+						ld.ShadowIndex = spotShadowCount;
+						Vector3 up = (std::abs(Vector3::Dot(ld.Direction, Vector3::Up)) > 0.999f) ? Vector3::Forward : Vector3::Up;
+						Matrix4x4 view = Matrix4x4::LookAtLH(ld.Position, ld.Position + ld.Direction, up);
+						// 透視投影(Perspective)を使用！ Fov は OuterCone の2倍の広さ
+						Matrix4x4 proj = Matrix4x4::PerspectiveFovLH(Deg2Rad(sl.OuterConeAngle * 2.0f), 1.0f, 0.1f, sl.Range);
+						ld.ShadowMatrix = view * proj;
+						spotShadowCount++;
+					}
+					else
+					{
+						ld.ShadowMatrix = Matrix4x4::Identity().Transpose();
+					}
+
+					activeLights.push_back(ld);
+				}
+			);
+
+			// --- Point Light ---
+			int pointShadowCount = 0;
+
 			world->ForEach<PointLight, LocalToWorld>(
 				[&](Entity, PointLight& pl, LocalToWorld& ltw)
 				{
@@ -87,81 +126,101 @@ namespace Span
 					ld.Color = pl.Color;
 					ld.Intensity = pl.Intensity;
 					ld.Range = pl.Range;
+					ld.CastShadows = pl.CastShadows ? 1 : 0;
+					ld.ShadowIndex = -1;
+
+					if (pl.CastShadows && pointShadowCount < 1)
+					{
+						ld.ShadowIndex = pointShadowCount;
+						pointShadowCount++;
+					}
 					activeLights.push_back(ld);
 				}
 			);
 
-			// C. Spot Light
-			world->ForEach<SpotLight, LocalToWorld>(
-				[&](Entity, SpotLight& sl, LocalToWorld& ltw)
-				{
-					LightDataGPU ld = {};
-					ld.Type = 2;
-					ld.Position = Vector3(ltw.Value.m[3][0], ltw.Value.m[3][1], ltw.Value.m[3][2]);
-					ld.Direction = Vector3::Normalize(Vector3(ltw.Value.m[2][0], ltw.Value.m[2][1], ltw.Value.m[2][2]));
-					ld.Color = sl.Color;
-					ld.Intensity = sl.Intensity;
-					ld.Range = sl.Range;
-					ld.InnerConeAngle = std::cos(Deg2Rad(sl.InnerConeAngle));
-					ld.OuterConeAngle = std::cos(Deg2Rad(sl.OuterConeAngle));
-					activeLights.push_back(ld);
-				}
-			);
-
-			// 1. 太陽のカメラを、常に「現在のプレイヤー(カメラ)の位置」に追従させる
-			Vector3 camPos = renderer.GetCameraPosition();
-			Vector3 lightTarget = camPos;
-
-			// 2. ターゲットから光の逆方向へ十分な距離を離してカメラを置く
-			Vector3 lightPos = lightTarget - mainLightDir * (shadowDist * 0.5f);
-
-			// 3. 上方向ベクトルの計算
-			Vector3 up = Vector3::Up;
-			if (std::abs(Vector3::Dot(mainLightDir, Vector3::Up)) > 0.999f) up = Vector3::Forward;
-
-			Matrix4x4 lightView = Matrix4x4::LookAtLH(lightPos, lightTarget, up);
-
-			// 4. 投影範囲
-			Matrix4x4 lightProj = Matrix4x4::OrthographicLH(shadowArea, shadowArea, 1.0f, shadowDist);
-
-			Matrix4x4 lightSpaceMatrix = lightView * lightProj;
-
-			if (auto shadowPass = renderer.GetShadowPass())
-			{
-				shadowPass->SetLightSpaceMatrix(lightSpaceMatrix);
-			}
-
-			// ライトデータをメインパス用に転送
 			renderer.SetGlobalLightData(activeLights, env);
 
-			// 2. Shadow Pass
 			// ============================================================
-			if (auto shadowPass = renderer.GetShadowPass())
+			// 2. Shadow Passes
+			// ============================================================
+
+			// --- Directional Shadow Pass ---
+			if (auto dirPass = renderer.GetDirShadowPass())
 			{
-				if (mainLightCastShadows)
-				{
-					shadowPass->BeginPass(cmd);
+				dirPass->BeginPass(cmd);
+				dirPass->SetRenderTarget(cmd, 0);
+				if (dirLightCastShadow) {
+					world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>([&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw) {
+						if (mf.mesh && mr.material && mr.CastShadows) dirPass->DrawMesh(&renderer, cmd, mf.mesh, ltw.Value, dirLightMatrix);
+						});
+				}
+				dirPass->EndPass(cmd);
+			}
 
-					world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
-						[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
+			// --- Spot Shadow Pass (Array) ---
+			if (auto spotPass = renderer.GetSpotShadowPass())
+			{
+				spotPass->BeginPass(cmd);
+				for (int i = 0; i < spotShadowCount; ++i)
+				{
+					spotPass->SetRenderTarget(cmd, i);
+
+					// このスライス用の行列を検索
+					Matrix4x4 spotMatrix = Matrix4x4::Identity();
+					for (auto& l : activeLights)
+					{
+						if (l.Type == 2 && l.ShadowIndex == i)
 						{
-							if (mf.mesh && mr.material && mr.material->GetBlendMode() != BlendMode::Transparent)
-							{
-								if (mr.CastShadows)
-								{
-									shadowPass->DrawMesh(&renderer, cmd, mf.mesh, ltw.Value);
-								}
-							}
+							spotMatrix = l.ShadowMatrix;
+							break;
 						}
-					);
+					}
 
-					shadowPass->EndPass(cmd);
+					world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>([&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw) {
+						if (mf.mesh && mr.material && mr.CastShadows) spotPass->DrawMesh(&renderer, cmd, mf.mesh, ltw.Value, spotMatrix);
+						});
 				}
-				else
+				spotPass->EndPass(cmd);
+			}
+
+			// --- Point Shadow Pass ---
+			if (auto pointPass = renderer.GetPointShadowPass())
+			{
+				pointPass->BeginPass(cmd);
+				for (auto& l : activeLights)
 				{
-					shadowPass->BeginPass(cmd);
-					shadowPass->EndPass(cmd);
+					if (l.Type == 1 && l.ShadowIndex == 0)
+					{
+						Vector3 pos = l.Position;
+						float range = l.Range;
+
+						// 6方向のカメラ設定
+						Matrix4x4 views[6] = {
+							Matrix4x4::LookAtLH(pos, pos + Vector3::Right,		Vector3::Up),		// +X
+							Matrix4x4::LookAtLH(pos, pos + Vector3::Left,		Vector3::Up),		// -X
+							Matrix4x4::LookAtLH(pos, pos + Vector3::Up,			Vector3::Back),		// +Y
+							Matrix4x4::LookAtLH(pos, pos + Vector3::Down,		Vector3::Forward),	// -Y
+							Matrix4x4::LookAtLH(pos, pos + Vector3::Forward,	Vector3::Up),		// +Z
+							Matrix4x4::LookAtLH(pos, pos + Vector3::Back,		Vector3::Up)		// -Z
+						};
+
+						// 角度90度(PI/2)の透視投影
+						Matrix4x4 proj = Matrix4x4::PerspectiveFovLH(HalfPI, 1.0f, 0.1f, range);
+
+						// 6面全て描画
+						for (int face = 0; face < 6; ++face)
+						{
+							pointPass->SetRenderTarget(cmd, face);
+							Matrix4x4 cubeMatrix = views[face] * proj;
+
+							world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>([&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw) {
+								if (mf.mesh && mr.material && mr.CastShadows)
+									pointPass->DrawMesh(&renderer, cmd, mf.mesh, ltw.Value, cubeMatrix);
+							});
+						}
+					}
 				}
+				pointPass->EndPass(cmd);
 			}
 
 			// メインレンダーターゲットの復元

@@ -1,6 +1,6 @@
 ﻿/*****************************************************************//**
  * @file	ShadowPass.h
- * @brief	Directional Light からのシャドウマップ生成パス。
+ * @brief	シャドウ生成パス (Directional / Spot Light 兼用・Array対応版)
  * 
  * @details	
  * 
@@ -22,7 +22,7 @@ namespace Span
 
 	/**
 	 * @class	ShadowPass
-	 * @brief	Directional Light からのシャドウマップ生成パス。
+	 * @brief	シャドウ生成パス
 	 */
 	class ShadowPass
 	{
@@ -30,7 +30,7 @@ namespace Span
 		ShadowPass() = default;
 		~ShadowPass() { Shutdown(); }
 
-		bool Initialize(ID3D12Device* device);
+		bool Initialize(ID3D12Device* device, uint32 width, uint32 height, uint32 arraySize = 1, bool isCube = false);
 		void Shutdown();
 
 		/**
@@ -39,17 +39,20 @@ namespace Span
 		void BeginPass(ID3D12GraphicsCommandList* cmd);
 
 		/**
+		 * @brief	描画するスライスを指定してクリアする
+		 */
+		void SetRenderTarget(ID3D12GraphicsCommandList* cmd, uint32 sliceIndex = 0);
+
+		/**
 		 * @brief	影を落とすメッシュをシャドウマップに描画します。
 		 */
-		void DrawMesh(Renderer* renderer, ID3D12GraphicsCommandList* cmd, Mesh* mesh, const Matrix4x4& worldMatrix);
+		void DrawMesh(Renderer* renderer, ID3D12GraphicsCommandList* cmd, Mesh* mesh, const Matrix4x4& worldMatrix, const Matrix4x4& lightSpaceMatrix);
 
 		/**
 		 * @brief	シャドウマップ描画の終了（リソースステートの復帰）
 		 */
 		void EndPass(ID3D12GraphicsCommandList* cmd);
 
-		void SetLightSpaceMatrix(const Matrix4x4& lsm) { m_lightSpaceMatrix = lsm; }
-		Matrix4x4 GetLightSpaceMatrix() const { return m_lightSpaceMatrix; }
 		ShadowMap* GetShadowMap() const { return m_shadowMap; }
 
 	private:
@@ -57,6 +60,5 @@ namespace Span
 		ComPtr<ID3D12PipelineState> m_pso;
 		ComPtr<ID3D12RootSignature> m_rootSignature;
 		Shader* m_shaderVS = nullptr;
-		Matrix4x4 m_lightSpaceMatrix = Matrix4x4::Identity();
 	};
 }

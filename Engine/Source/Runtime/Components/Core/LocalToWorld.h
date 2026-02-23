@@ -12,6 +12,7 @@
 #pragma once
 #include "Core/CoreMinimal.h"
 #include "Core/Math/SpanMath.h"
+#include "Runtime/Reflection/SpanReflection.h"
 
 namespace Span
 {

@@ -49,8 +49,10 @@ struct LightData
 
 	float InnerConeAngle;
 	float OuterConeAngle;
-	float Padding1;
-	float Padding2;
+	int CastShadows;
+	int ShadowIndex;
+
+	row_major matrix ShadowMatrix;
 };
 
 cbuffer LightBuffer : register(b2)
@@ -81,6 +83,8 @@ Texture2D t_Emissive : register(t5);
 SamplerState g_sampler : register(s0);
 
 Texture2D t_ShadowMap : register(t6);
+Texture2DArray t_SpotShadowMap : register(t7);
+TextureCube t_PointShadowMap : register(t8);
 SamplerComparisonState g_shadowSampler : register(s1);
 
 struct VSInput
@@ -219,6 +223,68 @@ float CalculateShadow(float4 worldPos, float3 N)
 	return shadow / 9.0f;
 }
 
+float CalculateSpotShadow(float4 worldPos, float3 N, matrix lightMatrix, int shadowIndex)
+{
+	// 影インデックスが無効なら影なし
+	if (shadowIndex < 0)
+		return 1.0f;
+
+	// Normal Bias (アクネ防止)
+	worldPos.xyz += N * 0.05f;
+
+	float4 lightSpacePos = mul(worldPos, lightMatrix);
+	
+	lightSpacePos.xyz /= lightSpacePos.w;
+
+	float2 shadowUV;
+	shadowUV.x = lightSpacePos.x * 0.5f + 0.5f;
+	shadowUV.y = -lightSpacePos.y * 0.5f + 0.5f;
+
+	if (shadowUV.x < 0.0f || shadowUV.x > 1.0f || shadowUV.y < 0.0f || shadowUV.y > 1.0f || lightSpacePos.z < 0.0f || lightSpacePos.z > 1.0f)
+		return 1.0f;
+
+	float currentDepth = lightSpacePos.z - 0.0001f;
+	float shadow = 0.0f;
+	
+	// Spotシャドウの解像度は 1024x1024
+	float2 texelSize = 1.0f / 1024.0f;
+
+	// 3x3 PCF
+	for (int x = -1; x <= 1; ++x)
+	{
+		for (int y = -1; y <= 1; ++y)
+		{
+			float2 offset = float2(x, y) * texelSize;
+			shadow += t_SpotShadowMap.SampleCmpLevelZero(g_shadowSampler, float3(shadowUV + offset, shadowIndex), currentDepth);
+		}
+	}
+
+	return shadow / 9.0f;
+}
+
+float CalculatePointShadow(float4 worldPos, float3 N, float3 lightPos, float lightRange, int shadowIndex)
+{
+	if (shadowIndex < 0) return 1.0f;
+
+	worldPos.xyz += N * 0.05f;	// Normal Bias
+	float3 fragToLight = worldPos.xyz - lightPos;
+
+	// 現在のピクセルが、光の中心からどれだけ離れているか
+	float currentDist = max(max(abs(fragToLight.x), abs(fragToLight.y)), abs(fragToLight.z));
+
+	float f = lightRange;
+	float n = 0.1f;
+	float m22 = f / (f - n);
+	float m32 = -(n * f) / (f - n);
+	float currentDepth = m22 + m32 / currentDist;
+
+	currentDepth -= 0.0005f;
+
+	float shadow = t_PointShadowMap.SampleCmpLevelZero(g_shadowSampler, fragToLight, currentDepth);
+
+	return shadow;
+}
+
 // =========================================================================
 // Pixel Shader
 // =========================================================================
@@ -308,13 +374,23 @@ float4 PSMain(PSInput input) : SV_TARGET
 			distanceAttenuation = (distanceAttenuation * distanceAttenuation) / (distanceSquare + 1.0);
 			attenuation = distanceAttenuation;
 
-			// Spot Light 固有の角度減衰
-			if (light.Type == 2)
+			if (light.Type == 1 && light.CastShadows == 1)	// Point Light
+			{
+				float pointShadow = CalculatePointShadow(float4(input.worldPos, 1.0f), N, light.Position, light.Range, light.ShadowIndex);
+				attenuation *= pointShadow;
+			}
+			else if (light.Type == 2)	// Spot Light
 			{
 				float theta = dot(LDir, normalize(-light.Direction));
 				float epsilon = light.InnerConeAngle - light.OuterConeAngle;
 				float spotIntensity = clamp((theta - light.OuterConeAngle) / max(epsilon, 0.001), 0.0, 1.0);
 				attenuation *= spotIntensity * spotIntensity;
+
+				if (light.CastShadows == 1)
+				{
+					float spotShadow = CalculateSpotShadow(float4(input.worldPos, 1.0f), N, light.ShadowMatrix, light.ShadowIndex);
+					attenuation *= spotShadow;
+				}
 			}
 		}
 

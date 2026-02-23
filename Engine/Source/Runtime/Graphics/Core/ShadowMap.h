@@ -30,11 +30,11 @@ namespace Span
 		 * @param	width テクスチャの幅
 		 * @param	height テクスチャの高さ
 		 */
-		bool Initialize(ID3D12Device* device, uint32 width, uint32 height);
+		bool Initialize(ID3D12Device* device, uint32 width, uint32 height, uint32 arraySize = 1, bool isCube = false);
 		void Shutdown();
 
 		// --- Getters ---
-		D3D12_CPU_DESCRIPTOR_HANDLE GetDSV() const;
+		D3D12_CPU_DESCRIPTOR_HANDLE GetDSV(uint32 sliceIndex = 0) const;
 		D3D12_GPU_DESCRIPTOR_HANDLE GetSRV() const;
 		ID3D12DescriptorHeap* GetSRVHeap() const { return m_srvHeap.Get(); }
 		ID3D12Resource* GetResource() const { return m_resource.Get(); }
@@ -45,6 +45,8 @@ namespace Span
 	private:
 		uint32 m_width = 0;
 		uint32 m_height = 0;
+		uint32 m_arraySize = 1;
+		uint32 m_dsvDescriptorSize = 0;
 
 		ComPtr<ID3D12Resource> m_resource;
 		ComPtr<ID3D12DescriptorHeap> m_srvHeap;
