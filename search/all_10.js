@@ -1,8 +1,8 @@
 var searchData=
 [
   ['p_0',['P',['../namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fa44c29edb103a2872f519ad0c9a0fdaaa',1,'Span']]],
-  ['padding1_1',['Padding1',['../structSpan_1_1LightDataGPU.html#a39fe8470da4f6fb8e48cbf5beaaf4330',1,'Span::LightDataGPU::Padding1'],['../structSpan_1_1MaterialData.html#a05e893df71b73574f17e899b79b7780e',1,'Span::MaterialData::Padding1']]],
-  ['padding2_2',['Padding2',['../structSpan_1_1LightDataGPU.html#a48c3e1970c4692606fa852848428c31e',1,'Span::LightDataGPU::Padding2'],['../structSpan_1_1MaterialData.html#a5936aee77b79e8b528b5a23695218033',1,'Span::MaterialData::Padding2']]],
+  ['padding1_1',['Padding1',['../structSpan_1_1MaterialData.html#a05e893df71b73574f17e899b79b7780e',1,'Span::MaterialData']]],
+  ['padding2_2',['Padding2',['../structSpan_1_1MaterialData.html#a5936aee77b79e8b528b5a23695218033',1,'Span::MaterialData']]],
   ['padding3_3',['Padding3',['../structSpan_1_1MaterialData.html#a5feb41e1e038e4c03f532b2f65df5442',1,'Span::MaterialData']]],
   ['panelmanager_2eh_4',['PanelManager.h',['../PanelManager_8h.html',1,'']]],
   ['panels_5',['panels',['../classSpan_1_1GuiManager.html#a2958abd2a5c96e0010580233350a8a38',1,'Span::GuiManager']]],
