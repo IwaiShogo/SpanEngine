@@ -65,9 +65,16 @@ namespace Span
 		 */
 		void GenerateCubemapFromPanorama(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE panoramaSRV, Texture* outCubemap, uint32 cubemapSize);
 
+		/**
+		 * @brief	環境Cubemapから、Diffuse用 Irradiance Map を生成。
+		 */
+		void GenerateIrradianceMap(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, Texture* outIrradianceMap, uint32 mapSize = 32);
+
 	private:
 		ComPtr<ID3D12RootSignature> m_computeRootSignature;
 		ComPtr<ID3D12PipelineState> m_equirectToCubemapPSO;
 		Shader* m_equirectToCubemapCS = nullptr;
+
+		ここから
 	};
 }
