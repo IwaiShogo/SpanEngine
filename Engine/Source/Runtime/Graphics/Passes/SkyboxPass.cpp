@@ -124,7 +124,7 @@ namespace Span
 		SkyboxSettingsCB setData;
 		setData.TopColor = env.SkyTopColor;
 		setData.HorizonColor = env.SkyHorizonColor;
-		setData.BottomColor = env.SkyTopColor;
+		setData.BottomColor = env.SkyBottomColor;
 
 		setData.SkyMode = (envCubemap != nullptr) ? 1 : 0;
 		setData.Exposure = env.Exposure;
@@ -140,16 +140,7 @@ namespace Span
 		cmd->SetGraphicsRootConstantBufferView(0, cbCamAddress);
 		cmd->SetGraphicsRootConstantBufferView(1, cbSetAddress);
 
-		if (envCubemap && envCubemap->GetSRVHeap())
-		{
-			ID3D12DescriptorHeap* heaps[] = { envCubemap->GetSRVHeap() };
-			cmd->SetDescriptorHeaps(1, heaps);
-			cmd->SetGraphicsRootDescriptorTable(2, envCubemap->GetSRVHeap()->GetGPUDescriptorHandleForHeapStart());
-		}
-		else
-		{
-			return;
-		}
+		renderer->BindTexture(cmd, (setData.SkyMode == 1) ? envCubemap : nullptr, 2, D3D12_SRV_DIMENSION_TEXTURECUBE);
 
 		cmd->IASetVertexBuffers(0, 0, nullptr);
 		cmd->IASetIndexBuffer(nullptr);

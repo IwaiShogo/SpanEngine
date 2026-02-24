@@ -69,6 +69,9 @@ cbuffer LightBuffer : register(b2)
 	float3 SkyBottomColor;
 	int ActiveLightCount;
 
+	int SkyMode;
+	float3 padding_lb;
+
 	Matrix DirectionalLightSpaceMatrix;
 	LightData Lights[16];	// 最大16個
 }
@@ -86,6 +89,10 @@ Texture2D t_ShadowMap : register(t6);
 Texture2DArray t_SpotShadowMap : register(t7);
 TextureCube t_PointShadowMap : register(t8);
 SamplerComparisonState g_shadowSampler : register(s1);
+
+TextureCube t_IrradianceMap : register(t9);
+TextureCube t_PrefilterMap : register(t10);
+Texture2D t_BRDFLUT : register(t11);
 
 struct VSInput
 {
@@ -426,28 +433,43 @@ float4 PSMain(PSInput input) : SV_TARGET
 		Lo += (kD * albedo.rgb / PI + specular) * radiance * NdotL;
 	}
 
-	// --- 4. Procedural IBL ---
-	float3 R = reflect(-V, N);	// 反射ベクトル
+	// --- 4. Image-Based Lighting (IBL) ---
+	float3 R = reflect(-V, N); // 反射ベクトル
 
-	// Diffuse (拡散環境光): 法線方向の空の光
-	float3 irradiance = SampleSky(N) * AmbientIntensity;
-	float3 diffuse = irradiance * albedo.rgb;
-
-	// Specular (鏡面環境反射): 粗さに応じてサンプリング方向をR(鏡)からN(拡散)へぼかす
-	float3 specularDir = normalize(lerp(R, N, rough));
-	float3 prefilteredColor = SampleSky(specularDir) * AmbientIntensity;
-
-	// ラフネスを考慮したフレネル反射
+	// フレネル反射率
 	float3 F_env = FresnelSchlickRoughness(max(dot(N, V), 0.0), F0, rough);
-	float3 envSpecular = prefilteredColor * F_env * EnvReflectionIntensity;
-
-	// メタル度に応じてDiffuse環境光を減らす
+	
+	// エネルギー保存の法則
 	float3 kS_env = F_env;
 	float3 kD_env = 1.0 - kS_env;
 	kD_env *= 1.0 - meta;
 
-	// 最終的なアンビエント
-	float3 ambient = (kD_env * diffuse + envSpecular) * aoMap;
+	float3 irradiance = float3(0.0, 0.0, 0.0);
+	float3 prefilteredColor = float3(0.0, 0.0, 0.0);
+	float2 envBRDF = float2(0.0, 0.0);
+
+	if (SkyMode == 1) // HDRIモード
+	{
+		irradiance = t_IrradianceMap.Sample(g_sampler, N).rgb;
+		const float MAX_REFLECTION_LOD = 4.0;
+		prefilteredColor = t_PrefilterMap.SampleLevel(g_sampler, R, rough * MAX_REFLECTION_LOD).rgb;
+		envBRDF = t_BRDFLUT.Sample(g_sampler, float2(max(dot(N, V), 0.0), rough)).rg;
+	}
+	else // Procedural 3-Color モード (フォールバック)
+	{
+		irradiance = SampleSky(N);
+		prefilteredColor = SampleSky(R);
+		envBRDF = float2(1.0, 0.0);
+	}
+
+	irradiance *= AmbientIntensity;
+	prefilteredColor *= EnvReflectionIntensity;
+
+	float3 diffuse = irradiance * albedo.rgb;
+	float3 specular = prefilteredColor * (F_env * envBRDF.x + envBRDF.y);
+
+	// 最終的な環境光
+	float3 ambient = (kD_env * diffuse + specular) * aoMap;
 
 	// --- 5. Final Color ---
 	float3 color = ambient + Lo + emissive;

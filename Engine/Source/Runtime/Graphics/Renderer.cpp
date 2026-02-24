@@ -36,6 +36,14 @@ namespace Span
 		if (!CreatePipelineState()) return false;
 		if (!CreateConstantBuffer()) return false;
 
+		// フレーム用の巨大な Descriptor Heap を作成
+		D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};
+		heapDesc.NumDescriptors = 4096;
+		heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
+		heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
+		if (FAILED(device->CreateDescriptorHeap(&heapDesc, IID_PPV_ARGS(&m_frameSrvHeap)))) return false;
+		m_srvDescriptorSize = device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+
 		// --- Passes Initialization ---
 		m_gridPass = std::make_unique<GridPass>();
 		if (!m_gridPass->Initialize(device)) return false;
@@ -103,6 +111,11 @@ namespace Span
 		commandList->SetPipelineState(pipelineState.Get());
 		commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
+		// フレームの最初にカタログの書き込み位置をリセットし、GPUにセット
+		m_frameSrvHeapOffset = 0;
+		ID3D12DescriptorHeap* heaps[] = { m_frameSrvHeap.Get() };
+		commandList->SetDescriptorHeaps(1, heaps);
+
 		constantBufferIndex = 0;
 
 		struct SceneCB { Matrix4x4 view; Matrix4x4 proj; Vector3 camPos; float pad; };
@@ -125,6 +138,7 @@ namespace Span
 	void Renderer::DrawMesh(Mesh* mesh, Material* material, const Matrix4x4& worldMatrix)
 	{
 		if (!mesh || !material || !commandList) return;
+		auto device = context->GetDevice();
 
 		Matrix4x4 mvp = worldMatrix * viewMatrix * projectionMatrix;
 		TransformData data;
@@ -141,37 +155,23 @@ namespace Span
 		commandList->SetGraphicsRootConstantBufferView(0, cbAddr);
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
 
-		if (m_LightBuffer) commandList->SetGraphicsRootConstantBufferView(11, m_LightBuffer->GetGPUVirtualAddress());
+		if (m_LightBuffer) commandList->SetGraphicsRootConstantBufferView(14, m_LightBuffer->GetGPUVirtualAddress());
 
+		// PBR Textures (t0 ~ t5)
 		Texture* textures[6] = { material->GetAlbedoMap(), material->GetNormalMap(), material->GetMetallicMap(), material->GetRoughnessMap(), material->GetAOMap(), material->GetEmissiveMap() };
 		for (int i = 0; i < 6; i++) {
-			if (textures[i] && textures[i]->GetSRVHeap()) {
-				ID3D12DescriptorHeap* ppHeaps[] = { textures[i]->GetSRVHeap() };
-				commandList->SetDescriptorHeaps(1, ppHeaps);
-				commandList->SetGraphicsRootDescriptorTable(2 + i, textures[i]->GetSRVHeap()->GetGPUDescriptorHandleForHeapStart());
-			}
+			BindTexture(commandList, textures[i], 2 + i, D3D12_SRV_DIMENSION_TEXTURE2D);
 		}
 
-		if (m_dirShadowPass && m_dirShadowPass->GetShadowMap())
-		{
-			ID3D12DescriptorHeap* shadowHeaps[] = { m_dirShadowPass->GetShadowMap()->GetSRVHeap() };
-			commandList->SetDescriptorHeaps(1, shadowHeaps);
-			commandList->SetGraphicsRootDescriptorTable(8, m_dirShadowPass->GetShadowMap()->GetSRV());
-		}
+		// Shadows (t6 ~ t8)
+		BindShadowMap(commandList, m_dirShadowPass ? m_dirShadowPass->GetShadowMap() : nullptr, 8, D3D12_SRV_DIMENSION_TEXTURE2D);
+		BindShadowMap(commandList, m_spotShadowPass ? m_spotShadowPass->GetShadowMap() : nullptr, 9, D3D12_SRV_DIMENSION_TEXTURE2DARRAY);
+		BindShadowMap(commandList, m_pointShadowPass ? m_pointShadowPass->GetShadowMap() : nullptr, 10, D3D12_SRV_DIMENSION_TEXTURECUBE);
 
-		if (m_spotShadowPass && m_spotShadowPass->GetShadowMap())
-		{
-			ID3D12DescriptorHeap* shadowHeaps[] = { m_spotShadowPass->GetShadowMap()->GetSRVHeap() };
-			commandList->SetDescriptorHeaps(1, shadowHeaps);
-			commandList->SetGraphicsRootDescriptorTable(9, m_spotShadowPass->GetShadowMap()->GetSRV());
-		}
-
-		if (m_pointShadowPass && m_pointShadowPass->GetShadowMap())
-		{
-			ID3D12DescriptorHeap* shadowHeaps[] = { m_pointShadowPass->GetShadowMap()->GetSRVHeap() };
-			commandList->SetDescriptorHeaps(1, shadowHeaps);
-			commandList->SetGraphicsRootDescriptorTable(10, m_pointShadowPass->GetShadowMap()->GetSRV());
-		}
+		// IBL Textures (t9 ~ t11)
+		BindTexture(commandList, m_irradianceMap.get(), 11, D3D12_SRV_DIMENSION_TEXTURECUBE);
+		BindTexture(commandList, m_prefilterMap.get(),	12, D3D12_SRV_DIMENSION_TEXTURECUBE);
+		BindTexture(commandList, m_brdfLUT.get(),		13, D3D12_SRV_DIMENSION_TEXTURE2D);
 
 		mesh->Draw(commandList);
 	}
@@ -192,7 +192,8 @@ namespace Span
 		m_CurrentLightData.EnvReflectionIntensity = env.EnvReflectionIntensity;
 		m_CurrentLightData.SkyTopColor = env.SkyTopColor;
 		m_CurrentLightData.SkyHorizonColor = env.SkyHorizonColor;
-		m_CurrentLightData.SkyBottomColor = env.SkyTopColor;
+		m_CurrentLightData.SkyBottomColor = env.SkyBottomColor;
+		m_CurrentLightData.SkyMode = (m_envCubemap != nullptr && env.Mode == SkyboxMode::HDRI) ? 1 : 0;
 
 		// 行列の初期化
 		m_CurrentLightData.DirectionalLightSpaceMatrix = Matrix4x4::Identity().Transpose();
@@ -243,6 +244,53 @@ namespace Span
 		// 5. 変換処理
 		builder.GenerateCubemapFromPanorama(device, cmdList.Get(), panoramaTex.GetCPUDescriptorHandle(), m_envCubemap.get(), 1024);
 
+		// m_envCubemap のステートを UAV から SRV に遷移
+		D3D12_RESOURCE_BARRIER envBarrier = {};
+		envBarrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+		envBarrier.Transition.pResource = m_envCubemap->GetResource();
+		envBarrier.Transition.StateBefore = D3D12_RESOURCE_STATE_UNORDERED_ACCESS;
+		envBarrier.Transition.StateAfter = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+		envBarrier.Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+		cmdList->ResourceBarrier(1, &envBarrier);
+
+		// 出力先のテクスチャを作成
+		m_irradianceMap = std::make_unique<Texture>();
+		m_irradianceMap->InitializeAsCubemap(device, 32);
+
+		m_prefilterMap = std::make_unique<Texture>();
+		m_prefilterMap->InitializeAsCubemap(device, 128, 5);
+
+		m_brdfLUT = std::make_unique<Texture>();
+		m_brdfLUT->InitializeAsTexture2D(device, 512, 512, DXGI_FORMAT_R16G16_FLOAT);
+
+		// 事前計算の実行
+		builder.GenerateIrradianceMap(device, cmdList.Get(), m_envCubemap->GetCPUDescriptorHandle(), m_irradianceMap.get(), 32);
+		builder.GeneratePrefilterMap(device, cmdList.Get(), m_envCubemap->GetCPUDescriptorHandle(), m_prefilterMap.get(), 128);
+		builder.GenerateBRDFLUT(device, cmdList.Get(), m_brdfLUT.get(), 512);
+
+		// 生成した3つのIBLテクスチャのステートを UAV から SRV に遷移
+		D3D12_RESOURCE_BARRIER iblBarriers[3] = {};
+		// Irradiance
+		iblBarriers[0].Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+		iblBarriers[0].Transition.pResource = m_irradianceMap->GetResource();
+		iblBarriers[0].Transition.StateBefore = D3D12_RESOURCE_STATE_UNORDERED_ACCESS;
+		iblBarriers[0].Transition.StateAfter = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+		iblBarriers[0].Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+		// Prefilter
+		iblBarriers[1].Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+		iblBarriers[1].Transition.pResource = m_prefilterMap->GetResource();
+		iblBarriers[1].Transition.StateBefore = D3D12_RESOURCE_STATE_UNORDERED_ACCESS;
+		iblBarriers[1].Transition.StateAfter = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+		iblBarriers[1].Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+		// BRDF LUT
+		iblBarriers[2].Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+		iblBarriers[2].Transition.pResource = m_brdfLUT->GetResource();
+		iblBarriers[2].Transition.StateBefore = D3D12_RESOURCE_STATE_UNORDERED_ACCESS;
+		iblBarriers[2].Transition.StateAfter = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+		iblBarriers[2].Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+
+		cmdList->ResourceBarrier(3, iblBarriers);
+
 		// 6. コマンドリストを閉じて実行
 		cmdList->Close();
 		ID3D12CommandList* ppCommandLists[] = { cmdList.Get() };
@@ -268,6 +316,73 @@ namespace Span
 		return true;
 	}
 
+	void Renderer::BindTexture(ID3D12GraphicsCommandList* cmd, Texture* texture, uint32 rootIndex, D3D12_SRV_DIMENSION dimension)
+	{
+		if (!m_frameSrvHeap) return;
+
+		auto device = context->GetDevice();
+		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
+		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+
+		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
+		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+
+		if (texture && texture->GetSRVHeap())
+		{
+			// テクスチャが存在する場合は通常通りコピー
+			device->CopyDescriptorsSimple(1, destCpu, texture->GetCPUDescriptorHandle(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+		}
+		else
+		{
+			// テクスチャが無い場合
+			D3D12_SHADER_RESOURCE_VIEW_DESC nullDesc = {};
+			nullDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+			nullDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+			nullDesc.ViewDimension = dimension;
+			if (dimension == D3D12_SRV_DIMENSION_TEXTURECUBE) nullDesc.TextureCube.MipLevels = 1;
+			else if (dimension == D3D12_SRV_DIMENSION_TEXTURE2DARRAY) { nullDesc.Texture2DArray.MipLevels = 1; nullDesc.Texture2DArray.ArraySize = 1; }
+			else nullDesc.Texture2D.MipLevels = 1;
+
+			device->CreateShaderResourceView(nullptr, &nullDesc, destCpu);
+		}
+
+		cmd->SetGraphicsRootDescriptorTable(rootIndex, destGpu);
+		m_frameSrvHeapOffset++;
+	}
+
+	void Renderer::BindShadowMap(ID3D12GraphicsCommandList* cmd, ShadowMap* shadowMap, uint32 rootIndex, D3D12_SRV_DIMENSION dimension)
+	{
+		if (!m_frameSrvHeap) return;
+
+		auto device = context->GetDevice();
+		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
+		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+
+		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
+		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+
+		if (shadowMap && shadowMap->GetSRVHeap())
+		{
+			device->CopyDescriptorsSimple(1, destCpu, shadowMap->GetSRVHeap()->GetCPUDescriptorHandleForHeapStart(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+		}
+		else
+		{
+			// 影用の安全なダミーSRVを生成
+			D3D12_SHADER_RESOURCE_VIEW_DESC nullDesc = {};
+			nullDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+			nullDesc.Format = DXGI_FORMAT_R32_FLOAT;
+			nullDesc.ViewDimension = dimension;
+			if (dimension == D3D12_SRV_DIMENSION_TEXTURECUBE) nullDesc.TextureCube.MipLevels = 1;
+			else if (dimension == D3D12_SRV_DIMENSION_TEXTURE2DARRAY) { nullDesc.Texture2DArray.MipLevels = 1; nullDesc.Texture2DArray.ArraySize = 6; }
+			else nullDesc.Texture2D.MipLevels = 1;
+
+			device->CreateShaderResourceView(nullptr, &nullDesc, destCpu);
+		}
+
+		cmd->SetGraphicsRootDescriptorTable(rootIndex, destGpu);
+		m_frameSrvHeapOffset++;
+	}
+
 	void Renderer::WaitForGPU()
 	{
 		if (!context || !context->GetCommandQueue() || !m_waitFence) return;
@@ -283,7 +398,7 @@ namespace Span
 
 	bool Renderer::CreateRootSignature()
 	{
-		D3D12_ROOT_PARAMETER rootParameters[12];
+		D3D12_ROOT_PARAMETER rootParameters[15];
 
 		// [0] Transform (b0)
 		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -298,8 +413,8 @@ namespace Span
 		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 
 		// [2] ~ [9] Texture Tables (t0 ~ t7) : PBR(6) + DirShadow(1) + SpotShadowArray(1)
-		D3D12_DESCRIPTOR_RANGE ranges[9] = {};
-		for (int i = 0; i < 9; i++)
+		D3D12_DESCRIPTOR_RANGE ranges[12] = {};
+		for (int i = 0; i < 12; i++)
 		{
 			ranges[i].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
 			ranges[i].NumDescriptors = 1;
@@ -314,10 +429,10 @@ namespace Span
 		}
 
 		// [10] LightBuffer (b2)
-		rootParameters[11].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		rootParameters[11].Descriptor.ShaderRegister = 2;
-		rootParameters[11].Descriptor.RegisterSpace = 0;
-		rootParameters[11].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+		rootParameters[14].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[14].Descriptor.ShaderRegister = 2;
+		rootParameters[14].Descriptor.RegisterSpace = 0;
+		rootParameters[14].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
 		// --- Samplers ---
 		// s0: 通常のテクスチャサンプラー

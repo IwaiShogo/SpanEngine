@@ -84,7 +84,7 @@ namespace Span
 		return true;
 	}
 
-	bool Texture::InitializeAsCubemap(ID3D12Device* device, uint32_t size)
+	bool Texture::InitializeAsCubemap(ID3D12Device* device, uint32_t size, uint32_t mipLevels)
 	{
 		width = size;
 		height = size;
@@ -95,7 +95,7 @@ namespace Span
 		desc.Width = size;
 		desc.Height = size;
 		desc.DepthOrArraySize = 6;
-		desc.MipLevels = 1;
+		desc.MipLevels = mipLevels;
 		desc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
 		desc.SampleDesc.Count = 1;
 		desc.Flags = D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS;
@@ -114,6 +114,8 @@ namespace Span
 		D3D12_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};
 		uavDesc.Format = desc.Format;
 		uavDesc.ViewDimension = D3D12_UAV_DIMENSION_TEXTURE2DARRAY;
+		uavDesc.Texture2DArray.MipSlice = 0;
+		uavDesc.Texture2DArray.FirstArraySlice = 0;
 		uavDesc.Texture2DArray.ArraySize = 6;
 		device->CreateUnorderedAccessView(resource.Get(), nullptr, &uavDesc, uavHeap->GetCPUDescriptorHandleForHeapStart());
 
@@ -128,7 +130,59 @@ namespace Span
 		srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
 		srvDesc.Format = desc.Format;
 		srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURECUBE;
-		srvDesc.TextureCube.MipLevels = 1;
+		srvDesc.TextureCube.MostDetailedMip = 0;
+		srvDesc.TextureCube.MipLevels = mipLevels;
+		srvHandleCPU = srvHeap->GetCPUDescriptorHandleForHeapStart();
+		device->CreateShaderResourceView(resource.Get(), &srvDesc, srvHandleCPU);
+
+		return true;
+	}
+
+	bool Texture::InitializeAsTexture2D(ID3D12Device* device, uint32_t w, uint32_t h, DXGI_FORMAT format)
+	{
+		width = w;
+		height = h;
+		m_IsHDR = true;
+
+		D3D12_RESOURCE_DESC desc = {};
+		desc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
+		desc.Width = w;
+		desc.Height = h;
+		desc.DepthOrArraySize = 1;
+		desc.MipLevels = 1;
+		desc.Format = format;
+		desc.SampleDesc.Count = 1;
+		desc.Flags = D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS;
+
+		D3D12_HEAP_PROPERTIES heapProps = { D3D12_HEAP_TYPE_DEFAULT };
+		if (FAILED(device->CreateCommittedResource(&heapProps, D3D12_HEAP_FLAG_NONE, &desc,
+			D3D12_RESOURCE_STATE_UNORDERED_ACCESS, nullptr, IID_PPV_ARGS(&resource)))) return false;
+
+		// UAV (書き込み用)
+		D3D12_DESCRIPTOR_HEAP_DESC uavHeapDesc = {};
+		uavHeapDesc.NumDescriptors = 1;
+		uavHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
+		uavHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
+		device->CreateDescriptorHeap(&uavHeapDesc, IID_PPV_ARGS(&uavHeap));
+
+		D3D12_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};
+		uavDesc.Format = desc.Format;
+		uavDesc.ViewDimension = D3D12_UAV_DIMENSION_TEXTURE2D;
+		uavDesc.Texture2D.MipSlice = 0;
+		device->CreateUnorderedAccessView(resource.Get(), nullptr, &uavDesc, uavHeap->GetCPUDescriptorHandleForHeapStart());
+
+		// SRV (読み込み用)
+		D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
+		srvHeapDesc.NumDescriptors = 1;
+		srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
+		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
+		device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap));
+
+		D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+		srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+		srvDesc.Format = desc.Format;
+		srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
+		srvDesc.Texture2D.MipLevels = 1;
 		srvHandleCPU = srvHeap->GetCPUDescriptorHandleForHeapStart();
 		device->CreateShaderResourceView(resource.Get(), &srvDesc, srvHandleCPU);
 

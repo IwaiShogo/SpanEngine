@@ -25,6 +25,7 @@ namespace Span
 	class GridPass;
 	class SkyboxPass;
 	class ShadowPass;
+	class ShadowMap;
 }
 
 namespace Span
@@ -75,6 +76,9 @@ namespace Span
 		float EnvReflectionIntensity = 2.0f;
 		Vector3 SkyBottomColor = { 0.2f, 0.2f, 0.2f };
 		int ActiveLightCount = 0;
+
+		int SkyMode;
+		float pad[3];
 
 		// 光の視点の行列
 		Matrix4x4 DirectionalLightSpaceMatrix;
@@ -139,7 +143,15 @@ namespace Span
 		void SetGlobalLightData(const std::vector<LightDataGPU>& lights, const EnvironmentSettings& env);
 
 		bool LoadEnvironmentMap(const std::string& filepath);
+
+		/// @brief	生成済みの環境Cubemapを取得します。
 		Texture* GetEnvironmentCubemap() const { return m_envCubemap.get(); }
+
+		/// @brief	指定スロットにテクスチャをバインドします。Nullの場合は安全なダミーを生成します。
+		void BindTexture(ID3D12GraphicsCommandList* cmd, Texture* texture, uint32 rootIndex, D3D12_SRV_DIMENSION dimension = D3D12_SRV_DIMENSION_TEXTURE2D);
+
+		/// @brief	指定スロットにシャドウマップをバインドします。Nullの場合は安全なダミーを生成します。
+		void BindShadowMap(ID3D12GraphicsCommandList* cmd, ShadowMap* shadowMap, uint32 rootIndex, D3D12_SRV_DIMENSION dimension = D3D12_SRV_DIMENSION_TEXTURE2D);
 
 		/// @brief	GPUの処理完了を待機する
 		void WaitForGPU();
@@ -199,6 +211,11 @@ namespace Span
 		ConstantBuffer<GlobalLightData>* m_LightBuffer = nullptr;
 		GlobalLightData m_CurrentLightData;
 
+		// 1フレームで使う全テクスチャのカタログ
+		ComPtr<ID3D12DescriptorHeap> m_frameSrvHeap;
+		uint32 m_frameSrvHeapOffset = 0;
+		uint32 m_srvDescriptorSize = 0;
+
 		// Render Passes
 		std::unique_ptr<GridPass> m_gridPass;
 		std::unique_ptr<SkyboxPass> m_skyboxPass;
@@ -209,5 +226,9 @@ namespace Span
 		// Environment
 		std::unique_ptr<Texture> m_envCubemap;
 		std::string m_currentLoadedHDRI = "";
+
+		std::unique_ptr<Texture> m_irradianceMap;
+		std::unique_ptr<Texture> m_prefilterMap;
+		std::unique_ptr<Texture> m_brdfLUT;
 	};
 }

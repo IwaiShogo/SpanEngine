@@ -57,7 +57,7 @@ namespace Span
 
 		/**
 		 * @brief	パノラマHDRテクスチャをCubemapに変換します。
-		 * 
+		 *
 		 * @param	cmd コマンドリスト
 		 * @param	panoramaSRV 入力となるパノラマHDR画像のSRV
 		 * @param	outCubemap 出力先のCubemapテクスチャ
@@ -70,11 +70,33 @@ namespace Span
 		 */
 		void GenerateIrradianceMap(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, Texture* outIrradianceMap, uint32 mapSize = 32);
 
+		/**
+		 * @brief	環境Cubemapから、Specular用 Prefilter Environment Map を生成。
+		 * @param	envCubemapSRV 入力となる環境CubemapのSRV
+		 * @param	outPrefilterMap 出力先のPrefilterマップ
+		 * @param	baseMapSize 基本解像度
+		 */
+		void GeneratePrefilterMap(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, Texture* outPrefilterMap, uint32 baseMapSize = 128);
+
+		/**
+		 * @brief	環境に依存しないBRDF Integration LUT を生成します。
+		 * @param	outBRDFLUT 出力先の2Dテクスチャ
+		 * @param	lutSize 生成するLUTの解像度
+		 */
+		void GenerateBRDFLUT(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, Texture* outBRDFLUT, uint32 lutSize = 512);
+
 	private:
 		ComPtr<ID3D12RootSignature> m_computeRootSignature;
 		ComPtr<ID3D12PipelineState> m_equirectToCubemapPSO;
 		Shader* m_equirectToCubemapCS = nullptr;
 
-		ここから
+		ComPtr<ID3D12PipelineState> m_irradiancePSO;
+		Shader* m_irradianceCS = nullptr;
+
+		ComPtr<ID3D12PipelineState> m_prefilterPSO;
+		Shader* m_prefilterCS = nullptr;
+
+		ComPtr<ID3D12PipelineState> m_brdfPSO;
+		Shader* m_brdfCS = nullptr;
 	};
 }

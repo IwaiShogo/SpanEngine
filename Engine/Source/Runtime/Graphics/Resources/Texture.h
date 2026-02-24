@@ -45,8 +45,14 @@ namespace Span
 		/**
 		 * @brief	Compute Shaderで書き込むための「空のCubemap」を生成します。
 		 * @param	size Cubemapの1面の解像度
+		 * @param	mipLevels ミップマップの階層数
 		 */
-		bool InitializeAsCubemap(ID3D12Device* device, uint32_t size);
+		bool InitializeAsCubemap(ID3D12Device* device, uint32_t size, uint32_t mipLevels = 1);
+
+		/**
+		 * @brief	Compute Shaderで書き込むための「空の2Dテクスチャ」を生成します。
+		 */
+		bool InitializeAsTexture2D(ID3D12Device* device, uint32_t width, uint32_t height, DXGI_FORMAT format);
 
 		/// @brief	終了処理
 		void Shutdown();
@@ -73,6 +79,9 @@ namespace Span
 		D3D12_GPU_DESCRIPTOR_HANDLE GetUAV() const { return uavHeap->GetGPUDescriptorHandleForHeapStart(); }
 
 		D3D12_CPU_DESCRIPTOR_HANDLE GetUAVCPU() const { return uavHeap->GetCPUDescriptorHandleForHeapStart(); }
+
+		/// @brief	DirectXリソースの取得
+		ID3D12Resource* GetResource() const { return resource.Get(); }
 
 		/// @brief	パスの取得
 		const std::string& GetPath() const { return m_FilePath; }
