@@ -1,5 +1,7 @@
 var NAVTREEINDEX11 =
 {
+"structSpan_1_1Quaternion.html#af2a0a1def4d845d030a45c5a26d32a80":[1,0,0,7,5],
+"structSpan_1_1Quaternion.html#af2cdd440ffc8c055ff354b0199b522d1":[0,0,0,7,0],
 "structSpan_1_1Quaternion.html#af2cdd440ffc8c055ff354b0199b522d1":[1,0,0,7,0],
 "structSpan_1_1Relationship.html":[0,0,0,36],
 "structSpan_1_1Relationship.html":[1,0,0,36],

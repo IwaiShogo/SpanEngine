@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"structSpan_1_1GlobalLightData.html#ac77138f74bd527064172787265e338f7":[1,0,0,72,9],
+"structSpan_1_1IDComponent.html":[0,0,0,32],
 "structSpan_1_1IDComponent.html":[1,0,0,32],
 "structSpan_1_1IDComponent.html#a156f97f15968e64925be02e5e3c6b2fd":[0,0,0,32,2],
 "structSpan_1_1IDComponent.html#a156f97f15968e64925be02e5e3c6b2fd":[1,0,0,32,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX10 =
 "structSpan_1_1Quaternion.html#acfa147daa060ee83c95998431ea60e92":[1,0,0,7,9],
 "structSpan_1_1Quaternion.html#aea2b43ba77e07eaac55339b95f721600":[0,0,0,7,13],
 "structSpan_1_1Quaternion.html#aea2b43ba77e07eaac55339b95f721600":[1,0,0,7,13],
-"structSpan_1_1Quaternion.html#af2a0a1def4d845d030a45c5a26d32a80":[0,0,0,7,5],
-"structSpan_1_1Quaternion.html#af2a0a1def4d845d030a45c5a26d32a80":[1,0,0,7,5],
-"structSpan_1_1Quaternion.html#af2cdd440ffc8c055ff354b0199b522d1":[0,0,0,7,0]
+"structSpan_1_1Quaternion.html#af2a0a1def4d845d030a45c5a26d32a80":[0,0,0,7,5]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"namespacemembers_enum.html":[0,1,4],
+"namespacemembers_func.html":[0,1,1],
 "namespacemembers_type.html":[0,1,3],
 "namespacemembers_vars.html":[0,1,2],
 "namespaces.html":[0,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "structSpan_1_1GlobalLightData.html#a9a6f55cb81f6ec146737f552a9ecccf8":[1,0,0,72,3],
 "structSpan_1_1GlobalLightData.html#aa862735b21eb1da2273ebe7c69c60015":[0,0,0,72,1],
 "structSpan_1_1GlobalLightData.html#aa862735b21eb1da2273ebe7c69c60015":[1,0,0,72,1],
-"structSpan_1_1GlobalLightData.html#ac77138f74bd527064172787265e338f7":[0,0,0,72,9],
-"structSpan_1_1GlobalLightData.html#ac77138f74bd527064172787265e338f7":[1,0,0,72,9],
-"structSpan_1_1IDComponent.html":[0,0,0,32]
+"structSpan_1_1GlobalLightData.html#ac77138f74bd527064172787265e338f7":[0,0,0,72,9]
 };

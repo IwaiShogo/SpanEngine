@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"functions_d.html":[1,3,0,4],
+"functions_e.html":[1,3,0,5],
 "functions_f.html":[1,3,0,6],
 "functions_func.html":[1,3,1],
 "functions_func.html":[1,3,1,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "namespaceSpan_1_1Internal.html":[0,0,0,0],
 "namespaceSpan_1_1Internal.html#ae18b71c51d88d168549fe9542ed952bb":[0,0,0,0,3],
 "namespaceSpan_1_1Internal.html#af5fb72e56e5d56613a811a2754229981":[0,0,0,0,4],
-"namespacemembers.html":[0,1,0],
-"namespacemembers_enum.html":[0,1,4],
-"namespacemembers_func.html":[0,1,1]
+"namespacemembers.html":[0,1,0]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"classSpan_1_1LayerManager.html#a33477af2edce8fb0c546a89dbba9b71f":[1,0,0,46,2],
+"classSpan_1_1LayerManager.html#a58ec88671e9aec9fde35ef84fa09f864":[0,0,0,46,9],
 "classSpan_1_1LayerManager.html#a58ec88671e9aec9fde35ef84fa09f864":[1,0,0,46,9],
 "classSpan_1_1LayerManager.html#a5b0011a32b61df3de7f38722aeb83ead":[0,0,0,46,5],
 "classSpan_1_1LayerManager.html#a5b0011a32b61df3de7f38722aeb83ead":[1,0,0,46,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "classSpan_1_1MoveFileCommand.html#acc8756894222fb40cd17ae81f9256c30":[1,0,0,12,6],
 "classSpan_1_1MoveFileCommand.html#ae5b7da7c7298954570d1058c61b046e4":[0,0,0,12,1],
 "classSpan_1_1MoveFileCommand.html#ae5b7da7c7298954570d1058c61b046e4":[1,0,0,12,1],
-"classSpan_1_1ProjectBrowserPanel.html":[0,0,0,24],
-"classSpan_1_1ProjectBrowserPanel.html":[1,0,0,24],
-"classSpan_1_1ProjectBrowserPanel.html#a01a73c47aa21a659f99a0c28c9d59bcf":[0,0,0,24,30]
+"classSpan_1_1ProjectBrowserPanel.html":[0,0,0,24]
 };
