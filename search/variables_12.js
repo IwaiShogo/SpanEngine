@@ -17,13 +17,14 @@ var searchData=
   ['signature_14',['signature',['../classSpan_1_1Archetype.html#ac679093a9a9285da19dac5b95d82390c',1,'Span::Archetype']]],
   ['skybottomcolor_15',['SkyBottomColor',['../structSpan_1_1GlobalLightData.html#a7c6a235968a9001dd86e9e426d6ed4ed',1,'Span::GlobalLightData::SkyBottomColor'],['../structSpan_1_1EnvironmentSettings.html#a2f26337fd5cf686a1e15bcceb8c5102a',1,'Span::EnvironmentSettings::SkyBottomColor']]],
   ['skyhorizoncolor_16',['SkyHorizonColor',['../structSpan_1_1GlobalLightData.html#a8789f57ad8312b781a2796b2bf6f3998',1,'Span::GlobalLightData::SkyHorizonColor'],['../structSpan_1_1EnvironmentSettings.html#a987c38a563a8c85f9c93a4820b8d38d4',1,'Span::EnvironmentSettings::SkyHorizonColor']]],
-  ['skytopcolor_17',['SkyTopColor',['../structSpan_1_1GlobalLightData.html#ac77138f74bd527064172787265e338f7',1,'Span::GlobalLightData::SkyTopColor'],['../structSpan_1_1EnvironmentSettings.html#ad7d406b234a618c56c43fc6140a24bea',1,'Span::EnvironmentSettings::SkyTopColor']]],
-  ['sprintmultiplier_18',['SprintMultiplier',['../structSpan_1_1EditorCamera.html#affb215a9e35b3858f71955826a66ae22',1,'Span::EditorCamera']]],
-  ['srvhandle_19',['srvHandle',['../classSpan_1_1RenderTarget.html#aaa8924b8ea163eb4bd33413bcb444a6a',1,'Span::RenderTarget']]],
-  ['srvhandlecpu_20',['srvHandleCPU',['../classSpan_1_1Texture.html#ae174a75a471258f60f3b5f4a16ce96ba',1,'Span::Texture']]],
-  ['srvheap_21',['srvHeap',['../classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a',1,'Span::GuiManager::srvHeap'],['../classSpan_1_1RenderTarget.html#adf54d004fc942c41ac6e127ef1814268',1,'Span::RenderTarget::srvHeap'],['../classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc',1,'Span::Texture::srvHeap']]],
-  ['starttime_22',['startTime',['../classSpan_1_1Time.html#a7dac969430dda0c667a8b0ada4b0196e',1,'Span::Time']]],
-  ['stringvalue_23',['StringValue',['../structSpan_1_1Attribute.html#a98e11c6a540d8adc713e8f4cf68c3450',1,'Span::Attribute']]],
-  ['swapchain_24',['swapChain',['../classSpan_1_1GraphicsContext.html#a726c6e0ebea80e52d9533d6a17177f78',1,'Span::GraphicsContext']]],
-  ['systems_25',['systems',['../classSpan_1_1World.html#a06376d99845102a74f28840fe0e2812f',1,'Span::World']]]
+  ['skymode_17',['SkyMode',['../structSpan_1_1GlobalLightData.html#af4f8af203bfa3a440a38e1b6bff59971',1,'Span::GlobalLightData']]],
+  ['skytopcolor_18',['SkyTopColor',['../structSpan_1_1GlobalLightData.html#ac77138f74bd527064172787265e338f7',1,'Span::GlobalLightData::SkyTopColor'],['../structSpan_1_1EnvironmentSettings.html#ad7d406b234a618c56c43fc6140a24bea',1,'Span::EnvironmentSettings::SkyTopColor']]],
+  ['sprintmultiplier_19',['SprintMultiplier',['../structSpan_1_1EditorCamera.html#affb215a9e35b3858f71955826a66ae22',1,'Span::EditorCamera']]],
+  ['srvhandle_20',['srvHandle',['../classSpan_1_1RenderTarget.html#aaa8924b8ea163eb4bd33413bcb444a6a',1,'Span::RenderTarget']]],
+  ['srvhandlecpu_21',['srvHandleCPU',['../classSpan_1_1Texture.html#ae174a75a471258f60f3b5f4a16ce96ba',1,'Span::Texture']]],
+  ['srvheap_22',['srvHeap',['../classSpan_1_1GuiManager.html#a56fee475a521225a6c94a1dcb17dc16a',1,'Span::GuiManager::srvHeap'],['../classSpan_1_1RenderTarget.html#adf54d004fc942c41ac6e127ef1814268',1,'Span::RenderTarget::srvHeap'],['../classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc',1,'Span::Texture::srvHeap']]],
+  ['starttime_23',['startTime',['../classSpan_1_1Time.html#a7dac969430dda0c667a8b0ada4b0196e',1,'Span::Time']]],
+  ['stringvalue_24',['StringValue',['../structSpan_1_1Attribute.html#a98e11c6a540d8adc713e8f4cf68c3450',1,'Span::Attribute']]],
+  ['swapchain_25',['swapChain',['../classSpan_1_1GraphicsContext.html#a726c6e0ebea80e52d9533d6a17177f78',1,'Span::GraphicsContext']]],
+  ['systems_26',['systems',['../classSpan_1_1World.html#a06376d99845102a74f28840fe0e2812f',1,'Span::World']]]
 ];

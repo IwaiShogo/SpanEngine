@@ -100,7 +100,7 @@ $(function(){initNavTree('classSpan_1_1IBLBuilder.html','','classSpan_1_1IBLBuil
 <div class="dynheader">
 Span::IBLBuilder 連携図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1IBLBuilder__coll__graph.svg" width="320" height="372"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1IBLBuilder__coll__graph.svg" width="320" height="532"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -115,12 +115,22 @@ Span::IBLBuilder 連携図</div>
 <tr class="memdesc:ae49f8044ac7ae74396afad74b9d93d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">パノラマHDRテクスチャをCubemapに変換します。  <br /></td></tr>
 <tr class="memitem:a4f15a6de15fa7e3f19fc55efa9308dc0" id="r_a4f15a6de15fa7e3f19fc55efa9308dc0"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4f15a6de15fa7e3f19fc55efa9308dc0">GenerateIrradianceMap</a> (ID3D12Device *device, ID3D12GraphicsCommandList *cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, <a class="el" href="classSpan_1_1Texture.html">Texture</a> *outIrradianceMap, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> mapSize=32)</td></tr>
 <tr class="memdesc:a4f15a6de15fa7e3f19fc55efa9308dc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">環境Cubemapから、Diffuse用 Irradiance Map を生成。  <br /></td></tr>
+<tr class="memitem:ae51664c9b81e06e322555ed05fbd3b50" id="r_ae51664c9b81e06e322555ed05fbd3b50"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae51664c9b81e06e322555ed05fbd3b50">GeneratePrefilterMap</a> (ID3D12Device *device, ID3D12GraphicsCommandList *cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, <a class="el" href="classSpan_1_1Texture.html">Texture</a> *outPrefilterMap, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> baseMapSize=128)</td></tr>
+<tr class="memdesc:ae51664c9b81e06e322555ed05fbd3b50"><td class="mdescLeft">&#160;</td><td class="mdescRight">環境Cubemapから、Specular用 Prefilter Environment Map を生成。  <br /></td></tr>
+<tr class="memitem:a2712bd9d7b65c7ecd7af5bcecfd2609d" id="r_a2712bd9d7b65c7ecd7af5bcecfd2609d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2712bd9d7b65c7ecd7af5bcecfd2609d">GenerateBRDFLUT</a> (ID3D12Device *device, ID3D12GraphicsCommandList *cmd, <a class="el" href="classSpan_1_1Texture.html">Texture</a> *outBRDFLUT, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> lutSize=512)</td></tr>
+<tr class="memdesc:a2712bd9d7b65c7ecd7af5bcecfd2609d"><td class="mdescLeft">&#160;</td><td class="mdescRight">環境に依存しないBRDF Integration LUT を生成します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
 <tr class="memitem:aa60e40f7ae9269b5b58ad27e5286099b" id="r_aa60e40f7ae9269b5b58ad27e5286099b"><td class="memItemLeft">ComPtr&lt; ID3D12RootSignature &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a></td></tr>
 <tr class="memitem:ae40584f87ef27bb37deb53b8e1b58761" id="r_ae40584f87ef27bb37deb53b8e1b58761"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ae40584f87ef27bb37deb53b8e1b58761">m_equirectToCubemapPSO</a></td></tr>
 <tr class="memitem:a79089d6accce66111ae39689fc61a5e1" id="r_a79089d6accce66111ae39689fc61a5e1"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a79089d6accce66111ae39689fc61a5e1">m_equirectToCubemapCS</a> = nullptr</td></tr>
+<tr class="memitem:a2da0560628a97db0c0f7b7e7a6ecbf7d" id="r_a2da0560628a97db0c0f7b7e7a6ecbf7d"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2da0560628a97db0c0f7b7e7a6ecbf7d">m_irradiancePSO</a></td></tr>
+<tr class="memitem:a08d755bf4e7ac6338b0af4b23b1d4197" id="r_a08d755bf4e7ac6338b0af4b23b1d4197"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a08d755bf4e7ac6338b0af4b23b1d4197">m_irradianceCS</a> = nullptr</td></tr>
+<tr class="memitem:a629195d702e2bf7739265e89f539f289" id="r_a629195d702e2bf7739265e89f539f289"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a629195d702e2bf7739265e89f539f289">m_prefilterPSO</a></td></tr>
+<tr class="memitem:aa4a6a992d8690a5802f4881a94a6e44d" id="r_aa4a6a992d8690a5802f4881a94a6e44d"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aa4a6a992d8690a5802f4881a94a6e44d">m_prefilterCS</a> = nullptr</td></tr>
+<tr class="memitem:a0f3790320d8b06a97b66986b7f5cdda6" id="r_a0f3790320d8b06a97b66986b7f5cdda6"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a0f3790320d8b06a97b66986b7f5cdda6">m_brdfPSO</a></td></tr>
+<tr class="memitem:a624f8b73b634e8f6232d95a93730bdc2" id="r_a624f8b73b634e8f6232d95a93730bdc2"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a624f8b73b634e8f6232d95a93730bdc2">m_brdfCS</a> = nullptr</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>🌌 パノラマHDR画像からPBRに必要なIBLテクスチャ群を生成するユーティリティ。 </p>
@@ -186,6 +196,58 @@ Span::IBLBuilder 連携図</div>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="a2712bd9d7b65c7ecd7af5bcecfd2609d" name="a2712bd9d7b65c7ecd7af5bcecfd2609d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2712bd9d7b65c7ecd7af5bcecfd2609d">&#9670;&#160;</a></span>GenerateBRDFLUT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::IBLBuilder::GenerateBRDFLUT </td>
+          <td>(</td>
+          <td class="paramtype">ID3D12Device *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D12GraphicsCommandList *</td>          <td class="paramname"><span class="paramname"><em>cmd</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>outBRDFLUT</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>lutSize</em></span><span class="paramdefsep"> = </span><span class="paramdefval">512</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>環境に依存しないBRDF Integration LUT を生成します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outBRDFLUT</td><td>出力先の2Dテクスチャ </td></tr>
+    <tr><td class="paramname">lutSize</td><td>生成するLUTの解像度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00318">318</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1IBLBuilder_a2712bd9d7b65c7ecd7af5bcecfd2609d_cgraph.svg" width="490" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1IBLBuilder_a2712bd9d7b65c7ecd7af5bcecfd2609d_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="ae49f8044ac7ae74396afad74b9d93d96" name="ae49f8044ac7ae74396afad74b9d93d96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae49f8044ac7ae74396afad74b9d93d96">&#9670;&#160;</a></span>GenerateCubemapFromPanorama()</h2>
 
@@ -231,7 +293,7 @@ Span::IBLBuilder 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00106">106</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00168">168</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -280,6 +342,76 @@ Span::IBLBuilder 連携図</div>
 </div><div class="memdoc">
 
 <p>環境Cubemapから、Diffuse用 Irradiance Map を生成。 </p>
+
+<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00213">213</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1IBLBuilder_a4f15a6de15fa7e3f19fc55efa9308dc0_cgraph.svg" width="450" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1IBLBuilder_a4f15a6de15fa7e3f19fc55efa9308dc0_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ae51664c9b81e06e322555ed05fbd3b50" name="ae51664c9b81e06e322555ed05fbd3b50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae51664c9b81e06e322555ed05fbd3b50">&#9670;&#160;</a></span>GeneratePrefilterMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::IBLBuilder::GeneratePrefilterMap </td>
+          <td>(</td>
+          <td class="paramtype">ID3D12Device *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D12GraphicsCommandList *</td>          <td class="paramname"><span class="paramname"><em>cmd</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">D3D12_CPU_DESCRIPTOR_HANDLE</td>          <td class="paramname"><span class="paramname"><em>envCubemapSRV</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>outPrefilterMap</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>baseMapSize</em></span><span class="paramdefsep"> = </span><span class="paramdefval">128</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>環境Cubemapから、Specular用 Prefilter Environment Map を生成。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">envCubemapSRV</td><td>入力となる環境CubemapのSRV </td></tr>
+    <tr><td class="paramname">outPrefilterMap</td><td>出力先のPrefilterマップ </td></tr>
+    <tr><td class="paramname">baseMapSize</td><td>基本解像度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00259">259</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1IBLBuilder_ae51664c9b81e06e322555ed05fbd3b50_cgraph.svg" width="456" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1IBLBuilder_ae51664c9b81e06e322555ed05fbd3b50_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -333,7 +465,7 @@ Span::IBLBuilder 連携図</div>
 
 <p>終了処理。ロードしたシェーダーやルートシグネチャを解放します。 </p>
 
-<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00099">99</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00152">152</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -343,6 +475,54 @@ Span::IBLBuilder 連携図</div>
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
+<a id="a624f8b73b634e8f6232d95a93730bdc2" name="a624f8b73b634e8f6232d95a93730bdc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a624f8b73b634e8f6232d95a93730bdc2">&#9670;&#160;</a></span>m_brdfCS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::IBLBuilder::m_brdfCS = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00100">100</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a0f3790320d8b06a97b66986b7f5cdda6" name="a0f3790320d8b06a97b66986b7f5cdda6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f3790320d8b06a97b66986b7f5cdda6">&#9670;&#160;</a></span>m_brdfPSO</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D12PipelineState&gt; Span::IBLBuilder::m_brdfPSO</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00099">99</a> 行目に定義があります。</p>
+
+</div>
+</div>
 <a id="aa60e40f7ae9269b5b58ad27e5286099b" name="aa60e40f7ae9269b5b58ad27e5286099b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa60e40f7ae9269b5b58ad27e5286099b">&#9670;&#160;</a></span>m_computeRootSignature</h2>
 
@@ -363,7 +543,7 @@ Span::IBLBuilder 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00074">74</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00089">89</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -387,7 +567,7 @@ Span::IBLBuilder 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00076">76</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00091">91</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -411,7 +591,103 @@ Span::IBLBuilder 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00075">75</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00090">90</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a08d755bf4e7ac6338b0af4b23b1d4197" name="a08d755bf4e7ac6338b0af4b23b1d4197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08d755bf4e7ac6338b0af4b23b1d4197">&#9670;&#160;</a></span>m_irradianceCS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::IBLBuilder::m_irradianceCS = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00094">94</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a2da0560628a97db0c0f7b7e7a6ecbf7d" name="a2da0560628a97db0c0f7b7e7a6ecbf7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da0560628a97db0c0f7b7e7a6ecbf7d">&#9670;&#160;</a></span>m_irradiancePSO</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D12PipelineState&gt; Span::IBLBuilder::m_irradiancePSO</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00093">93</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="aa4a6a992d8690a5802f4881a94a6e44d" name="aa4a6a992d8690a5802f4881a94a6e44d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4a6a992d8690a5802f4881a94a6e44d">&#9670;&#160;</a></span>m_prefilterCS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::IBLBuilder::m_prefilterCS = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00097">97</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a629195d702e2bf7739265e89f539f289" name="a629195d702e2bf7739265e89f539f289"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a629195d702e2bf7739265e89f539f289">&#9670;&#160;</a></span>m_prefilterPSO</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D12PipelineState&gt; Span::IBLBuilder::m_prefilterPSO</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00096">96</a> 行目に定義があります。</p>
 
 </div>
 </div>

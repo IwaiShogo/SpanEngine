@@ -100,7 +100,7 @@ $(function(){initNavTree('classSpan_1_1Texture.html','','classSpan_1_1Texture-me
 <div class="dynheader">
 Span::Texture 連携図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Texture__coll__graph.svg" width="212" height="496"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Texture__coll__graph.svg" width="212" height="536"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -109,8 +109,10 @@ Span::Texture 連携図</div>
 <tr class="memitem:ab0c408c4cd9d3b54cf9d45d3973db89b" id="r_ab0c408c4cd9d3b54cf9d45d3973db89b"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ab0c408c4cd9d3b54cf9d45d3973db89b">~Texture</a> ()</td></tr>
 <tr class="memitem:a4149a1e0df66fc08179a7e3b4a3f5d49" id="r_a4149a1e0df66fc08179a7e3b4a3f5d49"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a4149a1e0df66fc08179a7e3b4a3f5d49">Initialize</a> (ID3D12Device *device, ID3D12CommandQueue *commandQueue, const std::string &amp;filepath)</td></tr>
 <tr class="memdesc:a4149a1e0df66fc08179a7e3b4a3f5d49"><td class="mdescLeft">&#160;</td><td class="mdescRight">画像ファイルからテクスチャを作成します。  <br /></td></tr>
-<tr class="memitem:ab99a96a4447fcc778ecde065ab59d715" id="r_ab99a96a4447fcc778ecde065ab59d715"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ab99a96a4447fcc778ecde065ab59d715">InitializeAsCubemap</a> (ID3D12Device *device, uint32_t size)</td></tr>
-<tr class="memdesc:ab99a96a4447fcc778ecde065ab59d715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute Shaderで書き込むための「空のCubemap」を生成します。  <br /></td></tr>
+<tr class="memitem:a1ceed4eebe4ee28738dba1882bd1cc24" id="r_a1ceed4eebe4ee28738dba1882bd1cc24"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a1ceed4eebe4ee28738dba1882bd1cc24">InitializeAsCubemap</a> (ID3D12Device *device, uint32_t size, uint32_t mipLevels=1)</td></tr>
+<tr class="memdesc:a1ceed4eebe4ee28738dba1882bd1cc24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute Shaderで書き込むための「空のCubemap」を生成します。  <br /></td></tr>
+<tr class="memitem:a6ef0e2fb3ac793367acd46a7da97cd5a" id="r_a6ef0e2fb3ac793367acd46a7da97cd5a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6ef0e2fb3ac793367acd46a7da97cd5a">InitializeAsTexture2D</a> (ID3D12Device *device, uint32_t <a class="el" href="#ad4bffa9fb2e8830770ed4209ba6d362b">width</a>, uint32_t <a class="el" href="#a1556b35304b4e78640e769fd06a782e6">height</a>, DXGI_FORMAT format)</td></tr>
+<tr class="memdesc:a6ef0e2fb3ac793367acd46a7da97cd5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute Shaderで書き込むための「空の2Dテクスチャ」を生成します。  <br /></td></tr>
 <tr class="memitem:a0739f7dfcb17e2ebcbab8bfd90c790ab" id="r_a0739f7dfcb17e2ebcbab8bfd90c790ab"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0739f7dfcb17e2ebcbab8bfd90c790ab">Shutdown</a> ()</td></tr>
 <tr class="memdesc:a0739f7dfcb17e2ebcbab8bfd90c790ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">終了処理  <br /></td></tr>
 <tr class="memitem:abdb98b25e004e4caf0a2f6bf9ca93e7f" id="r_abdb98b25e004e4caf0a2f6bf9ca93e7f"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#abdb98b25e004e4caf0a2f6bf9ca93e7f">GetImGuiTextureID</a> () const</td></tr>
@@ -121,6 +123,8 @@ Span::Texture 連携図</div>
 <tr class="memdesc:a1e117e901ab11ec8630ef240fa59de6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">SRVヒープ自体 (ShaderVisibleではない、保管用)  <br /></td></tr>
 <tr class="memitem:acc4500c6ed6a8c4d35b876d1ac034739" id="r_acc4500c6ed6a8c4d35b876d1ac034739"><td class="memItemLeft">D3D12_GPU_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight"><a class="el" href="#acc4500c6ed6a8c4d35b876d1ac034739">GetUAV</a> () const</td></tr>
 <tr class="memitem:acf5cf9a1983bf79f7ab4a66d647aac96" id="r_acf5cf9a1983bf79f7ab4a66d647aac96"><td class="memItemLeft">D3D12_CPU_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight"><a class="el" href="#acf5cf9a1983bf79f7ab4a66d647aac96">GetUAVCPU</a> () const</td></tr>
+<tr class="memitem:af654e1e521ed18e71b35ca59cce1da75" id="r_af654e1e521ed18e71b35ca59cce1da75"><td class="memItemLeft">ID3D12Resource *&#160;</td><td class="memItemRight"><a class="el" href="#af654e1e521ed18e71b35ca59cce1da75">GetResource</a> () const</td></tr>
+<tr class="memdesc:af654e1e521ed18e71b35ca59cce1da75"><td class="mdescLeft">&#160;</td><td class="mdescRight">DirectXリソースの取得  <br /></td></tr>
 <tr class="memitem:ae195f6770529f6d52622328c60bd7101" id="r_ae195f6770529f6d52622328c60bd7101"><td class="memItemLeft">const std::string &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ae195f6770529f6d52622328c60bd7101">GetPath</a> () const</td></tr>
 <tr class="memdesc:ae195f6770529f6d52622328c60bd7101"><td class="mdescLeft">&#160;</td><td class="mdescRight">パスの取得  <br /></td></tr>
 <tr class="memitem:a4ff04dae48627444de3be3be5ec94e68" id="r_a4ff04dae48627444de3be3be5ec94e68"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a4ff04dae48627444de3be3be5ec94e68">IsHDR</a> () const</td></tr>
@@ -245,11 +249,11 @@ Span::Texture 連携図</div>
 
 <p>SRVヒープ上のCPUハンドル (ディスクリプタのコピー元) </p>
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00068">68</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00074">74</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Texture_ab7f1497482e3c11f84341d83aab51b94_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Texture_ab7f1497482e3c11f84341d83aab51b94_icgraph.svg" width="100%" height="409"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -280,7 +284,7 @@ Span::Texture 連携図</div>
 <p>ImGui表示用のテクスチャIDを取得します。 </p>
 <dl class="section return"><dt>戻り値</dt><dd>ImTextureID (GPU Descriptor Handle ptr) </dd></dl>
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00058">58</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00064">64</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -309,11 +313,45 @@ Span::Texture 連携図</div>
 
 <p>パスの取得 </p>
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00078">78</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00087">87</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Texture_ae195f6770529f6d52622328c60bd7101_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="af654e1e521ed18e71b35ca59cce1da75" name="af654e1e521ed18e71b35ca59cce1da75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af654e1e521ed18e71b35ca59cce1da75">&#9670;&#160;</a></span>GetResource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID3D12Resource * Span::Texture::GetResource </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>DirectXリソースの取得 </p>
+
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00084">84</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Texture_af654e1e521ed18e71b35ca59cce1da75_icgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -343,7 +381,7 @@ Span::Texture 連携図</div>
 
 <p>SRVヒープ自体 (ShaderVisibleではない、保管用) </p>
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00071">71</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00077">77</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -375,7 +413,7 @@ Span::Texture 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00073">73</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00079">79</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -402,11 +440,11 @@ Span::Texture 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00075">75</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00081">81</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Texture_acf5cf9a1983bf79f7ab4a66d647aac96_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Texture_acf5cf9a1983bf79f7ab4a66d647aac96_icgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -460,8 +498,8 @@ Span::Texture 連携図</div>
 
 </div>
 </div>
-<a id="ab99a96a4447fcc778ecde065ab59d715" name="ab99a96a4447fcc778ecde065ab59d715"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab99a96a4447fcc778ecde065ab59d715">&#9670;&#160;</a></span>InitializeAsCubemap()</h2>
+<a id="a1ceed4eebe4ee28738dba1882bd1cc24" name="a1ceed4eebe4ee28738dba1882bd1cc24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ceed4eebe4ee28738dba1882bd1cc24">&#9670;&#160;</a></span>InitializeAsCubemap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -474,7 +512,12 @@ Span::Texture 連携図</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>mipLevels</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -483,11 +526,47 @@ Span::Texture 連携図</div>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td>Cubemapの1面の解像度 </td></tr>
+    <tr><td class="paramname">mipLevels</td><td>ミップマップの階層数 </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition"> <a class="el" href="Texture_8cpp_source.html">Texture.cpp</a> の <a class="el" href="Texture_8cpp_source.html#l00087">87</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a6ef0e2fb3ac793367acd46a7da97cd5a" name="a6ef0e2fb3ac793367acd46a7da97cd5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ef0e2fb3ac793367acd46a7da97cd5a">&#9670;&#160;</a></span>InitializeAsTexture2D()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Span::Texture::InitializeAsTexture2D </td>
+          <td>(</td>
+          <td class="paramtype">ID3D12Device *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>height</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DXGI_FORMAT</td>          <td class="paramname"><span class="paramname"><em>format</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute Shaderで書き込むための「空の2Dテクスチャ」を生成します。 </p>
+
+<p class="definition"> <a class="el" href="Texture_8cpp_source.html">Texture.cpp</a> の <a class="el" href="Texture_8cpp_source.html#l00141">141</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -514,7 +593,7 @@ Span::Texture 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00079">79</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00088">88</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -596,7 +675,7 @@ Span::Texture 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Texture_8cpp_source.html">Texture.cpp</a> の <a class="el" href="Texture_8cpp_source.html#l00138">138</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8cpp_source.html">Texture.cpp</a> の <a class="el" href="Texture_8cpp_source.html#l00192">192</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -618,7 +697,7 @@ Span::Texture 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00081">81</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00090">90</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -642,7 +721,7 @@ Span::Texture 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00097">97</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00106">106</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -666,7 +745,7 @@ Span::Texture 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00099">99</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00108">108</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -690,7 +769,7 @@ Span::Texture 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00098">98</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00107">107</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -716,7 +795,7 @@ Span::Texture 連携図</div>
 
 <p>テクスチャ本体 (VRAM) </p>
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00089">89</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00098">98</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -740,7 +819,7 @@ Span::Texture 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00094">94</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00103">103</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -766,7 +845,7 @@ Span::Texture 連携図</div>
 
 <p>SRV用デスクリプタヒープ (このテクスチャ専用) </p>
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00091">91</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00100">100</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -792,7 +871,7 @@ Span::Texture 連携図</div>
 
 <p>UAV用ヒープを追加 </p>
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00092">92</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00101">101</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -818,7 +897,7 @@ Span::Texture 連携図</div>
 
 <p>アップロード用の一時バッファ (Upload Heap) </p>
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00090">90</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00099">99</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -842,7 +921,7 @@ Span::Texture 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00096">96</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Texture_8h_source.html">Texture.h</a> の <a class="el" href="Texture_8h_source.html#l00105">105</a> 行目に定義があります。</p>
 
 </div>
 </div>
