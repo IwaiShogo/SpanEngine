@@ -10,11 +10,13 @@ var structSpan_1_1MaterialData =
     [ "HasMetallicMap", "structSpan_1_1MaterialData.html#a60e5ad14d668c1f4f27277b1ce7472f7", null ],
     [ "HasNormalMap", "structSpan_1_1MaterialData.html#ad7095d9558059e5e4bb67549f97f87fd", null ],
     [ "HasRoughnessMap", "structSpan_1_1MaterialData.html#abd58f6355e25672763ee56d30c5de4f1", null ],
+    [ "IOR", "structSpan_1_1MaterialData.html#a32acab307917c56985c84350223b9da2", null ],
     [ "Metallic", "structSpan_1_1MaterialData.html#a0e80c9957e5059ae569d207b6585d4c3", null ],
     [ "Offset", "structSpan_1_1MaterialData.html#af44bf5f0aa894ca189436330c1eaefa0", null ],
     [ "Padding1", "structSpan_1_1MaterialData.html#a05e893df71b73574f17e899b79b7780e", null ],
     [ "Padding2", "structSpan_1_1MaterialData.html#a5936aee77b79e8b528b5a23695218033", null ],
     [ "Padding3", "structSpan_1_1MaterialData.html#a5feb41e1e038e4c03f532b2f65df5442", null ],
     [ "Roughness", "structSpan_1_1MaterialData.html#a2ffeb1ab4487a6724284c6cf51e675ab", null ],
-    [ "Tiling", "structSpan_1_1MaterialData.html#a0ab1fe5c34324fa7b9073274be5a95b2", null ]
+    [ "Tiling", "structSpan_1_1MaterialData.html#a0ab1fe5c34324fa7b9073274be5a95b2", null ],
+    [ "Transmission", "structSpan_1_1MaterialData.html#ad7e6ba53a32d5013f57acbe8f6aa283e", null ]
 ];

@@ -33,13 +33,14 @@ var searchData=
   ['transitiontorendertarget_30',['TransitionToRenderTarget',['../classSpan_1_1RenderTarget.html#a3fca570c795e6b3d4a5704b0f8863a32',1,'Span::RenderTarget']]],
   ['transitiontoshaderresource_31',['TransitionToShaderResource',['../classSpan_1_1RenderTarget.html#a7c35d48a9858e806dd77f260e469e1eb',1,'Span::RenderTarget']]],
   ['translation_32',['Translation',['../structSpan_1_1Matrix4x4.html#ab7d064c16269a9201463b603c35793e6',1,'Span::Matrix4x4']]],
-  ['transparent_33',['Transparent',['../namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0a3d971943089a3388c01fb297a32d9ba7',1,'Span']]],
-  ['transpose_34',['Transpose',['../structSpan_1_1Matrix4x4.html#aa675a51f0f67753f22127641ca6da7d6',1,'Span::Matrix4x4']]],
-  ['trs_35',['TRS',['../structSpan_1_1Matrix4x4.html#a26c91de102eab3c6d4d45b5f7bf107fc',1,'Span::Matrix4x4']]],
-  ['twopi_36',['TwoPI',['../namespaceSpan.html#abc577250df3b868bd5b5d433f4c5632b',1,'Span']]],
-  ['type_37',['Type',['../structSpan_1_1Camera.html#add602a5b10a80c4416bf6819f83421b6',1,'Span::Camera::Type'],['../structSpan_1_1LightDataGPU.html#a13c41d56a057825ed8eb7a63566e232f',1,'Span::LightDataGPU::Type'],['../structSpan_1_1Attribute.html#ad4f69260b473673f7fa22e5004c8ab99',1,'Span::Attribute::Type'],['../structSpan_1_1AssetMetadata.html#abb9dddb738e37bae8d6ff6fcda1c6c5d',1,'Span::AssetMetadata::Type']]],
-  ['typealignments_38',['typeAlignments',['../classSpan_1_1Archetype.html#ae81a33142663f5b2592850d7f866aafe',1,'Span::Archetype']]],
-  ['typeids_39',['typeIDs',['../classSpan_1_1Archetype.html#a90e77740e743ce0f3c5b43a863fa84cf',1,'Span::Archetype']]],
-  ['typeoffsets_40',['typeOffsets',['../classSpan_1_1Archetype.html#a39093386e673c2224b2fc6bce1366681',1,'Span::Archetype']]],
-  ['typesizes_41',['typeSizes',['../classSpan_1_1Archetype.html#a58669ba1c104bcb9021c6121ec5e3528',1,'Span::Archetype']]]
+  ['transmission_33',['Transmission',['../structSpan_1_1MaterialData.html#ad7e6ba53a32d5013f57acbe8f6aa283e',1,'Span::MaterialData']]],
+  ['transparent_34',['Transparent',['../namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0a3d971943089a3388c01fb297a32d9ba7',1,'Span']]],
+  ['transpose_35',['Transpose',['../structSpan_1_1Matrix4x4.html#aa675a51f0f67753f22127641ca6da7d6',1,'Span::Matrix4x4']]],
+  ['trs_36',['TRS',['../structSpan_1_1Matrix4x4.html#a26c91de102eab3c6d4d45b5f7bf107fc',1,'Span::Matrix4x4']]],
+  ['twopi_37',['TwoPI',['../namespaceSpan.html#abc577250df3b868bd5b5d433f4c5632b',1,'Span']]],
+  ['type_38',['Type',['../structSpan_1_1Camera.html#add602a5b10a80c4416bf6819f83421b6',1,'Span::Camera::Type'],['../structSpan_1_1LightDataGPU.html#a13c41d56a057825ed8eb7a63566e232f',1,'Span::LightDataGPU::Type'],['../structSpan_1_1Attribute.html#ad4f69260b473673f7fa22e5004c8ab99',1,'Span::Attribute::Type'],['../structSpan_1_1AssetMetadata.html#abb9dddb738e37bae8d6ff6fcda1c6c5d',1,'Span::AssetMetadata::Type']]],
+  ['typealignments_39',['typeAlignments',['../classSpan_1_1Archetype.html#ae81a33142663f5b2592850d7f866aafe',1,'Span::Archetype']]],
+  ['typeids_40',['typeIDs',['../classSpan_1_1Archetype.html#a90e77740e743ce0f3c5b43a863fa84cf',1,'Span::Archetype']]],
+  ['typeoffsets_41',['typeOffsets',['../classSpan_1_1Archetype.html#a39093386e673c2224b2fc6bce1366681',1,'Span::Archetype']]],
+  ['typesizes_42',['typeSizes',['../classSpan_1_1Archetype.html#a58669ba1c104bcb9021c6121ec5e3528',1,'Span::Archetype']]]
 ];

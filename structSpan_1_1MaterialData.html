@@ -117,12 +117,16 @@ Span::MaterialData 連携図</div>
 <tr class="memdesc:a86a241720a499a79c7eb60f420ec1dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">環境遮蔽(アンビエントオクルーション)強度  <br /></td></tr>
 <tr class="memitem:a2c681cdc9093bbd9eff6605e2c92ef3c" id="r_a2c681cdc9093bbd9eff6605e2c92ef3c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a2c681cdc9093bbd9eff6605e2c92ef3c">Cutoff</a> = 0.5f</td></tr>
 <tr class="memdesc:a2c681cdc9093bbd9eff6605e2c92ef3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cutoutモード時のアルファ閾値  <br /></td></tr>
-<tr class="memitem:a05e893df71b73574f17e899b79b7780e" id="r_a05e893df71b73574f17e899b79b7780e"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a05e893df71b73574f17e899b79b7780e">Padding1</a></td></tr>
-<tr class="memdesc:a05e893df71b73574f17e899b79b7780e"><td class="mdescLeft">&#160;</td><td class="mdescRight">アライメント用  <br /></td></tr>
+<tr class="memitem:ad7e6ba53a32d5013f57acbe8f6aa283e" id="r_ad7e6ba53a32d5013f57acbe8f6aa283e"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ad7e6ba53a32d5013f57acbe8f6aa283e">Transmission</a></td></tr>
+<tr class="memdesc:ad7e6ba53a32d5013f57acbe8f6aa283e"><td class="mdescLeft">&#160;</td><td class="mdescRight">透明度(ガラス)  <br /></td></tr>
 <tr class="memitem:a0ab1fe5c34324fa7b9073274be5a95b2" id="r_a0ab1fe5c34324fa7b9073274be5a95b2"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a0ab1fe5c34324fa7b9073274be5a95b2">Tiling</a> = { 1.0f, 1.0f }</td></tr>
 <tr class="memdesc:a0ab1fe5c34324fa7b9073274be5a95b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">UVタイリング  <br /></td></tr>
 <tr class="memitem:af44bf5f0aa894ca189436330c1eaefa0" id="r_af44bf5f0aa894ca189436330c1eaefa0"><td class="memItemLeft"><a class="el" href="structSpan_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight"><a class="el" href="#af44bf5f0aa894ca189436330c1eaefa0">Offset</a> = { 0.0f, 0.0f }</td></tr>
 <tr class="memdesc:af44bf5f0aa894ca189436330c1eaefa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">UVオフセット  <br /></td></tr>
+<tr class="memitem:a32acab307917c56985c84350223b9da2" id="r_a32acab307917c56985c84350223b9da2"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a32acab307917c56985c84350223b9da2">IOR</a> = 1.5f</td></tr>
+<tr class="memdesc:a32acab307917c56985c84350223b9da2"><td class="mdescLeft">&#160;</td><td class="mdescRight">屈折率 (ガラスのデフォルトは1.5)  <br /></td></tr>
+<tr class="memitem:a05e893df71b73574f17e899b79b7780e" id="r_a05e893df71b73574f17e899b79b7780e"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a05e893df71b73574f17e899b79b7780e">Padding1</a> = 0.0f</td></tr>
+<tr class="memdesc:a05e893df71b73574f17e899b79b7780e"><td class="mdescLeft">&#160;</td><td class="mdescRight">アライメント用  <br /></td></tr>
 <tr class="memitem:a51097e5f341f40a9a69726c8e8fa9e42" id="r_a51097e5f341f40a9a69726c8e8fa9e42"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a51097e5f341f40a9a69726c8e8fa9e42">HasAlbedoMap</a> = 0</td></tr>
 <tr class="memitem:ad7095d9558059e5e4bb67549f97f87fd" id="r_ad7095d9558059e5e4bb67549f97f87fd"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ad7095d9558059e5e4bb67549f97f87fd">HasNormalMap</a> = 0</td></tr>
 <tr class="memitem:a60e5ad14d668c1f4f27277b1ce7472f7" id="r_a60e5ad14d668c1f4f27277b1ce7472f7"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a60e5ad14d668c1f4f27277b1ce7472f7">HasMetallicMap</a> = 0</td></tr>
@@ -221,7 +225,7 @@ Span::MaterialData 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00047">47</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00050">50</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -237,7 +241,7 @@ Span::MaterialData 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00052">52</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00055">55</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -253,7 +257,7 @@ Span::MaterialData 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00053">53</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00056">56</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -269,7 +273,7 @@ Span::MaterialData 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00049">49</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00052">52</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -285,7 +289,7 @@ Span::MaterialData 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00048">48</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00051">51</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -301,7 +305,25 @@ Span::MaterialData 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00050">50</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00053">53</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a32acab307917c56985c84350223b9da2" name="a32acab307917c56985c84350223b9da2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32acab307917c56985c84350223b9da2">&#9670;&#160;</a></span>IOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::MaterialData::IOR = 1.5f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>屈折率 (ガラスのデフォルトは1.5) </p>
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00046">46</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -348,14 +370,14 @@ Span::MaterialData 連携図</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Span::MaterialData::Padding1</td>
+          <td class="memname">float Span::MaterialData::Padding1 = 0.0f</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>アライメント用 </p>
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00041">41</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00047">47</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -371,7 +393,7 @@ Span::MaterialData 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00054">54</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00057">57</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -387,7 +409,7 @@ Span::MaterialData 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00055">55</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00058">58</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -424,6 +446,24 @@ Span::MaterialData 連携図</div>
 <p>UVタイリング </p>
 
 <p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00043">43</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ad7e6ba53a32d5013f57acbe8f6aa283e" name="ad7e6ba53a32d5013f57acbe8f6aa283e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7e6ba53a32d5013f57acbe8f6aa283e">&#9670;&#160;</a></span>Transmission</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Span::MaterialData::Transmission</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>透明度(ガラス) </p>
+
+<p class="definition"> <a class="el" href="Material_8h_source.html">Material.h</a> の <a class="el" href="Material_8h_source.html#l00041">41</a> 行目に定義があります。</p>
 
 </div>
 </div>
