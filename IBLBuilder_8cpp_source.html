@@ -260,214 +260,220 @@ $(function(){initNavTree('IBLBuilder_8cpp_source.html','',''); });
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <a class="code hl_define" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a>(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a79089d6accce66111ae39689fc61a5e1">m_equirectToCubemapCS</a>);</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#ae40584f87ef27bb37deb53b8e1b58761">m_equirectToCubemapPSO</a>.Reset();</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Reset();</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    }</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a86a7357adc2141ef5ffccd94421eee9e">m_tempHeaps</a>.clear();</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    }</div>
 </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="foldopen" id="foldopen00168" data-start="{" data-end="}">
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#ae49f8044ac7ae74396afad74b9d93d96">  168</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#ae49f8044ac7ae74396afad74b9d93d96">IBLBuilder::GenerateCubemapFromPanorama</a>(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE panoramaSRV, <a class="code hl_class" href="classSpan_1_1Texture.html">Texture</a>* outCubemap, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> cubemapSize)</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    {</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="keywordflow">if</span> (!device || !cmd || !outCubemap) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="comment">// 1. 一時的なディスクリプタヒープを2枠作成</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        heapDesc.NumDescriptors = 2;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        ComPtr&lt;ID3D12DescriptorHeap&gt; tempHeap;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        device-&gt;CreateDescriptorHeap(&amp;heapDesc, IID_PPV_ARGS(&amp;tempHeap));</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> descriptorSize = device-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        D3D12_CPU_DESCRIPTOR_HANDLE destHandle = tempHeap-&gt;GetCPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="foldopen" id="foldopen00170" data-start="{" data-end="}">
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#ae49f8044ac7ae74396afad74b9d93d96">  170</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#ae49f8044ac7ae74396afad74b9d93d96">IBLBuilder::GenerateCubemapFromPanorama</a>(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE panoramaSRV, <a class="code hl_class" href="classSpan_1_1Texture.html">Texture</a>* outCubemap, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> cubemapSize)</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    {</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="keywordflow">if</span> (!device || !cmd || !outCubemap) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="comment">// 1. 一時的なディスクリプタヒープを2枠作成</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        heapDesc.NumDescriptors = 2;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        ComPtr&lt;ID3D12DescriptorHeap&gt; tempHeap;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        device-&gt;CreateDescriptorHeap(&amp;heapDesc, IID_PPV_ARGS(&amp;tempHeap));</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a86a7357adc2141ef5ffccd94421eee9e">m_tempHeaps</a>.push_back(tempHeap);</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="comment">// 2. カタログにテクスチャの情報をコピー</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="comment">// [0] 入力パノラマ画像をコピー</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        device-&gt;CopyDescriptorsSimple(1, destHandle, panoramaSRV, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="comment">// [1] 出力Cubemapをコピー</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        destHandle.ptr += descriptorSize;</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        device-&gt;CopyDescriptorsSimple(1, destHandle, outCubemap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#acf5cf9a1983bf79f7ab4a66d647aac96">GetUAVCPU</a>(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="comment">// 3. この一時カタログをGPUにセット</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        ID3D12DescriptorHeap* heaps[] = { tempHeap.Get() };</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        cmd-&gt;SetDescriptorHeaps(1, heaps);</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#ae40584f87ef27bb37deb53b8e1b58761">m_equirectToCubemapPSO</a>.Get());</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        cmd-&gt;SetComputeRootSignature(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Get());</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> descriptorSize = device-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        D3D12_CPU_DESCRIPTOR_HANDLE destHandle = tempHeap-&gt;GetCPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <span class="comment">// 2. カタログにテクスチャの情報をコピー</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="comment">// [0] 入力パノラマ画像をコピー</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        device-&gt;CopyDescriptorsSimple(1, destHandle, panoramaSRV, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="comment">// [1] 出力Cubemapをコピー</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        destHandle.ptr += descriptorSize;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        device-&gt;CopyDescriptorsSimple(1, destHandle, outCubemap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#acf5cf9a1983bf79f7ab4a66d647aac96">GetUAVCPU</a>(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="comment">// 3. この一時カタログをGPUにセット</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        ID3D12DescriptorHeap* heaps[] = { tempHeap.Get() };</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        cmd-&gt;SetDescriptorHeaps(1, heaps);</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="comment">// 4. スロットにカタログの住所を教える</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = tempHeap-&gt;GetGPUDescriptorHandleForHeapStart();</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        cmd-&gt;SetComputeRootDescriptorTable(0, gpuHandle);   <span class="comment">// t0: パノラマ</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        gpuHandle.ptr += descriptorSize;</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        cmd-&gt;SetComputeRootDescriptorTable(1, gpuHandle);   <span class="comment">// u0: Cubemap</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="comment">// 5. Compute Shader を起動</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsX = cubemapSize / 8;</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsY = cubemapSize / 8;</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsZ = 6;</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        cmd-&gt;Dispatch(threadGroupsX, threadGroupsY, threadGroupsZ);</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    }</div>
-</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#ae40584f87ef27bb37deb53b8e1b58761">m_equirectToCubemapPSO</a>.Get());</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        cmd-&gt;SetComputeRootSignature(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Get());</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="comment">// 4. スロットにカタログの住所を教える</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = tempHeap-&gt;GetGPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        cmd-&gt;SetComputeRootDescriptorTable(0, gpuHandle);   <span class="comment">// t0: パノラマ</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        gpuHandle.ptr += descriptorSize;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        cmd-&gt;SetComputeRootDescriptorTable(1, gpuHandle);   <span class="comment">// u0: Cubemap</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="comment">// 5. Compute Shader を起動</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsX = cubemapSize / 8;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsY = cubemapSize / 8;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsZ = 6;</div>
 <div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="foldopen" id="foldopen00213" data-start="{" data-end="}">
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#a4f15a6de15fa7e3f19fc55efa9308dc0">  213</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#a4f15a6de15fa7e3f19fc55efa9308dc0">IBLBuilder::GenerateIrradianceMap</a>(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, <a class="code hl_class" href="classSpan_1_1Texture.html">Texture</a>* outIrradianceMap, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> mapSize)</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    {</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <span class="keywordflow">if</span> (!device || !cmd || !outIrradianceMap) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="comment">// 1. 一時的なディスクリプタヒープを作成</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        heapDesc.NumDescriptors = 2;</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        ComPtr&lt;ID3D12DescriptorHeap&gt; tempHeap;</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        device-&gt;CreateDescriptorHeap(&amp;heapDesc, IID_PPV_ARGS(&amp;tempHeap));</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        cmd-&gt;Dispatch(threadGroupsX, threadGroupsY, threadGroupsZ);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    }</div>
+</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
+<div class="foldopen" id="foldopen00216" data-start="{" data-end="}">
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#a4f15a6de15fa7e3f19fc55efa9308dc0">  216</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#a4f15a6de15fa7e3f19fc55efa9308dc0">IBLBuilder::GenerateIrradianceMap</a>(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, <a class="code hl_class" href="classSpan_1_1Texture.html">Texture</a>* outIrradianceMap, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> mapSize)</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    {</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordflow">if</span> (!device || !cmd || !outIrradianceMap) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="comment">// 1. 一時的なディスクリプタヒープを作成</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        heapDesc.NumDescriptors = 2;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> descriptorSize = device-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        D3D12_CPU_DESCRIPTOR_HANDLE destHandle = tempHeap-&gt;GetCPUDescriptorHandleForHeapStart();</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="comment">// 2. カタログにテクスチャの情報をコピー</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="comment">// [0] 入力環境Cubemap (SRV) をコピー</span></div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        device-&gt;CopyDescriptorsSimple(1, destHandle, envCubemapSRV, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        ComPtr&lt;ID3D12DescriptorHeap&gt; tempHeap;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        device-&gt;CreateDescriptorHeap(&amp;heapDesc, IID_PPV_ARGS(&amp;tempHeap));</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a86a7357adc2141ef5ffccd94421eee9e">m_tempHeaps</a>.push_back(tempHeap);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> descriptorSize = device-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        D3D12_CPU_DESCRIPTOR_HANDLE destHandle = tempHeap-&gt;GetCPUDescriptorHandleForHeapStart();</div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="comment">// [1] 出力Irradiance Map (UAV) をコピー</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        destHandle.ptr += descriptorSize;</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        device-&gt;CopyDescriptorsSimple(1, destHandle, outIrradianceMap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#acf5cf9a1983bf79f7ab4a66d647aac96">GetUAVCPU</a>(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="comment">// 2. カタログにテクスチャの情報をコピー</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="comment">// [0] 入力環境Cubemap (SRV) をコピー</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        device-&gt;CopyDescriptorsSimple(1, destHandle, envCubemapSRV, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="comment">// 3. 一時カタログをGPUにセット</span></div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        ID3D12DescriptorHeap* heaps[] = { tempHeap.Get() };</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        cmd-&gt;SetDescriptorHeaps(1, heaps);</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="comment">// [1] 出力Irradiance Map (UAV) をコピー</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        destHandle.ptr += descriptorSize;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        device-&gt;CopyDescriptorsSimple(1, destHandle, outIrradianceMap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#acf5cf9a1983bf79f7ab4a66d647aac96">GetUAVCPU</a>(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="comment">// Irradiance専用のPSOをセット</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a2da0560628a97db0c0f7b7e7a6ecbf7d">m_irradiancePSO</a>.Get());</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        cmd-&gt;SetComputeRootSignature(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Get());</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="comment">// 3. 一時カタログをGPUにセット</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        ID3D12DescriptorHeap* heaps[] = { tempHeap.Get() };</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        cmd-&gt;SetDescriptorHeaps(1, heaps);</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="comment">// 4. スロットにカタログの住所を教える</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = tempHeap-&gt;GetGPUDescriptorHandleForHeapStart();</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        cmd-&gt;SetComputeRootDescriptorTable(0, gpuHandle);   <span class="comment">// t0: 環境Cubemap</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        gpuHandle.ptr += descriptorSize;</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        cmd-&gt;SetComputeRootDescriptorTable(1, gpuHandle);   <span class="comment">// u0: 出力Irradiance Map</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="comment">// 5. Compute Shader を起動</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsX = std::max(1u, mapSize / 8);</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsY = std::max(1u, mapSize / 8);</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsZ = 6;</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        cmd-&gt;Dispatch(threadGroupsX, threadGroupsY, threadGroupsZ);</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    }</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="comment">// Irradiance専用のPSOをセット</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a2da0560628a97db0c0f7b7e7a6ecbf7d">m_irradiancePSO</a>.Get());</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        cmd-&gt;SetComputeRootSignature(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Get());</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="comment">// 4. スロットにカタログの住所を教える</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = tempHeap-&gt;GetGPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        cmd-&gt;SetComputeRootDescriptorTable(0, gpuHandle);   <span class="comment">// t0: 環境Cubemap</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        gpuHandle.ptr += descriptorSize;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        cmd-&gt;SetComputeRootDescriptorTable(1, gpuHandle);   <span class="comment">// u0: 出力Irradiance Map</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="comment">// 5. Compute Shader を起動</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsX = std::max(1u, mapSize / 8);</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsY = std::max(1u, mapSize / 8);</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroupsZ = 6;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        cmd-&gt;Dispatch(threadGroupsX, threadGroupsY, threadGroupsZ);</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    }</div>
 </div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
-<div class="foldopen" id="foldopen00259" data-start="{" data-end="}">
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#ae51664c9b81e06e322555ed05fbd3b50">  259</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#ae51664c9b81e06e322555ed05fbd3b50">IBLBuilder::GeneratePrefilterMap</a>(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, <a class="code hl_class" href="classSpan_1_1Texture.html">Texture</a>* outPrefilterMap, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> baseMapSize)</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    {</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        <span class="keywordflow">if</span> (!device || !cmd || !outPrefilterMap || !outPrefilterMap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>()) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <span class="comment">// ミップマップの最大レベルを計算</span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> maxMipLevels = 5;</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        <span class="comment">// 一時ヒープを作成</span></div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        heapDesc.NumDescriptors = 1 + maxMipLevels;</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        ComPtr&lt;ID3D12DescriptorHeap&gt; tempHeap;</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        device-&gt;CreateDescriptorHeap(&amp;heapDesc, IID_PPV_ARGS(&amp;tempHeap));</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> descSize = device-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="foldopen" id="foldopen00263" data-start="{" data-end="}">
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#ae51664c9b81e06e322555ed05fbd3b50">  263</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#ae51664c9b81e06e322555ed05fbd3b50">IBLBuilder::GeneratePrefilterMap</a>(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, <a class="code hl_class" href="classSpan_1_1Texture.html">Texture</a>* outPrefilterMap, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> baseMapSize)</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    {</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="keywordflow">if</span> (!device || !cmd || !outPrefilterMap || !outPrefilterMap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <span class="comment">// ミップマップの最大レベルを計算</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> maxMipLevels = 5;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <span class="comment">// 一時ヒープを作成</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        heapDesc.NumDescriptors = 1 + maxMipLevels;</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        D3D12_CPU_DESCRIPTOR_HANDLE cpuHandle = tempHeap-&gt;GetCPUDescriptorHandleForHeapStart();</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = tempHeap-&gt;GetGPUDescriptorHandleForHeapStart();</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="comment">// [0] 入力環境マップ(SRV)をコピー</span></div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        device-&gt;CopyDescriptorsSimple(1, cpuHandle, envCubemapSRV, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        ID3D12DescriptorHeap* heaps[] = { tempHeap.Get() };</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        cmd-&gt;SetDescriptorHeaps(1, heaps);</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a629195d702e2bf7739265e89f539f289">m_prefilterPSO</a>.Get());</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        cmd-&gt;SetComputeRootSignature(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Get());</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        cmd-&gt;SetComputeRootDescriptorTable(0, gpuHandle); <span class="comment">// t0: 環境Cubemap</span></div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="comment">// 各ミップレベルごとに計算をディスパッチ</span></div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> mip = 0; mip &lt; maxMipLevels; ++mip)</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        {</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>            <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> mipWidth = std::max(1u, baseMapSize &gt;&gt; mip);</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>            <span class="keywordtype">float</span> roughness = (float)mip / (<span class="keywordtype">float</span>)(maxMipLevels - 1);</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>            <span class="comment">// 該当ミップレベル専用のUAVを作成</span></div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>            cpuHandle.ptr += descSize;</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>            D3D12_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            uavDesc.Format = outPrefilterMap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>()-&gt;GetDesc().Format;</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>            uavDesc.ViewDimension = D3D12_UAV_DIMENSION_TEXTURE2DARRAY;</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>            uavDesc.Texture2DArray.MipSlice = mip;</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            uavDesc.Texture2DArray.FirstArraySlice = 0;</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            uavDesc.Texture2DArray.ArraySize = 6;</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>            device-&gt;CreateUnorderedAccessView(outPrefilterMap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>(), <span class="keyword">nullptr</span>, &amp;uavDesc, cpuHandle);</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>            <span class="comment">// スロットにUAVとRootConstantsを設定</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>            gpuHandle.ptr += descSize;</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            cmd-&gt;SetComputeRootDescriptorTable(1, gpuHandle);</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>            <span class="comment">// Root Constants(b0) に Roughness と Resolution を設定</span></div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>            <span class="keyword">struct </span>ConstantData { <span class="keywordtype">float</span> Roughness; <span class="keywordtype">float</span> Resolution; } constants = { roughness, (float)mipWidth };</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>            cmd-&gt;SetComputeRoot32BitConstants(2, 2, &amp;constants, 0);</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>            <span class="comment">// ディスパッチ</span></div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroups = std::max(1u, mipWidth / 8);</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>            cmd-&gt;Dispatch(threadGroups, threadGroups, 6);</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        }</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    }</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        ComPtr&lt;ID3D12DescriptorHeap&gt; tempHeap;</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        device-&gt;CreateDescriptorHeap(&amp;heapDesc, IID_PPV_ARGS(&amp;tempHeap));</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a86a7357adc2141ef5ffccd94421eee9e">m_tempHeaps</a>.push_back(tempHeap);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> descSize = device-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        D3D12_CPU_DESCRIPTOR_HANDLE cpuHandle = tempHeap-&gt;GetCPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = tempHeap-&gt;GetGPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="comment">// [0] 入力環境マップ(SRV)をコピー</span></div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        device-&gt;CopyDescriptorsSimple(1, cpuHandle, envCubemapSRV, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        ID3D12DescriptorHeap* heaps[] = { tempHeap.Get() };</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        cmd-&gt;SetDescriptorHeaps(1, heaps);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a629195d702e2bf7739265e89f539f289">m_prefilterPSO</a>.Get());</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        cmd-&gt;SetComputeRootSignature(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Get());</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        cmd-&gt;SetComputeRootDescriptorTable(0, gpuHandle); <span class="comment">// t0: 環境Cubemap</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        <span class="comment">// 各ミップレベルごとに計算をディスパッチ</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> mip = 0; mip &lt; maxMipLevels; ++mip)</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        {</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>            <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> mipWidth = std::max(1u, baseMapSize &gt;&gt; mip);</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            <span class="keywordtype">float</span> roughness = (float)mip / (<span class="keywordtype">float</span>)(maxMipLevels - 1);</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>            <span class="comment">// 該当ミップレベル専用のUAVを作成</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            cpuHandle.ptr += descSize;</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            D3D12_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>            uavDesc.Format = outPrefilterMap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>()-&gt;GetDesc().Format;</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>            uavDesc.ViewDimension = D3D12_UAV_DIMENSION_TEXTURE2DARRAY;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>            uavDesc.Texture2DArray.MipSlice = mip;</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>            uavDesc.Texture2DArray.FirstArraySlice = 0;</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            uavDesc.Texture2DArray.ArraySize = 6;</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>            device-&gt;CreateUnorderedAccessView(outPrefilterMap-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>(), <span class="keyword">nullptr</span>, &amp;uavDesc, cpuHandle);</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>            <span class="comment">// スロットにUAVとRootConstantsを設定</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>            gpuHandle.ptr += descSize;</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>            cmd-&gt;SetComputeRootDescriptorTable(1, gpuHandle);</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            <span class="comment">// Root Constants(b0) に Roughness と Resolution を設定</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>            <span class="keyword">struct </span>ConstantData { <span class="keywordtype">float</span> Roughness; <span class="keywordtype">float</span> Resolution; } constants = { roughness, (float)mipWidth };</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>            cmd-&gt;SetComputeRoot32BitConstants(2, 2, &amp;constants, 0);</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span> </div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>            <span class="comment">// ディスパッチ</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>            <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroups = std::max(1u, mipWidth / 8);</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>            cmd-&gt;Dispatch(threadGroups, threadGroups, 6);</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        }</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    }</div>
 </div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
-<div class="foldopen" id="foldopen00318" data-start="{" data-end="}">
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#a2712bd9d7b65c7ecd7af5bcecfd2609d">  318</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#a2712bd9d7b65c7ecd7af5bcecfd2609d">IBLBuilder::GenerateBRDFLUT</a>(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, <a class="code hl_class" href="classSpan_1_1Texture.html">Texture</a>* outBRDFLUT, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> lutSize)</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    {</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        <span class="keywordflow">if</span> (!device || !cmd || !outBRDFLUT || !outBRDFLUT-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        <span class="comment">// 一時的なディスクリプタヒープを作成</span></div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>        D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        heapDesc.NumDescriptors = 2;</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        ComPtr&lt;ID3D12DescriptorHeap&gt; tempHeap;</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        device-&gt;CreateDescriptorHeap(&amp;heapDesc, IID_PPV_ARGS(&amp;tempHeap));</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> descSize = device-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        D3D12_CPU_DESCRIPTOR_HANDLE cpuHandle = tempHeap-&gt;GetCPUDescriptorHandleForHeapStart();</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = tempHeap-&gt;GetGPUDescriptorHandleForHeapStart();</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <span class="comment">// [0] ダミーとして出力先テクスチャのSRVをコピー</span></div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        device-&gt;CopyDescriptorsSimple(1, cpuHandle, outBRDFLUT-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#ab7f1497482e3c11f84341d83aab51b94">GetCPUDescriptorHandle</a>(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        <span class="comment">// [1] 出力先のBDRF LUT を作成</span></div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        cpuHandle.ptr += descSize;</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>        D3D12_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        uavDesc.Format = outBRDFLUT-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>()-&gt;GetDesc().Format;</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        uavDesc.ViewDimension = D3D12_UAV_DIMENSION_TEXTURE2D;</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        uavDesc.Texture2D.MipSlice = 0;</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        device-&gt;CreateUnorderedAccessView(outBRDFLUT-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>(), <span class="keyword">nullptr</span>, &amp;uavDesc, cpuHandle);</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        <span class="comment">// ヒープをGPUにセット</span></div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        ID3D12DescriptorHeap* heaps[] = { tempHeap.Get() };</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        cmd-&gt;SetDescriptorHeaps(1, heaps);</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="comment">// 専用のPSOをセット</span></div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a0f3790320d8b06a97b66986b7f5cdda6">m_brdfPSO</a>.Get());</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        cmd-&gt;SetComputeRootSignature(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Get());</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span> </div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        <span class="comment">// t0 と u0 の両方をセットしてエラーを回避</span></div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        cmd-&gt;SetComputeRootDescriptorTable(0, gpuHandle);</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span> </div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        gpuHandle.ptr += descSize;</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        cmd-&gt;SetComputeRootDescriptorTable(1, gpuHandle);</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span> </div>
+<div class="foldopen" id="foldopen00323" data-start="{" data-end="}">
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno"><a class="line" href="classSpan_1_1IBLBuilder.html#a2712bd9d7b65c7ecd7af5bcecfd2609d">  323</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1IBLBuilder.html#a2712bd9d7b65c7ecd7af5bcecfd2609d">IBLBuilder::GenerateBRDFLUT</a>(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, <a class="code hl_class" href="classSpan_1_1Texture.html">Texture</a>* outBRDFLUT, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> lutSize)</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    {</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        <span class="keywordflow">if</span> (!device || !cmd || !outBRDFLUT || !outBRDFLUT-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="comment">// 一時的なディスクリプタヒープを作成</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        heapDesc.NumDescriptors = 2;</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        ComPtr&lt;ID3D12DescriptorHeap&gt; tempHeap;</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        device-&gt;CreateDescriptorHeap(&amp;heapDesc, IID_PPV_ARGS(&amp;tempHeap));</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a86a7357adc2141ef5ffccd94421eee9e">m_tempHeaps</a>.push_back(tempHeap);</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> descSize = device-&gt;GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        D3D12_CPU_DESCRIPTOR_HANDLE cpuHandle = tempHeap-&gt;GetCPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = tempHeap-&gt;GetGPUDescriptorHandleForHeapStart();</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        <span class="comment">// [0] ダミーとして出力先テクスチャのSRVをコピー</span></div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        device-&gt;CopyDescriptorsSimple(1, cpuHandle, outBRDFLUT-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#ab7f1497482e3c11f84341d83aab51b94">GetCPUDescriptorHandle</a>(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        <span class="comment">// [1] 出力先のBDRF LUT を作成</span></div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        cpuHandle.ptr += descSize;</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        D3D12_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        uavDesc.Format = outBRDFLUT-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>()-&gt;GetDesc().Format;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        uavDesc.ViewDimension = D3D12_UAV_DIMENSION_TEXTURE2D;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        uavDesc.Texture2D.MipSlice = 0;</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        device-&gt;CreateUnorderedAccessView(outBRDFLUT-&gt;<a class="code hl_function" href="classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75">GetResource</a>(), <span class="keyword">nullptr</span>, &amp;uavDesc, cpuHandle);</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span> </div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        <span class="comment">// ヒープをGPUにセット</span></div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        ID3D12DescriptorHeap* heaps[] = { tempHeap.Get() };</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        cmd-&gt;SetDescriptorHeaps(1, heaps);</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span> </div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        <span class="comment">// 専用のPSOをセット</span></div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#a0f3790320d8b06a97b66986b7f5cdda6">m_brdfPSO</a>.Get());</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        cmd-&gt;SetComputeRootSignature(<a class="code hl_variable" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">m_computeRootSignature</a>.Get());</div>
 <div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span> </div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="comment">// Compute Shader を起動</span></div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroups = std::max(1u, lutSize / 8);</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>        cmd-&gt;Dispatch(threadGroups, threadGroups, 1);</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    }</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="comment">// t0 と u0 の両方をセットしてエラーを回避</span></div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        cmd-&gt;SetComputeRootDescriptorTable(0, gpuHandle);</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        gpuHandle.ptr += descSize;</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        cmd-&gt;SetComputeRootDescriptorTable(1, gpuHandle);</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>        <span class="comment">// Compute Shader を起動</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> threadGroups = std::max(1u, lutSize / 8);</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>        cmd-&gt;Dispatch(threadGroups, threadGroups, 1);</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>    }</div>
 </div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>}</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>}</div>
 <div class="ttc" id="aCoreMinimal_8h_html_a4b8b2bed986c06c207ebac140ba65a7a"><div class="ttname"><a href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a></div><div class="ttdeci">#define SAFE_DELETE(x)</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00114">CoreMinimal.h:114</a></div></div>
 <div class="ttc" id="aIBLBuilder_8h_html"><div class="ttname"><a href="IBLBuilder_8h.html">IBLBuilder.h</a></div><div class="ttdoc">IBL(Image-Based Lighting)用テクスチャをGPU上で生成するビルダークラス。</div></div>
 <div class="ttc" id="aLogger_8h_html_a1b7ff4efe93a9030e55f7598d493448c"><div class="ttname"><a href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a></div><div class="ttdeci">#define SPAN_LOG(Format,...)</div><div class="ttdoc">通常ログを出力します。</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00069">Logger.h:69</a></div></div>
@@ -475,18 +481,19 @@ $(function(){initNavTree('IBLBuilder_8cpp_source.html','',''); });
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a04cd5881e9334a5d99f1f83a1eb9dae3"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a04cd5881e9334a5d99f1f83a1eb9dae3">Span::IBLBuilder::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device)</div><div class="ttdoc">IBLBuilderを初期化し、必要なCompute Shaderをロードします。</div><div class="ttdef"><b>Definition</b> <a href="#l00016">IBLBuilder.cpp:16</a></div></div>
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a08d755bf4e7ac6338b0af4b23b1d4197"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a08d755bf4e7ac6338b0af4b23b1d4197">Span::IBLBuilder::m_irradianceCS</a></div><div class="ttdeci">Shader * m_irradianceCS</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00094">IBLBuilder.h:94</a></div></div>
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a0f3790320d8b06a97b66986b7f5cdda6"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a0f3790320d8b06a97b66986b7f5cdda6">Span::IBLBuilder::m_brdfPSO</a></div><div class="ttdeci">ComPtr&lt; ID3D12PipelineState &gt; m_brdfPSO</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00099">IBLBuilder.h:99</a></div></div>
-<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a2712bd9d7b65c7ecd7af5bcecfd2609d"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a2712bd9d7b65c7ecd7af5bcecfd2609d">Span::IBLBuilder::GenerateBRDFLUT</a></div><div class="ttdeci">void GenerateBRDFLUT(ID3D12Device *device, ID3D12GraphicsCommandList *cmd, Texture *outBRDFLUT, uint32 lutSize=512)</div><div class="ttdoc">環境に依存しないBRDF Integration LUT を生成します。</div><div class="ttdef"><b>Definition</b> <a href="#l00318">IBLBuilder.cpp:318</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a2712bd9d7b65c7ecd7af5bcecfd2609d"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a2712bd9d7b65c7ecd7af5bcecfd2609d">Span::IBLBuilder::GenerateBRDFLUT</a></div><div class="ttdeci">void GenerateBRDFLUT(ID3D12Device *device, ID3D12GraphicsCommandList *cmd, Texture *outBRDFLUT, uint32 lutSize=512)</div><div class="ttdoc">環境に依存しないBRDF Integration LUT を生成します。</div><div class="ttdef"><b>Definition</b> <a href="#l00323">IBLBuilder.cpp:323</a></div></div>
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a2da0560628a97db0c0f7b7e7a6ecbf7d"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a2da0560628a97db0c0f7b7e7a6ecbf7d">Span::IBLBuilder::m_irradiancePSO</a></div><div class="ttdeci">ComPtr&lt; ID3D12PipelineState &gt; m_irradiancePSO</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00093">IBLBuilder.h:93</a></div></div>
-<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a4f15a6de15fa7e3f19fc55efa9308dc0"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a4f15a6de15fa7e3f19fc55efa9308dc0">Span::IBLBuilder::GenerateIrradianceMap</a></div><div class="ttdeci">void GenerateIrradianceMap(ID3D12Device *device, ID3D12GraphicsCommandList *cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, Texture *outIrradianceMap, uint32 mapSize=32)</div><div class="ttdoc">環境Cubemapから、Diffuse用 Irradiance Map を生成。</div><div class="ttdef"><b>Definition</b> <a href="#l00213">IBLBuilder.cpp:213</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a4f15a6de15fa7e3f19fc55efa9308dc0"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a4f15a6de15fa7e3f19fc55efa9308dc0">Span::IBLBuilder::GenerateIrradianceMap</a></div><div class="ttdeci">void GenerateIrradianceMap(ID3D12Device *device, ID3D12GraphicsCommandList *cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, Texture *outIrradianceMap, uint32 mapSize=32)</div><div class="ttdoc">環境Cubemapから、Diffuse用 Irradiance Map を生成。</div><div class="ttdef"><b>Definition</b> <a href="#l00216">IBLBuilder.cpp:216</a></div></div>
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a624f8b73b634e8f6232d95a93730bdc2"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a624f8b73b634e8f6232d95a93730bdc2">Span::IBLBuilder::m_brdfCS</a></div><div class="ttdeci">Shader * m_brdfCS</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00100">IBLBuilder.h:100</a></div></div>
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a629195d702e2bf7739265e89f539f289"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a629195d702e2bf7739265e89f539f289">Span::IBLBuilder::m_prefilterPSO</a></div><div class="ttdeci">ComPtr&lt; ID3D12PipelineState &gt; m_prefilterPSO</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00096">IBLBuilder.h:96</a></div></div>
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a79089d6accce66111ae39689fc61a5e1"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a79089d6accce66111ae39689fc61a5e1">Span::IBLBuilder::m_equirectToCubemapCS</a></div><div class="ttdeci">Shader * m_equirectToCubemapCS</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00091">IBLBuilder.h:91</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_a86a7357adc2141ef5ffccd94421eee9e"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#a86a7357adc2141ef5ffccd94421eee9e">Span::IBLBuilder::m_tempHeaps</a></div><div class="ttdeci">std::vector&lt; ComPtr&lt; ID3D12DescriptorHeap &gt; &gt; m_tempHeaps</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00102">IBLBuilder.h:102</a></div></div>
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_aa4a6a992d8690a5802f4881a94a6e44d"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#aa4a6a992d8690a5802f4881a94a6e44d">Span::IBLBuilder::m_prefilterCS</a></div><div class="ttdeci">Shader * m_prefilterCS</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00097">IBLBuilder.h:97</a></div></div>
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_aa60e40f7ae9269b5b58ad27e5286099b"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">Span::IBLBuilder::m_computeRootSignature</a></div><div class="ttdeci">ComPtr&lt; ID3D12RootSignature &gt; m_computeRootSignature</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00089">IBLBuilder.h:89</a></div></div>
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_add9e97fb896f767e24aa6cda5334cef5"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#add9e97fb896f767e24aa6cda5334cef5">Span::IBLBuilder::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdoc">終了処理。ロードしたシェーダーやルートシグネチャを解放します。</div><div class="ttdef"><b>Definition</b> <a href="#l00152">IBLBuilder.cpp:152</a></div></div>
 <div class="ttc" id="aclassSpan_1_1IBLBuilder_html_ae40584f87ef27bb37deb53b8e1b58761"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#ae40584f87ef27bb37deb53b8e1b58761">Span::IBLBuilder::m_equirectToCubemapPSO</a></div><div class="ttdeci">ComPtr&lt; ID3D12PipelineState &gt; m_equirectToCubemapPSO</div><div class="ttdef"><b>Definition</b> <a href="IBLBuilder_8h_source.html#l00090">IBLBuilder.h:90</a></div></div>
-<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_ae49f8044ac7ae74396afad74b9d93d96"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#ae49f8044ac7ae74396afad74b9d93d96">Span::IBLBuilder::GenerateCubemapFromPanorama</a></div><div class="ttdeci">void GenerateCubemapFromPanorama(ID3D12Device *device, ID3D12GraphicsCommandList *cmd, D3D12_CPU_DESCRIPTOR_HANDLE panoramaSRV, Texture *outCubemap, uint32 cubemapSize)</div><div class="ttdoc">パノラマHDRテクスチャをCubemapに変換します。</div><div class="ttdef"><b>Definition</b> <a href="#l00168">IBLBuilder.cpp:168</a></div></div>
-<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_ae51664c9b81e06e322555ed05fbd3b50"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#ae51664c9b81e06e322555ed05fbd3b50">Span::IBLBuilder::GeneratePrefilterMap</a></div><div class="ttdeci">void GeneratePrefilterMap(ID3D12Device *device, ID3D12GraphicsCommandList *cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, Texture *outPrefilterMap, uint32 baseMapSize=128)</div><div class="ttdoc">環境Cubemapから、Specular用 Prefilter Environment Map を生成。</div><div class="ttdef"><b>Definition</b> <a href="#l00259">IBLBuilder.cpp:259</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_ae49f8044ac7ae74396afad74b9d93d96"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#ae49f8044ac7ae74396afad74b9d93d96">Span::IBLBuilder::GenerateCubemapFromPanorama</a></div><div class="ttdeci">void GenerateCubemapFromPanorama(ID3D12Device *device, ID3D12GraphicsCommandList *cmd, D3D12_CPU_DESCRIPTOR_HANDLE panoramaSRV, Texture *outCubemap, uint32 cubemapSize)</div><div class="ttdoc">パノラマHDRテクスチャをCubemapに変換します。</div><div class="ttdef"><b>Definition</b> <a href="#l00170">IBLBuilder.cpp:170</a></div></div>
+<div class="ttc" id="aclassSpan_1_1IBLBuilder_html_ae51664c9b81e06e322555ed05fbd3b50"><div class="ttname"><a href="classSpan_1_1IBLBuilder.html#ae51664c9b81e06e322555ed05fbd3b50">Span::IBLBuilder::GeneratePrefilterMap</a></div><div class="ttdeci">void GeneratePrefilterMap(ID3D12Device *device, ID3D12GraphicsCommandList *cmd, D3D12_CPU_DESCRIPTOR_HANDLE envCubemapSRV, Texture *outPrefilterMap, uint32 baseMapSize=128)</div><div class="ttdoc">環境Cubemapから、Specular用 Prefilter Environment Map を生成。</div><div class="ttdef"><b>Definition</b> <a href="#l00263">IBLBuilder.cpp:263</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Shader_html"><div class="ttname"><a href="classSpan_1_1Shader.html">Span::Shader</a></div><div class="ttdoc">📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。</div><div class="ttdef"><b>Definition</b> <a href="Shader_8h_source.html#l00037">Shader.h:38</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Texture_html"><div class="ttname"><a href="classSpan_1_1Texture.html">Span::Texture</a></div><div class="ttdoc">🖼 GPUテクスチャリソース。</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00030">Texture.h:31</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Texture_html_ab7f1497482e3c11f84341d83aab51b94"><div class="ttname"><a href="classSpan_1_1Texture.html#ab7f1497482e3c11f84341d83aab51b94">Span::Texture::GetCPUDescriptorHandle</a></div><div class="ttdeci">D3D12_CPU_DESCRIPTOR_HANDLE GetCPUDescriptorHandle() const</div><div class="ttdoc">SRVヒープ上のCPUハンドル (ディスクリプタのコピー元)</div><div class="ttdef"><b>Definition</b> <a href="Texture_8h_source.html#l00074">Texture.h:74</a></div></div>

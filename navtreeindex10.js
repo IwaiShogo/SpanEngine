@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"structSpan_1_1FixedString.html#a748dabe9b35d0b6e31408ddbff6c27ca":[1,0,0,1,10],
+"structSpan_1_1FixedString.html#a782f2f09ae4f0211b0f4e12b724d0e1e":[0,0,0,1,5],
 "structSpan_1_1FixedString.html#a782f2f09ae4f0211b0f4e12b724d0e1e":[1,0,0,1,5],
 "structSpan_1_1FixedString.html#a99e18095fee5dd06cd766558f09c23e9":[0,0,0,1,14],
 "structSpan_1_1FixedString.html#a99e18095fee5dd06cd766558f09c23e9":[1,0,0,1,14],
@@ -247,7 +249,5 @@ var NAVTREEINDEX10 =
 "structSpan_1_1Name.html#ad9dd74ca7c3b110028995fc1600d311f":[1,0,0,35,2],
 "structSpan_1_1Name.html#af534a81dc3670e4fd74564eb92e602a0":[0,0,0,35,4],
 "structSpan_1_1Name.html#af534a81dc3670e4fd74564eb92e602a0":[1,0,0,35,4],
-"structSpan_1_1PointLight.html":[0,0,0,44],
-"structSpan_1_1PointLight.html":[1,0,0,44],
-"structSpan_1_1PointLight.html#a3de96b5f889aea6bd99579d27ed75944":[0,0,0,44,0]
+"structSpan_1_1PointLight.html":[0,0,0,44]
 };

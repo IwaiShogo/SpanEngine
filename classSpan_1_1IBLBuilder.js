@@ -16,5 +16,6 @@ var classSpan_1_1IBLBuilder =
     [ "m_irradianceCS", "classSpan_1_1IBLBuilder.html#a08d755bf4e7ac6338b0af4b23b1d4197", null ],
     [ "m_irradiancePSO", "classSpan_1_1IBLBuilder.html#a2da0560628a97db0c0f7b7e7a6ecbf7d", null ],
     [ "m_prefilterCS", "classSpan_1_1IBLBuilder.html#aa4a6a992d8690a5802f4881a94a6e44d", null ],
-    [ "m_prefilterPSO", "classSpan_1_1IBLBuilder.html#a629195d702e2bf7739265e89f539f289", null ]
+    [ "m_prefilterPSO", "classSpan_1_1IBLBuilder.html#a629195d702e2bf7739265e89f539f289", null ],
+    [ "m_tempHeaps", "classSpan_1_1IBLBuilder.html#a86a7357adc2141ef5ffccd94421eee9e", null ]
 ];

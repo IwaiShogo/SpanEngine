@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"classSpan_1_1InspectorPanel.html#a6daa94024d0c4ef940d144af94519964":[1,0,0,22,2],
+"classSpan_1_1InspectorPanel.html#a8abf62cbc3e492c49fec19f9c91263be":[0,0,0,22,10],
 "classSpan_1_1InspectorPanel.html#a8abf62cbc3e492c49fec19f9c91263be":[1,0,0,22,10],
 "classSpan_1_1InspectorPanel.html#a9100022a760e0d6988aaff312dc84ca6":[0,0,0,22,3],
 "classSpan_1_1InspectorPanel.html#a9100022a760e0d6988aaff312dc84ca6":[1,0,0,22,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "classSpan_1_1ModelLoader.html":[1,0,0,66],
 "classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1":[0,0,0,66,0],
 "classSpan_1_1ModelLoader.html#a06a5d6e12254629efcd0d56c7a3c21c1":[1,0,0,66,0],
-"classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a":[0,0,0,66,1],
-"classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a":[1,0,0,66,1],
-"classSpan_1_1MoveFileCommand.html":[0,0,0,12]
+"classSpan_1_1ModelLoader.html#a97659b329036caa77725af517d48f25a":[0,0,0,66,1]
 };

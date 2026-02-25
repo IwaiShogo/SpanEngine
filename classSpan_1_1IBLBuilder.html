@@ -100,7 +100,7 @@ $(function(){initNavTree('classSpan_1_1IBLBuilder.html','','classSpan_1_1IBLBuil
 <div class="dynheader">
 Span::IBLBuilder 連携図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1IBLBuilder__coll__graph.svg" width="320" height="532"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1IBLBuilder__coll__graph.svg" width="320" height="552"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -131,6 +131,7 @@ Span::IBLBuilder 連携図</div>
 <tr class="memitem:aa4a6a992d8690a5802f4881a94a6e44d" id="r_aa4a6a992d8690a5802f4881a94a6e44d"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aa4a6a992d8690a5802f4881a94a6e44d">m_prefilterCS</a> = nullptr</td></tr>
 <tr class="memitem:a0f3790320d8b06a97b66986b7f5cdda6" id="r_a0f3790320d8b06a97b66986b7f5cdda6"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a0f3790320d8b06a97b66986b7f5cdda6">m_brdfPSO</a></td></tr>
 <tr class="memitem:a624f8b73b634e8f6232d95a93730bdc2" id="r_a624f8b73b634e8f6232d95a93730bdc2"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a624f8b73b634e8f6232d95a93730bdc2">m_brdfCS</a> = nullptr</td></tr>
+<tr class="memitem:a86a7357adc2141ef5ffccd94421eee9e" id="r_a86a7357adc2141ef5ffccd94421eee9e"><td class="memItemLeft">std::vector&lt; ComPtr&lt; ID3D12DescriptorHeap &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a86a7357adc2141ef5ffccd94421eee9e">m_tempHeaps</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>🌌 パノラマHDR画像からPBRに必要なIBLテクスチャ群を生成するユーティリティ。 </p>
@@ -234,7 +235,7 @@ Span::IBLBuilder 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00318">318</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00323">323</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -293,7 +294,7 @@ Span::IBLBuilder 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00168">168</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00170">170</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -343,7 +344,7 @@ Span::IBLBuilder 連携図</div>
 
 <p>環境Cubemapから、Diffuse用 Irradiance Map を生成。 </p>
 
-<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00213">213</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00216">216</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -401,7 +402,7 @@ Span::IBLBuilder 連携図</div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00259">259</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="IBLBuilder_8cpp_source.html">IBLBuilder.cpp</a> の <a class="el" href="IBLBuilder_8cpp_source.html#l00263">263</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -688,6 +689,30 @@ Span::IBLBuilder 連携図</div>
 </div><div class="memdoc">
 
 <p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00096">96</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a86a7357adc2141ef5ffccd94421eee9e" name="a86a7357adc2141ef5ffccd94421eee9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86a7357adc2141ef5ffccd94421eee9e">&#9670;&#160;</a></span>m_tempHeaps</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;ComPtr&lt;ID3D12DescriptorHeap&gt; &gt; Span::IBLBuilder::m_tempHeaps</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="IBLBuilder_8h_source.html">IBLBuilder.h</a> の <a class="el" href="IBLBuilder_8h_source.html#l00102">102</a> 行目に定義があります。</p>
 
 </div>
 </div>

@@ -1,5 +1,7 @@
 var NAVTREEINDEX11 =
 {
+"structSpan_1_1PointLight.html":[1,0,0,44],
+"structSpan_1_1PointLight.html#a3de96b5f889aea6bd99579d27ed75944":[0,0,0,44,0],
 "structSpan_1_1PointLight.html#a3de96b5f889aea6bd99579d27ed75944":[1,0,0,44,0],
 "structSpan_1_1PointLight.html#a440b7c50d52c4b44d9e81309664af39b":[0,0,0,44,1],
 "structSpan_1_1PointLight.html#a440b7c50d52c4b44d9e81309664af39b":[1,0,0,44,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX11 =
 "structSpan_1_1Vertex.html#abac13f64d1c801dba33ee5ffac17474c":[1,0,0,76,2],
 "structSpan_1_1WindowDesc.html":[0,0,0,79],
 "structSpan_1_1WindowDesc.html":[1,0,0,79],
-"structSpan_1_1WindowDesc.html#aac08d89553d3b8035353fccaec19c9d9":[0,0,0,79,0],
-"structSpan_1_1WindowDesc.html#aac08d89553d3b8035353fccaec19c9d9":[1,0,0,79,0],
-"structSpan_1_1WindowDesc.html#ac36034e45401ef5c779a7cd41eaf8ba0":[0,0,0,79,2]
+"structSpan_1_1WindowDesc.html#aac08d89553d3b8035353fccaec19c9d9":[0,0,0,79,0]
 };
