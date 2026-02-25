@@ -20,8 +20,11 @@ namespace Span
 		m_Data.Roughness = 0.5f;
 		m_Data.Metallic = 0.0f;
 		m_Data.AO = 1.0f;
+		m_Data.Cutoff = 0.5f;
+		m_Data.Transmission = 0.0f;
 		m_Data.Tiling = { 1.0f, 1.0f };
 		m_Data.Offset = { 0.0f, 0.0f };
+		m_Data.IOR = 1.5f;
 
 		m_Data.HasAlbedoMap = 0;
 		m_Data.HasNormalMap = 0;
@@ -80,6 +83,8 @@ namespace Span
 			{"Metallic", m_Data.Metallic},
 			{"AO", m_Data.AO},
 			{"Cutoff", m_Data.Cutoff},
+			{"Transmission", m_Data.Transmission},
+			{"IOR", m_Data.IOR},
 			{"Tiling", { m_Data.Tiling.x, m_Data.Tiling.y }},
 			{"Offset", { m_Data.Offset.x, m_Data.Offset.y }}
 		};
@@ -125,6 +130,8 @@ namespace Span
 			m_Data.Metallic = p.value("Metallic", 0.0f);
 			m_Data.AO = p.value("AO", 1.0f);
 			m_Data.Cutoff = p.value("Cutoff", 0.5f);
+			m_Data.Transmission = p.value("Transmission", 0.0f);
+			m_Data.IOR = p.value("IOR", 1.5f);
 			if (p.contains("Tiling")) { m_Data.Tiling = { p["Tiling"][0], p["Tiling"][1] }; }
 			if (p.contains("Offset")) { m_Data.Offset = { p["Offset"][0], p["Offset"][1] }; }
 		}

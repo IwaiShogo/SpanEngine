@@ -86,6 +86,9 @@ namespace Span
 			isRunning = false;
 		}
 
+		// SceneBufferの初期サイズに合わせてキャプチャテクスチャを生成
+		renderer.ResizeOpaqueCapture(window.GetWidth(), window.GetHeight());
+
 		// Resize
 		window.SetOnResize([this](uint32 w, uint32 h) {
 			if (w == 0 || h == 0) return;
@@ -177,6 +180,8 @@ namespace Span
 					{
 						graphicsContext.WaitForGpu();
 						sceneBuffer.Resize(renderer.GetDevice(), targetW, targetH);
+
+						renderer.ResizeOpaqueCapture(targetW, targetH);
 
 						// 更新されたサイズを保持
 						m_sceneViewWidth = targetW;

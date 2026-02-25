@@ -38,10 +38,13 @@ namespace Span
 		float Metallic = 0.0f;								///< 金属度
 		float AO = 1.0f;									///< 環境遮蔽(アンビエントオクルーション)強度
 		float Cutoff = 0.5f;								///< Cutoutモード時のアルファ閾値
-		float Padding1;										///< アライメント用
+		float Transmission;									///< 透明度(ガラス)
 
 		Vector2 Tiling = { 1.0f, 1.0f };					///< UVタイリング
 		Vector2 Offset = { 0.0f, 0.0f };					///< UVオフセット
+
+		float IOR = 1.5f;									///< 屈折率 (ガラスのデフォルトは1.5)
+		float Padding1 = 0.0f;								///< アライメント用
 
 		// Texture Use Flags
 		int HasAlbedoMap = 0;

@@ -242,15 +242,15 @@ namespace Span
 			cmd->RSSetViewports(1, &vp);
 			cmd->RSSetScissorRects(1, &scissor);
 
-			// 3. Main Pass (Opaque -> Skybox -> Transparent)
+			// 3. Main Pass (Opaque -> Skybox -> Grid -> Capture -> Glass -> Transparent)
 			// ============================================================
-			// Opaque
+			// [1] Opaque
 			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
 				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
 				{
 					if (!mf.mesh || !mr.material) return;
 
-					if (mr.material->GetBlendMode() != BlendMode::Transparent)
+					if (mr.material->GetBlendMode() != BlendMode::Transparent && mr.material->GetData().Transmission <= 0.0f)
 					{
 						renderer.DrawMesh(mf.mesh, mr.material, ltw.Value);
 					}
@@ -263,21 +263,7 @@ namespace Span
 				skyboxPass->Render(&renderer, cmd, env, renderer.GetViewMatrix(), renderer.GetProjectionMatrix(), renderer.GetCameraPosition(), renderer.GetEnvironmentCubemap());
 			}
 
-			// Transparent
-			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
-				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
-				{
-					if (!mf.mesh || !mr.material) return;
-
-					if (mr.material->GetBlendMode() == BlendMode::Transparent)
-					{
-						renderer.DrawMesh(mf.mesh, mr.material, ltw.Value);
-					}
-				}
-			);
-
-			// 4. Editor Pass (Grid)
-			// ============================================================
+			// Editor Pass (Grid)
 			if (auto gridPass = renderer.GetGridPass())
 			{
 				struct SceneCB { Matrix4x4 view; Matrix4x4 proj; Vector3 camPos; float pad; };
@@ -293,6 +279,67 @@ namespace Span
 					gridPass->Render(cmd, cbAddr);
 				}
 			}
+
+			// Opaque Capture
+			auto opaqueTex = renderer.GetOpaqueCaptureTexture();
+			if (opaqueTex && opaqueTex->GetResource() && sceneBuffer.GetResource())
+			{
+				D3D12_RESOURCE_BARRIER barriers[2] = {};
+
+				// SceneBuffer を RENDER_TARGET から COPY_SOURCE へ遷移
+				barriers[0].Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+				barriers[0].Transition.pResource = sceneBuffer.GetResource();
+				barriers[0].Transition.StateBefore = D3D12_RESOURCE_STATE_RENDER_TARGET;
+				barriers[0].Transition.StateAfter = D3D12_RESOURCE_STATE_COPY_SOURCE;
+				barriers[0].Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+
+				// OpaqueTex を PIXEL_SHADER_RESOURCE から COPY_DEST へ遷移
+				barriers[1].Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+				barriers[1].Transition.pResource = opaqueTex->GetResource();
+				barriers[1].Transition.StateBefore = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+				barriers[1].Transition.StateAfter = D3D12_RESOURCE_STATE_COPY_DEST;
+				barriers[1].Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+
+				cmd->ResourceBarrier(2, barriers);
+
+				// GPU上で高速に画像コピー
+				cmd->CopyResource(opaqueTex->GetResource(), sceneBuffer.GetResource());
+
+				// 状態を元に戻す
+				barriers[0].Transition.StateBefore = D3D12_RESOURCE_STATE_COPY_SOURCE;
+				barriers[0].Transition.StateAfter = D3D12_RESOURCE_STATE_RENDER_TARGET;
+
+				barriers[1].Transition.StateBefore = D3D12_RESOURCE_STATE_COPY_DEST;
+				barriers[1].Transition.StateAfter = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+
+				cmd->ResourceBarrier(2, barriers);
+			}
+
+			// [2] ガラス (Opaque だが Transmission が 0 より大きいもの
+			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
+				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
+				{
+					if (!mf.mesh || !mr.material) return;
+
+					if (mr.material->GetBlendMode() != BlendMode::Transparent && mr.material->GetData().Transmission > 0.0f)
+					{
+						renderer.DrawMesh(mf.mesh, mr.material, ltw.Value);
+					}
+				}
+			);
+
+			// [3] Transparent
+			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
+				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
+				{
+					if (!mf.mesh || !mr.material) return;
+
+					if (mr.material->GetBlendMode() == BlendMode::Transparent)
+					{
+						renderer.DrawMesh(mf.mesh, mr.material, ltw.Value);
+					}
+				}
+			);
 		}
 	};
 }

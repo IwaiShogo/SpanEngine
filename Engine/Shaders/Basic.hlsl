@@ -17,11 +17,14 @@ cbuffer MaterialBuffer : register(b1)
 	float Metallic;
 	float AO;
 	float Cutoff;
-	float Padding1;
+	float Transmission;
 
 	float2 Tiling;
 	float2 Offset;
 
+	float IOR;
+	float Padding1;
+	
 	int HasAlbedoMap;
 	int HasNormalMap;
 	int HasMetallicMap;
@@ -82,18 +85,17 @@ Texture2D t_Metallic : register(t2);
 Texture2D t_Roughness : register(t3);
 Texture2D t_AO : register(t4);
 Texture2D t_Emissive : register(t5);
-
-SamplerState g_sampler : register(s0);
-
 Texture2D t_ShadowMap : register(t6);
 Texture2DArray t_SpotShadowMap : register(t7);
 TextureCube t_PointShadowMap : register(t8);
-SamplerComparisonState g_shadowSampler : register(s1);
-SamplerState g_clampSampler : register(s2);
-
 TextureCube t_IrradianceMap : register(t9);
 TextureCube t_PrefilterMap : register(t10);
 Texture2D t_BRDFLUT : register(t11);
+Texture2D t_OpaqueCapture : register(t12);
+
+SamplerState g_sampler : register(s0);
+SamplerComparisonState g_shadowSampler : register(s1);
+SamplerState g_clampSampler : register(s2);
 
 struct VSInput
 {
@@ -108,6 +110,7 @@ struct PSInput
 	float3 normal : NORMAL;
 	float3 worldPos : TEXCOORD0;
 	float2 uv : TEXCOORD1;
+	float4 clipPos : TEXCOORD2;
 };
 
 // =========================================================================
@@ -177,6 +180,8 @@ PSInput VSMain(VSInput input)
 	PSInput output;
 
 	output.position = mul(float4(input.position, 1.0f), MVP);
+	output.clipPos = output.position;
+	
 	output.normal = normalize(mul(input.normal, (float3x3) World));
 	output.worldPos = mul(float4(input.position, 1.0f), World).xyz;
 
@@ -364,7 +369,7 @@ float4 PSMain(PSInput input) : SV_TARGET
 	F0 = lerp(F0, albedo.rgb, meta);
 
 	float3 Lo = float3(0.0, 0.0, 0.0);
-
+	
 	// 3. 全ライトのループ計算
 	float shadowFactor = CalculateShadow(float4(input.worldPos, 1.0f), N);
 	
@@ -440,6 +445,8 @@ float4 PSMain(PSInput input) : SV_TARGET
 		float3 kD = float3(1.0, 1.0, 1.0) - kS;
 		kD *= 1.0 - meta;
 
+		kD *= (1.0 - Transmission);
+
 		// 出力される光の量
 		Lo += (kD * albedo.rgb / PI + specular) * radiance * NdotL;
 	}
@@ -477,11 +484,39 @@ float4 PSMain(PSInput input) : SV_TARGET
 	irradiance *= AmbientIntensity;
 	prefilteredColor *= EnvReflectionIntensity;
 
+	// 環境光のDiffuseもTransmissionで減らす
 	float3 diffuse = irradiance * albedo.rgb;
-	float3 specular = prefilteredColor * (F_env * envBRDF.x + envBRDF.y);
+	float3 ambientDiffuse = kD_env * diffuse * (1.0 - Transmission);
+	
+	// 正確な屈折（Refraction）の計算
+	float2 screenUV = (input.clipPos.xy / input.clipPos.w) * 0.5f + 0.5f;
+	screenUV.y = 1.0f - screenUV.y;
 
+	// 視線ベクトルと法線から物理的な屈折ベクトルを計算
+	float3 V_dir = normalize(input.worldPos - CameraPosition);
+	float3 R_ref = refract(V_dir, N, 1.0 / IOR);
+
+	// 屈折ベクトルを画面のUV空間の歪みに変換
+	float3 right = normalize(cross(float3(0, 1, 0), -V_dir));
+	if (abs(V_dir.y) > 0.999f)
+		right = float3(1, 0, 0); // 真上・真下を向いた時の安全対策
+	float3 up = cross(-V_dir, right);
+
+	float2 refractOffset = float2(dot(R_ref, right), -dot(R_ref, up));
+	refractOffset *= 0.1f * Transmission; // 歪みの強さ
+
+	float2 distortedUV = saturate(screenUV + refractOffset);
+
+	// 背景をサンプリングし、ガラスの色でフィルタリング
+	float3 transmittedColor = t_OpaqueCapture.SampleLevel(g_clampSampler, distortedUV, 0).rgb * albedo.rgb;
+
+	// 透過してきた光を加算
+	float3 transmissionLight = transmittedColor * kD_env * Transmission;
+
+	float3 specular_ibl = prefilteredColor * (F_env * envBRDF.x + envBRDF.y);
+	
 	// 最終的な環境光
-	float3 ambient = (kD_env * diffuse + specular) * aoMap;
+	float3 ambient = (ambientDiffuse + transmissionLight + specular_ibl) * aoMap;
 
 	// --- 5. Final Color ---
 	float3 color = ambient + Lo + emissive;

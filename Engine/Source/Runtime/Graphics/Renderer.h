@@ -144,9 +144,6 @@ namespace Span
 
 		bool LoadEnvironmentMap(const std::string& filepath);
 
-		/// @brief	生成済みの環境Cubemapを取得します。
-		Texture* GetEnvironmentCubemap() const { return m_envCubemap.get(); }
-
 		/// @brief	指定スロットにテクスチャをバインドします。Nullの場合は安全なダミーを生成します。
 		void BindTexture(ID3D12GraphicsCommandList* cmd, Texture* texture, uint32 rootIndex, D3D12_SRV_DIMENSION dimension = D3D12_SRV_DIMENSION_TEXTURE2D);
 
@@ -172,6 +169,13 @@ namespace Span
 		ID3D12Device* GetDevice() const { return context ? context->GetDevice() : nullptr; }
 		uint32 GetFrameCount() const { return context ? context->GetFrameCount() : 2; }
 		ID3D12CommandQueue* GetCommandQueue() const { return context ? context->GetCommandQueue() : nullptr; }
+
+		/// @brief	生成済みの環境Cubemapを取得します。
+		Texture* GetEnvironmentCubemap() const { return m_envCubemap.get(); }
+
+		Texture* GetOpaqueCaptureTexture() const { return m_opaqueCaptureTex.get(); }
+
+		void ResizeOpaqueCapture(uint32 width, uint32 height);
 
 	private:
 		// 内部初期化関数
@@ -230,5 +234,8 @@ namespace Span
 		std::unique_ptr<Texture> m_irradianceMap;
 		std::unique_ptr<Texture> m_prefilterMap;
 		std::unique_ptr<Texture> m_brdfLUT;
+		std::unique_ptr<Texture> m_opaqueCaptureTex;
+		uint32 m_opaqueCaptureWidth = 0;
+		uint32 m_opaqueCaptureHeight = 0;
 	};
 }

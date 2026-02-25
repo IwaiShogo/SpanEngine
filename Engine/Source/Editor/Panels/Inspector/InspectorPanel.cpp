@@ -624,6 +624,10 @@ namespace Span
 			if (ImGui::SliderFloat("Alpha Cutoff", &data.Cutoff, 0.0f, 1.0f)) isChanged = true;
 		}
 
+		// ガラス用パラメータ
+		if (ImGui::SliderFloat("Transmission", &data.Cutoff, 0.0f, 1.0f)) isChanged = true;
+		if (ImGui::SliderFloat("IOR (Index of Refraction)", &data.IOR, 1.0f, 3.0f)) isChanged = true;
+
 		ImGui::Spacing();
 		ImGui::SeparatorText("UV Settings");
 

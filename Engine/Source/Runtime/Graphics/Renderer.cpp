@@ -133,7 +133,10 @@ namespace Span
 		commandList = nullptr;
 	}
 
-	void Renderer::OnResize(uint32 width, uint32 height) { if (context) context->OnResize(width, height); }
+	void Renderer::OnResize(uint32 width, uint32 height)
+	{
+		if (context) context->OnResize(width, height);
+	}
 
 	void Renderer::DrawMesh(Mesh* mesh, Material* material, const Matrix4x4& worldMatrix)
 	{
@@ -155,7 +158,7 @@ namespace Span
 		commandList->SetGraphicsRootConstantBufferView(0, cbAddr);
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
 
-		if (m_LightBuffer) commandList->SetGraphicsRootConstantBufferView(14, m_LightBuffer->GetGPUVirtualAddress());
+		if (m_LightBuffer) commandList->SetGraphicsRootConstantBufferView(15, m_LightBuffer->GetGPUVirtualAddress());
 
 		// PBR Textures (t0 ~ t5)
 		Texture* textures[6] = { material->GetAlbedoMap(), material->GetNormalMap(), material->GetMetallicMap(), material->GetRoughnessMap(), material->GetAOMap(), material->GetEmissiveMap() };
@@ -169,9 +172,10 @@ namespace Span
 		BindShadowMap(commandList, m_pointShadowPass ? m_pointShadowPass->GetShadowMap() : nullptr, 10, D3D12_SRV_DIMENSION_TEXTURECUBE);
 
 		// IBL Textures (t9 ~ t11)
-		BindTexture(commandList, m_irradianceMap.get(), 11, D3D12_SRV_DIMENSION_TEXTURECUBE);
-		BindTexture(commandList, m_prefilterMap.get(),	12, D3D12_SRV_DIMENSION_TEXTURECUBE);
-		BindTexture(commandList, m_brdfLUT.get(),		13, D3D12_SRV_DIMENSION_TEXTURE2D);
+		BindTexture(commandList, m_irradianceMap.get(),		11, D3D12_SRV_DIMENSION_TEXTURECUBE);
+		BindTexture(commandList, m_prefilterMap.get(),		12, D3D12_SRV_DIMENSION_TEXTURECUBE);
+		BindTexture(commandList, m_brdfLUT.get(),			13, D3D12_SRV_DIMENSION_TEXTURE2D);
+		BindTexture(commandList, m_opaqueCaptureTex.get(),	14, D3D12_SRV_DIMENSION_TEXTURE2D);
 
 		mesh->Draw(commandList);
 	}
@@ -329,12 +333,25 @@ namespace Span
 
 		if (texture && texture->GetSRVHeap())
 		{
-			// テクスチャが存在する場合は通常通りコピー
+			// 通常のテクスチャ
 			device->CopyDescriptorsSimple(1, destCpu, texture->GetCPUDescriptorHandle(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+		}
+		else if (texture && texture->GetResource())
+		{
+			// リソースはあるがSRVが無い場合、ここでSRVを作成する
+			D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+			srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+			srvDesc.Format = texture->GetResource()->GetDesc().Format;
+			srvDesc.ViewDimension = dimension;
+			if (dimension == D3D12_SRV_DIMENSION_TEXTURECUBE) srvDesc.TextureCube.MipLevels = 1;
+			else if (dimension == D3D12_SRV_DIMENSION_TEXTURE2DARRAY) { srvDesc.Texture2DArray.MipLevels = 1; srvDesc.Texture2DArray.ArraySize = 1; }
+			else srvDesc.Texture2D.MipLevels = 1;
+
+			device->CreateShaderResourceView(texture->GetResource(), &srvDesc, destCpu);
 		}
 		else
 		{
-			// テクスチャが無い場合
+			// テクスチャが無い場合のダミー
 			D3D12_SHADER_RESOURCE_VIEW_DESC nullDesc = {};
 			nullDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
 			nullDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -396,15 +413,28 @@ namespace Span
 		}
 	}
 
+	void Renderer::ResizeOpaqueCapture(uint32 width, uint32 height)
+	{
+		if (!context || width == 0 || height == 0) return;
+
+		if (m_opaqueCaptureWidth != width || m_opaqueCaptureHeight != height || !m_opaqueCaptureTex)
+		{
+			m_opaqueCaptureWidth = width;
+			m_opaqueCaptureHeight = height;
+			m_opaqueCaptureTex = std::make_unique<Texture>();
+			m_opaqueCaptureTex->InitializeAsTexture2D(context->GetDevice(), width, height, DXGI_FORMAT_R8G8B8A8_UNORM);
+		}
+	}
+
 	bool Renderer::CreateRootSignature()
 	{
-		D3D12_ROOT_PARAMETER rootParameters[15];
+		D3D12_ROOT_PARAMETER rootParameters[16];
 
 		// [0] Transform (b0)
 		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
 		rootParameters[0].Descriptor.ShaderRegister = 0;
 		rootParameters[0].Descriptor.RegisterSpace = 0;
-		rootParameters[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
+		rootParameters[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 
 		// [1] Material (b1)
 		rootParameters[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -412,9 +442,8 @@ namespace Span
 		rootParameters[1].Descriptor.RegisterSpace = 0;
 		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 
-		// [2] ~ [9] Texture Tables (t0 ~ t7) : PBR(6) + DirShadow(1) + SpotShadowArray(1)
-		D3D12_DESCRIPTOR_RANGE ranges[12] = {};
-		for (int i = 0; i < 12; i++)
+		D3D12_DESCRIPTOR_RANGE ranges[13] = {};
+		for (int i = 0; i < 13; i++)
 		{
 			ranges[i].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
 			ranges[i].NumDescriptors = 1;
@@ -428,11 +457,11 @@ namespace Span
 			rootParameters[2 + i].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 		}
 
-		// [10] LightBuffer (b2)
-		rootParameters[14].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		rootParameters[14].Descriptor.ShaderRegister = 2;
-		rootParameters[14].Descriptor.RegisterSpace = 0;
-		rootParameters[14].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+		// LightBuffer (b2)
+		rootParameters[15].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[15].Descriptor.ShaderRegister = 2;
+		rootParameters[15].Descriptor.RegisterSpace = 0;
+		rootParameters[15].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
 		// --- Samplers ---
 		// s0: 通常のテクスチャサンプラー
