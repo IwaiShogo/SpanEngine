@@ -145,6 +145,7 @@ Span::Renderer 連携図</div>
 <tr class="memdesc:ac77ac5a964d1630a732c8b1b855813a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成済みの環境Cubemapを取得します。  <br /></td></tr>
 <tr class="memitem:a00cbef21783e37db9019c8f3a6ad20d5" id="r_a00cbef21783e37db9019c8f3a6ad20d5"><td class="memItemLeft"><a class="el" href="classSpan_1_1Texture.html">Texture</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a00cbef21783e37db9019c8f3a6ad20d5">GetOpaqueCaptureTexture</a> () const</td></tr>
 <tr class="memitem:a0e261cf7d98d6da33c2943aa3bc6f00f" id="r_a0e261cf7d98d6da33c2943aa3bc6f00f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0e261cf7d98d6da33c2943aa3bc6f00f">ResizeOpaqueCapture</a> (<a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height)</td></tr>
+<tr class="memitem:a849b5dd2c0fa5173d73c8c07eecc7156" id="r_a849b5dd2c0fa5173d73c8c07eecc7156"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a849b5dd2c0fa5173d73c8c07eecc7156">CaptureOpaqueBackground</a> (ID3D12Resource *currentRenderTarget)</td></tr>
 <tr id="pub-methods-0" class="groupHeader"><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a5c4ce1187eccfa4c75acd068c4ae9706" id="r_a5c4ce1187eccfa4c75acd068c4ae9706"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5c4ce1187eccfa4c75acd068c4ae9706">SetCamera</a> (const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;view, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> projection)</td></tr>
 <tr class="memdesc:a5c4ce1187eccfa4c75acd068c4ae9706"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structSpan_1_1Camera.html" title="📷 シーンを撮影するための投影設定を保持するコンポーネント。">Camera</a>  <br /></td></tr>
@@ -409,6 +410,30 @@ Span::Renderer 連携図</div>
 
 </div>
 </div>
+<a id="a849b5dd2c0fa5173d73c8c07eecc7156" name="a849b5dd2c0fa5173d73c8c07eecc7156"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a849b5dd2c0fa5173d73c8c07eecc7156">&#9670;&#160;</a></span>CaptureOpaqueBackground()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::Renderer::CaptureOpaqueBackground </td>
+          <td>(</td>
+          <td class="paramtype">ID3D12Resource *</td>          <td class="paramname"><span class="paramname"><em>currentRenderTarget</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00429">429</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a849b5dd2c0fa5173d73c8c07eecc7156_icgraph.svg" width="467" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="a1b98dec76bcb198eae9473a8c28331cf" name="a1b98dec76bcb198eae9473a8c28331cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b98dec76bcb198eae9473a8c28331cf">&#9670;&#160;</a></span>CreateConstantBuffer()</h2>
 
@@ -432,7 +457,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00578">578</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00612">612</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -464,7 +489,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00520">520</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00554">554</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -496,7 +521,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00429">429</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00463">463</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -876,11 +901,6 @@ Span::Renderer 連携図</div>
 </div><div class="memdoc">
 
 <p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00176">176</a> 行目に定義があります。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a00cbef21783e37db9019c8f3a6ad20d5_icgraph.svg" width="439" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
@@ -1144,6 +1164,11 @@ Span::Renderer 連携図</div>
 </div><div class="memdoc">
 
 <p class="definition"> <a class="el" href="Renderer_8cpp_source.html">Renderer.cpp</a> の <a class="el" href="Renderer_8cpp_source.html#l00416">416</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1Renderer_a0e261cf7d98d6da33c2943aa3bc6f00f_icgraph.svg" width="459" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1383,7 +1408,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00207">207</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00209">209</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1407,7 +1432,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00199">199</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00201">201</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1431,7 +1456,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00188">188</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00190">190</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1455,7 +1480,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00200">200</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00202">202</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1479,7 +1504,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00202">202</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00204">204</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1503,7 +1528,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00187">187</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00189">189</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1527,7 +1552,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00236">236</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00238">238</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1551,7 +1576,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00216">216</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00218">218</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1575,7 +1600,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00232">232</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00234">234</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1599,7 +1624,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00226">226</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00228">228</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1623,7 +1648,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00231">231</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00233">233</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1647,7 +1672,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00219">219</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00221">221</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1671,7 +1696,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00220">220</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00222">222</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1695,7 +1720,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00224">224</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00226">226</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1719,7 +1744,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00234">234</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00236">236</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1743,7 +1768,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00215">215</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00217">217</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1767,7 +1792,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00239">239</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00241">241</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1791,7 +1816,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00237">237</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00239">239</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1815,7 +1840,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00238">238</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00240">240</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1839,7 +1864,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00228">228</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00230">230</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1863,7 +1888,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00235">235</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00237">237</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1887,7 +1912,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00225">225</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00227">227</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1911,7 +1936,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00227">227</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00229">229</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1935,7 +1960,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00221">221</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00223">223</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1959,7 +1984,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00211">211</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00213">213</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -1983,7 +2008,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00210">210</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00212">212</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2007,7 +2032,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00212">212</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00214">214</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2031,7 +2056,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00201">201</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00203">203</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2055,7 +2080,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00198">198</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00200">200</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2079,7 +2104,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00192">192</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00194">194</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2103,7 +2128,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00193">193</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00195">195</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2127,7 +2152,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00206">206</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00208">208</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2151,7 +2176,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00195">195</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00197">197</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2175,7 +2200,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00191">191</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00193">193</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2199,7 +2224,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00205">205</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00207">207</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -2223,7 +2248,7 @@ Span::Renderer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00194">194</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00196">196</a> 行目に定義があります。</p>
 
 </div>
 </div>

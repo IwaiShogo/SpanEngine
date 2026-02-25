@@ -6,6 +6,7 @@ var classSpan_1_1Renderer =
     [ "BeginFrame", "classSpan_1_1Renderer.html#a115f51ead73d011860bb7fe9c510a9a2", null ],
     [ "BindShadowMap", "classSpan_1_1Renderer.html#a0cc384bd7056f0c488bcca951da8ab95", null ],
     [ "BindTexture", "classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3", null ],
+    [ "CaptureOpaqueBackground", "classSpan_1_1Renderer.html#a849b5dd2c0fa5173d73c8c07eecc7156", null ],
     [ "CreateConstantBuffer", "classSpan_1_1Renderer.html#a1b98dec76bcb198eae9473a8c28331cf", null ],
     [ "CreatePipelineState", "classSpan_1_1Renderer.html#a8f24a79917231207aa5a1608999dafcd", null ],
     [ "CreateRootSignature", "classSpan_1_1Renderer.html#ad3f3bd2250901be44d4783caaded1056", null ],
