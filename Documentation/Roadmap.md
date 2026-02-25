@@ -88,3 +88,8 @@
 
 ### 2. Build System
 - [ ] **Standalone Build:** エディタ機能を除外し、ゲーム実行に必要なランタイムとアセットのみを `.exe` として出力するパッケージング機能。
+
+
+- model viewr
+- modelをロードするときに設定、メッシュを合わせるか、大きさなど
+- project browserのスライド

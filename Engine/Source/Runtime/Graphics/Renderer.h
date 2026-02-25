@@ -177,6 +177,8 @@ namespace Span
 
 		void ResizeOpaqueCapture(uint32 width, uint32 height);
 
+		void CaptureOpaqueBackground(ID3D12Resource* currentRenderTarget);
+
 	private:
 		// 内部初期化関数
 		bool CreateRootSignature();

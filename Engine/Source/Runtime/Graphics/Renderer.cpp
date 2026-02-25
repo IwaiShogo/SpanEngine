@@ -426,6 +426,40 @@ namespace Span
 		}
 	}
 
+	void Renderer::CaptureOpaqueBackground(ID3D12Resource* currentRenderTarget)
+	{
+		if (!commandList || !currentRenderTarget || !m_opaqueCaptureTex || !m_opaqueCaptureTex->GetResource()) return;
+
+		D3D12_RESOURCE_BARRIER barriers[2] = {};
+
+		// レンダーターゲットを COPY_SOURCE に、キャプチャ用テクスチャを COPY_DEST に状態遷移
+		barriers[0].Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+		barriers[0].Transition.pResource = currentRenderTarget;
+		barriers[0].Transition.StateBefore = D3D12_RESOURCE_STATE_RENDER_TARGET;
+		barriers[0].Transition.StateAfter = D3D12_RESOURCE_STATE_COPY_SOURCE;
+		barriers[0].Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+
+		barriers[1].Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+		barriers[1].Transition.pResource = m_opaqueCaptureTex->GetResource();
+		barriers[1].Transition.StateBefore = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+		barriers[1].Transition.StateAfter = D3D12_RESOURCE_STATE_COPY_DEST;
+		barriers[1].Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+
+		commandList->ResourceBarrier(2, barriers);
+
+		// コピーの実行
+		commandList->CopyResource(m_opaqueCaptureTex->GetResource(), currentRenderTarget);
+
+		// 状態を元に戻す
+		barriers[0].Transition.StateBefore = D3D12_RESOURCE_STATE_COPY_SOURCE;
+		barriers[0].Transition.StateAfter = D3D12_RESOURCE_STATE_RENDER_TARGET;
+
+		barriers[1].Transition.StateBefore = D3D12_RESOURCE_STATE_COPY_DEST;
+		barriers[1].Transition.StateAfter = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+
+		commandList->ResourceBarrier(2, barriers);
+	}
+
 	bool Renderer::CreateRootSignature()
 	{
 		D3D12_ROOT_PARAMETER rootParameters[16];

@@ -488,7 +488,18 @@ float4 PSMain(PSInput input) : SV_TARGET
 	float3 diffuse = irradiance * albedo.rgb;
 	float3 ambientDiffuse = kD_env * diffuse * (1.0 - Transmission);
 	
-	// 正確な屈折（Refraction）の計算
+	// --- 5. Lit Color (ガラス自身の反射や発光の計算) ---
+	float3 specular_ibl = prefilteredColor * (F_env * envBRDF.x + envBRDF.y);
+	float3 ambient = (ambientDiffuse + specular_ibl) * aoMap;
+
+	float3 litColor = ambient + Lo + emissive;
+	litColor *= Exposure;
+
+	// オブジェクトの光だけに先にACESとガンマ補正をかける
+	litColor = ACESFilm(litColor);
+	litColor = pow(abs(litColor), float3(1.0 / 2.2, 1.0 / 2.2, 1.0 / 2.2));
+
+	// --- 6. Refraction (背景の屈折と合成) ---
 	float2 screenUV = (input.clipPos.xy / input.clipPos.w) * 0.5f + 0.5f;
 	screenUV.y = 1.0f - screenUV.y;
 
@@ -499,35 +510,23 @@ float4 PSMain(PSInput input) : SV_TARGET
 	// 屈折ベクトルを画面のUV空間の歪みに変換
 	float3 right = normalize(cross(float3(0, 1, 0), -V_dir));
 	if (abs(V_dir.y) > 0.999f)
-		right = float3(1, 0, 0); // 真上・真下を向いた時の安全対策
+		right = float3(1, 0, 0); // 安全対策
 	float3 up = cross(-V_dir, right);
-
+	
 	float2 refractOffset = float2(dot(R_ref, right), -dot(R_ref, up));
-	refractOffset *= 0.1f * Transmission; // 歪みの強さ
+	refractOffset *= (IOR - 1.0f) * 0.5f * Transmission; // 歪みの強さ
 
 	float2 distortedUV = saturate(screenUV + refractOffset);
 
-	// 背景をサンプリングし、ガラスの色でフィルタリング
-	float3 transmittedColor = t_OpaqueCapture.SampleLevel(g_clampSampler, distortedUV, 0).rgb * albedo.rgb;
+	// OpaqueCaptureは「既にトーンマップ＆ガンマ補正済み」の色空間(sRGB)
+	float3 transmittedColor_sRGB = t_OpaqueCapture.SampleLevel(g_clampSampler, distortedUV, 0).rgb;
 
-	// 透過してきた光を加算
-	float3 transmissionLight = transmittedColor * kD_env * Transmission;
+	// ガラスのベースカラー(Albedo)もsRGB空間に戻して乗算する
+	float3 tint_sRGB = pow(abs(albedo.rgb), float3(1.0 / 2.2, 1.0 / 2.2, 1.0 / 2.2));
+	float3 transmissionLight_sRGB = transmittedColor_sRGB * tint_sRGB * kD_env * Transmission;
 
-	float3 specular_ibl = prefilteredColor * (F_env * envBRDF.x + envBRDF.y);
-	
-	// 最終的な環境光
-	float3 ambient = (ambientDiffuse + transmissionLight + specular_ibl) * aoMap;
+	// 最終出力: トーンマップ済みの反射光に、透過光をそのまま加算する
+	float3 finalColor = litColor + transmissionLight_sRGB;
 
-	// --- 5. Final Color ---
-	float3 color = ambient + Lo + emissive;
-
-	color *= Exposure;
-
-	// ACES
-	color = ACESFilm(color);
-
-	// Gamma Correction
-	color = pow(color, float3(1.0 / 2.2, 1.0 / 2.2, 1.0 / 2.2));
-
-	return float4(color, albedo.a);
+	return float4(finalColor, albedo.a);
 }
