@@ -190,9 +190,9 @@ namespace Span
 		m_CurrentLightData.Exposure = env.Exposure;
 		m_CurrentLightData.AmbientIntensity = env.AmbientIntensity;
 		m_CurrentLightData.EnvReflectionIntensity = env.EnvReflectionIntensity;
-		m_CurrentLightData.SkyTopColor = env.SkyTopColor;
-		m_CurrentLightData.SkyHorizonColor = env.SkyHorizonColor;
-		m_CurrentLightData.SkyBottomColor = env.SkyBottomColor;
+		m_CurrentLightData.SkyTopColor = Vector3(pow(env.SkyTopColor.x, 2.2f), pow(env.SkyTopColor.y, 2.2f), pow(env.SkyTopColor.z, 2.2f));
+		m_CurrentLightData.SkyHorizonColor = Vector3(pow(env.SkyHorizonColor.x, 2.2f), pow(env.SkyHorizonColor.y, 2.2f), pow(env.SkyHorizonColor.z, 2.2f));
+		m_CurrentLightData.SkyBottomColor = Vector3(pow(env.SkyBottomColor.x, 2.2f), pow(env.SkyBottomColor.y, 2.2f), pow(env.SkyBottomColor.z, 2.2f));
 		m_CurrentLightData.SkyMode = (m_envCubemap != nullptr && env.Mode == SkyboxMode::HDRI) ? 1 : 0;
 
 		// 行列の初期化
@@ -462,7 +462,17 @@ namespace Span
 		shadowSampler.RegisterSpace = 0;
 		shadowSampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
-		D3D12_STATIC_SAMPLER_DESC samplers[] = { sampler, shadowSampler };
+		// s2: IBL/LUTデータ読み取り用のクランプサンプラー
+		D3D12_STATIC_SAMPLER_DESC clampSampler = {};
+		clampSampler.Filter = D3D12_FILTER_MIN_MAG_POINT_MIP_LINEAR;
+		clampSampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;
+		clampSampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;
+		clampSampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;
+		clampSampler.ShaderRegister = 2;
+		clampSampler.RegisterSpace = 0;
+		clampSampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+
+		D3D12_STATIC_SAMPLER_DESC samplers[] = { sampler, shadowSampler, clampSampler };
 
 		D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
 		rootSignatureDesc.NumParameters = _countof(rootParameters);

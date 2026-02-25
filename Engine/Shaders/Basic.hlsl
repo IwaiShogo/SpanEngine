@@ -89,6 +89,7 @@ Texture2D t_ShadowMap : register(t6);
 Texture2DArray t_SpotShadowMap : register(t7);
 TextureCube t_PointShadowMap : register(t8);
 SamplerComparisonState g_shadowSampler : register(s1);
+SamplerState g_clampSampler : register(s2);
 
 TextureCube t_IrradianceMap : register(t9);
 TextureCube t_PrefilterMap : register(t10);
@@ -185,20 +186,6 @@ PSInput VSMain(VSInput input)
 	return output;
 }
 
-float3 SampleSky(float3 dir)
-{
-	float height = dir.y;
-	if (height > 0.0f)
-		return lerp(SkyHorizonColor, SkyTopColor, pow(height, 0.4f));
-	else
-		return lerp(SkyHorizonColor, SkyBottomColor, pow(-height, 0.4f));
-}
-
-float3 FresnelSchlickRoughness(float cosTheta, float3 F0, float roughness)
-{
-	return F0 + (max(float3(1.0 - roughness, 1.0 - roughness, 1.0 - roughness), F0) - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
-}
-
 float CalculateShadow(float4 worldPos, float3 N)
 {
 	worldPos.xyz += N * 0.1f;
@@ -292,6 +279,20 @@ float CalculatePointShadow(float4 worldPos, float3 N, float3 lightPos, float lig
 	return shadow;
 }
 
+float3 SampleSky(float3 dir)
+{
+	float height = dir.y;
+	if (height = dir.y)
+		return lerp(SkyHorizonColor, SkyTopColor, pow(max(height, 0.0001f), 0.4f));
+	else
+		return lerp(SkyHorizonColor, SkyTopColor, pow(max(height, 0.0001f), 0.4f));
+}
+
+float3 FresnelSchlickRoughness(float cosTheta, float3 F0, float roughness)
+{
+	return F0 + (max(float3(1.0 - roughness, 1.0 - roughness, 1.0 - roughness), F0) - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
+}
+
 // =========================================================================
 // Pixel Shader
 // =========================================================================
@@ -303,6 +304,9 @@ float4 PSMain(PSInput input) : SV_TARGET
 	{
 		albedo *= t_Albedo.Sample(g_sampler, input.uv);
 	}
+
+	// sRGB空間のベースカラーをLinear空間に変換
+	albedo.rgb = pow(abs(albedo.rgb), 2.2f);
 
 	// Cutout (Alpha Test)
 	if (albedo.a < Cutoff)
@@ -322,24 +326,31 @@ float4 PSMain(PSInput input) : SV_TARGET
 
 	float3 emissive = EmissiveColor;
 	if (HasEmissiveMap)
-		emissive += t_Emissive.Sample(g_sampler, input.uv).rgb;
+	{
+		// 発光色(Emissive)もsRGBからLinear空間へ変換
+		emissive += pow(abs(t_Emissive.Sample(g_sampler, input.uv).rgb), 2.2f);
+	}
 
-	// 法線マップの処理
+	// --- 法線マップとTBNマトリクスの修正 ---
 	float3 N = normalize(input.normal);
 	if (HasNormalMap)
 	{
 		// マップから法線を取得 (0~1 -> -1~1)
 		float3 tangentNormal = t_Normal.Sample(g_sampler, input.uv).xyz * 2.0 - 1.0;
-		tangentNormal.y = -tangentNormal.y;	// Y(G)チェンネルの反転補正
+		tangentNormal.y = -tangentNormal.y;
 
 		// 偏微分による接ベクトル空間の計算
-		float3 q1  = ddx(input.worldPos);
-		float3 q2  = ddy(input.worldPos);
+		float3 q1 = ddx(input.worldPos);
+		float3 q2 = ddy(input.worldPos);
 		float2 st1 = ddx(input.uv);
 		float2 st2 = ddy(input.uv);
 
+		// 堅牢なBitangent(B)ベクトルの計算
+		float det = st1.x * st2.y - st2.x * st1.y;
+		float sign_det = det < 0.0f ? -1.0f : 1.0f;
+
 		float3 T = normalize(q1 * st2.y - q2 * st1.y);
-		float3 B = -normalize(cross(N, T));
+		float3 B = normalize(cross(N, T)) * sign_det;
 
 		float3x3 TBN = float3x3(T, B, N);
 		N = normalize(mul(tangentNormal, TBN));
@@ -450,16 +461,17 @@ float4 PSMain(PSInput input) : SV_TARGET
 
 	if (SkyMode == 1) // HDRIモード
 	{
-		irradiance = t_IrradianceMap.Sample(g_sampler, N).rgb;
+		irradiance = t_IrradianceMap.Sample(g_clampSampler, N).rgb;
 		const float MAX_REFLECTION_LOD = 4.0;
-		prefilteredColor = t_PrefilterMap.SampleLevel(g_sampler, R, rough * MAX_REFLECTION_LOD).rgb;
-		envBRDF = t_BRDFLUT.Sample(g_sampler, float2(max(dot(N, V), 0.0), rough)).rg;
+		prefilteredColor = t_PrefilterMap.SampleLevel(g_clampSampler, R, rough * MAX_REFLECTION_LOD).rgb;
+		envBRDF = t_BRDFLUT.Sample(g_clampSampler, float2(max(dot(N, V), 0.0), rough)).rg;
 	}
 	else // Procedural 3-Color モード (フォールバック)
 	{
 		irradiance = SampleSky(N);
-		prefilteredColor = SampleSky(R);
-		envBRDF = float2(1.0, 0.0);
+		float3 sampleDir = normalize(lerp(R, N, rough));
+		prefilteredColor = SampleSky(sampleDir);
+		envBRDF = float2(max(1.0 - rough, 0.0), 0.0);
 	}
 
 	irradiance *= AmbientIntensity;

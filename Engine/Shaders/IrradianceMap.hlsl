@@ -74,7 +74,17 @@ void CSMain(uint3 dispatchThreadID : SV_DispatchThreadID)
 			float3 sampleVec = tangentSample.x * right + tangentSample.y * up + tangentSample.z * N;
 
 			// 環境マップから色を取得
-			irradiance += environmentMap.SampleLevel(defaultSampler, sampleVec, 0).rgb * cos(theta) * sin(theta);
+			float3 sampleColor = environmentMap.SampleLevel(defaultSampler, sampleVec, 0).rgb;
+
+			// ホタル除去
+			float hdrMax = 10.0f;
+			float luminance = max(max(sampleColor.r, sampleColor.g), sampleColor.b);
+			if (luminance > hdrMax)
+			{
+				sampleColor *= (hdrMax / luminance);
+			}
+			
+			irradiance += sampleColor * cos(theta) * sin(theta);
 			nrSamples++;
 		}
 	}

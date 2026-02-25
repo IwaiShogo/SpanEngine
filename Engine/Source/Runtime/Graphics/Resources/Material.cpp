@@ -22,6 +22,13 @@ namespace Span
 		m_Data.AO = 1.0f;
 		m_Data.Tiling = { 1.0f, 1.0f };
 		m_Data.Offset = { 0.0f, 0.0f };
+
+		m_Data.HasAlbedoMap = 0;
+		m_Data.HasNormalMap = 0;
+		m_Data.HasMetallicMap = 0;
+		m_Data.HasRoughnessMap = 0;
+		m_Data.HasAOMap = 0;
+		m_Data.HasEmissiveMap = 0;
 	}
 
 	Material::~Material()

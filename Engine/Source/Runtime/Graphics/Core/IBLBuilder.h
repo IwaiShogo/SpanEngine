@@ -98,5 +98,7 @@ namespace Span
 
 		ComPtr<ID3D12PipelineState> m_brdfPSO;
 		Shader* m_brdfCS = nullptr;
+
+		std::vector<ComPtr<ID3D12DescriptorHeap>> m_tempHeaps;
 	};
 }

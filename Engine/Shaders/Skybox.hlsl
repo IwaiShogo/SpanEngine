@@ -69,9 +69,9 @@ float4 PSMain(VSOutput input) : SV_TARGET
 	{
 		float height = dir.y;
 		if (height > 0.0f)
-			color = lerp(HorizonColor, TopColor, pow(height, 0.4f));
+			color = lerp(HorizonColor, TopColor, pow(max(height, 0.0001f), 0.4f));
 		else
-			color = lerp(HorizonColor, BottomColor, pow(-height, 0.4f));
+			color = lerp(HorizonColor, BottomColor, pow(max(-height, 0.0001f), 0.4f));
             
 		color *= Exposure;
 	}

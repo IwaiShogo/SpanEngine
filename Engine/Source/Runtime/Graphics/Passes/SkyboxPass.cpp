@@ -122,9 +122,9 @@ namespace Span
 		camData.CamPos = camPos;
 
 		SkyboxSettingsCB setData;
-		setData.TopColor = env.SkyTopColor;
-		setData.HorizonColor = env.SkyHorizonColor;
-		setData.BottomColor = env.SkyBottomColor;
+		setData.TopColor = Vector3(pow(env.SkyTopColor.x, 2.2f), pow(env.SkyTopColor.y, 2.2f), pow(env.SkyTopColor.z, 2.2f));
+		setData.HorizonColor = Vector3(pow(env.SkyHorizonColor.x, 2.2f), pow(env.SkyHorizonColor.y, 2.2f), pow(env.SkyHorizonColor.z, 2.2f));
+		setData.BottomColor = Vector3(pow(env.SkyBottomColor.x, 2.2f), pow(env.SkyBottomColor.y, 2.2f), pow(env.SkyBottomColor.z, 2.2f));
 
 		setData.SkyMode = (envCubemap != nullptr) ? 1 : 0;
 		setData.Exposure = env.Exposure;

@@ -25,12 +25,7 @@ RWTexture2DArray<float4> prefilterMap : register(u0);
 // Van der Corput
 float RadicalInverse_VdC(uint bits)
 {
-	bits = (bits << 16u) | (bits >> 16u);
-	bits = ((bits & 0x55555555u) << 1u) | ((bits & 0xAAAAAAAAu) >> 1u);
-	bits = ((bits & 0x33333333u) << 2u) | ((bits & 0xCCCCCCCCu) >> 2u);
-	bits = ((bits & 0x0F0F0F0Fu) << 4u) | ((bits & 0xF0F0F0F0u) >> 4u);
-	bits = ((bits & 0x00FF00FFu) << 8u) | ((bits & 0xFF00FF00u) >> 8u);
-	return float(bits) * 2.3283064365386963e-10; // / 0x100000000
+	return float(reversebits(bits)) * 2.3283064365386963e-10;
 }
 
 // Hammersleyセット
@@ -115,14 +110,25 @@ void CSMain(uint3 dispatchThreadID : SV_DispatchThreadID)
 			float NdotH = max(dot(N, H), 0.0f);
 			float HdotV = max(dot(H, V), 0.0f);
 			float D = Roughness * Roughness * Roughness * Roughness; // GGX NDF
-			float pdf = (D * NdotH) / (PI * pow(NdotH * NdotH * (D - 1.0f) + 1.0f, 2.0f) * HdotV + 0.0001f);
+			float pdf = (D * NdotH) / (4.0f * PI * pow(NdotH * NdotH * (D - 1.0f) + 1.0f, 2.0f) * HdotV + 0.0001f);
 			
 			float saTexel = 4.0f * PI / (6.0f * Resolution * Resolution);
 			float saSample = 1.0f / (float(SAMPLE_COUNT) * pdf + 0.0001f);
 			
-			float mipLevel = Roughness == 0.0f ? 0.0f : 0.5f * log2(saSample / saTexel); 
+			float mipLevel = Roughness == 0.0f ? 0.0f : 0.5f * log2(saSample / saTexel) + 1.0f;
 
-			prefilteredColor += environmentMap.SampleLevel(defaultSampler, L, mipLevel).rgb * NdotL;
+			// 環境マップからサンプリング
+			float3 sampleColor = environmentMap.SampleLevel(defaultSampler, L, mipLevel).rgb;
+
+			// ホタル除去
+			float hdrMax = 10.0f;
+			float luminance = max(max(sampleColor.r, sampleColor.g), sampleColor.b);
+			if (luminance > hdrMax)
+			{
+				sampleColor *= (hdrMax / luminance);
+			}
+			
+			prefilteredColor += sampleColor * NdotL;
 			totalWeight += NdotL;
 		}
 	}
