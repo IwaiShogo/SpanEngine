@@ -16,6 +16,8 @@ var hierarchy =
     [ "Span::ComponentRegistry", "classSpan_1_1ComponentRegistry.html", null ],
     [ "Span::ComponentType&lt; T &gt;", "classSpan_1_1ComponentType.html", null ],
     [ "Span::ConstantBuffer&lt; T &gt;", "classSpan_1_1ConstantBuffer.html", null ],
+    [ "Span::DepthNormalPass::DepthNormalData", "structSpan_1_1DepthNormalPass_1_1DepthNormalData.html", null ],
+    [ "Span::DepthNormalPass", "classSpan_1_1DepthNormalPass.html", null ],
     [ "Span::DirectionalLight", "structSpan_1_1DirectionalLight.html", null ],
     [ "Span::DirectoryWatcher", "classSpan_1_1DirectoryWatcher.html", null ],
     [ "Span::EditorCamera", "structSpan_1_1EditorCamera.html", null ],

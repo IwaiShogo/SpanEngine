@@ -18,7 +18,7 @@ var searchData=
   ['reset_15',['Reset',['../classSpan_1_1MemoryArena.html#ae1e5aee7a56ae1113ded9b6bfcfec909',1,'Span::MemoryArena']]],
   ['resetconsolecolor_16',['ResetConsoleColor',['../classSpan_1_1Logger.html#a597edce5826978973afddf5dbcd25a1f',1,'Span::Logger']]],
   ['resetcursortocenter_17',['ResetCursorToCenter',['../classSpan_1_1Input.html#af45cd4df00ba60ee6d0e03c85dc6ba80',1,'Span::Input']]],
-  ['resize_18',['Resize',['../classSpan_1_1RenderTarget.html#aebe62bcc80108f67f68d0ee0eb579cfb',1,'Span::RenderTarget']]],
+  ['resize_18',['Resize',['../classSpan_1_1RenderTarget.html#aebe62bcc80108f67f68d0ee0eb579cfb',1,'Span::RenderTarget::Resize()'],['../classSpan_1_1DepthNormalPass.html#aa90b0d11ce3593909331311b4ae90303',1,'Span::DepthNormalPass::Resize()']]],
   ['resizeopaquecapture_19',['ResizeOpaqueCapture',['../classSpan_1_1Renderer.html#a0e261cf7d98d6da33c2943aa3bc6f00f',1,'Span::Renderer']]],
   ['rotation_20',['Rotation',['../structSpan_1_1Matrix4x4.html#a14547be89d9d77aba82522e5180c80df',1,'Span::Matrix4x4']]],
   ['run_21',['Run',['../classSpan_1_1Application.html#a9dc7321cf43512eac3757a83fbefbaa9',1,'Span::Application']]]

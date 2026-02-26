@@ -1,34 +1,36 @@
 <map id="Span::Matrix4x4::ToXM" name="Span::Matrix4x4::ToXM">
-<area shape="rect" id="Node000001" title=" " alt="" coords="977,239,1148,264"/>
-<area shape="rect" id="Node000002" href="$classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" title="選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。" alt="" coords="221,147,389,187"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="964,247,724,227,437,194,389,186,390,181,438,189,724,221,964,242"/>
-<area shape="rect" id="Node000004" href="$classSpan_1_1Renderer.html#ade1cd95fe5d2e6aa78493393ce39c767" title="メッシュ描画コマンドの発行。" alt="" coords="715,264,913,289"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="964,264,914,269,913,264,963,259"/>
-<area shape="rect" id="Node000007" href="$classSpan_1_1ShadowPass.html#a172392573e5c697940bd911a47a612e9" title="影を落とすメッシュをシャドウマップに描画します。" alt="" coords="705,163,923,188"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1011,237,929,210,862,191,863,185,930,205,1013,232"/>
-<area shape="rect" id="Node000008" href="$structSpan_1_1Quaternion.html#af2a0a1def4d845d030a45c5a26d32a80" title="回転行列から変換 (実装は後述)" alt="" coords="699,98,929,138"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1037,231,989,191,928,152,900,140,902,136,931,148,992,187,1040,227"/>
-<area shape="rect" id="Node000011" href="$structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e" title="転置行列" alt="" coords="727,48,901,73"/>
-<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="1046,228,1027,195,1001,157,967,120,928,88,901,76,903,71,931,84,971,116,1005,154,1032,192,1051,225"/>
-<area shape="rect" id="Node000013" href="$structSpan_1_1Matrix4x4.html#a59c1e5b5dede7d7aa342e8938676e3cb" title="行列同士の掛け算" alt="" coords="715,313,913,339"/>
-<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="1019,272,930,303,881,316,880,311,929,298,1017,267"/>
-<area shape="rect" id="Node000014" href="$classSpan_1_1SkyboxPass.html#af1afdca89ea3cd26dba659c722c700ce" title="スカイボックスを描画します。RendererのCBVアロケータを使用します。" alt="" coords="718,363,910,388"/>
-<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="1040,275,992,315,962,335,930,352,894,365,893,360,928,347,959,331,989,311,1037,271"/>
-<area shape="rect" id="Node000015" href="$classSpan_1_1Renderer.html#a5c4ce1187eccfa4c75acd068c4ae9706" title="Camera" alt="" coords="713,412,915,437"/>
-<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="1049,277,1002,341,969,375,931,403,905,414,903,409,928,398,965,371,998,337,1045,274"/>
-<area shape="rect" id="Node000003" href="$classSpan_1_1SceneViewPanel.html#aab2935de58bd68267a680cabd3656c9f" title="毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。" alt="" coords="5,147,173,187"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="207,170,174,170,174,165,207,165"/>
-<area shape="rect" id="Node000005" href="$classSpan_1_1RenderingSystem.html#aa0113a8f2b55129115c4da2c6ba449c4" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="455,263,633,303"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="701,282,633,284,633,278,701,277"/>
-<area shape="rect" id="Node000006" href="$classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8" title="オフスクリーンターゲットに球体を描画します。" alt="" coords="453,366,635,406"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="724,295,700,303,632,335,577,368,574,363,630,330,698,298,722,290"/>
-<area shape="rect" id="Node000009" href="$structSpan_1_1Matrix4x4.html#aea4a95a235a15e6ad3366fd07649d253" title="行列を 移動・回転・スケール に分解する" alt="" coords="437,155,651,180"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="691,143,615,157,614,152,690,138"/>
-<area shape="rect" id="Node000010" href="$structSpan_1_1Transform.html#a22e91c428e57737b16a5e9281a28a610" title="指定したターゲット座標を向くように回転を設定します。" alt="" coords="454,105,634,131"/>
-<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="685,121,634,121,634,115,685,115"/>
-<area shape="poly" id="edge9_Node000009_Node000002" title=" " alt="" coords="424,170,389,170,389,165,424,165"/>
-<area shape="poly" id="edge12_Node000011_Node000002" title=" " alt="" coords="766,46,700,26,616,11,571,8,526,10,481,17,438,31,399,55,366,86,339,120,321,148,316,145,335,116,362,83,396,51,436,26,480,12,525,5,571,3,617,6,701,21,768,41"/>
-<area shape="rect" id="Node000012" href="$classSpan_1_1CameraSystem.html#a7f4bf0245dedd7a6245ef352246f7391" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="463,41,625,81"/>
-<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="713,63,626,63,626,58,713,58"/>
-<area shape="poly" id="edge17_Node000015_Node000006" title=" " alt="" coords="711,413,635,402,636,396,712,407"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="977,228,1148,253"/>
+<area shape="rect" id="Node000002" href="$classSpan_1_1SceneViewPanel.html#ad83a4a55f083c75371d0873322808796" title="選択中のオブジェクトに対してマニピュレータ (矢印など) を描画します。" alt="" coords="221,113,389,153"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1035,222,987,188,959,173,929,161,857,142,783,129,709,121,635,117,499,118,390,125,389,120,499,113,635,112,709,116,784,124,858,137,930,155,961,168,990,184,1038,217"/>
+<area shape="rect" id="Node000004" href="$classSpan_1_1DepthNormalPass.html#aad97ed44b9704a1618e3e73912b540d7" title="オブジェクトを描画し、法線と深度を記録します。" alt="" coords="725,55,903,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1041,219,993,168,962,140,928,116,889,98,892,93,931,112,965,136,997,164,1045,216"/>
+<area shape="rect" id="Node000005" href="$classSpan_1_1Renderer.html#ade1cd95fe5d2e6aa78493393ce39c767" title="メッシュ描画コマンドの発行。" alt="" coords="715,285,913,311"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="998,259,930,275,874,288,873,283,929,270,996,254"/>
+<area shape="rect" id="Node000008" href="$classSpan_1_1ShadowPass.html#a172392573e5c697940bd911a47a612e9" title="影を落とすメッシュをシャドウマップに描画します。" alt="" coords="705,171,923,196"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="996,227,929,211,873,199,874,193,930,206,998,222"/>
+<area shape="rect" id="Node000009" href="$structSpan_1_1Quaternion.html#af2a0a1def4d845d030a45c5a26d32a80" title="回転行列から変換 (実装は後述)" alt="" coords="699,221,929,261"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="964,243,930,243,930,238,964,238"/>
+<area shape="rect" id="Node000012" href="$structSpan_1_1Matrix4x4.html#a3544a5d56ec62c035d6e1aa0b20bba2e" title="転置行列" alt="" coords="727,5,901,31"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="1049,216,1032,177,1005,131,971,84,928,46,901,32,903,27,931,41,975,81,1010,128,1036,175,1054,214"/>
+<area shape="rect" id="Node000014" href="$structSpan_1_1Matrix4x4.html#a59c1e5b5dede7d7aa342e8938676e3cb" title="行列同士の掛け算" alt="" coords="715,335,913,360"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="1035,264,988,295,930,324,890,337,889,332,928,320,985,291,1032,259"/>
+<area shape="rect" id="Node000015" href="$classSpan_1_1SkyboxPass.html#af1afdca89ea3cd26dba659c722c700ce" title="スカイボックスを描画します。RendererのCBVアロケータを使用します。" alt="" coords="718,384,910,409"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="1046,266,999,321,966,350,931,374,900,386,898,381,928,369,963,345,995,317,1042,263"/>
+<area shape="rect" id="Node000016" href="$classSpan_1_1Renderer.html#a5c4ce1187eccfa4c75acd068c4ae9706" title="Camera" alt="" coords="713,433,915,459"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="1053,267,1034,303,1008,346,973,389,931,424,908,436,906,431,928,420,969,385,1003,343,1030,301,1048,265"/>
+<area shape="rect" id="Node000003" href="$classSpan_1_1SceneViewPanel.html#aab2935de58bd68267a680cabd3656c9f" title="毎フレームの描画処理。 画像の表示、ツールバーのオーバーレイ、ギズモの描画を行います。" alt="" coords="5,113,173,153"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="207,135,174,135,174,130,207,130"/>
+<area shape="rect" id="Node000006" href="$classSpan_1_1RenderingSystem.html#aa0113a8f2b55129115c4da2c6ba449c4" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="455,278,633,318"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="701,301,633,301,633,295,701,295"/>
+<area shape="rect" id="Node000007" href="$classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8" title="オフスクリーンターゲットに球体を描画します。" alt="" coords="453,383,635,423"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="724,317,700,324,634,354,578,385,576,381,631,349,698,320,723,312"/>
+<area shape="rect" id="Node000010" href="$structSpan_1_1Matrix4x4.html#aea4a95a235a15e6ad3366fd07649d253" title="行列を 移動・回転・スケール に分解する" alt="" coords="437,228,651,253"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="685,243,651,243,651,238,685,238"/>
+<area shape="rect" id="Node000011" href="$structSpan_1_1Transform.html#a22e91c428e57737b16a5e9281a28a610" title="指定したターゲット座標を向くように回転を設定します。" alt="" coords="454,179,634,204"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="690,221,614,207,615,201,691,216"/>
+<area shape="poly" id="edge10_Node000010_Node000002" title=" " alt="" coords="461,227,436,218,379,187,331,155,334,151,381,183,438,213,463,222"/>
+<area shape="poly" id="edge13_Node000012_Node000002" title=" " alt="" coords="713,13,650,13,580,17,508,27,438,46,407,60,377,78,330,115,327,110,374,73,404,55,436,41,507,22,580,12,650,8,713,8"/>
+<area shape="rect" id="Node000013" href="$classSpan_1_1CameraSystem.html#a7f4bf0245dedd7a6245ef352246f7391" title="毎フレーム呼び出されます。ここにゲームロジックを記述します。" alt="" coords="463,55,625,95"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="741,36,626,61,625,55,740,31"/>
+<area shape="poly" id="edge18_Node000016_Node000007" title=" " alt="" coords="719,434,634,420,635,415,720,429"/>
 </map>

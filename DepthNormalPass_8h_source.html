@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Graphics/Passes/DepthNormalPass.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('DepthNormalPass_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">DepthNormalPass.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="DepthNormalPass_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    DepthNormalPass.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   SSAO等のポストプロセスで使用する、視点空間の法線と深度を描画するプリパス。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * 16bit浮動小数点のテクスチャ(R16G16B16A16_FLOAT)に、</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * RGB: View-Space Normal (視点空間法線)</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * A:   Linear Depth (視点からの距離)</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * を出力します。</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="Shader_8h.html">Graphics/Core/Shader.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="RenderTarget_8h.html">Graphics/Core/RenderTarget.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="Mesh_8h.html">Graphics/Resources/Mesh.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="Renderer_8h.html">Graphics/Renderer.h</a>&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"></span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">     * @class   DepthNormalPass</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">     * @brief   🔍 画面全体の法線と深度をGBufferに出力するパス。</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classSpan_1_1DepthNormalPass.html">   31</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#a7b9fb3131b7948df5e113fa6b431d13b">DepthNormalPass</a></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classSpan_1_1DepthNormalPass.html#a7b9fb3131b7948df5e113fa6b431d13b">   34</a></span>        <a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#a7b9fb3131b7948df5e113fa6b431d13b">DepthNormalPass</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classSpan_1_1DepthNormalPass.html#a20b0853ed860d3b44d90b5232cc578d8">   35</a></span>        <a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#a20b0853ed860d3b44d90b5232cc578d8">~DepthNormalPass</a>() { <a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#a3bd9df003462c4bc4cf458173dac1105">Shutdown</a>(); }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">         * @brief   パスとGBufferの初期化。</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#a4d207e13b9b24380cced2a57ccc9fead">Initialize</a>(ID3D12Device* device, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#a3bd9df003462c4bc4cf458173dac1105">Shutdown</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"></span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">         * @brief   画像サイズ変更時にGBufferを作り直します。</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#aa90b0d11ce3593909331311b4ae90303">Resize</a>(ID3D12Device* device, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"></span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">         * @brief   描画の準備</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#a03cfddcf34bf7eb41e29923a498311a6">BeginPass</a>(ID3D12GraphicsCommandList* cmd);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"></span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">         * @brief   オブジェクトを描画し、法線と深度を記録します。</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#aad97ed44b9704a1618e3e73912b540d7">DrawMesh</a>(<a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>* renderer, ID3D12GraphicsCommandList* cmd, <a class="code hl_class" href="classSpan_1_1Mesh.html">Mesh</a>* mesh, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&amp; worldMatrix, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&amp; viewMatrix, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&amp; projectionMatrix);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"></span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">         * @brief   描画の終了</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#a1c6b2ca90431d1dd41275636e79b7efd">EndPass</a>(ID3D12GraphicsCommandList* cmd);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"></span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">        /// @brief  生成されたGBufferを取得します。</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classSpan_1_1DepthNormalPass.html#a3a30d86f11ba93a2c4d9a9bb56acb60f">   64</a></span>        <a class="code hl_class" href="classSpan_1_1RenderTarget.html">RenderTarget</a>* <a class="code hl_function" href="classSpan_1_1DepthNormalPass.html#a3a30d86f11ba93a2c4d9a9bb56acb60f">GetGBuffer</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1DepthNormalPass.html#a36ea14892988de35e93e8d26e858e20a">m_gBuffer</a>; }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classSpan_1_1DepthNormalPass.html#a36ea14892988de35e93e8d26e858e20a">   67</a></span>        <a class="code hl_class" href="classSpan_1_1RenderTarget.html">RenderTarget</a>* <a class="code hl_variable" href="classSpan_1_1DepthNormalPass.html#a36ea14892988de35e93e8d26e858e20a">m_gBuffer</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classSpan_1_1DepthNormalPass.html#a9d2c6386880ad52787d5c19614dfea25">   68</a></span>        ComPtr&lt;ID3D12PipelineState&gt; <a class="code hl_variable" href="classSpan_1_1DepthNormalPass.html#a9d2c6386880ad52787d5c19614dfea25">m_pso</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classSpan_1_1DepthNormalPass.html#a68402ea7573a80725e63457945756460">   69</a></span>        ComPtr&lt;ID3D12RootSignature&gt; <a class="code hl_variable" href="classSpan_1_1DepthNormalPass.html#a68402ea7573a80725e63457945756460">m_rootSignature</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classSpan_1_1DepthNormalPass.html#a6ec23a0dcf662e19b586941edba1a081">   71</a></span>        <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>* <a class="code hl_variable" href="classSpan_1_1DepthNormalPass.html#a6ec23a0dcf662e19b586941edba1a081">m_shaderVS</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classSpan_1_1DepthNormalPass.html#a2fab1f293e27a8acea7d2628a59797ba">   72</a></span>        <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>* <a class="code hl_variable" href="classSpan_1_1DepthNormalPass.html#a2fab1f293e27a8acea7d2628a59797ba">m_shaderPS</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="comment">// シェーダーに渡す定数バッファの構造体</span></div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="};">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html">   75</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html">DepthNormalData</a></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html#ad6206e6e0dd42aa7be8128ec87a8042d">   77</a></span>            <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_variable" href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html#ad6206e6e0dd42aa7be8128ec87a8042d">MVP</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html#a5d04c72e85e53bbc0aaeb5f2272a00b3">   78</a></span>            <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_variable" href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html#a5d04c72e85e53bbc0aaeb5f2272a00b3">World</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html#af98d95e50e2a2e412f29038766ec1fdd">   79</a></span>            <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_variable" href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html#af98d95e50e2a2e412f29038766ec1fdd">View</a>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        };</div>
+</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    };</div>
+</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aMesh_8h_html"><div class="ttname"><a href="Mesh_8h.html">Mesh.h</a></div><div class="ttdoc">3Dモデルの形状データ (頂点バッファ) 管理。</div></div>
+<div class="ttc" id="aRenderTarget_8h_html"><div class="ttname"><a href="RenderTarget_8h.html">RenderTarget.h</a></div><div class="ttdoc">レンダリングターゲット (RTV) とシェーダーリソース (SRV) の管理。</div></div>
+<div class="ttc" id="aRenderer_8h_html"><div class="ttname"><a href="Renderer_8h.html">Renderer.h</a></div><div class="ttdoc">描画パイプラインの構築と実行。</div></div>
+<div class="ttc" id="aShader_8h_html"><div class="ttname"><a href="Shader_8h.html">Shader.h</a></div><div class="ttdoc">HLSLシェーダーのロードとコンパイル管理。</div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a03cfddcf34bf7eb41e29923a498311a6"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a03cfddcf34bf7eb41e29923a498311a6">Span::DepthNormalPass::BeginPass</a></div><div class="ttdeci">void BeginPass(ID3D12GraphicsCommandList *cmd)</div><div class="ttdoc">描画の準備</div><div class="ttdef"><b>Definition</b> <a href="DepthNormalPass_8cpp_source.html#l00101">DepthNormalPass.cpp:101</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a1c6b2ca90431d1dd41275636e79b7efd"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a1c6b2ca90431d1dd41275636e79b7efd">Span::DepthNormalPass::EndPass</a></div><div class="ttdeci">void EndPass(ID3D12GraphicsCommandList *cmd)</div><div class="ttdoc">描画の終了</div><div class="ttdef"><b>Definition</b> <a href="DepthNormalPass_8cpp_source.html#l00125">DepthNormalPass.cpp:125</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a20b0853ed860d3b44d90b5232cc578d8"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a20b0853ed860d3b44d90b5232cc578d8">Span::DepthNormalPass::~DepthNormalPass</a></div><div class="ttdeci">~DepthNormalPass()</div><div class="ttdef"><b>Definition</b> <a href="#l00035">DepthNormalPass.h:35</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a2fab1f293e27a8acea7d2628a59797ba"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a2fab1f293e27a8acea7d2628a59797ba">Span::DepthNormalPass::m_shaderPS</a></div><div class="ttdeci">Shader * m_shaderPS</div><div class="ttdef"><b>Definition</b> <a href="#l00072">DepthNormalPass.h:72</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a36ea14892988de35e93e8d26e858e20a"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a36ea14892988de35e93e8d26e858e20a">Span::DepthNormalPass::m_gBuffer</a></div><div class="ttdeci">RenderTarget * m_gBuffer</div><div class="ttdef"><b>Definition</b> <a href="#l00067">DepthNormalPass.h:67</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a3a30d86f11ba93a2c4d9a9bb56acb60f"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a3a30d86f11ba93a2c4d9a9bb56acb60f">Span::DepthNormalPass::GetGBuffer</a></div><div class="ttdeci">RenderTarget * GetGBuffer() const</div><div class="ttdoc">生成されたGBufferを取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00064">DepthNormalPass.h:64</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a3bd9df003462c4bc4cf458173dac1105"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a3bd9df003462c4bc4cf458173dac1105">Span::DepthNormalPass::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="DepthNormalPass_8cpp_source.html#l00084">DepthNormalPass.cpp:84</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a4d207e13b9b24380cced2a57ccc9fead"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a4d207e13b9b24380cced2a57ccc9fead">Span::DepthNormalPass::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device, uint32 width, uint32 height)</div><div class="ttdoc">パスとGBufferの初期化。</div><div class="ttdef"><b>Definition</b> <a href="DepthNormalPass_8cpp_source.html#l00016">DepthNormalPass.cpp:16</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a68402ea7573a80725e63457945756460"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a68402ea7573a80725e63457945756460">Span::DepthNormalPass::m_rootSignature</a></div><div class="ttdeci">ComPtr&lt; ID3D12RootSignature &gt; m_rootSignature</div><div class="ttdef"><b>Definition</b> <a href="#l00069">DepthNormalPass.h:69</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a6ec23a0dcf662e19b586941edba1a081"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a6ec23a0dcf662e19b586941edba1a081">Span::DepthNormalPass::m_shaderVS</a></div><div class="ttdeci">Shader * m_shaderVS</div><div class="ttdef"><b>Definition</b> <a href="#l00071">DepthNormalPass.h:71</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a7b9fb3131b7948df5e113fa6b431d13b"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a7b9fb3131b7948df5e113fa6b431d13b">Span::DepthNormalPass::DepthNormalPass</a></div><div class="ttdeci">DepthNormalPass()=default</div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_a9d2c6386880ad52787d5c19614dfea25"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#a9d2c6386880ad52787d5c19614dfea25">Span::DepthNormalPass::m_pso</a></div><div class="ttdeci">ComPtr&lt; ID3D12PipelineState &gt; m_pso</div><div class="ttdef"><b>Definition</b> <a href="#l00068">DepthNormalPass.h:68</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_aa90b0d11ce3593909331311b4ae90303"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#aa90b0d11ce3593909331311b4ae90303">Span::DepthNormalPass::Resize</a></div><div class="ttdeci">void Resize(ID3D12Device *device, uint32 width, uint32 height)</div><div class="ttdoc">画像サイズ変更時にGBufferを作り直します。</div><div class="ttdef"><b>Definition</b> <a href="DepthNormalPass_8cpp_source.html#l00093">DepthNormalPass.cpp:93</a></div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html_aad97ed44b9704a1618e3e73912b540d7"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html#aad97ed44b9704a1618e3e73912b540d7">Span::DepthNormalPass::DrawMesh</a></div><div class="ttdeci">void DrawMesh(Renderer *renderer, ID3D12GraphicsCommandList *cmd, Mesh *mesh, const Matrix4x4 &amp;worldMatrix, const Matrix4x4 &amp;viewMatrix, const Matrix4x4 &amp;projectionMatrix)</div><div class="ttdoc">オブジェクトを描画し、法線と深度を記録します。</div><div class="ttdef"><b>Definition</b> <a href="DepthNormalPass_8cpp_source.html#l00131">DepthNormalPass.cpp:131</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Mesh_html"><div class="ttname"><a href="classSpan_1_1Mesh.html">Span::Mesh</a></div><div class="ttdoc">📦 頂点データをGPUメモリ (Vertex Buffer) に保持するクラス。</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00038">Mesh.h:39</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderTarget_html"><div class="ttname"><a href="classSpan_1_1RenderTarget.html">Span::RenderTarget</a></div><div class="ttdoc">🎯 描画対象となるテクスチャリソース。</div><div class="ttdef"><b>Definition</b> <a href="RenderTarget_8h_source.html#l00032">RenderTarget.h:33</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html"><div class="ttname"><a href="classSpan_1_1Renderer.html">Span::Renderer</a></div><div class="ttdoc">🖌 描画コマンドの発行を担うクラス。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00100">Renderer.h:101</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Shader_html"><div class="ttname"><a href="classSpan_1_1Shader.html">Span::Shader</a></div><div class="ttdoc">📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。</div><div class="ttdef"><b>Definition</b> <a href="Shader_8h_source.html#l00037">Shader.h:38</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00101">CoreMinimal.h:101</a></div></div>
+<div class="ttc" id="astructSpan_1_1DepthNormalPass_1_1DepthNormalData_html"><div class="ttname"><a href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html">Span::DepthNormalPass::DepthNormalData</a></div><div class="ttdef"><b>Definition</b> <a href="#l00075">DepthNormalPass.h:76</a></div></div>
+<div class="ttc" id="astructSpan_1_1DepthNormalPass_1_1DepthNormalData_html_a5d04c72e85e53bbc0aaeb5f2272a00b3"><div class="ttname"><a href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html#a5d04c72e85e53bbc0aaeb5f2272a00b3">Span::DepthNormalPass::DepthNormalData::World</a></div><div class="ttdeci">Matrix4x4 World</div><div class="ttdef"><b>Definition</b> <a href="#l00078">DepthNormalPass.h:78</a></div></div>
+<div class="ttc" id="astructSpan_1_1DepthNormalPass_1_1DepthNormalData_html_ad6206e6e0dd42aa7be8128ec87a8042d"><div class="ttname"><a href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html#ad6206e6e0dd42aa7be8128ec87a8042d">Span::DepthNormalPass::DepthNormalData::MVP</a></div><div class="ttdeci">Matrix4x4 MVP</div><div class="ttdef"><b>Definition</b> <a href="#l00077">DepthNormalPass.h:77</a></div></div>
+<div class="ttc" id="astructSpan_1_1DepthNormalPass_1_1DepthNormalData_html_af98d95e50e2a2e412f29038766ec1fdd"><div class="ttname"><a href="structSpan_1_1DepthNormalPass_1_1DepthNormalData.html#af98d95e50e2a2e412f29038766ec1fdd">Span::DepthNormalPass::DepthNormalData::View</a></div><div class="ttdeci">Matrix4x4 View</div><div class="ttdef"><b>Definition</b> <a href="#l00079">DepthNormalPass.h:79</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html">Span::Matrix4x4</a></div><div class="ttdoc">4x4 行列 (Row-Major)</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00315">SpanMath.h:316</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_6091cbee3e268cbb682ad3d3f55cf8b5.html">Graphics</a></li><li class="navelem"><a href="dir_8351ef56a0e0768b20aa52a37aad994e.html">Passes</a></li><li class="navelem"><a href="DepthNormalPass_8h.html">DepthNormalPass.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

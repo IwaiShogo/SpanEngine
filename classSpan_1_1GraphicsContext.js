@@ -18,6 +18,8 @@ var classSpan_1_1GraphicsContext =
     [ "GetCurrentFrameIndex", "classSpan_1_1GraphicsContext.html#a1410857e1e43fe24489b863e60a08124", null ],
     [ "GetDevice", "classSpan_1_1GraphicsContext.html#a71cf9aead8f4ce3392101e27127b9131", null ],
     [ "GetFrameCount", "classSpan_1_1GraphicsContext.html#abbd3b9f918fbe1fa47626b359c617731", null ],
+    [ "GetViewportHeight", "classSpan_1_1GraphicsContext.html#aa9b2e7af3fddb64e04d1aa7c3005340d", null ],
+    [ "GetViewportWidth", "classSpan_1_1GraphicsContext.html#a606de5153d1d3f685d0e67f35133efe7", null ],
     [ "Initialize", "classSpan_1_1GraphicsContext.html#a2d9afc9f1fbc0a0222ac906178ef18b4", null ],
     [ "OnResize", "classSpan_1_1GraphicsContext.html#aa19d67466685650668752fc61e762f20", null ],
     [ "SetRenderTargetToBackBuffer", "classSpan_1_1GraphicsContext.html#a30d20086e646e5db11d178a8d549d20d", null ],

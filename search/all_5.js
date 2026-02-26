@@ -16,7 +16,7 @@ var searchData=
   ['emissivemapguid_13',['EmissiveMapGUID',['../classSpan_1_1Material.html#ac9575239a42a0b3fa1ede6fce337f3e4',1,'Span::Material']]],
   ['empty_14',['Empty',['../structSpan_1_1FixedString.html#ad5e9613c004c88532a25a0bc289fb997',1,'Span::FixedString']]],
   ['endframe_15',['EndFrame',['../classSpan_1_1Input.html#a1be9ee5fee394c7fe2c6e3d7bfa6ee77',1,'Span::Input::EndFrame()'],['../classSpan_1_1GuiManager.html#a66e894c749b02f869c0851b41fd23fec',1,'Span::GuiManager::EndFrame()'],['../classSpan_1_1GraphicsContext.html#a003ab67b72f1c4f582ade1d8e335a1f8',1,'Span::GraphicsContext::EndFrame()'],['../classSpan_1_1Renderer.html#a677d1565f7c6df08b393f328801ca419',1,'Span::Renderer::EndFrame()']]],
-  ['endpass_16',['EndPass',['../classSpan_1_1ShadowPass.html#a9100eafbd8d2f2124cd23a9691a15029',1,'Span::ShadowPass']]],
+  ['endpass_16',['EndPass',['../classSpan_1_1DepthNormalPass.html#a1c6b2ca90431d1dd41275636e79b7efd',1,'Span::DepthNormalPass::EndPass()'],['../classSpan_1_1ShadowPass.html#a9100eafbd8d2f2124cd23a9691a15029',1,'Span::ShadowPass::EndPass()']]],
   ['entity_17',['Entity',['../structSpan_1_1Entity.html',1,'Span::Entity'],['../structSpan_1_1Entity.html#a23ab2fecbbf9cbe9038d074bf442bb04',1,'Span::Entity::Entity()=default'],['../structSpan_1_1Entity.html#acfcb503b4305999b74e7856ffb269581',1,'Span::Entity::Entity(EntityID id)'],['../namespaceSpan.html#ae126b95988f55f544522b13f75659b3fa1a434befae3f49ae09347ded52032f6f',1,'Span::Entity']]],
   ['entity_2eh_18',['Entity.h',['../Entity_8h.html',1,'']]],
   ['entitybuilder_19',['EntityBuilder',['../classSpan_1_1EntityBuilder.html',1,'Span::EntityBuilder'],['../classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2',1,'Span::EntityBuilder::EntityBuilder()']]],

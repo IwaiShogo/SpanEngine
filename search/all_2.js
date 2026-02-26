@@ -4,7 +4,7 @@ var searchData=
   ['back_1',['Back',['../structSpan_1_1Vector3.html#a51e83060eb4799090622d1dc79193d9a',1,'Span::Vector3::Back'],['../namespaceSpan.html#a30d45a2a9c19c81995f3e771062c11cca0557fa923dcee4d0f86b1409f5c2167f',1,'Span::Back']]],
   ['barrier_20state_20flow_2',['🔄 Resource Barrier State Flow',['../classSpan_1_1RenderTarget.html#autotoc_md142',1,'']]],
   ['beginframe_3',['BeginFrame',['../classSpan_1_1GuiManager.html#af6528ac5ab8ba075fd24a944d36e8f53',1,'Span::GuiManager::BeginFrame()'],['../classSpan_1_1GraphicsContext.html#a31c19d8990c3bbcd795aa3100d260c27',1,'Span::GraphicsContext::BeginFrame()'],['../classSpan_1_1Renderer.html#a115f51ead73d011860bb7fe9c510a9a2',1,'Span::Renderer::BeginFrame()']]],
-  ['beginpass_4',['BeginPass',['../classSpan_1_1ShadowPass.html#a75a31c0ea2bca0ca144f942f204c4ff0',1,'Span::ShadowPass']]],
+  ['beginpass_4',['BeginPass',['../classSpan_1_1DepthNormalPass.html#a03cfddcf34bf7eb41e29923a498311a6',1,'Span::DepthNormalPass::BeginPass()'],['../classSpan_1_1ShadowPass.html#a75a31c0ea2bca0ca144f942f204c4ff0',1,'Span::ShadowPass::BeginPass()']]],
   ['bindshadowmap_5',['BindShadowMap',['../classSpan_1_1Renderer.html#a0cc384bd7056f0c488bcca951da8ab95',1,'Span::Renderer']]],
   ['bindtexture_6',['BindTexture',['../classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3',1,'Span::Renderer']]],
   ['bit_20layout_7',['📊 ビットレイアウト (Bit Layout)',['../structSpan_1_1EntityID.html#autotoc_md112',1,'']]],

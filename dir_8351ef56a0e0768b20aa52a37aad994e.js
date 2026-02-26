@@ -1,5 +1,7 @@
 var dir_8351ef56a0e0768b20aa52a37aad994e =
 [
+    [ "DepthNormalPass.cpp", "DepthNormalPass_8cpp.html", null ],
+    [ "DepthNormalPass.h", "DepthNormalPass_8h.html", "DepthNormalPass_8h" ],
     [ "GridPass.cpp", "GridPass_8cpp.html", null ],
     [ "GridPass.h", "GridPass_8h.html", "GridPass_8h" ],
     [ "ShadowPass.cpp", "ShadowPass_8cpp.html", null ],

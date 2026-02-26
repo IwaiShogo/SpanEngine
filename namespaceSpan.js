@@ -67,6 +67,7 @@ var namespaceSpan =
     [ "Shader", "classSpan_1_1Shader.html", "classSpan_1_1Shader" ],
     [ "ShadowMap", "classSpan_1_1ShadowMap.html", "classSpan_1_1ShadowMap" ],
     [ "ModelLoader", "classSpan_1_1ModelLoader.html", "classSpan_1_1ModelLoader" ],
+    [ "DepthNormalPass", "classSpan_1_1DepthNormalPass.html", "classSpan_1_1DepthNormalPass" ],
     [ "GridPass", "classSpan_1_1GridPass.html", "classSpan_1_1GridPass" ],
     [ "ShadowPass", "classSpan_1_1ShadowPass.html", "classSpan_1_1ShadowPass" ],
     [ "SkyboxPass", "classSpan_1_1SkyboxPass.html", "classSpan_1_1SkyboxPass" ],

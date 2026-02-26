@@ -38,7 +38,7 @@ var searchData=
   ['reset_35',['Reset',['../classSpan_1_1MemoryArena.html#ae1e5aee7a56ae1113ded9b6bfcfec909',1,'Span::MemoryArena']]],
   ['resetconsolecolor_36',['ResetConsoleColor',['../classSpan_1_1Logger.html#a597edce5826978973afddf5dbcd25a1f',1,'Span::Logger']]],
   ['resetcursortocenter_37',['ResetCursorToCenter',['../classSpan_1_1Input.html#af45cd4df00ba60ee6d0e03c85dc6ba80',1,'Span::Input']]],
-  ['resize_38',['Resize',['../classSpan_1_1RenderTarget.html#aebe62bcc80108f67f68d0ee0eb579cfb',1,'Span::RenderTarget']]],
+  ['resize_38',['Resize',['../classSpan_1_1RenderTarget.html#aebe62bcc80108f67f68d0ee0eb579cfb',1,'Span::RenderTarget::Resize()'],['../classSpan_1_1DepthNormalPass.html#aa90b0d11ce3593909331311b4ae90303',1,'Span::DepthNormalPass::Resize()']]],
   ['resizeopaquecapture_39',['ResizeOpaqueCapture',['../classSpan_1_1Renderer.html#a0e261cf7d98d6da33c2943aa3bc6f00f',1,'Span::Renderer']]],
   ['resource_40',['resource',['../classSpan_1_1ConstantBuffer.html#a49d50882eddee173d07a680b3fecca97',1,'Span::ConstantBuffer::resource'],['../classSpan_1_1RenderTarget.html#a8fc923d13a57c3733de5f8935d898b2d',1,'Span::RenderTarget::resource'],['../classSpan_1_1Texture.html#a5d64c838ec0d3a4760e0b46f761c30ab',1,'Span::Texture::resource']]],
   ['resource_20barrier_20state_20flow_41',['🔄 Resource Barrier State Flow',['../classSpan_1_1RenderTarget.html#autotoc_md142',1,'']]],
