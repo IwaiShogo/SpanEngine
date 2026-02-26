@@ -7,6 +7,7 @@
 #include "Passes/GridPass.h"
 #include "Passes/SkyboxPass.h"
 #include "Passes/ShadowPass.h"
+#include "Passes/DepthNormalPass.h"
 
 namespace Span
 {
@@ -60,6 +61,9 @@ namespace Span
 		m_pointShadowPass = std::make_unique<ShadowPass>();
 		if (!m_pointShadowPass->Initialize(device, 1024, 1024, 6, true)) return false;
 
+		m_depthNormalPass = std::make_unique<DepthNormalPass>();
+		if (!m_depthNormalPass->Initialize(device, context->GetViewportWidth(), context->GetViewportHeight())) return false;
+
 		m_LightBuffer = new ConstantBuffer<GlobalLightData>();
 		if (!m_LightBuffer->Initialize(device)) return false;
 
@@ -84,6 +88,7 @@ namespace Span
 		m_skyboxPass.reset();
 		m_dirShadowPass.reset();
 		m_spotShadowPass.reset();
+		m_depthNormalPass.reset();
 
 		if (m_LightBuffer) { m_LightBuffer->Shutdown(); SAFE_DELETE(m_LightBuffer); }
 		context = nullptr;
@@ -136,6 +141,7 @@ namespace Span
 	void Renderer::OnResize(uint32 width, uint32 height)
 	{
 		if (context) context->OnResize(width, height);
+		if (m_depthNormalPass) m_depthNormalPass->Resize(context->GetDevice(), width, height);
 	}
 
 	void Renderer::DrawMesh(Mesh* mesh, Material* material, const Matrix4x4& worldMatrix)

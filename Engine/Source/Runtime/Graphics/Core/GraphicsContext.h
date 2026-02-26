@@ -72,13 +72,15 @@ namespace Span
 
 		// 📊 Getters
 		// ============================================================
-		
 		D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentBackBufferRTV() const;
 		ID3D12Device* GetDevice() const { return device.Get(); }
 		ID3D12CommandQueue* GetCommandQueue() const { return commandQueue.Get(); }
 		ID3D12GraphicsCommandList* GetCommandList() const { return commandList.Get(); }
 		uint32 GetFrameCount() const { return FrameCount; }
 		uint32 GetCurrentFrameIndex() const { return frameIndex; }
+
+		uint32 GetViewportWidth() const { return width; }
+		uint32 GetViewportHeight() const { return height; }
 
 		/**
 		 * @brief	GPUの処理完了をCPU側で待機します。

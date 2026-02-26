@@ -26,6 +26,7 @@ namespace Span
 	class SkyboxPass;
 	class ShadowPass;
 	class ShadowMap;
+	class DepthNormalPass;
 }
 
 namespace Span
@@ -169,6 +170,7 @@ namespace Span
 		ID3D12Device* GetDevice() const { return context ? context->GetDevice() : nullptr; }
 		uint32 GetFrameCount() const { return context ? context->GetFrameCount() : 2; }
 		ID3D12CommandQueue* GetCommandQueue() const { return context ? context->GetCommandQueue() : nullptr; }
+		DepthNormalPass* GetDepthNormalPass() const { return m_depthNormalPass.get(); }
 
 		/// @brief	生成済みの環境Cubemapを取得します。
 		Texture* GetEnvironmentCubemap() const { return m_envCubemap.get(); }
@@ -228,6 +230,7 @@ namespace Span
 		std::unique_ptr<ShadowPass> m_dirShadowPass;
 		std::unique_ptr<ShadowPass> m_spotShadowPass;
 		std::unique_ptr<ShadowPass> m_pointShadowPass;
+		std::unique_ptr<DepthNormalPass> m_depthNormalPass;
 
 		// Environment
 		std::unique_ptr<Texture> m_envCubemap;

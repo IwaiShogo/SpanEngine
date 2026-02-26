@@ -182,6 +182,10 @@ namespace Span
 						sceneBuffer.Resize(renderer.GetDevice(), targetW, targetH);
 
 						renderer.ResizeOpaqueCapture(targetW, targetH);
+						if (renderer.GetDepthNormalPass())
+						{
+							renderer.GetDepthNormalPass()->Resize(renderer.GetDevice(), targetW, targetH);
+						}
 
 						// 更新されたサイズを保持
 						m_sceneViewWidth = targetW;

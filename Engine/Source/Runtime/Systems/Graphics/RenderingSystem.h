@@ -20,6 +20,7 @@
 #include "Graphics/Passes/ShadowPass.h"
 #include "Graphics/Passes/GridPass.h"
 #include "Graphics/Passes/SkyboxPass.h"
+#include "Graphics/Passes/DepthNormalPass.h"
 
 // Components
 #include "Components/Core/LocalToWorld.h"
@@ -145,7 +146,28 @@ namespace Span
 
 			renderer.SetGlobalLightData(activeLights, env);
 
+			// 1.5. Pre-pass (Depth & Normal)
 			// ============================================================
+			if (auto dnPass = renderer.GetDepthNormalPass())
+			{
+				dnPass->BeginPass(cmd);
+
+				world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
+					[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
+					{
+						if (!mf.mesh || !mr.material) return;
+
+						// 不透明なオブジェクトのみ記録
+						if (mr.material->GetBlendMode() != BlendMode::Transparent && mr.material->GetData().Transmission <= 0.0f)
+						{
+							dnPass->DrawMesh(&renderer, cmd, mf.mesh, ltw.Value, renderer.GetViewMatrix(), renderer.GetProjectionMatrix());
+						}
+					}
+				);
+
+				dnPass->EndPass(cmd);
+			}
+			
 			// 2. Shadow Passes
 			// ============================================================
 
