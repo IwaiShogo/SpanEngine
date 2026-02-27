@@ -4,10 +4,14 @@
 #include "Graphics/Core/IBLBuilder.h"
 
 // Passのインクルード
+#include "Core/RenderPassManager.h"
+#include "Core/LightManager.h"
 #include "Passes/GridPass.h"
 #include "Passes/SkyboxPass.h"
 #include "Passes/ShadowPass.h"
 #include "Passes/DepthNormalPass.h"
+#include "Passes/SSAOPass.h"
+#include "Passes/SSAOBlurPass.h"
 
 namespace Span
 {
@@ -46,26 +50,11 @@ namespace Span
 		m_srvDescriptorSize = device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
 		// --- Passes Initialization ---
-		m_gridPass = std::make_unique<GridPass>();
-		if (!m_gridPass->Initialize(device)) return false;
+		m_passManager = std::make_unique<RenderPassManager>();
+		if (!m_passManager->Initialize(context)) return false;
 
-		m_skyboxPass = std::make_unique<SkyboxPass>();
-		if (!m_skyboxPass->Initialize(device)) return false;
-
-		m_dirShadowPass = std::make_unique<ShadowPass>();
-		if (!m_dirShadowPass->Initialize(device, 4096, 4096, 1)) return false;
-
-		m_spotShadowPass = std::make_unique<ShadowPass>();
-		if (!m_spotShadowPass->Initialize(device, 1024, 1024, 4)) return false;
-
-		m_pointShadowPass = std::make_unique<ShadowPass>();
-		if (!m_pointShadowPass->Initialize(device, 1024, 1024, 6, true)) return false;
-
-		m_depthNormalPass = std::make_unique<DepthNormalPass>();
-		if (!m_depthNormalPass->Initialize(device, context->GetViewportWidth(), context->GetViewportHeight())) return false;
-
-		m_LightBuffer = new ConstantBuffer<GlobalLightData>();
-		if (!m_LightBuffer->Initialize(device)) return false;
+		m_lightManager = std::make_unique<LightManager>();
+		if (!m_lightManager->Initialize(device)) return false;
 
 		SPAN_LOG("Renderer Initialized Successfully with Render Passes!");
 		return true;
@@ -84,13 +73,9 @@ namespace Span
 		pipelineStateTransparent.Reset();
 		constantBuffer.Reset();
 
-		m_gridPass.reset();
-		m_skyboxPass.reset();
-		m_dirShadowPass.reset();
-		m_spotShadowPass.reset();
-		m_depthNormalPass.reset();
-
-		if (m_LightBuffer) { m_LightBuffer->Shutdown(); SAFE_DELETE(m_LightBuffer); }
+		m_passManager.reset();
+		m_lightManager.reset();
+		
 		context = nullptr;
 	}
 
@@ -141,7 +126,8 @@ namespace Span
 	void Renderer::OnResize(uint32 width, uint32 height)
 	{
 		if (context) context->OnResize(width, height);
-		if (m_depthNormalPass) m_depthNormalPass->Resize(context->GetDevice(), width, height);
+		if (m_passManager && context) m_passManager->OnResize(context->GetDevice(), width, height);
+		if (m_lightManager) m_lightManager->OnResize(context->GetDevice(), width, height);
 	}
 
 	void Renderer::DrawMesh(Mesh* mesh, Material* material, const Matrix4x4& worldMatrix)
@@ -164,7 +150,7 @@ namespace Span
 		commandList->SetGraphicsRootConstantBufferView(0, cbAddr);
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
 
-		if (m_LightBuffer) commandList->SetGraphicsRootConstantBufferView(15, m_LightBuffer->GetGPUVirtualAddress());
+		if (m_lightManager) commandList->SetGraphicsRootConstantBufferView(16, m_lightManager->GetLightBufferAddress());
 
 		// PBR Textures (t0 ~ t5)
 		Texture* textures[6] = { material->GetAlbedoMap(), material->GetNormalMap(), material->GetMetallicMap(), material->GetRoughnessMap(), material->GetAOMap(), material->GetEmissiveMap() };
@@ -172,16 +158,25 @@ namespace Span
 			BindTexture(commandList, textures[i], 2 + i, D3D12_SRV_DIMENSION_TEXTURE2D);
 		}
 
-		// Shadows (t6 ~ t8)
-		BindShadowMap(commandList, m_dirShadowPass ? m_dirShadowPass->GetShadowMap() : nullptr, 8, D3D12_SRV_DIMENSION_TEXTURE2D);
-		BindShadowMap(commandList, m_spotShadowPass ? m_spotShadowPass->GetShadowMap() : nullptr, 9, D3D12_SRV_DIMENSION_TEXTURE2DARRAY);
-		BindShadowMap(commandList, m_pointShadowPass ? m_pointShadowPass->GetShadowMap() : nullptr, 10, D3D12_SRV_DIMENSION_TEXTURECUBE);
+		// Shadows (t8 ~ t10)
+		BindShadowMap(commandList, m_passManager->GetDirShadowPass() ? m_passManager->GetDirShadowPass()->GetShadowMap() : nullptr, 8, D3D12_SRV_DIMENSION_TEXTURE2D);
+		BindShadowMap(commandList, m_passManager->GetSpotShadowPass() ? m_passManager->GetSpotShadowPass()->GetShadowMap() : nullptr, 9, D3D12_SRV_DIMENSION_TEXTURE2DARRAY);
+		BindShadowMap(commandList, m_passManager->GetPointShadowPass() ? m_passManager->GetPointShadowPass()->GetShadowMap() : nullptr, 10, D3D12_SRV_DIMENSION_TEXTURECUBE);
 
-		// IBL Textures (t9 ~ t11)
+		// IBL Textures (t11 ~ t13) + OpaqueTexture(t14)
 		BindTexture(commandList, m_irradianceMap.get(),		11, D3D12_SRV_DIMENSION_TEXTURECUBE);
 		BindTexture(commandList, m_prefilterMap.get(),		12, D3D12_SRV_DIMENSION_TEXTURECUBE);
 		BindTexture(commandList, m_brdfLUT.get(),			13, D3D12_SRV_DIMENSION_TEXTURE2D);
 		BindTexture(commandList, m_opaqueCaptureTex.get(),	14, D3D12_SRV_DIMENSION_TEXTURE2D);
+
+		if (m_passManager->GetSSAOBlurPass() && m_passManager->GetSSAOBlurPass()->GetBlurredSSAOMap())
+		{
+			BindRenderTargetSRV(commandList, m_passManager->GetSSAOBlurPass()->GetBlurredSSAOMap(), 15);
+		}
+		else
+		{
+			BindTexture(commandList, nullptr, 15, D3D12_SRV_DIMENSION_TEXTURE2D);
+		}
 
 		mesh->Draw(commandList);
 	}
@@ -192,34 +187,6 @@ namespace Span
 		DirectX::XMVECTOR det;
 		DirectX::XMMATRIX invView = DirectX::XMMatrixInverse(&det, view.ToXM());
 		cameraPosition = Vector3(DirectX::XMVectorGetX(invView.r[3]), DirectX::XMVectorGetY(invView.r[3]), DirectX::XMVectorGetZ(invView.r[3]));
-	}
-
-	void Renderer::SetGlobalLightData(const std::vector<LightDataGPU>& lights, const EnvironmentSettings& env)
-	{
-		m_CurrentLightData.CameraPosition = cameraPosition;
-		m_CurrentLightData.Exposure = env.Exposure;
-		m_CurrentLightData.AmbientIntensity = env.AmbientIntensity;
-		m_CurrentLightData.EnvReflectionIntensity = env.EnvReflectionIntensity;
-		m_CurrentLightData.SkyTopColor = Vector3(pow(env.SkyTopColor.x, 2.2f), pow(env.SkyTopColor.y, 2.2f), pow(env.SkyTopColor.z, 2.2f));
-		m_CurrentLightData.SkyHorizonColor = Vector3(pow(env.SkyHorizonColor.x, 2.2f), pow(env.SkyHorizonColor.y, 2.2f), pow(env.SkyHorizonColor.z, 2.2f));
-		m_CurrentLightData.SkyBottomColor = Vector3(pow(env.SkyBottomColor.x, 2.2f), pow(env.SkyBottomColor.y, 2.2f), pow(env.SkyBottomColor.z, 2.2f));
-		m_CurrentLightData.SkyMode = (m_envCubemap != nullptr && env.Mode == SkyboxMode::HDRI) ? 1 : 0;
-
-		// 行列の初期化
-		m_CurrentLightData.DirectionalLightSpaceMatrix = Matrix4x4::Identity().Transpose();
-
-		m_CurrentLightData.ActiveLightCount = std::min((int)lights.size(), MAX_LIGHTS);
-		for (int i = 0; i < m_CurrentLightData.ActiveLightCount; ++i)
-		{
-			m_CurrentLightData.Lights[i] = lights[i];
-
-			if (lights[i].Type == 0)
-			{
-				m_CurrentLightData.DirectionalLightSpaceMatrix = lights[i].ShadowMatrix.Transpose();
-			}
-		}
-
-		if (m_LightBuffer) m_LightBuffer->Update(m_CurrentLightData);
 	}
 
 	bool Renderer::LoadEnvironmentMap(const std::string& filepath)
@@ -406,6 +373,40 @@ namespace Span
 		m_frameSrvHeapOffset++;
 	}
 
+	void Renderer::BindRenderTargetSRV(ID3D12GraphicsCommandList* cmd, RenderTarget* renderTarget, uint32 rootIndex, D3D12_SRV_DIMENSION dimension)
+	{
+		if (!m_frameSrvHeap) return;
+
+		auto device = context->GetDevice();
+		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
+		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+
+		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
+		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+
+		if (renderTarget && renderTarget->GetSRV().ptr != 0)
+		{
+			// RenderTargetのSRVをコピー
+			device->CopyDescriptorsSimple(1, destCpu, renderTarget->GetSRV(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+		}
+		else
+		{
+			// 安全なダミーSRVを生成
+			D3D12_SHADER_RESOURCE_VIEW_DESC nullDesc = {};
+			nullDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+			nullDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+			nullDesc.ViewDimension = dimension;
+			if (dimension == D3D12_SRV_DIMENSION_TEXTURECUBE) nullDesc.TextureCube.MipLevels = 1;
+			else if (dimension == D3D12_SRV_DIMENSION_TEXTURE2DARRAY) { nullDesc.Texture2DArray.MipLevels = 1; nullDesc.Texture2DArray.ArraySize = 1; }
+			else nullDesc.Texture2D.MipLevels = 1;
+
+			device->CreateShaderResourceView(nullptr, &nullDesc, destCpu);
+		}
+
+		cmd->SetGraphicsRootDescriptorTable(rootIndex, destGpu);
+		m_frameSrvHeapOffset++;
+	}
+
 	void Renderer::WaitForGPU()
 	{
 		if (!context || !context->GetCommandQueue() || !m_waitFence) return;
@@ -468,7 +469,7 @@ namespace Span
 
 	bool Renderer::CreateRootSignature()
 	{
-		D3D12_ROOT_PARAMETER rootParameters[16];
+		D3D12_ROOT_PARAMETER rootParameters[17];
 
 		// [0] Transform (b0)
 		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -482,8 +483,8 @@ namespace Span
 		rootParameters[1].Descriptor.RegisterSpace = 0;
 		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 
-		D3D12_DESCRIPTOR_RANGE ranges[13] = {};
-		for (int i = 0; i < 13; i++)
+		D3D12_DESCRIPTOR_RANGE ranges[14] = {};
+		for (int i = 0; i < 14; i++)
 		{
 			ranges[i].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
 			ranges[i].NumDescriptors = 1;
@@ -498,10 +499,10 @@ namespace Span
 		}
 
 		// LightBuffer (b2)
-		rootParameters[15].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		rootParameters[15].Descriptor.ShaderRegister = 2;
-		rootParameters[15].Descriptor.RegisterSpace = 0;
-		rootParameters[15].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+		rootParameters[16].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[16].Descriptor.ShaderRegister = 2;
+		rootParameters[16].Descriptor.RegisterSpace = 0;
+		rootParameters[16].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
 		// --- Samplers ---
 		// s0: 通常のテクスチャサンプラー

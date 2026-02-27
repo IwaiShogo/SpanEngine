@@ -17,10 +17,14 @@
 #include "Graphics/Renderer.h"
 
 // Render Passes
+#include "Graphics/Core/RenderPassManager.h"
+#include "Graphics/Core/LightManager.h"
 #include "Graphics/Passes/ShadowPass.h"
 #include "Graphics/Passes/GridPass.h"
 #include "Graphics/Passes/SkyboxPass.h"
 #include "Graphics/Passes/DepthNormalPass.h"
+#include "Graphics/Passes/SSAOPass.h"
+#include "Graphics/Passes/SSAOBlurPass.h"
 
 // Components
 #include "Components/Core/LocalToWorld.h"
@@ -144,11 +148,12 @@ namespace Span
 				}
 			);
 
-			renderer.SetGlobalLightData(activeLights, env);
+			bool isSSAOEnabled = (renderer.GetPassManager() && renderer.GetPassManager()->GetSSAOBlurPass() != nullptr);
+			renderer.GetLightManager()->UpdateLightData(activeLights, env, renderer.GetCameraPosition(), isSSAOEnabled);
 
 			// 1.5. Pre-pass (Depth & Normal)
 			// ============================================================
-			if (auto dnPass = renderer.GetDepthNormalPass())
+			if (auto dnPass = renderer.GetPassManager()->GetDepthNormalPass())
 			{
 				dnPass->BeginPass(cmd);
 
@@ -167,12 +172,26 @@ namespace Span
 
 				dnPass->EndPass(cmd);
 			}
+
+			// 1.6. SSAO Pass
+			// ============================================================
+			if (auto ssaoPassInstance = renderer.GetPassManager()->GetSSAOPass())
+			{
+				// SSAO計算
+				ssaoPassInstance->Execute(&renderer, cmd, renderer.GetPassManager()->GetDepthNormalPass()->GetGBuffer(), renderer.GetProjectionMatrix());
+
+				// ブラーを実行してノイズを消す
+				if (auto blurPass = renderer.GetPassManager()->GetSSAOBlurPass())
+				{
+					blurPass->Execute(&renderer, cmd, ssaoPassInstance->GetSSAOMap());
+				}
+			}
 			
 			// 2. Shadow Passes
 			// ============================================================
 
 			// --- Directional Shadow Pass ---
-			if (auto dirPass = renderer.GetDirShadowPass())
+			if (auto dirPass = renderer.GetPassManager()->GetDirShadowPass())
 			{
 				dirPass->BeginPass(cmd);
 				dirPass->SetRenderTarget(cmd, 0);
@@ -185,7 +204,7 @@ namespace Span
 			}
 
 			// --- Spot Shadow Pass (Array) ---
-			if (auto spotPass = renderer.GetSpotShadowPass())
+			if (auto spotPass = renderer.GetPassManager()->GetSpotShadowPass())
 			{
 				spotPass->BeginPass(cmd);
 				for (int i = 0; i < spotShadowCount; ++i)
@@ -211,7 +230,7 @@ namespace Span
 			}
 
 			// --- Point Shadow Pass ---
-			if (auto pointPass = renderer.GetPointShadowPass())
+			if (auto pointPass = renderer.GetPassManager()->GetPointShadowPass())
 			{
 				pointPass->BeginPass(cmd);
 				for (auto& l : activeLights)
@@ -280,13 +299,13 @@ namespace Span
 			);
 
 			// Skybox
-			if (auto skyboxPass = renderer.GetSkyboxPass())
+			if (auto skyboxPass = renderer.GetPassManager()->GetSkyboxPass())
 			{
 				skyboxPass->Render(&renderer, cmd, env, renderer.GetViewMatrix(), renderer.GetProjectionMatrix(), renderer.GetCameraPosition(), renderer.GetEnvironmentCubemap());
 			}
 
 			// Editor Pass (Grid)
-			if (auto gridPass = renderer.GetGridPass())
+			if (auto gridPass = renderer.GetPassManager()->GetGridPass())
 			{
 				struct SceneCB { Matrix4x4 view; Matrix4x4 proj; Vector3 camPos; float pad; };
 				SceneCB sceneData = {

@@ -22,11 +22,10 @@
 // 前方宣言
 namespace Span
 {
-	class GridPass;
-	class SkyboxPass;
-	class ShadowPass;
+	class RenderPassManager;
+	class LightManager;
 	class ShadowMap;
-	class DepthNormalPass;
+	class RenderTarget;
 }
 
 namespace Span
@@ -63,7 +62,7 @@ namespace Span
 	};
 
 	// 最大ライト数
-	constexpr int MAX_LIGHTS = 16;
+	constexpr int MAX_LIGHTS = 4096;
 
 	struct alignas(16) GlobalLightData
 	{
@@ -79,12 +78,12 @@ namespace Span
 		int ActiveLightCount = 0;
 
 		int SkyMode;
-		float pad[3];
+		int EnableSSAO;
+		float pad[2];
 
 		// 光の視点の行列
 		Matrix4x4 DirectionalLightSpaceMatrix;
 
-		// ライトの配列
 		LightDataGPU Lights[MAX_LIGHTS];
 	};
 
@@ -114,13 +113,6 @@ namespace Span
 		/// @brief	リサイズ対応
 		void OnResize(uint32 width, uint32 height);
 
-		// 各Passの取得ゲッター
-		GridPass* GetGridPass() const { return m_gridPass.get(); }
-		SkyboxPass* GetSkyboxPass() const { return m_skyboxPass.get(); }
-		ShadowPass* GetDirShadowPass() const { return m_dirShadowPass.get(); }
-		ShadowPass* GetSpotShadowPass() const { return m_spotShadowPass.get(); }
-		ShadowPass* GetPointShadowPass() const { return m_pointShadowPass.get(); }
-
 		/**
 		 * @brief	メッシュ描画コマンドの発行。
 		 * @param	mesh 描画するメッシュ
@@ -139,10 +131,7 @@ namespace Span
 		/// @brief	カメラ位置のセッター
 		void SetCameraPosition(const Vector3& pos) { cameraPosition = pos; }
 		/// @}
-
-		/// @brief	ライト情報をRendererにセットする関数
-		void SetGlobalLightData(const std::vector<LightDataGPU>& lights, const EnvironmentSettings& env);
-
+		
 		bool LoadEnvironmentMap(const std::string& filepath);
 
 		/// @brief	指定スロットにテクスチャをバインドします。Nullの場合は安全なダミーを生成します。
@@ -150,6 +139,9 @@ namespace Span
 
 		/// @brief	指定スロットにシャドウマップをバインドします。Nullの場合は安全なダミーを生成します。
 		void BindShadowMap(ID3D12GraphicsCommandList* cmd, ShadowMap* shadowMap, uint32 rootIndex, D3D12_SRV_DIMENSION dimension = D3D12_SRV_DIMENSION_TEXTURE2D);
+
+		/// @brief	指定スロットにRenderTargetのSRVをバインドします。
+		void BindRenderTargetSRV(ID3D12GraphicsCommandList* cmd, RenderTarget* renderTarget, uint32 rootIndex, D3D12_SRV_DIMENSION dimension = D3D12_SRV_DIMENSION_TEXTURE2D);
 
 		/// @brief	GPUの処理完了を待機する
 		void WaitForGPU();
@@ -170,7 +162,9 @@ namespace Span
 		ID3D12Device* GetDevice() const { return context ? context->GetDevice() : nullptr; }
 		uint32 GetFrameCount() const { return context ? context->GetFrameCount() : 2; }
 		ID3D12CommandQueue* GetCommandQueue() const { return context ? context->GetCommandQueue() : nullptr; }
-		DepthNormalPass* GetDepthNormalPass() const { return m_depthNormalPass.get(); }
+
+		RenderPassManager* GetPassManager() const { return m_passManager.get(); }
+		LightManager* GetLightManager() const { return m_lightManager.get(); }
 
 		/// @brief	生成済みの環境Cubemapを取得します。
 		Texture* GetEnvironmentCubemap() const { return m_envCubemap.get(); }
@@ -215,22 +209,16 @@ namespace Span
 		HANDLE m_waitEvent = nullptr;
 		uint64_t m_waitFenceValue = 0;
 
-		// ライト用定数バッファ
-		ConstantBuffer<GlobalLightData>* m_LightBuffer = nullptr;
-		GlobalLightData m_CurrentLightData;
+		// Light Manager
+		std::unique_ptr<LightManager> m_lightManager;
 
 		// 1フレームで使う全テクスチャのカタログ
 		ComPtr<ID3D12DescriptorHeap> m_frameSrvHeap;
 		uint32 m_frameSrvHeapOffset = 0;
 		uint32 m_srvDescriptorSize = 0;
 
-		// Render Passes
-		std::unique_ptr<GridPass> m_gridPass;
-		std::unique_ptr<SkyboxPass> m_skyboxPass;
-		std::unique_ptr<ShadowPass> m_dirShadowPass;
-		std::unique_ptr<ShadowPass> m_spotShadowPass;
-		std::unique_ptr<ShadowPass> m_pointShadowPass;
-		std::unique_ptr<DepthNormalPass> m_depthNormalPass;
+		// RenderPassManager
+		std::unique_ptr<RenderPassManager> m_passManager;
 
 		// Environment
 		std::unique_ptr<Texture> m_envCubemap;

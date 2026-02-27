@@ -73,7 +73,8 @@ cbuffer LightBuffer : register(b2)
 	int ActiveLightCount;
 
 	int SkyMode;
-	float3 padding_lb;
+	int EnableSSAO;
+	float2 padding_lb;
 
 	Matrix DirectionalLightSpaceMatrix;
 	LightData Lights[16];	// Н≈Се16М¬
@@ -92,6 +93,7 @@ TextureCube t_IrradianceMap : register(t9);
 TextureCube t_PrefilterMap : register(t10);
 Texture2D t_BRDFLUT : register(t11);
 Texture2D t_OpaqueCapture : register(t12);
+Texture2D t_SSAOMap : register(t13);
 
 SamplerState g_sampler : register(s0);
 SamplerComparisonState g_shadowSampler : register(s1);
@@ -492,6 +494,14 @@ float4 PSMain(PSInput input) : SV_TARGET
 	float3 specular_ibl = prefilteredColor * (F_env * envBRDF.x + envBRDF.y);
 	float3 ambient = (ambientDiffuse + specular_ibl) * aoMap;
 
+	if (EnableSSAO == 1)
+	{
+		float2 ssaoUV = (input.clipPos.xy / input.clipPos.w) * 0.5f + 0.5f;
+		ssaoUV.y = 1.0f - ssaoUV.y;
+		float ssao = t_SSAOMap.SampleLevel(g_clampSampler, ssaoUV, 0).r;
+		ambient *= ssao;
+	}
+	
 	float3 litColor = ambient + Lo + emissive;
 	litColor *= Exposure;
 

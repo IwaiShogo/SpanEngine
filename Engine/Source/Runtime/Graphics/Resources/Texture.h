@@ -54,6 +54,20 @@ namespace Span
 		 */
 		bool InitializeAsTexture2D(ID3D12Device* device, uint32_t width, uint32_t height, DXGI_FORMAT format);
 
+		/**
+		 * @brief	メモリ上のピクセルデータからテクスチャを作成します。
+		 * @param	device D3D12デバイス
+		 * @param	commandQueue 転送コマンドを実装するキュー
+		 * @param	data ピクセルデータのポインタ
+		 * @param	width 幅
+		 * @param	height 高さ
+		 * @param	bytesPerPixel 1ピクセルあたりのバイト数
+		 * @param	format DXGIフォーマット
+		 */
+		bool InitializeFromMemory(ID3D12Device* device, ID3D12CommandQueue* commandQueue,
+			const void* data, uint32_t width, uint32_t height, uint32_t bytesPerPixel,
+			DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM);
+
 		/// @brief	終了処理
 		void Shutdown();
 
