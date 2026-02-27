@@ -66,6 +66,11 @@ namespace Span
 		ComputeBuffer* GetLightIndexList() const { return m_lightIndexList.get(); }
 		ComputeBuffer* GetLightGrid() const { return m_lightGrid.get(); }
 
+		void ExecuteLightCulling(ID3D12GraphicsCommandList* cmd, const Matrix4x4& projectionMatrix, uint32 screenWidth, uint32 screenHeight);
+
+	private:
+		bool InitializeCompute(ID3D12Device* device);
+
 	private:
 		std::unique_ptr<ConstantBuffer<GlobalLightData>> m_lightConstantBuffer;
 		GlobalLightData m_currentLightData;
@@ -81,5 +86,14 @@ namespace Span
 
 		/// @brief	[UAV/SRV] 画面の各タイルが Listの「どこから」「何個」のライトを持つか記録する (タイル数要素: uint2)
 		std::unique_ptr<ComputeBuffer> m_lightGrid;
+
+		// タイルごとのフラスタムを保存するバッファ
+		std::unique_ptr<ComputeBuffer> m_frustumsBuffer;
+
+		// Compute Shader 用のオブジェクト
+		ComPtr<ID3D12RootSignature> m_computeRootSignature;
+		ComPtr<ID3D12PipelineState> m_psoFrustums;
+
+		std::unique_ptr<Shader> m_shaderFrustums;
 	};
 }

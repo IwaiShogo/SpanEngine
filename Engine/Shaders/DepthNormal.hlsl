@@ -41,7 +41,7 @@ PSInput VSMain(VSInput input)
 	return output;
 }
 
-float PSMain(PSInput input) : SV_TARGET
+float4 PSMain(PSInput input) : SV_TARGET
 {
 	// –@ü‚Ì³‹K‰»
 	float3 N = normalize(input.normalVS);
