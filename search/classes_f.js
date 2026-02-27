@@ -9,5 +9,8 @@ var searchData=
   ['shadowpass_6',['ShadowPass',['../classSpan_1_1ShadowPass.html',1,'Span']]],
   ['skyboxpass_7',['SkyboxPass',['../classSpan_1_1SkyboxPass.html',1,'Span']]],
   ['spotlight_8',['SpotLight',['../structSpan_1_1SpotLight.html',1,'Span']]],
-  ['system_9',['System',['../classSpan_1_1System.html',1,'Span']]]
+  ['ssaoblurpass_9',['SSAOBlurPass',['../classSpan_1_1SSAOBlurPass.html',1,'Span']]],
+  ['ssaodata_10',['SSAOData',['../structSpan_1_1SSAOPass_1_1SSAOData.html',1,'Span::SSAOPass']]],
+  ['ssaopass_11',['SSAOPass',['../classSpan_1_1SSAOPass.html',1,'Span']]],
+  ['system_12',['System',['../classSpan_1_1System.html',1,'Span']]]
 ];

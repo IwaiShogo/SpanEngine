@@ -1,0 +1,628 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Span::SSAOPass クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classSpan_1_1SSAOPass.html','','classSpan_1_1SSAOPass-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Span::SSAOPass クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>🌑 SSAOを計算し、オクルージョンマップを出力するパス。  
+ <a href="#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a>&gt;</code></p>
+<div class="dynheader">
+Span::SSAOPass 連携図</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SSAOPass__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:SSAOData" id="r_SSAOData"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1SSAOPass_1_1SSAOData.html">SSAOData</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a86414812d34c7ed4ea0e5cf66dac9b01" id="r_a86414812d34c7ed4ea0e5cf66dac9b01"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a86414812d34c7ed4ea0e5cf66dac9b01">SSAOPass</a> ()=default</td></tr>
+<tr class="memitem:a729d3d98cdd6e027afa8b088e809dea6" id="r_a729d3d98cdd6e027afa8b088e809dea6"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a729d3d98cdd6e027afa8b088e809dea6">~SSAOPass</a> ()</td></tr>
+<tr class="memitem:a1faaff8558efbacfe0869642df915844" id="r_a1faaff8558efbacfe0869642df915844"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a1faaff8558efbacfe0869642df915844">Initialize</a> (ID3D12Device *device, ID3D12CommandQueue *commandQueue, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height)</td></tr>
+<tr class="memitem:ab2c11252edfd729722c68f9b2641989f" id="r_ab2c11252edfd729722c68f9b2641989f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab2c11252edfd729722c68f9b2641989f">Shutdown</a> ()</td></tr>
+<tr class="memitem:aa9b1e278213d530c6c1905f1931d3855" id="r_aa9b1e278213d530c6c1905f1931d3855"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa9b1e278213d530c6c1905f1931d3855">Resize</a> (ID3D12Device *device, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height)</td></tr>
+<tr class="memitem:af7229ce70bbcfc88e3313d23623304f7" id="r_af7229ce70bbcfc88e3313d23623304f7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af7229ce70bbcfc88e3313d23623304f7">Execute</a> (<a class="el" href="classSpan_1_1Renderer.html">Renderer</a> *renderer, ID3D12GraphicsCommandList *cmd, <a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a> *gBuffer, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;projectionMatrix)</td></tr>
+<tr class="memdesc:af7229ce70bbcfc88e3313d23623304f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">SSAOの描画を実行します。  <br /></td></tr>
+<tr class="memitem:ab1e30f40f5dfa59a0469ad25100d1649" id="r_ab1e30f40f5dfa59a0469ad25100d1649"><td class="memItemLeft"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ab1e30f40f5dfa59a0469ad25100d1649">GetSSAOMap</a> () const</td></tr>
+<tr class="memdesc:ab1e30f40f5dfa59a0469ad25100d1649"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成されたSSAOマップを取得します。  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+非公開メンバ関数</h2></td></tr>
+<tr class="memitem:a25e64f4d4e3e755c6f769342659425b9" id="r_a25e64f4d4e3e755c6f769342659425b9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a25e64f4d4e3e755c6f769342659425b9">GenerateSampleKernel</a> ()</td></tr>
+<tr class="memitem:a10d2bb6774ef1d4f375cd082886fbfb9" id="r_a10d2bb6774ef1d4f375cd082886fbfb9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a10d2bb6774ef1d4f375cd082886fbfb9">GenerateNoiseTexture</a> (ID3D12Device *device, ID3D12CommandQueue *commandQueue)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+非公開変数類</h2></td></tr>
+<tr class="memitem:a62f75e991864e7aa72f766601a59bbf8" id="r_a62f75e991864e7aa72f766601a59bbf8"><td class="memItemLeft"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a> = nullptr</td></tr>
+<tr class="memitem:ac45ba00bdeb8b42b603eda075e45ba0f" id="r_ac45ba00bdeb8b42b603eda075e45ba0f"><td class="memItemLeft">std::unique_ptr&lt; <a class="el" href="classSpan_1_1Texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac45ba00bdeb8b42b603eda075e45ba0f">m_noiseTexture</a></td></tr>
+<tr class="memitem:af683a05d44358d0cdb18d2fd3f03df59" id="r_af683a05d44358d0cdb18d2fd3f03df59"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af683a05d44358d0cdb18d2fd3f03df59">m_pso</a></td></tr>
+<tr class="memitem:afbc1e73f04a0fcfd2e7653a668142451" id="r_afbc1e73f04a0fcfd2e7653a668142451"><td class="memItemLeft">ComPtr&lt; ID3D12RootSignature &gt;&#160;</td><td class="memItemRight"><a class="el" href="#afbc1e73f04a0fcfd2e7653a668142451">m_rootSignature</a></td></tr>
+<tr class="memitem:a75e68c90aa30cf4f07650a35d8f66f58" id="r_a75e68c90aa30cf4f07650a35d8f66f58"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a75e68c90aa30cf4f07650a35d8f66f58">m_shaderVS</a> = nullptr</td></tr>
+<tr class="memitem:a4bd5d1cb39233df5e7138f1c66960686" id="r_a4bd5d1cb39233df5e7138f1c66960686"><td class="memItemLeft"><a class="el" href="classSpan_1_1Shader.html">Shader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a4bd5d1cb39233df5e7138f1c66960686">m_shaderPS</a> = nullptr</td></tr>
+<tr class="memitem:a7ae871bc8e4f036a9d55bbe52116e292" id="r_a7ae871bc8e4f036a9d55bbe52116e292"><td class="memItemLeft">std::vector&lt; <a class="el" href="structSpan_1_1Vector4.html">Vector4</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a7ae871bc8e4f036a9d55bbe52116e292">m_ssaoKernel</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>🌑 SSAOを計算し、オクルージョンマップを出力するパス。 </p>
+
+<p class="definition"> <a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a> の <a class="el" href="SSAOPass_8h_source.html#l00029">29</a> 行目に定義があります。</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
+<a id="a86414812d34c7ed4ea0e5cf66dac9b01" name="a86414812d34c7ed4ea0e5cf66dac9b01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86414812d34c7ed4ea0e5cf66dac9b01">&#9670;&#160;</a></span>SSAOPass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::SSAOPass::SSAOPass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a729d3d98cdd6e027afa8b088e809dea6" name="a729d3d98cdd6e027afa8b088e809dea6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a729d3d98cdd6e027afa8b088e809dea6">&#9670;&#160;</a></span>~SSAOPass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Span::SSAOPass::~SSAOPass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a> の <a class="el" href="SSAOPass_8h_source.html#l00033">33</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SSAOPass_a729d3d98cdd6e027afa8b088e809dea6_cgraph.svg" width="468" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
+<a id="af7229ce70bbcfc88e3313d23623304f7" name="af7229ce70bbcfc88e3313d23623304f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7229ce70bbcfc88e3313d23623304f7">&#9670;&#160;</a></span>Execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::SSAOPass::Execute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Renderer.html">Renderer</a> *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D12GraphicsCommandList *</td>          <td class="paramname"><span class="paramname"><em>cmd</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a> *</td>          <td class="paramname"><span class="paramname"><em>gBuffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>projectionMatrix</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SSAOの描画を実行します。 </p>
+
+<p class="definition"> <a class="el" href="SSAOPass_8cpp_source.html">SSAOPass.cpp</a> の <a class="el" href="SSAOPass_8cpp_source.html#l00187">187</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SSAOPass_af7229ce70bbcfc88e3313d23623304f7_cgraph.svg" width="100%" height="536"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a10d2bb6774ef1d4f375cd082886fbfb9" name="a10d2bb6774ef1d4f375cd082886fbfb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10d2bb6774ef1d4f375cd082886fbfb9">&#9670;&#160;</a></span>GenerateNoiseTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::SSAOPass::GenerateNoiseTexture </td>
+          <td>(</td>
+          <td class="paramtype">ID3D12Device *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D12CommandQueue *</td>          <td class="paramname"><span class="paramname"><em>commandQueue</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8cpp_source.html">SSAOPass.cpp</a> の <a class="el" href="SSAOPass_8cpp_source.html#l00161">161</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SSAOPass_a10d2bb6774ef1d4f375cd082886fbfb9_cgraph.svg" width="662" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SSAOPass_a10d2bb6774ef1d4f375cd082886fbfb9_icgraph.svg" width="444" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a25e64f4d4e3e755c6f769342659425b9" name="a25e64f4d4e3e755c6f769342659425b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25e64f4d4e3e755c6f769342659425b9">&#9670;&#160;</a></span>GenerateSampleKernel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::SSAOPass::GenerateSampleKernel </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8cpp_source.html">SSAOPass.cpp</a> の <a class="el" href="SSAOPass_8cpp_source.html#l00136">136</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SSAOPass_a25e64f4d4e3e755c6f769342659425b9_cgraph.svg" width="662" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SSAOPass_a25e64f4d4e3e755c6f769342659425b9_icgraph.svg" width="444" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ab1e30f40f5dfa59a0469ad25100d1649" name="ab1e30f40f5dfa59a0469ad25100d1649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1e30f40f5dfa59a0469ad25100d1649">&#9670;&#160;</a></span>GetSSAOMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a> * Span::SSAOPass::GetSSAOMap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>生成されたSSAOマップを取得します。 </p>
+
+<p class="definition"> <a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a> の <a class="el" href="SSAOPass_8h_source.html#l00045">45</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a1faaff8558efbacfe0869642df915844" name="a1faaff8558efbacfe0869642df915844"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1faaff8558efbacfe0869642df915844">&#9670;&#160;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Span::SSAOPass::Initialize </td>
+          <td>(</td>
+          <td class="paramtype">ID3D12Device *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D12CommandQueue *</td>          <td class="paramname"><span class="paramname"><em>commandQueue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8cpp_source.html">SSAOPass.cpp</a> の <a class="el" href="SSAOPass_8cpp_source.html#l00017">17</a> 行目に定義があります。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SSAOPass_a1faaff8558efbacfe0869642df915844_cgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="aa9b1e278213d530c6c1905f1931d3855" name="aa9b1e278213d530c6c1905f1931d3855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9b1e278213d530c6c1905f1931d3855">&#9670;&#160;</a></span>Resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::SSAOPass::Resize </td>
+          <td>(</td>
+          <td class="paramtype">ID3D12Device *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8cpp_source.html">SSAOPass.cpp</a> の <a class="el" href="SSAOPass_8cpp_source.html#l00131">131</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ab2c11252edfd729722c68f9b2641989f" name="ab2c11252edfd729722c68f9b2641989f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2c11252edfd729722c68f9b2641989f">&#9670;&#160;</a></span>Shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Span::SSAOPass::Shutdown </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8cpp_source.html">SSAOPass.cpp</a> の <a class="el" href="SSAOPass_8cpp_source.html#l00121">121</a> 行目に定義があります。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1SSAOPass_ab2c11252edfd729722c68f9b2641989f_icgraph.svg" width="468" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
+<a id="ac45ba00bdeb8b42b603eda075e45ba0f" name="ac45ba00bdeb8b42b603eda075e45ba0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac45ba00bdeb8b42b603eda075e45ba0f">&#9670;&#160;</a></span>m_noiseTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSpan_1_1Texture.html">Texture</a>&gt; Span::SSAOPass::m_noiseTexture</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a> の <a class="el" href="SSAOPass_8h_source.html#l00053">53</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="af683a05d44358d0cdb18d2fd3f03df59" name="af683a05d44358d0cdb18d2fd3f03df59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af683a05d44358d0cdb18d2fd3f03df59">&#9670;&#160;</a></span>m_pso</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D12PipelineState&gt; Span::SSAOPass::m_pso</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a> の <a class="el" href="SSAOPass_8h_source.html#l00055">55</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="afbc1e73f04a0fcfd2e7653a668142451" name="afbc1e73f04a0fcfd2e7653a668142451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbc1e73f04a0fcfd2e7653a668142451">&#9670;&#160;</a></span>m_rootSignature</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D12RootSignature&gt; Span::SSAOPass::m_rootSignature</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a> の <a class="el" href="SSAOPass_8h_source.html#l00056">56</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a4bd5d1cb39233df5e7138f1c66960686" name="a4bd5d1cb39233df5e7138f1c66960686"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bd5d1cb39233df5e7138f1c66960686">&#9670;&#160;</a></span>m_shaderPS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::SSAOPass::m_shaderPS = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a> の <a class="el" href="SSAOPass_8h_source.html#l00058">58</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a75e68c90aa30cf4f07650a35d8f66f58" name="a75e68c90aa30cf4f07650a35d8f66f58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75e68c90aa30cf4f07650a35d8f66f58">&#9670;&#160;</a></span>m_shaderVS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1Shader.html">Shader</a>* Span::SSAOPass::m_shaderVS = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a> の <a class="el" href="SSAOPass_8h_source.html#l00057">57</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a7ae871bc8e4f036a9d55bbe52116e292" name="a7ae871bc8e4f036a9d55bbe52116e292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ae871bc8e4f036a9d55bbe52116e292">&#9670;&#160;</a></span>m_ssaoKernel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structSpan_1_1Vector4.html">Vector4</a>&gt; Span::SSAOPass::m_ssaoKernel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a> の <a class="el" href="SSAOPass_8h_source.html#l00061">61</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a62f75e991864e7aa72f766601a59bbf8" name="a62f75e991864e7aa72f766601a59bbf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62f75e991864e7aa72f766601a59bbf8">&#9670;&#160;</a></span>m_ssaoMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a>* Span::SSAOPass::m_ssaoMap = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a> の <a class="el" href="SSAOPass_8h_source.html#l00052">52</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>Engine/Source/Runtime/Graphics/Passes/<a class="el" href="SSAOPass_8h_source.html">SSAOPass.h</a></li>
+<li>Engine/Source/Runtime/Graphics/Passes/<a class="el" href="SSAOPass_8cpp_source.html">SSAOPass.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceSpan.html">Span</a></li><li class="navelem"><a href="classSpan_1_1SSAOPass.html">SSAOPass</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

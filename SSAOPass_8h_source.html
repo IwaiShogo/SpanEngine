@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Graphics/Passes/SSAOPass.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('SSAOPass_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">SSAOPass.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="SSAOPass_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    SSAOPass.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   Screen Space Ambient Occlusion (SSAO) を計算パス。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * DepthNormalPassで生成されたGBufferとノイズテクスチャを使用して、</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * 画面空間でのオクルージョンマップを生成します。</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="Shader_8h.html">Graphics/Core/Shader.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="RenderTarget_8h.html">Graphics/Core/RenderTarget.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="Texture_8h.html">Graphics/Resources/Texture.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="Renderer_8h.html">Graphics/Renderer.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"></span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">     * @class   SSAOPass</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">     * @brief   🌑 SSAOを計算し、オクルージョンマップを出力するパス。</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html">   29</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classSpan_1_1SSAOPass.html#a86414812d34c7ed4ea0e5cf66dac9b01">SSAOPass</a></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a86414812d34c7ed4ea0e5cf66dac9b01">   32</a></span>        <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a86414812d34c7ed4ea0e5cf66dac9b01">SSAOPass</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a729d3d98cdd6e027afa8b088e809dea6">   33</a></span>        <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a729d3d98cdd6e027afa8b088e809dea6">~SSAOPass</a>() { <a class="code hl_function" href="classSpan_1_1SSAOPass.html#ab2c11252edfd729722c68f9b2641989f">Shutdown</a>(); }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a1faaff8558efbacfe0869642df915844">Initialize</a>(ID3D12Device* device, ID3D12CommandQueue* commandQueue, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#ab2c11252edfd729722c68f9b2641989f">Shutdown</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#aa9b1e278213d530c6c1905f1931d3855">Resize</a>(ID3D12Device* device, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"></span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">         * @brief   SSAOの描画を実行します。</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#af7229ce70bbcfc88e3313d23623304f7">Execute</a>(<a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>* renderer, ID3D12GraphicsCommandList* cmd, <a class="code hl_class" href="classSpan_1_1RenderTarget.html">RenderTarget</a>* gBuffer, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&amp; projectionMatrix);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"></span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">        /// @brief  生成されたSSAOマップを取得します。</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#ab1e30f40f5dfa59a0469ad25100d1649">   45</a></span>        <a class="code hl_class" href="classSpan_1_1RenderTarget.html">RenderTarget</a>* <a class="code hl_function" href="classSpan_1_1SSAOPass.html#ab1e30f40f5dfa59a0469ad25100d1649">GetSSAOMap</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>; }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a25e64f4d4e3e755c6f769342659425b9">GenerateSampleKernel</a>();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a10d2bb6774ef1d4f375cd082886fbfb9">GenerateNoiseTexture</a>(ID3D12Device* device, ID3D12CommandQueue* commandQueue);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">   52</a></span>        <a class="code hl_class" href="classSpan_1_1RenderTarget.html">RenderTarget</a>* <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">   53</a></span>        std::unique_ptr&lt;Texture&gt; <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">m_noiseTexture</a>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">   55</a></span>        ComPtr&lt;ID3D12PipelineState&gt; <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">m_pso</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">   56</a></span>        ComPtr&lt;ID3D12RootSignature&gt; <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">m_rootSignature</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">   57</a></span>        <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>* <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">m_shaderVS</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">   58</a></span>        <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>* <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">m_shaderPS</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="comment">// サンプルカーネル</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a7ae871bc8e4f036a9d55bbe52116e292">   61</a></span>        std::vector&lt;Vector4&gt; <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a7ae871bc8e4f036a9d55bbe52116e292">m_ssaoKernel</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="};">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="structSpan_1_1SSAOPass_1_1SSAOData.html">   63</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structSpan_1_1SSAOPass_1_1SSAOData.html">SSAOData</a></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structSpan_1_1SSAOPass_1_1SSAOData.html#acdb1a4ab79d3a8b886f35bba3bb342ef">   65</a></span>            <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#acdb1a4ab79d3a8b886f35bba3bb342ef">Projection</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a64da413e6b061b59a65c002ab349e7eb">   66</a></span>            <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a64da413e6b061b59a65c002ab349e7eb">InvProjection</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a5cd33fcecb70c6b32e47860bbb4c6d20">   67</a></span>            <a class="code hl_struct" href="structSpan_1_1Vector4.html">Vector4</a> <a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a5cd33fcecb70c6b32e47860bbb4c6d20">Samples</a>[64];</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a016619ca8eb08af97ee5d79913f99836">   68</a></span>            <a class="code hl_struct" href="structSpan_1_1Vector2.html">Vector2</a> <a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a016619ca8eb08af97ee5d79913f99836">NoiseScale</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a9a9422654553258172b611d0d660943d">   69</a></span>            <span class="keywordtype">float</span> <a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a9a9422654553258172b611d0d660943d">Radius</a> = 0.5f;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="structSpan_1_1SSAOPass_1_1SSAOData.html#aed4af3b19c8dc6877775de26d415bb4e">   70</a></span>            <span class="keywordtype">float</span> <a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#aed4af3b19c8dc6877775de26d415bb4e">Bias</a> = 0.025;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        };</div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    };</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aRenderTarget_8h_html"><div class="ttname"><a href="RenderTarget_8h.html">RenderTarget.h</a></div><div class="ttdoc">レンダリングターゲット (RTV) とシェーダーリソース (SRV) の管理。</div></div>
+<div class="ttc" id="aRenderer_8h_html"><div class="ttname"><a href="Renderer_8h.html">Renderer.h</a></div><div class="ttdoc">描画パイプラインの構築と実行。</div></div>
+<div class="ttc" id="aShader_8h_html"><div class="ttname"><a href="Shader_8h.html">Shader.h</a></div><div class="ttdoc">HLSLシェーダーのロードとコンパイル管理。</div></div>
+<div class="ttc" id="aTexture_8h_html"><div class="ttname"><a href="Texture_8h.html">Texture.h</a></div><div class="ttdoc">画像読み込みとテクスチャリソース管理。</div></div>
+<div class="ttc" id="aclassSpan_1_1RenderTarget_html"><div class="ttname"><a href="classSpan_1_1RenderTarget.html">Span::RenderTarget</a></div><div class="ttdoc">🎯 描画対象となるテクスチャリソース。</div><div class="ttdef"><b>Definition</b> <a href="RenderTarget_8h_source.html#l00032">RenderTarget.h:33</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Renderer_html"><div class="ttname"><a href="classSpan_1_1Renderer.html">Span::Renderer</a></div><div class="ttdoc">🖌 描画コマンドの発行を担うクラス。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00099">Renderer.h:100</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a10d2bb6774ef1d4f375cd082886fbfb9"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a10d2bb6774ef1d4f375cd082886fbfb9">Span::SSAOPass::GenerateNoiseTexture</a></div><div class="ttdeci">void GenerateNoiseTexture(ID3D12Device *device, ID3D12CommandQueue *commandQueue)</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8cpp_source.html#l00161">SSAOPass.cpp:161</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a1faaff8558efbacfe0869642df915844"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a1faaff8558efbacfe0869642df915844">Span::SSAOPass::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device, ID3D12CommandQueue *commandQueue, uint32 width, uint32 height)</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8cpp_source.html#l00017">SSAOPass.cpp:17</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a25e64f4d4e3e755c6f769342659425b9"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a25e64f4d4e3e755c6f769342659425b9">Span::SSAOPass::GenerateSampleKernel</a></div><div class="ttdeci">void GenerateSampleKernel()</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8cpp_source.html#l00136">SSAOPass.cpp:136</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a4bd5d1cb39233df5e7138f1c66960686"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">Span::SSAOPass::m_shaderPS</a></div><div class="ttdeci">Shader * m_shaderPS</div><div class="ttdef"><b>Definition</b> <a href="#l00058">SSAOPass.h:58</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a62f75e991864e7aa72f766601a59bbf8"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">Span::SSAOPass::m_ssaoMap</a></div><div class="ttdeci">RenderTarget * m_ssaoMap</div><div class="ttdef"><b>Definition</b> <a href="#l00052">SSAOPass.h:52</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a729d3d98cdd6e027afa8b088e809dea6"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a729d3d98cdd6e027afa8b088e809dea6">Span::SSAOPass::~SSAOPass</a></div><div class="ttdeci">~SSAOPass()</div><div class="ttdef"><b>Definition</b> <a href="#l00033">SSAOPass.h:33</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a75e68c90aa30cf4f07650a35d8f66f58"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">Span::SSAOPass::m_shaderVS</a></div><div class="ttdeci">Shader * m_shaderVS</div><div class="ttdef"><b>Definition</b> <a href="#l00057">SSAOPass.h:57</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a7ae871bc8e4f036a9d55bbe52116e292"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a7ae871bc8e4f036a9d55bbe52116e292">Span::SSAOPass::m_ssaoKernel</a></div><div class="ttdeci">std::vector&lt; Vector4 &gt; m_ssaoKernel</div><div class="ttdef"><b>Definition</b> <a href="#l00061">SSAOPass.h:61</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a86414812d34c7ed4ea0e5cf66dac9b01"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a86414812d34c7ed4ea0e5cf66dac9b01">Span::SSAOPass::SSAOPass</a></div><div class="ttdeci">SSAOPass()=default</div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_aa9b1e278213d530c6c1905f1931d3855"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#aa9b1e278213d530c6c1905f1931d3855">Span::SSAOPass::Resize</a></div><div class="ttdeci">void Resize(ID3D12Device *device, uint32 width, uint32 height)</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8cpp_source.html#l00131">SSAOPass.cpp:131</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_ab1e30f40f5dfa59a0469ad25100d1649"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#ab1e30f40f5dfa59a0469ad25100d1649">Span::SSAOPass::GetSSAOMap</a></div><div class="ttdeci">RenderTarget * GetSSAOMap() const</div><div class="ttdoc">生成されたSSAOマップを取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00045">SSAOPass.h:45</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_ab2c11252edfd729722c68f9b2641989f"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#ab2c11252edfd729722c68f9b2641989f">Span::SSAOPass::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8cpp_source.html#l00121">SSAOPass.cpp:121</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_ac45ba00bdeb8b42b603eda075e45ba0f"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">Span::SSAOPass::m_noiseTexture</a></div><div class="ttdeci">std::unique_ptr&lt; Texture &gt; m_noiseTexture</div><div class="ttdef"><b>Definition</b> <a href="#l00053">SSAOPass.h:53</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_af683a05d44358d0cdb18d2fd3f03df59"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">Span::SSAOPass::m_pso</a></div><div class="ttdeci">ComPtr&lt; ID3D12PipelineState &gt; m_pso</div><div class="ttdef"><b>Definition</b> <a href="#l00055">SSAOPass.h:55</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_af7229ce70bbcfc88e3313d23623304f7"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#af7229ce70bbcfc88e3313d23623304f7">Span::SSAOPass::Execute</a></div><div class="ttdeci">void Execute(Renderer *renderer, ID3D12GraphicsCommandList *cmd, RenderTarget *gBuffer, const Matrix4x4 &amp;projectionMatrix)</div><div class="ttdoc">SSAOの描画を実行します。</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8cpp_source.html#l00187">SSAOPass.cpp:187</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_afbc1e73f04a0fcfd2e7653a668142451"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">Span::SSAOPass::m_rootSignature</a></div><div class="ttdeci">ComPtr&lt; ID3D12RootSignature &gt; m_rootSignature</div><div class="ttdef"><b>Definition</b> <a href="#l00056">SSAOPass.h:56</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Shader_html"><div class="ttname"><a href="classSpan_1_1Shader.html">Span::Shader</a></div><div class="ttdoc">📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。</div><div class="ttdef"><b>Definition</b> <a href="Shader_8h_source.html#l00037">Shader.h:38</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00101">CoreMinimal.h:101</a></div></div>
+<div class="ttc" id="astructSpan_1_1Matrix4x4_html"><div class="ttname"><a href="structSpan_1_1Matrix4x4.html">Span::Matrix4x4</a></div><div class="ttdoc">4x4 行列 (Row-Major)</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00315">SpanMath.h:316</a></div></div>
+<div class="ttc" id="astructSpan_1_1SSAOPass_1_1SSAOData_html"><div class="ttname"><a href="structSpan_1_1SSAOPass_1_1SSAOData.html">Span::SSAOPass::SSAOData</a></div><div class="ttdef"><b>Definition</b> <a href="#l00063">SSAOPass.h:64</a></div></div>
+<div class="ttc" id="astructSpan_1_1SSAOPass_1_1SSAOData_html_a016619ca8eb08af97ee5d79913f99836"><div class="ttname"><a href="structSpan_1_1SSAOPass_1_1SSAOData.html#a016619ca8eb08af97ee5d79913f99836">Span::SSAOPass::SSAOData::NoiseScale</a></div><div class="ttdeci">Vector2 NoiseScale</div><div class="ttdef"><b>Definition</b> <a href="#l00068">SSAOPass.h:68</a></div></div>
+<div class="ttc" id="astructSpan_1_1SSAOPass_1_1SSAOData_html_a5cd33fcecb70c6b32e47860bbb4c6d20"><div class="ttname"><a href="structSpan_1_1SSAOPass_1_1SSAOData.html#a5cd33fcecb70c6b32e47860bbb4c6d20">Span::SSAOPass::SSAOData::Samples</a></div><div class="ttdeci">Vector4 Samples[64]</div><div class="ttdef"><b>Definition</b> <a href="#l00067">SSAOPass.h:67</a></div></div>
+<div class="ttc" id="astructSpan_1_1SSAOPass_1_1SSAOData_html_a64da413e6b061b59a65c002ab349e7eb"><div class="ttname"><a href="structSpan_1_1SSAOPass_1_1SSAOData.html#a64da413e6b061b59a65c002ab349e7eb">Span::SSAOPass::SSAOData::InvProjection</a></div><div class="ttdeci">Matrix4x4 InvProjection</div><div class="ttdef"><b>Definition</b> <a href="#l00066">SSAOPass.h:66</a></div></div>
+<div class="ttc" id="astructSpan_1_1SSAOPass_1_1SSAOData_html_a9a9422654553258172b611d0d660943d"><div class="ttname"><a href="structSpan_1_1SSAOPass_1_1SSAOData.html#a9a9422654553258172b611d0d660943d">Span::SSAOPass::SSAOData::Radius</a></div><div class="ttdeci">float Radius</div><div class="ttdef"><b>Definition</b> <a href="#l00069">SSAOPass.h:69</a></div></div>
+<div class="ttc" id="astructSpan_1_1SSAOPass_1_1SSAOData_html_acdb1a4ab79d3a8b886f35bba3bb342ef"><div class="ttname"><a href="structSpan_1_1SSAOPass_1_1SSAOData.html#acdb1a4ab79d3a8b886f35bba3bb342ef">Span::SSAOPass::SSAOData::Projection</a></div><div class="ttdeci">Matrix4x4 Projection</div><div class="ttdef"><b>Definition</b> <a href="#l00065">SSAOPass.h:65</a></div></div>
+<div class="ttc" id="astructSpan_1_1SSAOPass_1_1SSAOData_html_aed4af3b19c8dc6877775de26d415bb4e"><div class="ttname"><a href="structSpan_1_1SSAOPass_1_1SSAOData.html#aed4af3b19c8dc6877775de26d415bb4e">Span::SSAOPass::SSAOData::Bias</a></div><div class="ttdeci">float Bias</div><div class="ttdef"><b>Definition</b> <a href="#l00070">SSAOPass.h:70</a></div></div>
+<div class="ttc" id="astructSpan_1_1Vector2_html"><div class="ttname"><a href="structSpan_1_1Vector2.html">Span::Vector2</a></div><div class="ttdoc">2次元ベクトル (float x, y) UI座標やUV座標に使用されます。</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00069">SpanMath.h:70</a></div></div>
+<div class="ttc" id="astructSpan_1_1Vector4_html"><div class="ttname"><a href="structSpan_1_1Vector4.html">Span::Vector4</a></div><div class="ttdoc">4次元ベクトル (float x, y, z, w) 色情報(RGBA)や同次座標で使用されます。</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00208">SpanMath.h:209</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_6091cbee3e268cbb682ad3d3f55cf8b5.html">Graphics</a></li><li class="navelem"><a href="dir_8351ef56a0e0768b20aa52a37aad994e.html">Passes</a></li><li class="navelem"><a href="SSAOPass_8h.html">SSAOPass.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

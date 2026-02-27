@@ -14,7 +14,7 @@ var searchData=
   ['onmousemove_11',['OnMouseMove',['../classSpan_1_1Input.html#aba0b9fe928139c25ca3215dcbeb17e83',1,'Span::Input']]],
   ['onmouseup_12',['OnMouseUp',['../classSpan_1_1Input.html#abd7e2e35b25679a12d4b0ec56c8aee19',1,'Span::Input']]],
   ['onmousewheel_13',['OnMouseWheel',['../classSpan_1_1Input.html#ab7b1e06dbe23300a0cd34a9d7914f26d',1,'Span::Input']]],
-  ['onresize_14',['OnResize',['../classSpan_1_1GraphicsContext.html#aa19d67466685650668752fc61e762f20',1,'Span::GraphicsContext::OnResize()'],['../classSpan_1_1Renderer.html#ada758d36ee04899a810ded43723ed03c',1,'Span::Renderer::OnResize()']]],
+  ['onresize_14',['OnResize',['../classSpan_1_1GraphicsContext.html#aa19d67466685650668752fc61e762f20',1,'Span::GraphicsContext::OnResize()'],['../classSpan_1_1LightManager.html#a8d17042c69ff1139f3c5ccd0597c887c',1,'Span::LightManager::OnResize()'],['../classSpan_1_1RenderPassManager.html#a0670729618d99e7f508641162e2a53b3',1,'Span::RenderPassManager::OnResize()'],['../classSpan_1_1Renderer.html#ada758d36ee04899a810ded43723ed03c',1,'Span::Renderer::OnResize()']]],
   ['onresize_15',['onResize',['../classSpan_1_1Window.html#a0b28300340e12f536e1621fdf26bfddc',1,'Span::Window']]],
   ['onshutdown_16',['OnShutdown',['../classSpan_1_1Application.html#af29c3c6b93d1e06ac0a82ad0544dcb4c',1,'Span::Application']]],
   ['onstart_17',['OnStart',['../classSpan_1_1Application.html#ac63d2626e1c9fcd6780ea38f0ce5cc9f',1,'Span::Application']]],

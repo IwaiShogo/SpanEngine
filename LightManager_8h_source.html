@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Graphics/Core/LightManager.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('LightManager_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">LightManager.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="LightManager_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    LightManager.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   シーン内のライトデータ管理と Forward+ Shading の基盤。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Renderer からライト関連の責務を分離しました。</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * 将来的に Compute Shader を用いた Light Culling (Forward+) を実行します。</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * @date    2026/02/27  初回作成日</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *          作業内容：   - 追加：</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * @update  2026/xx/xx  最終更新日</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> *          作業内容：   - XX：</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * @note    （省略可）</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="ConstantBuffer_8h.html">Graphics/Core/ConstantBuffer.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="ComputeBuffer_8h.html">Graphics/Core/ComputeBuffer.h</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="Renderer_8h.html">Graphics/Renderer.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1GraphicsContext.html">GraphicsContext</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structSpan_1_1EnvironmentSettings.html">EnvironmentSettings</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"></span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">     * @class   LightManager</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">     * @brief   💡 ライトデータの管理と Forward+ のバッファを統括するマネージャー。</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html">   37</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classSpan_1_1LightManager.html#a0ec4fea33157cdb7be0282f23b85ebf6">LightManager</a></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#a0ec4fea33157cdb7be0282f23b85ebf6">   40</a></span>        <a class="code hl_function" href="classSpan_1_1LightManager.html#a0ec4fea33157cdb7be0282f23b85ebf6">LightManager</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#a7e524dfff10bb31acffcf66d370a6ecd">   41</a></span>        <a class="code hl_function" href="classSpan_1_1LightManager.html#a7e524dfff10bb31acffcf66d370a6ecd">~LightManager</a>() { <a class="code hl_function" href="classSpan_1_1LightManager.html#a99b4e17cf609a67b0c0a216cabc06894">Shutdown</a>(); }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"></span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">         * @brief   バッファの初期化</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1LightManager.html#a510a800f48713493edb06e8ba533bc1a">Initialize</a>(ID3D12Device* device);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1LightManager.html#a99b4e17cf609a67b0c0a216cabc06894">Shutdown</a>();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"></span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">         * @brief   画面解像度に合わせて Forward+ のグリッドサイズを更新します。</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1LightManager.html#a8d17042c69ff1139f3c5ccd0597c887c">OnResize</a>(ID3D12Device* device, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"></span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">         * @brief   ECSから集めたライト情報を GPU 用のバッファに書き込みます。</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1LightManager.html#abf0e9678ca819ea37531651eb8d1072c">UpdateLightData</a>(<span class="keyword">const</span> std::vector&lt;LightDataGPU&gt;&amp; lights, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1EnvironmentSettings.html">EnvironmentSettings</a>&amp; env, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a>&amp; cameraPos, <span class="keywordtype">bool</span> enableSSAO);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment"></span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">        /// @brief  メインの定数バッファのGPUアドレスを取得</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        D3D12_GPU_VIRTUAL_ADDRESS <a class="code hl_function" href="classSpan_1_1LightManager.html#adc47bd791a902c34338b3c38e193ccce">GetLightBufferAddress</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#ad43e125d0e5e275f98fb204ed9561ee7">   62</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="code hl_variable" href="classSpan_1_1LightManager.html#ad43e125d0e5e275f98fb204ed9561ee7">TILE_SIZE</a> = 16;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#a584d6f7b894310c45dba5a57e4c56d96">   63</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="code hl_variable" href="classSpan_1_1LightManager.html#a584d6f7b894310c45dba5a57e4c56d96">MAX_LIGHTS_PER_TILE</a> = 256;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#a1158354c8025d49be66d596a61dac180">   65</a></span>        <a class="code hl_class" href="classSpan_1_1ComputeBuffer.html">ComputeBuffer</a>* <a class="code hl_function" href="classSpan_1_1LightManager.html#a1158354c8025d49be66d596a61dac180">GetLightIndexCounter</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1LightManager.html#af12f67e2be277e9c972f7ed9f71cc39c">m_lightIndexCounter</a>.get(); }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#a7caac7c1a75a14b3b7f8238221c19373">   66</a></span>        <a class="code hl_class" href="classSpan_1_1ComputeBuffer.html">ComputeBuffer</a>* <a class="code hl_function" href="classSpan_1_1LightManager.html#a7caac7c1a75a14b3b7f8238221c19373">GetLightIndexList</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1LightManager.html#aacad3fe6dda71bcff4240aa717cb6fdd">m_lightIndexList</a>.get(); }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#a3eec8b8a50d6ff5643ce21bf9088883f">   67</a></span>        <a class="code hl_class" href="classSpan_1_1ComputeBuffer.html">ComputeBuffer</a>* <a class="code hl_function" href="classSpan_1_1LightManager.html#a3eec8b8a50d6ff5643ce21bf9088883f">GetLightGrid</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1LightManager.html#a8e4e579e209bf35b45b3f97958f12bea">m_lightGrid</a>.get(); }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#a876eee7fc4ea6a3ed88e764035a71341">   70</a></span>        std::unique_ptr&lt;ConstantBuffer&lt;GlobalLightData&gt;&gt; <a class="code hl_variable" href="classSpan_1_1LightManager.html#a876eee7fc4ea6a3ed88e764035a71341">m_lightConstantBuffer</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#a0d687b18e186f3dba1bc2c5ae9d663e6">   71</a></span>        <a class="code hl_struct" href="structSpan_1_1GlobalLightData.html">GlobalLightData</a> <a class="code hl_variable" href="classSpan_1_1LightManager.html#a0d687b18e186f3dba1bc2c5ae9d663e6">m_currentLightData</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="comment">// Forward+ Shading 用のバッファ</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"></span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">        /// @brief  [UAV] 全タイルのライトインデックス総数をカウントする(1要素: uint)</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#af12f67e2be277e9c972f7ed9f71cc39c">   77</a></span>        std::unique_ptr&lt;ComputeBuffer&gt; <a class="code hl_variable" href="classSpan_1_1LightManager.html#af12f67e2be277e9c972f7ed9f71cc39c">m_lightIndexCounter</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment"></span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">        /// @brief  [UAV/SRV] 科リングを通過したライトのインデックスを平坦に並べた配列 (タイル数 * 256 要素: uint)</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#aacad3fe6dda71bcff4240aa717cb6fdd">   80</a></span>        std::unique_ptr&lt;ComputeBuffer&gt; <a class="code hl_variable" href="classSpan_1_1LightManager.html#aacad3fe6dda71bcff4240aa717cb6fdd">m_lightIndexList</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment"></span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">        /// @brief  [UAV/SRV] 画面の各タイルが Listの「どこから」「何個」のライトを持つか記録する (タイル数要素: uint2)</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classSpan_1_1LightManager.html#a8e4e579e209bf35b45b3f97958f12bea">   83</a></span>        std::unique_ptr&lt;ComputeBuffer&gt; <a class="code hl_variable" href="classSpan_1_1LightManager.html#a8e4e579e209bf35b45b3f97958f12bea">m_lightGrid</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    };</div>
+</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="ttc" id="aComputeBuffer_8h_html"><div class="ttname"><a href="ComputeBuffer_8h.html">ComputeBuffer.h</a></div><div class="ttdoc">Compute Shader 用の Structured Buffer / UAV 管理。</div></div>
+<div class="ttc" id="aConstantBuffer_8h_html"><div class="ttname"><a href="ConstantBuffer_8h.html">ConstantBuffer.h</a></div><div class="ttdoc">DirectX 12 定数バッファ (CBV) のラッパークラス</div></div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aRenderer_8h_html"><div class="ttname"><a href="Renderer_8h.html">Renderer.h</a></div><div class="ttdoc">描画パイプラインの構築と実行。</div></div>
+<div class="ttc" id="aclassSpan_1_1ComputeBuffer_html"><div class="ttname"><a href="classSpan_1_1ComputeBuffer.html">Span::ComputeBuffer</a></div><div class="ttdoc">大量の配列データを扱うための Structured Buffer。</div><div class="ttdef"><b>Definition</b> <a href="ComputeBuffer_8h_source.html#l00021">ComputeBuffer.h:22</a></div></div>
+<div class="ttc" id="aclassSpan_1_1GraphicsContext_html"><div class="ttname"><a href="classSpan_1_1GraphicsContext.html">Span::GraphicsContext</a></div><div class="ttdoc">🎮 GPUコンテキストのラッパー。描画パイプラインの基盤。</div><div class="ttdef"><b>Definition</b> <a href="GraphicsContext_8h_source.html#l00033">GraphicsContext.h:34</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a0d687b18e186f3dba1bc2c5ae9d663e6"><div class="ttname"><a href="classSpan_1_1LightManager.html#a0d687b18e186f3dba1bc2c5ae9d663e6">Span::LightManager::m_currentLightData</a></div><div class="ttdeci">GlobalLightData m_currentLightData</div><div class="ttdef"><b>Definition</b> <a href="#l00071">LightManager.h:71</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a0ec4fea33157cdb7be0282f23b85ebf6"><div class="ttname"><a href="classSpan_1_1LightManager.html#a0ec4fea33157cdb7be0282f23b85ebf6">Span::LightManager::LightManager</a></div><div class="ttdeci">LightManager()=default</div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a1158354c8025d49be66d596a61dac180"><div class="ttname"><a href="classSpan_1_1LightManager.html#a1158354c8025d49be66d596a61dac180">Span::LightManager::GetLightIndexCounter</a></div><div class="ttdeci">ComputeBuffer * GetLightIndexCounter() const</div><div class="ttdef"><b>Definition</b> <a href="#l00065">LightManager.h:65</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a3eec8b8a50d6ff5643ce21bf9088883f"><div class="ttname"><a href="classSpan_1_1LightManager.html#a3eec8b8a50d6ff5643ce21bf9088883f">Span::LightManager::GetLightGrid</a></div><div class="ttdeci">ComputeBuffer * GetLightGrid() const</div><div class="ttdef"><b>Definition</b> <a href="#l00067">LightManager.h:67</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a510a800f48713493edb06e8ba533bc1a"><div class="ttname"><a href="classSpan_1_1LightManager.html#a510a800f48713493edb06e8ba533bc1a">Span::LightManager::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device)</div><div class="ttdoc">バッファの初期化</div><div class="ttdef"><b>Definition</b> <a href="LightManager_8cpp_source.html#l00017">LightManager.cpp:17</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a584d6f7b894310c45dba5a57e4c56d96"><div class="ttname"><a href="classSpan_1_1LightManager.html#a584d6f7b894310c45dba5a57e4c56d96">Span::LightManager::MAX_LIGHTS_PER_TILE</a></div><div class="ttdeci">static constexpr uint32 MAX_LIGHTS_PER_TILE</div><div class="ttdef"><b>Definition</b> <a href="#l00063">LightManager.h:63</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a7caac7c1a75a14b3b7f8238221c19373"><div class="ttname"><a href="classSpan_1_1LightManager.html#a7caac7c1a75a14b3b7f8238221c19373">Span::LightManager::GetLightIndexList</a></div><div class="ttdeci">ComputeBuffer * GetLightIndexList() const</div><div class="ttdef"><b>Definition</b> <a href="#l00066">LightManager.h:66</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a7e524dfff10bb31acffcf66d370a6ecd"><div class="ttname"><a href="classSpan_1_1LightManager.html#a7e524dfff10bb31acffcf66d370a6ecd">Span::LightManager::~LightManager</a></div><div class="ttdeci">~LightManager()</div><div class="ttdef"><b>Definition</b> <a href="#l00041">LightManager.h:41</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a876eee7fc4ea6a3ed88e764035a71341"><div class="ttname"><a href="classSpan_1_1LightManager.html#a876eee7fc4ea6a3ed88e764035a71341">Span::LightManager::m_lightConstantBuffer</a></div><div class="ttdeci">std::unique_ptr&lt; ConstantBuffer&lt; GlobalLightData &gt; &gt; m_lightConstantBuffer</div><div class="ttdef"><b>Definition</b> <a href="#l00070">LightManager.h:70</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a8d17042c69ff1139f3c5ccd0597c887c"><div class="ttname"><a href="classSpan_1_1LightManager.html#a8d17042c69ff1139f3c5ccd0597c887c">Span::LightManager::OnResize</a></div><div class="ttdeci">void OnResize(ID3D12Device *device, uint32 width, uint32 height)</div><div class="ttdoc">画面解像度に合わせて Forward+ のグリッドサイズを更新します。</div><div class="ttdef"><b>Definition</b> <a href="LightManager_8cpp_source.html#l00030">LightManager.cpp:30</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a8e4e579e209bf35b45b3f97958f12bea"><div class="ttname"><a href="classSpan_1_1LightManager.html#a8e4e579e209bf35b45b3f97958f12bea">Span::LightManager::m_lightGrid</a></div><div class="ttdeci">std::unique_ptr&lt; ComputeBuffer &gt; m_lightGrid</div><div class="ttdoc">[UAV/SRV] 画面の各タイルが Listの「どこから」「何個」のライトを持つか記録する (タイル数要素: uint2)</div><div class="ttdef"><b>Definition</b> <a href="#l00083">LightManager.h:83</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_a99b4e17cf609a67b0c0a216cabc06894"><div class="ttname"><a href="classSpan_1_1LightManager.html#a99b4e17cf609a67b0c0a216cabc06894">Span::LightManager::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="LightManager_8cpp_source.html#l00025">LightManager.cpp:25</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_aacad3fe6dda71bcff4240aa717cb6fdd"><div class="ttname"><a href="classSpan_1_1LightManager.html#aacad3fe6dda71bcff4240aa717cb6fdd">Span::LightManager::m_lightIndexList</a></div><div class="ttdeci">std::unique_ptr&lt; ComputeBuffer &gt; m_lightIndexList</div><div class="ttdoc">[UAV/SRV] 科リングを通過したライトのインデックスを平坦に並べた配列 (タイル数 * 256 要素: uint)</div><div class="ttdef"><b>Definition</b> <a href="#l00080">LightManager.h:80</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_abf0e9678ca819ea37531651eb8d1072c"><div class="ttname"><a href="classSpan_1_1LightManager.html#abf0e9678ca819ea37531651eb8d1072c">Span::LightManager::UpdateLightData</a></div><div class="ttdeci">void UpdateLightData(const std::vector&lt; LightDataGPU &gt; &amp;lights, const EnvironmentSettings &amp;env, const Vector3 &amp;cameraPos, bool enableSSAO)</div><div class="ttdoc">ECSから集めたライト情報を GPU 用のバッファに書き込みます。</div><div class="ttdef"><b>Definition</b> <a href="LightManager_8cpp_source.html#l00059">LightManager.cpp:59</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_ad43e125d0e5e275f98fb204ed9561ee7"><div class="ttname"><a href="classSpan_1_1LightManager.html#ad43e125d0e5e275f98fb204ed9561ee7">Span::LightManager::TILE_SIZE</a></div><div class="ttdeci">static constexpr uint32 TILE_SIZE</div><div class="ttdef"><b>Definition</b> <a href="#l00062">LightManager.h:62</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_adc47bd791a902c34338b3c38e193ccce"><div class="ttname"><a href="classSpan_1_1LightManager.html#adc47bd791a902c34338b3c38e193ccce">Span::LightManager::GetLightBufferAddress</a></div><div class="ttdeci">D3D12_GPU_VIRTUAL_ADDRESS GetLightBufferAddress() const</div><div class="ttdoc">メインの定数バッファのGPUアドレスを取得</div><div class="ttdef"><b>Definition</b> <a href="LightManager_8cpp_source.html#l00094">LightManager.cpp:94</a></div></div>
+<div class="ttc" id="aclassSpan_1_1LightManager_html_af12f67e2be277e9c972f7ed9f71cc39c"><div class="ttname"><a href="classSpan_1_1LightManager.html#af12f67e2be277e9c972f7ed9f71cc39c">Span::LightManager::m_lightIndexCounter</a></div><div class="ttdeci">std::unique_ptr&lt; ComputeBuffer &gt; m_lightIndexCounter</div><div class="ttdoc">[UAV] 全タイルのライトインデックス総数をカウントする(1要素: uint)</div><div class="ttdef"><b>Definition</b> <a href="#l00077">LightManager.h:77</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00101">CoreMinimal.h:101</a></div></div>
+<div class="ttc" id="astructSpan_1_1EnvironmentSettings_html"><div class="ttname"><a href="structSpan_1_1EnvironmentSettings.html">Span::EnvironmentSettings</a></div><div class="ttdoc">🌏 シーン全体の環境 (空、光、雰囲気) を定義するデータ。</div><div class="ttdef"><b>Definition</b> <a href="EnvironmentSettings_8h_source.html#l00032">EnvironmentSettings.h:33</a></div></div>
+<div class="ttc" id="astructSpan_1_1GlobalLightData_html"><div class="ttname"><a href="structSpan_1_1GlobalLightData.html">Span::GlobalLightData</a></div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00067">Renderer.h:68</a></div></div>
+<div class="ttc" id="astructSpan_1_1Vector3_html"><div class="ttname"><a href="structSpan_1_1Vector3.html">Span::Vector3</a></div><div class="ttdoc">3次元ベクトル (float x, y, z) 位置、方向、スケールなどに使用されます。</div><div class="ttdef"><b>Definition</b> <a href="SpanMath_8h_source.html#l00116">SpanMath.h:117</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_6091cbee3e268cbb682ad3d3f55cf8b5.html">Graphics</a></li><li class="navelem"><a href="dir_04c83e55f1dd055cbf491646f5a1a5df.html">Core</a></li><li class="navelem"><a href="LightManager_8h.html">LightManager.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

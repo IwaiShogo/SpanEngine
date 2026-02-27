@@ -12,6 +12,7 @@ var classSpan_1_1Texture =
     [ "Initialize", "classSpan_1_1Texture.html#a4149a1e0df66fc08179a7e3b4a3f5d49", null ],
     [ "InitializeAsCubemap", "classSpan_1_1Texture.html#a1ceed4eebe4ee28738dba1882bd1cc24", null ],
     [ "InitializeAsTexture2D", "classSpan_1_1Texture.html#a6ef0e2fb3ac793367acd46a7da97cd5a", null ],
+    [ "InitializeFromMemory", "classSpan_1_1Texture.html#a34b5cf89271668cc858ce581e23ceb61", null ],
     [ "IsHDR", "classSpan_1_1Texture.html#a4ff04dae48627444de3be3be5ec94e68", null ],
     [ "Shutdown", "classSpan_1_1Texture.html#a0739f7dfcb17e2ebcbab8bfd90c790ab", null ],
     [ "UploadTexture", "classSpan_1_1Texture.html#a5f376f62e8cc6759217f4bbddad30c97", null ],

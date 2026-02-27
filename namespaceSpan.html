@@ -217,12 +217,18 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📍 エンティティのデータ格納場所を示すポインタ。  <a href="structSpan_1_1EntityLocation.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:World" id="r_World"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1World.html">World</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🌏 ECSの管理マネージャー。全てのEntityとSystemを保持します。  <a href="classSpan_1_1World.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:ComputeBuffer" id="r_ComputeBuffer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ComputeBuffer.html">ComputeBuffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">大量の配列データを扱うための Structured Buffer。  <a href="classSpan_1_1ComputeBuffer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:ConstantBuffer" id="r_ConstantBuffer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1ConstantBuffer.html">ConstantBuffer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">📦 CPUからGPUへデータを送信するための定数バッファ。  <a href="classSpan_1_1ConstantBuffer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:GraphicsContext" id="r_GraphicsContext"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1GraphicsContext.html">GraphicsContext</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎮 GPUコンテキストのラッパー。描画パイプラインの基盤。  <a href="classSpan_1_1GraphicsContext.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:IBLBuilder" id="r_IBLBuilder"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1IBLBuilder.html">IBLBuilder</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🌌 パノラマHDR画像からPBRに必要なIBLテクスチャ群を生成するユーティリティ。  <a href="classSpan_1_1IBLBuilder.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:LightManager" id="r_LightManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1LightManager.html">LightManager</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">💡 ライトデータの管理と Forward+ のバッファを統括するマネージャー。  <a href="classSpan_1_1LightManager.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:RenderPassManager" id="r_RenderPassManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1RenderPassManager.html">RenderPassManager</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🗂 各種レンダリングパスを統括するマネージャー。  <a href="classSpan_1_1RenderPassManager.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:RenderTarget" id="r_RenderTarget"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🎯 描画対象となるテクスチャリソース。  <a href="classSpan_1_1RenderTarget.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Shader" id="r_Shader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1Shader.html">Shader</a></td></tr>
@@ -239,6 +245,10 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">シャドウ生成パス  <a href="classSpan_1_1ShadowPass.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:SkyboxPass" id="r_SkyboxPass"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1SkyboxPass.html">SkyboxPass</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">プロシージャルスカイボックス描画パス。  <a href="classSpan_1_1SkyboxPass.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SSAOBlurPass" id="r_SSAOBlurPass"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1SSAOBlurPass.html">SSAOBlurPass</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🌫 SSAOマップのノイズを平滑化するフルスクリーンパス。  <a href="classSpan_1_1SSAOBlurPass.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SSAOPass" id="r_SSAOPass"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classSpan_1_1SSAOPass.html">SSAOPass</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">🌑 SSAOを計算し、オクルージョンマップを出力するパス。  <a href="classSpan_1_1SSAOPass.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:TransformData" id="r_TransformData"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1TransformData.html">TransformData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトごとの変換行列データ  <a href="structSpan_1_1TransformData.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:LightDataGPU" id="r_LightDataGPU"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structSpan_1_1LightDataGPU.html">LightDataGPU</a></td></tr>
@@ -508,7 +518,7 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="memdesc:a51dc0b6d0daae8cf8e6841254d8dc062"><td class="mdescLeft">&#160;</td><td class="mdescRight">1つのチャンクが確保する固定メモリサイズ (16KB)  <br /></td></tr>
 <tr class="memitem:a20540fd2e2d58f1722c48a6f1c6d1af5" id="r_a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="memItemLeft">static const <a class="el" href="structSpan_1_1EntityID.html">EntityID</a>&#160;</td><td class="memItemRight"><a class="el" href="#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a> = { UINT32_MAX, 0 }</td></tr>
 <tr class="memdesc:a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Null (無効) として扱うための定数ID  <br /></td></tr>
-<tr class="memitem:af38ddf0fe302cffbe8ff15c6d5dcd194" id="r_af38ddf0fe302cffbe8ff15c6d5dcd194"><td class="memItemLeft">constexpr int&#160;</td><td class="memItemRight"><a class="el" href="#af38ddf0fe302cffbe8ff15c6d5dcd194">MAX_LIGHTS</a> = 16</td></tr>
+<tr class="memitem:af38ddf0fe302cffbe8ff15c6d5dcd194" id="r_af38ddf0fe302cffbe8ff15c6d5dcd194"><td class="memItemLeft">constexpr int&#160;</td><td class="memItemRight"><a class="el" href="#af38ddf0fe302cffbe8ff15c6d5dcd194">MAX_LIGHTS</a> = 4096</td></tr>
 <tr class="memitem:a145b8dc890551fcd9c17ad183b945a13" id="r_a145b8dc890551fcd9c17ad183b945a13"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a145b8dc890551fcd9c17ad183b945a13 template"><td class="memItemLeft">constexpr bool&#160;</td><td class="memItemRight"><a class="el" href="#a145b8dc890551fcd9c17ad183b945a13">is_fixed_string_v</a> = <a class="el" href="structSpan_1_1is__fixed__string.html">is_fixed_string</a>&lt;T&gt;::value</td></tr>
 <tr class="memitem:a086d008b6a56d176facbbfbfde8a1cc5" id="r_a086d008b6a56d176facbbfbfde8a1cc5"><td class="memItemLeft">static std::random_device&#160;</td><td class="memItemRight"><a class="el" href="#a086d008b6a56d176facbbfbfde8a1cc5">s_RandomDevice</a></td></tr>
@@ -2270,7 +2280,7 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Span::MAX_LIGHTS = 16</td>
+          <td class="memname">int Span::MAX_LIGHTS = 4096</td>
         </tr>
       </table>
   </td>
@@ -2280,7 +2290,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00066">66</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Renderer_8h_source.html">Renderer.h</a> の <a class="el" href="Renderer_8h_source.html#l00065">65</a> 行目に定義があります。</p>
 
 </div>
 </div>

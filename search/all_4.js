@@ -30,7 +30,7 @@ var searchData=
   ['directorywatcher_2eh_27',['DirectoryWatcher.h',['../DirectoryWatcher_8h.html',1,'']]],
   ['disconnect_28',['Disconnect',['../classSpan_1_1RelationshipSystem.html#a67cd257ab95cd2a44e3c8830ccd4cf26',1,'Span::RelationshipSystem']]],
   ['dot_29',['Dot',['../structSpan_1_1Vector3.html#afd00ea2d739d71571828e2d44b41c0c6',1,'Span::Vector3']]],
-  ['double_20buffering_30',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md135',1,'']]],
+  ['double_20buffering_30',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md139',1,'']]],
   ['down_31',['Down',['../structSpan_1_1Vector3.html#a174d5e36f77185f411c98c3cb05def5d',1,'Span::Vector3']]],
   ['draw_32',['Draw',['../classSpan_1_1Mesh.html#a778cd9c09642759f91c6f0cbe53503a1',1,'Span::Mesh']]],
   ['drawassetinspector_33',['DrawAssetInspector',['../classSpan_1_1InspectorPanel.html#aa24fb5f7f8d1de98906fe4b644cb4a86',1,'Span::InspectorPanel']]],

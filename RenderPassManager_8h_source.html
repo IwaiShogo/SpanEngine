@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Span Engine: Engine/Source/Runtime/Graphics/Core/RenderPassManager.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Span Engine<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">⚡ Editor First, Data Oriented, Native Performance Game Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('RenderPassManager_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">RenderPassManager.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="RenderPassManager_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file    RenderPassManager.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief   レンダリングパスのライフサイクルと実行を管理するクラス。</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details </span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Rendererクラスの肥大化を防ぐため、各種Passの初期化やリサイズを統括します。</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * @author  Iwai Shogo</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * ------------------------------------------------------------</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="CoreMinimal_8h.html">Core/CoreMinimal.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceSpan.html">Span</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1GraphicsContext.html">GraphicsContext</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1GridPass.html">GridPass</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1SkyboxPass.html">SkyboxPass</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1ShadowPass.html">ShadowPass</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1DepthNormalPass.html">DepthNormalPass</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1SSAOPass.html">SSAOPass</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">class </span><a class="code hl_class" href="classSpan_1_1SSAOBlurPass.html">SSAOBlurPass</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"></span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">     * @class   RenderPassManager</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">     * @brief   🗂 各種レンダリングパスを統括するマネージャー。</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html">   30</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classSpan_1_1RenderPassManager.html#aa98395db47b6e5cdb65a8ded80ded3cb">RenderPassManager</a></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#aa98395db47b6e5cdb65a8ded80ded3cb">   33</a></span>        <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#aa98395db47b6e5cdb65a8ded80ded3cb">RenderPassManager</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#a3025dd522806d5e8578b3a65b15bebed">   34</a></span>        <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a3025dd522806d5e8578b3a65b15bebed">~RenderPassManager</a>() { <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a8b68441253c489a28bd2155639e2013a">Shutdown</a>(); }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"></span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">         * @brief   全てのパスを初期化します。</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a5f0e876f10bd636bb42d7020092c393c">Initialize</a>(<a class="code hl_class" href="classSpan_1_1GraphicsContext.html">GraphicsContext</a>* context);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"></span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">         * @brief   全てのパスを破棄します。</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a8b68441253c489a28bd2155639e2013a">Shutdown</a>();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"></span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">        /**</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">         * @brief   画面解像度に依存するパスをリサイズします。</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a0670729618d99e7f508641162e2a53b3">OnResize</a>(ID3D12Device* device, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="comment">// --- Getters ---</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#a765ac78818582aa33a18ac5e9e995a65">   52</a></span>        <a class="code hl_class" href="classSpan_1_1GridPass.html">GridPass</a>* <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a765ac78818582aa33a18ac5e9e995a65">GetGridPass</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#a3adfafd2a69c8e4e12e518f746eb9a17">m_gridPass</a>.get(); }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#ad3189db1b2d3e26a63c7230c56c752b8">   53</a></span>        <a class="code hl_class" href="classSpan_1_1SkyboxPass.html">SkyboxPass</a>* <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#ad3189db1b2d3e26a63c7230c56c752b8">GetSkyboxPass</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#af47dccdd0cd261588467aad2179e658f">m_skyboxPass</a>.get(); }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#aa4ca46f0874bfd87dbd466fc699a29b3">   54</a></span>        <a class="code hl_class" href="classSpan_1_1ShadowPass.html">ShadowPass</a>* <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#aa4ca46f0874bfd87dbd466fc699a29b3">GetDirShadowPass</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#ac506045e049600e680b8b0149cb60790">m_dirShadowPass</a>.get(); }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#a723685447bac045459fc691d043347a6">   55</a></span>        <a class="code hl_class" href="classSpan_1_1ShadowPass.html">ShadowPass</a>* <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a723685447bac045459fc691d043347a6">GetSpotShadowPass</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#a31c0366f8893201755dba6e6b4843e9f">m_spotShadowPass</a>.get(); }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#a158e4c17482da32aabf41e47efdc442b">   56</a></span>        <a class="code hl_class" href="classSpan_1_1ShadowPass.html">ShadowPass</a>* <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a158e4c17482da32aabf41e47efdc442b">GetPointShadowPass</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#a8528087930c5d152520aec2506d88b54">m_pointShadowPass</a>.get(); }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#a39d2bc2b804e9aaf8572f28f88cd2a37">   57</a></span>        <a class="code hl_class" href="classSpan_1_1DepthNormalPass.html">DepthNormalPass</a>* <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a39d2bc2b804e9aaf8572f28f88cd2a37">GetDepthNormalPass</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#af56d1657bc74aac7df7d81a5e0509389">m_depthNormalPass</a>.get(); }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#a70000fe0077d8afecdfc522d574454f8">   58</a></span>        <a class="code hl_class" href="classSpan_1_1SSAOPass.html">SSAOPass</a>* <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a70000fe0077d8afecdfc522d574454f8">GetSSAOPass</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#afbdfefafbc1b12e870e052168f6e3ca9">m_ssaoPass</a>.get(); }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#a56ef433ee59641ff7ebe92b630cca999">   59</a></span>        <a class="code hl_class" href="classSpan_1_1SSAOBlurPass.html">SSAOBlurPass</a>* <a class="code hl_function" href="classSpan_1_1RenderPassManager.html#a56ef433ee59641ff7ebe92b630cca999">GetSSAOBlurPass</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#ac9447e7fa226583baaff40b36b689e7d">m_ssaoBlurPass</a>.get(); }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#a3adfafd2a69c8e4e12e518f746eb9a17">   62</a></span>        std::unique_ptr&lt;GridPass&gt; <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#a3adfafd2a69c8e4e12e518f746eb9a17">m_gridPass</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#af47dccdd0cd261588467aad2179e658f">   63</a></span>        std::unique_ptr&lt;SkyboxPass&gt; <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#af47dccdd0cd261588467aad2179e658f">m_skyboxPass</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#ac506045e049600e680b8b0149cb60790">   64</a></span>        std::unique_ptr&lt;ShadowPass&gt; <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#ac506045e049600e680b8b0149cb60790">m_dirShadowPass</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#a31c0366f8893201755dba6e6b4843e9f">   65</a></span>        std::unique_ptr&lt;ShadowPass&gt; <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#a31c0366f8893201755dba6e6b4843e9f">m_spotShadowPass</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#a8528087930c5d152520aec2506d88b54">   66</a></span>        std::unique_ptr&lt;ShadowPass&gt; <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#a8528087930c5d152520aec2506d88b54">m_pointShadowPass</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#af56d1657bc74aac7df7d81a5e0509389">   67</a></span>        std::unique_ptr&lt;DepthNormalPass&gt; <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#af56d1657bc74aac7df7d81a5e0509389">m_depthNormalPass</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#afbdfefafbc1b12e870e052168f6e3ca9">   68</a></span>        std::unique_ptr&lt;SSAOPass&gt; <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#afbdfefafbc1b12e870e052168f6e3ca9">m_ssaoPass</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classSpan_1_1RenderPassManager.html#ac9447e7fa226583baaff40b36b689e7d">   69</a></span>        std::unique_ptr&lt;SSAOBlurPass&gt; <a class="code hl_variable" href="classSpan_1_1RenderPassManager.html#ac9447e7fa226583baaff40b36b689e7d">m_ssaoBlurPass</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    };</div>
+</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
+<div class="ttc" id="aCoreMinimal_8h_html"><div class="ttname"><a href="CoreMinimal_8h.html">CoreMinimal.h</a></div><div class="ttdoc">エンジンの標準インクルードファイル。</div></div>
+<div class="ttc" id="aclassSpan_1_1DepthNormalPass_html"><div class="ttname"><a href="classSpan_1_1DepthNormalPass.html">Span::DepthNormalPass</a></div><div class="ttdoc">🔍 画面全体の法線と深度をGBufferに出力するパス。</div><div class="ttdef"><b>Definition</b> <a href="DepthNormalPass_8h_source.html#l00031">DepthNormalPass.h:32</a></div></div>
+<div class="ttc" id="aclassSpan_1_1GraphicsContext_html"><div class="ttname"><a href="classSpan_1_1GraphicsContext.html">Span::GraphicsContext</a></div><div class="ttdoc">🎮 GPUコンテキストのラッパー。描画パイプラインの基盤。</div><div class="ttdef"><b>Definition</b> <a href="GraphicsContext_8h_source.html#l00033">GraphicsContext.h:34</a></div></div>
+<div class="ttc" id="aclassSpan_1_1GridPass_html"><div class="ttname"><a href="classSpan_1_1GridPass.html">Span::GridPass</a></div><div class="ttdoc">📐 エディタ空間の無限グリッドとXYZ軸を描画するパス。</div><div class="ttdef"><b>Definition</b> <a href="GridPass_8h_source.html#l00023">GridPass.h:24</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a0670729618d99e7f508641162e2a53b3"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a0670729618d99e7f508641162e2a53b3">Span::RenderPassManager::OnResize</a></div><div class="ttdeci">void OnResize(ID3D12Device *device, uint32 width, uint32 height)</div><div class="ttdoc">画面解像度に依存するパスをリサイズします。</div><div class="ttdef"><b>Definition</b> <a href="RenderPassManager_8cpp_source.html#l00067">RenderPassManager.cpp:67</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a158e4c17482da32aabf41e47efdc442b"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a158e4c17482da32aabf41e47efdc442b">Span::RenderPassManager::GetPointShadowPass</a></div><div class="ttdeci">ShadowPass * GetPointShadowPass() const</div><div class="ttdef"><b>Definition</b> <a href="#l00056">RenderPassManager.h:56</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a3025dd522806d5e8578b3a65b15bebed"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a3025dd522806d5e8578b3a65b15bebed">Span::RenderPassManager::~RenderPassManager</a></div><div class="ttdeci">~RenderPassManager()</div><div class="ttdef"><b>Definition</b> <a href="#l00034">RenderPassManager.h:34</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a31c0366f8893201755dba6e6b4843e9f"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a31c0366f8893201755dba6e6b4843e9f">Span::RenderPassManager::m_spotShadowPass</a></div><div class="ttdeci">std::unique_ptr&lt; ShadowPass &gt; m_spotShadowPass</div><div class="ttdef"><b>Definition</b> <a href="#l00065">RenderPassManager.h:65</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a39d2bc2b804e9aaf8572f28f88cd2a37"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a39d2bc2b804e9aaf8572f28f88cd2a37">Span::RenderPassManager::GetDepthNormalPass</a></div><div class="ttdeci">DepthNormalPass * GetDepthNormalPass() const</div><div class="ttdef"><b>Definition</b> <a href="#l00057">RenderPassManager.h:57</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a3adfafd2a69c8e4e12e518f746eb9a17"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a3adfafd2a69c8e4e12e518f746eb9a17">Span::RenderPassManager::m_gridPass</a></div><div class="ttdeci">std::unique_ptr&lt; GridPass &gt; m_gridPass</div><div class="ttdef"><b>Definition</b> <a href="#l00062">RenderPassManager.h:62</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a56ef433ee59641ff7ebe92b630cca999"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a56ef433ee59641ff7ebe92b630cca999">Span::RenderPassManager::GetSSAOBlurPass</a></div><div class="ttdeci">SSAOBlurPass * GetSSAOBlurPass() const</div><div class="ttdef"><b>Definition</b> <a href="#l00059">RenderPassManager.h:59</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a5f0e876f10bd636bb42d7020092c393c"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a5f0e876f10bd636bb42d7020092c393c">Span::RenderPassManager::Initialize</a></div><div class="ttdeci">bool Initialize(GraphicsContext *context)</div><div class="ttdoc">全てのパスを初期化します。</div><div class="ttdef"><b>Definition</b> <a href="RenderPassManager_8cpp_source.html#l00023">RenderPassManager.cpp:23</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a70000fe0077d8afecdfc522d574454f8"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a70000fe0077d8afecdfc522d574454f8">Span::RenderPassManager::GetSSAOPass</a></div><div class="ttdeci">SSAOPass * GetSSAOPass() const</div><div class="ttdef"><b>Definition</b> <a href="#l00058">RenderPassManager.h:58</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a723685447bac045459fc691d043347a6"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a723685447bac045459fc691d043347a6">Span::RenderPassManager::GetSpotShadowPass</a></div><div class="ttdeci">ShadowPass * GetSpotShadowPass() const</div><div class="ttdef"><b>Definition</b> <a href="#l00055">RenderPassManager.h:55</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a765ac78818582aa33a18ac5e9e995a65"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a765ac78818582aa33a18ac5e9e995a65">Span::RenderPassManager::GetGridPass</a></div><div class="ttdeci">GridPass * GetGridPass() const</div><div class="ttdef"><b>Definition</b> <a href="#l00052">RenderPassManager.h:52</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a8528087930c5d152520aec2506d88b54"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a8528087930c5d152520aec2506d88b54">Span::RenderPassManager::m_pointShadowPass</a></div><div class="ttdeci">std::unique_ptr&lt; ShadowPass &gt; m_pointShadowPass</div><div class="ttdef"><b>Definition</b> <a href="#l00066">RenderPassManager.h:66</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_a8b68441253c489a28bd2155639e2013a"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#a8b68441253c489a28bd2155639e2013a">Span::RenderPassManager::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdoc">全てのパスを破棄します。</div><div class="ttdef"><b>Definition</b> <a href="RenderPassManager_8cpp_source.html#l00056">RenderPassManager.cpp:56</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_aa4ca46f0874bfd87dbd466fc699a29b3"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#aa4ca46f0874bfd87dbd466fc699a29b3">Span::RenderPassManager::GetDirShadowPass</a></div><div class="ttdeci">ShadowPass * GetDirShadowPass() const</div><div class="ttdef"><b>Definition</b> <a href="#l00054">RenderPassManager.h:54</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_aa98395db47b6e5cdb65a8ded80ded3cb"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#aa98395db47b6e5cdb65a8ded80ded3cb">Span::RenderPassManager::RenderPassManager</a></div><div class="ttdeci">RenderPassManager()=default</div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_ac506045e049600e680b8b0149cb60790"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#ac506045e049600e680b8b0149cb60790">Span::RenderPassManager::m_dirShadowPass</a></div><div class="ttdeci">std::unique_ptr&lt; ShadowPass &gt; m_dirShadowPass</div><div class="ttdef"><b>Definition</b> <a href="#l00064">RenderPassManager.h:64</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_ac9447e7fa226583baaff40b36b689e7d"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#ac9447e7fa226583baaff40b36b689e7d">Span::RenderPassManager::m_ssaoBlurPass</a></div><div class="ttdeci">std::unique_ptr&lt; SSAOBlurPass &gt; m_ssaoBlurPass</div><div class="ttdef"><b>Definition</b> <a href="#l00069">RenderPassManager.h:69</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_ad3189db1b2d3e26a63c7230c56c752b8"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#ad3189db1b2d3e26a63c7230c56c752b8">Span::RenderPassManager::GetSkyboxPass</a></div><div class="ttdeci">SkyboxPass * GetSkyboxPass() const</div><div class="ttdef"><b>Definition</b> <a href="#l00053">RenderPassManager.h:53</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_af47dccdd0cd261588467aad2179e658f"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#af47dccdd0cd261588467aad2179e658f">Span::RenderPassManager::m_skyboxPass</a></div><div class="ttdeci">std::unique_ptr&lt; SkyboxPass &gt; m_skyboxPass</div><div class="ttdef"><b>Definition</b> <a href="#l00063">RenderPassManager.h:63</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_af56d1657bc74aac7df7d81a5e0509389"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#af56d1657bc74aac7df7d81a5e0509389">Span::RenderPassManager::m_depthNormalPass</a></div><div class="ttdeci">std::unique_ptr&lt; DepthNormalPass &gt; m_depthNormalPass</div><div class="ttdef"><b>Definition</b> <a href="#l00067">RenderPassManager.h:67</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderPassManager_html_afbdfefafbc1b12e870e052168f6e3ca9"><div class="ttname"><a href="classSpan_1_1RenderPassManager.html#afbdfefafbc1b12e870e052168f6e3ca9">Span::RenderPassManager::m_ssaoPass</a></div><div class="ttdeci">std::unique_ptr&lt; SSAOPass &gt; m_ssaoPass</div><div class="ttdef"><b>Definition</b> <a href="#l00068">RenderPassManager.h:68</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOBlurPass_html"><div class="ttname"><a href="classSpan_1_1SSAOBlurPass.html">Span::SSAOBlurPass</a></div><div class="ttdoc">🌫 SSAOマップのノイズを平滑化するフルスクリーンパス。</div><div class="ttdef"><b>Definition</b> <a href="SSAOBlurPass_8h_source.html#l00026">SSAOBlurPass.h:27</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html"><div class="ttname"><a href="classSpan_1_1SSAOPass.html">Span::SSAOPass</a></div><div class="ttdoc">🌑 SSAOを計算し、オクルージョンマップを出力するパス。</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8h_source.html#l00029">SSAOPass.h:30</a></div></div>
+<div class="ttc" id="aclassSpan_1_1ShadowPass_html"><div class="ttname"><a href="classSpan_1_1ShadowPass.html">Span::ShadowPass</a></div><div class="ttdoc">シャドウ生成パス</div><div class="ttdef"><b>Definition</b> <a href="ShadowPass_8h_source.html#l00027">ShadowPass.h:28</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SkyboxPass_html"><div class="ttname"><a href="classSpan_1_1SkyboxPass.html">Span::SkyboxPass</a></div><div class="ttdoc">プロシージャルスカイボックス描画パス。</div><div class="ttdef"><b>Definition</b> <a href="SkyboxPass_8h_source.html#l00026">SkyboxPass.h:27</a></div></div>
+<div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
+<div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00101">CoreMinimal.h:101</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_0b6ee6e7e9547e675db4add2e5de97da.html">Engine</a></li><li class="navelem"><a href="dir_9579d1ecb2c7bf48cbe1049c41745cb4.html">Source</a></li><li class="navelem"><a href="dir_9f04efef762572853abdf73f62bebfcc.html">Runtime</a></li><li class="navelem"><a href="dir_6091cbee3e268cbb682ad3d3f55cf8b5.html">Graphics</a></li><li class="navelem"><a href="dir_04c83e55f1dd055cbf491646f5a1a5df.html">Core</a></li><li class="navelem"><a href="RenderPassManager_8h.html">RenderPassManager.h</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

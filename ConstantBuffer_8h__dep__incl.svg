@@ -47,7 +47,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 3635;
+var viewWidth = 3728;
 var viewHeight = 544;
 var sectionId = 'dynsection-1';
 </script>
@@ -59,19 +59,19 @@ var sectionId = 'dynsection-1';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title="DirectX 12 定数バッファ (CBV) のラッパークラス">
-<polygon fill="#999999" stroke="#666666" points="2115,-536 1943,-536 1943,-506 2115,-506 2115,-536"/>
-<text text-anchor="start" x="1951" y="-524" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="2029" y="-513" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Core/ConstantBuffer.h</text>
+<polygon fill="#999999" stroke="#666666" points="2335.5,-536 2163.5,-536 2163.5,-506 2335.5,-506 2335.5,-536"/>
+<text text-anchor="start" x="2171.5" y="-524" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="2249.5" y="-513" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Core/ConstantBuffer.h</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="Renderer_8h.html" target="_top" xlink:title="描画パイプラインの構築と実行。">
-<polygon fill="white" stroke="#666666" points="2411,-338 2281,-338 2281,-308 2411,-308 2411,-338"/>
-<text text-anchor="start" x="2289" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="2346" y="-315" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Renderer.h</text>
+<g id="a_Node000002"><a xlink:href="LightManager_8h.html" target="_top" xlink:title="シーン内のライトデータ管理と Forward+ Shading の基盤。">
+<polygon fill="white" stroke="#666666" points="671.5,-266.5 505.5,-266.5 505.5,-236.5 671.5,-236.5 671.5,-266.5"/>
+<text text-anchor="start" x="513.5" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="588.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Core/LightManager.h</text>
 </a>
 </g>
 </g>
@@ -79,55 +79,74 @@ var sectionId = 'dynsection-1';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2065.24,-501.03C2082.53,-491.84 2103.44,-480.55 2122,-470 2171.57,-441.83 2184.19,-435.06 2232,-404 2266.06,-381.87 2304.51,-354.33 2326.92,-338.02"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2063.25,-498.12 2056.04,-505.89 2066.52,-504.31 2063.25,-498.12"/>
+<path fill="none" stroke="#63b8ff" d="M2153.51,-506.97C1907.27,-473.09 1233.44,-377.51 676.5,-272 667.74,-270.34 658.51,-268.45 649.47,-266.52"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2153.11,-510.45 2163.5,-508.34 2154.07,-503.51 2153.11,-510.45"/>
 </a>
 </g>
 </g>
-<!-- Node19 -->
-<g id="Node000019" class="node">
-<title>Node19</title>
-<g id="a_Node000019"><a xlink:href="SpanEngine_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1567.5,-107 1412.5,-107 1412.5,-88 1567.5,-88 1567.5,-107"/>
-<text text-anchor="middle" x="1490" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/SpanEngine.h</text>
+<!-- Node6 -->
+<g id="Node000006" class="node">
+<title>Node6</title>
+<g id="a_Node000006"><a xlink:href="SpanEngine_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="3009,-107 2854,-107 2854,-88 3009,-88 3009,-107"/>
+<text text-anchor="middle" x="2931.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/SpanEngine.h</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node19 -->
-<g id="edge94_Node000001_Node000019" class="edge">
-<title>Node1&#45;&gt;Node19</title>
-<g id="a_edge94_Node000001_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1932.62,-518.93C1529.58,-513.84 0,-488.07 0,-390 0,-390 0,-390 0,-250.5 0,-161.68 89.47,-177.95 175,-154 293.82,-120.72 1148.3,-104.09 1412.42,-99.7"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1932.75,-522.43 1942.79,-519.06 1932.83,-515.43 1932.75,-522.43"/>
+<!-- Node1&#45;&gt;Node6 -->
+<g id="edge95_Node000001_Node000006" class="edge">
+<title>Node1&#45;&gt;Node6</title>
+<g id="a_edge95_Node000001_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2346.1,-516.53C2673.3,-504.15 3719.5,-459.16 3719.5,-390 3719.5,-390 3719.5,-390 3719.5,-250.5 3719.5,-178.19 3656.19,-179.45 3588.5,-154 3484.37,-114.85 3159.6,-103.16 3009.28,-99.79"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2345.56,-513.05 2335.7,-516.92 2345.82,-520.04 2345.56,-513.05"/>
 </a>
 </g>
 </g>
-<!-- Node33 -->
-<g id="Node000033" class="node">
-<title>Node33</title>
-<g id="a_Node000033"><a xlink:href="Material_8h.html" target="_top" xlink:title="PBRマテリアルのパラメータ管理。">
-<polygon fill="white" stroke="#666666" points="2113,-470 1945,-470 1945,-440 2113,-440 2113,-470"/>
-<text text-anchor="start" x="1953" y="-458" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="2029" y="-447" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Resources/Material.h</text>
+<!-- Node18 -->
+<g id="Node000018" class="node">
+<title>Node18</title>
+<g id="a_Node000018"><a xlink:href="Renderer_8h.html" target="_top" xlink:title="描画パイプラインの構築と実行。">
+<polygon fill="white" stroke="#666666" points="1522.5,-338 1392.5,-338 1392.5,-308 1522.5,-308 1522.5,-338"/>
+<text text-anchor="start" x="1400.5" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="1457.5" y="-315" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Renderer.h</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node33 -->
-<g id="edge51_Node000001_Node000033" class="edge">
-<title>Node1&#45;&gt;Node33</title>
-<g id="a_edge51_Node000001_Node000033"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2029,-495.54C2029,-486.96 2029,-477.61 2029,-470.16"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2025.5,-495.8 2029,-505.8 2032.5,-495.8 2025.5,-495.8"/>
+<!-- Node1&#45;&gt;Node18 -->
+<g id="edge17_Node000001_Node000018" class="edge">
+<title>Node1&#45;&gt;Node18</title>
+<g id="a_edge17_Node000001_Node000018"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2183.13,-503.58C2030.57,-465.82 1657.05,-373.38 1514.27,-338.05"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2182.31,-506.98 2192.86,-505.98 2183.99,-500.18 2182.31,-506.98"/>
+</a>
+</g>
+</g>
+<!-- Node40 -->
+<g id="Node000040" class="node">
+<title>Node40</title>
+<g id="a_Node000040"><a xlink:href="Material_8h.html" target="_top" xlink:title="PBRマテリアルのパラメータ管理。">
+<polygon fill="white" stroke="#666666" points="2697.5,-470 2529.5,-470 2529.5,-440 2697.5,-440 2697.5,-470"/>
+<text text-anchor="start" x="2537.5" y="-458" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="2613.5" y="-447" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Resources/Material.h</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node40 -->
+<g id="edge69_Node000001_Node000040" class="edge">
+<title>Node1&#45;&gt;Node40</title>
+<g id="a_edge69_Node000001_Node000040"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2339.53,-504.17C2399.09,-493.7 2476.48,-480.09 2533.8,-470.01"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2338.62,-500.78 2329.38,-505.95 2339.84,-507.67 2338.62,-500.78"/>
 </a>
 </g>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="GuiManager_8h.html" target="_top" xlink:title="ImGuiのライフサイクルとレンダリング管理。">
-<polygon fill="white" stroke="#666666" points="3626.5,-189.5 3509.5,-189.5 3509.5,-159.5 3626.5,-159.5 3626.5,-189.5"/>
-<text text-anchor="start" x="3517.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="middle" x="3568" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/GuiManager.h</text>
+<g id="a_Node000003"><a xlink:href="LightManager_8cpp.html" target="_top" xlink:title="LightManagerの実装。">
+<polygon fill="white" stroke="#666666" points="312,-189.5 135,-189.5 135,-159.5 312,-159.5 312,-189.5"/>
+<text text-anchor="start" x="143" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="223.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Core/LightManager.cpp</text>
 </a>
 </g>
 </g>
@@ -135,219 +154,66 @@ var sectionId = 'dynsection-1';
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2421.57,-320.56C2613.34,-316.5 3115.29,-303.13 3279,-272 3374.88,-253.77 3482.67,-211.69 3535.4,-189.61"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2421.22,-317.07 2411.3,-320.78 2421.37,-324.07 2421.22,-317.07"/>
-</a>
-</g>
-</g>
-<!-- Node11 -->
-<g id="Node000011" class="node">
-<title>Node11</title>
-<g id="a_Node000011"><a xlink:href="MaterialPreviewer_8h.html" target="_top" xlink:title="マテリアルプレビュー用のオフスクリーンレンダリング管理。">
-<polygon fill="white" stroke="#666666" points="3270,-266.5 3070,-266.5 3070,-236.5 3270,-236.5 3270,-266.5"/>
-<text text-anchor="start" x="3078" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="middle" x="3170" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Inspector/MaterialPreviewer.h</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node11 -->
-<g id="edge10_Node000002_Node000011" class="edge">
-<title>Node2&#45;&gt;Node11</title>
-<g id="a_edge10_Node000002_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2421.12,-308.5C2422.42,-308.33 2423.72,-308.16 2425,-308 2487.29,-300.18 2881.54,-272.44 3069.96,-259.39"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2420.42,-305.07 2411.02,-309.94 2421.41,-312 2420.42,-305.07"/>
-</a>
-</g>
-</g>
-<!-- Node14 -->
-<g id="Node000014" class="node">
-<title>Node14</title>
-<g id="a_Node000014"><a xlink:href="Application_8h.html" target="_top" xlink:title="エンジンのメインループとライフサイクル管理。">
-<polygon fill="white" stroke="#666666" points="2875,-266.5 2745,-266.5 2745,-236.5 2875,-236.5 2875,-266.5"/>
-<text text-anchor="start" x="2753" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="2810" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Application.h</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node14 -->
-<g id="edge14_Node000002_Node000014" class="edge">
-<title>Node2&#45;&gt;Node14</title>
-<g id="a_edge14_Node000002_Node000014"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2421.14,-308.63C2422.44,-308.41 2423.72,-308.21 2425,-308 2537.18,-289.98 2668.21,-271.67 2744.85,-261.24"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2420.36,-305.21 2411.07,-310.3 2421.51,-312.11 2420.36,-305.21"/>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node19 -->
-<g id="edge50_Node000002_Node000019" class="edge">
-<title>Node2&#45;&gt;Node19</title>
-<g id="a_edge50_Node000002_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2270.38,-320.32C2211.58,-316.31 2129.43,-304.63 2065,-272 2041.44,-260.07 2043.98,-245.64 2022,-231 1988.87,-208.93 1972.43,-218.08 1940,-195 1919.76,-180.59 1924.05,-165.44 1902,-154 1845.38,-124.62 1670.55,-109.36 1567.73,-102.72"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2270.52,-323.84 2280.72,-320.97 2270.95,-316.85 2270.52,-323.84"/>
-</a>
-</g>
-</g>
-<!-- Node25 -->
-<g id="Node000025" class="node">
-<title>Node25</title>
-<g id="a_Node000025"><a xlink:href="RenderingSystem_8h.html" target="_top" xlink:title="描画コマンド発行システム。">
-<polygon fill="white" stroke="#666666" points="1893,-195 1733,-195 1733,-154 1893,-154 1893,-195"/>
-<text text-anchor="start" x="1741" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="start" x="1741" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">/Systems/Graphics/Rendering</text>
-<text text-anchor="middle" x="1813" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">System.h</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node25 -->
-<g id="edge49_Node000002_Node000025" class="edge">
-<title>Node2&#45;&gt;Node25</title>
-<g id="a_edge49_Node000002_Node000025"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2270.5,-321.36C2204.74,-318.21 2108.24,-307.19 2032,-272 2006.53,-260.24 2008.48,-244.71 1984,-231 1955.95,-215.3 1922.79,-203.24 1893.17,-194.45"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2270.65,-324.87 2280.79,-321.81 2270.95,-317.88 2270.65,-324.87"/>
-</a>
-</g>
-</g>
-<!-- Node26 -->
-<g id="Node000026" class="node">
-<title>Node26</title>
-<g id="a_Node000026"><a xlink:href="DepthNormalPass_8h.html" target="_top" xlink:title="SSAO等のポストプロセスで使用する、視点空間の法線と深度を描画するプリパス。">
-<polygon fill="white" stroke="#666666" points="2429.5,-272 2262.5,-272 2262.5,-231 2429.5,-231 2429.5,-272"/>
-<text text-anchor="start" x="2270.5" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="start" x="2270.5" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/DepthNormal</text>
-<text text-anchor="middle" x="2346" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">Pass.h</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node26 -->
-<g id="edge36_Node000002_Node000026" class="edge">
-<title>Node2&#45;&gt;Node26</title>
-<g id="a_edge36_Node000002_Node000026"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2346,-297.91C2346,-289.47 2346,-280.1 2346,-272.07"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2342.5,-297.94 2346,-307.94 2349.5,-297.94 2342.5,-297.94"/>
-</a>
-</g>
-</g>
-<!-- Node28 -->
-<g id="Node000028" class="node">
-<title>Node28</title>
-<g id="a_Node000028"><a xlink:href="Renderer_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="2465,-189.5 2335,-189.5 2335,-159.5 2465,-159.5 2465,-189.5"/>
-<text text-anchor="start" x="2343" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="2400" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Renderer.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node28 -->
-<g id="edge48_Node000002_Node000028" class="edge">
-<title>Node2&#45;&gt;Node28</title>
-<g id="a_edge48_Node000002_Node000028"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2421.12,-308.64C2503.32,-293.99 2623.59,-272.5 2624,-272 2635.69,-258.02 2635.27,-245.32 2624,-231 2581.86,-177.47 2541.08,-211.57 2475,-195 2468.08,-193.27 2460.82,-191.41 2453.64,-189.57"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2420.28,-305.23 2411.05,-310.43 2421.51,-312.12 2420.28,-305.23"/>
-</a>
-</g>
-</g>
-<!-- Node29 -->
-<g id="Node000029" class="node">
-<title>Node29</title>
-<g id="a_Node000029"><a xlink:href="ShadowPass_8h.html" target="_top" xlink:title="シャドウ生成パス (Directional / Spot Light 兼用・Array対応版)">
-<polygon fill="white" stroke="#666666" points="2244,-266.5 2074,-266.5 2074,-236.5 2244,-236.5 2244,-266.5"/>
-<text text-anchor="start" x="2082" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="2159" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/ShadowPass.h</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node29 -->
-<g id="edge40_Node000002_Node000029" class="edge">
-<title>Node2&#45;&gt;Node29</title>
-<g id="a_edge40_Node000002_Node000029"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2298.69,-304.42C2267.12,-292.68 2226.17,-277.47 2196.79,-266.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2297.56,-307.73 2308.16,-307.94 2300,-301.17 2297.56,-307.73"/>
-</a>
-</g>
-</g>
-<!-- Node31 -->
-<g id="Node000031" class="node">
-<title>Node31</title>
-<g id="a_Node000031"><a xlink:href="SkyboxPass_8h.html" target="_top" xlink:title="プロシージャルスカイボックス描画パス。">
-<polygon fill="white" stroke="#666666" points="2614.5,-266.5 2447.5,-266.5 2447.5,-236.5 2614.5,-236.5 2614.5,-266.5"/>
-<text text-anchor="start" x="2455.5" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="2531" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/SkyboxPass.h</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node31 -->
-<g id="edge44_Node000002_Node000031" class="edge">
-<title>Node2&#45;&gt;Node31</title>
-<g id="a_edge44_Node000002_Node000031"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2392.81,-304.42C2424.04,-292.68 2464.55,-277.47 2493.62,-266.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2391.57,-301.14 2383.44,-307.94 2394.03,-307.7 2391.57,-301.14"/>
+<path fill="none" stroke="#63b8ff" d="M510.08,-234.39C445.1,-221.03 353.68,-202.25 291.7,-189.51"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="509.77,-237.9 520.27,-236.48 511.18,-231.04 509.77,-237.9"/>
 </a>
 </g>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="GuiManager_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="3463.5,-35.5 3346.5,-35.5 3346.5,-5.5 3463.5,-5.5 3463.5,-35.5"/>
-<text text-anchor="start" x="3354.5" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="middle" x="3405" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/GuiManager.cpp</text>
+<g id="a_Node000004"><a xlink:href="Renderer_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="648.5,-189.5 518.5,-189.5 518.5,-159.5 648.5,-159.5 648.5,-189.5"/>
+<text text-anchor="start" x="526.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="583.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Renderer.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node4 -->
-<g id="edge3_Node000003_Node000004" class="edge">
-<title>Node3&#45;&gt;Node4</title>
-<g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M3559.66,-149.77C3551.19,-128.49 3536.27,-97.54 3515,-77 3495.69,-58.35 3468.88,-44.65 3446.56,-35.53"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="3556.48,-151.25 3563.3,-159.35 3563.02,-148.76 3556.48,-151.25"/>
+<!-- Node2&#45;&gt;Node4 -->
+<g id="edge3_Node000002_Node000004" class="edge">
+<title>Node2&#45;&gt;Node4</title>
+<g id="a_edge3_Node000002_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M586.89,-226.41C586.08,-214.24 585.13,-199.9 584.44,-189.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="583.4,-226.65 587.56,-236.39 590.39,-226.18 583.4,-226.65"/>
 </a>
 </g>
 </g>
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="Application_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="3278,-35.5 3148,-35.5 3148,-5.5 3278,-5.5 3278,-35.5"/>
-<text text-anchor="start" x="3156" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="3213" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Application.cpp</text>
+<g id="a_Node000005"><a xlink:href="RenderingSystem_8h.html" target="_top" xlink:title="描画コマンド発行システム。">
+<polygon fill="white" stroke="#666666" points="1636.5,-195 1476.5,-195 1476.5,-154 1636.5,-154 1636.5,-195"/>
+<text text-anchor="start" x="1484.5" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="start" x="1484.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">/Systems/Graphics/Rendering</text>
+<text text-anchor="middle" x="1556.5" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">System.h</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node5 -->
-<g id="edge4_Node000003_Node000005" class="edge">
-<title>Node3&#45;&gt;Node5</title>
-<g id="a_edge4_Node000003_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M3548.41,-151.67C3527.27,-129.5 3491.58,-95.83 3454,-77 3423.58,-61.76 3338.44,-44.12 3278.01,-32.89"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="3546.12,-154.35 3555.51,-159.27 3551.24,-149.57 3546.12,-154.35"/>
+<!-- Node2&#45;&gt;Node5 -->
+<g id="edge4_Node000002_Node000005" class="edge">
+<title>Node2&#45;&gt;Node5</title>
+<g id="a_edge4_Node000002_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M681.67,-235.26C693.7,-233.64 705.88,-232.15 717.5,-231 1049.14,-198.05 1136.07,-238.43 1466.5,-195 1469.67,-194.58 1472.89,-194.11 1476.14,-193.6"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="681.04,-231.82 671.62,-236.66 682,-238.75 681.04,-231.82"/>
 </a>
 </g>
 </g>
-<!-- Node6 -->
-<g id="Node000006" class="node">
-<title>Node6</title>
-<g id="a_Node000006"><a xlink:href="SpanEditor_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="2201.5,-107 2052.5,-107 2052.5,-88 2201.5,-88 2201.5,-107"/>
-<text text-anchor="middle" x="2127" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/SpanEditor.h</text>
-</a>
-</g>
-</g>
-<!-- Node3&#45;&gt;Node6 -->
-<g id="edge5_Node000003_Node000006" class="edge">
-<title>Node3&#45;&gt;Node6</title>
-<g id="a_edge5_Node000003_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M3499.5,-159.45C3487.06,-157.31 3474.18,-155.37 3462,-154 2984.24,-100.39 2405.08,-97.21 2201.82,-97.94"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="3498.89,-162.89 3509.35,-161.19 3500.11,-156 3498.89,-162.89"/>
+<!-- Node5&#45;&gt;Node6 -->
+<g id="edge5_Node000005_Node000006" class="edge">
+<title>Node5&#45;&gt;Node6</title>
+<g id="a_edge5_Node000005_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1647.21,-153.93C1901.16,-122.83 2616.62,-105.23 2853.97,-100.09"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1646.4,-150.5 1636.92,-155.23 1647.28,-157.45 1646.4,-150.5"/>
 </a>
 </g>
 </g>
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="HierarchyPanel_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1869,-41 1717,-41 1717,0 1869,0 1869,-41"/>
-<text text-anchor="start" x="1725" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="start" x="1725" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Hierarchy/Hierarchy</text>
-<text text-anchor="middle" x="1793" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Panel.cpp</text>
+<g id="a_Node000007"><a xlink:href="GuiManager_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1266,-35.5 1149,-35.5 1149,-5.5 1266,-5.5 1266,-35.5"/>
+<text text-anchor="start" x="1157" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="middle" x="1207.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/GuiManager.cpp</text>
 </a>
 </g>
 </g>
@@ -355,19 +221,18 @@ var sectionId = 'dynsection-1';
 <g id="edge6_Node000006_Node000007" class="edge">
 <title>Node6&#45;&gt;Node7</title>
 <g id="a_edge6_Node000006_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2078.23,-85.72C2028.02,-74.61 1947.51,-56.72 1878,-41 1875.19,-40.37 1872.34,-39.72 1869.45,-39.06"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2077.65,-89.18 2088.17,-87.92 2079.16,-82.34 2077.65,-89.18"/>
+<path fill="none" stroke="#63b8ff" d="M2843.75,-92.98C2632.14,-84.47 2076.93,-61.89 1613.5,-41 1489.96,-35.43 1345.29,-28.35 1266.33,-24.43"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2843.74,-96.49 2853.87,-93.39 2844.02,-89.49 2843.74,-96.49"/>
 </a>
 </g>
 </g>
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="InspectorPanel_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="2374.5,-41 2227.5,-41 2227.5,0 2374.5,0 2374.5,-41"/>
-<text text-anchor="start" x="2235.5" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="start" x="2235.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Inspector/Inspector</text>
-<text text-anchor="middle" x="2301" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Panel.cpp</text>
+<g id="a_Node000008"><a xlink:href="ImGuiUI_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="3311,-35.5 3194,-35.5 3194,-5.5 3311,-5.5 3311,-35.5"/>
+<text text-anchor="start" x="3202" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="middle" x="3252.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/ImGui/ImGuiUI.cpp</text>
 </a>
 </g>
 </g>
@@ -375,19 +240,19 @@ var sectionId = 'dynsection-1';
 <g id="edge7_Node000006_Node000008" class="edge">
 <title>Node6&#45;&gt;Node8</title>
 <g id="a_edge7_Node000006_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2156.3,-83.87C2183.46,-72.16 2224.27,-54.57 2255.63,-41.05"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2154.76,-80.72 2146.96,-87.9 2157.53,-87.15 2154.76,-80.72"/>
+<path fill="none" stroke="#63b8ff" d="M2984.09,-85.98C3035.42,-75.47 3115.63,-58.41 3184.5,-41 3191.17,-39.31 3198.17,-37.43 3205.05,-35.52"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2983.32,-82.56 2974.22,-87.99 2984.72,-89.42 2983.32,-82.56"/>
 </a>
 </g>
 </g>
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="ProjectBrowserPanel_8cpp.html" target="_top" xlink:title="ProjectBrowserPanelの実装。">
-<polygon fill="white" stroke="#666666" points="2027,-41 1887,-41 1887,0 2027,0 2027,-41"/>
-<text text-anchor="start" x="1895" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="start" x="1895" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/ProjectBrowser</text>
-<text text-anchor="middle" x="1957" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">/ProjectBrowserPanel.cpp</text>
+<g id="a_Node000009"><a xlink:href="HierarchyPanel_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1940.5,-41 1788.5,-41 1788.5,0 1940.5,0 1940.5,-41"/>
+<text text-anchor="start" x="1796.5" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="start" x="1796.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Hierarchy/Hierarchy</text>
+<text text-anchor="middle" x="1864.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Panel.cpp</text>
 </a>
 </g>
 </g>
@@ -395,19 +260,19 @@ var sectionId = 'dynsection-1';
 <g id="edge8_Node000006_Node000009" class="edge">
 <title>Node6&#45;&gt;Node9</title>
 <g id="a_edge8_Node000006_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2098.02,-83.71C2071.49,-72.01 2031.83,-54.51 2001.32,-41.05"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2096.94,-87.06 2107.5,-87.9 2099.76,-80.66 2096.94,-87.06"/>
+<path fill="none" stroke="#63b8ff" d="M2843.69,-96.5C2671.35,-95.4 2277.09,-87.49 1949.5,-41 1946.65,-40.6 1943.76,-40.14 1940.84,-39.65"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2843.7,-100 2853.72,-96.56 2843.74,-93 2843.7,-100"/>
 </a>
 </g>
 </g>
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="SceneViewPanel_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="2209,-41 2045,-41 2045,0 2209,0 2209,-41"/>
-<text text-anchor="start" x="2053" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="start" x="2053" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/SceneView/SceneView</text>
-<text text-anchor="middle" x="2127" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Panel.cpp</text>
+<g id="a_Node000010"><a xlink:href="InspectorPanel_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1770,-41 1623,-41 1623,0 1770,0 1770,-41"/>
+<text text-anchor="start" x="1631" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="start" x="1631" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Inspector/Inspector</text>
+<text text-anchor="middle" x="1696.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Panel.cpp</text>
 </a>
 </g>
 </g>
@@ -415,1001 +280,1141 @@ var sectionId = 'dynsection-1';
 <g id="edge9_Node000006_Node000010" class="edge">
 <title>Node6&#45;&gt;Node10</title>
 <g id="a_edge9_Node000006_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2127,-77.61C2127,-66.5 2127,-52.46 2127,-41.21"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2123.5,-77.9 2127,-87.9 2130.5,-77.9 2123.5,-77.9"/>
+<path fill="none" stroke="#63b8ff" d="M2843.76,-94.35C2611.55,-88.32 1984.77,-69.81 1779.5,-41 1776.42,-40.57 1773.29,-40.08 1770.13,-39.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2843.76,-97.85 2853.85,-94.61 2843.94,-90.85 2843.76,-97.85"/>
+</a>
+</g>
+</g>
+<!-- Node11 -->
+<g id="Node000011" class="node">
+<title>Node11</title>
+<g id="a_Node000011"><a xlink:href="ProjectBrowserPanel_8cpp.html" target="_top" xlink:title="ProjectBrowserPanelの実装。">
+<polygon fill="white" stroke="#666666" points="2098.5,-41 1958.5,-41 1958.5,0 2098.5,0 2098.5,-41"/>
+<text text-anchor="start" x="1966.5" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="start" x="1966.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/ProjectBrowser</text>
+<text text-anchor="middle" x="2028.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">/ProjectBrowserPanel.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node6&#45;&gt;Node11 -->
+<g id="edge10_Node000006_Node000011" class="edge">
+<title>Node6&#45;&gt;Node11</title>
+<g id="a_edge10_Node000006_Node000011"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2843.59,-95.61C2692.32,-92.95 2373.4,-82.44 2107.5,-41 2104.57,-40.54 2101.59,-40.03 2098.58,-39.47"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2843.69,-99.11 2853.75,-95.78 2843.81,-92.11 2843.69,-99.11"/>
 </a>
 </g>
 </g>
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="InspectorPanel_8h.html" target="_top" xlink:title="エンティティの詳細情報表示パネル。">
-<polygon fill="white" stroke="#666666" points="3444.5,-118 3297.5,-118 3297.5,-77 3444.5,-77 3444.5,-118"/>
-<text text-anchor="start" x="3305.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="start" x="3305.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Inspector/Inspector</text>
-<text text-anchor="middle" x="3371" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">Panel.h</text>
+<g id="a_Node000012"><a xlink:href="SceneViewPanel_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="2280.5,-41 2116.5,-41 2116.5,0 2280.5,0 2280.5,-41"/>
+<text text-anchor="start" x="2124.5" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="start" x="2124.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/SceneView/SceneView</text>
+<text text-anchor="middle" x="2198.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Panel.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node11&#45;&gt;Node12 -->
-<g id="edge11_Node000011_Node000012" class="edge">
-<title>Node11&#45;&gt;Node12</title>
-<g id="a_edge11_Node000011_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M3280.36,-243.87C3353.02,-236.94 3438.86,-222.95 3462,-195 3473.62,-180.96 3470.92,-169.89 3462,-154 3453.21,-138.35 3438.02,-126.59 3422.54,-118.02"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="3279.84,-240.41 3270.2,-244.81 3280.47,-247.38 3279.84,-240.41"/>
+<!-- Node6&#45;&gt;Node12 -->
+<g id="edge11_Node000006_Node000012" class="edge">
+<title>Node6&#45;&gt;Node12</title>
+<g id="a_edge11_Node000006_Node000012"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2843.35,-92.37C2719.24,-85.76 2486.17,-70.45 2289.5,-41 2286.62,-40.57 2283.7,-40.1 2280.76,-39.61"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2843.39,-95.88 2853.56,-92.91 2843.75,-88.89 2843.39,-95.88"/>
 </a>
 </g>
 </g>
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="MaterialPreviewer_8cpp.html" target="_top" xlink:title="MaterialPreviewerの実装。">
-<polygon fill="white" stroke="#666666" points="3452.5,-189.5 3241.5,-189.5 3241.5,-159.5 3452.5,-159.5 3452.5,-189.5"/>
-<text text-anchor="start" x="3249.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="middle" x="3347" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Inspector/MaterialPreviewer.cpp</text>
+<g id="a_Node000013"><a xlink:href="EditorFileSystem_8cpp.html" target="_top" xlink:title="EditorFileSystemの実装。">
+<polygon fill="white" stroke="#666666" points="2661.5,-35.5 2513.5,-35.5 2513.5,-5.5 2661.5,-5.5 2661.5,-35.5"/>
+<text text-anchor="start" x="2521.5" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="middle" x="2587.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Utils/EditorFileSystem.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node11&#45;&gt;Node13 -->
-<g id="edge13_Node000011_Node000013" class="edge">
-<title>Node11&#45;&gt;Node13</title>
-<g id="a_edge13_Node000011_Node000013"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M3212.58,-232.46C3243.67,-219.28 3285.22,-201.68 3313.86,-189.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="3211.13,-229.27 3203.29,-236.39 3213.87,-235.71 3211.13,-229.27"/>
+<!-- Node6&#45;&gt;Node13 -->
+<g id="edge12_Node000006_Node000013" class="edge">
+<title>Node6&#45;&gt;Node13</title>
+<g id="a_edge12_Node000006_Node000013"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2879.74,-85.83C2827.03,-74.89 2742.97,-57.22 2670.5,-41 2662.7,-39.25 2654.5,-37.38 2646.41,-35.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2879.35,-89.33 2889.85,-87.93 2880.77,-82.47 2879.35,-89.33"/>
 </a>
 </g>
 </g>
-<!-- Node12&#45;&gt;Node8 -->
-<g id="edge12_Node000012_Node000008" class="edge">
-<title>Node12&#45;&gt;Node8</title>
-<g id="a_edge12_Node000012_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M3287.44,-90.64C3084.31,-76.41 2567.23,-40.16 2374.71,-26.67"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="3287.23,-94.14 3297.45,-91.34 3287.72,-87.15 3287.23,-94.14"/>
+<!-- Node14 -->
+<g id="Node000014" class="node">
+<title>Node14</title>
+<g id="a_Node000014"><a xlink:href="Application_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="2428.5,-35.5 2298.5,-35.5 2298.5,-5.5 2428.5,-5.5 2428.5,-35.5"/>
+<text text-anchor="start" x="2306.5" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="2363.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Application.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node14&#45;&gt;Node5 -->
-<g id="edge18_Node000014_Node000005" class="edge">
-<title>Node14&#45;&gt;Node5</title>
-<g id="a_edge18_Node000014_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2885.11,-244.56C2990.78,-235.47 3172.89,-216.85 3194,-195 3236.53,-150.98 3223.77,-68.4 3216.5,-35.53"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2884.8,-241.07 2875.13,-245.41 2885.39,-248.05 2884.8,-241.07"/>
-</a>
-</g>
-</g>
-<!-- Node14&#45;&gt;Node13 -->
-<g id="edge16_Node000014_Node000013" class="edge">
-<title>Node14&#45;&gt;Node13</title>
-<g id="a_edge16_Node000014_Node000013"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2885.25,-241.15C2968.83,-230.6 3107.71,-212.63 3227,-195 3238.48,-193.3 3250.57,-191.44 3262.48,-189.55"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2884.57,-237.7 2875.09,-242.43 2885.45,-244.65 2884.57,-237.7"/>
+<!-- Node6&#45;&gt;Node14 -->
+<g id="edge13_Node000006_Node000014" class="edge">
+<title>Node6&#45;&gt;Node14</title>
+<g id="a_edge13_Node000006_Node000014"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2854.4,-86.67C2768.87,-75.72 2626.78,-57.4 2504.5,-41 2479.76,-37.68 2452.6,-33.95 2428.77,-30.64"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2854.18,-90.17 2864.55,-87.97 2855.07,-83.23 2854.18,-90.17"/>
 </a>
 </g>
 </g>
 <!-- Node15 -->
 <g id="Node000015" class="node">
 <title>Node15</title>
-<g id="a_Node000015"><a xlink:href="EnvironmentPanel_8cpp.html" target="_top" xlink:title="EnvironmentPanelの実装。">
-<polygon fill="white" stroke="#666666" points="2901,-195 2719,-195 2719,-154 2901,-154 2901,-195"/>
-<text text-anchor="start" x="2727" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="start" x="2727" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Environment/Environment</text>
-<text text-anchor="middle" x="2810" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">Panel.cpp</text>
+<g id="a_Node000015"><a xlink:href="AssetRegistry_8cpp.html" target="_top" xlink:title="AssetRegistryの実装。">
+<polygon fill="white" stroke="#666666" points="2833.5,-35.5 2679.5,-35.5 2679.5,-5.5 2833.5,-5.5 2833.5,-35.5"/>
+<text text-anchor="start" x="2687.5" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="2756.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Resource/AssetRegistry.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node14&#45;&gt;Node15 -->
-<g id="edge15_Node000014_Node000015" class="edge">
-<title>Node14&#45;&gt;Node15</title>
-<g id="a_edge15_Node000014_Node000015"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2810,-226.23C2810,-216.2 2810,-204.71 2810,-195.2"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2806.5,-226.39 2810,-236.39 2813.5,-226.39 2806.5,-226.39"/>
+<!-- Node6&#45;&gt;Node15 -->
+<g id="edge14_Node000006_Node000015" class="edge">
+<title>Node6&#45;&gt;Node15</title>
+<g id="a_edge14_Node000006_Node000015"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2901.98,-83.85C2870.82,-70.49 2821.82,-49.49 2789.43,-35.61"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2900.86,-87.17 2911.43,-87.9 2903.61,-80.74 2900.86,-87.17"/>
 </a>
 </g>
 </g>
 <!-- Node16 -->
 <g id="Node000016" class="node">
 <title>Node16</title>
-<g id="a_Node000016"><a xlink:href="FileDialog_8cpp.html" target="_top" xlink:title="FileDialogの実装">
-<polygon fill="white" stroke="#666666" points="3036.5,-189.5 2919.5,-189.5 2919.5,-159.5 3036.5,-159.5 3036.5,-189.5"/>
-<text text-anchor="start" x="2927.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="middle" x="2978" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Utils/FileDialog.cpp</text>
+<g id="a_Node000016"><a xlink:href="AssetSerializer_8cpp.html" target="_top" xlink:title="AssetSerializerの実装。">
+<polygon fill="white" stroke="#666666" points="3011.5,-35.5 2851.5,-35.5 2851.5,-5.5 3011.5,-5.5 3011.5,-35.5"/>
+<text text-anchor="start" x="2859.5" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="2931.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Resource/AssetSerializer.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node14&#45;&gt;Node16 -->
-<g id="edge17_Node000014_Node000016" class="edge">
-<title>Node14&#45;&gt;Node16</title>
-<g id="a_edge17_Node000014_Node000016"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2850.8,-232.29C2880.27,-219.13 2919.48,-201.62 2946.54,-189.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2849.3,-229.12 2841.6,-236.39 2852.16,-235.51 2849.3,-229.12"/>
+<!-- Node6&#45;&gt;Node16 -->
+<g id="edge15_Node000006_Node000016" class="edge">
+<title>Node6&#45;&gt;Node16</title>
+<g id="a_edge15_Node000006_Node000016"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2931.5,-77.7C2931.5,-64.64 2931.5,-47.51 2931.5,-35.61"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2928,-77.9 2931.5,-87.9 2935,-77.9 2928,-77.9"/>
 </a>
 </g>
 </g>
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="EntryPoint_8h.html" target="_top" xlink:title="アプリケーションのエントリーポイント (main関数)。">
-<polygon fill="white" stroke="#666666" points="3185,-189.5 3055,-189.5 3055,-159.5 3185,-159.5 3185,-189.5"/>
-<text text-anchor="start" x="3063" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="3120" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/EntryPoint.h</text>
+<g id="a_Node000017"><a xlink:href="SceneSerializer_8cpp.html" target="_top" xlink:title="SceneSerializerの実装。">
+<polygon fill="white" stroke="#666666" points="3175.5,-35.5 3029.5,-35.5 3029.5,-5.5 3175.5,-5.5 3175.5,-35.5"/>
+<text text-anchor="start" x="3037.5" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="3102.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Scene/SceneSerializer.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node14&#45;&gt;Node17 -->
-<g id="edge19_Node000014_Node000017" class="edge">
-<title>Node14&#45;&gt;Node17</title>
-<g id="a_edge19_Node000014_Node000017"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2881.48,-234.21C2928.34,-223.41 2990.91,-208.73 3046,-195 3052.96,-193.26 3060.28,-191.39 3067.49,-189.52"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2880.68,-230.8 2871.73,-236.46 2882.26,-237.63 2880.68,-230.8"/>
+<!-- Node6&#45;&gt;Node17 -->
+<g id="edge16_Node000006_Node000017" class="edge">
+<title>Node6&#45;&gt;Node17</title>
+<g id="a_edge16_Node000006_Node000017"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2960.35,-83.85C2990.79,-70.49 3038.67,-49.49 3070.32,-35.61"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2958.87,-80.67 2951.12,-87.9 2961.68,-87.09 2958.87,-80.67"/>
 </a>
 </g>
 </g>
-<!-- Node18 -->
-<g id="Node000018" class="node">
-<title>Node18</title>
-<g id="a_Node000018"><a xlink:href="CameraSystem_8h.html" target="_top" xlink:title="カメラ行列の更新とレンダラーへの適用。">
-<polygon fill="white" stroke="#666666" points="954,-189.5 760,-189.5 760,-159.5 954,-159.5 954,-189.5"/>
-<text text-anchor="start" x="768" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="857" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Systems/Graphics/CameraSystem.h</text>
+<!-- Node18&#45;&gt;Node2 -->
+<g id="edge40_Node000018_Node000002" class="edge">
+<title>Node18&#45;&gt;Node2</title>
+<g id="a_edge40_Node000018_Node000002"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1382.32,-320.47C1243.9,-316.9 939.61,-305.62 685.5,-272 674.6,-270.56 663.09,-268.62 651.95,-266.52"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1382.31,-323.97 1392.4,-320.72 1382.49,-316.97 1382.31,-323.97"/>
 </a>
 </g>
 </g>
-<!-- Node14&#45;&gt;Node18 -->
-<g id="edge20_Node000014_Node000018" class="edge">
-<title>Node14&#45;&gt;Node18</title>
-<g id="a_edge20_Node000014_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2734.44,-241.16C2700.7,-237.36 2660.41,-233.32 2624,-231 1920.8,-186.23 1742.15,-240.57 1039,-195 1011.41,-193.21 981.55,-190.39 954.16,-187.44"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2734.36,-244.68 2744.69,-242.33 2735.15,-237.72 2734.36,-244.68"/>
+<!-- Node18&#45;&gt;Node4 -->
+<g id="edge66_Node000018_Node000004" class="edge">
+<title>Node18&#45;&gt;Node4</title>
+<g id="a_edge66_Node000018_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1381.97,-320.1C1205.41,-315.2 776.17,-300.49 717.5,-272 695.42,-261.28 699.61,-246.4 680.5,-231 659.8,-214.32 633.48,-199.6 613.48,-189.52"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1382.12,-323.6 1392.21,-320.38 1382.31,-316.61 1382.12,-323.6"/>
 </a>
 </g>
 </g>
-<!-- Node14&#45;&gt;Node19 -->
-<g id="edge35_Node000014_Node000019" class="edge">
-<title>Node14&#45;&gt;Node19</title>
-<g id="a_edge35_Node000014_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2769.68,-231.83C2750.69,-222.13 2728.26,-209.32 2710,-195 2690.45,-179.67 2694.53,-164.47 2672,-154 2646.91,-142.34 1826.47,-110.98 1567.51,-101.35"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2768.18,-234.99 2778.69,-236.33 2771.31,-228.73 2768.18,-234.99"/>
+<!-- Node18&#45;&gt;Node5 -->
+<g id="edge67_Node000018_Node000005" class="edge">
+<title>Node18&#45;&gt;Node5</title>
+<g id="a_edge67_Node000018_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1532.74,-312.07C1580.43,-304.06 1635.81,-290.97 1650.5,-272 1661.65,-257.59 1659.53,-246.83 1650.5,-231 1641.57,-215.36 1626.33,-203.69 1610.68,-195.19"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1532,-308.65 1522.69,-313.71 1533.13,-315.56 1532,-308.65"/>
 </a>
 </g>
 </g>
-<!-- Node14&#45;&gt;Node25 -->
-<g id="edge33_Node000014_Node000025" class="edge">
-<title>Node14&#45;&gt;Node25</title>
-<g id="a_edge33_Node000014_Node000025"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2734.4,-241.68C2700.65,-237.97 2660.37,-233.86 2624,-231 2320.52,-207.12 2242.82,-226.14 1940,-195 1924.8,-193.44 1908.64,-191.31 1893.13,-189.04"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2734.33,-245.19 2744.66,-242.81 2735.1,-238.23 2734.33,-245.19"/>
+<!-- Node18&#45;&gt;Node6 -->
+<g id="edge68_Node000018_Node000006" class="edge">
+<title>Node18&#45;&gt;Node6</title>
+<g id="a_edge68_Node000018_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1532.89,-321.67C1757.91,-320.21 2414.46,-312.51 2501.5,-272 2524.03,-261.52 2517.26,-242.08 2539.5,-231 2610.27,-195.73 2830.48,-242.76 2893.5,-195 2922.2,-173.25 2929.25,-126.59 2930.96,-107.21"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1532.81,-318.17 1522.83,-321.73 1532.85,-325.17 1532.81,-318.17"/>
+</a>
+</g>
+</g>
+<!-- Node19 -->
+<g id="Node000019" class="node">
+<title>Node19</title>
+<g id="a_Node000019"><a xlink:href="GuiManager_8h.html" target="_top" xlink:title="ImGuiのライフサイクルとレンダリング管理。">
+<polygon fill="white" stroke="#666666" points="117,-189.5 0,-189.5 0,-159.5 117,-159.5 117,-189.5"/>
+<text text-anchor="start" x="8" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="middle" x="58.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/GuiManager.h</text>
 </a>
 </g>
 </g>
 <!-- Node18&#45;&gt;Node19 -->
-<g id="edge21_Node000018_Node000019" class="edge">
+<g id="edge18_Node000018_Node000019" class="edge">
 <title>Node18&#45;&gt;Node19</title>
-<g id="a_edge21_Node000018_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M942.71,-157.84C951.24,-156.47 959.78,-155.16 968,-154 1125.25,-131.85 1310.28,-114.14 1412.41,-105.09"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="942.02,-154.41 932.72,-159.49 943.16,-161.32 942.02,-154.41"/>
-</a>
-</g>
-</g>
-<!-- Node19&#45;&gt;Node4 -->
-<g id="edge22_Node000019_Node000004" class="edge">
-<title>Node19&#45;&gt;Node4</title>
-<g id="a_edge22_Node000019_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1577.83,-93.24C1687.08,-89.22 1879.3,-82.28 2044,-77 2596.39,-59.28 2736.89,-94.18 3287,-41 3306.43,-39.12 3327.5,-35.99 3346.38,-32.79"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1577.39,-89.75 1567.52,-93.62 1577.65,-96.75 1577.39,-89.75"/>
-</a>
-</g>
-</g>
-<!-- Node19&#45;&gt;Node5 -->
-<g id="edge29_Node000019_Node000005" class="edge">
-<title>Node19&#45;&gt;Node5</title>
-<g id="a_edge29_Node000019_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1577.73,-92.68C1881.13,-79.47 2881.87,-35.91 3147.69,-24.34"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1577.5,-89.19 1567.66,-93.12 1577.81,-96.18 1577.5,-89.19"/>
-</a>
-</g>
-</g>
-<!-- Node19&#45;&gt;Node7 -->
-<g id="edge24_Node000019_Node000007" class="edge">
-<title>Node19&#45;&gt;Node7</title>
-<g id="a_edge24_Node000019_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1534.21,-85.56C1582.08,-73.71 1659.29,-54.6 1716.94,-40.33"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1533.33,-82.17 1524.46,-87.97 1535.01,-88.96 1533.33,-82.17"/>
-</a>
-</g>
-</g>
-<!-- Node19&#45;&gt;Node8 -->
-<g id="edge25_Node000019_Node000008" class="edge">
-<title>Node19&#45;&gt;Node8</title>
-<g id="a_edge25_Node000019_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1577.81,-94.19C1715.12,-89.58 1988.71,-76.46 2218,-41 2221.07,-40.52 2224.2,-40 2227.35,-39.43"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1577.64,-90.69 1567.76,-94.52 1577.87,-97.69 1577.64,-90.69"/>
-</a>
-</g>
-</g>
-<!-- Node19&#45;&gt;Node9 -->
-<g id="edge26_Node000019_Node000009" class="edge">
-<title>Node19&#45;&gt;Node9</title>
-<g id="a_edge26_Node000019_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1575.85,-86.72C1654.75,-77.14 1774.76,-61.07 1878,-41 1880.91,-40.43 1883.88,-39.83 1886.87,-39.2"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1574.99,-83.3 1565.48,-87.97 1575.83,-90.25 1574.99,-83.3"/>
-</a>
-</g>
-</g>
-<!-- Node19&#45;&gt;Node10 -->
-<g id="edge27_Node000019_Node000010" class="edge">
-<title>Node19&#45;&gt;Node10</title>
-<g id="a_edge27_Node000019_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1577.87,-90.55C1686.08,-82.55 1875.3,-66.31 2036,-41 2038.87,-40.55 2041.79,-40.06 2044.74,-39.55"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1577.37,-87.08 1567.65,-91.3 1577.88,-94.06 1577.37,-87.08"/>
-</a>
-</g>
-</g>
-<!-- Node20 -->
-<g id="Node000020" class="node">
-<title>Node20</title>
-<g id="a_Node000020"><a xlink:href="ImGuiUI_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1698.5,-35.5 1581.5,-35.5 1581.5,-5.5 1698.5,-5.5 1698.5,-35.5"/>
-<text text-anchor="start" x="1589.5" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="middle" x="1640" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/ImGui/ImGuiUI.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node19&#45;&gt;Node20 -->
-<g id="edge23_Node000019_Node000020" class="edge">
-<title>Node19&#45;&gt;Node20</title>
-<g id="a_edge23_Node000019_Node000020"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1516.35,-83.32C1543.1,-69.95 1584.37,-49.31 1611.78,-35.61"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1514.59,-80.29 1507.21,-87.9 1517.72,-86.55 1514.59,-80.29"/>
+<g id="a_edge18_Node000018_Node000019"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1381.85,-321.98C1219.16,-321.08 824.21,-314.28 496.5,-272 329.48,-250.45 288.92,-235.67 125.5,-195 118.8,-193.33 111.76,-191.44 104.87,-189.51"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1382.21,-325.48 1392.23,-322.03 1382.24,-318.48 1382.21,-325.48"/>
 </a>
 </g>
 </g>
 <!-- Node21 -->
 <g id="Node000021" class="node">
 <title>Node21</title>
-<g id="a_Node000021"><a xlink:href="EditorFileSystem_8cpp.html" target="_top" xlink:title="EditorFileSystemの実装。">
-<polygon fill="white" stroke="#666666" points="1049,-35.5 901,-35.5 901,-5.5 1049,-5.5 1049,-35.5"/>
-<text text-anchor="start" x="909" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
-<text text-anchor="middle" x="975" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Utils/EditorFileSystem.cpp</text>
+<g id="a_Node000021"><a xlink:href="MaterialPreviewer_8h.html" target="_top" xlink:title="マテリアルプレビュー用のオフスクリーンレンダリング管理。">
+<polygon fill="white" stroke="#666666" points="2492.5,-266.5 2292.5,-266.5 2292.5,-236.5 2492.5,-236.5 2492.5,-266.5"/>
+<text text-anchor="start" x="2300.5" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="middle" x="2392.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Inspector/MaterialPreviewer.h</text>
 </a>
 </g>
 </g>
-<!-- Node19&#45;&gt;Node21 -->
-<g id="edge28_Node000019_Node000021" class="edge">
-<title>Node19&#45;&gt;Node21</title>
-<g id="a_edge28_Node000019_Node000021"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1402.21,-87.9C1314.64,-78.7 1176.45,-62.46 1058,-41 1049.26,-39.42 1040.06,-37.5 1031.09,-35.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1402.06,-91.4 1412.37,-88.96 1402.79,-84.44 1402.06,-91.4"/>
-</a>
-</g>
-</g>
-<!-- Node22 -->
-<g id="Node000022" class="node">
-<title>Node22</title>
-<g id="a_Node000022"><a xlink:href="AssetRegistry_8cpp.html" target="_top" xlink:title="AssetRegistryの実装。">
-<polygon fill="white" stroke="#666666" points="1221,-35.5 1067,-35.5 1067,-5.5 1221,-5.5 1221,-35.5"/>
-<text text-anchor="start" x="1075" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="1144" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Resource/AssetRegistry.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node19&#45;&gt;Node22 -->
-<g id="edge30_Node000019_Node000022" class="edge">
-<title>Node19&#45;&gt;Node22</title>
-<g id="a_edge30_Node000019_Node000022"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1438.93,-85.8C1386.47,-74.76 1302.48,-56.95 1230,-41 1222.08,-39.26 1213.75,-37.4 1205.52,-35.55"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1438.48,-89.28 1448.99,-87.91 1439.92,-82.43 1438.48,-89.28"/>
-</a>
-</g>
-</g>
-<!-- Node23 -->
-<g id="Node000023" class="node">
-<title>Node23</title>
-<g id="a_Node000023"><a xlink:href="AssetSerializer_8cpp.html" target="_top" xlink:title="AssetSerializerの実装。">
-<polygon fill="white" stroke="#666666" points="1399,-35.5 1239,-35.5 1239,-5.5 1399,-5.5 1399,-35.5"/>
-<text text-anchor="start" x="1247" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="1319" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Resource/AssetSerializer.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node19&#45;&gt;Node23 -->
-<g id="edge31_Node000019_Node000023" class="edge">
-<title>Node19&#45;&gt;Node23</title>
-<g id="a_edge31_Node000019_Node000023"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1461.15,-83.85C1430.71,-70.49 1382.83,-49.49 1351.18,-35.61"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1459.82,-87.09 1470.38,-87.9 1462.63,-80.67 1459.82,-87.09"/>
+<!-- Node18&#45;&gt;Node21 -->
+<g id="edge26_Node000018_Node000021" class="edge">
+<title>Node18&#45;&gt;Node21</title>
+<g id="a_edge26_Node000018_Node000021"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1532.85,-318.59C1671.65,-311.99 1976.97,-295.98 2233.5,-272 2252.47,-270.23 2272.67,-268.01 2292.09,-265.71"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1532.57,-315.1 1522.75,-319.07 1532.9,-322.09 1532.57,-315.1"/>
 </a>
 </g>
 </g>
 <!-- Node24 -->
 <g id="Node000024" class="node">
 <title>Node24</title>
-<g id="a_Node000024"><a xlink:href="SceneSerializer_8cpp.html" target="_top" xlink:title="SceneSerializerの実装。">
-<polygon fill="white" stroke="#666666" points="1563,-35.5 1417,-35.5 1417,-5.5 1563,-5.5 1563,-35.5"/>
-<text text-anchor="start" x="1425" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="1490" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Scene/SceneSerializer.cpp</text>
+<g id="a_Node000024"><a xlink:href="Application_8h.html" target="_top" xlink:title="エンジンのメインループとライフサイクル管理。">
+<polygon fill="white" stroke="#666666" points="2224.5,-266.5 2094.5,-266.5 2094.5,-236.5 2224.5,-236.5 2224.5,-266.5"/>
+<text text-anchor="start" x="2102.5" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="2159.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Application.h</text>
 </a>
 </g>
 </g>
-<!-- Node19&#45;&gt;Node24 -->
-<g id="edge32_Node000019_Node000024" class="edge">
-<title>Node19&#45;&gt;Node24</title>
-<g id="a_edge32_Node000019_Node000024"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1490,-77.7C1490,-64.64 1490,-47.51 1490,-35.61"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1486.5,-77.9 1490,-87.9 1493.5,-77.9 1486.5,-77.9"/>
+<!-- Node18&#45;&gt;Node24 -->
+<g id="edge30_Node000018_Node000024" class="edge">
+<title>Node18&#45;&gt;Node24</title>
+<g id="a_edge30_Node000018_Node000024"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1532.69,-314.56C1671.11,-300.85 1963.98,-271.86 2094.44,-258.94"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1532.2,-311.09 1522.6,-315.56 1532.89,-318.05 1532.2,-311.09"/>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node19 -->
-<g id="edge34_Node000025_Node000019" class="edge">
-<title>Node25&#45;&gt;Node19</title>
-<g id="a_edge34_Node000025_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1722.91,-152.58C1658.06,-137.52 1573.96,-118 1526.61,-107"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1722.21,-156.01 1732.74,-154.86 1723.79,-149.19 1722.21,-156.01"/>
+<!-- Node29 -->
+<g id="Node000029" class="node">
+<title>Node29</title>
+<g id="a_Node000029"><a xlink:href="DepthNormalPass_8h.html" target="_top" xlink:title="SSAO等のポストプロセスで使用する、視点空間の法線と深度を描画するプリパス。">
+<polygon fill="white" stroke="#666666" points="1445,-272 1278,-272 1278,-231 1445,-231 1445,-272"/>
+<text text-anchor="start" x="1286" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="start" x="1286" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/DepthNormal</text>
+<text text-anchor="middle" x="1361.5" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">Pass.h</text>
 </a>
 </g>
 </g>
-<!-- Node26&#45;&gt;Node25 -->
-<g id="edge39_Node000026_Node000025" class="edge">
-<title>Node26&#45;&gt;Node25</title>
-<g id="a_edge39_Node000026_Node000025"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2252.22,-230.96C2113.03,-208.83 2075.53,-213.19 1940,-195 1924.86,-192.97 1908.72,-190.63 1893.21,-188.29"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2251.99,-234.46 2262.42,-232.6 2253.1,-227.55 2251.99,-234.46"/>
-</a>
-</g>
-</g>
-<!-- Node27 -->
-<g id="Node000027" class="node">
-<title>Node27</title>
-<g id="a_Node000027"><a xlink:href="DepthNormalPass_8cpp.html" target="_top" xlink:title="DepthNormalPassの実装。">
-<polygon fill="white" stroke="#666666" points="2316.5,-195 2149.5,-195 2149.5,-154 2316.5,-154 2316.5,-195"/>
-<text text-anchor="start" x="2157.5" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="start" x="2157.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/DepthNormal</text>
-<text text-anchor="middle" x="2233" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">Pass.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node26&#45;&gt;Node27 -->
-<g id="edge37_Node000026_Node000027" class="edge">
-<title>Node26&#45;&gt;Node27</title>
-<g id="a_edge37_Node000026_Node000027"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2308.14,-225.37C2293.31,-215.53 2276.56,-204.41 2262.64,-195.17"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2306.34,-228.38 2316.61,-230.99 2310.21,-222.54 2306.34,-228.38"/>
-</a>
-</g>
-</g>
-<!-- Node26&#45;&gt;Node28 -->
-<g id="edge38_Node000026_Node000028" class="edge">
-<title>Node26&#45;&gt;Node28</title>
-<g id="a_edge38_Node000026_Node000028"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2366.1,-222.59C2374.11,-211.46 2383,-199.12 2389.66,-189.86"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2363.19,-220.63 2360.19,-230.79 2368.87,-224.72 2363.19,-220.63"/>
-</a>
-</g>
-</g>
-<!-- Node29&#45;&gt;Node25 -->
-<g id="edge43_Node000029_Node000025" class="edge">
-<title>Node29&#45;&gt;Node25</title>
-<g id="a_edge43_Node000029_Node000025"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2084.41,-234.33C2028.06,-222.12 1950.85,-205.38 1893.18,-192.88"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2083.81,-237.78 2094.33,-236.48 2085.29,-230.94 2083.81,-237.78"/>
-</a>
-</g>
-</g>
-<!-- Node29&#45;&gt;Node28 -->
-<g id="edge42_Node000029_Node000028" class="edge">
-<title>Node29&#45;&gt;Node28</title>
-<g id="a_edge42_Node000029_Node000028"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2213.7,-233.48C2256.32,-220.21 2314.77,-202.02 2354.76,-189.58"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2212.56,-230.17 2204.05,-236.48 2214.64,-236.85 2212.56,-230.17"/>
-</a>
-</g>
-</g>
-<!-- Node30 -->
-<g id="Node000030" class="node">
-<title>Node30</title>
-<g id="a_Node000030"><a xlink:href="ShadowPass_8cpp.html" target="_top" xlink:title="ShadowPassの実装。">
-<polygon fill="white" stroke="#666666" points="2131,-189.5 1949,-189.5 1949,-159.5 2131,-159.5 2131,-189.5"/>
-<text text-anchor="start" x="1957" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="2040" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/ShadowPass.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node29&#45;&gt;Node30 -->
-<g id="edge41_Node000029_Node000030" class="edge">
-<title>Node29&#45;&gt;Node30</title>
-<g id="a_edge41_Node000029_Node000030"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2127.91,-230.9C2107.31,-217.93 2080.79,-201.21 2062.28,-189.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2126.29,-234.02 2136.62,-236.39 2130.02,-228.1 2126.29,-234.02"/>
-</a>
-</g>
-</g>
-<!-- Node31&#45;&gt;Node25 -->
-<g id="edge47_Node000031_Node000025" class="edge">
-<title>Node31&#45;&gt;Node25</title>
-<g id="a_edge47_Node000031_Node000025"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2460.51,-234.54C2453.27,-233.2 2446,-231.99 2439,-231 2218.84,-199.87 2160.96,-219.89 1940,-195 1924.82,-193.29 1908.66,-191.1 1893.15,-188.81"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2459.86,-237.97 2470.34,-236.42 2461.18,-231.1 2459.86,-237.97"/>
-</a>
-</g>
-</g>
-<!-- Node31&#45;&gt;Node28 -->
-<g id="edge46_Node000031_Node000028" class="edge">
-<title>Node31&#45;&gt;Node28</title>
-<g id="a_edge46_Node000031_Node000028"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2497.38,-231.25C2474.63,-218.23 2445.08,-201.31 2424.53,-189.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2495.94,-234.46 2506.36,-236.39 2499.42,-228.39 2495.94,-234.46"/>
+<!-- Node18&#45;&gt;Node29 -->
+<g id="edge41_Node000018_Node000029" class="edge">
+<title>Node18&#45;&gt;Node29</title>
+<g id="a_edge41_Node000018_Node000029"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1429.94,-302.04C1416.93,-292.63 1401.47,-281.44 1388.54,-272.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1427.92,-304.91 1438.07,-307.94 1432.03,-299.24 1427.92,-304.91"/>
 </a>
 </g>
 </g>
 <!-- Node32 -->
 <g id="Node000032" class="node">
 <title>Node32</title>
-<g id="a_Node000032"><a xlink:href="SkyboxPass_8cpp.html" target="_top" xlink:title="SkyboxPassの実装。">
-<polygon fill="white" stroke="#666666" points="2662.5,-189.5 2483.5,-189.5 2483.5,-159.5 2662.5,-159.5 2662.5,-189.5"/>
-<text text-anchor="start" x="2491.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="2573" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/SkyboxPass.cpp</text>
+<g id="a_Node000032"><a xlink:href="SSAOBlurPass_8h.html" target="_top" xlink:title="SSAOのノイズを除去するブラーパス">
+<polygon fill="white" stroke="#666666" points="1642,-266.5 1463,-266.5 1463,-236.5 1642,-236.5 1642,-266.5"/>
+<text text-anchor="start" x="1471" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="1552.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/SSAOBlurPass.h</text>
 </a>
 </g>
 </g>
-<!-- Node31&#45;&gt;Node32 -->
-<g id="edge45_Node000031_Node000032" class="edge">
-<title>Node31&#45;&gt;Node32</title>
-<g id="a_edge45_Node000031_Node000032"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2543.87,-227.51C2550.82,-215.11 2559.16,-200.21 2565.14,-189.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2540.73,-225.96 2538.9,-236.39 2546.84,-229.38 2540.73,-225.96"/>
-</a>
-</g>
-</g>
-<!-- Node33&#45;&gt;Node2 -->
-<g id="edge56_Node000033_Node000002" class="edge">
-<title>Node33&#45;&gt;Node2</title>
-<g id="a_edge56_Node000033_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2090.39,-437.06C2119.99,-428.27 2155.75,-416.71 2187,-404 2235.95,-384.09 2290.45,-355.08 2321.24,-338.02"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2089.22,-433.76 2080.61,-439.93 2091.19,-440.47 2089.22,-433.76"/>
-</a>
-</g>
-</g>
-<!-- Node33&#45;&gt;Node11 -->
-<g id="edge52_Node000033_Node000011" class="edge">
-<title>Node33&#45;&gt;Node11</title>
-<g id="a_edge52_Node000033_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2118.38,-438.22C2334.84,-399.99 2884.47,-302.92 3090.44,-266.55"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2117.57,-434.81 2108.33,-439.99 2118.78,-441.7 2117.57,-434.81"/>
-</a>
-</g>
-</g>
-<!-- Node33&#45;&gt;Node19 -->
-<g id="edge93_Node000033_Node000019" class="edge">
-<title>Node33&#45;&gt;Node19</title>
-<g id="a_edge93_Node000033_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2008.55,-432.14C2001.76,-423.85 1994.73,-414 1990,-404 1956.28,-332.76 2008.5,-284.91 1951,-231 1876.48,-161.13 1819.47,-231.32 1724,-195 1692.43,-182.99 1690.52,-168.47 1660,-154 1615.11,-132.72 1559.93,-116.36 1524.85,-107.08"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2006,-434.54 2015.17,-439.84 2011.31,-429.98 2006,-434.54"/>
+<!-- Node18&#45;&gt;Node32 -->
+<g id="edge46_Node000018_Node000032" class="edge">
+<title>Node18&#45;&gt;Node32</title>
+<g id="a_edge46_Node000018_Node000032"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1484.92,-301.94C1500.41,-290.6 1519.4,-276.71 1533.3,-266.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1482.73,-299.21 1476.72,-307.94 1486.86,-304.86 1482.73,-299.21"/>
 </a>
 </g>
 </g>
 <!-- Node34 -->
 <g id="Node000034" class="node">
 <title>Node34</title>
-<g id="a_Node000034"><a xlink:href="MeshRenderer_8h.html" target="_top" xlink:title="メッシュの描画設定とマテリアル参照。">
-<polygon fill="white" stroke="#666666" points="1794,-272 1664,-272 1664,-231 1794,-231 1794,-272"/>
-<text text-anchor="start" x="1672" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="start" x="1672" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Graphics</text>
-<text text-anchor="middle" x="1729" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">/MeshRenderer.h</text>
+<g id="a_Node000034"><a xlink:href="SSAOPass_8h.html" target="_top" xlink:title="Screen Space Ambient Occlusion (SSAO) を計算パス。">
+<polygon fill="white" stroke="#666666" points="886,-266.5 727,-266.5 727,-236.5 886,-236.5 886,-266.5"/>
+<text text-anchor="start" x="735" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="806.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/SSAOPass.h</text>
 </a>
 </g>
 </g>
-<!-- Node33&#45;&gt;Node34 -->
-<g id="edge53_Node000033_Node000034" class="edge">
-<title>Node33&#45;&gt;Node34</title>
-<g id="a_edge53_Node000033_Node000034"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1999.27,-434.03C1941.66,-395.33 1815.46,-310.57 1758.24,-272.14"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1997.65,-437.16 2007.9,-439.83 2001.55,-431.35 1997.65,-437.16"/>
-</a>
-</g>
-</g>
-<!-- Node35 -->
-<g id="Node000035" class="node">
-<title>Node35</title>
-<g id="a_Node000035"><a xlink:href="Material_8cpp.html" target="_top" xlink:title="Materialの実装。">
-<polygon fill="white" stroke="#666666" points="2177.5,-404 1998.5,-404 1998.5,-374 2177.5,-374 2177.5,-404"/>
-<text text-anchor="start" x="2006.5" y="-392" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="2088" y="-381" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Resources/Material.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node33&#45;&gt;Node35 -->
-<g id="edge57_Node000033_Node000035" class="edge">
-<title>Node33&#45;&gt;Node35</title>
-<g id="a_edge57_Node000033_Node000035"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M2048.94,-432.37C2057.52,-423.06 2067.31,-412.44 2074.94,-404.16"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2046.3,-430.07 2042.09,-439.8 2051.45,-434.82 2046.3,-430.07"/>
+<!-- Node18&#45;&gt;Node34 -->
+<g id="edge51_Node000018_Node000034" class="edge">
+<title>Node18&#45;&gt;Node34</title>
+<g id="a_edge51_Node000018_Node000034"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1382.11,-318.34C1273.91,-312.4 1068.55,-298.55 895.5,-272 885.81,-270.51 875.59,-268.6 865.67,-266.56"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1382.1,-321.84 1392.27,-318.89 1382.48,-314.85 1382.1,-321.84"/>
 </a>
 </g>
 </g>
 <!-- Node36 -->
 <g id="Node000036" class="node">
 <title>Node36</title>
-<g id="a_Node000036"><a xlink:href="AssetManager_8h.html" target="_top" xlink:title="エンジン全域のアセットライフサイクルを管理するシングルトン。">
-<polygon fill="white" stroke="#666666" points="729,-404 583,-404 583,-374 729,-374 729,-404"/>
-<text text-anchor="start" x="591" y="-392" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="656" y="-381" font-family="Helvetica,sans-Serif" font-size="10.00">/Resource/AssetManager.h</text>
+<g id="a_Node000036"><a xlink:href="ShadowPass_8h.html" target="_top" xlink:title="シャドウ生成パス (Directional / Spot Light 兼用・Array対応版)">
+<polygon fill="white" stroke="#666666" points="1074.5,-266.5 904.5,-266.5 904.5,-236.5 1074.5,-236.5 1074.5,-266.5"/>
+<text text-anchor="start" x="912.5" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="989.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/ShadowPass.h</text>
 </a>
 </g>
 </g>
-<!-- Node33&#45;&gt;Node36 -->
-<g id="edge58_Node000033_Node000036" class="edge">
-<title>Node33&#45;&gt;Node36</title>
-<g id="a_edge58_Node000033_Node000036"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1934.82,-449.61C1676.56,-437.57 961,-404.22 729.37,-393.42"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1934.77,-453.11 1944.92,-450.08 1935.1,-446.12 1934.77,-453.11"/>
-</a>
-</g>
-</g>
-<!-- Node34&#45;&gt;Node19 -->
-<g id="edge55_Node000034_Node000019" class="edge">
-<title>Node34&#45;&gt;Node19</title>
-<g id="a_edge55_Node000034_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1704.19,-223.62C1683.69,-202.59 1653.03,-173.71 1622,-154 1588.43,-132.67 1545.26,-116.32 1517.6,-107.06"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1701.81,-226.19 1711.26,-230.98 1706.85,-221.34 1701.81,-226.19"/>
-</a>
-</g>
-</g>
-<!-- Node34&#45;&gt;Node25 -->
-<g id="edge54_Node000034_Node000025" class="edge">
-<title>Node34&#45;&gt;Node25</title>
-<g id="a_edge54_Node000034_Node000025"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1758.6,-224.07C1769.29,-214.52 1781.16,-203.93 1791.08,-195.07"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1756.2,-221.52 1751.07,-230.79 1760.86,-226.75 1756.2,-221.52"/>
-</a>
-</g>
-</g>
-<!-- Node36&#45;&gt;Node19 -->
-<g id="edge92_Node000036_Node000019" class="edge">
-<title>Node36&#45;&gt;Node19</title>
-<g id="a_edge92_Node000036_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M572.89,-381.44C442.09,-369.2 197.62,-337.91 145,-272 133.63,-257.76 134.22,-245.69 145,-231 212.53,-138.98 277.65,-174.15 390,-154 586.68,-118.73 1195.39,-104.06 1412.27,-99.86"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="572.6,-384.93 582.88,-382.36 573.24,-377.96 572.6,-384.93"/>
-</a>
-</g>
-</g>
-<!-- Node37 -->
-<g id="Node000037" class="node">
-<title>Node37</title>
-<g id="a_Node000037"><a xlink:href="SpanReflection_8h.html" target="_top" xlink:title="コンポーネント定義用のリフレクションマクロ。">
-<polygon fill="#fff0f0" stroke="red" points="1174.5,-338 1021.5,-338 1021.5,-308 1174.5,-308 1174.5,-338"/>
-<text text-anchor="start" x="1029.5" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="1098" y="-315" font-family="Helvetica,sans-Serif" font-size="10.00">/Reflection/SpanReflection.h</text>
-</a>
-</g>
-</g>
-<!-- Node36&#45;&gt;Node37 -->
-<g id="edge59_Node000036_Node000037" class="edge">
-<title>Node36&#45;&gt;Node37</title>
-<g id="a_edge59_Node000036_Node000037"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M739.66,-375.89C820.76,-364.14 942.74,-346.48 1021.37,-335.1"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="738.88,-372.46 729.48,-377.36 739.88,-379.39 738.88,-372.46"/>
-</a>
-</g>
-</g>
-<!-- Node55 -->
-<g id="Node000055" class="node">
-<title>Node55</title>
-<g id="a_Node000055"><a xlink:href="AssetManager_8cpp.html" target="_top" xlink:title="AssetManagerの実装。">
-<polygon fill="white" stroke="#666666" points="185.5,-338 28.5,-338 28.5,-308 185.5,-308 185.5,-338"/>
-<text text-anchor="start" x="36.5" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="107" y="-315" font-family="Helvetica,sans-Serif" font-size="10.00">/Resource/AssetManager.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node36&#45;&gt;Node55 -->
-<g id="edge91_Node000036_Node000055" class="edge">
-<title>Node36&#45;&gt;Node55</title>
-<g id="a_edge91_Node000036_Node000055"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M572.8,-379.89C481.3,-370.74 329.98,-354.9 200,-338 195.3,-337.39 190.48,-336.74 185.61,-336.06"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="572.54,-383.38 582.84,-380.89 573.24,-376.42 572.54,-383.38"/>
-</a>
-</g>
-</g>
-<!-- Node37&#45;&gt;Node19 -->
-<g id="edge90_Node000037_Node000019" class="edge">
-<title>Node37&#45;&gt;Node19</title>
-<g id="a_edge90_Node000037_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1084.47,-298.8C1061.58,-258.1 1019.52,-176.03 1039,-154 1063.27,-126.56 1289.76,-109.72 1412.24,-102.55"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1081.57,-300.79 1089.56,-307.74 1087.65,-297.32 1081.57,-300.79"/>
-</a>
-</g>
-</g>
-<!-- Node37&#45;&gt;Node34 -->
-<g id="edge87_Node000037_Node000034" class="edge">
-<title>Node37&#45;&gt;Node34</title>
-<g id="a_edge87_Node000037_Node000034"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1184.72,-318.73C1294.78,-313.55 1490.16,-300.91 1655,-272 1657.88,-271.5 1660.81,-270.93 1663.76,-270.33"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1184.49,-315.24 1174.66,-319.2 1184.81,-322.23 1184.49,-315.24"/>
+<!-- Node18&#45;&gt;Node36 -->
+<g id="edge56_Node000018_Node000036" class="edge">
+<title>Node18&#45;&gt;Node36</title>
+<g id="a_edge56_Node000018_Node000036"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1382.04,-313.52C1306.33,-304.64 1186.5,-289.55 1083.5,-272 1073.97,-270.38 1063.93,-268.49 1054.11,-266.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1382.09,-317.05 1392.42,-314.73 1382.9,-310.1 1382.09,-317.05"/>
 </a>
 </g>
 </g>
 <!-- Node38 -->
 <g id="Node000038" class="node">
 <title>Node38</title>
-<g id="a_Node000038"><a xlink:href="Active_8h.html" target="_top" xlink:title="エンティティの有効/無効フラグ。">
-<polygon fill="#fff0f0" stroke="red" points="1196.5,-189.5 1047.5,-189.5 1047.5,-159.5 1196.5,-159.5 1196.5,-189.5"/>
-<text text-anchor="start" x="1055.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="1122" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/Active.h</text>
+<g id="a_Node000038"><a xlink:href="SkyboxPass_8h.html" target="_top" xlink:title="プロシージャルスカイボックス描画パス。">
+<polygon fill="white" stroke="#666666" points="1260,-266.5 1093,-266.5 1093,-236.5 1260,-236.5 1260,-266.5"/>
+<text text-anchor="start" x="1101" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="1176.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/SkyboxPass.h</text>
 </a>
 </g>
 </g>
-<!-- Node37&#45;&gt;Node38 -->
-<g id="edge60_Node000037_Node000038" class="edge">
-<title>Node37&#45;&gt;Node38</title>
-<g id="a_edge60_Node000037_Node000038"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1101.92,-298.05C1106.97,-267.28 1115.56,-214.83 1119.67,-189.72"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1098.46,-297.52 1100.3,-307.95 1105.37,-298.65 1098.46,-297.52"/>
+<!-- Node18&#45;&gt;Node38 -->
+<g id="edge61_Node000018_Node000038" class="edge">
+<title>Node18&#45;&gt;Node38</title>
+<g id="a_edge61_Node000018_Node000038"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1390.66,-305.47C1342.7,-293.61 1278.77,-277.8 1233.28,-266.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1390.09,-308.93 1400.64,-307.94 1391.77,-302.14 1390.09,-308.93"/>
 </a>
 </g>
 </g>
-<!-- Node40 -->
-<g id="Node000040" class="node">
-<title>Node40</title>
-<g id="a_Node000040"><a xlink:href="IDComponent_8h.html" target="_top" xlink:title="エンティティの一意な識別子 (UUID) を保持するコンポーネント。">
-<polygon fill="white" stroke="#666666" points="1399.5,-189.5 1214.5,-189.5 1214.5,-159.5 1399.5,-159.5 1399.5,-189.5"/>
-<text text-anchor="start" x="1222.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="1307" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/IDComponent.h</text>
+<!-- Node19&#45;&gt;Node7 -->
+<g id="edge19_Node000019_Node000007" class="edge">
+<title>Node19&#45;&gt;Node7</title>
+<g id="a_edge19_Node000019_Node000007"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M112.85,-156.89C117.11,-155.83 121.36,-154.85 125.5,-154 511.56,-74.72 985.52,-36.74 1148.91,-25.34"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="111.73,-153.56 102.94,-159.48 113.5,-160.34 111.73,-153.56"/>
 </a>
 </g>
 </g>
-<!-- Node37&#45;&gt;Node40 -->
-<g id="edge62_Node000037_Node000040" class="edge">
-<title>Node37&#45;&gt;Node40</title>
-<g id="a_edge62_Node000037_Node000040"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1108.7,-298.78C1119.17,-278.38 1136.89,-249.19 1160,-231 1184.86,-211.43 1217.38,-198.2 1245.5,-189.58"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1105.44,-297.48 1104.16,-308 1111.72,-300.58 1105.44,-297.48"/>
+<!-- Node19&#45;&gt;Node14 -->
+<g id="edge20_Node000019_Node000014" class="edge">
+<title>Node19&#45;&gt;Node14</title>
+<g id="a_edge20_Node000019_Node000014"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M110.74,-156.88C115.69,-155.73 120.67,-154.74 125.5,-154 220.96,-139.38 1774.44,-155.34 1863.5,-118 1887.56,-107.91 1881.83,-87.96 1905.5,-77 2061.07,-5.01 2120.72,-70.94 2289.5,-41 2297.74,-39.54 2306.41,-37.61 2314.79,-35.55"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="109.5,-153.58 100.65,-159.41 111.21,-160.37 109.5,-153.58"/>
+</a>
+</g>
+</g>
+<!-- Node20 -->
+<g id="Node000020" class="node">
+<title>Node20</title>
+<g id="a_Node000020"><a xlink:href="SpanEditor_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1854,-107 1705,-107 1705,-88 1854,-88 1854,-107"/>
+<text text-anchor="middle" x="1779.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/SpanEditor.h</text>
+</a>
+</g>
+</g>
+<!-- Node19&#45;&gt;Node20 -->
+<g id="edge21_Node000019_Node000020" class="edge">
+<title>Node19&#45;&gt;Node20</title>
+<g id="a_edge21_Node000019_Node000020"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M110.74,-156.89C115.69,-155.74 120.67,-154.75 125.5,-154 470.4,-100.79 1349.26,-161.69 1695.5,-118 1713.62,-115.71 1733.55,-111.18 1749.44,-107.06"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="109.5,-153.59 100.66,-159.43 111.21,-160.38 109.5,-153.59"/>
+</a>
+</g>
+</g>
+<!-- Node20&#45;&gt;Node9 -->
+<g id="edge22_Node000020_Node000009" class="edge">
+<title>Node20&#45;&gt;Node9</title>
+<g id="a_edge22_Node000020_Node000009"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1797.05,-81.02C1810.12,-69.48 1828.07,-53.65 1842.16,-41.21"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1794.43,-78.66 1789.25,-87.9 1799.06,-83.9 1794.43,-78.66"/>
+</a>
+</g>
+</g>
+<!-- Node20&#45;&gt;Node10 -->
+<g id="edge23_Node000020_Node000010" class="edge">
+<title>Node20&#45;&gt;Node10</title>
+<g id="a_edge23_Node000020_Node000010"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1762.37,-81.02C1749.6,-69.48 1732.08,-53.65 1718.31,-41.21"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1760.21,-83.79 1769.98,-87.9 1764.91,-78.6 1760.21,-83.79"/>
+</a>
+</g>
+</g>
+<!-- Node20&#45;&gt;Node11 -->
+<g id="edge24_Node000020_Node000011" class="edge">
+<title>Node20&#45;&gt;Node11</title>
+<g id="a_edge24_Node000020_Node000011"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1817.91,-84.93C1856.7,-73.25 1917.32,-54.99 1963.58,-41.05"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1816.63,-81.66 1808.06,-87.9 1818.65,-88.36 1816.63,-81.66"/>
+</a>
+</g>
+</g>
+<!-- Node20&#45;&gt;Node12 -->
+<g id="edge25_Node000020_Node000012" class="edge">
+<title>Node20&#45;&gt;Node12</title>
+<g id="a_edge25_Node000020_Node000012"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1825.39,-85.7C1838.92,-82.69 1853.77,-79.55 1867.5,-77 1973.55,-57.32 2001.38,-60.31 2107.5,-41 2110.36,-40.48 2113.27,-39.94 2116.21,-39.37"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1824.33,-82.35 1815.35,-87.97 1825.88,-89.18 1824.33,-82.35"/>
+</a>
+</g>
+</g>
+<!-- Node22 -->
+<g id="Node000022" class="node">
+<title>Node22</title>
+<g id="a_Node000022"><a xlink:href="InspectorPanel_8h.html" target="_top" xlink:title="エンティティの詳細情報表示パネル。">
+<polygon fill="white" stroke="#666666" points="1687,-118 1540,-118 1540,-77 1687,-77 1687,-118"/>
+<text text-anchor="start" x="1548" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="start" x="1548" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Inspector/Inspector</text>
+<text text-anchor="middle" x="1613.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">Panel.h</text>
+</a>
+</g>
+</g>
+<!-- Node21&#45;&gt;Node22 -->
+<g id="edge27_Node000021_Node000022" class="edge">
+<title>Node21&#45;&gt;Node22</title>
+<g id="a_edge27_Node000021_Node000022"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2476.4,-234.54C2547.26,-220.66 2638.09,-201.74 2643.5,-195 2654.91,-180.79 2656.14,-167.13 2643.5,-154 2606.99,-116.07 1748.67,-125.05 1696.5,-118 1693.42,-117.58 1690.29,-117.1 1687.13,-116.58"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2475.69,-231.11 2466.55,-236.46 2477.04,-237.98 2475.69,-231.11"/>
+</a>
+</g>
+</g>
+<!-- Node23 -->
+<g id="Node000023" class="node">
+<title>Node23</title>
+<g id="a_Node000023"><a xlink:href="MaterialPreviewer_8cpp.html" target="_top" xlink:title="MaterialPreviewerの実装。">
+<polygon fill="white" stroke="#666666" points="2634,-189.5 2423,-189.5 2423,-159.5 2634,-159.5 2634,-189.5"/>
+<text text-anchor="start" x="2431" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="middle" x="2528.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Inspector/MaterialPreviewer.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node21&#45;&gt;Node23 -->
+<g id="edge29_Node000021_Node000023" class="edge">
+<title>Node21&#45;&gt;Node23</title>
+<g id="a_edge29_Node000021_Node000023"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2427.09,-231.43C2450.75,-218.38 2481.6,-201.36 2503.03,-189.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2425.15,-228.5 2418.08,-236.39 2428.53,-234.63 2425.15,-228.5"/>
+</a>
+</g>
+</g>
+<!-- Node22&#45;&gt;Node10 -->
+<g id="edge28_Node000022_Node000010" class="edge">
+<title>Node22&#45;&gt;Node10</title>
+<g id="a_edge28_Node000022_Node000010"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1642.75,-70.07C1653.31,-60.52 1665.04,-49.93 1674.84,-41.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1640.38,-67.49 1635.31,-76.79 1645.07,-72.69 1640.38,-67.49"/>
+</a>
+</g>
+</g>
+<!-- Node24&#45;&gt;Node5 -->
+<g id="edge38_Node000024_Node000005" class="edge">
+<title>Node24&#45;&gt;Node5</title>
+<g id="a_edge38_Node000024_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2084.23,-244.94C1983.77,-236.93 1800.52,-220.28 1645.5,-195 1642.69,-194.54 1639.83,-194.05 1636.96,-193.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2084.04,-248.43 2094.28,-245.73 2084.59,-241.45 2084.04,-248.43"/>
+</a>
+</g>
+</g>
+<!-- Node24&#45;&gt;Node6 -->
+<g id="edge39_Node000024_Node000006" class="edge">
+<title>Node24&#45;&gt;Node6</title>
+<g id="a_edge39_Node000024_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2234.61,-235.81C2287,-224.7 2351.62,-209.02 2375.5,-195 2397.19,-182.27 2391.95,-165.13 2414.5,-154 2489.83,-116.8 2728.91,-104.36 2853.81,-100.33"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2233.72,-232.42 2224.65,-237.9 2235.16,-239.27 2233.72,-232.42"/>
+</a>
+</g>
+</g>
+<!-- Node24&#45;&gt;Node14 -->
+<g id="edge34_Node000024_Node000014" class="edge">
+<title>Node24&#45;&gt;Node14</title>
+<g id="a_edge34_Node000024_Node000014"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2084.35,-248.57C1987.77,-243.29 1838.49,-223.94 1891.5,-154 1897.99,-145.44 2188.11,-67.89 2310.22,-35.56"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2084.23,-252.07 2094.39,-249.08 2084.58,-245.08 2084.23,-252.07"/>
+</a>
+</g>
+</g>
+<!-- Node24&#45;&gt;Node23 -->
+<g id="edge32_Node000024_Node000023" class="edge">
+<title>Node24&#45;&gt;Node23</title>
+<g id="a_edge32_Node000024_Node000023"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2234.52,-235.25C2300.35,-221.87 2395.31,-202.57 2459.33,-189.56"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2233.72,-231.84 2224.62,-237.26 2235.12,-238.7 2233.72,-231.84"/>
+</a>
+</g>
+</g>
+<!-- Node25 -->
+<g id="Node000025" class="node">
+<title>Node25</title>
+<g id="a_Node000025"><a xlink:href="EnvironmentPanel_8cpp.html" target="_top" xlink:title="EnvironmentPanelの実装。">
+<polygon fill="white" stroke="#666666" points="2082.5,-195 1900.5,-195 1900.5,-154 2082.5,-154 2082.5,-195"/>
+<text text-anchor="start" x="1908.5" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="start" x="1908.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">/Panels/Environment/Environment</text>
+<text text-anchor="middle" x="1991.5" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">Panel.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node24&#45;&gt;Node25 -->
+<g id="edge31_Node000024_Node000025" class="edge">
+<title>Node24&#45;&gt;Node25</title>
+<g id="a_edge31_Node000024_Node000025"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2118.61,-232.25C2093.39,-220.99 2061.06,-206.56 2035.32,-195.06"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2117.34,-235.51 2127.9,-236.39 2120.2,-229.12 2117.34,-235.51"/>
+</a>
+</g>
+</g>
+<!-- Node26 -->
+<g id="Node000026" class="node">
+<title>Node26</title>
+<g id="a_Node000026"><a xlink:href="FileDialog_8cpp.html" target="_top" xlink:title="FileDialogの実装">
+<polygon fill="white" stroke="#666666" points="2218,-189.5 2101,-189.5 2101,-159.5 2218,-159.5 2218,-189.5"/>
+<text text-anchor="start" x="2109" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Editor</text>
+<text text-anchor="middle" x="2159.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Utils/FileDialog.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node24&#45;&gt;Node26 -->
+<g id="edge33_Node000024_Node000026" class="edge">
+<title>Node24&#45;&gt;Node26</title>
+<g id="a_edge33_Node000024_Node000026"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2159.5,-226.04C2159.5,-213.95 2159.5,-199.79 2159.5,-189.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2156,-226.39 2159.5,-236.39 2163,-226.39 2156,-226.39"/>
+</a>
+</g>
+</g>
+<!-- Node27 -->
+<g id="Node000027" class="node">
+<title>Node27</title>
+<g id="a_Node000027"><a xlink:href="EntryPoint_8h.html" target="_top" xlink:title="アプリケーションのエントリーポイント (main関数)。">
+<polygon fill="white" stroke="#666666" points="2366.5,-189.5 2236.5,-189.5 2236.5,-159.5 2366.5,-159.5 2366.5,-189.5"/>
+<text text-anchor="start" x="2244.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="2301.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/EntryPoint.h</text>
+</a>
+</g>
+</g>
+<!-- Node24&#45;&gt;Node27 -->
+<g id="edge35_Node000024_Node000027" class="edge">
+<title>Node24&#45;&gt;Node27</title>
+<g id="a_edge35_Node000024_Node000027"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2195.28,-231.6C2220.04,-218.53 2252.43,-201.41 2274.91,-189.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2193.42,-228.63 2186.21,-236.39 2196.69,-234.82 2193.42,-228.63"/>
+</a>
+</g>
+</g>
+<!-- Node28 -->
+<g id="Node000028" class="node">
+<title>Node28</title>
+<g id="a_Node000028"><a xlink:href="CameraSystem_8h.html" target="_top" xlink:title="カメラ行列の更新とレンダラーへの適用。">
+<polygon fill="white" stroke="#666666" points="2884.5,-189.5 2690.5,-189.5 2690.5,-159.5 2884.5,-159.5 2884.5,-189.5"/>
+<text text-anchor="start" x="2698.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="2787.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Systems/Graphics/CameraSystem.h</text>
+</a>
+</g>
+</g>
+<!-- Node24&#45;&gt;Node28 -->
+<g id="edge36_Node000024_Node000028" class="edge">
+<title>Node24&#45;&gt;Node28</title>
+<g id="a_edge36_Node000024_Node000028"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2234.62,-237.99C2250.72,-235.5 2267.66,-233.04 2283.5,-231 2442.99,-210.5 2483.8,-213.79 2643.5,-195 2658.66,-193.22 2674.69,-191.19 2690.35,-189.13"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2234.06,-234.54 2224.72,-239.54 2235.14,-241.45 2234.06,-234.54"/>
+</a>
+</g>
+</g>
+<!-- Node28&#45;&gt;Node6 -->
+<g id="edge37_Node000028_Node000006" class="edge">
+<title>Node28&#45;&gt;Node6</title>
+<g id="a_edge37_Node000028_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2823.67,-154.66C2852.9,-139.44 2892.71,-118.7 2914.87,-107.16"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2821.84,-151.67 2814.59,-159.39 2825.07,-157.88 2821.84,-151.67"/>
+</a>
+</g>
+</g>
+<!-- Node29&#45;&gt;Node4 -->
+<g id="edge44_Node000029_Node000004" class="edge">
+<title>Node29&#45;&gt;Node4</title>
+<g id="a_edge44_Node000029_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1267.82,-231.04C997.06,-196.02 922.85,-237.35 657.5,-195 648.97,-193.64 640,-191.71 631.37,-189.59"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1267.58,-234.54 1277.95,-232.37 1268.49,-227.6 1267.58,-234.54"/>
+</a>
+</g>
+</g>
+<!-- Node29&#45;&gt;Node5 -->
+<g id="edge45_Node000029_Node000005" class="edge">
+<title>Node29&#45;&gt;Node5</title>
+<g id="a_edge45_Node000029_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1421.9,-227.27C1448.77,-216.94 1480.05,-204.9 1505.69,-195.04"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1420.3,-224.13 1412.22,-230.99 1422.81,-230.67 1420.3,-224.13"/>
+</a>
+</g>
+</g>
+<!-- Node30 -->
+<g id="Node000030" class="node">
+<title>Node30</title>
+<g id="a_Node000030"><a xlink:href="RenderPassManager_8cpp.html" target="_top" xlink:title="RenderPassManagerの実装。">
+<polygon fill="white" stroke="#666666" points="1273,-189.5 1064,-189.5 1064,-159.5 1273,-159.5 1273,-189.5"/>
+<text text-anchor="start" x="1072" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="1168.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Core/RenderPassManager.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node29&#45;&gt;Node30 -->
+<g id="edge42_Node000029_Node000030" class="edge">
+<title>Node29&#45;&gt;Node30</title>
+<g id="a_edge42_Node000029_Node000030"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1301.67,-227.25C1269.94,-214.92 1231.99,-200.17 1204.74,-189.58"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1300.71,-230.63 1311.3,-230.99 1303.24,-224.11 1300.71,-230.63"/>
+</a>
+</g>
+</g>
+<!-- Node31 -->
+<g id="Node000031" class="node">
+<title>Node31</title>
+<g id="a_Node000031"><a xlink:href="DepthNormalPass_8cpp.html" target="_top" xlink:title="DepthNormalPassの実装。">
+<polygon fill="white" stroke="#666666" points="1458,-195 1291,-195 1291,-154 1458,-154 1458,-195"/>
+<text text-anchor="start" x="1299" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="start" x="1299" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/DepthNormal</text>
+<text text-anchor="middle" x="1374.5" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">Pass.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node29&#45;&gt;Node31 -->
+<g id="edge43_Node000029_Node000031" class="edge">
+<title>Node29&#45;&gt;Node31</title>
+<g id="a_edge43_Node000029_Node000031"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1366.67,-220.69C1368.16,-212.08 1369.75,-202.9 1371.11,-195.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1363.17,-220.34 1364.92,-230.79 1370.07,-221.54 1363.17,-220.34"/>
+</a>
+</g>
+</g>
+<!-- Node32&#45;&gt;Node4 -->
+<g id="edge49_Node000032_Node000004" class="edge">
+<title>Node32&#45;&gt;Node4</title>
+<g id="a_edge49_Node000032_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1478.67,-234.71C1470.21,-233.27 1461.69,-231.99 1453.5,-231 1101.9,-188.66 1007.59,-248.42 657.5,-195 648.83,-193.68 639.71,-191.74 630.96,-189.59"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1478.09,-238.16 1488.55,-236.46 1479.31,-231.26 1478.09,-238.16"/>
+</a>
+</g>
+</g>
+<!-- Node32&#45;&gt;Node5 -->
+<g id="edge50_Node000032_Node000005" class="edge">
+<title>Node32&#45;&gt;Node5</title>
+<g id="a_edge50_Node000032_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1553.79,-226.23C1554.33,-216.2 1554.94,-204.71 1555.45,-195.2"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1550.29,-226.22 1553.25,-236.39 1557.28,-226.59 1550.29,-226.22"/>
+</a>
+</g>
+</g>
+<!-- Node32&#45;&gt;Node30 -->
+<g id="edge47_Node000032_Node000030" class="edge">
+<title>Node32&#45;&gt;Node30</title>
+<g id="a_edge47_Node000032_Node000030"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1471.26,-234.48C1465.25,-233.3 1459.28,-232.13 1453.5,-231 1381.15,-216.83 1298.45,-200.74 1240.84,-189.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1470.91,-237.98 1481.39,-236.47 1472.26,-231.11 1470.91,-237.98"/>
+</a>
+</g>
+</g>
+<!-- Node33 -->
+<g id="Node000033" class="node">
+<title>Node33</title>
+<g id="a_Node000033"><a xlink:href="SSAOBlurPass_8cpp.html" target="_top" xlink:title="SSAOBlurPassの実装。">
+<polygon fill="white" stroke="#666666" points="1844.5,-189.5 1654.5,-189.5 1654.5,-159.5 1844.5,-159.5 1844.5,-189.5"/>
+<text text-anchor="start" x="1662.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="1749.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/SSAOBlurPass.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node32&#45;&gt;Node33 -->
+<g id="edge48_Node000032_Node000033" class="edge">
+<title>Node32&#45;&gt;Node33</title>
+<g id="a_edge48_Node000032_Node000033"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1599,-232.8C1633.7,-219.59 1680.47,-201.78 1712.61,-189.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1597.65,-229.56 1589.55,-236.39 1600.15,-236.11 1597.65,-229.56"/>
+</a>
+</g>
+</g>
+<!-- Node34&#45;&gt;Node4 -->
+<g id="edge54_Node000034_Node000004" class="edge">
+<title>Node34&#45;&gt;Node4</title>
+<g id="a_edge54_Node000034_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M755.14,-233.22C715.77,-219.99 662.13,-201.95 625.36,-189.58"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="754.22,-236.61 764.82,-236.48 756.45,-229.98 754.22,-236.61"/>
+</a>
+</g>
+</g>
+<!-- Node34&#45;&gt;Node5 -->
+<g id="edge55_Node000034_Node000005" class="edge">
+<title>Node34&#45;&gt;Node5</title>
+<g id="a_edge55_Node000034_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M874.82,-234.43C881.78,-233.12 888.76,-231.94 895.5,-231 1147.32,-195.69 1214.64,-230.02 1466.5,-195 1469.67,-194.56 1472.89,-194.07 1476.14,-193.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="873.81,-231.06 864.68,-236.42 875.16,-237.93 873.81,-231.06"/>
+</a>
+</g>
+</g>
+<!-- Node34&#45;&gt;Node30 -->
+<g id="edge52_Node000034_Node000030" class="edge">
+<title>Node34&#45;&gt;Node30</title>
+<g id="a_edge52_Node000034_Node000030"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M880.16,-234.27C885.35,-233.16 890.5,-232.06 895.5,-231 964.23,-216.48 1042.86,-200.57 1098.02,-189.52"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="879.2,-230.9 870.16,-236.43 880.68,-237.74 879.2,-230.9"/>
+</a>
+</g>
+</g>
+<!-- Node35 -->
+<g id="Node000035" class="node">
+<title>Node35</title>
+<g id="a_Node000035"><a xlink:href="SSAOPass_8cpp.html" target="_top" xlink:title="SSAOPassの実装。乱数カーネルとノイズの生成を含む。">
+<polygon fill="white" stroke="#666666" points="500.5,-189.5 330.5,-189.5 330.5,-159.5 500.5,-159.5 500.5,-189.5"/>
+<text text-anchor="start" x="338.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="415.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/SSAOPass.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node34&#45;&gt;Node35 -->
+<g id="edge53_Node000034_Node000035" class="edge">
+<title>Node34&#45;&gt;Node35</title>
+<g id="a_edge53_Node000034_Node000035"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M719.13,-234.64C659.91,-223.78 579.92,-208.88 509.5,-195 500.67,-193.26 491.38,-191.39 482.22,-189.51"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="718.72,-238.13 729.19,-236.49 719.98,-231.24 718.72,-238.13"/>
+</a>
+</g>
+</g>
+<!-- Node36&#45;&gt;Node4 -->
+<g id="edge59_Node000036_Node000004" class="edge">
+<title>Node36&#45;&gt;Node4</title>
+<g id="a_edge59_Node000036_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M913.38,-234.51C907,-233.28 900.65,-232.1 894.5,-231 789.62,-212.28 761.83,-216.61 657.5,-195 649.82,-193.41 641.76,-191.52 633.88,-189.55"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="912.92,-237.99 923.4,-236.48 914.26,-231.12 912.92,-237.99"/>
+</a>
+</g>
+</g>
+<!-- Node36&#45;&gt;Node5 -->
+<g id="edge60_Node000036_Node000005" class="edge">
+<title>Node36&#45;&gt;Node5</title>
+<g id="a_edge60_Node000036_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1062.58,-234.52C1069.63,-233.22 1076.69,-232.02 1083.5,-231 1252.57,-205.6 1297.54,-221.15 1466.5,-195 1469.66,-194.51 1472.88,-193.98 1476.12,-193.41"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1061.45,-231.17 1052.28,-236.47 1062.76,-238.05 1061.45,-231.17"/>
+</a>
+</g>
+</g>
+<!-- Node36&#45;&gt;Node30 -->
+<g id="edge57_Node000036_Node000030" class="edge">
+<title>Node36&#45;&gt;Node30</title>
+<g id="a_edge57_Node000036_Node000030"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1032.56,-232.46C1064,-219.28 1106.03,-201.68 1134.98,-189.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1031.04,-229.3 1023.17,-236.39 1033.74,-235.76 1031.04,-229.3"/>
+</a>
+</g>
+</g>
+<!-- Node37 -->
+<g id="Node000037" class="node">
+<title>Node37</title>
+<g id="a_Node000037"><a xlink:href="ShadowPass_8cpp.html" target="_top" xlink:title="ShadowPassの実装。">
+<polygon fill="white" stroke="#666666" points="848.5,-189.5 666.5,-189.5 666.5,-159.5 848.5,-159.5 848.5,-189.5"/>
+<text text-anchor="start" x="674.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="757.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/ShadowPass.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node36&#45;&gt;Node37 -->
+<g id="edge58_Node000036_Node000037" class="edge">
+<title>Node36&#45;&gt;Node37</title>
+<g id="a_edge58_Node000036_Node000037"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M936.58,-233.39C895.58,-220.14 839.47,-202 801.05,-189.58"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="935.54,-236.74 946.13,-236.48 937.7,-230.07 935.54,-236.74"/>
+</a>
+</g>
+</g>
+<!-- Node38&#45;&gt;Node4 -->
+<g id="edge64_Node000038_Node000004" class="edge">
+<title>Node38&#45;&gt;Node4</title>
+<g id="a_edge64_Node000038_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1105.05,-234.6C1097.79,-233.26 1090.51,-232.03 1083.5,-231 895.5,-203.45 844.74,-227.33 657.5,-195 649.12,-193.55 640.31,-191.61 631.8,-189.51"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1104.43,-238.04 1114.91,-236.48 1105.74,-231.17 1104.43,-238.04"/>
+</a>
+</g>
+</g>
+<!-- Node38&#45;&gt;Node5 -->
+<g id="edge65_Node000038_Node000005" class="edge">
+<title>Node38&#45;&gt;Node5</title>
+<g id="a_edge65_Node000038_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1251.9,-234.33C1257.51,-233.19 1263.09,-232.06 1268.5,-231 1356.26,-213.73 1378.78,-212.47 1466.5,-195 1469.64,-194.38 1472.83,-193.73 1476.06,-193.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1250.88,-230.97 1241.79,-236.42 1252.29,-237.83 1250.88,-230.97"/>
+</a>
+</g>
+</g>
+<!-- Node38&#45;&gt;Node30 -->
+<g id="edge62_Node000038_Node000030" class="edge">
+<title>Node38&#45;&gt;Node30</title>
+<g id="a_edge62_Node000038_Node000030"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1173.93,-226.41C1172.63,-214.24 1171.1,-199.9 1170,-189.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1170.45,-226.82 1175,-236.39 1177.41,-226.08 1170.45,-226.82"/>
+</a>
+</g>
+</g>
+<!-- Node39 -->
+<g id="Node000039" class="node">
+<title>Node39</title>
+<g id="a_Node000039"><a xlink:href="SkyboxPass_8cpp.html" target="_top" xlink:title="SkyboxPassの実装。">
+<polygon fill="white" stroke="#666666" points="1046,-189.5 867,-189.5 867,-159.5 1046,-159.5 1046,-189.5"/>
+<text text-anchor="start" x="875" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="956.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Passes/SkyboxPass.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node38&#45;&gt;Node39 -->
+<g id="edge63_Node000038_Node000039" class="edge">
+<title>Node38&#45;&gt;Node39</title>
+<g id="a_edge63_Node000038_Node000039"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1125.83,-233.22C1086.99,-219.99 1034.08,-201.95 997.79,-189.58"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1124.78,-236.57 1135.38,-236.48 1127.04,-229.94 1124.78,-236.57"/>
+</a>
+</g>
+</g>
+<!-- Node40&#45;&gt;Node6 -->
+<g id="edge94_Node000040_Node000006" class="edge">
+<title>Node40&#45;&gt;Node6</title>
+<g id="a_edge94_Node000040_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2647.46,-435C2701.09,-404.22 2807.52,-340.03 2887.5,-272 2906.43,-255.9 2906.45,-246.96 2925.5,-231 2948.18,-212 2967.32,-220.97 2981.5,-195 2990.23,-179.01 2988.03,-171.01 2981.5,-154 2973.88,-134.14 2955.5,-116.95 2943.28,-107.16"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2645.64,-432 2638.69,-440 2649.11,-438.08 2645.64,-432"/>
+</a>
+</g>
+</g>
+<!-- Node40&#45;&gt;Node18 -->
+<g id="edge74_Node000040_Node000018" class="edge">
+<title>Node40&#45;&gt;Node18</title>
+<g id="a_edge74_Node000040_Node000018"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2519.19,-443.39C2291.64,-417.81 1716.99,-353.18 1522.79,-331.34"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2519.1,-446.91 2529.43,-444.55 2519.89,-439.95 2519.1,-446.91"/>
+</a>
+</g>
+</g>
+<!-- Node40&#45;&gt;Node21 -->
+<g id="edge70_Node000040_Node000021" class="edge">
+<title>Node40&#45;&gt;Node21</title>
+<g id="a_edge70_Node000040_Node000021"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2590.43,-432.97C2545.28,-391.8 2446.28,-301.54 2408.02,-266.65"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2588.21,-435.68 2597.96,-439.83 2592.93,-430.51 2588.21,-435.68"/>
 </a>
 </g>
 </g>
 <!-- Node41 -->
 <g id="Node000041" class="node">
 <title>Node41</title>
-<g id="a_Node000041"><a xlink:href="Layer_8h.html" target="_top" xlink:title="物理演算やレンダリングのレイヤー分け。">
-<polygon fill="#fff0f0" stroke="red" points="1562.5,-189.5 1417.5,-189.5 1417.5,-159.5 1562.5,-159.5 1562.5,-189.5"/>
-<text text-anchor="start" x="1425.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="1490" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/Layer.h</text>
+<g id="a_Node000041"><a xlink:href="MeshRenderer_8h.html" target="_top" xlink:title="メッシュの描画設定とマテリアル参照。">
+<polygon fill="white" stroke="#666666" points="2678.5,-272 2548.5,-272 2548.5,-231 2678.5,-231 2678.5,-272"/>
+<text text-anchor="start" x="2556.5" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="start" x="2556.5" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Graphics</text>
+<text text-anchor="middle" x="2613.5" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">/MeshRenderer.h</text>
 </a>
 </g>
 </g>
-<!-- Node37&#45;&gt;Node41 -->
-<g id="edge64_Node000037_Node000041" class="edge">
-<title>Node37&#45;&gt;Node41</title>
-<g id="a_edge64_Node000037_Node000041"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1123.42,-301.28C1133.78,-292.52 1145.72,-282.05 1156,-272 1173.55,-254.84 1171.47,-242.79 1193,-231 1278.37,-184.26 1313.63,-214.4 1409,-195 1417.08,-193.36 1425.58,-191.48 1433.9,-189.55"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1120.94,-298.79 1115.5,-307.89 1125.42,-304.16 1120.94,-298.79"/>
+<!-- Node40&#45;&gt;Node41 -->
+<g id="edge71_Node000040_Node000041" class="edge">
+<title>Node40&#45;&gt;Node41</title>
+<g id="a_edge71_Node000040_Node000041"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2613.5,-429.8C2613.5,-389.46 2613.5,-309.23 2613.5,-272.14"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2610,-429.83 2613.5,-439.83 2617,-429.83 2610,-429.83"/>
 </a>
 </g>
 </g>
 <!-- Node42 -->
 <g id="Node000042" class="node">
 <title>Node42</title>
-<g id="a_Node000042"><a xlink:href="LocalToWorld_8h.html" target="_top" xlink:title="計算済みのワールド変換行列">
-<polygon fill="#fff0f0" stroke="red" points="847,-266.5 665,-266.5 665,-236.5 847,-236.5 847,-266.5"/>
-<text text-anchor="start" x="673" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="756" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/LocalToWorld.h</text>
+<g id="a_Node000042"><a xlink:href="Material_8cpp.html" target="_top" xlink:title="Materialの実装。">
+<polygon fill="white" stroke="#666666" points="3114,-404 2935,-404 2935,-374 3114,-374 3114,-404"/>
+<text text-anchor="start" x="2943" y="-392" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="3024.5" y="-381" font-family="Helvetica,sans-Serif" font-size="10.00">/Graphics/Resources/Material.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node37&#45;&gt;Node42 -->
-<g id="edge66_Node000037_Node000042" class="edge">
-<title>Node37&#45;&gt;Node42</title>
-<g id="a_edge66_Node000037_Node000042"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1018.83,-305.91C960.23,-294 881.17,-277.94 825.11,-266.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1018.29,-309.37 1028.79,-307.94 1019.69,-302.51 1018.29,-309.37"/>
+<!-- Node40&#45;&gt;Node42 -->
+<g id="edge75_Node000040_Node000042" class="edge">
+<title>Node40&#45;&gt;Node42</title>
+<g id="a_edge75_Node000040_Node000042"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2707.56,-439.35C2775.79,-428.73 2867.53,-414.44 2934.75,-403.98"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2707.01,-435.9 2697.66,-440.89 2708.08,-442.81 2707.01,-435.9"/>
+</a>
+</g>
+</g>
+<!-- Node43 -->
+<g id="Node000043" class="node">
+<title>Node43</title>
+<g id="a_Node000043"><a xlink:href="AssetManager_8h.html" target="_top" xlink:title="エンジン全域のアセットライフサイクルを管理するシングルトン。">
+<polygon fill="white" stroke="#666666" points="3359.5,-404 3213.5,-404 3213.5,-374 3359.5,-374 3359.5,-404"/>
+<text text-anchor="start" x="3221.5" y="-392" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="3286.5" y="-381" font-family="Helvetica,sans-Serif" font-size="10.00">/Resource/AssetManager.h</text>
+</a>
+</g>
+</g>
+<!-- Node40&#45;&gt;Node43 -->
+<g id="edge76_Node000040_Node000043" class="edge">
+<title>Node40&#45;&gt;Node43</title>
+<g id="a_edge76_Node000040_Node000043"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2707.68,-445.04C2843.22,-432.15 3090.47,-408.64 3213.27,-396.96"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2707.34,-441.56 2697.71,-445.99 2708,-448.53 2707.34,-441.56"/>
+</a>
+</g>
+</g>
+<!-- Node41&#45;&gt;Node5 -->
+<g id="edge72_Node000041_Node000005" class="edge">
+<title>Node41&#45;&gt;Node5</title>
+<g id="a_edge72_Node000041_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2538.11,-235.99C2525.91,-234.04 2513.38,-232.28 2501.5,-231 2122.91,-190.26 2023.12,-243.93 1645.5,-195 1642.68,-194.63 1639.81,-194.22 1636.92,-193.78"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2537.82,-239.49 2548.26,-237.67 2538.96,-232.59 2537.82,-239.49"/>
+</a>
+</g>
+</g>
+<!-- Node41&#45;&gt;Node6 -->
+<g id="edge73_Node000041_Node000006" class="edge">
+<title>Node41&#45;&gt;Node6</title>
+<g id="a_edge73_Node000041_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2688.78,-231.15C2755.07,-221.49 2892.25,-232.77 2926.5,-195 2948.92,-170.27 2939.51,-125.68 2934.2,-107.04"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2688.03,-227.73 2678.78,-232.89 2689.23,-234.62 2688.03,-227.73"/>
+</a>
+</g>
+</g>
+<!-- Node43&#45;&gt;Node6 -->
+<g id="edge93_Node000043_Node000006" class="edge">
+<title>Node43&#45;&gt;Node6</title>
+<g id="a_edge93_Node000043_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3369.99,-384.03C3494.75,-374.44 3709.05,-341.8 3648.5,-231 3618.11,-175.39 3588.42,-174.63 3528.5,-154 3434.51,-121.64 3148.45,-106.67 3009.24,-101.16"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3369.41,-380.56 3359.69,-384.78 3369.92,-387.54 3369.41,-380.56"/>
+</a>
+</g>
+</g>
+<!-- Node44 -->
+<g id="Node000044" class="node">
+<title>Node44</title>
+<g id="a_Node000044"><a xlink:href="SpanReflection_8h.html" target="_top" xlink:title="コンポーネント定義用のリフレクションマクロ。">
+<polygon fill="#fff0f0" stroke="red" points="3270,-338 3117,-338 3117,-308 3270,-308 3270,-338"/>
+<text text-anchor="start" x="3125" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="3193.5" y="-315" font-family="Helvetica,sans-Serif" font-size="10.00">/Reflection/SpanReflection.h</text>
+</a>
+</g>
+</g>
+<!-- Node43&#45;&gt;Node44 -->
+<g id="edge77_Node000043_Node000044" class="edge">
+<title>Node43&#45;&gt;Node44</title>
+<g id="a_edge77_Node000043_Node000044"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3257.48,-368.03C3243.41,-358.34 3226.83,-346.94 3214.08,-338.16"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3255.64,-371.01 3265.86,-373.8 3259.61,-365.24 3255.64,-371.01"/>
+</a>
+</g>
+</g>
+<!-- Node62 -->
+<g id="Node000062" class="node">
+<title>Node62</title>
+<g id="a_Node000062"><a xlink:href="AssetManager_8cpp.html" target="_top" xlink:title="AssetManagerの実装。">
+<polygon fill="white" stroke="#666666" points="3445,-338 3288,-338 3288,-308 3445,-308 3445,-338"/>
+<text text-anchor="start" x="3296" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="3366.5" y="-315" font-family="Helvetica,sans-Serif" font-size="10.00">/Resource/AssetManager.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node43&#45;&gt;Node62 -->
+<g id="edge92_Node000043_Node000062" class="edge">
+<title>Node43&#45;&gt;Node62</title>
+<g id="a_edge92_Node000043_Node000062"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3312.15,-367.48C3324.11,-357.91 3338.03,-346.77 3348.8,-338.16"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3309.88,-364.82 3304.25,-373.8 3314.25,-370.28 3309.88,-364.82"/>
+</a>
+</g>
+</g>
+<!-- Node44&#45;&gt;Node6 -->
+<g id="edge91_Node000044_Node000006" class="edge">
+<title>Node44&#45;&gt;Node6</title>
+<g id="a_edge91_Node000044_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3280.66,-308.02C3446.88,-289.84 3721.4,-350.54 3624.5,-231 3547.95,-136.56 3173.46,-108.91 3009.09,-101.26"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3279.87,-304.59 3270.36,-309.26 3280.71,-311.53 3279.87,-304.59"/>
+</a>
+</g>
+</g>
+<!-- Node44&#45;&gt;Node41 -->
+<g id="edge90_Node000044_Node000041" class="edge">
+<title>Node44&#45;&gt;Node41</title>
+<g id="a_edge90_Node000044_Node000041"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3106.5,-317.62C3005.23,-311.55 2833.23,-298.23 2687.5,-272 2684.62,-271.48 2681.69,-270.91 2678.74,-270.29"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3106.49,-321.13 3116.68,-318.22 3106.91,-314.14 3106.49,-321.13"/>
 </a>
 </g>
 </g>
 <!-- Node45 -->
 <g id="Node000045" class="node">
 <title>Node45</title>
-<g id="a_Node000045"><a xlink:href="Name_8h.html" target="_top" xlink:title="エンティティの名前">
-<polygon fill="#fff0f0" stroke="red" points="1350,-266.5 1202,-266.5 1202,-236.5 1350,-236.5 1350,-266.5"/>
-<text text-anchor="start" x="1210" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="1276" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/Name.h</text>
+<g id="a_Node000045"><a xlink:href="Active_8h.html" target="_top" xlink:title="エンティティの有効/無効フラグ。">
+<polygon fill="#fff0f0" stroke="red" points="3083,-266.5 2934,-266.5 2934,-236.5 3083,-236.5 3083,-266.5"/>
+<text text-anchor="start" x="2942" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="3008.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/Active.h</text>
 </a>
 </g>
 </g>
-<!-- Node37&#45;&gt;Node45 -->
-<g id="edge70_Node000037_Node000045" class="edge">
-<title>Node37&#45;&gt;Node45</title>
-<g id="a_edge70_Node000037_Node000045"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1143.43,-304.26C1173.42,-292.55 1212.18,-277.42 1240.03,-266.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1142.06,-301.04 1134.02,-307.94 1144.61,-307.56 1142.06,-301.04"/>
-</a>
-</g>
-</g>
-<!-- Node46 -->
-<g id="Node000046" class="node">
-<title>Node46</title>
-<g id="a_Node000046"><a xlink:href="Tag_8h.html" target="_top" xlink:title="エンティティのタグ分類">
-<polygon fill="#fff0f0" stroke="red" points="498.5,-266.5 363.5,-266.5 363.5,-236.5 498.5,-236.5 498.5,-266.5"/>
-<text text-anchor="start" x="371.5" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="431" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/Tag.h</text>
-</a>
-</g>
-</g>
-<!-- Node37&#45;&gt;Node46 -->
-<g id="edge72_Node000037_Node000046" class="edge">
-<title>Node37&#45;&gt;Node46</title>
-<g id="a_edge72_Node000037_Node000046"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1010.92,-319.07C895.32,-314.17 685.14,-301.73 508,-272 499.43,-270.56 490.42,-268.65 481.7,-266.59"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1010.99,-322.58 1021.13,-319.49 1011.28,-315.58 1010.99,-322.58"/>
+<!-- Node44&#45;&gt;Node45 -->
+<g id="edge78_Node000044_Node000045" class="edge">
+<title>Node44&#45;&gt;Node45</title>
+<g id="a_edge78_Node000044_Node000045"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3146.69,-304.42C3115.46,-292.68 3074.95,-277.47 3045.88,-266.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3145.47,-307.7 3156.06,-307.94 3147.93,-301.14 3145.47,-307.7"/>
 </a>
 </g>
 </g>
 <!-- Node47 -->
 <g id="Node000047" class="node">
 <title>Node47</title>
-<g id="a_Node000047"><a xlink:href="Transform_8h.html" target="_top" xlink:title="位置、回転、拡大縮小を管理するコンポーネント。">
-<polygon fill="#fff0f0" stroke="red" points="1032.5,-266.5 865.5,-266.5 865.5,-236.5 1032.5,-236.5 1032.5,-266.5"/>
-<text text-anchor="start" x="873.5" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="949" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/Transform.h</text>
+<g id="a_Node000047"><a xlink:href="IDComponent_8h.html" target="_top" xlink:title="エンティティの一意な識別子 (UUID) を保持するコンポーネント。">
+<polygon fill="white" stroke="#666666" points="3286,-266.5 3101,-266.5 3101,-236.5 3286,-236.5 3286,-266.5"/>
+<text text-anchor="start" x="3109" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="3193.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/IDComponent.h</text>
 </a>
 </g>
 </g>
-<!-- Node37&#45;&gt;Node47 -->
-<g id="edge74_Node000037_Node000047" class="edge">
-<title>Node37&#45;&gt;Node47</title>
-<g id="a_edge74_Node000037_Node000047"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1058.66,-303.65C1033.75,-292.03 1002.02,-277.23 979.11,-266.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1057.31,-306.88 1067.85,-307.94 1060.26,-300.54 1057.31,-306.88"/>
+<!-- Node44&#45;&gt;Node47 -->
+<g id="edge80_Node000044_Node000047" class="edge">
+<title>Node44&#45;&gt;Node47</title>
+<g id="a_edge80_Node000044_Node000047"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3193.5,-297.75C3193.5,-287.31 3193.5,-275.49 3193.5,-266.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3190,-297.94 3193.5,-307.94 3197,-297.94 3190,-297.94"/>
+</a>
+</g>
+</g>
+<!-- Node48 -->
+<g id="Node000048" class="node">
+<title>Node48</title>
+<g id="a_Node000048"><a xlink:href="Layer_8h.html" target="_top" xlink:title="物理演算やレンダリングのレイヤー分け。">
+<polygon fill="#fff0f0" stroke="red" points="3449,-266.5 3304,-266.5 3304,-236.5 3449,-236.5 3449,-266.5"/>
+<text text-anchor="start" x="3312" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="3376.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/Layer.h</text>
+</a>
+</g>
+</g>
+<!-- Node44&#45;&gt;Node48 -->
+<g id="edge82_Node000044_Node000048" class="edge">
+<title>Node44&#45;&gt;Node48</title>
+<g id="a_edge82_Node000044_Node000048"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3240.2,-304.26C3271.04,-292.55 3310.89,-277.42 3339.52,-266.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3238.64,-301.11 3230.53,-307.94 3241.12,-307.66 3238.64,-301.11"/>
 </a>
 </g>
 </g>
 <!-- Node49 -->
 <g id="Node000049" class="node">
 <title>Node49</title>
-<g id="a_Node000049"><a xlink:href="EditorCamera_8h.html" target="_top" xlink:title="エディタビューポート用の制御カメラタグ。">
-<polygon fill="#fff0f0" stroke="red" points="345.5,-266.5 154.5,-266.5 154.5,-236.5 345.5,-236.5 345.5,-266.5"/>
-<text text-anchor="start" x="162.5" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="middle" x="250" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Editor/EditorCamera.h</text>
+<g id="a_Node000049"><a xlink:href="LocalToWorld_8h.html" target="_top" xlink:title="計算済みのワールド変換行列">
+<polygon fill="#fff0f0" stroke="red" points="2878.5,-266.5 2696.5,-266.5 2696.5,-236.5 2878.5,-236.5 2878.5,-266.5"/>
+<text text-anchor="start" x="2704.5" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="2787.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/LocalToWorld.h</text>
 </a>
 </g>
 </g>
-<!-- Node37&#45;&gt;Node49 -->
-<g id="edge77_Node000037_Node000049" class="edge">
-<title>Node37&#45;&gt;Node49</title>
-<g id="a_edge77_Node000037_Node000049"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1011.22,-319.5C872.08,-314.73 590.65,-302.03 354,-272 342.43,-270.53 330.2,-268.59 318.35,-266.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1011.29,-323 1021.4,-319.84 1011.52,-316 1011.29,-323"/>
-</a>
-</g>
-</g>
-<!-- Node50 -->
-<g id="Node000050" class="node">
-<title>Node50</title>
-<g id="a_Node000050"><a xlink:href="Camera_8h.html" target="_top" xlink:title="レンダリング視点を定義するカメラコンポーネント。">
-<polygon fill="#fff0f0" stroke="red" points="647,-272 517,-272 517,-231 647,-231 647,-272"/>
-<text text-anchor="start" x="525" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="start" x="525" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Graphics</text>
-<text text-anchor="middle" x="582" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">/Camera.h</text>
-</a>
-</g>
-</g>
-<!-- Node37&#45;&gt;Node50 -->
-<g id="edge79_Node000037_Node000050" class="edge">
-<title>Node37&#45;&gt;Node50</title>
-<g id="a_edge79_Node000037_Node000050"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1011.13,-315.92C921.6,-308.77 778.24,-294.9 656,-272 653.13,-271.46 650.2,-270.87 647.25,-270.24"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1011,-319.42 1021.24,-316.71 1011.55,-312.44 1011,-319.42"/>
-</a>
-</g>
-</g>
-<!-- Node51 -->
-<g id="Node000051" class="node">
-<title>Node51</title>
-<g id="a_Node000051"><a xlink:href="DirectionalLight_8h.html" target="_top" xlink:title="シーン全体に降り注ぐ平行光源 (太陽光) のコンポーネント。">
-<polygon fill="white" stroke="#666666" points="1646,-272 1516,-272 1516,-231 1646,-231 1646,-272"/>
-<text text-anchor="start" x="1524" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="start" x="1524" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Graphics</text>
-<text text-anchor="middle" x="1581" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">/DirectionalLight.h</text>
-</a>
-</g>
-</g>
-<!-- Node37&#45;&gt;Node51 -->
-<g id="edge82_Node000037_Node000051" class="edge">
-<title>Node37&#45;&gt;Node51</title>
-<g id="a_edge82_Node000037_Node000051"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1184.78,-314.84C1267.94,-307.17 1396.74,-293.17 1507,-272 1509.87,-271.45 1512.79,-270.85 1515.74,-270.21"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1184.26,-311.38 1174.62,-315.77 1184.89,-318.35 1184.26,-311.38"/>
+<!-- Node44&#45;&gt;Node49 -->
+<g id="edge84_Node000044_Node000049" class="edge">
+<title>Node44&#45;&gt;Node49</title>
+<g id="a_edge84_Node000044_Node000049"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3106.52,-307.11C3036.38,-295.1 2938.41,-278.33 2869.61,-266.56"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3106.21,-310.61 3116.66,-308.85 3107.39,-303.71 3106.21,-310.61"/>
 </a>
 </g>
 </g>
 <!-- Node52 -->
 <g id="Node000052" class="node">
 <title>Node52</title>
-<g id="a_Node000052"><a xlink:href="MeshFilter_8h.html" target="_top" xlink:title="描画する形状 (メッシュ) への参照。">
-<polygon fill="white" stroke="#666666" points="1498,-272 1368,-272 1368,-231 1498,-231 1498,-272"/>
-<text text-anchor="start" x="1376" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="start" x="1376" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Graphics</text>
-<text text-anchor="middle" x="1433" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">/MeshFilter.h</text>
+<g id="a_Node000052"><a xlink:href="Name_8h.html" target="_top" xlink:title="エンティティの名前">
+<polygon fill="#fff0f0" stroke="red" points="3615.5,-266.5 3467.5,-266.5 3467.5,-236.5 3615.5,-236.5 3615.5,-266.5"/>
+<text text-anchor="start" x="3475.5" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
+<text text-anchor="middle" x="3541.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Core/Name.h</text>
 </a>
 </g>
 </g>
-<!-- Node37&#45;&gt;Node52 -->
-<g id="edge84_Node000037_Node000052" class="edge">
-<title>Node37&#45;&gt;Node52</title>
-<g id="a_edge84_Node000037_Node000052"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1184.51,-306.96C1235.48,-297.72 1301.11,-285.16 1359,-272 1361.85,-271.35 1364.76,-270.67 1367.69,-269.97"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1183.74,-303.54 1174.52,-308.76 1184.98,-310.43 1183.74,-303.54"/>
+<!-- Node44&#45;&gt;Node52 -->
+<g id="edge88_Node000044_Node000052" class="edge">
+<title>Node44&#45;&gt;Node52</title>
+<g id="a_edge88_Node000044_Node000052"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3280.37,-306.61C3332.2,-297.18 3399.24,-284.55 3458.5,-272 3466.46,-270.31 3474.84,-268.45 3483.08,-266.57"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3279.43,-303.22 3270.22,-308.45 3280.68,-310.11 3279.43,-303.22"/>
 </a>
 </g>
 </g>
-<!-- Node53 -->
-<g id="Node000053" class="node">
-<title>Node53</title>
-<g id="a_Node000053"><a xlink:href="PointLight_8h.html" target="_top" xlink:title="全方位を照らす光">
-<polygon fill="white" stroke="#666666" points="1942,-272 1812,-272 1812,-231 1942,-231 1942,-272"/>
-<text text-anchor="start" x="1820" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00">Engine/Source/Runtime</text>
-<text text-anchor="start" x="1820" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">/Components/Graphics</text>
-<text text-anchor="middle" x="1877" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">/PointLight.h</text>
+<!-- Node45&#45;&gt;Node6 -->
+<g id="edge79_Node000045_Node000006" class="edge">
+<title>Node45&#45;&gt;Node6</title>
+<g id="a_edge79_Node000045_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3026.41,-227.86C3040.21,-207.46 3054.72,-177.2 3040.5,-154 3025.18,-129.02 2994.71,-114.84 2969.86,-107.08"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3023.4,-226.04 3020.43,-236.21 3029.09,-230.12 3023.4,-226.04"/>
 </a>
 </g>
 </g>
-<!-- Node37&#45;&gt;Node53 -->
-<g id="edge88_Node000037_Node000053" class="edge">
-<title>Node37&#45;&gt;Node53</title>
-<g id="a_edge88_Node000037_Node000053"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1184.89,-321.05C1318.57,-318.41 1582.38,-308.56 1803,-272 1805.88,-271.52 1808.82,-270.98 1811.77,-270.39"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1184.64,-317.55 1174.71,-321.24 1184.77,-324.55 1184.64,-317.55"/>
+<!-- Node47&#45;&gt;Node6 -->
+<g id="edge81_Node000047_Node000006" class="edge">
+<title>Node47&#45;&gt;Node6</title>
+<g id="a_edge81_Node000047_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3167.55,-229.89C3140.72,-209.16 3097.15,-177.05 3056.5,-154 3022.21,-134.56 2979.83,-117 2954.27,-107.05"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3165.6,-232.81 3175.64,-236.2 3169.9,-227.29 3165.6,-232.81"/>
 </a>
 </g>
 </g>
-<!-- Node38&#45;&gt;Node19 -->
-<g id="edge61_Node000038_Node000019" class="edge">
-<title>Node38&#45;&gt;Node19</title>
-<g id="a_edge61_Node000038_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1190.94,-157.29C1196.03,-156.16 1201.09,-155.05 1206,-154 1289.52,-136.15 1387.35,-117.53 1443.66,-107.04"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1190.13,-153.89 1181.14,-159.5 1191.67,-160.72 1190.13,-153.89"/>
+<!-- Node48&#45;&gt;Node6 -->
+<g id="edge83_Node000048_Node000006" class="edge">
+<title>Node48&#45;&gt;Node6</title>
+<g id="a_edge83_Node000048_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3327.3,-232.98C3272.17,-213.42 3180.09,-180.98 3100.5,-154 3050.34,-137 2991.54,-117.87 2958.19,-107.09"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3326.22,-236.31 3336.82,-236.36 3328.56,-229.72 3326.22,-236.31"/>
 </a>
 </g>
 </g>
-<!-- Node40&#45;&gt;Node19 -->
-<g id="edge63_Node000040_Node000019" class="edge">
-<title>Node40&#45;&gt;Node19</title>
-<g id="a_edge63_Node000040_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1351.07,-155.44C1388.49,-140.1 1440.54,-118.77 1469.12,-107.06"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1349.35,-152.36 1341.42,-159.39 1352,-158.84 1349.35,-152.36"/>
+<!-- Node49&#45;&gt;Node5 -->
+<g id="edge86_Node000049_Node000005" class="edge">
+<title>Node49&#45;&gt;Node5</title>
+<g id="a_edge86_Node000049_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2713.32,-234.69C2704.65,-233.24 2695.9,-231.96 2687.5,-231 2227.1,-178.49 2105.27,-252.83 1645.5,-195 1642.68,-194.64 1639.81,-194.24 1636.92,-193.8"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2713,-238.18 2723.45,-236.45 2714.2,-231.29 2713,-238.18"/>
 </a>
 </g>
 </g>
-<!-- Node41&#45;&gt;Node19 -->
-<g id="edge65_Node000041_Node000019" class="edge">
-<title>Node41&#45;&gt;Node19</title>
-<g id="a_edge65_Node000041_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1490,-149.18C1490,-134.86 1490,-117.61 1490,-107.37"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1486.5,-149.39 1490,-159.39 1493.5,-149.39 1486.5,-149.39"/>
+<!-- Node49&#45;&gt;Node6 -->
+<g id="edge87_Node000049_Node000006" class="edge">
+<title>Node49&#45;&gt;Node6</title>
+<g id="a_edge87_Node000049_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2871.37,-234.13C2911.23,-224.47 2952.74,-211.01 2964.5,-195 2985.15,-166.89 2954.48,-124.9 2939.24,-107.03"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2870.49,-230.74 2861.56,-236.44 2872.09,-237.55 2870.49,-230.74"/>
 </a>
 </g>
 </g>
-<!-- Node42&#45;&gt;Node18 -->
-<g id="edge67_Node000042_Node000018" class="edge">
-<title>Node42&#45;&gt;Node18</title>
-<g id="a_edge67_Node000042_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M783.1,-230.38C800.47,-217.48 822.59,-201.05 838.09,-189.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="780.94,-227.62 775,-236.39 785.11,-233.24 780.94,-227.62"/>
+<!-- Node49&#45;&gt;Node28 -->
+<g id="edge85_Node000049_Node000028" class="edge">
+<title>Node49&#45;&gt;Node28</title>
+<g id="a_edge85_Node000049_Node000028"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2787.5,-226.04C2787.5,-213.95 2787.5,-199.79 2787.5,-189.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2784,-226.39 2787.5,-236.39 2791,-226.39 2784,-226.39"/>
 </a>
 </g>
 </g>
-<!-- Node42&#45;&gt;Node19 -->
-<g id="edge69_Node000042_Node000019" class="edge">
-<title>Node42&#45;&gt;Node19</title>
-<g id="a_edge69_Node000042_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M746.19,-226.72C738.97,-204.93 733.17,-173.22 751,-154 795.3,-106.25 1231.91,-99.32 1412.47,-98.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="742.95,-228.03 749.65,-236.24 749.53,-225.64 742.95,-228.03"/>
-</a>
-</g>
-</g>
-<!-- Node42&#45;&gt;Node25 -->
-<g id="edge68_Node000042_Node000025" class="edge">
-<title>Node42&#45;&gt;Node25</title>
-<g id="a_edge68_Node000042_Node000025"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M831.53,-234.72C840.09,-233.29 848.72,-232 857,-231 1172.87,-192.75 1254.5,-215.83 1572,-195 1625.72,-191.48 1686.1,-186.59 1732.99,-182.59"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="830.78,-231.3 821.53,-236.46 831.98,-238.2 830.78,-231.3"/>
-</a>
-</g>
-</g>
-<!-- Node45&#45;&gt;Node19 -->
-<g id="edge71_Node000045_Node000019" class="edge">
-<title>Node45&#45;&gt;Node19</title>
-<g id="a_edge71_Node000045_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1343.54,-234.26C1348.76,-233.12 1353.96,-232.02 1359,-231 1406.06,-221.51 1541.01,-231.66 1572,-195 1583.76,-181.08 1580.54,-170.1 1572,-154 1559.75,-130.92 1533.14,-115.68 1513.54,-107.11"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1342.5,-230.9 1333.5,-236.49 1344.02,-237.74 1342.5,-230.9"/>
-</a>
-</g>
-</g>
-<!-- Node46&#45;&gt;Node19 -->
-<g id="edge73_Node000046_Node000019" class="edge">
-<title>Node46&#45;&gt;Node19</title>
-<g id="a_edge73_Node000046_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M464.52,-231.46C506.74,-208.54 582.23,-170.99 652,-154 794.9,-119.19 1233.03,-104.78 1412.3,-100.23"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="462.61,-228.52 455.53,-236.4 465.98,-234.66 462.61,-228.52"/>
-</a>
-</g>
-</g>
-<!-- Node47&#45;&gt;Node18 -->
-<g id="edge75_Node000047_Node000018" class="edge">
-<title>Node47&#45;&gt;Node18</title>
-<g id="a_edge75_Node000047_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M923.89,-230.03C908.12,-217.18 888.21,-200.94 874.23,-189.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="921.73,-232.79 931.7,-236.39 926.16,-227.36 921.73,-232.79"/>
-</a>
-</g>
-</g>
-<!-- Node47&#45;&gt;Node19 -->
-<g id="edge76_Node000047_Node000019" class="edge">
-<title>Node47&#45;&gt;Node19</title>
-<g id="a_edge76_Node000047_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M956.22,-226.56C964.41,-203.86 980.1,-170.81 1006,-154 1071.27,-111.64 1292.75,-101.5 1412.17,-99.15"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="952.86,-225.57 952.98,-236.16 959.49,-227.81 952.86,-225.57"/>
-</a>
-</g>
-</g>
-<!-- Node49&#45;&gt;Node19 -->
-<g id="edge78_Node000049_Node000019" class="edge">
-<title>Node49&#45;&gt;Node19</title>
-<g id="a_edge78_Node000049_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M291.79,-232.51C346.83,-209.74 447.17,-171.39 537,-154 703.98,-121.67 1215.81,-105.5 1412.18,-100.37"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="290.26,-229.36 282.37,-236.44 292.95,-235.82 290.26,-229.36"/>
-</a>
-</g>
-</g>
-<!-- Node50&#45;&gt;Node18 -->
-<g id="edge80_Node000050_Node000018" class="edge">
-<title>Node50&#45;&gt;Node18</title>
-<g id="a_edge80_Node000050_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M657.03,-230.04C704.18,-217.18 763.78,-200.92 805.59,-189.52"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="655.9,-226.72 647.17,-232.73 657.74,-233.47 655.9,-226.72"/>
-</a>
-</g>
-</g>
-<!-- Node50&#45;&gt;Node19 -->
-<g id="edge81_Node000050_Node000019" class="edge">
-<title>Node50&#45;&gt;Node19</title>
-<g id="a_edge81_Node000050_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M613.22,-224.28C642.59,-201.27 688.85,-169.19 735,-154 859.06,-113.16 1245.56,-102.28 1412.22,-99.46"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="610.67,-221.83 605.03,-230.8 615.03,-227.31 610.67,-221.83"/>
-</a>
-</g>
-</g>
-<!-- Node51&#45;&gt;Node25 -->
-<g id="edge83_Node000051_Node000025" class="edge">
-<title>Node51&#45;&gt;Node25</title>
-<g id="a_edge83_Node000051_Node000025"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1651.19,-227.81C1683.52,-217.36 1721.51,-205.08 1752.55,-195.04"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1649.79,-224.58 1641.35,-230.99 1651.94,-231.24 1649.79,-224.58"/>
-</a>
-</g>
-</g>
-<!-- Node52&#45;&gt;Node19 -->
-<g id="edge86_Node000052_Node000019" class="edge">
-<title>Node52&#45;&gt;Node19</title>
-<g id="a_edge86_Node000052_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1507.96,-230.71C1551.41,-218.48 1598.78,-203.55 1605,-195 1615.73,-180.27 1614.69,-169.43 1605,-154 1589.15,-128.75 1558.21,-114.71 1532.41,-107.07"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1506.89,-227.38 1498.19,-233.43 1508.76,-234.12 1506.89,-227.38"/>
-</a>
-</g>
-</g>
-<!-- Node52&#45;&gt;Node25 -->
-<g id="edge85_Node000052_Node000025" class="edge">
-<title>Node52&#45;&gt;Node25</title>
-<g id="a_edge85_Node000052_Node000025"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1508.26,-230.8C1589.97,-212.88 1673.26,-198.18 1732.76,-188.29"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1507.31,-227.42 1498.3,-233 1508.82,-234.26 1507.31,-227.42"/>
-</a>
-</g>
-</g>
-<!-- Node53&#45;&gt;Node25 -->
-<g id="edge89_Node000053_Node000025" class="edge">
-<title>Node53&#45;&gt;Node25</title>
-<g id="a_edge89_Node000053_Node000025"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1853.49,-222.95C1845.6,-213.7 1836.96,-203.58 1829.7,-195.07"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1851.03,-225.46 1860.18,-230.79 1856.36,-220.92 1851.03,-225.46"/>
+<!-- Node52&#45;&gt;Node6 -->
+<g id="edge89_Node000052_Node000006" class="edge">
+<title>Node52&#45;&gt;Node6</title>
+<g id="a_edge89_Node000052_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M3479.36,-233.8C3405.77,-214.16 3279.44,-180.81 3170.5,-154 3099.77,-136.59 3016.89,-117.68 2969.66,-107.04"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="3478.82,-237.28 3489.39,-236.48 3480.63,-230.52 3478.82,-237.28"/>
 </a>
 </g>
 </g>

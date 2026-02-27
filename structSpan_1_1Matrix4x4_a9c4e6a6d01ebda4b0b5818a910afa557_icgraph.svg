@@ -197,10 +197,10 @@ var sectionId = 'dynsection-8';
 <!-- Node11 -->
 <g id="Node000011" class="node">
 <title>Node11</title>
-<g id="a_Node000011"><a xlink:href="classSpan_1_1Renderer.html#a2f4264efe9f273f5c6606f58f9950329" target="_top" xlink:title="ライト情報をRendererにセットする関数">
-<polygon fill="white" stroke="#666666" points="483,-30 339,-30 339,0 483,0 483,-30"/>
-<text text-anchor="start" x="347" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Renderer::SetGlobal</text>
-<text text-anchor="middle" x="411" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">LightData</text>
+<g id="a_Node000011"><a xlink:href="classSpan_1_1LightManager.html#abf0e9678ca819ea37531651eb8d1072c" target="_top" xlink:title="ECSから集めたライト情報を GPU 用のバッファに書き込みます。">
+<polygon fill="white" stroke="#666666" points="467.5,-30 354.5,-30 354.5,0 467.5,0 467.5,-30"/>
+<text text-anchor="start" x="362.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">Span::LightManager</text>
+<text text-anchor="middle" x="411" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::UpdateLightData</text>
 </a>
 </g>
 </g>
@@ -208,7 +208,7 @@ var sectionId = 'dynsection-8';
 <g id="edge12_Node000001_Node000011" class="edge">
 <title>Node1&#45;&gt;Node11</title>
 <g id="a_edge12_Node000001_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M585.17,-144.44C568.41,-117.31 533.62,-67.02 491,-39 485.85,-35.61 480.2,-32.69 474.37,-30.16"/>
+<path fill="none" stroke="#63b8ff" d="M585.17,-144.44C568.41,-117.31 533.62,-67.02 491,-39 483.93,-34.35 475.93,-30.58 467.79,-27.51"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="582.36,-146.54 590.51,-153.3 588.35,-142.93 582.36,-146.54"/>
 </a>
 </g>
