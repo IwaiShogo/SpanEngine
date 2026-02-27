@@ -1,5 +1,17 @@
 var NAVTREEINDEX12 =
 {
+"structSpan_1_1Name.html#a48910b230fe34bd7105882a2c037de3e":[1,0,0,35,3],
+"structSpan_1_1Name.html#a4d932f73ab7e4b39d2e9710afe127804":[0,0,0,35,1],
+"structSpan_1_1Name.html#a4d932f73ab7e4b39d2e9710afe127804":[1,0,0,35,1],
+"structSpan_1_1Name.html#a79bca47f253da2e38a7395f3f6eb0196":[0,0,0,35,0],
+"structSpan_1_1Name.html#a79bca47f253da2e38a7395f3f6eb0196":[1,0,0,35,0],
+"structSpan_1_1Name.html#ad9dd74ca7c3b110028995fc1600d311f":[0,0,0,35,2],
+"structSpan_1_1Name.html#ad9dd74ca7c3b110028995fc1600d311f":[1,0,0,35,2],
+"structSpan_1_1Name.html#af534a81dc3670e4fd74564eb92e602a0":[0,0,0,35,4],
+"structSpan_1_1Name.html#af534a81dc3670e4fd74564eb92e602a0":[1,0,0,35,4],
+"structSpan_1_1PointLight.html":[0,0,0,44],
+"structSpan_1_1PointLight.html":[1,0,0,44],
+"structSpan_1_1PointLight.html#a3de96b5f889aea6bd99579d27ed75944":[0,0,0,44,0],
 "structSpan_1_1PointLight.html#a3de96b5f889aea6bd99579d27ed75944":[1,0,0,44,0],
 "structSpan_1_1PointLight.html#a440b7c50d52c4b44d9e81309664af39b":[0,0,0,44,1],
 "structSpan_1_1PointLight.html#a440b7c50d52c4b44d9e81309664af39b":[1,0,0,44,1],
@@ -237,17 +249,5 @@ var NAVTREEINDEX12 =
 "structSpan_1_1Vector4.html#a1446aa2df739d33a6a708e3f5b6c27a0":[1,0,0,6,7],
 "structSpan_1_1Vector4.html#a20da582ae230836cec05de72d84aaec9":[0,0,0,6,9],
 "structSpan_1_1Vector4.html#a20da582ae230836cec05de72d84aaec9":[1,0,0,6,9],
-"structSpan_1_1Vector4.html#a28e3e6c3a2555fe4cd3a90367bc4cfc2":[0,0,0,6,8],
-"structSpan_1_1Vector4.html#a28e3e6c3a2555fe4cd3a90367bc4cfc2":[1,0,0,6,8],
-"structSpan_1_1Vector4.html#a47ee7b30ca2bde2445994cb2e735b6b4":[0,0,0,6,0],
-"structSpan_1_1Vector4.html#a47ee7b30ca2bde2445994cb2e735b6b4":[1,0,0,6,0],
-"structSpan_1_1Vector4.html#a6de528f98f9c26f3bd3b54849ea8ec62":[0,0,0,6,1],
-"structSpan_1_1Vector4.html#a6de528f98f9c26f3bd3b54849ea8ec62":[1,0,0,6,1],
-"structSpan_1_1Vector4.html#a71e4a01cf155dab9ece0e18c4217c66f":[0,0,0,6,3],
-"structSpan_1_1Vector4.html#a71e4a01cf155dab9ece0e18c4217c66f":[1,0,0,6,3],
-"structSpan_1_1Vector4.html#a91b57e1bee89e2cba51097258d0d6243":[0,0,0,6,4],
-"structSpan_1_1Vector4.html#a91b57e1bee89e2cba51097258d0d6243":[1,0,0,6,4],
-"structSpan_1_1Vector4.html#af34c08bb49c48ba67f7330d601fd666b":[0,0,0,6,2],
-"structSpan_1_1Vector4.html#af34c08bb49c48ba67f7330d601fd666b":[1,0,0,6,2],
-"structSpan_1_1Vector4.html#afa3a55fc2cd9a6cada8e168b798efa8e":[0,0,0,6,6]
+"structSpan_1_1Vector4.html#a28e3e6c3a2555fe4cd3a90367bc4cfc2":[0,0,0,6,8]
 };
