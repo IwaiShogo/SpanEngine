@@ -84,6 +84,18 @@ namespace Span
 		// 先頭はEntityIDの配列
 		finalOffset += sizeof(EntityID) * chunkCapacity;
 
+		// 渡された typeIDs の中から最大のIDを見つける
+		ComponentTypeID maxID = 0;
+		for (ComponentTypeID id : types)
+		{
+			if (id > maxID) maxID = id;
+		}
+
+		// 最大ID + 1 のサイズでベクターを初期化
+		typeOffsets.resize(maxID + 1, 0);
+		typeSizes.resize(maxID + 1, 0);
+		typeAlignments.resize(maxID + 1, 0);
+
 		// コンポーネントごとの配列開始位置を決定
 		for (size_t i = 0; i < types.size(); ++i)
 		{
@@ -93,11 +105,9 @@ namespace Span
 				finalOffset += align - (finalOffset % align);
 			}
 
-			// 本来はここでアライメント調整(Padding)を入れるべきだが、簡易実装
+			// 配列への直接アクセス
 			typeOffsets[types[i]] = finalOffset;
-			// サイズを保存
 			typeSizes[types[i]] = sizes[i];
-			// アライメント
 			typeAlignments[types[i]] = alignments[i];
 
 			// 次のコンポーネントのためにオフセットを進める (サイズ * キャパシティ)
@@ -191,19 +201,16 @@ namespace Span
 
 	size_t Archetype::GetComponentOffset(ComponentTypeID typeID) const
 	{
-		auto it = typeOffsets.find(typeID);
-		return (it != typeOffsets.end()) ? it->second : 0;
+		return (typeID < typeOffsets.size()) ? typeOffsets[typeID] : 0;
 	}
 
 	size_t Archetype::GetComponentSize(ComponentTypeID typeID) const
 	{
-		auto it = typeSizes.find(typeID);
-		return (it != typeSizes.end()) ? it->second : 0;
+		return (typeID < typeSizes.size()) ? typeSizes[typeID] : 0;
 	}
 
 	size_t Archetype::GetComponentAlignment(ComponentTypeID typeID) const
 	{
-		auto it = typeAlignments.find(typeID);
-		return (it != typeAlignments.end()) ? it->second : 0;
+		return (typeID < typeAlignments.size()) ? typeAlignments[typeID] : 0;
 	}
 }

@@ -19,6 +19,19 @@ namespace Span
 	using ComponentTypeID = uint32;
 
 	/**
+	 * @brief	全てのコンポーネント型で共有されるIDジェネレータ
+	 */
+	class ComponentTypeCounter
+	{
+	public:
+		static ComponentTypeID GetNextID()
+		{
+			static ComponentTypeID counter = 0;
+			return counter++;
+		}
+	};
+
+	/**
 	 * @class	ComponentType
 	 * @brief	🏷️ C++の型(T)をランタイムIDに変換する静的ヘルパークラス。
 	 * 
@@ -44,14 +57,8 @@ namespace Span
 		 */
 		static ComponentTypeID GetID()
 		{
-			// 型の名前を取得
-			const char* typeName = typeid(T).name();
-
-			// 文字列をハッシュ化してIDにする
-			static const ComponentTypeID id = static_cast<ComponentTypeID>(
-				std::hash<std::string_view>()(typeName)
-			);
-
+			// 初回呼び出し時にのみ一意の連番IDを取得
+			static const ComponentTypeID id = ComponentTypeCounter::GetNextID();
 			return id;
 		}
 

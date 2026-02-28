@@ -196,15 +196,15 @@ namespace Span
 		ArchetypeSignature signature;	///< コンポーネントの構成の署名
 
 		// --- Layout Info ---
-		std::vector<ComponentTypeID> typeIDs;						///< TypeIDリスト
-		std::unordered_map<ComponentTypeID, size_t> typeOffsets;	///< TypeID -> Chunk内オフセット
-		std::unordered_map<ComponentTypeID, size_t> typeSizes;		///< TypeID -> サイズ (バイト)
-		std::unordered_map<ComponentTypeID, size_t> typeAlignments;	///< TypeID -> アライメント
+		std::vector<ComponentTypeID> typeIDs;	///< TypeIDリスト
+		std::vector<size_t> typeOffsets;		///< TypeID -> Chunk内オフセット
+		std::vector<size_t> typeSizes;			///< TypeID -> サイズ (バイト)
+		std::vector<size_t> typeAlignments;		///< TypeID -> アライメント
 
-		size_t entitySize = 0;										///< Entity1体あたりの合計サイズ (バイト)
-		uint32 chunkCapacity = 0;									///< 1チャンクに何体入るか
+		size_t entitySize = 0;					///< Entity1体あたりの合計サイズ (バイト)
+		uint32 chunkCapacity = 0;				///< 1チャンクに何体入るか
 
 		// --- Storage ---
-		std::vector<Chunk*> chunks;									///< 確保されたメモリブロック群
+		std::vector<Chunk*> chunks;				///< 確保されたメモリブロック群
 	};
 }
