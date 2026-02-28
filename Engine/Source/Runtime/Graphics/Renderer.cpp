@@ -41,6 +41,9 @@ namespace Span
 		if (!CreatePipelineState()) return false;
 		if (!CreateConstantBuffer()) return false;
 
+		// ダミーDescriptorの作成
+		if (!CreateDummyDescriptors()) return false;
+
 		// フレーム用の巨大な Descriptor Heap を作成
 		D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};
 		heapDesc.NumDescriptors = 4096;
@@ -130,33 +133,12 @@ namespace Span
 		if (m_lightManager) m_lightManager->OnResize(context->GetDevice(), width, height);
 	}
 
-	void Renderer::DrawMesh(Mesh* mesh, Material* material, const Matrix4x4& worldMatrix)
+	void Renderer::BindGlobalResources()
 	{
-		if (!mesh || !material || !commandList) return;
-		auto device = context->GetDevice();
+		if (!commandList) return;
 
-		Matrix4x4 mvp = worldMatrix * viewMatrix * projectionMatrix;
-		TransformData data;
-		data.MVP.FromXM(XMMatrixTranspose(mvp.ToXM()));
-		data.World.FromXM(XMMatrixTranspose(worldMatrix.ToXM()));
-
-		D3D12_GPU_VIRTUAL_ADDRESS cbAddr = AllocateCBV(&data, sizeof(TransformData));
-		if (cbAddr == 0) return;
-
-		material->Update();
-		commandList->SetPipelineState(material->GetBlendMode() == BlendMode::Transparent ? pipelineStateTransparent.Get() : pipelineState.Get());
-		commandList->SetGraphicsRootSignature(rootSignature.Get());
-
-		commandList->SetGraphicsRootConstantBufferView(0, cbAddr);
-		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
-
+		// Light Manager (b2 -> Register 19)
 		if (m_lightManager) commandList->SetGraphicsRootConstantBufferView(19, m_lightManager->GetLightBufferAddress());
-
-		// PBR Textures (t0 ~ t5)
-		Texture* textures[6] = { material->GetAlbedoMap(), material->GetNormalMap(), material->GetMetallicMap(), material->GetRoughnessMap(), material->GetAOMap(), material->GetEmissiveMap() };
-		for (int i = 0; i < 6; i++) {
-			BindTexture(commandList, textures[i], 2 + i, D3D12_SRV_DIMENSION_TEXTURE2D);
-		}
 
 		// Shadows (t8 ~ t10)
 		BindShadowMap(commandList, m_passManager->GetDirShadowPass() ? m_passManager->GetDirShadowPass()->GetShadowMap() : nullptr, 8, D3D12_SRV_DIMENSION_TEXTURE2D);
@@ -181,6 +163,36 @@ namespace Span
 		BindComputeBufferSRV(commandList, m_lightManager ? m_lightManager->GetLightDataBuffer() : nullptr, 16);
 		BindComputeBufferSRV(commandList, m_lightManager ? m_lightManager->GetLightGrid() : nullptr, 17);
 		BindComputeBufferSRV(commandList, m_lightManager ? m_lightManager->GetLightIndexList() : nullptr, 18);
+	}
+
+	void Renderer::DrawMesh(Mesh* mesh, Material* material, const Matrix4x4& worldMatrix)
+	{
+		if (!mesh || !material || !commandList) return;
+
+		Matrix4x4 mvp = worldMatrix * viewMatrix * projectionMatrix;
+		TransformData data;
+		data.MVP.FromXM(XMMatrixTranspose(mvp.ToXM()));
+		data.World.FromXM(XMMatrixTranspose(worldMatrix.ToXM()));
+
+		D3D12_GPU_VIRTUAL_ADDRESS cbAddr = AllocateCBV(&data, sizeof(TransformData));
+		if (cbAddr == 0) return;
+
+		material->Update();
+		commandList->SetPipelineState(material->GetBlendMode() == BlendMode::Transparent ? pipelineStateTransparent.Get() : pipelineState.Get());
+		commandList->SetGraphicsRootSignature(rootSignature.Get());
+
+		commandList->SetGraphicsRootConstantBufferView(0, cbAddr);
+		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
+
+		BindGlobalResources();
+
+		if (m_lightManager) commandList->SetGraphicsRootConstantBufferView(19, m_lightManager->GetLightBufferAddress());
+
+		// PBR Textures (t0 ~ t5)
+		Texture* textures[6] = { material->GetAlbedoMap(), material->GetNormalMap(), material->GetMetallicMap(), material->GetRoughnessMap(), material->GetAOMap(), material->GetEmissiveMap() };
+		for (int i = 0; i < 6; i++) {
+			BindTexture(commandList, textures[i], 2 + i, D3D12_SRV_DIMENSION_TEXTURE2D);
+		}
 
 		mesh->Draw(commandList);
 	}
@@ -315,7 +327,7 @@ namespace Span
 		}
 		else if (texture && texture->GetResource())
 		{
-			// リソースはあるがSRVが無い場合、ここでSRVを作成する
+			// リソースはあるがSRVヒープが無い場合、ここでSRVを作成する
 			D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
 			srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
 			srvDesc.Format = texture->GetResource()->GetDesc().Format;
@@ -328,18 +340,10 @@ namespace Span
 		}
 		else
 		{
-			// テクスチャが無い場合のダミー
-			D3D12_SHADER_RESOURCE_VIEW_DESC nullDesc = {};
-			nullDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-			nullDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-			nullDesc.ViewDimension = dimension;
-			if (dimension == D3D12_SRV_DIMENSION_TEXTURECUBE) nullDesc.TextureCube.MipLevels = 1;
-			else if (dimension == D3D12_SRV_DIMENSION_TEXTURE2DARRAY) { nullDesc.Texture2DArray.MipLevels = 1; nullDesc.Texture2DArray.ArraySize = 1; }
-			else nullDesc.Texture2D.MipLevels = 1;
-
-			device->CreateShaderResourceView(nullptr, &nullDesc, destCpu);
+			// テクスチャが無い場合のダミー（事前生成した安全なキャッシュを使用）
+			device->CopyDescriptorsSimple(1, destCpu, GetDummyDescriptor(dimension), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 		}
-
+		
 		cmd->SetGraphicsRootDescriptorTable(rootIndex, destGpu);
 		m_frameSrvHeapOffset++;
 	}
@@ -362,15 +366,7 @@ namespace Span
 		else
 		{
 			// 影用の安全なダミーSRVを生成
-			D3D12_SHADER_RESOURCE_VIEW_DESC nullDesc = {};
-			nullDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-			nullDesc.Format = DXGI_FORMAT_R32_FLOAT;
-			nullDesc.ViewDimension = dimension;
-			if (dimension == D3D12_SRV_DIMENSION_TEXTURECUBE) nullDesc.TextureCube.MipLevels = 1;
-			else if (dimension == D3D12_SRV_DIMENSION_TEXTURE2DARRAY) { nullDesc.Texture2DArray.MipLevels = 1; nullDesc.Texture2DArray.ArraySize = 6; }
-			else nullDesc.Texture2D.MipLevels = 1;
-
-			device->CreateShaderResourceView(nullptr, &nullDesc, destCpu);
+			device->CopyDescriptorsSimple(1, destCpu, GetDummyDescriptor(dimension), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 		}
 
 		cmd->SetGraphicsRootDescriptorTable(rootIndex, destGpu);
@@ -396,15 +392,7 @@ namespace Span
 		else
 		{
 			// 安全なダミーSRVを生成
-			D3D12_SHADER_RESOURCE_VIEW_DESC nullDesc = {};
-			nullDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-			nullDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-			nullDesc.ViewDimension = dimension;
-			if (dimension == D3D12_SRV_DIMENSION_TEXTURECUBE) nullDesc.TextureCube.MipLevels = 1;
-			else if (dimension == D3D12_SRV_DIMENSION_TEXTURE2DARRAY) { nullDesc.Texture2DArray.MipLevels = 1; nullDesc.Texture2DArray.ArraySize = 1; }
-			else nullDesc.Texture2D.MipLevels = 1;
-
-			device->CreateShaderResourceView(nullptr, &nullDesc, destCpu);
+			device->CopyDescriptorsSimple(1, destCpu, GetDummyDescriptor(dimension), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 		}
 
 		cmd->SetGraphicsRootDescriptorTable(rootIndex, destGpu);
@@ -426,16 +414,7 @@ namespace Span
 		}
 		else
 		{
-			D3D12_SHADER_RESOURCE_VIEW_DESC nullDesc = {};
-			nullDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-			nullDesc.Format = DXGI_FORMAT_UNKNOWN;
-			nullDesc.ViewDimension = D3D12_SRV_DIMENSION_BUFFER;
-			nullDesc.Buffer.FirstElement = 0;
-			nullDesc.Buffer.NumElements = 0;
-			nullDesc.Buffer.StructureByteStride = 4;
-			nullDesc.Buffer.Flags = D3D12_BUFFER_SRV_FLAG_NONE;
-
-			device->CreateShaderResourceView(nullptr, &nullDesc, destCpu);
+			device->CopyDescriptorsSimple(1, destCpu, GetDummyDescriptor(D3D12_SRV_DIMENSION_BUFFER), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 		}
 		cmd->SetGraphicsRootDescriptorTable(rootIndex, destGpu);
 		m_frameSrvHeapOffset++;
@@ -707,5 +686,69 @@ namespace Span
 		constantBuffer->Map(0, &readRange, reinterpret_cast<void**>(&mappedConstantBuffer));
 
 		return true;
+	}
+
+	bool Renderer::CreateDummyDescriptors()
+	{
+		auto device = context->GetDevice();
+		D3D12_DESCRIPTOR_HEAP_DESC desc = {};
+		desc.NumDescriptors = 4;
+		desc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
+		desc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+		if (FAILED(device->CreateDescriptorHeap(&desc, IID_PPV_ARGS(&m_dummySrvHeap)))) return false;
+
+		uint32 size = device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+		D3D12_CPU_DESCRIPTOR_HANDLE handle = m_dummySrvHeap->GetCPUDescriptorHandleForHeapStart();
+
+		// 1. Texture2D
+		D3D12_SHADER_RESOURCE_VIEW_DESC nullTexDesc = {};
+		nullTexDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		nullTexDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
+		nullTexDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+		nullTexDesc.Texture2D.MipLevels = 1;
+		device->CreateShaderResourceView(nullptr, &nullTexDesc, handle);
+		handle.ptr += size;
+
+		// 2. TextureCube
+		D3D12_SHADER_RESOURCE_VIEW_DESC nullCubeDesc = nullTexDesc;
+		nullCubeDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURECUBE;
+		nullCubeDesc.TextureCube.MipLevels = 1;
+		device->CreateShaderResourceView(nullptr, &nullCubeDesc, handle);
+		handle.ptr += size;
+
+		// 3. Texture2DArray
+		D3D12_SHADER_RESOURCE_VIEW_DESC nullArrayDesc = nullTexDesc;
+		nullArrayDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2DARRAY;
+		nullArrayDesc.Texture2DArray.MipLevels = 1;
+		nullArrayDesc.Texture2DArray.ArraySize = 1;
+		device->CreateShaderResourceView(nullptr, &nullArrayDesc, handle);
+		handle.ptr += size;
+
+		// 4. Buffer
+		D3D12_SHADER_RESOURCE_VIEW_DESC nullBufDesc = {};
+		nullBufDesc.Format = DXGI_FORMAT_UNKNOWN;
+		nullBufDesc.ViewDimension = D3D12_SRV_DIMENSION_BUFFER;
+		nullBufDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+		nullBufDesc.Buffer.FirstElement = 0;
+		nullBufDesc.Buffer.NumElements = 0;
+		nullBufDesc.Buffer.StructureByteStride = 4;
+		nullBufDesc.Buffer.Flags = D3D12_BUFFER_SRV_FLAG_NONE;
+
+		device->CreateShaderResourceView(nullptr, &nullBufDesc, handle);
+
+		return true;
+	}
+
+	D3D12_CPU_DESCRIPTOR_HANDLE Renderer::GetDummyDescriptor(D3D12_SRV_DIMENSION dimension)
+	{
+		D3D12_CPU_DESCRIPTOR_HANDLE handle = m_dummySrvHeap->GetCPUDescriptorHandleForHeapStart();
+		uint32 size = context->GetDevice()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+
+		if (dimension == D3D12_SRV_DIMENSION_TEXTURECUBE) handle.ptr += size * 1;
+		else if (dimension == D3D12_SRV_DIMENSION_TEXTURE2DARRAY) handle.ptr += size * 2;
+		else if (dimension == D3D12_SRV_DIMENSION_BUFFER) handle.ptr += size * 3;
+		// default is TEXTURE2D (offset 0)
+
+		return handle;
 	}
 }

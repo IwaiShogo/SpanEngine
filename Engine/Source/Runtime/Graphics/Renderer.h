@@ -113,6 +113,9 @@ namespace Span
 		/// @brief	リサイズ対応
 		void OnResize(uint32 width, uint32 height);
 
+		/// @brief	フレーム共通リソースをバインドする
+		void BindGlobalResources();
+
 		/**
 		 * @brief	メッシュ描画コマンドの発行。
 		 * @param	mesh 描画するメッシュ
@@ -189,6 +192,8 @@ namespace Span
 		bool CreateRootSignature();
 		bool CreatePipelineState();
 		bool CreateConstantBuffer();
+		bool CreateDummyDescriptors();
+		D3D12_CPU_DESCRIPTOR_HANDLE GetDummyDescriptor(D3D12_SRV_DIMENSION dimension);
 
 	private:
 		GraphicsContext* context = nullptr;
@@ -239,5 +244,9 @@ namespace Span
 		std::unique_ptr<Texture> m_opaqueCaptureTex;
 		uint32 m_opaqueCaptureWidth = 0;
 		uint32 m_opaqueCaptureHeight = 0;
+
+		// ダミーDiscriptor保持用のヒープ
+		ComPtr<ID3D12DescriptorHeap> m_dummySrvHeap;
+		uint32 m_dummyHeapOffset = 0;
 	};
 }
