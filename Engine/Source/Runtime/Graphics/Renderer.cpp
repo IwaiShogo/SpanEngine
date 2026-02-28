@@ -427,8 +427,14 @@ namespace Span
 		else
 		{
 			D3D12_SHADER_RESOURCE_VIEW_DESC nullDesc = {};
-			nullDesc.Format = DXGI_FORMAT_R32_UINT;
+			nullDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+			nullDesc.Format = DXGI_FORMAT_UNKNOWN;
 			nullDesc.ViewDimension = D3D12_SRV_DIMENSION_BUFFER;
+			nullDesc.Buffer.FirstElement = 0;
+			nullDesc.Buffer.NumElements = 0;
+			nullDesc.Buffer.StructureByteStride = 4;
+			nullDesc.Buffer.Flags = D3D12_BUFFER_SRV_FLAG_NONE;
+
 			device->CreateShaderResourceView(nullptr, &nullDesc, destCpu);
 		}
 		cmd->SetGraphicsRootDescriptorTable(rootIndex, destGpu);

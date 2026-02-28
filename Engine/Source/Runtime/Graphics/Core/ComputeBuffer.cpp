@@ -54,7 +54,7 @@ namespace Span
 		D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
 		srvHeapDesc.NumDescriptors = 1;
 		srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 		device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&m_srvHeap));
 
 		D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
@@ -73,7 +73,7 @@ namespace Span
 			D3D12_DESCRIPTOR_HEAP_DESC uavHeapDesc = {};
 			uavHeapDesc.NumDescriptors = 1;
 			uavHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-			uavHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+			uavHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 			device->CreateDescriptorHeap(&uavHeapDesc, IID_PPV_ARGS(&m_uavHeap));
 
 			D3D12_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};

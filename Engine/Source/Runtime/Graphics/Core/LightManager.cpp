@@ -255,13 +255,21 @@ namespace Span
 		// 3. Pipeline State の作成
 		D3D12_COMPUTE_PIPELINE_STATE_DESC psoDesc = {};
 		psoDesc.pRootSignature = m_computeRootSignature.Get();
+
+		// フラスタム計算用 PSO
 		psoDesc.CS = m_shaderFrustums->GetBytecode();
 		if (FAILED(device->CreateComputePipelineState(&psoDesc, IID_PPV_ARGS(&m_psoFrustums)))) return false;
 
 		m_shaderResetCounter = std::make_unique<Shader>();
 		if (!m_shaderResetCounter->Load(L"LightCulling.hlsl", ShaderType::Compute, "CS_ResetCounter")) return false;
 
-		// カリング用PSOの作成
+		psoDesc.CS = m_shaderResetCounter->GetBytecode();
+		if (FAILED(device->CreateComputePipelineState(&psoDesc, IID_PPV_ARGS(&m_psoResetCounter)))) return false;
+
+		// カリング用シェーダーのロードと PSO の作成
+		m_shaderCulling = std::make_unique<Shader>();
+		if (!m_shaderCulling->Load(L"LightCulling.hlsl", ShaderType::Compute, "CS_LightCulling")) return false;
+
 		psoDesc.CS = m_shaderCulling->GetBytecode();
 		if (FAILED(device->CreateComputePipelineState(&psoDesc, IID_PPV_ARGS(&m_psoCulling)))) return false;
 
