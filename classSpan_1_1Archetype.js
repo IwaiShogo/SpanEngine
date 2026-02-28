@@ -17,8 +17,8 @@ var classSpan_1_1Archetype =
     [ "chunks", "classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838", null ],
     [ "entitySize", "classSpan_1_1Archetype.html#aba45aa9225749156ea021eb1d7ad06a5", null ],
     [ "signature", "classSpan_1_1Archetype.html#ac679093a9a9285da19dac5b95d82390c", null ],
-    [ "typeAlignments", "classSpan_1_1Archetype.html#ae81a33142663f5b2592850d7f866aafe", null ],
+    [ "typeAlignments", "classSpan_1_1Archetype.html#a214877c98637d6596e3da7204eb58b3b", null ],
     [ "typeIDs", "classSpan_1_1Archetype.html#a90e77740e743ce0f3c5b43a863fa84cf", null ],
-    [ "typeOffsets", "classSpan_1_1Archetype.html#a39093386e673c2224b2fc6bce1366681", null ],
-    [ "typeSizes", "classSpan_1_1Archetype.html#a58669ba1c104bcb9021c6121ec5e3528", null ]
+    [ "typeOffsets", "classSpan_1_1Archetype.html#a3d456bcff5cd91b866a84fcef88985ba", null ],
+    [ "typeSizes", "classSpan_1_1Archetype.html#ab1207a619a2f09c60d692c3e50a45374", null ]
 ];

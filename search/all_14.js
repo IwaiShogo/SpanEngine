@@ -40,8 +40,8 @@ var searchData=
   ['trs_37',['TRS',['../structSpan_1_1Matrix4x4.html#a26c91de102eab3c6d4d45b5f7bf107fc',1,'Span::Matrix4x4']]],
   ['twopi_38',['TwoPI',['../namespaceSpan.html#abc577250df3b868bd5b5d433f4c5632b',1,'Span']]],
   ['type_39',['Type',['../structSpan_1_1Camera.html#add602a5b10a80c4416bf6819f83421b6',1,'Span::Camera::Type'],['../structSpan_1_1LightDataGPU.html#a13c41d56a057825ed8eb7a63566e232f',1,'Span::LightDataGPU::Type'],['../structSpan_1_1Attribute.html#ad4f69260b473673f7fa22e5004c8ab99',1,'Span::Attribute::Type'],['../structSpan_1_1AssetMetadata.html#abb9dddb738e37bae8d6ff6fcda1c6c5d',1,'Span::AssetMetadata::Type']]],
-  ['typealignments_40',['typeAlignments',['../classSpan_1_1Archetype.html#ae81a33142663f5b2592850d7f866aafe',1,'Span::Archetype']]],
+  ['typealignments_40',['typeAlignments',['../classSpan_1_1Archetype.html#a214877c98637d6596e3da7204eb58b3b',1,'Span::Archetype']]],
   ['typeids_41',['typeIDs',['../classSpan_1_1Archetype.html#a90e77740e743ce0f3c5b43a863fa84cf',1,'Span::Archetype']]],
-  ['typeoffsets_42',['typeOffsets',['../classSpan_1_1Archetype.html#a39093386e673c2224b2fc6bce1366681',1,'Span::Archetype']]],
-  ['typesizes_43',['typeSizes',['../classSpan_1_1Archetype.html#a58669ba1c104bcb9021c6121ec5e3528',1,'Span::Archetype']]]
+  ['typeoffsets_42',['typeOffsets',['../classSpan_1_1Archetype.html#a3d456bcff5cd91b866a84fcef88985ba',1,'Span::Archetype']]],
+  ['typesizes_43',['typeSizes',['../classSpan_1_1Archetype.html#ab1207a619a2f09c60d692c3e50a45374',1,'Span::Archetype']]]
 ];

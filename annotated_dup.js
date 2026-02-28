@@ -53,6 +53,7 @@ var annotated_dup =
       [ "SpotLight", "structSpan_1_1SpotLight.html", "structSpan_1_1SpotLight" ],
       [ "LayerManager", "classSpan_1_1LayerManager.html", "classSpan_1_1LayerManager" ],
       [ "TagManager", "classSpan_1_1TagManager.html", "classSpan_1_1TagManager" ],
+      [ "ComponentTypeCounter", "classSpan_1_1ComponentTypeCounter.html", "classSpan_1_1ComponentTypeCounter" ],
       [ "ComponentType", "classSpan_1_1ComponentType.html", "classSpan_1_1ComponentType" ],
       [ "ArchetypeSignature", "classSpan_1_1ArchetypeSignature.html", "classSpan_1_1ArchetypeSignature" ],
       [ "Archetype", "classSpan_1_1Archetype.html", "classSpan_1_1Archetype" ],

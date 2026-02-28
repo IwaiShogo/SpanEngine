@@ -15,6 +15,7 @@ var hierarchy =
     [ "Span::ComponentMetadata", "structSpan_1_1ComponentMetadata.html", null ],
     [ "Span::ComponentRegistry", "classSpan_1_1ComponentRegistry.html", null ],
     [ "Span::ComponentType&lt; T &gt;", "classSpan_1_1ComponentType.html", null ],
+    [ "Span::ComponentTypeCounter", "classSpan_1_1ComponentTypeCounter.html", null ],
     [ "Span::ComputeBuffer", "classSpan_1_1ComputeBuffer.html", null ],
     [ "Span::ConstantBuffer&lt; T &gt;", "classSpan_1_1ConstantBuffer.html", null ],
     [ "Span::DepthNormalPass::DepthNormalData", "structSpan_1_1DepthNormalPass_1_1DepthNormalData.html", null ],

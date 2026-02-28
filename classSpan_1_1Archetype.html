@@ -136,12 +136,12 @@ Span::Archetype 連携図</div>
 <tr class="memdesc:ac679093a9a9285da19dac5b95d82390c"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネントの構成の署名  <br /></td></tr>
 <tr class="memitem:a90e77740e743ce0f3c5b43a863fa84cf" id="r_a90e77740e743ce0f3c5b43a863fa84cf"><td class="memItemLeft">std::vector&lt; <a class="el" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a90e77740e743ce0f3c5b43a863fa84cf">typeIDs</a></td></tr>
 <tr class="memdesc:a90e77740e743ce0f3c5b43a863fa84cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">TypeIDリスト  <br /></td></tr>
-<tr class="memitem:a39093386e673c2224b2fc6bce1366681" id="r_a39093386e673c2224b2fc6bce1366681"><td class="memItemLeft">std::unordered_map&lt; <a class="el" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a>, size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a39093386e673c2224b2fc6bce1366681">typeOffsets</a></td></tr>
-<tr class="memdesc:a39093386e673c2224b2fc6bce1366681"><td class="mdescLeft">&#160;</td><td class="mdescRight">TypeID -&gt; Chunk内オフセット  <br /></td></tr>
-<tr class="memitem:a58669ba1c104bcb9021c6121ec5e3528" id="r_a58669ba1c104bcb9021c6121ec5e3528"><td class="memItemLeft">std::unordered_map&lt; <a class="el" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a>, size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a58669ba1c104bcb9021c6121ec5e3528">typeSizes</a></td></tr>
-<tr class="memdesc:a58669ba1c104bcb9021c6121ec5e3528"><td class="mdescLeft">&#160;</td><td class="mdescRight">TypeID -&gt; サイズ (バイト)  <br /></td></tr>
-<tr class="memitem:ae81a33142663f5b2592850d7f866aafe" id="r_ae81a33142663f5b2592850d7f866aafe"><td class="memItemLeft">std::unordered_map&lt; <a class="el" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a>, size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ae81a33142663f5b2592850d7f866aafe">typeAlignments</a></td></tr>
-<tr class="memdesc:ae81a33142663f5b2592850d7f866aafe"><td class="mdescLeft">&#160;</td><td class="mdescRight">TypeID -&gt; アライメント  <br /></td></tr>
+<tr class="memitem:a3d456bcff5cd91b866a84fcef88985ba" id="r_a3d456bcff5cd91b866a84fcef88985ba"><td class="memItemLeft">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3d456bcff5cd91b866a84fcef88985ba">typeOffsets</a></td></tr>
+<tr class="memdesc:a3d456bcff5cd91b866a84fcef88985ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">TypeID -&gt; Chunk内オフセット  <br /></td></tr>
+<tr class="memitem:ab1207a619a2f09c60d692c3e50a45374" id="r_ab1207a619a2f09c60d692c3e50a45374"><td class="memItemLeft">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab1207a619a2f09c60d692c3e50a45374">typeSizes</a></td></tr>
+<tr class="memdesc:ab1207a619a2f09c60d692c3e50a45374"><td class="mdescLeft">&#160;</td><td class="mdescRight">TypeID -&gt; サイズ (バイト)  <br /></td></tr>
+<tr class="memitem:a214877c98637d6596e3da7204eb58b3b" id="r_a214877c98637d6596e3da7204eb58b3b"><td class="memItemLeft">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a214877c98637d6596e3da7204eb58b3b">typeAlignments</a></td></tr>
+<tr class="memdesc:a214877c98637d6596e3da7204eb58b3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">TypeID -&gt; アライメント  <br /></td></tr>
 <tr class="memitem:aba45aa9225749156ea021eb1d7ad06a5" id="r_aba45aa9225749156ea021eb1d7ad06a5"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#aba45aa9225749156ea021eb1d7ad06a5">entitySize</a> = 0</td></tr>
 <tr class="memdesc:aba45aa9225749156ea021eb1d7ad06a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entity1体あたりの合計サイズ (バイト)  <br /></td></tr>
 <tr class="memitem:a3bf3be2bac8f239b385af773698f50d5" id="r_a3bf3be2bac8f239b385af773698f50d5"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3bf3be2bac8f239b385af773698f50d5">chunkCapacity</a> = 0</td></tr>
@@ -222,7 +222,7 @@ Span::Archetype 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00108">108</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00118">118</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -251,7 +251,7 @@ Span::Archetype 連携図</div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>Chunk内でのインデックス </dd></dl>
 
-<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00117">117</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00127">127</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -340,7 +340,7 @@ Span::Archetype 連携図</div>
 
 <p>コンポーネントのアライメントを取得します。 </p>
 
-<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00204">204</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00212">212</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -373,7 +373,7 @@ Span::Archetype 連携図</div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>チャンク先頭からのバイトオフセット </dd></dl>
 
-<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00192">192</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00202">202</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -399,7 +399,7 @@ Span::Archetype 連携図</div>
 
 <p>コンポーネントの単体サイズを取得します。 </p>
 
-<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00198">198</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00207">207</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -546,7 +546,7 @@ Span::Archetype 連携図</div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>移動によってインデックスが変わったエンティティのID。穴埋めが発生しなかった場合は無効なID。 </dd></dl>
 
-<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00151">151</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00161">161</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -677,8 +677,8 @@ Span::Archetype 連携図</div>
 
 </div>
 </div>
-<a id="ae81a33142663f5b2592850d7f866aafe" name="ae81a33142663f5b2592850d7f866aafe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae81a33142663f5b2592850d7f866aafe">&#9670;&#160;</a></span>typeAlignments</h2>
+<a id="a214877c98637d6596e3da7204eb58b3b" name="a214877c98637d6596e3da7204eb58b3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a214877c98637d6596e3da7204eb58b3b">&#9670;&#160;</a></span>typeAlignments</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -687,7 +687,7 @@ Span::Archetype 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;<a class="el" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a>, size_t&gt; Span::Archetype::typeAlignments</td>
+          <td class="memname">std::vector&lt;size_t&gt; Span::Archetype::typeAlignments</td>
         </tr>
       </table>
   </td>
@@ -729,8 +729,8 @@ Span::Archetype 連携図</div>
 
 </div>
 </div>
-<a id="a39093386e673c2224b2fc6bce1366681" name="a39093386e673c2224b2fc6bce1366681"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39093386e673c2224b2fc6bce1366681">&#9670;&#160;</a></span>typeOffsets</h2>
+<a id="a3d456bcff5cd91b866a84fcef88985ba" name="a3d456bcff5cd91b866a84fcef88985ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d456bcff5cd91b866a84fcef88985ba">&#9670;&#160;</a></span>typeOffsets</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -739,7 +739,7 @@ Span::Archetype 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;<a class="el" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a>, size_t&gt; Span::Archetype::typeOffsets</td>
+          <td class="memname">std::vector&lt;size_t&gt; Span::Archetype::typeOffsets</td>
         </tr>
       </table>
   </td>
@@ -755,8 +755,8 @@ Span::Archetype 連携図</div>
 
 </div>
 </div>
-<a id="a58669ba1c104bcb9021c6121ec5e3528" name="a58669ba1c104bcb9021c6121ec5e3528"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58669ba1c104bcb9021c6121ec5e3528">&#9670;&#160;</a></span>typeSizes</h2>
+<a id="ab1207a619a2f09c60d692c3e50a45374" name="ab1207a619a2f09c60d692c3e50a45374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1207a619a2f09c60d692c3e50a45374">&#9670;&#160;</a></span>typeSizes</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -765,7 +765,7 @@ Span::Archetype 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;<a class="el" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a>, size_t&gt; Span::Archetype::typeSizes</td>
+          <td class="memname">std::vector&lt;size_t&gt; Span::Archetype::typeSizes</td>
         </tr>
       </table>
   </td>

@@ -179,158 +179,165 @@ $(function(){initNavTree('Archetype_8cpp_source.html','',''); });
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="comment">// 先頭はEntityIDの配列</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        finalOffset += <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>) * <a class="code hl_variable" href="classSpan_1_1Archetype.html#a3bf3be2bac8f239b385af773698f50d5">chunkCapacity</a>;</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="comment">// コンポーネントごとの配列開始位置を決定</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; types.size(); ++i)</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        {</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordtype">size_t</span> align = alignments[i];</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keywordflow">if</span> (finalOffset % align != 0)</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                finalOffset += align - (finalOffset % align);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            }</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="comment">// 本来はここでアライメント調整(Padding)を入れるべきだが、簡易実装</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <a class="code hl_variable" href="classSpan_1_1Archetype.html#a39093386e673c2224b2fc6bce1366681">typeOffsets</a>[types[i]] = finalOffset;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="comment">// サイズを保存</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <a class="code hl_variable" href="classSpan_1_1Archetype.html#a58669ba1c104bcb9021c6121ec5e3528">typeSizes</a>[types[i]] = sizes[i];</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="comment">// アライメント</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <a class="code hl_variable" href="classSpan_1_1Archetype.html#ae81a33142663f5b2592850d7f866aafe">typeAlignments</a>[types[i]] = alignments[i];</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="comment">// 次のコンポーネントのためにオフセットを進める (サイズ * キャパシティ)</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            finalOffset += sizes[i] * <a class="code hl_variable" href="classSpan_1_1Archetype.html#a3bf3be2bac8f239b385af773698f50d5">chunkCapacity</a>;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
-</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="comment">// 渡された typeIDs の中から最大のIDを見つける</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> maxID = 0;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> <span class="keywordtype">id</span> : types)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keywordflow">if</span> (<span class="keywordtype">id</span> &gt; maxID) maxID = id;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="comment">// 最大ID + 1 のサイズでベクターを初期化</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <a class="code hl_variable" href="classSpan_1_1Archetype.html#a3d456bcff5cd91b866a84fcef88985ba">typeOffsets</a>.resize(maxID + 1, 0);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <a class="code hl_variable" href="classSpan_1_1Archetype.html#ab1207a619a2f09c60d692c3e50a45374">typeSizes</a>.resize(maxID + 1, 0);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <a class="code hl_variable" href="classSpan_1_1Archetype.html#a214877c98637d6596e3da7204eb58b3b">typeAlignments</a>.resize(maxID + 1, 0);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="comment">// コンポーネントごとの配列開始位置を決定</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; types.size(); ++i)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordtype">size_t</span> align = alignments[i];</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="keywordflow">if</span> (finalOffset % align != 0)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                finalOffset += align - (finalOffset % align);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            }</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="foldopen" id="foldopen00108" data-start="{" data-end="}">
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#a2f6faccfa6ad4508f2a241ba6d5006cc">  108</a></span>    <a class="code hl_function" href="classSpan_1_1Archetype.html#a2f6faccfa6ad4508f2a241ba6d5006cc">Archetype::~Archetype</a>()</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    {</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordflow">for</span> (<a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>* chunk : <a class="code hl_variable" href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">chunks</a>)</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keyword">delete</span> chunk;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        }</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <a class="code hl_variable" href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">chunks</a>.clear();</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <span class="comment">// 配列への直接アクセス</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            <a class="code hl_variable" href="classSpan_1_1Archetype.html#a3d456bcff5cd91b866a84fcef88985ba">typeOffsets</a>[types[i]] = finalOffset;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            <a class="code hl_variable" href="classSpan_1_1Archetype.html#ab1207a619a2f09c60d692c3e50a45374">typeSizes</a>[types[i]] = sizes[i];</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <a class="code hl_variable" href="classSpan_1_1Archetype.html#a214877c98637d6596e3da7204eb58b3b">typeAlignments</a>[types[i]] = alignments[i];</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="comment">// 次のコンポーネントのためにオフセットを進める (サイズ * キャパシティ)</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            finalOffset += sizes[i] * <a class="code hl_variable" href="classSpan_1_1Archetype.html#a3bf3be2bac8f239b385af773698f50d5">chunkCapacity</a>;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        }</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    }</div>
 </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#aaef35d070780bc90b4a82c72c710b322">  117</a></span>    <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="code hl_function" href="classSpan_1_1Archetype.html#aaef35d070780bc90b4a82c72c710b322">Archetype::AllocateEntity</a>(<a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a> entityID)</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    {</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>* targetChunk = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="comment">// 空きがあるチャンクを探す（または末尾を見る）</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">chunks</a>.empty())</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        {</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            <a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>* lastChunk = <a class="code hl_variable" href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">chunks</a>.back();</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="keywordflow">if</span> (lastChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a> &lt; lastChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a191a5a7d054efc388aa95de168e31706">Capacity</a>)</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            {</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                targetChunk = lastChunk;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            }</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="}">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#a2f6faccfa6ad4508f2a241ba6d5006cc">  118</a></span>    <a class="code hl_function" href="classSpan_1_1Archetype.html#a2f6faccfa6ad4508f2a241ba6d5006cc">Archetype::~Archetype</a>()</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">for</span> (<a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>* chunk : <a class="code hl_variable" href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">chunks</a>)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            <span class="keyword">delete</span> chunk;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        }</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_variable" href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">chunks</a>.clear();</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
+</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="foldopen" id="foldopen00127" data-start="{" data-end="}">
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#aaef35d070780bc90b4a82c72c710b322">  127</a></span>    <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> <a class="code hl_function" href="classSpan_1_1Archetype.html#aaef35d070780bc90b4a82c72c710b322">Archetype::AllocateEntity</a>(<a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a> entityID)</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    {</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>* targetChunk = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="comment">// 空きがなければ新規作成</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">if</span> (!targetChunk)</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="comment">// 空きがあるチャンクを探す（または末尾を見る）</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">chunks</a>.empty())</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        {</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            targetChunk = <span class="keyword">new</span> <a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>(<a class="code hl_variable" href="classSpan_1_1Archetype.html#a3bf3be2bac8f239b385af773698f50d5">chunkCapacity</a>);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>            targetChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a5f085ad45cb9c83847d4c712ae8dc026">OwnerArchetype</a> = <span class="keyword">this</span>;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>            <a class="code hl_variable" href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">chunks</a>.push_back(targetChunk);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        }</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="comment">// EntityIDを書き込む</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> index = targetChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a>;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="comment">// チャンクの先頭はEntityID配列と決まっている</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>* ids = <span class="keyword">reinterpret_cast&lt;</span><a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>*<span class="keyword">&gt;</span>(targetChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a9c06b41981e0694f79894e16a6c92bdb">Memory</a>);</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        ids[index] = entityID;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        targetChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a>++;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="keywordflow">return</span> index;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    }</div>
-</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="foldopen" id="foldopen00151" data-start="{" data-end="}">
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#a11d5987a2ad75d156021bb2516fff2e4">  151</a></span>    <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a> <a class="code hl_function" href="classSpan_1_1Archetype.html#a11d5987a2ad75d156021bb2516fff2e4">Archetype::RemoveEntity</a>(<a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>* chunk, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> index)</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    {</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="comment">// 範囲外アy不正なチャンクなら何もしない</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">if</span> (!chunk || index &gt;= chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a>) <span class="keywordflow">return</span> <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>{ 0, 0 };</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            <a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>* lastChunk = <a class="code hl_variable" href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">chunks</a>.back();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>            <span class="keywordflow">if</span> (lastChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a> &lt; lastChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a191a5a7d054efc388aa95de168e31706">Capacity</a>)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>            {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                targetChunk = lastChunk;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            }</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        }</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="comment">// 空きがなければ新規作成</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordflow">if</span> (!targetChunk)</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        {</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            targetChunk = <span class="keyword">new</span> <a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>(<a class="code hl_variable" href="classSpan_1_1Archetype.html#a3bf3be2bac8f239b385af773698f50d5">chunkCapacity</a>);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            targetChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a5f085ad45cb9c83847d4c712ae8dc026">OwnerArchetype</a> = <span class="keyword">this</span>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            <a class="code hl_variable" href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">chunks</a>.push_back(targetChunk);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        }</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="comment">// EntityIDを書き込む</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> index = targetChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="comment">// チャンクの先頭はEntityID配列と決まっている</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>* ids = <span class="keyword">reinterpret_cast&lt;</span><a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>*<span class="keyword">&gt;</span>(targetChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a9c06b41981e0694f79894e16a6c92bdb">Memory</a>);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        ids[index] = entityID;</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> lastIndex = chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a> - 1;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>* ids = <span class="keyword">reinterpret_cast&lt;</span><a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>*<span class="keyword">&gt;</span>(chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a9c06b41981e0694f79894e16a6c92bdb">Memory</a>);</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a> movedEntityID = { 0, 0 };</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="comment">// 削除対象が末尾の要素でなければ、末尾のデータを削除対象の位置へコピー</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        <span class="keywordflow">if</span> (index &lt; lastIndex)</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        {</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            movedEntityID = ids[lastIndex];</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            <span class="comment">// 1. EntityIDの配列を上書き</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            ids[index] = movedEntityID;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            <span class="comment">// 2. 各コンポーネントのデータを上書き</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code hl_variable" href="classSpan_1_1Archetype.html#a90e77740e743ce0f3c5b43a863fa84cf">typeIDs</a>.size(); ++i)</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            {</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                <a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> typeID = <a class="code hl_variable" href="classSpan_1_1Archetype.html#a90e77740e743ce0f3c5b43a863fa84cf">typeIDs</a>[i];</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                <span class="keywordtype">size_t</span> offset = <a class="code hl_variable" href="classSpan_1_1Archetype.html#a39093386e673c2224b2fc6bce1366681">typeOffsets</a>[typeID];</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                <span class="keywordtype">size_t</span> size = <a class="code hl_variable" href="classSpan_1_1Archetype.html#a58669ba1c104bcb9021c6121ec5e3528">typeSizes</a>[typeID];</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        targetChunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a>++;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">return</span> index;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    }</div>
+</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="foldopen" id="foldopen00161" data-start="{" data-end="}">
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#a11d5987a2ad75d156021bb2516fff2e4">  161</a></span>    <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a> <a class="code hl_function" href="classSpan_1_1Archetype.html#a11d5987a2ad75d156021bb2516fff2e4">Archetype::RemoveEntity</a>(<a class="code hl_struct" href="structSpan_1_1Chunk.html">Chunk</a>* chunk, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> index)</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    {</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="comment">// 範囲外アy不正なチャンクなら何もしない</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        <span class="keywordflow">if</span> (!chunk || index &gt;= chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a>) <span class="keywordflow">return</span> <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>{ 0, 0 };</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> lastIndex = chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a> - 1;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>* ids = <span class="keyword">reinterpret_cast&lt;</span><a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a>*<span class="keyword">&gt;</span>(chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a9c06b41981e0694f79894e16a6c92bdb">Memory</a>);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <a class="code hl_struct" href="structSpan_1_1EntityID.html">EntityID</a> movedEntityID = { 0, 0 };</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="comment">// 削除対象が末尾の要素でなければ、末尾のデータを削除対象の位置へコピー</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordflow">if</span> (index &lt; lastIndex)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            movedEntityID = ids[lastIndex];</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                <span class="comment">// 対象コンポーネント配列の先頭ポインタ</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                uint8_t* componentArray = chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a9c06b41981e0694f79894e16a6c92bdb">Memory</a> + offset;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            <span class="comment">// 1. EntityIDの配列を上書き</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            ids[index] = movedEntityID;</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                <span class="comment">// コピー先とコピー元のアドレス計算</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                uint8_t* dest = componentArray + (size * index);</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                uint8_t* src = componentArray + (size * lastIndex);</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                std::memcpy(dest, src, size);</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            }</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        }</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="comment">// 要素数を減らす</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a>--;</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">return</span> movedEntityID;</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    }</div>
-</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            <span class="comment">// 2. 各コンポーネントのデータを上書き</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code hl_variable" href="classSpan_1_1Archetype.html#a90e77740e743ce0f3c5b43a863fa84cf">typeIDs</a>.size(); ++i)</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            {</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                <a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> typeID = <a class="code hl_variable" href="classSpan_1_1Archetype.html#a90e77740e743ce0f3c5b43a863fa84cf">typeIDs</a>[i];</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                <span class="keywordtype">size_t</span> offset = <a class="code hl_variable" href="classSpan_1_1Archetype.html#a3d456bcff5cd91b866a84fcef88985ba">typeOffsets</a>[typeID];</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                <span class="keywordtype">size_t</span> size = <a class="code hl_variable" href="classSpan_1_1Archetype.html#ab1207a619a2f09c60d692c3e50a45374">typeSizes</a>[typeID];</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                <span class="comment">// 対象コンポーネント配列の先頭ポインタ</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                uint8_t* componentArray = chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#a9c06b41981e0694f79894e16a6c92bdb">Memory</a> + offset;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                <span class="comment">// コピー先とコピー元のアドレス計算</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                uint8_t* dest = componentArray + (size * index);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                uint8_t* src = componentArray + (size * lastIndex);</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="foldopen" id="foldopen00192" data-start="{" data-end="}">
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1">  192</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1">Archetype::GetComponentOffset</a>(<a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> typeID)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keyword">auto</span> it = <a class="code hl_variable" href="classSpan_1_1Archetype.html#a39093386e673c2224b2fc6bce1366681">typeOffsets</a>.find(typeID);</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keywordflow">return</span> (it != <a class="code hl_variable" href="classSpan_1_1Archetype.html#a39093386e673c2224b2fc6bce1366681">typeOffsets</a>.end()) ? it-&gt;second : 0;</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    }</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                std::memcpy(dest, src, size);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            }</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        }</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="comment">// 要素数を減らす</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        chunk-&gt;<a class="code hl_variable" href="structSpan_1_1Chunk.html#aedc5274d60df70ca8a41d9298168781d">Count</a>--;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="keywordflow">return</span> movedEntityID;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    }</div>
 </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="foldopen" id="foldopen00198" data-start="{" data-end="}">
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#a4bbf55d97d15574576b64fcd713da023">  198</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classSpan_1_1Archetype.html#a4bbf55d97d15574576b64fcd713da023">Archetype::GetComponentSize</a>(<a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> typeID)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        <span class="keyword">auto</span> it = <a class="code hl_variable" href="classSpan_1_1Archetype.html#a58669ba1c104bcb9021c6121ec5e3528">typeSizes</a>.find(typeID);</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="keywordflow">return</span> (it != <a class="code hl_variable" href="classSpan_1_1Archetype.html#a58669ba1c104bcb9021c6121ec5e3528">typeSizes</a>.end()) ? it-&gt;second : 0;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    }</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="foldopen" id="foldopen00202" data-start="{" data-end="}">
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1">  202</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1">Archetype::GetComponentOffset</a>(<a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> typeID)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <span class="keywordflow">return</span> (typeID &lt; <a class="code hl_variable" href="classSpan_1_1Archetype.html#a3d456bcff5cd91b866a84fcef88985ba">typeOffsets</a>.size()) ? <a class="code hl_variable" href="classSpan_1_1Archetype.html#a3d456bcff5cd91b866a84fcef88985ba">typeOffsets</a>[typeID] : 0;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    }</div>
 </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="foldopen" id="foldopen00204" data-start="{" data-end="}">
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#a51f7d1dad4dcdaf6db44696a2a757821">  204</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classSpan_1_1Archetype.html#a51f7d1dad4dcdaf6db44696a2a757821">Archetype::GetComponentAlignment</a>(<a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> typeID)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keyword">auto</span> it = <a class="code hl_variable" href="classSpan_1_1Archetype.html#ae81a33142663f5b2592850d7f866aafe">typeAlignments</a>.find(typeID);</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <span class="keywordflow">return</span> (it != <a class="code hl_variable" href="classSpan_1_1Archetype.html#ae81a33142663f5b2592850d7f866aafe">typeAlignments</a>.end()) ? it-&gt;second : 0;</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    }</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="foldopen" id="foldopen00207" data-start="{" data-end="}">
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#a4bbf55d97d15574576b64fcd713da023">  207</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classSpan_1_1Archetype.html#a4bbf55d97d15574576b64fcd713da023">Archetype::GetComponentSize</a>(<a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> typeID)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="keywordflow">return</span> (typeID &lt; <a class="code hl_variable" href="classSpan_1_1Archetype.html#ab1207a619a2f09c60d692c3e50a45374">typeSizes</a>.size()) ? <a class="code hl_variable" href="classSpan_1_1Archetype.html#ab1207a619a2f09c60d692c3e50a45374">typeSizes</a>[typeID] : 0;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    }</div>
 </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>}</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="foldopen" id="foldopen00212" data-start="{" data-end="}">
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="classSpan_1_1Archetype.html#a51f7d1dad4dcdaf6db44696a2a757821">  212</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classSpan_1_1Archetype.html#a51f7d1dad4dcdaf6db44696a2a757821">Archetype::GetComponentAlignment</a>(<a class="code hl_typedef" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> typeID)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordflow">return</span> (typeID &lt; <a class="code hl_variable" href="classSpan_1_1Archetype.html#a214877c98637d6596e3da7204eb58b3b">typeAlignments</a>.size()) ? <a class="code hl_variable" href="classSpan_1_1Archetype.html#a214877c98637d6596e3da7204eb58b3b">typeAlignments</a>[typeID] : 0;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    }</div>
+</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
 <div class="ttc" id="aArchetype_8h_html"><div class="ttname"><a href="Archetype_8h.html">Archetype.h</a></div><div class="ttdoc">ECSのメモリレイアウト定義 (アーキタイプ) を行うクラス。</div></div>
-<div class="ttc" id="aclassSpan_1_1Archetype_html_a11d5987a2ad75d156021bb2516fff2e4"><div class="ttname"><a href="classSpan_1_1Archetype.html#a11d5987a2ad75d156021bb2516fff2e4">Span::Archetype::RemoveEntity</a></div><div class="ttdeci">EntityID RemoveEntity(Chunk *chunk, uint32 index)</div><div class="ttdoc">指定したチャンク内のエンティティデータを削除し、末尾の要素で穴埋めします。</div><div class="ttdef"><b>Definition</b> <a href="#l00151">Archetype.cpp:151</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Archetype_html_a2f6faccfa6ad4508f2a241ba6d5006cc"><div class="ttname"><a href="classSpan_1_1Archetype.html#a2f6faccfa6ad4508f2a241ba6d5006cc">Span::Archetype::~Archetype</a></div><div class="ttdeci">~Archetype()</div><div class="ttdef"><b>Definition</b> <a href="#l00108">Archetype.cpp:108</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Archetype_html_a39093386e673c2224b2fc6bce1366681"><div class="ttname"><a href="classSpan_1_1Archetype.html#a39093386e673c2224b2fc6bce1366681">Span::Archetype::typeOffsets</a></div><div class="ttdeci">std::unordered_map&lt; ComponentTypeID, size_t &gt; typeOffsets</div><div class="ttdoc">TypeID -&gt; Chunk内オフセット</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00200">Archetype.h:200</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Archetype_html_a11d5987a2ad75d156021bb2516fff2e4"><div class="ttname"><a href="classSpan_1_1Archetype.html#a11d5987a2ad75d156021bb2516fff2e4">Span::Archetype::RemoveEntity</a></div><div class="ttdeci">EntityID RemoveEntity(Chunk *chunk, uint32 index)</div><div class="ttdoc">指定したチャンク内のエンティティデータを削除し、末尾の要素で穴埋めします。</div><div class="ttdef"><b>Definition</b> <a href="#l00161">Archetype.cpp:161</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Archetype_html_a214877c98637d6596e3da7204eb58b3b"><div class="ttname"><a href="classSpan_1_1Archetype.html#a214877c98637d6596e3da7204eb58b3b">Span::Archetype::typeAlignments</a></div><div class="ttdeci">std::vector&lt; size_t &gt; typeAlignments</div><div class="ttdoc">TypeID -&gt; アライメント</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00202">Archetype.h:202</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Archetype_html_a2f6faccfa6ad4508f2a241ba6d5006cc"><div class="ttname"><a href="classSpan_1_1Archetype.html#a2f6faccfa6ad4508f2a241ba6d5006cc">Span::Archetype::~Archetype</a></div><div class="ttdeci">~Archetype()</div><div class="ttdef"><b>Definition</b> <a href="#l00118">Archetype.cpp:118</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Archetype_html_a3bf3be2bac8f239b385af773698f50d5"><div class="ttname"><a href="classSpan_1_1Archetype.html#a3bf3be2bac8f239b385af773698f50d5">Span::Archetype::chunkCapacity</a></div><div class="ttdeci">uint32 chunkCapacity</div><div class="ttdoc">1チャンクに何体入るか</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00205">Archetype.h:205</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Archetype_html_a4bbf55d97d15574576b64fcd713da023"><div class="ttname"><a href="classSpan_1_1Archetype.html#a4bbf55d97d15574576b64fcd713da023">Span::Archetype::GetComponentSize</a></div><div class="ttdeci">size_t GetComponentSize(ComponentTypeID typeID) const</div><div class="ttdoc">コンポーネントの単体サイズを取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00198">Archetype.cpp:198</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Archetype_html_a51f7d1dad4dcdaf6db44696a2a757821"><div class="ttname"><a href="classSpan_1_1Archetype.html#a51f7d1dad4dcdaf6db44696a2a757821">Span::Archetype::GetComponentAlignment</a></div><div class="ttdeci">size_t GetComponentAlignment(ComponentTypeID typeID) const</div><div class="ttdoc">コンポーネントのアライメントを取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00204">Archetype.cpp:204</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Archetype_html_a58669ba1c104bcb9021c6121ec5e3528"><div class="ttname"><a href="classSpan_1_1Archetype.html#a58669ba1c104bcb9021c6121ec5e3528">Span::Archetype::typeSizes</a></div><div class="ttdeci">std::unordered_map&lt; ComponentTypeID, size_t &gt; typeSizes</div><div class="ttdoc">TypeID -&gt; サイズ (バイト)</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00201">Archetype.h:201</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Archetype_html_a3d456bcff5cd91b866a84fcef88985ba"><div class="ttname"><a href="classSpan_1_1Archetype.html#a3d456bcff5cd91b866a84fcef88985ba">Span::Archetype::typeOffsets</a></div><div class="ttdeci">std::vector&lt; size_t &gt; typeOffsets</div><div class="ttdoc">TypeID -&gt; Chunk内オフセット</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00200">Archetype.h:200</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Archetype_html_a4bbf55d97d15574576b64fcd713da023"><div class="ttname"><a href="classSpan_1_1Archetype.html#a4bbf55d97d15574576b64fcd713da023">Span::Archetype::GetComponentSize</a></div><div class="ttdeci">size_t GetComponentSize(ComponentTypeID typeID) const</div><div class="ttdoc">コンポーネントの単体サイズを取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00207">Archetype.cpp:207</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Archetype_html_a51f7d1dad4dcdaf6db44696a2a757821"><div class="ttname"><a href="classSpan_1_1Archetype.html#a51f7d1dad4dcdaf6db44696a2a757821">Span::Archetype::GetComponentAlignment</a></div><div class="ttdeci">size_t GetComponentAlignment(ComponentTypeID typeID) const</div><div class="ttdoc">コンポーネントのアライメントを取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00212">Archetype.cpp:212</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Archetype_html_a90e77740e743ce0f3c5b43a863fa84cf"><div class="ttname"><a href="classSpan_1_1Archetype.html#a90e77740e743ce0f3c5b43a863fa84cf">Span::Archetype::typeIDs</a></div><div class="ttdeci">std::vector&lt; ComponentTypeID &gt; typeIDs</div><div class="ttdoc">TypeIDリスト</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00199">Archetype.h:199</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Archetype_html_a928e994615978e285adb3833bdf0d838"><div class="ttname"><a href="classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838">Span::Archetype::chunks</a></div><div class="ttdeci">std::vector&lt; Chunk * &gt; chunks</div><div class="ttdoc">確保されたメモリブロック群</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00208">Archetype.h:208</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Archetype_html_aaef35d070780bc90b4a82c72c710b322"><div class="ttname"><a href="classSpan_1_1Archetype.html#aaef35d070780bc90b4a82c72c710b322">Span::Archetype::AllocateEntity</a></div><div class="ttdeci">uint32 AllocateEntity(EntityID entityID)</div><div class="ttdoc">新しいEntity用のスペースを確保します。</div><div class="ttdef"><b>Definition</b> <a href="#l00117">Archetype.cpp:117</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Archetype_html_aaef35d070780bc90b4a82c72c710b322"><div class="ttname"><a href="classSpan_1_1Archetype.html#aaef35d070780bc90b4a82c72c710b322">Span::Archetype::AllocateEntity</a></div><div class="ttdeci">uint32 AllocateEntity(EntityID entityID)</div><div class="ttdoc">新しいEntity用のスペースを確保します。</div><div class="ttdef"><b>Definition</b> <a href="#l00127">Archetype.cpp:127</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Archetype_html_ab1207a619a2f09c60d692c3e50a45374"><div class="ttname"><a href="classSpan_1_1Archetype.html#ab1207a619a2f09c60d692c3e50a45374">Span::Archetype::typeSizes</a></div><div class="ttdeci">std::vector&lt; size_t &gt; typeSizes</div><div class="ttdoc">TypeID -&gt; サイズ (バイト)</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00201">Archetype.h:201</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Archetype_html_aba45aa9225749156ea021eb1d7ad06a5"><div class="ttname"><a href="classSpan_1_1Archetype.html#aba45aa9225749156ea021eb1d7ad06a5">Span::Archetype::entitySize</a></div><div class="ttdeci">size_t entitySize</div><div class="ttdoc">Entity1体あたりの合計サイズ (バイト)</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00204">Archetype.h:204</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Archetype_html_ac679093a9a9285da19dac5b95d82390c"><div class="ttname"><a href="classSpan_1_1Archetype.html#ac679093a9a9285da19dac5b95d82390c">Span::Archetype::signature</a></div><div class="ttdeci">ArchetypeSignature signature</div><div class="ttdoc">コンポーネントの構成の署名</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00196">Archetype.h:196</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Archetype_html_ace55105d4678c95251e7c66ff00846d1"><div class="ttname"><a href="classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1">Span::Archetype::GetComponentOffset</a></div><div class="ttdeci">size_t GetComponentOffset(ComponentTypeID typeID) const</div><div class="ttdoc">コンポーネント配列の「チャンク内オフセット」を取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00192">Archetype.cpp:192</a></div></div>
+<div class="ttc" id="aclassSpan_1_1Archetype_html_ace55105d4678c95251e7c66ff00846d1"><div class="ttname"><a href="classSpan_1_1Archetype.html#ace55105d4678c95251e7c66ff00846d1">Span::Archetype::GetComponentOffset</a></div><div class="ttdeci">size_t GetComponentOffset(ComponentTypeID typeID) const</div><div class="ttdoc">コンポーネント配列の「チャンク内オフセット」を取得します。</div><div class="ttdef"><b>Definition</b> <a href="#l00202">Archetype.cpp:202</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Archetype_html_ae33408fe9890919e0210052bb8d38019"><div class="ttname"><a href="classSpan_1_1Archetype.html#ae33408fe9890919e0210052bb8d38019">Span::Archetype::Archetype</a></div><div class="ttdeci">Archetype(const std::vector&lt; ComponentTypeID &gt; &amp;types, const std::vector&lt; size_t &gt; &amp;sizes, const std::vector&lt; size_t &gt; &amp;alignments)</div><div class="ttdoc">コンストラクタ。メモリレイアウトを計算します。</div><div class="ttdef"><b>Definition</b> <a href="#l00005">Archetype.cpp:5</a></div></div>
-<div class="ttc" id="aclassSpan_1_1Archetype_html_ae81a33142663f5b2592850d7f866aafe"><div class="ttname"><a href="classSpan_1_1Archetype.html#ae81a33142663f5b2592850d7f866aafe">Span::Archetype::typeAlignments</a></div><div class="ttdeci">std::unordered_map&lt; ComponentTypeID, size_t &gt; typeAlignments</div><div class="ttdoc">TypeID -&gt; アライメント</div><div class="ttdef"><b>Definition</b> <a href="Archetype_8h_source.html#l00202">Archetype.h:202</a></div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>
 <div class="ttc" id="anamespaceSpan_html_a51dc0b6d0daae8cf8e6841254d8dc062"><div class="ttname"><a href="namespaceSpan.html#a51dc0b6d0daae8cf8e6841254d8dc062">Span::CHUNK_SIZE</a></div><div class="ttdeci">constexpr size_t CHUNK_SIZE</div><div class="ttdoc">1つのチャンクが確保する固定メモリサイズ (16KB)</div><div class="ttdef"><b>Definition</b> <a href="Chunk_8h_source.html#l00020">Chunk.h:20</a></div></div>
 <div class="ttc" id="anamespaceSpan_html_a536f8f186b1a3b11b8eb44b74c5bfea9"><div class="ttname"><a href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">Span::uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00101">CoreMinimal.h:101</a></div></div>
