@@ -26,6 +26,7 @@ namespace Span
 	class LightManager;
 	class ShadowMap;
 	class RenderTarget;
+	class ComputeBuffer;
 }
 
 namespace Span
@@ -79,12 +80,11 @@ namespace Span
 
 		int SkyMode;
 		int EnableSSAO;
-		float pad[2];
+		uint32 ScreenWidth;
+		uint32 ScreenHeight;
 
 		// 光の視点の行列
 		Matrix4x4 DirectionalLightSpaceMatrix;
-
-		LightDataGPU Lights[MAX_LIGHTS];
 	};
 
 	/**
@@ -142,6 +142,9 @@ namespace Span
 
 		/// @brief	指定スロットにRenderTargetのSRVをバインドします。
 		void BindRenderTargetSRV(ID3D12GraphicsCommandList* cmd, RenderTarget* renderTarget, uint32 rootIndex, D3D12_SRV_DIMENSION dimension = D3D12_SRV_DIMENSION_TEXTURE2D);
+
+		/// @brief	ComputeBufferをSRVとしてバインドします。
+		void BindComputeBufferSRV(ID3D12GraphicsCommandList* cmd, ComputeBuffer* buffer, uint32 rootIndex);
 
 		/// @brief	GPUの処理完了を待機する
 		void WaitForGPU();

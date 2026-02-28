@@ -14,9 +14,10 @@ struct Frustum
 // C++ から渡される定数
 cbuffer CullingCB : register(b0)
 {
-	matrix InverseProjection; // 画面座標から視点空間へ戻すための行列
-	uint2 ScreenDimensions; // 画面の解像度 (幅, 高さ)
-	uint2 NumTiles; // タイルの数 (X, Y)
+	matrix InverseProjection;	// 画面座標から視点空間へ戻すための行列
+	matrix View;				// ワールド座標から視点空間へ返還するための行列
+	uint2 ScreenDimensions;		// 画面の解像度 (幅, 高さ)
+	uint2 NumTiles;				// タイルの数 (X, Y)
 };
 
 // 全タイルのフラスタムを保存するバッファ (UAV)
@@ -94,4 +95,149 @@ void CS_ComputeFrustums(uint3 dispatchThreadId : SV_DispatchThreadID)
 	// バッファに書き込み
 	uint tileIndex = tileXY.y * NumTiles.x + tileXY.x;
 	outFrustums[tileIndex] = frustum;
+}
+
+// ライトの最大数
+#define MAX_LIGHTS 1024
+#define MAX_LIGHTS_PER_TILE 256
+
+struct LightData
+{
+	float3 Color;
+	float Intensity;
+	float3 Position;
+	float Range;
+	float3 Direction;
+	int Type;
+	float InnerConeAngle;
+	float OuterConeAngle;
+	int CastShadows;
+	int ShadowIndex;
+	row_major matrix ShadowMatrix;
+};
+
+// C++ から渡されるライトデータ
+cbuffer LightBuffer : register(b1)
+{
+	float3 CameraPosition;
+	float Exposure;
+	float3 SkyTopColor;
+	float AmbientIntensity;
+	float3 SkyHorizonColor;
+	float EnvReflectionIntensity;
+	float3 SkyBottomColor;
+	int ActiveLightCount;
+	int SkyMode;
+	int EnableSSAO;
+	float2 padding_lb;
+	Matrix DirectionalLightSpaceMatrix;
+};
+
+StructuredBuffer<LightData> Lights : register(t0);
+
+// u1: Opaque Lights Index Counter
+RWStructuredBuffer<uint> outLightIndexCounter : register(u1);
+// u2: Opaque Light Index List
+RWStructuredBuffer<uint> outLightIndexList : register(u2);
+// u3: Light Grid
+RWStructuredBuffer<uint2> outLightGrid : register(u3);
+
+// GroupShared メモリ
+groupshared uint s_MinZ;
+groupshared uint s_MaxZ;
+groupshared uint s_TileLightCount;
+groupshared uint s_TileLightIndices[MAX_LIGHTS_PER_TILE];
+
+// 視点空間の深度をuintに変換
+uint AsUint(float v) { return asuint(v); }
+float AsFloat(uint v) { return asfloat(v); }
+
+// CS_LightCulling
+// =========================================================================
+
+[numthreads(TILE_SIZE, TILE_SIZE, 1)]
+void CS_LightCulling(
+	uint3 groupId : SV_GroupID,
+	uint3 groupThreadId : SV_GroupThreadID,
+	uint groupIndex : SV_GroupIndex)
+{
+	// スレッド0が共有メモリを初期化
+	if (groupIndex == 0)
+	{
+		s_TileLightCount = 0;
+	}
+
+	GroupMemoryBarrierWithGroupSync();
+
+	// タイルのインデックスを計算
+	uint tileIndex = groupId.y * NumTiles.x + groupId.x;
+	
+	// タイルのフラスタムを取得
+	Frustum frustum = outFrustums[tileIndex];
+
+	// 各スレッドが、シーン内のライトを順番に判定する
+	for (uint i = groupIndex; i < ActiveLightCount; i += TILE_SIZE * TILE_SIZE)
+	{
+		LightData light = Lights[i];
+		bool inFrustum = true;
+
+		// Directional Light は常に全タイルに影響する
+		if (light.Type != 0)
+		{
+			// Point / Spot Light の場合、視点空間での位置を計算
+			float4 viewPos = mul(float4(light.Position, 1.0f), View);
+			viewPos.xyz /= viewPos.w;
+
+			// フラスタムの4つの平面と球(ライトのRange)の交差判定
+			for (int p = 0; p < 4; ++p)
+			{
+				float distance = dot(frustum.planes[p].xyz, viewPos.xyz) + frustum.planes[p].w;
+				// 球が平面の完全に「外側」にある場合
+				if (distance < -light.Range)
+				{
+					inFrustum = false;
+					break;
+				}
+			}
+		}
+
+		// フラスタム内に入っていれば、共有メモリのリストに追加
+		if (inFrustum)
+		{
+			uint index;
+			InterlockedAdd(s_TileLightCount, 1, index);
+			if (index < MAX_LIGHTS_PER_TILE)
+			{
+				s_TileLightIndices[index] = i;
+			}
+		}
+	}
+
+	GroupMemoryBarrierWithGroupSync();
+
+	if (groupIndex == 0)
+	{
+		// 実際のライト数を最大値でクリップ
+		uint lightCount = min(s_TileLightCount, MAX_LIGHTS_PER_TILE);
+
+		uint offset;
+		InterlockedAdd(outLightIndexCounter[0], lightCount, offset);
+
+		// Gridに「オフセット」と「ライト数」を記録
+		outLightGrid[tileIndex] = uint2(offset, lightCount);
+
+		// Listにライトのインデックスを書き込む
+		for (uint j = 0; j < lightCount; ++j)
+		{
+			outLightIndexList[offset + j] = s_TileLightIndices[j];
+		}
+	}
+}
+
+// CS_ResetCounter
+// =========================================================================
+[numthreads(1, 1, 1)]
+void CS_ResetCounter()
+{
+	outLightIndexCounter[0] = 0;
 }

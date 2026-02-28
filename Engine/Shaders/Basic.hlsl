@@ -74,10 +74,10 @@ cbuffer LightBuffer : register(b2)
 
 	int SkyMode;
 	int EnableSSAO;
-	float2 padding_lb;
+	uint ScreenWidth;
+	uint ScreenHeight;
 
 	Matrix DirectionalLightSpaceMatrix;
-	LightData Lights[16];	// 最大16個
 }
 
 Texture2D t_Albedo : register(t0);
@@ -94,6 +94,9 @@ TextureCube t_PrefilterMap : register(t10);
 Texture2D t_BRDFLUT : register(t11);
 Texture2D t_OpaqueCapture : register(t12);
 Texture2D t_SSAOMap : register(t13);
+StructuredBuffer<LightData> Lights : register(t14);
+StructuredBuffer<uint2> LightGrid : register(t15);
+StructuredBuffer<uint> LightIndexList : register(t16);
 
 SamplerState g_sampler : register(s0);
 SamplerComparisonState g_shadowSampler : register(s1);
@@ -374,10 +377,22 @@ float4 PSMain(PSInput input) : SV_TARGET
 	
 	// 3. 全ライトのループ計算
 	float shadowFactor = CalculateShadow(float4(input.worldPos, 1.0f), N);
+
+	// 現在んピクセルが属するタイルを計算
+	uint2 pixelPos = uint2(input.position.xy);
+	uint2 tileXY = pixelPos / 16;
+	uint numTilesX = (ScreenWidth + 15) / 16;
+	uint tileIndex = tileXY.y * numTilesX + tileXY.x;
+
+	// タイルに紐づくライトのオフセットと個数を取得
+	uint2 gridData = LightGrid[tileIndex];
+	uint lightOffset = gridData.x;
+	uint lightCount = gridData.y;
 	
-	for (int i = 0; i < ActiveLightCount; ++i)
+	for (int i = 0; i < lightCount; ++i)
 	{
-		LightData light = Lights[i];
+		uint lightIndex = LightIndexList[lightOffset + i];
+		LightData light = Lights[lightIndex];
 		float3 LDir;
 		float attenuation = 1.0f;
 

@@ -150,7 +150,7 @@ namespace Span
 		commandList->SetGraphicsRootConstantBufferView(0, cbAddr);
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
 
-		if (m_lightManager) commandList->SetGraphicsRootConstantBufferView(16, m_lightManager->GetLightBufferAddress());
+		if (m_lightManager) commandList->SetGraphicsRootConstantBufferView(19, m_lightManager->GetLightBufferAddress());
 
 		// PBR Textures (t0 ~ t5)
 		Texture* textures[6] = { material->GetAlbedoMap(), material->GetNormalMap(), material->GetMetallicMap(), material->GetRoughnessMap(), material->GetAOMap(), material->GetEmissiveMap() };
@@ -177,6 +177,10 @@ namespace Span
 		{
 			BindTexture(commandList, nullptr, 15, D3D12_SRV_DIMENSION_TEXTURE2D);
 		}
+
+		BindComputeBufferSRV(commandList, m_lightManager ? m_lightManager->GetLightDataBuffer() : nullptr, 16);
+		BindComputeBufferSRV(commandList, m_lightManager ? m_lightManager->GetLightGrid() : nullptr, 17);
+		BindComputeBufferSRV(commandList, m_lightManager ? m_lightManager->GetLightIndexList() : nullptr, 18);
 
 		mesh->Draw(commandList);
 	}
@@ -407,6 +411,30 @@ namespace Span
 		m_frameSrvHeapOffset++;
 	}
 
+	void Renderer::BindComputeBufferSRV(ID3D12GraphicsCommandList* cmd, ComputeBuffer* buffer, uint32 rootIndex)
+	{
+		if (!m_frameSrvHeap) return;
+		auto device = context->GetDevice();
+		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
+		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
+		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+
+		if (buffer && buffer->GetSRV().ptr != 0)
+		{
+			device->CopyDescriptorsSimple(1, destCpu, buffer->GetSRV(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+		}
+		else
+		{
+			D3D12_SHADER_RESOURCE_VIEW_DESC nullDesc = {};
+			nullDesc.Format = DXGI_FORMAT_R32_UINT;
+			nullDesc.ViewDimension = D3D12_SRV_DIMENSION_BUFFER;
+			device->CreateShaderResourceView(nullptr, &nullDesc, destCpu);
+		}
+		cmd->SetGraphicsRootDescriptorTable(rootIndex, destGpu);
+		m_frameSrvHeapOffset++;
+	}
+
 	void Renderer::WaitForGPU()
 	{
 		if (!context || !context->GetCommandQueue() || !m_waitFence) return;
@@ -469,7 +497,7 @@ namespace Span
 
 	bool Renderer::CreateRootSignature()
 	{
-		D3D12_ROOT_PARAMETER rootParameters[17];
+		D3D12_ROOT_PARAMETER rootParameters[20];
 
 		// [0] Transform (b0)
 		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -483,8 +511,8 @@ namespace Span
 		rootParameters[1].Descriptor.RegisterSpace = 0;
 		rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 
-		D3D12_DESCRIPTOR_RANGE ranges[14] = {};
-		for (int i = 0; i < 14; i++)
+		D3D12_DESCRIPTOR_RANGE ranges[17] = {};
+		for (int i = 0; i < 17; i++)
 		{
 			ranges[i].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
 			ranges[i].NumDescriptors = 1;
@@ -499,10 +527,10 @@ namespace Span
 		}
 
 		// LightBuffer (b2)
-		rootParameters[16].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
-		rootParameters[16].Descriptor.ShaderRegister = 2;
-		rootParameters[16].Descriptor.RegisterSpace = 0;
-		rootParameters[16].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+		rootParameters[19].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+		rootParameters[19].Descriptor.ShaderRegister = 2;
+		rootParameters[19].Descriptor.RegisterSpace = 0;
+		rootParameters[19].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
 		// --- Samplers ---
 		// s0: 通常のテクスチャサンプラー

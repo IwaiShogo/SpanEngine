@@ -148,8 +148,13 @@ namespace Span
 				}
 			);
 
+			auto& sceneBuffer = Application::Get().GetSceneBuffer();
 			bool isSSAOEnabled = (renderer.GetPassManager() && renderer.GetPassManager()->GetSSAOBlurPass() != nullptr);
-			renderer.GetLightManager()->UpdateLightData(activeLights, env, renderer.GetCameraPosition(), isSSAOEnabled);
+			renderer.GetLightManager()->UpdateLightData(activeLights, env, renderer.GetCameraPosition(), isSSAOEnabled, sceneBuffer.GetWidth(), sceneBuffer.GetHeight());
+
+			// 1.4. Forward+ Light Culling
+			// ============================================================
+			renderer.GetLightManager()->ExecuteLightCulling(renderer.GetDevice(), cmd, renderer.GetViewMatrix(), renderer.GetProjectionMatrix(), sceneBuffer.GetWidth(), sceneBuffer.GetHeight());
 
 			// 1.5. Pre-pass (Depth & Normal)
 			// ============================================================
@@ -268,9 +273,6 @@ namespace Span
 				}
 				pointPass->EndPass(cmd);
 			}
-
-			// メインレンダーターゲットの復元
-			auto& sceneBuffer = Application::Get().GetSceneBuffer();
 
 			// 描画先をSceneBufferに戻す
 			D3D12_CPU_DESCRIPTOR_HANDLE rtv = sceneBuffer.GetRTV();

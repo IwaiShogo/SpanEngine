@@ -54,10 +54,12 @@ namespace Span
 		/**
 		 * @brief	ECSから集めたライト情報を GPU 用のバッファに書き込みます。
 		 */
-		void UpdateLightData(const std::vector<LightDataGPU>& lights, const EnvironmentSettings& env, const Vector3& cameraPos, bool enableSSAO);
+		void UpdateLightData(const std::vector<LightDataGPU>& lights, const EnvironmentSettings& env, const Vector3& cameraPos, bool enableSSAO, uint32 screenWidth, uint32 screenHeight);
 
 		/// @brief	メインの定数バッファのGPUアドレスを取得
 		D3D12_GPU_VIRTUAL_ADDRESS GetLightBufferAddress() const;
+
+		ComputeBuffer* GetLightBuffer() const { return m_lightDataBuffer.get(); }
 
 		static constexpr uint32 TILE_SIZE = 16;
 		static constexpr uint32 MAX_LIGHTS_PER_TILE = 256;
@@ -65,8 +67,9 @@ namespace Span
 		ComputeBuffer* GetLightIndexCounter() const { return m_lightIndexCounter.get(); }
 		ComputeBuffer* GetLightIndexList() const { return m_lightIndexList.get(); }
 		ComputeBuffer* GetLightGrid() const { return m_lightGrid.get(); }
+		ComputeBuffer* GetLightDataBuffer() const { return m_lightDataBuffer.get(); }
 
-		void ExecuteLightCulling(ID3D12GraphicsCommandList* cmd, const Matrix4x4& projectionMatrix, uint32 screenWidth, uint32 screenHeight);
+		void ExecuteLightCulling(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, const Matrix4x4& viewMatrix, const Matrix4x4& projectionMatrix, uint32 screenWidth, uint32 screenHeight);
 
 	private:
 		bool InitializeCompute(ID3D12Device* device);
@@ -74,6 +77,9 @@ namespace Span
 	private:
 		std::unique_ptr<ConstantBuffer<GlobalLightData>> m_lightConstantBuffer;
 		GlobalLightData m_currentLightData;
+
+		// ライトの配列データそのもの
+		std::unique_ptr<ComputeBuffer> m_lightDataBuffer;
 
 		// Forward+ Shading 用のバッファ
 		// ============================================================
@@ -93,7 +99,13 @@ namespace Span
 		// Compute Shader 用のオブジェクト
 		ComPtr<ID3D12RootSignature> m_computeRootSignature;
 		ComPtr<ID3D12PipelineState> m_psoFrustums;
+		ComPtr<ID3D12PipelineState> m_psoCulling;
 
 		std::unique_ptr<Shader> m_shaderFrustums;
+		std::unique_ptr<Shader> m_shaderCulling;
+
+		ComPtr<ID3D12DescriptorHeap> m_computeDescriptorHeap;	// Compute用ヒープ
+		ComPtr<ID3D12PipelineState> m_psoResetCounter;			// リセット用PSO
+		std::unique_ptr<Shader> m_shaderResetCounter;			// リセット用Shader
 	};
 }
