@@ -148,6 +148,47 @@ namespace Span
 		return index;
 	}
 
+	EntityID Archetype::RemoveEntity(Chunk* chunk, uint32 index)
+	{
+		// 範囲外アy不正なチャンクなら何もしない
+		if (!chunk || index >= chunk->Count) return EntityID{ 0, 0 };
+
+		uint32 lastIndex = chunk->Count - 1;
+		EntityID* ids = reinterpret_cast<EntityID*>(chunk->Memory);
+		EntityID movedEntityID = { 0, 0 };
+
+		// 削除対象が末尾の要素でなければ、末尾のデータを削除対象の位置へコピー
+		if (index < lastIndex)
+		{
+			movedEntityID = ids[lastIndex];
+
+			// 1. EntityIDの配列を上書き
+			ids[index] = movedEntityID;
+
+			// 2. 各コンポーネントのデータを上書き
+			for (size_t i = 0; i < typeIDs.size(); ++i)
+			{
+				ComponentTypeID typeID = typeIDs[i];
+				size_t offset = typeOffsets[typeID];
+				size_t size = typeSizes[typeID];
+
+				// 対象コンポーネント配列の先頭ポインタ
+				uint8_t* componentArray = chunk->Memory + offset;
+
+				// コピー先とコピー元のアドレス計算
+				uint8_t* dest = componentArray + (size * index);
+				uint8_t* src = componentArray + (size * lastIndex);
+
+				std::memcpy(dest, src, size);
+			}
+		}
+
+		// 要素数を減らす
+		chunk->Count--;
+
+		return movedEntityID;
+	}
+
 	size_t Archetype::GetComponentOffset(ComponentTypeID typeID) const
 	{
 		auto it = typeOffsets.find(typeID);

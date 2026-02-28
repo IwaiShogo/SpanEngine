@@ -10,7 +10,7 @@ namespace Span
 		if (freeIndices.size() > MINIMUM_FREE_INDICES)
 		{
 			idx = freeIndices.front();
-			freeIndices.pop_front();
+			freeIndices.pop_back();
 		}
 		else
 		{

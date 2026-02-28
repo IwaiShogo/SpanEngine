@@ -56,7 +56,7 @@ namespace Span
 		std::vector<uint32> generations;
 
 		/// 再利用待ちのインデックスリスト
-		std::deque<uint32> freeIndices;
+		std::vector<uint32> freeIndices;
 
 		/// 生存数
 		size_t activeCount = 0;

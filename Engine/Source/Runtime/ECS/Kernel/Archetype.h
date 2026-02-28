@@ -150,6 +150,14 @@ namespace Span
 		uint32 AllocateEntity(EntityID entityID);
 
 		/**
+		 * @brief	指定したチャンク内のエンティティデータを削除し、末尾の要素で穴埋めします。
+		 * @param	chunk 対象のチャンクポインタ
+		 * @param	index チャンク内での削除対象のインデックス
+		 * @return	移動によってインデックスが変わったエンティティのID。穴埋めが発生しなかった場合は無効なID。
+		 */
+		EntityID RemoveEntity(Chunk* chunk, uint32 index);
+
+		/**
 		 * @brief	コンポーネント配列の「チャンク内オフセット」を取得します。
 		 * @param	typeID コンポーネント型ID
 		 * @return	チャンク先頭からのバイトオフセット
