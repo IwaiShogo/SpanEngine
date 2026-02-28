@@ -11,7 +11,7 @@ var searchData=
   ['up_8',['Up',['../structSpan_1_1Vector3.html#a6b74299445713044602688c5c14aa6d2',1,'Span::Vector3']]],
   ['update_9',['Update',['../classSpan_1_1Input.html#a3487299cd56899d0ddfad97dc6497e4c',1,'Span::Input::Update()'],['../classSpan_1_1Time.html#a990876cca93479473bd4e5e9aa5c8dfc',1,'Span::Time::Update()'],['../classSpan_1_1ConstantBuffer.html#ab85d99301f8c8372ce2d1b4765ee6345',1,'Span::ConstantBuffer::Update()'],['../classSpan_1_1Material.html#a879a957f83f3a9a274b3415614ffe18f',1,'Span::Material::Update()']]],
   ['updatedata_10',['UpdateData',['../classSpan_1_1ComputeBuffer.html#a47f7ad9f077bcdbeaa342533f7d9df95',1,'Span::ComputeBuffer']]],
-  ['updatelightdata_11',['UpdateLightData',['../classSpan_1_1LightManager.html#abf0e9678ca819ea37531651eb8d1072c',1,'Span::LightManager']]],
+  ['updatelightdata_11',['UpdateLightData',['../classSpan_1_1LightManager.html#a60d5b183bec191289b0487564ae08af6',1,'Span::LightManager']]],
   ['updatesystems_12',['UpdateSystems',['../classSpan_1_1World.html#a0cf3c16fe3672409ea7d34226220111c',1,'Span::World']]],
   ['upload_20process_13',['🔄 Upload Process',['../classSpan_1_1Texture.html#autotoc_md198',1,'']]],
   ['uploadbuffer_14',['uploadBuffer',['../classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a',1,'Span::Texture']]],

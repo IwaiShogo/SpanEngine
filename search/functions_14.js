@@ -4,7 +4,7 @@ var searchData=
   ['unregisterasset_1',['UnregisterAsset',['../classSpan_1_1AssetRegistry.html#a42655d152fe373d26ee0e6c5121c712c',1,'Span::AssetRegistry']]],
   ['update_2',['Update',['../classSpan_1_1Input.html#a3487299cd56899d0ddfad97dc6497e4c',1,'Span::Input::Update()'],['../classSpan_1_1Time.html#a990876cca93479473bd4e5e9aa5c8dfc',1,'Span::Time::Update()'],['../classSpan_1_1ConstantBuffer.html#ab85d99301f8c8372ce2d1b4765ee6345',1,'Span::ConstantBuffer::Update()'],['../classSpan_1_1Material.html#a879a957f83f3a9a274b3415614ffe18f',1,'Span::Material::Update()']]],
   ['updatedata_3',['UpdateData',['../classSpan_1_1ComputeBuffer.html#a47f7ad9f077bcdbeaa342533f7d9df95',1,'Span::ComputeBuffer']]],
-  ['updatelightdata_4',['UpdateLightData',['../classSpan_1_1LightManager.html#abf0e9678ca819ea37531651eb8d1072c',1,'Span::LightManager']]],
+  ['updatelightdata_4',['UpdateLightData',['../classSpan_1_1LightManager.html#a60d5b183bec191289b0487564ae08af6',1,'Span::LightManager']]],
   ['updatesystems_5',['UpdateSystems',['../classSpan_1_1World.html#a0cf3c16fe3672409ea7d34226220111c',1,'Span::World']]],
   ['uploadtexture_6',['UploadTexture',['../classSpan_1_1Texture.html#a5f376f62e8cc6759217f4bbddad30c97',1,'Span::Texture']]]
 ];

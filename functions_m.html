@@ -107,6 +107,7 @@ $(function(){initNavTree('functions_m.html','',''); });
 <li>m_brdfPSO&#160;:&#160;<a class="el" href="classSpan_1_1IBLBuilder.html#a0f3790320d8b06a97b66986b7f5cdda6">Span::IBLBuilder</a></li>
 <li>m_CollisionMatrix&#160;:&#160;<a class="el" href="classSpan_1_1LayerManager.html#a58ec88671e9aec9fde35ef84fa09f864">Span::LayerManager</a></li>
 <li>m_CommandQueue&#160;:&#160;<a class="el" href="classSpan_1_1AssetManager.html#ae41bdf35b06948f829b66b7ec6a4e2e2">Span::AssetManager</a></li>
+<li>m_computeDescriptorHeap&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#a9486880ac8477abf12e1b4e57ad73f35">Span::LightManager</a></li>
 <li>m_computeRootSignature&#160;:&#160;<a class="el" href="classSpan_1_1IBLBuilder.html#aa60e40f7ae9269b5b58ad27e5286099b">Span::IBLBuilder</a>, <a class="el" href="classSpan_1_1LightManager.html#a99e7f2aca205f75fe6dc721abcae0ca4">Span::LightManager</a></li>
 <li>m_ConstantBuffer&#160;:&#160;<a class="el" href="classSpan_1_1Material.html#ab357b0863973f2d949b20680a1c29a48">Span::Material</a></li>
 <li>m_Content&#160;:&#160;<a class="el" href="classSpan_1_1CreateFileCommand.html#a5954566c410baa7a90c516db6584accc">Span::CreateFileCommand</a></li>
@@ -161,6 +162,7 @@ $(function(){initNavTree('functions_m.html','',''); });
 <li>m_LastSelectedPath&#160;:&#160;<a class="el" href="classSpan_1_1ProjectBrowserPanel.html#abfa1465fc7547cd2f57e006a8f570c40">Span::ProjectBrowserPanel</a></li>
 <li>m_LayerNames&#160;:&#160;<a class="el" href="classSpan_1_1LayerManager.html#a804c49d4c75667873307dd52eca32d0a">Span::LayerManager</a></li>
 <li>m_lightConstantBuffer&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#a876eee7fc4ea6a3ed88e764035a71341">Span::LightManager</a></li>
+<li>m_lightDataBuffer&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#a89f96482d89c849ce43c5f32b95e7613">Span::LightManager</a></li>
 <li>m_lightGrid&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#a8e4e579e209bf35b45b3f97958f12bea">Span::LightManager</a></li>
 <li>m_lightIndexCounter&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#af12f67e2be277e9c972f7ed9f71cc39c">Span::LightManager</a></li>
 <li>m_lightIndexList&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#aacad3fe6dda71bcff4240aa717cb6fdd">Span::LightManager</a></li>
@@ -200,7 +202,9 @@ $(function(){initNavTree('functions_m.html','',''); });
 <li>m_prefilterMap&#160;:&#160;<a class="el" href="classSpan_1_1Renderer.html#aa10fdac925ad571e0c7ef798b5351c79">Span::Renderer</a></li>
 <li>m_prefilterPSO&#160;:&#160;<a class="el" href="classSpan_1_1IBLBuilder.html#a629195d702e2bf7739265e89f539f289">Span::IBLBuilder</a></li>
 <li>m_pso&#160;:&#160;<a class="el" href="classSpan_1_1DepthNormalPass.html#a9d2c6386880ad52787d5c19614dfea25">Span::DepthNormalPass</a>, <a class="el" href="classSpan_1_1GridPass.html#a664ad95a1afde9c42aa6b2d01ab6ce5d">Span::GridPass</a>, <a class="el" href="classSpan_1_1ShadowPass.html#a29caee1b126cb9bc1d91499116a16abd">Span::ShadowPass</a>, <a class="el" href="classSpan_1_1SkyboxPass.html#a568b56db70c48e9400f4350db3dd9366">Span::SkyboxPass</a>, <a class="el" href="classSpan_1_1SSAOBlurPass.html#a5b2822f7c389943f2eeabc7f25e8e6cb">Span::SSAOBlurPass</a>, <a class="el" href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">Span::SSAOPass</a></li>
+<li>m_psoCulling&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#aece361ca1afc537e80021b8453e6ec85">Span::LightManager</a></li>
 <li>m_psoFrustums&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#a96006017767e25c7d6b8ba0cff82c782">Span::LightManager</a></li>
+<li>m_psoResetCounter&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#abcc10620567224904c7f1f4d0a20a8db">Span::LightManager</a></li>
 <li>m_RedoStack&#160;:&#160;<a class="el" href="classSpan_1_1ProjectBrowserPanel.html#a9bf63ee46ddd4d48ee20c45bf287e60a">Span::ProjectBrowserPanel</a></li>
 <li>m_RenameBuffer&#160;:&#160;<a class="el" href="classSpan_1_1ProjectBrowserPanel.html#ae2b1aec33be54d5221a59c2b7aa1ec1f">Span::ProjectBrowserPanel</a></li>
 <li>m_RenameFocus&#160;:&#160;<a class="el" href="classSpan_1_1ProjectBrowserPanel.html#a54b15a26723b31b54718b81e61ecf9c2">Span::ProjectBrowserPanel</a></li>
@@ -214,8 +218,10 @@ $(function(){initNavTree('functions_m.html','',''); });
 <li>m_sceneViewWidth&#160;:&#160;<a class="el" href="classSpan_1_1Application.html#a656437469dc4b550ca815853ab62f9e3">Span::Application</a></li>
 <li>m_SearchFilter&#160;:&#160;<a class="el" href="classSpan_1_1ProjectBrowserPanel.html#a471f17027f090444501d614ec6fa4ba4">Span::ProjectBrowserPanel</a></li>
 <li>m_SelectedItems&#160;:&#160;<a class="el" href="classSpan_1_1ProjectBrowserPanel.html#a87b8ed0af0c425e5bd80975424455aed">Span::ProjectBrowserPanel</a></li>
+<li>m_shaderCulling&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#a96a028fa82c6ca55607c8c7217bd3d28">Span::LightManager</a></li>
 <li>m_shaderFrustums&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#a76c912473d451021cc0bc82d622f7cab">Span::LightManager</a></li>
 <li>m_shaderPS&#160;:&#160;<a class="el" href="classSpan_1_1DepthNormalPass.html#a2fab1f293e27a8acea7d2628a59797ba">Span::DepthNormalPass</a>, <a class="el" href="classSpan_1_1GridPass.html#a94050a7d8ef377a5ef3a660e711055f7">Span::GridPass</a>, <a class="el" href="classSpan_1_1SkyboxPass.html#ab50bf74c36ff43973247dd1dc5c75b28">Span::SkyboxPass</a>, <a class="el" href="classSpan_1_1SSAOBlurPass.html#a4b00ed3d633a9a48425fc9900cf51f57">Span::SSAOBlurPass</a>, <a class="el" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">Span::SSAOPass</a></li>
+<li>m_shaderResetCounter&#160;:&#160;<a class="el" href="classSpan_1_1LightManager.html#af95138295fa90e4a228647b90ea1a342">Span::LightManager</a></li>
 <li>m_shaderVS&#160;:&#160;<a class="el" href="classSpan_1_1DepthNormalPass.html#a6ec23a0dcf662e19b586941edba1a081">Span::DepthNormalPass</a>, <a class="el" href="classSpan_1_1GridPass.html#ac5c7c3a8655e5a01e9085da0fc5b2cb3">Span::GridPass</a>, <a class="el" href="classSpan_1_1ShadowPass.html#a117cf0f7774aae65a09d12ebd6d62825">Span::ShadowPass</a>, <a class="el" href="classSpan_1_1SkyboxPass.html#ad5c5f441ff2b3ee1450a50cdac26b460">Span::SkyboxPass</a>, <a class="el" href="classSpan_1_1SSAOBlurPass.html#ad7c1b50d7019a7f839fad84472d346b2">Span::SSAOBlurPass</a>, <a class="el" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">Span::SSAOPass</a></li>
 <li>m_shadowMap&#160;:&#160;<a class="el" href="classSpan_1_1ShadowPass.html#a6df418f4fc3cb3b6b2280091088cdfc6">Span::ShadowPass</a></li>
 <li>m_ShowDeleteDialog&#160;:&#160;<a class="el" href="classSpan_1_1ProjectBrowserPanel.html#a2c51bb26f5ebbf999136d7400412e70c">Span::ProjectBrowserPanel</a></li>
