@@ -18,7 +18,7 @@ namespace Span
 		// mallocでOSから生メモリをもらう
 		memoryBlock = static_cast<uint8*>(std::malloc(sizeInBytes));
 		totalSize = sizeInBytes;
-		usedOffset - 0;
+		usedOffset = 0;
 
 		SPAN_LOG("MemoryArena Initialized: %zu bytes", totalSize);
 	}
