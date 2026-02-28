@@ -1,6 +1,6 @@
 var classSpan_1_1EntityManager =
 [
-    [ "EntityManager", "classSpan_1_1EntityManager.html#aad5d6c6482443077bc8a95dd66ab0ee9", null ],
+    [ "EntityManager", "classSpan_1_1EntityManager.html#a75538aa08256a4c6ab39bc76bdaf5fae", null ],
     [ "~EntityManager", "classSpan_1_1EntityManager.html#a35cfec2814f7f652f10f8bddcf0610d6", null ],
     [ "CreateEntity", "classSpan_1_1EntityManager.html#ab12d01434f128cc0b3b90dd202809602", null ],
     [ "DestroyEntity", "classSpan_1_1EntityManager.html#a2a18e908149d19569922e088b953723c", null ],
@@ -10,5 +10,6 @@ var classSpan_1_1EntityManager =
     [ "activeCount", "classSpan_1_1EntityManager.html#a683a39bece0bfd4ceec80a32ad70063a", null ],
     [ "freeIndices", "classSpan_1_1EntityManager.html#ab3279c433086b73c8fe8a47f472ca8df", null ],
     [ "generations", "classSpan_1_1EntityManager.html#a99924e112cb35af95c5c9394c3ed3a59", null ],
+    [ "INITIAL_CAPACITY", "classSpan_1_1EntityManager.html#a3f671b8c6cff86aa87b833aefbd34b5d", null ],
     [ "MINIMUM_FREE_INDICES", "classSpan_1_1EntityManager.html#a4cf692d0564677367a1b6192a2639cba", null ]
 ];

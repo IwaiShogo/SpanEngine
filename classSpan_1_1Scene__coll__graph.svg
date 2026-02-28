@@ -140,34 +140,36 @@ var sectionId = 'dynsection-0';
 <g id="Node000003" class="node">
 <title>Node3</title>
 <g id="a_Node000003"><a xlink:href="classSpan_1_1EntityManager.html" target="_top" xlink:title="🆔 Entity IDの発行、破棄、有効性チェックを行う管理クラス。">
-<polygon fill="white" stroke="transparent" points="145,-875.5 0,-875.5 0,-691.5 145,-691.5 145,-875.5"/>
-<text text-anchor="start" x="22" y="-863.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::EntityManager</text>
-<text text-anchor="start" x="7" y="-848.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="17.5" y="-848.5" font-family="Helvetica,sans-Serif" font-size="10.00">generations</text>
-<text text-anchor="start" x="7" y="-833.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="17.5" y="-833.5" font-family="Helvetica,sans-Serif" font-size="10.00">freeIndices</text>
-<text text-anchor="start" x="7" y="-818.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="17.5" y="-818.5" font-family="Helvetica,sans-Serif" font-size="10.00">activeCount</text>
-<text text-anchor="start" x="7" y="-803.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="17.5" y="-803.5" font-family="Helvetica,sans-Serif" font-size="10.00">MINIMUM_FREE_INDICES</text>
-<text text-anchor="start" x="4.5" y="-788.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17.5" y="-788.5" font-family="Helvetica,sans-Serif" font-size="10.00">EntityManager()</text>
-<text text-anchor="start" x="4.5" y="-773.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17.5" y="-773.5" font-family="Helvetica,sans-Serif" font-size="10.00">~EntityManager()</text>
-<text text-anchor="start" x="4.5" y="-758.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17.5" y="-758.5" font-family="Helvetica,sans-Serif" font-size="10.00">SPAN_NON_COPYABLE()</text>
-<text text-anchor="start" x="4.5" y="-743.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17.5" y="-743.5" font-family="Helvetica,sans-Serif" font-size="10.00">CreateEntity()</text>
-<text text-anchor="start" x="4.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00">DestroyEntity()</text>
-<text text-anchor="start" x="4.5" y="-713.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17.5" y="-713.5" font-family="Helvetica,sans-Serif" font-size="10.00">IsAlive()</text>
-<text text-anchor="start" x="4.5" y="-698.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17.5" y="-698.5" font-family="Helvetica,sans-Serif" font-size="10.00">GetActiveEntityCount()</text>
-<polygon fill="#666666" stroke="#666666" points="0.5,-858.5 0.5,-858.5 145.5,-858.5 145.5,-858.5 0.5,-858.5"/>
-<polygon fill="#666666" stroke="#666666" points="0.5,-798.5 0.5,-798.5 15.5,-798.5 15.5,-798.5 0.5,-798.5"/>
-<polygon fill="#666666" stroke="#666666" points="15.5,-798.5 15.5,-798.5 145.5,-798.5 145.5,-798.5 15.5,-798.5"/>
-<polygon fill="none" stroke="#666666" points="0,-691.5 0,-875.5 145,-875.5 145,-691.5 0,-691.5"/>
+<polygon fill="white" stroke="transparent" points="145,-883 0,-883 0,-684 145,-684 145,-883"/>
+<text text-anchor="start" x="22" y="-870.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::EntityManager</text>
+<text text-anchor="start" x="7" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="17.5" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">generations</text>
+<text text-anchor="start" x="7" y="-840.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="17.5" y="-840.5" font-family="Helvetica,sans-Serif" font-size="10.00">freeIndices</text>
+<text text-anchor="start" x="7" y="-825.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="17.5" y="-825.5" font-family="Helvetica,sans-Serif" font-size="10.00">activeCount</text>
+<text text-anchor="start" x="7" y="-810.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="17.5" y="-810.5" font-family="Helvetica,sans-Serif" font-size="10.00">MINIMUM_FREE_INDICES</text>
+<text text-anchor="start" x="7" y="-795.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="17.5" y="-795.5" font-family="Helvetica,sans-Serif" font-size="10.00">INITIAL_CAPACITY</text>
+<text text-anchor="start" x="4.5" y="-780.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="17.5" y="-780.5" font-family="Helvetica,sans-Serif" font-size="10.00">EntityManager()</text>
+<text text-anchor="start" x="4.5" y="-765.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="17.5" y="-765.5" font-family="Helvetica,sans-Serif" font-size="10.00">~EntityManager()</text>
+<text text-anchor="start" x="4.5" y="-750.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="17.5" y="-750.5" font-family="Helvetica,sans-Serif" font-size="10.00">SPAN_NON_COPYABLE()</text>
+<text text-anchor="start" x="4.5" y="-735.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="17.5" y="-735.5" font-family="Helvetica,sans-Serif" font-size="10.00">CreateEntity()</text>
+<text text-anchor="start" x="4.5" y="-720.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="17.5" y="-720.5" font-family="Helvetica,sans-Serif" font-size="10.00">DestroyEntity()</text>
+<text text-anchor="start" x="4.5" y="-705.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="17.5" y="-705.5" font-family="Helvetica,sans-Serif" font-size="10.00">IsAlive()</text>
+<text text-anchor="start" x="4.5" y="-690.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="17.5" y="-690.5" font-family="Helvetica,sans-Serif" font-size="10.00">GetActiveEntityCount()</text>
+<polygon fill="#666666" stroke="#666666" points="0.5,-865.5 0.5,-865.5 145.5,-865.5 145.5,-865.5 0.5,-865.5"/>
+<polygon fill="#666666" stroke="#666666" points="0.5,-790.5 0.5,-790.5 15.5,-790.5 15.5,-790.5 0.5,-790.5"/>
+<polygon fill="#666666" stroke="#666666" points="15.5,-790.5 15.5,-790.5 145.5,-790.5 145.5,-790.5 15.5,-790.5"/>
+<polygon fill="none" stroke="#666666" points="0,-684 0,-883 145,-883 145,-684 0,-684"/>
 </a>
 </g>
 </g>
@@ -175,8 +177,8 @@ var sectionId = 'dynsection-0';
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node3&#45;&gt;Node2</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M87.17,-691.25C98.07,-623.48 113.23,-529.21 126.2,-448.54"/>
-<polygon fill="none" stroke="#63b8ff" points="126.28,-448.08 123.28,-441.52 128.18,-436.23 131.18,-442.79 126.28,-448.08"/>
+<path fill="none" stroke="#63b8ff" d="M88.35,-683.91C99.16,-616.69 113.73,-526.08 126.26,-448.2"/>
+<polygon fill="none" stroke="#63b8ff" points="126.26,-448.17 123.27,-441.61 128.17,-436.32 131.16,-442.88 126.26,-448.17"/>
 </a>
 </g>
 <text text-anchor="start" x="127.5" y="-474.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">&#45;entityManager</text>

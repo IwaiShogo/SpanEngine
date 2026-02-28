@@ -100,14 +100,14 @@ $(function(){initNavTree('classSpan_1_1EntityManager.html','','classSpan_1_1Enti
 <div class="dynheader">
 Span::EntityManager 連携図</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1EntityManager__coll__graph.svg" width="204" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1EntityManager__coll__graph.svg" width="204" height="276"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:aad5d6c6482443077bc8a95dd66ab0ee9" id="r_aad5d6c6482443077bc8a95dd66ab0ee9"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aad5d6c6482443077bc8a95dd66ab0ee9">EntityManager</a> ()=default</td></tr>
+<tr class="memitem:a75538aa08256a4c6ab39bc76bdaf5fae" id="r_a75538aa08256a4c6ab39bc76bdaf5fae"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a75538aa08256a4c6ab39bc76bdaf5fae">EntityManager</a> ()</td></tr>
 <tr class="memitem:a35cfec2814f7f652f10f8bddcf0610d6" id="r_a35cfec2814f7f652f10f8bddcf0610d6"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a35cfec2814f7f652f10f8bddcf0610d6">~EntityManager</a> ()=default</td></tr>
-<tr class="memitem:aab73c13b4f611bda136baaf9369e195e" id="r_aab73c13b4f611bda136baaf9369e195e"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aab73c13b4f611bda136baaf9369e195e">SPAN_NON_COPYABLE</a> (<a class="el" href="#aad5d6c6482443077bc8a95dd66ab0ee9">EntityManager</a>)</td></tr>
+<tr class="memitem:aab73c13b4f611bda136baaf9369e195e" id="r_aab73c13b4f611bda136baaf9369e195e"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aab73c13b4f611bda136baaf9369e195e">SPAN_NON_COPYABLE</a> (<a class="el" href="#a75538aa08256a4c6ab39bc76bdaf5fae">EntityManager</a>)</td></tr>
 <tr class="memitem:ab12d01434f128cc0b3b90dd202809602" id="r_ab12d01434f128cc0b3b90dd202809602"><td class="memItemLeft"><a class="el" href="structSpan_1_1Entity.html">Entity</a>&#160;</td><td class="memItemRight"><a class="el" href="#ab12d01434f128cc0b3b90dd202809602">CreateEntity</a> ()</td></tr>
 <tr class="memdesc:ab12d01434f128cc0b3b90dd202809602"><td class="mdescLeft">&#160;</td><td class="mdescRight">新しいEntityを作成して返す  <br /></td></tr>
 <tr class="memitem:a2a18e908149d19569922e088b953723c" id="r_a2a18e908149d19569922e088b953723c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2a18e908149d19569922e088b953723c">DestroyEntity</a> (<a class="el" href="structSpan_1_1Entity.html">Entity</a> entity)</td></tr>
@@ -120,16 +120,13 @@ Span::EntityManager 連携図</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 非公開変数類</h2></td></tr>
 <tr class="memitem:a99924e112cb35af95c5c9394c3ed3a59" id="r_a99924e112cb35af95c5c9394c3ed3a59"><td class="memItemLeft">std::vector&lt; <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a99924e112cb35af95c5c9394c3ed3a59">generations</a></td></tr>
-<tr class="memdesc:a99924e112cb35af95c5c9394c3ed3a59"><td class="mdescLeft">&#160;</td><td class="mdescRight">各スロットの現在の世代番号を管理する配列  <br /></td></tr>
 <tr class="memitem:ab3279c433086b73c8fe8a47f472ca8df" id="r_ab3279c433086b73c8fe8a47f472ca8df"><td class="memItemLeft">std::vector&lt; <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab3279c433086b73c8fe8a47f472ca8df">freeIndices</a></td></tr>
-<tr class="memdesc:ab3279c433086b73c8fe8a47f472ca8df"><td class="mdescLeft">&#160;</td><td class="mdescRight">再利用待ちのインデックスリスト  <br /></td></tr>
 <tr class="memitem:a683a39bece0bfd4ceec80a32ad70063a" id="r_a683a39bece0bfd4ceec80a32ad70063a"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#a683a39bece0bfd4ceec80a32ad70063a">activeCount</a> = 0</td></tr>
-<tr class="memdesc:a683a39bece0bfd4ceec80a32ad70063a"><td class="mdescLeft">&#160;</td><td class="mdescRight">生存数  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 静的非公開変数類</h2></td></tr>
 <tr class="memitem:a4cf692d0564677367a1b6192a2639cba" id="r_a4cf692d0564677367a1b6192a2639cba"><td class="memItemLeft">static constexpr <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4cf692d0564677367a1b6192a2639cba">MINIMUM_FREE_INDICES</a> = 1024</td></tr>
-<tr class="memdesc:a4cf692d0564677367a1b6192a2639cba"><td class="mdescLeft">&#160;</td><td class="mdescRight">最低限のインデックス管理数  <br /></td></tr>
+<tr class="memitem:a3f671b8c6cff86aa87b833aefbd34b5d" id="r_a3f671b8c6cff86aa87b833aefbd34b5d"><td class="memItemLeft">static constexpr <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3f671b8c6cff86aa87b833aefbd34b5d">INITIAL_CAPACITY</a> = 10000</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>🆔 <a class="el" href="structSpan_1_1Entity.html" title="📦 ゲーム内のあらゆるオブジェクトを表すハンドルクラス。">Entity</a> IDの発行、破棄、有効性チェックを行う管理クラス。 </p>
@@ -144,14 +141,11 @@ Span::EntityManager 連携図</div>
 
 <p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00030">30</a> 行目に定義があります。</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
-<a id="aad5d6c6482443077bc8a95dd66ab0ee9" name="aad5d6c6482443077bc8a95dd66ab0ee9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad5d6c6482443077bc8a95dd66ab0ee9">&#9670;&#160;</a></span>EntityManager()</h2>
+<a id="a75538aa08256a4c6ab39bc76bdaf5fae" name="a75538aa08256a4c6ab39bc76bdaf5fae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75538aa08256a4c6ab39bc76bdaf5fae">&#9670;&#160;</a></span>EntityManager()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Span::EntityManager::EntityManager </td>
@@ -160,16 +154,13 @@ Span::EntityManager 連携図</div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="EntityManager_8cpp_source.html">EntityManager.cpp</a> の <a class="el" href="EntityManager_8cpp_source.html#l00005">5</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1EntityManager_aad5d6c6482443077bc8a95dd66ab0ee9_icgraph.svg" width="391" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1EntityManager_a75538aa08256a4c6ab39bc76bdaf5fae_icgraph.svg" width="391" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -217,7 +208,7 @@ Span::EntityManager 連携図</div>
 
 <p>新しいEntityを作成して返す </p>
 
-<p class="definition"> <a class="el" href="EntityManager_8cpp_source.html">EntityManager.cpp</a> の <a class="el" href="EntityManager_8cpp_source.html#l00005">5</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="EntityManager_8cpp_source.html">EntityManager.cpp</a> の <a class="el" href="EntityManager_8cpp_source.html#l00011">11</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -238,7 +229,7 @@ Span::EntityManager 連携図</div>
 
 <p>Entityを削除する </p>
 
-<p class="definition"> <a class="el" href="EntityManager_8cpp_source.html">EntityManager.cpp</a> の <a class="el" href="EntityManager_8cpp_source.html#l00028">28</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="EntityManager_8cpp_source.html">EntityManager.cpp</a> の <a class="el" href="EntityManager_8cpp_source.html#l00034">34</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -295,7 +286,7 @@ Span::EntityManager 連携図</div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>true: 生存 / false: 破棄済み </dd></dl>
 
-<p class="definition"> <a class="el" href="EntityManager_8cpp_source.html">EntityManager.cpp</a> の <a class="el" href="EntityManager_8cpp_source.html#l00050">50</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="EntityManager_8cpp_source.html">EntityManager.cpp</a> の <a class="el" href="EntityManager_8cpp_source.html#l00053">53</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -308,7 +299,7 @@ Span::EntityManager 連携図</div>
         <tr>
           <td class="memname">Span::EntityManager::SPAN_NON_COPYABLE </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="#aad5d6c6482443077bc8a95dd66ab0ee9">EntityManager</a></td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a75538aa08256a4c6ab39bc76bdaf5fae">EntityManager</a></td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -342,8 +333,6 @@ Span::EntityManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p>生存数 </p>
-
 <p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00062">62</a> 行目に定義があります。</p>
 
 </div>
@@ -367,8 +356,6 @@ Span::EntityManager 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>再利用待ちのインデックスリスト </p>
 
 <p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00059">59</a> 行目に定義があります。</p>
 
@@ -394,9 +381,31 @@ Span::EntityManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p>各スロットの現在の世代番号を管理する配列 </p>
-
 <p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00056">56</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a3f671b8c6cff86aa87b833aefbd34b5d" name="a3f671b8c6cff86aa87b833aefbd34b5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f671b8c6cff86aa87b833aefbd34b5d">&#9670;&#160;</a></span>INITIAL_CAPACITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> Span::EntityManager::INITIAL_CAPACITY = 10000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00068">68</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -419,8 +428,6 @@ Span::EntityManager 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>最低限のインデックス管理数 </p>
 
 <p class="definition"> <a class="el" href="EntityManager_8h_source.html">EntityManager.h</a> の <a class="el" href="EntityManager_8h_source.html#l00065">65</a> 行目に定義があります。</p>
 
