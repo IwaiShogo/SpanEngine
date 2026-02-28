@@ -30,7 +30,7 @@ namespace Span
 	class EntityManager
 	{
 	public:
-		EntityManager() = default;
+		EntityManager();
 		~EntityManager() = default;
 
 		SPAN_NON_COPYABLE(EntityManager);
@@ -52,17 +52,20 @@ namespace Span
 		size_t GetActiveEntityCount() const { return activeCount; }
 
 	private:
-		/// 各スロットの現在の世代番号を管理する配列
+		// 各スロットの現在の世代番号を管理する配列
 		std::vector<uint32> generations;
 
-		/// 再利用待ちのインデックスリスト
+		// 再利用待ちのインデックスリスト
 		std::vector<uint32> freeIndices;
 
-		/// 生存数
+		// 生存数
 		size_t activeCount = 0;
 
-		/// 最低限のインデックス管理数
+		// 最低限のインデックス管理数
 		static constexpr uint32 MINIMUM_FREE_INDICES = 1024;
+
+		// 起動時に確保するエンティティの初期キャパシティ
+		static constexpr uint32 INITIAL_CAPACITY = 10000;
 	};
 }
 

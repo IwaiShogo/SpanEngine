@@ -2,6 +2,12 @@
 
 namespace Span
 {
+	EntityManager::EntityManager()
+	{
+		generations.reserve(INITIAL_CAPACITY);
+		freeIndices.reserve(INITIAL_CAPACITY);
+	}
+
 	Entity Span::EntityManager::CreateEntity()
 	{
 		uint32 idx;
@@ -9,14 +15,14 @@ namespace Span
 		// 1. 再利用できるIDがあるか確認
 		if (freeIndices.size() > MINIMUM_FREE_INDICES)
 		{
-			idx = freeIndices.front();
+			idx = freeIndices.back();
 			freeIndices.pop_back();
 		}
 		else
 		{
 			// 2. 無ければ新規作成
+			idx = static_cast<uint32>(generations.size());
 			generations.push_back(0);
-			idx = static_cast<uint32>(generations.size() - 1);
 		}
 
 		activeCount++;
@@ -42,9 +48,6 @@ namespace Span
 		// フリーリストに追加
 		freeIndices.push_back(idx);
 		activeCount--;
-
-		// 開発用ログ
-		// SPAN_LOG("Entity Destroyed: Index %d, Next Gen %d", idx, generations[idx]);
 	}
 
 	bool EntityManager::IsAlive(Entity entity) const
