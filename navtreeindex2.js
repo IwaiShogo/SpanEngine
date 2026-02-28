@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"classSpan_1_1AssetRegistry.html#aad02919d2f3d7e1fce59bb77f3feeaad":[1,0,0,94,0],
+"classSpan_1_1AssetRegistry.html#ab3148e1b4623787719596cffd8242cc6":[0,0,0,94,8],
 "classSpan_1_1AssetRegistry.html#ab3148e1b4623787719596cffd8242cc6":[1,0,0,94,8],
 "classSpan_1_1AssetRegistry.html#ac48f2d0e316daa76675614aaf1d94024":[0,0,0,94,4],
 "classSpan_1_1AssetRegistry.html#ac48f2d0e316daa76675614aaf1d94024":[1,0,0,94,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "classSpan_1_1EntityBuilder.html#ad2a2954b340827e9da99a646ab1f7909":[1,0,0,55,4],
 "classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2":[0,0,0,55,0],
 "classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2":[1,0,0,55,0],
-"classSpan_1_1EntityManager.html":[0,0,0,56],
-"classSpan_1_1EntityManager.html":[1,0,0,56],
-"classSpan_1_1EntityManager.html#a2a18e908149d19569922e088b953723c":[0,0,0,56,3]
+"classSpan_1_1EntityManager.html":[0,0,0,56]
 };

@@ -8,7 +8,7 @@ var classSpan_1_1EntityManager =
     [ "IsAlive", "classSpan_1_1EntityManager.html#a3056c638e46d14b21123cbec5b76ee39", null ],
     [ "SPAN_NON_COPYABLE", "classSpan_1_1EntityManager.html#aab73c13b4f611bda136baaf9369e195e", null ],
     [ "activeCount", "classSpan_1_1EntityManager.html#a683a39bece0bfd4ceec80a32ad70063a", null ],
-    [ "freeIndices", "classSpan_1_1EntityManager.html#a78f8f460559f740d2fd8d2e236b4dff1", null ],
+    [ "freeIndices", "classSpan_1_1EntityManager.html#ab3279c433086b73c8fe8a47f472ca8df", null ],
     [ "generations", "classSpan_1_1EntityManager.html#a99924e112cb35af95c5c9394c3ed3a59", null ],
     [ "MINIMUM_FREE_INDICES", "classSpan_1_1EntityManager.html#a4cf692d0564677367a1b6192a2639cba", null ]
 ];

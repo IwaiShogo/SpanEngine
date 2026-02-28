@@ -121,8 +121,8 @@ Span::EntityManager 連携図</div>
 非公開変数類</h2></td></tr>
 <tr class="memitem:a99924e112cb35af95c5c9394c3ed3a59" id="r_a99924e112cb35af95c5c9394c3ed3a59"><td class="memItemLeft">std::vector&lt; <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a99924e112cb35af95c5c9394c3ed3a59">generations</a></td></tr>
 <tr class="memdesc:a99924e112cb35af95c5c9394c3ed3a59"><td class="mdescLeft">&#160;</td><td class="mdescRight">各スロットの現在の世代番号を管理する配列  <br /></td></tr>
-<tr class="memitem:a78f8f460559f740d2fd8d2e236b4dff1" id="r_a78f8f460559f740d2fd8d2e236b4dff1"><td class="memItemLeft">std::deque&lt; <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a78f8f460559f740d2fd8d2e236b4dff1">freeIndices</a></td></tr>
-<tr class="memdesc:a78f8f460559f740d2fd8d2e236b4dff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">再利用待ちのインデックスリスト  <br /></td></tr>
+<tr class="memitem:ab3279c433086b73c8fe8a47f472ca8df" id="r_ab3279c433086b73c8fe8a47f472ca8df"><td class="memItemLeft">std::vector&lt; <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab3279c433086b73c8fe8a47f472ca8df">freeIndices</a></td></tr>
+<tr class="memdesc:ab3279c433086b73c8fe8a47f472ca8df"><td class="mdescLeft">&#160;</td><td class="mdescRight">再利用待ちのインデックスリスト  <br /></td></tr>
 <tr class="memitem:a683a39bece0bfd4ceec80a32ad70063a" id="r_a683a39bece0bfd4ceec80a32ad70063a"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#a683a39bece0bfd4ceec80a32ad70063a">activeCount</a> = 0</td></tr>
 <tr class="memdesc:a683a39bece0bfd4ceec80a32ad70063a"><td class="mdescLeft">&#160;</td><td class="mdescRight">生存数  <br /></td></tr>
 </table><table class="memberdecls">
@@ -348,8 +348,8 @@ Span::EntityManager 連携図</div>
 
 </div>
 </div>
-<a id="a78f8f460559f740d2fd8d2e236b4dff1" name="a78f8f460559f740d2fd8d2e236b4dff1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78f8f460559f740d2fd8d2e236b4dff1">&#9670;&#160;</a></span>freeIndices</h2>
+<a id="ab3279c433086b73c8fe8a47f472ca8df" name="ab3279c433086b73c8fe8a47f472ca8df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3279c433086b73c8fe8a47f472ca8df">&#9670;&#160;</a></span>freeIndices</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -358,7 +358,7 @@ Span::EntityManager 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::deque&lt;<a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&gt; Span::EntityManager::freeIndices</td>
+          <td class="memname">std::vector&lt;<a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&gt; Span::EntityManager::freeIndices</td>
         </tr>
       </table>
   </td>

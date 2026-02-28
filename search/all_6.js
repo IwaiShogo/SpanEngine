@@ -27,7 +27,7 @@ var searchData=
   ['framecount_24',['FrameCount',['../classSpan_1_1GraphicsContext.html#adf4a20ee58ee39fe2565e06f2f691177',1,'Span::GraphicsContext']]],
   ['frameindex_25',['frameIndex',['../classSpan_1_1GraphicsContext.html#af0391d2043abbe9c150ad5b699b8e759',1,'Span::GraphicsContext']]],
   ['free_26',['Free',['../namespaceSpan.html#a12c7c5c268a27e26bd54df1f069ed577ab24ce0cd392a5b0b8dedc66c25213594',1,'Span']]],
-  ['freeindices_27',['freeIndices',['../classSpan_1_1EntityManager.html#a78f8f460559f740d2fd8d2e236b4dff1',1,'Span::EntityManager']]],
+  ['freeindices_27',['freeIndices',['../classSpan_1_1EntityManager.html#ab3279c433086b73c8fe8a47f472ca8df',1,'Span::EntityManager']]],
   ['fromeuler_28',['FromEuler',['../structSpan_1_1Quaternion.html#a6c97fc4feda68e8997cb1768689994b9',1,'Span::Quaternion::FromEuler(float pitch, float yaw, float roll)'],['../structSpan_1_1Quaternion.html#a7429b284947d6d1123b4e56ac4e2cf74',1,'Span::Quaternion::FromEuler(const Vector3 &amp;euler)']]],
   ['fromrotationmatrix_29',['FromRotationMatrix',['../structSpan_1_1Quaternion.html#af2a0a1def4d845d030a45c5a26d32a80',1,'Span::Quaternion']]],
   ['fromxm_30',['FromXM',['../structSpan_1_1Vector2.html#ab0b4e9cf9b8f4eeeb9aa17bb42a61453',1,'Span::Vector2::FromXM()'],['../structSpan_1_1Vector3.html#a12f90de75907473c90edf3495c97d9f0',1,'Span::Vector3::FromXM()'],['../structSpan_1_1Vector4.html#a71e4a01cf155dab9ece0e18c4217c66f',1,'Span::Vector4::FromXM()'],['../structSpan_1_1Quaternion.html#a93b63ae6c847e74c6d425dfda81b8dd2',1,'Span::Quaternion::FromXM()'],['../structSpan_1_1Matrix4x4.html#a4adf277b2c441fe8d2ea295a0c0a2610',1,'Span::Matrix4x4::FromXM()']]],

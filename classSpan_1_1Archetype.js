@@ -11,6 +11,7 @@ var classSpan_1_1Archetype =
     [ "GetTypes", "classSpan_1_1Archetype.html#a7e7d565d6be817818bb77f9870696633", null ],
     [ "HasAllComponents", "classSpan_1_1Archetype.html#ab576f4f851319859304bfa1fc1ada7ed", null ],
     [ "HasComponent", "classSpan_1_1Archetype.html#a14c09aab559c4f601037d972cac3cc56", null ],
+    [ "RemoveEntity", "classSpan_1_1Archetype.html#a11d5987a2ad75d156021bb2516fff2e4", null ],
     [ "SPAN_NON_COPYABLE", "classSpan_1_1Archetype.html#ad633259d537c7198fb352935010ca9e1", null ],
     [ "chunkCapacity", "classSpan_1_1Archetype.html#a3bf3be2bac8f239b385af773698f50d5", null ],
     [ "chunks", "classSpan_1_1Archetype.html#a928e994615978e285adb3833bdf0d838", null ],

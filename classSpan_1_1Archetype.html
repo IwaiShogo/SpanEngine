@@ -115,6 +115,8 @@ Span::Archetype 連携図</div>
 <tr class="memdesc:ab576f4f851319859304bfa1fc1ada7ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">要求された全てのコンポーネントを持っているか確認します。  <br /></td></tr>
 <tr class="memitem:aaef35d070780bc90b4a82c72c710b322" id="r_aaef35d070780bc90b4a82c72c710b322"><td class="memItemLeft"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a>&#160;</td><td class="memItemRight"><a class="el" href="#aaef35d070780bc90b4a82c72c710b322">AllocateEntity</a> (<a class="el" href="structSpan_1_1EntityID.html">EntityID</a> entityID)</td></tr>
 <tr class="memdesc:aaef35d070780bc90b4a82c72c710b322"><td class="mdescLeft">&#160;</td><td class="mdescRight">新しいEntity用のスペースを確保します。  <br /></td></tr>
+<tr class="memitem:a11d5987a2ad75d156021bb2516fff2e4" id="r_a11d5987a2ad75d156021bb2516fff2e4"><td class="memItemLeft"><a class="el" href="structSpan_1_1EntityID.html">EntityID</a>&#160;</td><td class="memItemRight"><a class="el" href="#a11d5987a2ad75d156021bb2516fff2e4">RemoveEntity</a> (<a class="el" href="structSpan_1_1Chunk.html">Chunk</a> *chunk, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> index)</td></tr>
+<tr class="memdesc:a11d5987a2ad75d156021bb2516fff2e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定したチャンク内のエンティティデータを削除し、末尾の要素で穴埋めします。  <br /></td></tr>
 <tr class="memitem:ace55105d4678c95251e7c66ff00846d1" id="r_ace55105d4678c95251e7c66ff00846d1"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#ace55105d4678c95251e7c66ff00846d1">GetComponentOffset</a> (<a class="el" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> typeID) const</td></tr>
 <tr class="memdesc:ace55105d4678c95251e7c66ff00846d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンポーネント配列の「チャンク内オフセット」を取得します。  <br /></td></tr>
 <tr class="memitem:a4bbf55d97d15574576b64fcd713da023" id="r_a4bbf55d97d15574576b64fcd713da023"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#a4bbf55d97d15574576b64fcd713da023">GetComponentSize</a> (<a class="el" href="namespaceSpan.html#ae77c638651cd73c71b05dd273dad05dd">ComponentTypeID</a> typeID) const</td></tr>
@@ -283,7 +285,7 @@ Span::Archetype 連携図</div>
 
 <p>1つのチャンクに格納できるエンティティ最大数 </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00180">180</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00188">188</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -312,7 +314,7 @@ Span::Archetype 連携図</div>
 
 <p>このアーキタイプが管理している全チャンクのリスト </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00175">175</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00183">183</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -338,7 +340,7 @@ Span::Archetype 連携図</div>
 
 <p>コンポーネントのアライメントを取得します。 </p>
 
-<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00163">163</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00204">204</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -371,7 +373,7 @@ Span::Archetype 連携図</div>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>チャンク先頭からのバイトオフセット </dd></dl>
 
-<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00151">151</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00192">192</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -397,7 +399,7 @@ Span::Archetype 連携図</div>
 
 <p>コンポーネントの単体サイズを取得します。 </p>
 
-<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00157">157</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00198">198</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -431,7 +433,7 @@ Span::Archetype 連携図</div>
 
 <p>構成コンポーネントの型リスト </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00185">185</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00193">193</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -515,6 +517,39 @@ Span::Archetype 連携図</div>
 
 </div>
 </div>
+<a id="a11d5987a2ad75d156021bb2516fff2e4" name="a11d5987a2ad75d156021bb2516fff2e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11d5987a2ad75d156021bb2516fff2e4">&#9670;&#160;</a></span>RemoveEntity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSpan_1_1EntityID.html">EntityID</a> Span::Archetype::RemoveEntity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSpan_1_1Chunk.html">Chunk</a> *</td>          <td class="paramname"><span class="paramname"><em>chunk</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定したチャンク内のエンティティデータを削除し、末尾の要素で穴埋めします。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chunk</td><td>対象のチャンクポインタ </td></tr>
+    <tr><td class="paramname">index</td><td>チャンク内での削除対象のインデックス </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>移動によってインデックスが変わったエンティティのID。穴埋めが発生しなかった場合は無効なID。 </dd></dl>
+
+<p class="definition"> <a class="el" href="Archetype_8cpp_source.html">Archetype.cpp</a> の <a class="el" href="Archetype_8cpp_source.html#l00151">151</a> 行目に定義があります。</p>
+
+</div>
+</div>
 <a id="ad633259d537c7198fb352935010ca9e1" name="ad633259d537c7198fb352935010ca9e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad633259d537c7198fb352935010ca9e1">&#9670;&#160;</a></span>SPAN_NON_COPYABLE()</h2>
 
@@ -560,7 +595,7 @@ Span::Archetype 連携図</div>
 
 <p>1チャンクに何体入るか </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00197">197</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00205">205</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -586,7 +621,7 @@ Span::Archetype 連携図</div>
 
 <p>確保されたメモリブロック群 </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00200">200</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00208">208</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -612,7 +647,7 @@ Span::Archetype 連携図</div>
 
 <p>Entity1体あたりの合計サイズ (バイト) </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00196">196</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00204">204</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -638,7 +673,7 @@ Span::Archetype 連携図</div>
 
 <p>コンポーネントの構成の署名 </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00188">188</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00196">196</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -664,7 +699,7 @@ Span::Archetype 連携図</div>
 
 <p>TypeID -&gt; アライメント </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00194">194</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00202">202</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -690,7 +725,7 @@ Span::Archetype 連携図</div>
 
 <p>TypeIDリスト </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00191">191</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00199">199</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -716,7 +751,7 @@ Span::Archetype 連携図</div>
 
 <p>TypeID -&gt; Chunk内オフセット </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00192">192</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00200">200</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -742,7 +777,7 @@ Span::Archetype 連携図</div>
 
 <p>TypeID -&gt; サイズ (バイト) </p>
 
-<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00193">193</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="Archetype_8h_source.html">Archetype.h</a> の <a class="el" href="Archetype_8h_source.html#l00201">201</a> 行目に定義があります。</p>
 
 </div>
 </div>
