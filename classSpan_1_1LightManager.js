@@ -2,7 +2,7 @@ var classSpan_1_1LightManager =
 [
     [ "LightManager", "classSpan_1_1LightManager.html#a0ec4fea33157cdb7be0282f23b85ebf6", null ],
     [ "~LightManager", "classSpan_1_1LightManager.html#a7e524dfff10bb31acffcf66d370a6ecd", null ],
-    [ "ExecuteLightCulling", "classSpan_1_1LightManager.html#a5f35a7647149c23ac9345a214f6dbb85", null ],
+    [ "ExecuteLightCulling", "classSpan_1_1LightManager.html#afdd8a8098b8182f106c07d104cb34765", null ],
     [ "GetLightBuffer", "classSpan_1_1LightManager.html#aee5e5a1ec71b3d68ed9e36df799a2357", null ],
     [ "GetLightBufferAddress", "classSpan_1_1LightManager.html#adc47bd791a902c34338b3c38e193ccce", null ],
     [ "GetLightDataBuffer", "classSpan_1_1LightManager.html#adda048875dff58ceafa1eadf7cdfe71e", null ],
@@ -14,7 +14,6 @@ var classSpan_1_1LightManager =
     [ "OnResize", "classSpan_1_1LightManager.html#a8d17042c69ff1139f3c5ccd0597c887c", null ],
     [ "Shutdown", "classSpan_1_1LightManager.html#a99b4e17cf609a67b0c0a216cabc06894", null ],
     [ "UpdateLightData", "classSpan_1_1LightManager.html#a60d5b183bec191289b0487564ae08af6", null ],
-    [ "m_computeDescriptorHeap", "classSpan_1_1LightManager.html#a9486880ac8477abf12e1b4e57ad73f35", null ],
     [ "m_computeRootSignature", "classSpan_1_1LightManager.html#a99e7f2aca205f75fe6dc721abcae0ca4", null ],
     [ "m_currentLightData", "classSpan_1_1LightManager.html#a0d687b18e186f3dba1bc2c5ae9d663e6", null ],
     [ "m_frustumsBuffer", "classSpan_1_1LightManager.html#af7f03d08b85540c26e80ddeafba25861", null ],

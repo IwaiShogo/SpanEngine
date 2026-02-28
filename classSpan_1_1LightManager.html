@@ -121,7 +121,7 @@ Span::LightManager 連携図</div>
 <tr class="memitem:a7caac7c1a75a14b3b7f8238221c19373" id="r_a7caac7c1a75a14b3b7f8238221c19373"><td class="memItemLeft"><a class="el" href="classSpan_1_1ComputeBuffer.html">ComputeBuffer</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a7caac7c1a75a14b3b7f8238221c19373">GetLightIndexList</a> () const</td></tr>
 <tr class="memitem:a3eec8b8a50d6ff5643ce21bf9088883f" id="r_a3eec8b8a50d6ff5643ce21bf9088883f"><td class="memItemLeft"><a class="el" href="classSpan_1_1ComputeBuffer.html">ComputeBuffer</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a3eec8b8a50d6ff5643ce21bf9088883f">GetLightGrid</a> () const</td></tr>
 <tr class="memitem:adda048875dff58ceafa1eadf7cdfe71e" id="r_adda048875dff58ceafa1eadf7cdfe71e"><td class="memItemLeft"><a class="el" href="classSpan_1_1ComputeBuffer.html">ComputeBuffer</a> *&#160;</td><td class="memItemRight"><a class="el" href="#adda048875dff58ceafa1eadf7cdfe71e">GetLightDataBuffer</a> () const</td></tr>
-<tr class="memitem:a5f35a7647149c23ac9345a214f6dbb85" id="r_a5f35a7647149c23ac9345a214f6dbb85"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5f35a7647149c23ac9345a214f6dbb85">ExecuteLightCulling</a> (ID3D12Device *device, ID3D12GraphicsCommandList *cmd, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;viewMatrix, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;projectionMatrix, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> screenWidth, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> screenHeight)</td></tr>
+<tr class="memitem:afdd8a8098b8182f106c07d104cb34765" id="r_afdd8a8098b8182f106c07d104cb34765"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afdd8a8098b8182f106c07d104cb34765">ExecuteLightCulling</a> (<a class="el" href="classSpan_1_1Renderer.html">Renderer</a> *renderer, ID3D12GraphicsCommandList *cmd, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;viewMatrix, const <a class="el" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a> &amp;projectionMatrix, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> screenWidth, <a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> screenHeight, <a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a> *gBuffer)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静的公開変数類</h2></td></tr>
@@ -149,7 +149,6 @@ Span::LightManager 連携図</div>
 <tr class="memitem:aece361ca1afc537e80021b8453e6ec85" id="r_aece361ca1afc537e80021b8453e6ec85"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aece361ca1afc537e80021b8453e6ec85">m_psoCulling</a></td></tr>
 <tr class="memitem:a76c912473d451021cc0bc82d622f7cab" id="r_a76c912473d451021cc0bc82d622f7cab"><td class="memItemLeft">std::unique_ptr&lt; <a class="el" href="classSpan_1_1Shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a76c912473d451021cc0bc82d622f7cab">m_shaderFrustums</a></td></tr>
 <tr class="memitem:a96a028fa82c6ca55607c8c7217bd3d28" id="r_a96a028fa82c6ca55607c8c7217bd3d28"><td class="memItemLeft">std::unique_ptr&lt; <a class="el" href="classSpan_1_1Shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a96a028fa82c6ca55607c8c7217bd3d28">m_shaderCulling</a></td></tr>
-<tr class="memitem:a9486880ac8477abf12e1b4e57ad73f35" id="r_a9486880ac8477abf12e1b4e57ad73f35"><td class="memItemLeft">ComPtr&lt; ID3D12DescriptorHeap &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a9486880ac8477abf12e1b4e57ad73f35">m_computeDescriptorHeap</a></td></tr>
 <tr class="memitem:abcc10620567224904c7f1f4d0a20a8db" id="r_abcc10620567224904c7f1f4d0a20a8db"><td class="memItemLeft">ComPtr&lt; ID3D12PipelineState &gt;&#160;</td><td class="memItemRight"><a class="el" href="#abcc10620567224904c7f1f4d0a20a8db">m_psoResetCounter</a></td></tr>
 <tr class="memitem:af95138295fa90e4a228647b90ea1a342" id="r_af95138295fa90e4a228647b90ea1a342"><td class="memItemLeft">std::unique_ptr&lt; <a class="el" href="classSpan_1_1Shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af95138295fa90e4a228647b90ea1a342">m_shaderResetCounter</a></td></tr>
 </table>
@@ -216,8 +215,8 @@ Span::LightManager 連携図</div>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
-<a id="a5f35a7647149c23ac9345a214f6dbb85" name="a5f35a7647149c23ac9345a214f6dbb85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f35a7647149c23ac9345a214f6dbb85">&#9670;&#160;</a></span>ExecuteLightCulling()</h2>
+<a id="afdd8a8098b8182f106c07d104cb34765" name="afdd8a8098b8182f106c07d104cb34765"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdd8a8098b8182f106c07d104cb34765">&#9670;&#160;</a></span>ExecuteLightCulling()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,7 +224,7 @@ Span::LightManager 連携図</div>
         <tr>
           <td class="memname">void Span::LightManager::ExecuteLightCulling </td>
           <td>(</td>
-          <td class="paramtype">ID3D12Device *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1Renderer.html">Renderer</a> *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -250,21 +249,26 @@ Span::LightManager 連携図</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>screenHeight</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a></td>          <td class="paramname"><span class="paramname"><em>screenHeight</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSpan_1_1RenderTarget.html">RenderTarget</a> *</td>          <td class="paramname"><span class="paramname"><em>gBuffer</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00132">132</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00117">117</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LightManager_a5f35a7647149c23ac9345a214f6dbb85_cgraph.svg" width="408" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LightManager_afdd8a8098b8182f106c07d104cb34765_cgraph.svg" width="462" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LightManager_a5f35a7647149c23ac9345a214f6dbb85_icgraph.svg" width="395" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1LightManager_afdd8a8098b8182f106c07d104cb34765_icgraph.svg" width="395" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -313,7 +317,7 @@ Span::LightManager 連携図</div>
 
 <p>メインの定数バッファのGPUアドレスを取得 </p>
 
-<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00127">127</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00112">112</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -442,7 +446,7 @@ Span::LightManager 連携図</div>
 
 <p>バッファの初期化 </p>
 
-<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00017">17</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00018">18</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -474,7 +478,7 @@ Span::LightManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00197">197</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00162">162</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -509,7 +513,7 @@ Span::LightManager 連携図</div>
 
 <p>画面解像度に合わせて Forward+ のグリッドサイズを更新します。 </p>
 
-<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00037">37</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00038">38</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -528,7 +532,7 @@ Span::LightManager 連携図</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00032">32</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00033">33</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -578,7 +582,7 @@ Span::LightManager 連携図</div>
 
 <p>ECSから集めたライト情報を GPU 用のバッファに書き込みます。 </p>
 
-<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00086">86</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="LightManager_8cpp_source.html">LightManager.cpp</a> の <a class="el" href="LightManager_8cpp_source.html#l00071">71</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -593,30 +597,6 @@ Span::LightManager 連携図</div>
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">メンバ詳解</h2>
-<a id="a9486880ac8477abf12e1b4e57ad73f35" name="a9486880ac8477abf12e1b4e57ad73f35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9486880ac8477abf12e1b4e57ad73f35">&#9670;&#160;</a></span>m_computeDescriptorHeap</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ComPtr&lt;ID3D12DescriptorHeap&gt; Span::LightManager::m_computeDescriptorHeap</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="LightManager_8h_source.html">LightManager.h</a> の <a class="el" href="LightManager_8h_source.html#l00107">107</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <a id="a99e7f2aca205f75fe6dc721abcae0ca4" name="a99e7f2aca205f75fe6dc721abcae0ca4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a99e7f2aca205f75fe6dc721abcae0ca4">&#9670;&#160;</a></span>m_computeRootSignature</h2>
 
@@ -883,7 +863,7 @@ Span::LightManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="LightManager_8h_source.html">LightManager.h</a> の <a class="el" href="LightManager_8h_source.html#l00108">108</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="LightManager_8h_source.html">LightManager.h</a> の <a class="el" href="LightManager_8h_source.html#l00107">107</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -955,7 +935,7 @@ Span::LightManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="LightManager_8h_source.html">LightManager.h</a> の <a class="el" href="LightManager_8h_source.html#l00109">109</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="LightManager_8h_source.html">LightManager.h</a> の <a class="el" href="LightManager_8h_source.html#l00108">108</a> 行目に定義があります。</p>
 
 </div>
 </div>
