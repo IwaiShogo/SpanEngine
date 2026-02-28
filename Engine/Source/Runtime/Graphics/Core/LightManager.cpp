@@ -11,6 +11,7 @@
 
 #include "LightManager.h"
 #include "Runtime/Scene/EnvironmentSettings.h"
+#include "Graphics/Core/RenderTarget.h"
 
 namespace Span
 {
@@ -64,22 +65,6 @@ namespace Span
 		m_frustumsBuffer = std::make_unique<ComputeBuffer>();
 		m_frustumsBuffer->Initialize(device, sizeof(float) * 16, numTiles, true);
 
-		// ComputeShader用のDescriptorHeapを作成し、バッファ群をコピー
-		D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};
-		heapDesc.NumDescriptors = 5;
-		heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
-		device->CreateDescriptorHeap(&heapDesc, IID_PPV_ARGS(&m_computeDescriptorHeap));
-
-		uint32 increment = device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_computeDescriptorHeap->GetCPUDescriptorHandleForHeapStart();
-
-		device->CopyDescriptorsSimple(1, destCpu, m_lightDataBuffer->GetSRV(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV); destCpu.ptr += increment;
-		device->CopyDescriptorsSimple(1, destCpu, m_frustumsBuffer->GetUAV(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV); destCpu.ptr += increment;
-		device->CopyDescriptorsSimple(1, destCpu, m_lightIndexCounter->GetUAV(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV); destCpu.ptr += increment;
-		device->CopyDescriptorsSimple(1, destCpu, m_lightIndexList->GetUAV(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV); destCpu.ptr += increment;
-		device->CopyDescriptorsSimple(1, destCpu, m_lightGrid->GetUAV(), D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-
 		SPAN_LOG("LightManager Resized: %dx%d (%d Tiles)", width, height, numTiles);
 	}
 
@@ -129,69 +114,49 @@ namespace Span
 		return m_lightConstantBuffer ? m_lightConstantBuffer->GetGPUVirtualAddress() : 0;
 	}
 
-	void LightManager::ExecuteLightCulling(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, const Matrix4x4& viewMatrix, const Matrix4x4& projectionMatrix, uint32 screenWidth, uint32 screenHeight)
+	void LightManager::ExecuteLightCulling(Renderer* renderer, ID3D12GraphicsCommandList* cmd, const Matrix4x4& viewMatrix, const Matrix4x4& projectionMatrix, uint32 screenWidth, uint32 screenHeight, RenderTarget* gBuffer)
 	{
-		if (!device || !cmd || !m_frustumsBuffer || !m_computeDescriptorHeap || screenWidth == 0 || screenHeight == 0) return;
+		if (!renderer || !cmd || !m_frustumsBuffer || !gBuffer || screenWidth == 0 || screenHeight == 0) return;
 
-		// 定数の準備とセット
+		// 🌟 ヒープの上書きをやめ、Renderer にバインドを任せる
+		cmd->SetComputeRootSignature(m_computeRootSignature.Get());
+
 		uint32 numTilesX = (screenWidth + TILE_SIZE - 1) / TILE_SIZE;
 		uint32 numTilesY = (screenHeight + TILE_SIZE - 1) / TILE_SIZE;
 
-		DirectX::XMVECTOR det;
-		DirectX::XMMATRIX invProj = DirectX::XMMatrixInverse(&det, projectionMatrix.ToXM());
-		Matrix4x4 invProjMat;
-		invProjMat.FromXM(XMMatrixTranspose(invProj));
+		// 定数のセット (InvProjection, View, Dimensions)
+		DirectX::XMVECTOR det; DirectX::XMMATRIX invProj = DirectX::XMMatrixInverse(&det, projectionMatrix.ToXM());
+		Matrix4x4 invProjMat; invProjMat.FromXM(XMMatrixTranspose(invProj));
+		Matrix4x4 viewMatTransposed; viewMatTransposed.FromXM(XMMatrixTranspose(viewMatrix.ToXM()));
 
-		Matrix4x4 viewMatTransposed;
-		viewMatTransposed.FromXM(XMMatrixTranspose(viewMatrix.ToXM()));
+		struct CullingCB { Matrix4x4 InvProj; Matrix4x4 View; uint32 Dim[2]; uint32 Tiles[2]; } cbData;
+		cbData.InvProj = invProjMat; cbData.View = viewMatTransposed;
+		cbData.Dim[0] = screenWidth; cbData.Dim[1] = screenHeight; cbData.Tiles[0] = numTilesX; cbData.Tiles[1] = numTilesY;
 
-		struct CullingCB
-		{
-			Matrix4x4 InvProjection;
-			Matrix4x4 View;
-			uint32 ScreenDim[2];
-			uint32 NumTiles[2];
-		} cbData;
-		cbData.InvProjection = invProjMat;
-		cbData.View = viewMatTransposed;
-		cbData.ScreenDim[0] = screenWidth;
-		cbData.ScreenDim[1] = screenHeight;
-		cbData.NumTiles[0] = numTilesX;
-		cbData.NumTiles[1] = numTilesY;
-
-		ID3D12DescriptorHeap* heaps[] = { m_computeDescriptorHeap.Get() };
-		cmd->SetDescriptorHeaps(1, heaps);
-
-		// [0] Constants, [1] LightBufferCBV, [2] SRV Table(1個), [3] UAV Table(4個)
-		cmd->SetComputeRootSignature(m_computeRootSignature.Get());
 		cmd->SetComputeRoot32BitConstants(0, sizeof(CullingCB) / 4, &cbData, 0);
 		cmd->SetComputeRootConstantBufferView(1, m_lightConstantBuffer->GetGPUVirtualAddress());
-		cmd->SetComputeRootDescriptorTable(2, m_computeDescriptorHeap->GetGPUDescriptorHandleForHeapStart());
 
-		D3D12_GPU_DESCRIPTOR_HANDLE uavStart = m_computeDescriptorHeap->GetGPUDescriptorHandleForHeapStart();
-		uavStart.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV); // 1つ飛ばす(SRVの次)
-		cmd->SetComputeRootDescriptorTable(3, uavStart);
+		// バッファ群を順にバインド [2]~[7]
+		renderer->BindComputeSRV(cmd, m_lightDataBuffer->GetSRV(), 2); // t0
+		renderer->BindComputeSRV(cmd, gBuffer->GetSRV(), 3);		   // t1 (GBuffer Depth)
+		renderer->BindComputeUAV(cmd, m_frustumsBuffer->GetUAV(), 4);  // u0
+		renderer->BindComputeUAV(cmd, m_lightIndexCounter->GetUAV(), 5); // u1
+		renderer->BindComputeUAV(cmd, m_lightIndexList->GetUAV(), 6);	 // u2
+		renderer->BindComputeUAV(cmd, m_lightGrid->GetUAV(), 7);		 // u3
 
 		uint32 dispatchX = (numTilesX + TILE_SIZE - 1) / TILE_SIZE;
 		uint32 dispatchY = (numTilesY + TILE_SIZE - 1) / TILE_SIZE;
 
-		// 1. フラスタム計算パス
-		cmd->SetPipelineState(m_psoFrustums.Get());
-		cmd->Dispatch(dispatchX, dispatchY, 1);
+		// 実行
+		cmd->SetPipelineState(m_psoFrustums.Get()); cmd->Dispatch(dispatchX, dispatchY, 1);
+		cmd->SetPipelineState(m_psoResetCounter.Get()); cmd->Dispatch(1, 1, 1);
 
-		// 2. カウンタのリセットパス
-		cmd->SetPipelineState(m_psoResetCounter.Get());
-		cmd->Dispatch(1, 1, 1);
-
-		// UAVバリア (リセットとフラスタム計算の完了を待つ)
 		D3D12_RESOURCE_BARRIER barriers[2] = {};
 		barriers[0].Type = D3D12_RESOURCE_BARRIER_TYPE_UAV; barriers[0].UAV.pResource = m_frustumsBuffer->GetResource();
 		barriers[1].Type = D3D12_RESOURCE_BARRIER_TYPE_UAV; barriers[1].UAV.pResource = m_lightIndexCounter->GetResource();
 		cmd->ResourceBarrier(2, barriers);
 
-		// 3. ライトカリングパス
-		cmd->SetPipelineState(m_psoCulling.Get());
-		cmd->Dispatch(numTilesX, numTilesY, 1);
+		cmd->SetPipelineState(m_psoCulling.Get()); cmd->Dispatch(numTilesX, numTilesY, 1);
 	}
 
 	bool LightManager::InitializeCompute(ID3D12Device* device)
@@ -200,12 +165,15 @@ namespace Span
 		m_shaderFrustums = std::make_unique<Shader>();
 		if (!m_shaderFrustums->Load(L"LightCulling.hlsl", ShaderType::Compute, "CS_ComputeFrustums")) return false;
 
+		m_shaderResetCounter = std::make_unique<Shader>();
+		if (!m_shaderResetCounter->Load(L"LightCulling.hlsl", ShaderType::Compute, "CS_ResetCounter")) return false;
+
 		// カリングシェーダーのロード
 		m_shaderCulling = std::make_unique<Shader>();
 		if (!m_shaderCulling->Load(L"LightCulling.hlsl", ShaderType::Compute, "CS_LightCulling")) return false;
 
 		// 2. Root Signature の作成
-		D3D12_ROOT_PARAMETER rootParams[4];
+		D3D12_ROOT_PARAMETER rootParams[8];
 
 		// b0: CullingCB (32bit Constants)
 		rootParams[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_32BIT_CONSTANTS;
@@ -220,34 +188,21 @@ namespace Span
 		rootParams[1].Descriptor.RegisterSpace = 0;
 		rootParams[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 
-		// t0: LightData Array (SRV)
-		D3D12_DESCRIPTOR_RANGE srvRange = {};
-		srvRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
-		srvRange.NumDescriptors = 1;
-		srvRange.BaseShaderRegister = 0;
-		srvRange.OffsetInDescriptorsFromTableStart = 0;
+		// [2]~[7]: SRV(t0, t1) と UAV(u0~u3) を個別のテーブルとして定義
+		D3D12_DESCRIPTOR_RANGE ranges[6] = {};
+		for (int i = 0; i < 6; i++) {
+			ranges[i].NumDescriptors = 1;
+			ranges[i].BaseShaderRegister = (i < 2) ? i : (i - 2); // t0, t1, u0, u1, u2, u3
+			ranges[i].RangeType = (i < 2) ? D3D12_DESCRIPTOR_RANGE_TYPE_SRV : D3D12_DESCRIPTOR_RANGE_TYPE_UAV;
+			ranges[i].OffsetInDescriptorsFromTableStart = 0;
 
-		rootParams[2].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
-		rootParams[2].DescriptorTable.NumDescriptorRanges = 1;
-		rootParams[2].DescriptorTable.pDescriptorRanges = &srvRange;
-		rootParams[2].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+			rootParams[2 + i].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
+			rootParams[2 + i].DescriptorTable.NumDescriptorRanges = 1;
+			rootParams[2 + i].DescriptorTable.pDescriptorRanges = &ranges[i];
+			rootParams[2 + i].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+		}
 
-		// u0 ~ u3: UAV Table
-		D3D12_DESCRIPTOR_RANGE uavRange = {};
-		uavRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_UAV;
-		uavRange.NumDescriptors = 4;
-		uavRange.BaseShaderRegister = 0;
-		uavRange.OffsetInDescriptorsFromTableStart = 0;
-
-		rootParams[3].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
-		rootParams[3].DescriptorTable.NumDescriptorRanges = 1;
-		rootParams[3].DescriptorTable.pDescriptorRanges = &uavRange;
-		rootParams[3].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
-
-		D3D12_ROOT_SIGNATURE_DESC rootSigDesc = {};
-		rootSigDesc.NumParameters = 4;
-		rootSigDesc.pParameters = rootParams;
-
+		D3D12_ROOT_SIGNATURE_DESC rootSigDesc = { 8, rootParams, 0, nullptr, D3D12_ROOT_SIGNATURE_FLAG_NONE };
 		ComPtr<ID3DBlob> signature, error;
 		if (FAILED(D3D12SerializeRootSignature(&rootSigDesc, D3D_ROOT_SIGNATURE_VERSION_1, &signature, &error))) return false;
 		if (FAILED(device->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&m_computeRootSignature)))) return false;
@@ -256,22 +211,14 @@ namespace Span
 		D3D12_COMPUTE_PIPELINE_STATE_DESC psoDesc = {};
 		psoDesc.pRootSignature = m_computeRootSignature.Get();
 
-		// フラスタム計算用 PSO
 		psoDesc.CS = m_shaderFrustums->GetBytecode();
-		if (FAILED(device->CreateComputePipelineState(&psoDesc, IID_PPV_ARGS(&m_psoFrustums)))) return false;
-
-		m_shaderResetCounter = std::make_unique<Shader>();
-		if (!m_shaderResetCounter->Load(L"LightCulling.hlsl", ShaderType::Compute, "CS_ResetCounter")) return false;
+		device->CreateComputePipelineState(&psoDesc, IID_PPV_ARGS(&m_psoFrustums));
 
 		psoDesc.CS = m_shaderResetCounter->GetBytecode();
-		if (FAILED(device->CreateComputePipelineState(&psoDesc, IID_PPV_ARGS(&m_psoResetCounter)))) return false;
-
-		// カリング用シェーダーのロードと PSO の作成
-		m_shaderCulling = std::make_unique<Shader>();
-		if (!m_shaderCulling->Load(L"LightCulling.hlsl", ShaderType::Compute, "CS_LightCulling")) return false;
+		device->CreateComputePipelineState(&psoDesc, IID_PPV_ARGS(&m_psoResetCounter));
 
 		psoDesc.CS = m_shaderCulling->GetBytecode();
-		if (FAILED(device->CreateComputePipelineState(&psoDesc, IID_PPV_ARGS(&m_psoCulling)))) return false;
+		device->CreateComputePipelineState(&psoDesc, IID_PPV_ARGS(&m_psoCulling));
 
 		return true;
 	}

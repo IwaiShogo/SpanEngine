@@ -146,6 +146,12 @@ namespace Span
 		/// @brief	ComputeBufferをSRVとしてバインドします。
 		void BindComputeBufferSRV(ID3D12GraphicsCommandList* cmd, ComputeBuffer* buffer, uint32 rootIndex);
 
+		/// @brief	Compute Shader 用に SRV をバインドします。
+		void BindComputeSRV(ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE srvHandle, uint32 rootIndex);
+
+		/// @brief	Compute Shader 用に UAV をバインドします。
+		void BindComputeUAV(ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE uavHandle, uint32 rootIndex);
+
 		/// @brief	GPUの処理完了を待機する
 		void WaitForGPU();
 

@@ -152,11 +152,7 @@ namespace Span
 			bool isSSAOEnabled = (renderer.GetPassManager() && renderer.GetPassManager()->GetSSAOBlurPass() != nullptr);
 			renderer.GetLightManager()->UpdateLightData(activeLights, env, renderer.GetCameraPosition(), isSSAOEnabled, sceneBuffer.GetWidth(), sceneBuffer.GetHeight());
 
-			// 1.4. Forward+ Light Culling
-			// ============================================================
-			renderer.GetLightManager()->ExecuteLightCulling(renderer.GetDevice(), cmd, renderer.GetViewMatrix(), renderer.GetProjectionMatrix(), sceneBuffer.GetWidth(), sceneBuffer.GetHeight());
-
-			// 1.5. Pre-pass (Depth & Normal)
+			// 1.4. Pre-pass (Depth & Normal)
 			// ============================================================
 			if (auto dnPass = renderer.GetPassManager()->GetDepthNormalPass())
 			{
@@ -177,6 +173,11 @@ namespace Span
 
 				dnPass->EndPass(cmd);
 			}
+
+			// 1.5. Forward+ Light Culling
+			// ============================================================
+			auto gBuffer = renderer.GetPassManager()->GetDepthNormalPass()->GetGBuffer();
+			renderer.GetLightManager()->ExecuteLightCulling(&renderer, cmd, renderer.GetViewMatrix(), renderer.GetProjectionMatrix(), sceneBuffer.GetWidth(), sceneBuffer.GetHeight(), gBuffer);
 
 			// 1.6. SSAO Pass
 			// ============================================================

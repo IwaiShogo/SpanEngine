@@ -441,6 +441,34 @@ namespace Span
 		m_frameSrvHeapOffset++;
 	}
 
+	void Renderer::BindComputeSRV(ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE srvHandle, uint32 rootIndex)
+	{
+		if (!m_frameSrvHeap || srvHandle.ptr == 0) return;
+		auto device = context->GetDevice();
+		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
+		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
+		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+
+		device->CopyDescriptorsSimple(1, destCpu, srvHandle, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+		cmd->SetComputeRootDescriptorTable(rootIndex, destGpu);
+		m_frameSrvHeapOffset++;
+	}
+
+	void Renderer::BindComputeUAV(ID3D12GraphicsCommandList* cmd, D3D12_CPU_DESCRIPTOR_HANDLE uavHandle, uint32 rootIndex)
+	{
+		if (!m_frameSrvHeap || uavHandle.ptr == 0) return;
+		auto device = context->GetDevice();
+		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
+		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
+		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+
+		device->CopyDescriptorsSimple(1, destCpu, uavHandle, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+		cmd->SetComputeRootDescriptorTable(rootIndex, destGpu);
+		m_frameSrvHeapOffset++;
+	}
+
 	void Renderer::WaitForGPU()
 	{
 		if (!context || !context->GetCommandQueue() || !m_waitFence) return;

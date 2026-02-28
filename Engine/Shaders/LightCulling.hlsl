@@ -134,6 +134,7 @@ cbuffer LightBuffer : register(b1)
 };
 
 StructuredBuffer<LightData> Lights : register(t0);
+Texture2D<float4> t_GBuffer : register(t1);
 
 // u1: Opaque Lights Index Counter
 RWStructuredBuffer<uint> outLightIndexCounter : register(u1);
@@ -165,51 +166,75 @@ void CS_LightCulling(
 	if (groupIndex == 0)
 	{
 		s_TileLightCount = 0;
+		s_MinZ = 0x7F7FFFFF;
+		s_MaxZ = 0;
 	}
 
 	GroupMemoryBarrierWithGroupSync();
 
-	// タイルのインデックスを計算
+	// タイル内の「一番手前」と「一番奥」の深度を求める
+	uint2 pixelPos = groupId.xy * TILE_SIZE + groupThreadId.xy;
+	if (pixelPos.x < ScreenDimensions.x && pixelPos.y < ScreenDimensions.y)
+	{
+		float depth = t_GBuffer.Load(int3(pixelPos, 0)).a;
+		if (depth < 9999.0f)
+		{
+			InterlockedMin(s_MinZ, asuint(depth));
+			InterlockedMax(s_MaxZ, asuint(depth));
+		}
+	}
+
+	GroupMemoryBarrierWithGroupSync();
+
+	// 深度の復元
+	float minZ = asfloat(s_MinZ);
+	float maxZ = asfloat(s_MaxZ);
+	if (s_MaxZ == 0) // タイル全体が空の場合のフェイルセーフ
+	{
+		minZ = 9999.0f;
+		maxZ = 9999.0f;
+	}
+
 	uint tileIndex = groupId.y * NumTiles.x + groupId.x;
-	
-	// タイルのフラスタムを取得
 	Frustum frustum = outFrustums[tileIndex];
 
-	// 各スレッドが、シーン内のライトを順番に判定する
+	// ライトカリング
 	for (uint i = groupIndex; i < ActiveLightCount; i += TILE_SIZE * TILE_SIZE)
 	{
 		LightData light = Lights[i];
 		bool inFrustum = true;
 
-		// Directional Light は常に全タイルに影響する
 		if (light.Type != 0)
 		{
-			// Point / Spot Light の場合、視点空間での位置を計算
 			float4 viewPos = mul(float4(light.Position, 1.0f), View);
 			viewPos.xyz /= viewPos.w;
 
-			// フラスタムの4つの平面と球(ライトのRange)の交差判定
-			for (int p = 0; p < 4; ++p)
+			// Z深度 (Depth Bounds) カリング
+			if (viewPos.z + light.Range < minZ || viewPos.z - light.Range > maxZ)
 			{
-				float distance = dot(frustum.planes[p].xyz, viewPos.xyz) + frustum.planes[p].w;
-				// 球が平面の完全に「外側」にある場合
-				if (distance < -light.Range)
+				inFrustum = false;
+			}
+			else
+			{
+				// フラスタム (上下左右) カリング
+				for (int p = 0; p < 4; ++p)
 				{
-					inFrustum = false;
-					break;
+					float distance = dot(frustum.planes[p].xyz, viewPos.xyz) + frustum.planes[p].w;
+					if (distance < -light.Range)
+					{
+						inFrustum = false;
+						break;
+					}
 				}
 			}
 		}
 
-		// フラスタム内に入っていれば、共有メモリのリストに追加
 		if (inFrustum)
 		{
 			uint index;
 			InterlockedAdd(s_TileLightCount, 1, index);
 			if (index < MAX_LIGHTS_PER_TILE)
-			{
 				s_TileLightIndices[index] = i;
-			}
 		}
 	}
 

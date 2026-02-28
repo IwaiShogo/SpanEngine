@@ -69,7 +69,7 @@ namespace Span
 		ComputeBuffer* GetLightGrid() const { return m_lightGrid.get(); }
 		ComputeBuffer* GetLightDataBuffer() const { return m_lightDataBuffer.get(); }
 
-		void ExecuteLightCulling(ID3D12Device* device, ID3D12GraphicsCommandList* cmd, const Matrix4x4& viewMatrix, const Matrix4x4& projectionMatrix, uint32 screenWidth, uint32 screenHeight);
+		void ExecuteLightCulling(Renderer* renderer, ID3D12GraphicsCommandList* cmd, const Matrix4x4& viewMatrix, const Matrix4x4& projectionMatrix, uint32 screenWidth, uint32 screenHeight, RenderTarget* gBuffer);
 
 	private:
 		bool InitializeCompute(ID3D12Device* device);
@@ -104,7 +104,6 @@ namespace Span
 		std::unique_ptr<Shader> m_shaderFrustums;
 		std::unique_ptr<Shader> m_shaderCulling;
 
-		ComPtr<ID3D12DescriptorHeap> m_computeDescriptorHeap;	// Compute用ヒープ
 		ComPtr<ID3D12PipelineState> m_psoResetCounter;			// リセット用PSO
 		std::unique_ptr<Shader> m_shaderResetCounter;			// リセット用Shader
 	};
