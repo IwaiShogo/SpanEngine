@@ -5,8 +5,9 @@ var searchData=
   ['bindcomputebuffersrv_2',['BindComputeBufferSRV',['../classSpan_1_1Renderer.html#ae80d42760b33469aa814b3e4e215536d',1,'Span::Renderer']]],
   ['bindcomputesrv_3',['BindComputeSRV',['../classSpan_1_1Renderer.html#a0b215b8948c1e38a30d76bd3b88295d4',1,'Span::Renderer']]],
   ['bindcomputeuav_4',['BindComputeUAV',['../classSpan_1_1Renderer.html#aba3fe07532697468b8a1e3701ceab6be',1,'Span::Renderer']]],
-  ['bindrendertargetsrv_5',['BindRenderTargetSRV',['../classSpan_1_1Renderer.html#a30d84e655d8659ace346e4b3c1e0bdd4',1,'Span::Renderer']]],
-  ['bindshadowmap_6',['BindShadowMap',['../classSpan_1_1Renderer.html#a0cc384bd7056f0c488bcca951da8ab95',1,'Span::Renderer']]],
-  ['bindtexture_7',['BindTexture',['../classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3',1,'Span::Renderer']]],
-  ['build_8',['Build',['../classSpan_1_1EntityBuilder.html#ac4c98235d0c84a0e376062638163134b',1,'Span::EntityBuilder']]]
+  ['bindglobalresources_5',['BindGlobalResources',['../classSpan_1_1Renderer.html#a2a47762d9edc86294bef1d38ab5e93b9',1,'Span::Renderer']]],
+  ['bindrendertargetsrv_6',['BindRenderTargetSRV',['../classSpan_1_1Renderer.html#a30d84e655d8659ace346e4b3c1e0bdd4',1,'Span::Renderer']]],
+  ['bindshadowmap_7',['BindShadowMap',['../classSpan_1_1Renderer.html#a0cc384bd7056f0c488bcca951da8ab95',1,'Span::Renderer']]],
+  ['bindtexture_8',['BindTexture',['../classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3',1,'Span::Renderer']]],
+  ['build_9',['Build',['../classSpan_1_1EntityBuilder.html#ac4c98235d0c84a0e376062638163134b',1,'Span::EntityBuilder']]]
 ];

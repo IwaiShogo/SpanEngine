@@ -1,5 +1,15 @@
 var NAVTREEINDEX13 =
 {
+"structSpan_1_1Vector3.html#a8e898bf6d62eeecbf31292fdd3759d1f":[1,0,0,5,15],
+"structSpan_1_1Vector3.html#a91d58c181afda160b2e8bf5929e2d2a9":[0,0,0,5,26],
+"structSpan_1_1Vector3.html#a91d58c181afda160b2e8bf5929e2d2a9":[1,0,0,5,26],
+"structSpan_1_1Vector3.html#a9729500317b93907948bae240455f20a":[0,0,0,5,12],
+"structSpan_1_1Vector3.html#a9729500317b93907948bae240455f20a":[1,0,0,5,12],
+"structSpan_1_1Vector3.html#aabe270fd26b1d874df94a455faef13c5":[0,0,0,5,11],
+"structSpan_1_1Vector3.html#aabe270fd26b1d874df94a455faef13c5":[1,0,0,5,11],
+"structSpan_1_1Vector3.html#ab1abeb0dc8be7e95491bf2c0bec89983":[0,0,0,5,29],
+"structSpan_1_1Vector3.html#ab1abeb0dc8be7e95491bf2c0bec89983":[1,0,0,5,29],
+"structSpan_1_1Vector3.html#ac45b47abaa71bc1131bab20d68e237ed":[0,0,0,5,17],
 "structSpan_1_1Vector3.html#ac45b47abaa71bc1131bab20d68e237ed":[1,0,0,5,17],
 "structSpan_1_1Vector3.html#ad292c1f2a680e5e02bf8d3ba0be67b79":[0,0,0,5,9],
 "structSpan_1_1Vector3.html#ad292c1f2a680e5e02bf8d3ba0be67b79":[1,0,0,5,9],

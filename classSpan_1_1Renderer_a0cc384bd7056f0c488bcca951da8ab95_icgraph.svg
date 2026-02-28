@@ -47,9 +47,9 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 543;
+var viewWidth = 729;
 var viewHeight = 86;
-var sectionId = 'dynsection-12';
+var sectionId = 'dynsection-14';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -59,17 +59,18 @@ var sectionId = 'dynsection-12';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title="指定スロットにシャドウマップをバインドします。Nullの場合は安全なダミーを生成します。">
-<polygon fill="#999999" stroke="#666666" points="535,-48.5 357,-48.5 357,-29.5 535,-29.5 535,-48.5"/>
-<text text-anchor="middle" x="446" y="-36.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Renderer::BindShadowMap</text>
+<polygon fill="#999999" stroke="#666666" points="721,-48.5 543,-48.5 543,-29.5 721,-29.5 721,-48.5"/>
+<text text-anchor="middle" x="632" y="-36.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Renderer::BindShadowMap</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classSpan_1_1Renderer.html#ade1cd95fe5d2e6aa78493393ce39c767" target="_top" xlink:title="メッシュ描画コマンドの発行。">
-<polygon fill="white" stroke="#666666" points="321,-48.5 172,-48.5 172,-29.5 321,-29.5 321,-48.5"/>
-<text text-anchor="middle" x="246.5" y="-36.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Renderer::DrawMesh</text>
+<g id="a_Node000002"><a xlink:href="classSpan_1_1Renderer.html#a2a47762d9edc86294bef1d38ab5e93b9" target="_top" xlink:title="フレーム共通リソースをバインドする">
+<polygon fill="white" stroke="#666666" points="507,-54 357,-54 357,-24 507,-24 507,-54"/>
+<text text-anchor="start" x="365" y="-42" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Renderer::BindGlobal</text>
+<text text-anchor="middle" x="432" y="-31" font-family="Helvetica,sans-Serif" font-size="10.00">Resources</text>
 </a>
 </g>
 </g>
@@ -77,18 +78,17 @@ var sectionId = 'dynsection-12';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M346.83,-39C338.21,-39 329.59,-39 321.22,-39"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="346.94,-42.5 356.94,-39 346.94,-35.5 346.94,-42.5"/>
+<path fill="none" stroke="#63b8ff" d="M532.67,-39C524.1,-39 515.53,-39 507.2,-39"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="532.71,-42.5 542.71,-39 532.71,-35.5 532.71,-42.5"/>
 </a>
 </g>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classSpan_1_1RenderingSystem.html#aa0113a8f2b55129115c4da2c6ba449c4" target="_top" xlink:title="毎フレーム呼び出されます。ここにゲームロジックを記述します。">
-<polygon fill="white" stroke="#666666" points="134.5,-78 1.5,-78 1.5,-48 134.5,-48 134.5,-78"/>
-<text text-anchor="start" x="9.5" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::RenderingSystem</text>
-<text text-anchor="middle" x="68" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00">::OnUpdate</text>
+<g id="a_Node000003"><a xlink:href="classSpan_1_1Renderer.html#ade1cd95fe5d2e6aa78493393ce39c767" target="_top" xlink:title="メッシュ描画コマンドの発行。">
+<polygon fill="white" stroke="#666666" points="321,-48.5 172,-48.5 172,-29.5 321,-29.5 321,-48.5"/>
+<text text-anchor="middle" x="246.5" y="-36.5" font-family="Helvetica,sans-Serif" font-size="10.00">Span::Renderer::DrawMesh</text>
 </a>
 </g>
 </g>
@@ -96,25 +96,44 @@ var sectionId = 'dynsection-12';
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M165.29,-49.91C155.03,-51.3 144.61,-52.72 134.62,-54.08"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="166.05,-53.34 175.49,-48.52 165.11,-46.4 166.05,-53.34"/>
+<path fill="none" stroke="#63b8ff" d="M346.63,-39C338.17,-39 329.63,-39 321.29,-39"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="346.89,-42.5 356.89,-39 346.89,-35.5 346.89,-42.5"/>
 </a>
 </g>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8" target="_top" xlink:title="オフスクリーンターゲットに球体を描画します。">
+<g id="a_Node000004"><a xlink:href="classSpan_1_1RenderingSystem.html#aa0113a8f2b55129115c4da2c6ba449c4" target="_top" xlink:title="毎フレーム呼び出されます。ここにゲームロジックを記述します。">
+<polygon fill="white" stroke="#666666" points="134.5,-78 1.5,-78 1.5,-48 134.5,-48 134.5,-78"/>
+<text text-anchor="start" x="9.5" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">Span::RenderingSystem</text>
+<text text-anchor="middle" x="68" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00">::OnUpdate</text>
+</a>
+</g>
+</g>
+<!-- Node3&#45;&gt;Node4 -->
+<g id="edge3_Node000003_Node000004" class="edge">
+<title>Node3&#45;&gt;Node4</title>
+<g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M165.29,-49.91C155.03,-51.3 144.61,-52.72 134.62,-54.08"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="166.05,-53.34 175.49,-48.52 165.11,-46.4 166.05,-53.34"/>
+</a>
+</g>
+</g>
+<!-- Node5 -->
+<g id="Node000005" class="node">
+<title>Node5</title>
+<g id="a_Node000005"><a xlink:href="classSpan_1_1MaterialPreviewer.html#a7af64e04a1aae97d04d3a2bbe15f50a8" target="_top" xlink:title="オフスクリーンターゲットに球体を描画します。">
 <polygon fill="white" stroke="#666666" points="136,-30 0,-30 0,0 136,0 136,-30"/>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">Span::MaterialPreviewer</text>
 <text text-anchor="middle" x="68" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::Render</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node4 -->
-<g id="edge3_Node000002_Node000004" class="edge">
-<title>Node2&#45;&gt;Node4</title>
-<g id="a_edge3_Node000002_Node000004"><a xlink:title=" ">
+<!-- Node3&#45;&gt;Node5 -->
+<g id="edge4_Node000003_Node000005" class="edge">
+<title>Node3&#45;&gt;Node5</title>
+<g id="a_edge4_Node000003_Node000005"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M165.35,-28.1C155.55,-26.77 145.62,-25.42 136.05,-24.12"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="165.11,-31.6 175.49,-29.48 166.05,-24.66 165.11,-31.6"/>
 </a>

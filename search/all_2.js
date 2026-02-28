@@ -9,12 +9,13 @@ var searchData=
   ['bindcomputebuffersrv_6',['BindComputeBufferSRV',['../classSpan_1_1Renderer.html#ae80d42760b33469aa814b3e4e215536d',1,'Span::Renderer']]],
   ['bindcomputesrv_7',['BindComputeSRV',['../classSpan_1_1Renderer.html#a0b215b8948c1e38a30d76bd3b88295d4',1,'Span::Renderer']]],
   ['bindcomputeuav_8',['BindComputeUAV',['../classSpan_1_1Renderer.html#aba3fe07532697468b8a1e3701ceab6be',1,'Span::Renderer']]],
-  ['bindrendertargetsrv_9',['BindRenderTargetSRV',['../classSpan_1_1Renderer.html#a30d84e655d8659ace346e4b3c1e0bdd4',1,'Span::Renderer']]],
-  ['bindshadowmap_10',['BindShadowMap',['../classSpan_1_1Renderer.html#a0cc384bd7056f0c488bcca951da8ab95',1,'Span::Renderer']]],
-  ['bindtexture_11',['BindTexture',['../classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3',1,'Span::Renderer']]],
-  ['bit_20layout_12',['📊 ビットレイアウト (Bit Layout)',['../structSpan_1_1EntityID.html#autotoc_md112',1,'']]],
-  ['blendmode_13',['BlendMode',['../namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0',1,'Span']]],
-  ['blob_14',['blob',['../classSpan_1_1Shader.html#a310a6d51aa8d8384146ca65de3f4e842',1,'Span::Shader']]],
-  ['buffering_15',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md139',1,'']]],
-  ['build_16',['Build',['../classSpan_1_1EntityBuilder.html#ac4c98235d0c84a0e376062638163134b',1,'Span::EntityBuilder']]]
+  ['bindglobalresources_9',['BindGlobalResources',['../classSpan_1_1Renderer.html#a2a47762d9edc86294bef1d38ab5e93b9',1,'Span::Renderer']]],
+  ['bindrendertargetsrv_10',['BindRenderTargetSRV',['../classSpan_1_1Renderer.html#a30d84e655d8659ace346e4b3c1e0bdd4',1,'Span::Renderer']]],
+  ['bindshadowmap_11',['BindShadowMap',['../classSpan_1_1Renderer.html#a0cc384bd7056f0c488bcca951da8ab95',1,'Span::Renderer']]],
+  ['bindtexture_12',['BindTexture',['../classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3',1,'Span::Renderer']]],
+  ['bit_20layout_13',['📊 ビットレイアウト (Bit Layout)',['../structSpan_1_1EntityID.html#autotoc_md112',1,'']]],
+  ['blendmode_14',['BlendMode',['../namespaceSpan.html#a767a1576d488be4c5098a130d6a2d6a0',1,'Span']]],
+  ['blob_15',['blob',['../classSpan_1_1Shader.html#a310a6d51aa8d8384146ca65de3f4e842',1,'Span::Shader']]],
+  ['buffering_16',['🖼 Swap Chain (Double Buffering)',['../classSpan_1_1GraphicsContext.html#autotoc_md139',1,'']]],
+  ['build_17',['Build',['../classSpan_1_1EntityBuilder.html#ac4c98235d0c84a0e376062638163134b',1,'Span::EntityBuilder']]]
 ];
