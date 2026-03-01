@@ -37,6 +37,18 @@
 namespace Span
 {
 	/**
+	 * @struct	RenderItem 
+	 * @brief	描画対象をキャッシュするための構造体
+	 */
+	struct RenderItem
+	{
+		Mesh* mesh = nullptr;
+		Material* material = nullptr;
+		Matrix4x4 worldMatrix;
+		bool castShadows = false;
+	};
+
+	/**
 	 * @class	RenderingSystem
 	 * @brief	🖌 シーン上の描画可能オブジェクトを収集し、Rendererへコマンドを発行するシステム。
 	 *
@@ -152,40 +164,54 @@ namespace Span
 			bool isSSAOEnabled = (renderer.GetPassManager() && renderer.GetPassManager()->GetSSAOBlurPass() != nullptr);
 			renderer.GetLightManager()->UpdateLightData(activeLights, env, renderer.GetCameraPosition(), isSSAOEnabled, sceneBuffer.GetWidth(), sceneBuffer.GetHeight());
 
-			// 1.4. Pre-pass (Depth & Normal)
+			// 2. Render Queue Construction
+			// ============================================================
+			std::vector<RenderItem> opaqueQueue;
+			std::vector<RenderItem> glassQueue;
+			std::vector<RenderItem> transparentQueue;
+			std::vector<RenderItem> shadowCasterQueue;
+
+			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
+				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
+				{
+					if (!mf.mesh || !mr.material) return;
+
+					RenderItem item{ mf.mesh, mr.material, ltw.Value, mr.CastShadows };
+
+					// 影を落とすオブジェクトのキュー
+					if (mr.CastShadows) shadowCasterQueue.push_back(item);
+
+					// マテリアルタイプの別のキュー
+					if (mr.material->GetBlendMode() == BlendMode::Transparent)
+						transparentQueue.push_back(item);
+					else if (mr.material->GetData().Transmission > 0.0f)
+						glassQueue.push_back(item);
+					else
+						opaqueQueue.push_back(item);
+				}
+			);
+
+			// 3. Pre-pass (Depth & Normal)
 			// ============================================================
 			if (auto dnPass = renderer.GetPassManager()->GetDepthNormalPass())
 			{
 				dnPass->BeginPass(cmd);
-
-				world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
-					[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
-					{
-						if (!mf.mesh || !mr.material) return;
-
-						// 不透明なオブジェクトのみ記録
-						if (mr.material->GetBlendMode() != BlendMode::Transparent && mr.material->GetData().Transmission <= 0.0f)
-						{
-							dnPass->DrawMesh(&renderer, cmd, mf.mesh, ltw.Value, renderer.GetViewMatrix(), renderer.GetProjectionMatrix());
-						}
-					}
-				);
-
+				for (const auto& item : opaqueQueue)
+				{
+					dnPass->DrawMesh(&renderer, cmd, item.mesh, item.worldMatrix, renderer.GetViewMatrix(), renderer.GetProjectionMatrix());
+				}
 				dnPass->EndPass(cmd);
 			}
 
-			// 1.5. Forward+ Light Culling
+			// 4. Forward+ Light Culling & SSAO
 			// ============================================================
 			auto gBuffer = renderer.GetPassManager()->GetDepthNormalPass()->GetGBuffer();
 			renderer.GetLightManager()->ExecuteLightCulling(&renderer, cmd, renderer.GetViewMatrix(), renderer.GetProjectionMatrix(), sceneBuffer.GetWidth(), sceneBuffer.GetHeight(), gBuffer);
 
-			// 1.6. SSAO Pass
-			// ============================================================
 			if (auto ssaoPassInstance = renderer.GetPassManager()->GetSSAOPass())
 			{
 				// SSAO計算
-				ssaoPassInstance->Execute(&renderer, cmd, renderer.GetPassManager()->GetDepthNormalPass()->GetGBuffer(), renderer.GetProjectionMatrix());
-
+				ssaoPassInstance->Execute(&renderer, cmd, gBuffer, renderer.GetProjectionMatrix());
 				// ブラーを実行してノイズを消す
 				if (auto blurPass = renderer.GetPassManager()->GetSSAOBlurPass())
 				{
@@ -193,7 +219,7 @@ namespace Span
 				}
 			}
 			
-			// 2. Shadow Passes
+			// 5. Shadow Passes
 			// ============================================================
 
 			// --- Directional Shadow Pass ---
@@ -201,10 +227,12 @@ namespace Span
 			{
 				dirPass->BeginPass(cmd);
 				dirPass->SetRenderTarget(cmd, 0);
-				if (dirLightCastShadow) {
-					world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>([&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw) {
-						if (mf.mesh && mr.material && mr.CastShadows) dirPass->DrawMesh(&renderer, cmd, mf.mesh, ltw.Value, dirLightMatrix);
-						});
+				if (dirLightCastShadow)
+				{
+					for (const auto& item : shadowCasterQueue)
+					{
+						dirPass->DrawMesh(&renderer, cmd, item.mesh, item.worldMatrix, dirLightMatrix);
+					}
 				}
 				dirPass->EndPass(cmd);
 			}
@@ -228,9 +256,10 @@ namespace Span
 						}
 					}
 
-					world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>([&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw) {
-						if (mf.mesh && mr.material && mr.CastShadows) spotPass->DrawMesh(&renderer, cmd, mf.mesh, ltw.Value, spotMatrix);
-						});
+					for (const auto& item : shadowCasterQueue)
+					{
+						spotPass->DrawMesh(&renderer, cmd, item.mesh, item.worldMatrix, spotMatrix);
+					}
 				}
 				spotPass->EndPass(cmd);
 			}
@@ -265,10 +294,10 @@ namespace Span
 							pointPass->SetRenderTarget(cmd, face);
 							Matrix4x4 cubeMatrix = views[face] * proj;
 
-							world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>([&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw) {
-								if (mf.mesh && mr.material && mr.CastShadows)
-									pointPass->DrawMesh(&renderer, cmd, mf.mesh, ltw.Value, cubeMatrix);
-							});
+							for (const auto& item : shadowCasterQueue)
+							{
+								pointPass->DrawMesh(&renderer, cmd, item.mesh, item.worldMatrix, cubeMatrix);
+							}
 						}
 					}
 				}
@@ -286,20 +315,14 @@ namespace Span
 			cmd->RSSetViewports(1, &vp);
 			cmd->RSSetScissorRects(1, &scissor);
 
-			// 3. Main Pass (Opaque -> Skybox -> Grid -> Capture -> Glass -> Transparent)
+			// 6. Main Pass
 			// ============================================================
+			
 			// [1] Opaque
-			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
-				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
-				{
-					if (!mf.mesh || !mr.material) return;
-
-					if (mr.material->GetBlendMode() != BlendMode::Transparent && mr.material->GetData().Transmission <= 0.0f)
-					{
-						renderer.DrawMesh(mf.mesh, mr.material, ltw.Value);
-					}
-				}
-			);
+			for (const auto& item : opaqueQueue)
+			{
+				renderer.DrawMesh(item.mesh, item.material, item.worldMatrix);
+			}
 
 			// Skybox
 			if (auto skyboxPass = renderer.GetPassManager()->GetSkyboxPass())
@@ -328,31 +351,17 @@ namespace Span
 			renderer.ResizeOpaqueCapture(sceneBuffer.GetWidth(), sceneBuffer.GetHeight());
 			renderer.CaptureOpaqueBackground(sceneBuffer.GetResource());
 
-			// [2] ガラス (Opaque だが Transmission が 0 より大きいもの
-			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
-				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
-				{
-					if (!mf.mesh || !mr.material) return;
-
-					if (mr.material->GetBlendMode() != BlendMode::Transparent && mr.material->GetData().Transmission > 0.0f)
-					{
-						renderer.DrawMesh(mf.mesh, mr.material, ltw.Value);
-					}
-				}
-			);
+			// [2] ガラス
+			for (const auto& item : glassQueue)
+			{
+				renderer.DrawMesh(item.mesh, item.material, item.worldMatrix);
+			}
 
 			// [3] Transparent
-			world->ForEach<MeshFilter, MeshRenderer, LocalToWorld>(
-				[&](Entity, MeshFilter& mf, MeshRenderer& mr, LocalToWorld& ltw)
-				{
-					if (!mf.mesh || !mr.material) return;
-
-					if (mr.material->GetBlendMode() == BlendMode::Transparent)
-					{
-						renderer.DrawMesh(mf.mesh, mr.material, ltw.Value);
-					}
-				}
-			);
+			for (const auto& item : transparentQueue)
+			{
+				renderer.DrawMesh(item.mesh, item.material, item.worldMatrix);
+			}
 		}
 	};
 }
