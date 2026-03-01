@@ -66,6 +66,22 @@ namespace Span
 #endif
 		CreateDXGIFactory2(dxgiFactoryFlags, IID_PPV_ARGS(&factory));
 		D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&device));
+
+#if defined(_DEBUG)
+		// 警告の抑制
+		ComPtr<ID3D12InfoQueue> infoQueue;
+		if (SUCCEEDED(device.As(&infoQueue)))
+		{
+			D3D12_MESSAGE_ID hide[] =
+			{
+				D3D12_MESSAGE_ID_CLEARRENDERTARGETVIEW_MISMATCHINGCLEARVALUE
+			};
+			D3D12_INFO_QUEUE_FILTER filter = {};
+			filter.DenyList.NumIDs = _countof(hide);
+			filter.DenyList.pIDList = hide;
+			infoQueue->AddStorageFilterEntries(&filter);
+		}
+#endif
 	}
 
 	void GraphicsContext::CreateCommandQueue()
@@ -193,7 +209,7 @@ namespace Span
 		D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = dsvHeap->GetCPUDescriptorHandleForHeapStart();
 
 		// 背景クリア色 (Cornflower Blue)
-		const float clearColor[] = { 0.39f, 0.58f, 0.93f, 1.0f };
+		const float clearColor[] = { 0.0f, 0.0f, 0.0f, 1.0f };
 		commandList->OMSetRenderTargets(1, &rtvHandle, FALSE, &dsvHandle);
 		commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
 		commandList->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);

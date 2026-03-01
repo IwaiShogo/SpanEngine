@@ -32,9 +32,9 @@ namespace Span
 		}
 		else
 		{
-			m_clearColor[0] = 0.1f;
-			m_clearColor[1] = 0.1f;
-			m_clearColor[2] = 0.1f;
+			m_clearColor[0] = 0.0f;
+			m_clearColor[1] = 0.0f;
+			m_clearColor[2] = 0.0f;
 			m_clearColor[3] = 1.0f;
 		}
 
