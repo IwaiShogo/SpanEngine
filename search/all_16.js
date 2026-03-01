@@ -13,6 +13,6 @@ var searchData=
   ['view_10',['View',['../structSpan_1_1DepthNormalPass_1_1DepthNormalData.html#af98d95e50e2a2e412f29038766ec1fdd',1,'Span::DepthNormalPass::DepthNormalData']]],
   ['viewmatrix_11',['viewMatrix',['../classSpan_1_1Renderer.html#af03a4b1bbb7c73258554f363991196c5',1,'Span::Renderer']]],
   ['viewport_12',['viewport',['../classSpan_1_1GraphicsContext.html#a05b5966d30bb15770e8104d7d0183f1b',1,'Span::GraphicsContext']]],
-  ['visit_13',['Visit',['../structSpan_1_1Internal_1_1ImGuiVisitor.html#a966eba59899c3c97a93ed58acb5612a8',1,'Span::Internal::ImGuiVisitor::Visit()'],['../structSpan_1_1Internal_1_1JsonSerializeVisitor.html#aae33ca0acac04d6ef7736d61426c0a2d',1,'Span::Internal::JsonSerializeVisitor::Visit()'],['../structSpan_1_1Internal_1_1JsonDeserializeVisitor.html#a9ec1cdf5e6d1a1d8bdc2d4138cbd5bc7',1,'Span::Internal::JsonDeserializeVisitor::Visit()']]],
+  ['visit_13',['Visit',['../structSpan_1_1Internal_1_1ImGuiVisitor.html#a966eba59899c3c97a93ed58acb5612a8',1,'Span::Internal::ImGuiVisitor::Visit()'],['../structSpan_1_1Internal_1_1JsonSerializeVisitor.html#a686fa81de8c0acaf7237834b577b0e7c',1,'Span::Internal::JsonSerializeVisitor::Visit()'],['../structSpan_1_1Internal_1_1JsonDeserializeVisitor.html#a495cc4a9a2cb8412f364099dc23564f0',1,'Span::Internal::JsonDeserializeVisitor::Visit()']]],
   ['vs_14',['vs',['../classSpan_1_1Renderer.html#ab1be30cd3501208577f218d42903df76',1,'Span::Renderer']]]
 ];

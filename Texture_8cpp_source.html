@@ -194,7 +194,7 @@ $(function(){initNavTree('Texture_8cpp_source.html','',''); });
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        desc.Width = size;</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        desc.Height = size;</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        desc.DepthOrArraySize = 6;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        desc.MipLevels = mipLevels;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        desc.MipLevels = <span class="keyword">static_cast&lt;</span>UINT16<span class="keyword">&gt;</span>(mipLevels);</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        desc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        desc.SampleDesc.Count = 1;</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        desc.Flags = D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS;</div>
@@ -342,7 +342,7 @@ $(function(){initNavTree('Texture_8cpp_source.html','',''); });
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        textureDesc.MipLevels = 1;</div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        textureDesc.Format = format;</div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        textureDesc.Width = w;</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        textureDesc.Height = h;</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        textureDesc.Height = <span class="keyword">static_cast&lt;</span>UINT<span class="keyword">&gt;</span>(h);</div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        textureDesc.Flags = D3D12_RESOURCE_FLAG_NONE;</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        textureDesc.DepthOrArraySize = 1;</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        textureDesc.SampleDesc.Count = 1;</div>
@@ -449,17 +449,20 @@ $(function(){initNavTree('Texture_8cpp_source.html','',''); });
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        commandQueue-&gt;Signal(fence.Get(), 1);</div>
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
 <div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        HANDLE fenceEvent = CreateEvent(<span class="keyword">nullptr</span>, FALSE, FALSE, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        <span class="keywordflow">if</span> (fence-&gt;GetCompletedValue() &lt; 1)</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        <span class="keywordflow">if</span> (fenceEvent)</div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        {</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>            fence-&gt;SetEventOnCompletion(1, fenceEvent);</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            WaitForSingleObject(fenceEvent, INFINITE);</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        }</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        CloseHandle(fenceEvent);</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span> </div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    }</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>            <span class="keywordflow">if</span> (fence-&gt;GetCompletedValue() &lt; 1)</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            {</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>                fence-&gt;SetEventOnCompletion(1, fenceEvent);</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>                WaitForSingleObject(fenceEvent, INFINITE);</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>            }</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>            CloseHandle(fenceEvent);</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        }</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span> </div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    }</div>
 </div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>}</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>}</div>
 <div class="ttc" id="aLogger_8h_html_a1b7ff4efe93a9030e55f7598d493448c"><div class="ttname"><a href="Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c">SPAN_LOG</a></div><div class="ttdeci">#define SPAN_LOG(Format,...)</div><div class="ttdoc">通常ログを出力します。</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00069">Logger.h:69</a></div></div>
 <div class="ttc" id="aLogger_8h_html_a64e6317fa96d76ed26e6c4c79ec2d9b6"><div class="ttname"><a href="Logger_8h.html#a64e6317fa96d76ed26e6c4c79ec2d9b6">SPAN_ERROR</a></div><div class="ttdeci">#define SPAN_ERROR(Format,...)</div><div class="ttdoc">エラーログを出力します (赤色)。</div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00075">Logger.h:75</a></div></div>
 <div class="ttc" id="aTexture_8h_html"><div class="ttname"><a href="Texture_8h.html">Texture.h</a></div><div class="ttdoc">画像読み込みとテクスチャリソース管理。</div></div>
