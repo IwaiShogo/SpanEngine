@@ -137,6 +137,11 @@ namespace Span
 	{
 		if (!commandList) return;
 
+		// 他のパスで書き換えられたルートシグネチャとヒープをメインパス用に直す
+		ID3D12DescriptorHeap* heaps[] = { m_frameSrvHeap.Get() };
+		commandList->SetDescriptorHeaps(1, heaps);
+		commandList->SetGraphicsRootSignature(rootSignature.Get());
+
 		// Light Manager (b2 -> Register 19)
 		if (m_lightManager) commandList->SetGraphicsRootConstantBufferView(19, m_lightManager->GetLightBufferAddress());
 
@@ -183,10 +188,6 @@ namespace Span
 
 		commandList->SetGraphicsRootConstantBufferView(0, cbAddr);
 		commandList->SetGraphicsRootConstantBufferView(1, material->GetGPUVirtualAddress());
-
-		BindGlobalResources();
-
-		if (m_lightManager) commandList->SetGraphicsRootConstantBufferView(19, m_lightManager->GetLightBufferAddress());
 
 		// PBR Textures (t0 ~ t5)
 		Texture* textures[6] = { material->GetAlbedoMap(), material->GetNormalMap(), material->GetMetallicMap(), material->GetRoughnessMap(), material->GetAOMap(), material->GetEmissiveMap() };

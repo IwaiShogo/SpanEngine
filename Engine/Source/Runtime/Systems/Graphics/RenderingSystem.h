@@ -317,7 +317,10 @@ namespace Span
 
 			// 6. Main Pass
 			// ============================================================
-			
+
+			// メイン描画の前に一度だけグローバルリソースとライトをバインドする
+			renderer.BindGlobalResources();
+
 			// [1] Opaque
 			for (const auto& item : opaqueQueue)
 			{
