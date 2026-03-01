@@ -55,6 +55,7 @@ var classSpan_1_1Renderer =
     [ "m_frameSrvHeap", "classSpan_1_1Renderer.html#a59f5f04d41a3fd72435f157564bc2d9b", null ],
     [ "m_frameSrvHeapOffset", "classSpan_1_1Renderer.html#a460a7085e39f230f835ff96050d7e9b9", null ],
     [ "m_irradianceMap", "classSpan_1_1Renderer.html#ae529d13b0e7497191c91f08cc8ecdf2e", null ],
+    [ "m_isOpaqueCaptureFirstFrame", "classSpan_1_1Renderer.html#a12b9da58c59af66619b2f6ca860f6c7e", null ],
     [ "m_lightManager", "classSpan_1_1Renderer.html#a5fe9ce295214f2d648d28475f75c9bd8", null ],
     [ "m_opaqueCaptureHeight", "classSpan_1_1Renderer.html#a1c6119e549c6d8391ba5102be57e177f", null ],
     [ "m_opaqueCaptureTex", "classSpan_1_1Renderer.html#a346c8826b14f4c0c4129eef42fb9099a", null ],

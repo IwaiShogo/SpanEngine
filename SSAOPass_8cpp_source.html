@@ -112,257 +112,258 @@ $(function(){initNavTree('SSAOPass_8cpp_source.html','',''); });
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a1faaff8558efbacfe0869642df915844">   17</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a1faaff8558efbacfe0869642df915844">SSAOPass::Initialize</a>(ID3D12Device* device, ID3D12CommandQueue* commandQueue, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height)</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a> = <span class="keyword">new</span> <a class="code hl_class" href="classSpan_1_1RenderTarget.html">RenderTarget</a>();</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment">// 1チャンネル(白黒)の8bitフォーマットで十分</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;Initialize(device, width, height, DXGI_FORMAT_R8_UNORM)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a25e64f4d4e3e755c6f769342659425b9">GenerateSampleKernel</a>();</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a10d2bb6774ef1d4f375cd082886fbfb9">GenerateNoiseTexture</a>(device, commandQueue);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">m_shaderVS</a> = <span class="keyword">new</span> <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">m_shaderVS</a>-&gt;Load(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587">L</a><span class="stringliteral">&quot;SSAO.hlsl&quot;</span>, <a class="code hl_enumvalue" href="namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6">ShaderType::Vertex</a>, <span class="stringliteral">&quot;VSMain&quot;</span>)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">m_shaderPS</a> = <span class="keyword">new</span> <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">m_shaderPS</a>-&gt;Load(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587">L</a><span class="stringliteral">&quot;SSAO.hlsl&quot;</span>, <a class="code hl_enumvalue" href="namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0">ShaderType::Pixel</a>, <span class="stringliteral">&quot;PSMain&quot;</span>)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="comment">// --- Root Signature ---</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        D3D12_ROOT_PARAMETER rootParameters[3];</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="comment">// [0] SSAO Buffer (b0)</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        rootParameters[0].Descriptor.ShaderRegister = 0;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        rootParameters[0].Descriptor.RegisterSpace = 0;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        rootParameters[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="comment">// [1] GBuffer (t0)</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        D3D12_DESCRIPTOR_RANGE range0 = {};</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        range0.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        range0.NumDescriptors = 1;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        range0.BaseShaderRegister = 0;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        range0.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        rootParameters[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        rootParameters[1].DescriptorTable.NumDescriptorRanges = 1;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        rootParameters[1].DescriptorTable.pDescriptorRanges = &amp;range0;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="comment">// [2] Noise Texture (t1)</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        D3D12_DESCRIPTOR_RANGE range1 = {};</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        range1.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        range1.NumDescriptors = 1;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        range1.BaseShaderRegister = 1;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        range1.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        rootParameters[2].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        rootParameters[2].DescriptorTable.NumDescriptorRanges = 1;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        rootParameters[2].DescriptorTable.pDescriptorRanges = &amp;range1;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        rootParameters[2].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="comment">// Samplers</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        D3D12_STATIC_SAMPLER_DESC clampSampler = {};</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        clampSampler.Filter = D3D12_FILTER_MIN_MAG_MIP_POINT; <span class="comment">// GBufferは補間しない</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        clampSampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        clampSampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        clampSampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        clampSampler.ShaderRegister = 0;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        clampSampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        D3D12_STATIC_SAMPLER_DESC wrapSampler = {};</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        wrapSampler.Filter = D3D12_FILTER_MIN_MAG_MIP_POINT;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        wrapSampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP; <span class="comment">// ノイズはリピートさせる</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        wrapSampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        wrapSampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        wrapSampler.ShaderRegister = 1;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        wrapSampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        D3D12_STATIC_SAMPLER_DESC samplers[] = { clampSampler, wrapSampler };</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        D3D12_ROOT_SIGNATURE_DESC rootSigDesc = {};</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        rootSigDesc.NumParameters = 3;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        rootSigDesc.pParameters = rootParameters;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        rootSigDesc.NumStaticSamplers = 2;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        rootSigDesc.pStaticSamplers = samplers;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        rootSigDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        ComPtr&lt;ID3DBlob&gt; signature, error;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">if</span> (FAILED(D3D12SerializeRootSignature(&amp;rootSigDesc, D3D_ROOT_SIGNATURE_VERSION_1, &amp;signature, &amp;error))) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateRootSignature(0, signature-&gt;GetBufferPointer(), signature-&gt;GetBufferSize(), IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">m_rootSignature</a>)))) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="comment">// --- Pipeline State ---</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        psoDesc.pRootSignature = <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">m_rootSignature</a>.Get();</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        psoDesc.VS = <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">m_shaderVS</a>-&gt;GetBytecode();</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        psoDesc.PS = <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">m_shaderPS</a>-&gt;GetBytecode();</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        psoDesc.RasterizerState.FillMode = D3D12_FILL_MODE_SOLID;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        psoDesc.RasterizerState.CullMode = D3D12_CULL_MODE_NONE; <span class="comment">// フルスクリーン三角形なのでカリングオフ</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        psoDesc.RasterizerState.DepthClipEnable = FALSE;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="comment">// 深度判定・書き込みは不要</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        psoDesc.DepthStencilState.DepthEnable = FALSE;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        psoDesc.BlendState.AlphaToCoverageEnable = FALSE;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        psoDesc.BlendState.IndependentBlendEnable = FALSE;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        psoDesc.BlendState.RenderTarget[0].BlendEnable = FALSE;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        psoDesc.BlendState.RenderTarget[0].RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        psoDesc.SampleMask = UINT_MAX;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        psoDesc.NumRenderTargets = 1;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        psoDesc.RTVFormats[0] = DXGI_FORMAT_R8_UNORM;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        psoDesc.SampleDesc.Count = 1;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateGraphicsPipelineState(&amp;psoDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">m_pso</a>)))) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    }</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> whiteClear[] = { 1.0f, 1.0f, 1.0f, 1.0f };</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="comment">// 1チャンネル(白黒)の8bitフォーマットで十分</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;Initialize(device, width, height, DXGI_FORMAT_R8_UNORM, whiteClear)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a25e64f4d4e3e755c6f769342659425b9">GenerateSampleKernel</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a10d2bb6774ef1d4f375cd082886fbfb9">GenerateNoiseTexture</a>(device, commandQueue);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">m_shaderVS</a> = <span class="keyword">new</span> <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">m_shaderVS</a>-&gt;Load(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587">L</a><span class="stringliteral">&quot;SSAO.hlsl&quot;</span>, <a class="code hl_enumvalue" href="namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920dab22b929ba52471a02d18bb3a4e4472e6">ShaderType::Vertex</a>, <span class="stringliteral">&quot;VSMain&quot;</span>)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">m_shaderPS</a> = <span class="keyword">new</span> <a class="code hl_class" href="classSpan_1_1Shader.html">Shader</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">m_shaderPS</a>-&gt;Load(<a class="code hl_enumvalue" href="namespaceSpan.html#aa350a9ffb8abcc7152b348bf09b86d8fad20caec3b48a1eef164cb4ca81ba2587">L</a><span class="stringliteral">&quot;SSAO.hlsl&quot;</span>, <a class="code hl_enumvalue" href="namespaceSpan.html#ac6d174c183a792e0102f9c0ca931920da08822b3ae4e2aede0afe08abe600e9c0">ShaderType::Pixel</a>, <span class="stringliteral">&quot;PSMain&quot;</span>)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// --- Root Signature ---</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        D3D12_ROOT_PARAMETER rootParameters[3];</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="comment">// [0] SSAO Buffer (b0)</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        rootParameters[0].Descriptor.ShaderRegister = 0;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        rootParameters[0].Descriptor.RegisterSpace = 0;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        rootParameters[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="comment">// [1] GBuffer (t0)</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        D3D12_DESCRIPTOR_RANGE range0 = {};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        range0.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        range0.NumDescriptors = 1;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        range0.BaseShaderRegister = 0;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        range0.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        rootParameters[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        rootParameters[1].DescriptorTable.NumDescriptorRanges = 1;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        rootParameters[1].DescriptorTable.pDescriptorRanges = &amp;range0;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="comment">// [2] Noise Texture (t1)</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        D3D12_DESCRIPTOR_RANGE range1 = {};</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        range1.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        range1.NumDescriptors = 1;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        range1.BaseShaderRegister = 1;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        range1.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        rootParameters[2].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        rootParameters[2].DescriptorTable.NumDescriptorRanges = 1;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        rootParameters[2].DescriptorTable.pDescriptorRanges = &amp;range1;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        rootParameters[2].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="comment">// Samplers</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        D3D12_STATIC_SAMPLER_DESC clampSampler = {};</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        clampSampler.Filter = D3D12_FILTER_MIN_MAG_MIP_POINT; <span class="comment">// GBufferは補間しない</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        clampSampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        clampSampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        clampSampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_CLAMP;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        clampSampler.ShaderRegister = 0;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        clampSampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        D3D12_STATIC_SAMPLER_DESC wrapSampler = {};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        wrapSampler.Filter = D3D12_FILTER_MIN_MAG_MIP_POINT;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        wrapSampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP; <span class="comment">// ノイズはリピートさせる</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        wrapSampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        wrapSampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        wrapSampler.ShaderRegister = 1;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        wrapSampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        D3D12_STATIC_SAMPLER_DESC samplers[] = { clampSampler, wrapSampler };</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        D3D12_ROOT_SIGNATURE_DESC rootSigDesc = {};</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        rootSigDesc.NumParameters = 3;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        rootSigDesc.pParameters = rootParameters;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        rootSigDesc.NumStaticSamplers = 2;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        rootSigDesc.pStaticSamplers = samplers;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        rootSigDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        ComPtr&lt;ID3DBlob&gt; signature, error;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">if</span> (FAILED(D3D12SerializeRootSignature(&amp;rootSigDesc, D3D_ROOT_SIGNATURE_VERSION_1, &amp;signature, &amp;error))) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateRootSignature(0, signature-&gt;GetBufferPointer(), signature-&gt;GetBufferSize(), IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">m_rootSignature</a>)))) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="comment">// --- Pipeline State ---</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        psoDesc.pRootSignature = <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">m_rootSignature</a>.Get();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        psoDesc.VS = <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">m_shaderVS</a>-&gt;GetBytecode();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        psoDesc.PS = <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">m_shaderPS</a>-&gt;GetBytecode();</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        psoDesc.RasterizerState.FillMode = D3D12_FILL_MODE_SOLID;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        psoDesc.RasterizerState.CullMode = D3D12_CULL_MODE_NONE; <span class="comment">// フルスクリーン三角形なのでカリングオフ</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        psoDesc.RasterizerState.DepthClipEnable = FALSE;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="comment">// 深度判定・書き込みは不要</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        psoDesc.DepthStencilState.DepthEnable = FALSE;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        psoDesc.BlendState.AlphaToCoverageEnable = FALSE;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        psoDesc.BlendState.IndependentBlendEnable = FALSE;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        psoDesc.BlendState.RenderTarget[0].BlendEnable = FALSE;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        psoDesc.BlendState.RenderTarget[0].RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        psoDesc.SampleMask = UINT_MAX;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        psoDesc.NumRenderTargets = 1;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        psoDesc.RTVFormats[0] = DXGI_FORMAT_R8_UNORM;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        psoDesc.SampleDesc.Count = 1;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateGraphicsPipelineState(&amp;psoDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">m_pso</a>)))) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    }</div>
 </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="foldopen" id="foldopen00121" data-start="{" data-end="}">
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#ab2c11252edfd729722c68f9b2641989f">  121</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#ab2c11252edfd729722c68f9b2641989f">SSAOPass::Shutdown</a>()</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    {</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <a class="code hl_define" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a>(<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">m_shaderVS</a>);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_define" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a>(<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">m_shaderPS</a>);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <a class="code hl_define" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a>(<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">m_noiseTexture</a>.reset();</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">m_pso</a>.Reset();</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">m_rootSignature</a>.Reset();</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#ab2c11252edfd729722c68f9b2641989f">  122</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#ab2c11252edfd729722c68f9b2641989f">SSAOPass::Shutdown</a>()</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_define" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a>(<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">m_shaderVS</a>);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <a class="code hl_define" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a>(<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">m_shaderPS</a>);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <a class="code hl_define" href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a>(<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">m_noiseTexture</a>.reset();</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">m_pso</a>.Reset();</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">m_rootSignature</a>.Reset();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
 </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#aa9b1e278213d530c6c1905f1931d3855">  131</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#aa9b1e278213d530c6c1905f1931d3855">SSAOPass::Resize</a>(ID3D12Device* device, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height)</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    {</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>) <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;Resize(device, width, height);</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    }</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="foldopen" id="foldopen00132" data-start="{" data-end="}">
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#aa9b1e278213d530c6c1905f1931d3855">  132</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#aa9b1e278213d530c6c1905f1931d3855">SSAOPass::Resize</a>(ID3D12Device* device, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> width, <a class="code hl_typedef" href="namespaceSpan.html#a536f8f186b1a3b11b8eb44b74c5bfea9">uint32</a> height)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>) <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;Resize(device, width, height);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
 </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="foldopen" id="foldopen00136" data-start="{" data-end="}">
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a25e64f4d4e3e755c6f769342659425b9">  136</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a25e64f4d4e3e755c6f769342659425b9">SSAOPass::GenerateSampleKernel</a>()</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    {</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        std::uniform_real_distribution&lt;float&gt; randomFloats(0.0f, 1.0f);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        std::default_random_engine generator;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 64; ++i)</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        {</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            <span class="comment">// X, Yは -1.0 ~ 1.0, Zは 0.0 ~ 1.0 (半球)</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            <a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a> sample(</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                randomFloats(generator) * 2.0f - 1.0f,</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="foldopen" id="foldopen00137" data-start="{" data-end="}">
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a25e64f4d4e3e755c6f769342659425b9">  137</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a25e64f4d4e3e755c6f769342659425b9">SSAOPass::GenerateSampleKernel</a>()</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    {</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        std::uniform_real_distribution&lt;float&gt; randomFloats(0.0f, 1.0f);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        std::default_random_engine generator;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 64; ++i)</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        {</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            <span class="comment">// X, Yは -1.0 ~ 1.0, Zは 0.0 ~ 1.0 (半球)</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a> sample(</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                randomFloats(generator) * 2.0f - 1.0f,</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                randomFloats(generator)</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            );</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            sample = <a class="code hl_function" href="structSpan_1_1Vector3.html#ad292c1f2a680e5e02bf8d3ba0be67b79">Vector3::Normalize</a>(sample);</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            sample = sample * randomFloats(generator);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            <span class="comment">// サンプルを中心近くに集中させる</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <span class="keywordtype">float</span> scale = (float)i / 64.0f;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            scale = 0.1f + scale * scale * (1.0f - 0.1f); <span class="comment">// Lerp(0.1, 1.0, scale^2)</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            sample = sample * scale;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a7ae871bc8e4f036a9d55bbe52116e292">m_ssaoKernel</a>.push_back({ sample.<a class="code hl_variable" href="structSpan_1_1Vector3.html#a0bda19ad69e61f2bdf9640245af4e280">x</a>, sample.<a class="code hl_variable" href="structSpan_1_1Vector3.html#ab1abeb0dc8be7e95491bf2c0bec89983">y</a>, sample.<a class="code hl_variable" href="structSpan_1_1Vector3.html#a20fbb380d1c4ef3fc1be2c4f4f73087b">z</a>, 0.0f });</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        }</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    }</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                randomFloats(generator) * 2.0f - 1.0f,</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                randomFloats(generator)</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            );</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            sample = <a class="code hl_function" href="structSpan_1_1Vector3.html#ad292c1f2a680e5e02bf8d3ba0be67b79">Vector3::Normalize</a>(sample);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            sample = sample * randomFloats(generator);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <span class="comment">// サンプルを中心近くに集中させる</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            <span class="keywordtype">float</span> scale = (float)i / 64.0f;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            scale = 0.1f + scale * scale * (1.0f - 0.1f); <span class="comment">// Lerp(0.1, 1.0, scale^2)</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            sample = sample * scale;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a7ae871bc8e4f036a9d55bbe52116e292">m_ssaoKernel</a>.push_back({ sample.<a class="code hl_variable" href="structSpan_1_1Vector3.html#a0bda19ad69e61f2bdf9640245af4e280">x</a>, sample.<a class="code hl_variable" href="structSpan_1_1Vector3.html#ab1abeb0dc8be7e95491bf2c0bec89983">y</a>, sample.<a class="code hl_variable" href="structSpan_1_1Vector3.html#a20fbb380d1c4ef3fc1be2c4f4f73087b">z</a>, 0.0f });</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        }</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
 </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="foldopen" id="foldopen00161" data-start="{" data-end="}">
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a10d2bb6774ef1d4f375cd082886fbfb9">  161</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a10d2bb6774ef1d4f375cd082886fbfb9">SSAOPass::GenerateNoiseTexture</a>(ID3D12Device* device, ID3D12CommandQueue* commandQueue)</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    {</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        std::uniform_real_distribution&lt;float&gt; randomFloats(0.0f, 1.0f);</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        std::default_random_engine generator;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        std::vector&lt;uint32&gt; noiseData(16); <span class="comment">// 4x4</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 16; ++i)</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        {</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            <span class="comment">// Z(B) は 0、XY(RG) にランダムな回転方向を持たせる</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            <span class="keywordtype">float</span> x = randomFloats(generator) * 2.0f - 1.0f;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            <span class="keywordtype">float</span> y = randomFloats(generator) * 2.0f - 1.0f;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            <a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a> noise(x, y, 0.0f);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            noise = <a class="code hl_function" href="structSpan_1_1Vector3.html#ad292c1f2a680e5e02bf8d3ba0be67b79">Vector3::Normalize</a>(noise);</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            <span class="comment">// -1~1 を 0~255 の RGBA に変換</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            <a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a> r = (<a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a>)((noise.<a class="code hl_variable" href="structSpan_1_1Vector3.html#a0bda19ad69e61f2bdf9640245af4e280">x</a> * 0.5f + 0.5f) * 255.0f);</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            <a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a> g = (<a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a>)((noise.<a class="code hl_variable" href="structSpan_1_1Vector3.html#ab1abeb0dc8be7e95491bf2c0bec89983">y</a> * 0.5f + 0.5f) * 255.0f);</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            <a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a> b = 0;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            <a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a> a = 255;</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            noiseData[i] = (a &lt;&lt; 24) | (b &lt;&lt; 16) | (g &lt;&lt; 8) | r;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        }</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">m_noiseTexture</a> = std::make_unique&lt;Texture&gt;();</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">m_noiseTexture</a>-&gt;InitializeFromMemory(device, commandQueue, noiseData.data(), 4, 4, 4);</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    }</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="foldopen" id="foldopen00162" data-start="{" data-end="}">
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#a10d2bb6774ef1d4f375cd082886fbfb9">  162</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#a10d2bb6774ef1d4f375cd082886fbfb9">SSAOPass::GenerateNoiseTexture</a>(ID3D12Device* device, ID3D12CommandQueue* commandQueue)</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    {</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        std::uniform_real_distribution&lt;float&gt; randomFloats(0.0f, 1.0f);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        std::default_random_engine generator;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        std::vector&lt;uint32&gt; noiseData(16); <span class="comment">// 4x4</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 16; ++i)</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            <span class="comment">// Z(B) は 0、XY(RG) にランダムな回転方向を持たせる</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            <span class="keywordtype">float</span> x = randomFloats(generator) * 2.0f - 1.0f;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            <span class="keywordtype">float</span> y = randomFloats(generator) * 2.0f - 1.0f;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            <a class="code hl_struct" href="structSpan_1_1Vector3.html">Vector3</a> noise(x, y, 0.0f);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            noise = <a class="code hl_function" href="structSpan_1_1Vector3.html#ad292c1f2a680e5e02bf8d3ba0be67b79">Vector3::Normalize</a>(noise);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            <span class="comment">// -1~1 を 0~255 の RGBA に変換</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            <a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a> r = (<a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a>)((noise.<a class="code hl_variable" href="structSpan_1_1Vector3.html#a0bda19ad69e61f2bdf9640245af4e280">x</a> * 0.5f + 0.5f) * 255.0f);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            <a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a> g = (<a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a>)((noise.<a class="code hl_variable" href="structSpan_1_1Vector3.html#ab1abeb0dc8be7e95491bf2c0bec89983">y</a> * 0.5f + 0.5f) * 255.0f);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            <a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a> b = 0;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            <a class="code hl_typedef" href="namespaceSpan.html#adab5acbc8bcb80306a5e0c86c7e8ecbd">uint8</a> a = 255;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            noiseData[i] = (a &lt;&lt; 24) | (b &lt;&lt; 16) | (g &lt;&lt; 8) | r;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        }</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">m_noiseTexture</a> = std::make_unique&lt;Texture&gt;();</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">m_noiseTexture</a>-&gt;InitializeFromMemory(device, commandQueue, noiseData.data(), 4, 4, 4);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    }</div>
 </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
-<div class="foldopen" id="foldopen00187" data-start="{" data-end="}">
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#af7229ce70bbcfc88e3313d23623304f7">  187</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#af7229ce70bbcfc88e3313d23623304f7">SSAOPass::Execute</a>(<a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>* renderer, ID3D12GraphicsCommandList* cmd, <a class="code hl_class" href="classSpan_1_1RenderTarget.html">RenderTarget</a>* gBuffer, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&amp; projectionMatrix)</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    {</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a> || !cmd || !gBuffer) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="comment">// GBuffer は SRV として読み取る</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        gBuffer-&gt;<a class="code hl_function" href="classSpan_1_1RenderTarget.html#a7c35d48a9858e806dd77f260e469e1eb">TransitionToShaderResource</a>(cmd);</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;TransitionToRenderTarget(cmd);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        D3D12_CPU_DESCRIPTOR_HANDLE rtv = <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetRTV();</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        cmd-&gt;OMSetRenderTargets(1, &amp;rtv, FALSE, <span class="keyword">nullptr</span>); <span class="comment">// 深度は無し</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> clearColor[] = { 1.0f, 1.0f, 1.0f, 1.0f }; <span class="comment">// 初期値は白(影なし)</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        cmd-&gt;ClearRenderTargetView(rtv, clearColor, 0, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        D3D12_VIEWPORT vp = { 0.0f, 0.0f, (float)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetWidth(), (float)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetHeight(), 0.0f, 1.0f };</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        D3D12_RECT scissor = { 0, 0, (long)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetWidth(), (long)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetHeight() };</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        cmd-&gt;RSSetViewports(1, &amp;vp);</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        cmd-&gt;RSSetScissorRects(1, &amp;scissor);</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">m_pso</a>.Get());</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        cmd-&gt;SetGraphicsRootSignature(<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">m_rootSignature</a>.Get());</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="comment">// CBVのセット</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <a class="code hl_struct" href="structSpan_1_1SSAOPass_1_1SSAOData.html">SSAOData</a> data;</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#acdb1a4ab79d3a8b886f35bba3bb342ef">Projection</a>.<a class="code hl_function" href="structSpan_1_1Matrix4x4.html#a4adf277b2c441fe8d2ea295a0c0a2610">FromXM</a>(XMMatrixTranspose(projectionMatrix.<a class="code hl_function" href="structSpan_1_1Matrix4x4.html#afc3f3a8aeeaac6aa4302a64b7568fbf3">ToXM</a>()));</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        DirectX::XMVECTOR det;</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        DirectX::XMMATRIX invProj = DirectX::XMMatrixInverse(&amp;det, projectionMatrix.<a class="code hl_function" href="structSpan_1_1Matrix4x4.html#afc3f3a8aeeaac6aa4302a64b7568fbf3">ToXM</a>());</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a64da413e6b061b59a65c002ab349e7eb">InvProjection</a>.<a class="code hl_function" href="structSpan_1_1Matrix4x4.html#a4adf277b2c441fe8d2ea295a0c0a2610">FromXM</a>(XMMatrixTranspose(invProj));</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 64; i++) data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a5cd33fcecb70c6b32e47860bbb4c6d20">Samples</a>[i] = <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a7ae871bc8e4f036a9d55bbe52116e292">m_ssaoKernel</a>[i];</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a016619ca8eb08af97ee5d79913f99836">NoiseScale</a> = { (float)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetWidth() / 4.0f, (float)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetHeight() / 4.0f };</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a9a9422654553258172b611d0d660943d">Radius</a> = 0.5f;</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#aed4af3b19c8dc6877775de26d415bb4e">Bias</a> = 0.025f;</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        D3D12_GPU_VIRTUAL_ADDRESS cbAddr = renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a5ee526eb262da98fad30d48b97e51d88">AllocateCBV</a>(&amp;data, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structSpan_1_1SSAOPass_1_1SSAOData.html">SSAOData</a>));</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="keywordflow">if</span> (cbAddr != 0) cmd-&gt;SetGraphicsRootConstantBufferView(0, cbAddr);</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="comment">// テクスチャのバインド</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="comment">// GBuffer の SRV</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a30d84e655d8659ace346e4b3c1e0bdd4">BindRenderTargetSRV</a>(cmd, gBuffer, 1);</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="comment">// Noise の SRV</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3">BindTexture</a>(cmd, <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">m_noiseTexture</a>.get(), 2);</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="comment">// フルスクリーン三角形描画 (頂点バッファなし)</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        cmd-&gt;IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        cmd-&gt;DrawInstanced(3, 1, 0, 0);</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="comment">// SSAOマップをSRVに戻す</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;TransitionToShaderResource(cmd);</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    }</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="foldopen" id="foldopen00188" data-start="{" data-end="}">
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="classSpan_1_1SSAOPass.html#af7229ce70bbcfc88e3313d23623304f7">  188</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSpan_1_1SSAOPass.html#af7229ce70bbcfc88e3313d23623304f7">SSAOPass::Execute</a>(<a class="code hl_class" href="classSpan_1_1Renderer.html">Renderer</a>* renderer, ID3D12GraphicsCommandList* cmd, <a class="code hl_class" href="classSpan_1_1RenderTarget.html">RenderTarget</a>* gBuffer, <span class="keyword">const</span> <a class="code hl_struct" href="structSpan_1_1Matrix4x4.html">Matrix4x4</a>&amp; projectionMatrix)</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    {</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a> || !cmd || !gBuffer) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="comment">// GBuffer は SRV として読み取る</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        gBuffer-&gt;<a class="code hl_function" href="classSpan_1_1RenderTarget.html#a7c35d48a9858e806dd77f260e469e1eb">TransitionToShaderResource</a>(cmd);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;TransitionToRenderTarget(cmd);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        D3D12_CPU_DESCRIPTOR_HANDLE rtv = <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetRTV();</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        cmd-&gt;OMSetRenderTargets(1, &amp;rtv, FALSE, <span class="keyword">nullptr</span>); <span class="comment">// 深度は無し</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> clearColor[] = { 1.0f, 1.0f, 1.0f, 1.0f }; <span class="comment">// 初期値は白(影なし)</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        cmd-&gt;ClearRenderTargetView(rtv, clearColor, 0, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        D3D12_VIEWPORT vp = { 0.0f, 0.0f, (float)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetWidth(), (float)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetHeight(), 0.0f, 1.0f };</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        D3D12_RECT scissor = { 0, 0, (long)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetWidth(), (long)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetHeight() };</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        cmd-&gt;RSSetViewports(1, &amp;vp);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        cmd-&gt;RSSetScissorRects(1, &amp;scissor);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        cmd-&gt;SetPipelineState(<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">m_pso</a>.Get());</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        cmd-&gt;SetGraphicsRootSignature(<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">m_rootSignature</a>.Get());</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="comment">// CBVのセット</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <a class="code hl_struct" href="structSpan_1_1SSAOPass_1_1SSAOData.html">SSAOData</a> data;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#acdb1a4ab79d3a8b886f35bba3bb342ef">Projection</a>.<a class="code hl_function" href="structSpan_1_1Matrix4x4.html#a4adf277b2c441fe8d2ea295a0c0a2610">FromXM</a>(XMMatrixTranspose(projectionMatrix.<a class="code hl_function" href="structSpan_1_1Matrix4x4.html#afc3f3a8aeeaac6aa4302a64b7568fbf3">ToXM</a>()));</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        DirectX::XMVECTOR det;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        DirectX::XMMATRIX invProj = DirectX::XMMatrixInverse(&amp;det, projectionMatrix.<a class="code hl_function" href="structSpan_1_1Matrix4x4.html#afc3f3a8aeeaac6aa4302a64b7568fbf3">ToXM</a>());</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a64da413e6b061b59a65c002ab349e7eb">InvProjection</a>.<a class="code hl_function" href="structSpan_1_1Matrix4x4.html#a4adf277b2c441fe8d2ea295a0c0a2610">FromXM</a>(XMMatrixTranspose(invProj));</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 64; i++) data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a5cd33fcecb70c6b32e47860bbb4c6d20">Samples</a>[i] = <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a7ae871bc8e4f036a9d55bbe52116e292">m_ssaoKernel</a>[i];</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a016619ca8eb08af97ee5d79913f99836">NoiseScale</a> = { (float)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetWidth() / 4.0f, (float)<a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;GetHeight() / 4.0f };</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#a9a9422654553258172b611d0d660943d">Radius</a> = 0.5f;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        data.<a class="code hl_variable" href="structSpan_1_1SSAOPass_1_1SSAOData.html#aed4af3b19c8dc6877775de26d415bb4e">Bias</a> = 0.025f;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        D3D12_GPU_VIRTUAL_ADDRESS cbAddr = renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a5ee526eb262da98fad30d48b97e51d88">AllocateCBV</a>(&amp;data, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structSpan_1_1SSAOPass_1_1SSAOData.html">SSAOData</a>));</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordflow">if</span> (cbAddr != 0) cmd-&gt;SetGraphicsRootConstantBufferView(0, cbAddr);</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="comment">// テクスチャのバインド</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="comment">// GBuffer の SRV</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a30d84e655d8659ace346e4b3c1e0bdd4">BindRenderTargetSRV</a>(cmd, gBuffer, 1);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="comment">// Noise の SRV</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        renderer-&gt;<a class="code hl_function" href="classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3">BindTexture</a>(cmd, <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">m_noiseTexture</a>.get(), 2);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="comment">// フルスクリーン三角形描画 (頂点バッファなし)</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        cmd-&gt;IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        cmd-&gt;DrawInstanced(3, 1, 0, 0);</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="comment">// SSAOマップをSRVに戻す</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        <a class="code hl_variable" href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">m_ssaoMap</a>-&gt;TransitionToShaderResource(cmd);</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    }</div>
 </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>}</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>}</div>
 <div class="ttc" id="aCoreMinimal_8h_html_a4b8b2bed986c06c207ebac140ba65a7a"><div class="ttname"><a href="CoreMinimal_8h.html#a4b8b2bed986c06c207ebac140ba65a7a">SAFE_DELETE</a></div><div class="ttdeci">#define SAFE_DELETE(x)</div><div class="ttdef"><b>Definition</b> <a href="CoreMinimal_8h_source.html#l00114">CoreMinimal.h:114</a></div></div>
 <div class="ttc" id="aSSAOPass_8h_html"><div class="ttname"><a href="SSAOPass_8h.html">SSAOPass.h</a></div><div class="ttdoc">Screen Space Ambient Occlusion (SSAO) を計算パス。</div></div>
 <div class="ttc" id="aclassSpan_1_1RenderTarget_html"><div class="ttname"><a href="classSpan_1_1RenderTarget.html">Span::RenderTarget</a></div><div class="ttdoc">🎯 描画対象となるテクスチャリソース。</div><div class="ttdef"><b>Definition</b> <a href="RenderTarget_8h_source.html#l00032">RenderTarget.h:33</a></div></div>
-<div class="ttc" id="aclassSpan_1_1RenderTarget_html_a7c35d48a9858e806dd77f260e469e1eb"><div class="ttname"><a href="classSpan_1_1RenderTarget.html#a7c35d48a9858e806dd77f260e469e1eb">Span::RenderTarget::TransitionToShaderResource</a></div><div class="ttdeci">void TransitionToShaderResource(ID3D12GraphicsCommandList *commandList)</div><div class="ttdoc">リソースの状態を「読み取り専用テクスチャ (Shader Resource)」に変更します。 ImGuiなどで表示する前に読んでください。</div><div class="ttdef"><b>Definition</b> <a href="RenderTarget_8cpp_source.html#l00208">RenderTarget.cpp:208</a></div></div>
+<div class="ttc" id="aclassSpan_1_1RenderTarget_html_a7c35d48a9858e806dd77f260e469e1eb"><div class="ttname"><a href="classSpan_1_1RenderTarget.html#a7c35d48a9858e806dd77f260e469e1eb">Span::RenderTarget::TransitionToShaderResource</a></div><div class="ttdeci">void TransitionToShaderResource(ID3D12GraphicsCommandList *commandList)</div><div class="ttdoc">リソースの状態を「読み取り専用テクスチャ (Shader Resource)」に変更します。 ImGuiなどで表示する前に読んでください。</div><div class="ttdef"><b>Definition</b> <a href="RenderTarget_8cpp_source.html#l00223">RenderTarget.cpp:223</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Renderer_html"><div class="ttname"><a href="classSpan_1_1Renderer.html">Span::Renderer</a></div><div class="ttdoc">🖌 描画コマンドの発行を担うクラス。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8h_source.html#l00099">Renderer.h:100</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Renderer_html_a30d84e655d8659ace346e4b3c1e0bdd4"><div class="ttname"><a href="classSpan_1_1Renderer.html#a30d84e655d8659ace346e4b3c1e0bdd4">Span::Renderer::BindRenderTargetSRV</a></div><div class="ttdeci">void BindRenderTargetSRV(ID3D12GraphicsCommandList *cmd, RenderTarget *renderTarget, uint32 rootIndex, D3D12_SRV_DIMENSION dimension=D3D12_SRV_DIMENSION_TEXTURE2D)</div><div class="ttdoc">指定スロットにRenderTargetのSRVをバインドします。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8cpp_source.html#l00377">Renderer.cpp:377</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Renderer_html_a5ee526eb262da98fad30d48b97e51d88"><div class="ttname"><a href="classSpan_1_1Renderer.html#a5ee526eb262da98fad30d48b97e51d88">Span::Renderer::AllocateCBV</a></div><div class="ttdeci">D3D12_GPU_VIRTUAL_ADDRESS AllocateCBV(const void *data, size_t sizeInBytes)</div><div class="ttdoc">動的定数バッファのメモリを確保し、データをコピーしてGPUアドレスを返します。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8cpp_source.html#l00085">Renderer.cpp:85</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Renderer_html_a99045dcc7cdaadce2843b7c2540156a3"><div class="ttname"><a href="classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3">Span::Renderer::BindTexture</a></div><div class="ttdeci">void BindTexture(ID3D12GraphicsCommandList *cmd, Texture *texture, uint32 rootIndex, D3D12_SRV_DIMENSION dimension=D3D12_SRV_DIMENSION_TEXTURE2D)</div><div class="ttdoc">指定スロットにテクスチャをバインドします。Nullの場合は安全なダミーを生成します。</div><div class="ttdef"><b>Definition</b> <a href="Renderer_8cpp_source.html#l00313">Renderer.cpp:313</a></div></div>
-<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a10d2bb6774ef1d4f375cd082886fbfb9"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a10d2bb6774ef1d4f375cd082886fbfb9">Span::SSAOPass::GenerateNoiseTexture</a></div><div class="ttdeci">void GenerateNoiseTexture(ID3D12Device *device, ID3D12CommandQueue *commandQueue)</div><div class="ttdef"><b>Definition</b> <a href="#l00161">SSAOPass.cpp:161</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a10d2bb6774ef1d4f375cd082886fbfb9"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a10d2bb6774ef1d4f375cd082886fbfb9">Span::SSAOPass::GenerateNoiseTexture</a></div><div class="ttdeci">void GenerateNoiseTexture(ID3D12Device *device, ID3D12CommandQueue *commandQueue)</div><div class="ttdef"><b>Definition</b> <a href="#l00162">SSAOPass.cpp:162</a></div></div>
 <div class="ttc" id="aclassSpan_1_1SSAOPass_html_a1faaff8558efbacfe0869642df915844"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a1faaff8558efbacfe0869642df915844">Span::SSAOPass::Initialize</a></div><div class="ttdeci">bool Initialize(ID3D12Device *device, ID3D12CommandQueue *commandQueue, uint32 width, uint32 height)</div><div class="ttdef"><b>Definition</b> <a href="#l00017">SSAOPass.cpp:17</a></div></div>
-<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a25e64f4d4e3e755c6f769342659425b9"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a25e64f4d4e3e755c6f769342659425b9">Span::SSAOPass::GenerateSampleKernel</a></div><div class="ttdeci">void GenerateSampleKernel()</div><div class="ttdef"><b>Definition</b> <a href="#l00136">SSAOPass.cpp:136</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_a25e64f4d4e3e755c6f769342659425b9"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a25e64f4d4e3e755c6f769342659425b9">Span::SSAOPass::GenerateSampleKernel</a></div><div class="ttdeci">void GenerateSampleKernel()</div><div class="ttdef"><b>Definition</b> <a href="#l00137">SSAOPass.cpp:137</a></div></div>
 <div class="ttc" id="aclassSpan_1_1SSAOPass_html_a4bd5d1cb39233df5e7138f1c66960686"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a4bd5d1cb39233df5e7138f1c66960686">Span::SSAOPass::m_shaderPS</a></div><div class="ttdeci">Shader * m_shaderPS</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8h_source.html#l00058">SSAOPass.h:58</a></div></div>
 <div class="ttc" id="aclassSpan_1_1SSAOPass_html_a62f75e991864e7aa72f766601a59bbf8"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a62f75e991864e7aa72f766601a59bbf8">Span::SSAOPass::m_ssaoMap</a></div><div class="ttdeci">RenderTarget * m_ssaoMap</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8h_source.html#l00052">SSAOPass.h:52</a></div></div>
 <div class="ttc" id="aclassSpan_1_1SSAOPass_html_a75e68c90aa30cf4f07650a35d8f66f58"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a75e68c90aa30cf4f07650a35d8f66f58">Span::SSAOPass::m_shaderVS</a></div><div class="ttdeci">Shader * m_shaderVS</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8h_source.html#l00057">SSAOPass.h:57</a></div></div>
 <div class="ttc" id="aclassSpan_1_1SSAOPass_html_a7ae871bc8e4f036a9d55bbe52116e292"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#a7ae871bc8e4f036a9d55bbe52116e292">Span::SSAOPass::m_ssaoKernel</a></div><div class="ttdeci">std::vector&lt; Vector4 &gt; m_ssaoKernel</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8h_source.html#l00061">SSAOPass.h:61</a></div></div>
-<div class="ttc" id="aclassSpan_1_1SSAOPass_html_aa9b1e278213d530c6c1905f1931d3855"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#aa9b1e278213d530c6c1905f1931d3855">Span::SSAOPass::Resize</a></div><div class="ttdeci">void Resize(ID3D12Device *device, uint32 width, uint32 height)</div><div class="ttdef"><b>Definition</b> <a href="#l00131">SSAOPass.cpp:131</a></div></div>
-<div class="ttc" id="aclassSpan_1_1SSAOPass_html_ab2c11252edfd729722c68f9b2641989f"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#ab2c11252edfd729722c68f9b2641989f">Span::SSAOPass::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="#l00121">SSAOPass.cpp:121</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_aa9b1e278213d530c6c1905f1931d3855"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#aa9b1e278213d530c6c1905f1931d3855">Span::SSAOPass::Resize</a></div><div class="ttdeci">void Resize(ID3D12Device *device, uint32 width, uint32 height)</div><div class="ttdef"><b>Definition</b> <a href="#l00132">SSAOPass.cpp:132</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_ab2c11252edfd729722c68f9b2641989f"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#ab2c11252edfd729722c68f9b2641989f">Span::SSAOPass::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition</b> <a href="#l00122">SSAOPass.cpp:122</a></div></div>
 <div class="ttc" id="aclassSpan_1_1SSAOPass_html_ac45ba00bdeb8b42b603eda075e45ba0f"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#ac45ba00bdeb8b42b603eda075e45ba0f">Span::SSAOPass::m_noiseTexture</a></div><div class="ttdeci">std::unique_ptr&lt; Texture &gt; m_noiseTexture</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8h_source.html#l00053">SSAOPass.h:53</a></div></div>
 <div class="ttc" id="aclassSpan_1_1SSAOPass_html_af683a05d44358d0cdb18d2fd3f03df59"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#af683a05d44358d0cdb18d2fd3f03df59">Span::SSAOPass::m_pso</a></div><div class="ttdeci">ComPtr&lt; ID3D12PipelineState &gt; m_pso</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8h_source.html#l00055">SSAOPass.h:55</a></div></div>
-<div class="ttc" id="aclassSpan_1_1SSAOPass_html_af7229ce70bbcfc88e3313d23623304f7"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#af7229ce70bbcfc88e3313d23623304f7">Span::SSAOPass::Execute</a></div><div class="ttdeci">void Execute(Renderer *renderer, ID3D12GraphicsCommandList *cmd, RenderTarget *gBuffer, const Matrix4x4 &amp;projectionMatrix)</div><div class="ttdoc">SSAOの描画を実行します。</div><div class="ttdef"><b>Definition</b> <a href="#l00187">SSAOPass.cpp:187</a></div></div>
+<div class="ttc" id="aclassSpan_1_1SSAOPass_html_af7229ce70bbcfc88e3313d23623304f7"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#af7229ce70bbcfc88e3313d23623304f7">Span::SSAOPass::Execute</a></div><div class="ttdeci">void Execute(Renderer *renderer, ID3D12GraphicsCommandList *cmd, RenderTarget *gBuffer, const Matrix4x4 &amp;projectionMatrix)</div><div class="ttdoc">SSAOの描画を実行します。</div><div class="ttdef"><b>Definition</b> <a href="#l00188">SSAOPass.cpp:188</a></div></div>
 <div class="ttc" id="aclassSpan_1_1SSAOPass_html_afbc1e73f04a0fcfd2e7653a668142451"><div class="ttname"><a href="classSpan_1_1SSAOPass.html#afbc1e73f04a0fcfd2e7653a668142451">Span::SSAOPass::m_rootSignature</a></div><div class="ttdeci">ComPtr&lt; ID3D12RootSignature &gt; m_rootSignature</div><div class="ttdef"><b>Definition</b> <a href="SSAOPass_8h_source.html#l00056">SSAOPass.h:56</a></div></div>
 <div class="ttc" id="aclassSpan_1_1Shader_html"><div class="ttname"><a href="classSpan_1_1Shader.html">Span::Shader</a></div><div class="ttdoc">📜 HLSLシェーダーファイルのコンパイルとバイナリ保持。</div><div class="ttdef"><b>Definition</b> <a href="Shader_8h_source.html#l00037">Shader.h:38</a></div></div>
 <div class="ttc" id="anamespaceSpan_html"><div class="ttname"><a href="namespaceSpan.html">Span</a></div><div class="ttdef"><b>Definition</b> <a href="FixedString_8h_source.html#l00016">FixedString.h:17</a></div></div>

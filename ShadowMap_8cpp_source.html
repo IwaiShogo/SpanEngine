@@ -127,7 +127,7 @@ $(function(){initNavTree('ShadowMap_8cpp_source.html','',''); });
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        srvHeapDesc.NumDescriptors = 1;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE; <span class="comment">// シェーダーからアクセス可能にする</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE; <span class="comment">// シェーダーからアクセス可能にする</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateDescriptorHeap(&amp;srvHeapDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1ShadowMap.html#af85b16e670aa2c6be8f4534d965ea620">m_srvHeap</a>)))) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// 3. テクスチャリソースの作成</span></div>

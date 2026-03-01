@@ -160,7 +160,7 @@ $(function(){initNavTree('Texture_8cpp_source.html','',''); });
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        srvHeapDesc.NumDescriptors = 1;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateDescriptorHeap(&amp;srvHeapDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">srvHeap</a>))))</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        {</div>
@@ -207,7 +207,7 @@ $(function(){initNavTree('Texture_8cpp_source.html','',''); });
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        D3D12_DESCRIPTOR_HEAP_DESC uavHeapDesc = {};</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        uavHeapDesc.NumDescriptors = 1;</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        uavHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        uavHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        uavHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        device-&gt;CreateDescriptorHeap(&amp;uavHeapDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#aab47c5397b0face022dd4d0d8432fc2d">uavHeap</a>));</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        D3D12_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};</div>
@@ -222,7 +222,7 @@ $(function(){initNavTree('Texture_8cpp_source.html','',''); });
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        srvHeapDesc.NumDescriptors = 1;</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        device-&gt;CreateDescriptorHeap(&amp;srvHeapDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">srvHeap</a>));</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};</div>
@@ -263,7 +263,7 @@ $(function(){initNavTree('Texture_8cpp_source.html','',''); });
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        D3D12_DESCRIPTOR_HEAP_DESC uavHeapDesc = {};</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        uavHeapDesc.NumDescriptors = 1;</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        uavHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        uavHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        uavHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        device-&gt;CreateDescriptorHeap(&amp;uavHeapDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#aab47c5397b0face022dd4d0d8432fc2d">uavHeap</a>));</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        D3D12_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};</div>
@@ -276,7 +276,7 @@ $(function(){initNavTree('Texture_8cpp_source.html','',''); });
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        srvHeapDesc.NumDescriptors = 1;</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        device-&gt;CreateDescriptorHeap(&amp;srvHeapDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">srvHeap</a>));</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};</div>
@@ -311,7 +311,7 @@ $(function(){initNavTree('Texture_8cpp_source.html','',''); });
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        srvHeapDesc.NumDescriptors = 1;</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;</div>
 <div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="keywordflow">if</span> (FAILED(device-&gt;CreateDescriptorHeap(&amp;srvHeapDesc, IID_PPV_ARGS(&amp;<a class="code hl_variable" href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">srvHeap</a>))))</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        {</div>
