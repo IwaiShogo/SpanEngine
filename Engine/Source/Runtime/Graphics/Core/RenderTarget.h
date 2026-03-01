@@ -41,8 +41,9 @@ namespace Span
 		 * @param	width 幅
 		 * @param	height 高さ
 		 * @param	format ピクセルフォーマット (Default: R8G8B8A8_UNORM)
+		 * @param	clearColor クリアの色 (Default: { 0.1f, 0.1f, 0.1f, 1.0f })
 		 */
-		bool Initialize(ID3D12Device* device, uint32 width, uint32 height, DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM);
+		bool Initialize(ID3D12Device* device, uint32 width, uint32 height, DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM, const float* clearColor = nullptr);
 
 		/// @brief	リソースを解放
 		void Shutdown();
@@ -110,6 +111,8 @@ namespace Span
 		uint32 width = 0;
 		uint32 height = 0;
 		DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM;
+
+		float m_clearColor[4] = { 0.1f, 0.1f, 0.1f, 1.0f };
 
 		D3D12_RESOURCE_STATES currentState = D3D12_RESOURCE_STATE_COMMON;
 	};

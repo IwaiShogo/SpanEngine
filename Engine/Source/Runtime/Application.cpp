@@ -79,8 +79,9 @@ namespace Span
 			return;
 		}
 
+		const float sceneClearColor[] = { 0.1f, 0.1f, 0.1f, 1.0f };
 		// SceneBuffer (Render Target for Editor View)
-		if (!sceneBuffer.Initialize(renderer.GetDevice(), window.GetWidth(), window.GetHeight()))
+		if (!sceneBuffer.Initialize(renderer.GetDevice(), window.GetWidth(), window.GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, sceneClearColor))
 		{
 			SPAN_FATAL("SceneBuffer Initialization Failed!");
 			isRunning = false;

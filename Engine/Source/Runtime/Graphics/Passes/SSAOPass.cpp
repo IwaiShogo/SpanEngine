@@ -17,8 +17,9 @@ namespace Span
 	bool SSAOPass::Initialize(ID3D12Device* device, ID3D12CommandQueue* commandQueue, uint32 width, uint32 height)
 	{
 		m_ssaoMap = new RenderTarget();
+		const float whiteClear[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 		// 1チャンネル(白黒)の8bitフォーマットで十分
-		if (!m_ssaoMap->Initialize(device, width, height, DXGI_FORMAT_R8_UNORM)) return false;
+		if (!m_ssaoMap->Initialize(device, width, height, DXGI_FORMAT_R8_UNORM, whiteClear)) return false;
 
 		GenerateSampleKernel();
 		GenerateNoiseTexture(device, commandQueue);

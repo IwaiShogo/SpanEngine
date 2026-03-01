@@ -15,7 +15,8 @@ namespace Span
 	bool SSAOBlurPass::Initialize(ID3D12Device* device, uint32 width, uint32 height)
 	{
 		m_blurredMap = new RenderTarget();
-		if (!m_blurredMap->Initialize(device, width, height, DXGI_FORMAT_R8_UNORM)) return false;
+		const float whiteClear[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+		if (!m_blurredMap->Initialize(device, width, height, DXGI_FORMAT_R8_UNORM, whiteClear)) return false;
 
 		m_shaderVS = new Shader();
 		if (!m_shaderVS->Load(L"SSAOBlur.hlsl", ShaderType::Vertex, "VSMain")) return false;

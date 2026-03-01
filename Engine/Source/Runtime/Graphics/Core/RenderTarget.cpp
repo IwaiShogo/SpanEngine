@@ -11,7 +11,7 @@ namespace Span
 		Shutdown();
 	}
 
-	bool RenderTarget::Initialize(ID3D12Device* device, uint32 width, uint32 height, DXGI_FORMAT format)
+	bool RenderTarget::Initialize(ID3D12Device* device, uint32 width, uint32 height, DXGI_FORMAT format, const float* clearColor)
 	{
 		if (!device)
 		{
@@ -22,6 +22,21 @@ namespace Span
 		this->width = width;
 		this->height = height;
 		this->format = format;
+
+		if (clearColor)
+		{
+			m_clearColor[0] = clearColor[0];
+			m_clearColor[1] = clearColor[1];
+			m_clearColor[2] = clearColor[2];
+			m_clearColor[3] = clearColor[3];
+		}
+		else
+		{
+			m_clearColor[0] = 0.1f;
+			m_clearColor[1] = 0.1f;
+			m_clearColor[2] = 0.1f;
+			m_clearColor[3] = 1.0f;
+		}
 
 		HRESULT hr = S_OK;
 
@@ -43,7 +58,7 @@ namespace Span
 		D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
 		srvHeapDesc.NumDescriptors = 1;
 		srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
+		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
 
 		hr = device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap));
 		if (FAILED(hr))
@@ -107,10 +122,10 @@ namespace Span
 		// クリア値
 		D3D12_CLEAR_VALUE clearValue = {};
 		clearValue.Format = format;
-		clearValue.Color[0] = 0.1f;
-		clearValue.Color[1] = 0.1f;
-		clearValue.Color[2] = 0.1f;
-		clearValue.Color[3] = 1.0f;
+		clearValue.Color[0] = m_clearColor[0];
+		clearValue.Color[1] = m_clearColor[1];
+		clearValue.Color[2] = m_clearColor[2];
+		clearValue.Color[3] = m_clearColor[3];
 
 		D3D12_HEAP_PROPERTIES heapProps = { D3D12_HEAP_TYPE_DEFAULT };
 
@@ -224,8 +239,7 @@ namespace Span
 
 	void RenderTarget::Clear(ID3D12GraphicsCommandList* commandList)
 	{
-		const float clearColor[] = { 0.1f, 0.1f, 0.1f, 1.0f };
-		commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
+		commandList->ClearRenderTargetView(rtvHandle, m_clearColor, 0, nullptr);
 		commandList->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 	}
 

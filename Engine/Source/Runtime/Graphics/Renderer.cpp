@@ -472,6 +472,7 @@ namespace Span
 			m_opaqueCaptureHeight = height;
 			m_opaqueCaptureTex = std::make_unique<Texture>();
 			m_opaqueCaptureTex->InitializeAsTexture2D(context->GetDevice(), width, height, DXGI_FORMAT_R8G8B8A8_UNORM);
+			m_isOpaqueCaptureFirstFrame = true;
 		}
 	}
 
@@ -490,7 +491,7 @@ namespace Span
 
 		barriers[1].Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
 		barriers[1].Transition.pResource = m_opaqueCaptureTex->GetResource();
-		barriers[1].Transition.StateBefore = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
+		barriers[1].Transition.StateBefore = m_isOpaqueCaptureFirstFrame ? D3D12_RESOURCE_STATE_UNORDERED_ACCESS : D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
 		barriers[1].Transition.StateAfter = D3D12_RESOURCE_STATE_COPY_DEST;
 		barriers[1].Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
 
@@ -507,6 +508,8 @@ namespace Span
 		barriers[1].Transition.StateAfter = D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE;
 
 		commandList->ResourceBarrier(2, barriers);
+
+		m_isOpaqueCaptureFirstFrame = false;
 	}
 
 	bool Renderer::CreateRootSignature()

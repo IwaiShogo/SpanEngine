@@ -244,6 +244,7 @@ namespace Span
 		std::unique_ptr<Texture> m_opaqueCaptureTex;
 		uint32 m_opaqueCaptureWidth = 0;
 		uint32 m_opaqueCaptureHeight = 0;
+		bool m_isOpaqueCaptureFirstFrame = true;
 
 		// ダミーDiscriptor保持用のヒープ
 		ComPtr<ID3D12DescriptorHeap> m_dummySrvHeap;
