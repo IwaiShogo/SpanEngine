@@ -29,6 +29,8 @@ namespace Span
 	 * @struct	MaterialData
 	 * @brief	📦 シェーダー(HLSL)に転送されるマテリアル定数バッファ (16バイト協会アライメント厳守)
 	 */
+#pragma warning(push)
+#pragma warning(disable: 4324)
 	struct alignas(16) MaterialData
 	{
 		Vector4 AlbedoColor = { 1.0f, 1.0f, 1.0f, 1.0f };	///< ベースカラーと不透明度
@@ -57,6 +59,7 @@ namespace Span
 		int Padding2;
 		int Padding3;
 	};
+#pragma warning(pop)
 
 	/**
 	 * @class	Material

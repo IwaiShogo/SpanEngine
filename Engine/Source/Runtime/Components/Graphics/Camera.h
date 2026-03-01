@@ -36,7 +36,7 @@ namespace Span
 
 		float Fov = 45.0f;				///< Perspective用の画角
 		float OrthographicSize = 10.0f;	///< Ortho用のサイズ (縦の範囲)
-		float NearClip = 0.1;			///< 近クリップ面 (これより手前は描画しない)
+		float NearClip = 0.1f;			///< 近クリップ面 (これより手前は描画しない)
 		float FarClip = 1000.0f;		///< 遠クリップ面 (これより奥は描画しない)
 
 		Camera() = default;

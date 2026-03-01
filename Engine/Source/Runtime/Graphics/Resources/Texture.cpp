@@ -95,7 +95,7 @@ namespace Span
 		desc.Width = size;
 		desc.Height = size;
 		desc.DepthOrArraySize = 6;
-		desc.MipLevels = mipLevels;
+		desc.MipLevels = static_cast<UINT16>(mipLevels);
 		desc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
 		desc.SampleDesc.Count = 1;
 		desc.Flags = D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS;
@@ -237,7 +237,7 @@ namespace Span
 		textureDesc.MipLevels = 1;
 		textureDesc.Format = format;
 		textureDesc.Width = w;
-		textureDesc.Height = h;
+		textureDesc.Height = static_cast<UINT>(h);
 		textureDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 		textureDesc.DepthOrArraySize = 1;
 		textureDesc.SampleDesc.Count = 1;
@@ -344,12 +344,15 @@ namespace Span
 		commandQueue->Signal(fence.Get(), 1);
 
 		HANDLE fenceEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
-		if (fence->GetCompletedValue() < 1)
+		if (fenceEvent)
 		{
-			fence->SetEventOnCompletion(1, fenceEvent);
-			WaitForSingleObject(fenceEvent, INFINITE);
+			if (fence->GetCompletedValue() < 1)
+			{
+				fence->SetEventOnCompletion(1, fenceEvent);
+				WaitForSingleObject(fenceEvent, INFINITE);
+			}
+			CloseHandle(fenceEvent);
 		}
-		CloseHandle(fenceEvent);
 
 		return true;
 	}

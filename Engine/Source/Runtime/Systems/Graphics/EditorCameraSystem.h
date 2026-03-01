@@ -47,7 +47,7 @@ namespace Span
 			float dt = Time::GetDeltaTime();
 
 			world.ForEach<EditorCamera, Camera, Transform>(
-				[&](Entity e, EditorCamera& edCam, Camera& cam, Transform& trans)
+				[&](Entity, EditorCamera& edCam, Camera& cam, Transform& trans)
 				{
 					// --- Input Status ---
 					bool isRightClicking = Input::GetKey(Key::MouseRight);

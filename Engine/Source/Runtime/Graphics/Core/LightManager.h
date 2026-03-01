@@ -34,6 +34,8 @@ namespace Span
 	 * @class	LightManager
 	 * @brief	💡 ライトデータの管理と Forward+ のバッファを統括するマネージャー。
 	 */
+#pragma warning(push)
+#pragma warning(disable: 4324)
 	class LightManager
 	{
 	public:
@@ -107,4 +109,5 @@ namespace Span
 		ComPtr<ID3D12PipelineState> m_psoResetCounter;			// リセット用PSO
 		std::unique_ptr<Shader> m_shaderResetCounter;			// リセット用Shader
 	};
+#pragma warning(pop)
 }

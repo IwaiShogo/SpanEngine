@@ -67,7 +67,7 @@ namespace Span
 			Vector4 Samples[64];
 			Vector2 NoiseScale;
 			float Radius = 0.5f;
-			float Bias = 0.025;
+			float Bias = 0.025f;
 		};
 	};
 }

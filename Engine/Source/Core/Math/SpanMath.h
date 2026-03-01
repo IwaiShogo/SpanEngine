@@ -314,6 +314,8 @@ namespace Span
 	 */
 	struct Matrix4x4
 	{
+#pragma warning(push)
+#pragma warning(disable: 4201)
 		union
 		{
 			struct
@@ -325,6 +327,7 @@ namespace Span
 			};
 			float m[4][4];
 		};
+#pragma warning(pop)
 
 		// --- Constructors ---
 		Matrix4x4() { FromXM(XMMatrixIdentity()); }

@@ -114,7 +114,6 @@ namespace Span
 
 				// 速度変更時のオーバーレイ
 				// ============================================================
-				World& world = Application::Get().GetWorld();
 				world.ForEach<EditorCamera>([&](Entity, EditorCamera& ec)
 				{
 					// 速度変化を検知
@@ -302,7 +301,7 @@ namespace Span
 				Vector2 axisEnd = { center.x + screenDir.x * radius, center.y + screenDir.y * radius };
 
 				float hitRadius = (axis.Label.empty()) ? 8.0f : 12.0f;
-				float dist = std::sqrt(std::pow(mousePos.x - axisEnd.x, 2) + std::pow(mousePos.y - axisEnd.y, 2));
+				float dist = std::sqrtf(std::powf(mousePos.x - axisEnd.x, 2.0f) + std::powf(mousePos.y - axisEnd.y, 2.0f));
 				bool hovered = (dist < hitRadius);
 				if (hovered) anyHovered = true;
 
@@ -424,13 +423,15 @@ namespace Span
 			{
 				Matrix4x4 objectMtx = Matrix4x4::TRS(tc->Position, tc->Rotation, tc->Scale);
 				float snapValues[3] = { 0.5f, 0.5f, 0.5f }; // 必要に応じて設定
-				ImGuizmo::SetID((int)(uint64_t)selectedEntity.ID.Index);
+				ImGui::PushID(static_cast<int>(selectedEntity.ID.Index));
 
 				ImGuizmo::Manipulate(
 					(float*)&viewRH, (float*)&projRH,
 					(ImGuizmo::OPERATION)m_GizmoType, (ImGuizmo::MODE)m_GizmoMode,
 					(float*)&objectMtx, nullptr, m_UseSnap ? snapValues : nullptr
 				);
+
+				ImGui::PopID();
 
 				if (ImGuizmo::IsUsing())
 				{

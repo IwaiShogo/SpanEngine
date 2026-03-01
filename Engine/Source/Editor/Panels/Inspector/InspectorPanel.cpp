@@ -299,14 +299,14 @@ namespace Span
 			ImGui::InputTextWithHint("##TagSearch", ICON_FA_SEARCH " Search...", searchBuf, sizeof(searchBuf));
 
 			std::string searchQ = searchBuf;
-			std::transform(searchQ.begin(), searchQ.end(), searchQ.begin(), [](unsigned char c) { return std::tolower(c); });
+			std::transform(searchQ.begin(), searchQ.end(), searchQ.begin(), [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
 			ImGui::Separator();
 
 			// タグのリストアップとフィルタリング
 			for (const auto& tag : TagManager::Get().GetAllTags())
 			{
 				std::string lowerTag = tag;
-				std::transform(lowerTag.begin(), lowerTag.end(), lowerTag.begin(), [](unsigned char c) { return std::tolower(c); });
+				std::transform(lowerTag.begin(), lowerTag.end(), lowerTag.begin(), [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
 
 				// 検索文字列が含まれない場合はスキップ
 				if (!searchQ.empty() && lowerTag.find(searchQ) == std::string::npos) continue;
@@ -355,7 +355,7 @@ namespace Span
 
 		if (ImGui::BeginCombo("##Layer", currentLayerName.c_str()))
 		{
-			for (int i = 0; i < 32; i++)
+			for (uint8_t i = 0; i < 32; i++)
 			{
 				if (!LayerManager::Get().IsValidLayer(i)) continue;	// 名前の無いレイヤーは非表示
 
@@ -364,7 +364,7 @@ namespace Span
 
 				if (ImGui::Selectable(displayName.c_str(), isSelected))
 				{
-					if (Layer* l = world.GetComponentPtr<Layer>(selected)) l->Value = i;
+					if (Layer* l = world.GetComponentPtr<Layer>(selected)) l->Value = static_cast<uint8_t>(i);
 				}
 				if (isSelected && ImGui::IsWindowAppearing()) ImGui::SetItemDefaultFocus();
 			}
@@ -404,7 +404,7 @@ namespace Span
 			// 基本コンポーネントはリストに出さない
 			if (meta.Name == "Name" || meta.Name == "Tag" || meta.Name == "Layer" || meta.Name == "Active" || meta.Name == "LocalToWorld" || meta.Name == "Relationship" || meta.Name == "IDComponent") continue;
 
-			ImGui::PushID(i);
+			ImGui::PushID(static_cast<int>(i));
 
 			// 描画実行
 			meta.DrawFunc(selected, world);
@@ -661,8 +661,8 @@ namespace Span
 			m_OpenTagEditor = false;
 		}
 
-		bool isOpen = true;
-		if (ImGui::BeginPopupModal("TagEditorModal", &isOpen, ImGuiWindowFlags_AlwaysAutoResize))
+		bool isModalOpen = true;
+		if (ImGui::BeginPopupModal("TagEditorModal", &isModalOpen, ImGuiWindowFlags_AlwaysAutoResize))
 		{
 			ImGui::TextDisabled("Manage Global Project Tags");
 			ImGui::Separator();
@@ -670,7 +670,7 @@ namespace Span
 
 			// タグリストエリア (スクロール可能)
 			ImGui::BeginChild("TagList", ImVec2(300, 200), true);
-			auto allTags = TagManager::Get().GetAllTags();
+			const auto& allTags = TagManager::Get().GetAllTags();
 			for (const auto& tag : allTags)
 			{
 				bool isProtected = TagManager::Get().IsProtectedTag(tag);
@@ -745,10 +745,10 @@ namespace Span
 			m_OpenLayerEditor = false;
 		}
 
-		bool isOpen = true;
+		bool isModalOpen = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(650, 500), ImVec2(FLT_MAX, FLT_MAX));
 
-		if (ImGui::BeginPopupModal("LayerEditorModal", &isOpen, ImGuiWindowFlags_NoSavedSettings))
+		if (ImGui::BeginPopupModal("LayerEditorModal", &isModalOpen, ImGuiWindowFlags_NoSavedSettings))
 		{
 			// ヘッダーUI
 			ImGui::TextDisabled("Tags & Layers Settings");
@@ -762,15 +762,15 @@ namespace Span
 				ImGui::Separator();
 				if (ImGui::MenuItem("Enable All (Default)"))
 				{
-					for (int i = 0; i < 32; i++) for (int j = 0; j < 32; j++) LayerManager::Get().SetCollision(i, j, true);
+					for (uint8_t i = 0; i < 32; i++) for (uint8_t j = 0; j < 32; j++) LayerManager::Get().SetCollision(i, j, true);
 				}
 				if (ImGui::MenuItem("Disable All"))
 				{
-					for (int i = 0; i < 32; i++) for (int j = 0; j < 32; j++) LayerManager::Get().SetCollision(i, j, false);
+					for (uint8_t i = 0; i < 32; i++) for (uint8_t j = 0; j < 32; j++) LayerManager::Get().SetCollision(i, j, false);
 				}
 				if (ImGui::MenuItem("UI Only Isolation"))
 				{
-					for (int i = 0; i < 32; i++) for (int j = 0; j < 32; j++) LayerManager::Get().SetCollision(i, j, false);
+					for (uint8_t i = 0; i < 32; i++) for (uint8_t j = 0; j < 32; j++) LayerManager::Get().SetCollision(i, j, false);
 					LayerManager::Get().SetCollision(5, 5, true);
 				}
 				ImGui::EndPopup();
@@ -778,7 +778,7 @@ namespace Span
 
 			if (ImGui::Button(ICON_FA_TRASH " Reset Matrix"))
 			{
-				for (int i = 0; i < 32; i++) for (int j = 0; j < 32; j++) LayerManager::Get().SetCollision(i, j, true);
+				for (uint8_t i = 0; i < 32; i++) for (uint8_t j = 0; j < 32; j++) LayerManager::Get().SetCollision(i, j, true);
 			}
 			if (ImGui::IsItemHovered()) ImGui::SetTooltip("Reset all collisions to Default (All Enabled)");
 
@@ -794,7 +794,7 @@ namespace Span
 					ImGui::Spacing();
 
 					ImGui::BeginChild("LayerNamesRegion", ImVec2(0, -ImGui::GetFrameHeightWithSpacing() - 10), true);
-					for (int i = 0; i < 32; ++i)
+					for (uint8_t i = 0; i < 32; ++i)
 					{
 						ImGui::PushID(i);
 						ImGui::AlignTextToFramePadding();
@@ -845,38 +845,38 @@ namespace Span
 					ImGui::TextDisabled("Click a layer name to quick-toggle. Right-click for advanced options.");
 					ImGui::Spacing();
 
-					std::vector<int> validLayers;
-					for (int i = 0; i < 32; ++i)
+					std::vector<uint8_t> validLayers;
+					for (uint8_t i = 0; i < 32; ++i)
 					{
 						if (LayerManager::Get().IsValidLayer(i)) validLayers.push_back(i);
 					}
 
-					int N = (int)validLayers.size();
+					size_t N = validLayers.size();
 
 					ImGui::BeginChild("MatrixRegion", ImVec2(0, -ImGui::GetFrameHeightWithSpacing() - 10), true, ImGuiWindowFlags_HorizontalScrollbar);
 
-					if (N > 0 && ImGui::BeginTable("MatrixTable", N + 1, ImGuiTableFlags_BordersInner | ImGuiTableFlags_SizingFixedFit | ImGuiTableFlags_RowBg))
+					if (N > 0 && ImGui::BeginTable("MatrixTable", static_cast<int>(N + 1), ImGuiTableFlags_BordersInner | ImGuiTableFlags_SizingFixedFit | ImGuiTableFlags_RowBg))
 					{
 						// [ヘッダー行]
 						ImGui::TableSetupColumn("##RowHeader", ImGuiTableColumnFlags_WidthFixed, 120.0f);
-						for (int c = 0; c < N; ++c)
+						for (size_t c = 0; c < N; ++c)
 						{
-							int layerB = validLayers[N - 1 - c];
+							uint8_t layerB = validLayers[N - 1 - c];
 							ImGui::TableSetupColumn(std::to_string(layerB).c_str(), ImGuiTableColumnFlags_WidthFixed, 24.0f);
 						}
 						ImGui::TableHeadersRow();
 
-						for (int c = 0; c < N; ++c)
+						for (size_t c = 0; c < N; ++c)
 						{
-							ImGui::TableSetColumnIndex(c + 1);
+							ImGui::TableSetColumnIndex(static_cast<int>(c + 1));
 							if (ImGui::IsItemHovered()) ImGui::SetTooltip("%s", LayerManager::Get().GetLayerName(validLayers[N - 1 - c]).c_str());
 						}
 
 						// [データ行]
-						for (int r = 0; r < N; ++r)
+						for (size_t r = 0; r < N; ++r)
 						{
 							ImGui::TableNextRow();
-							int layerA = validLayers[r];
+							uint8_t layerA = validLayers[r];
 
 							// 行ヘッダー
 							ImGui::TableSetColumnIndex(0);
@@ -888,7 +888,7 @@ namespace Span
 							if (ImGui::Selectable(rowLabel.c_str(), false))
 							{
 								bool newState = !LayerManager::Get().CanCollide(layerA, layerA);
-								for (int c = 0; c < N; ++c) LayerManager::Get().SetCollision(layerA, validLayers[c], newState);
+								for (size_t c = 0; c < N; ++c) LayerManager::Get().SetCollision(layerA, validLayers[c], newState);
 							}
 							if (ImGui::IsItemHovered()) ImGui::SetTooltip("Click to toggle all. Right-click for menu.");
 
@@ -900,15 +900,15 @@ namespace Span
 								ImGui::Separator();
 								if (ImGui::MenuItem("Enable All"))
 								{
-									for (int c = 0; c < N; ++c) LayerManager::Get().SetCollision(layerA, validLayers[c], true);
+									for (size_t c = 0; c < N; ++c) LayerManager::Get().SetCollision(layerA, validLayers[c], true);
 								}
 								if (ImGui::MenuItem("Disable All"))
 								{
-									for (int c = 0; c < N; ++c) LayerManager::Get().SetCollision(layerA, validLayers[c], false);
+									for (size_t c = 0; c < N; ++c) LayerManager::Get().SetCollision(layerA, validLayers[c], false);
 								}
 								if (ImGui::MenuItem("Invert"))
 								{
-									for (int c = 0; c < N; ++c)
+									for (size_t c = 0; c < N; ++c)
 									{
 										bool current = LayerManager::Get().CanCollide(layerA, validLayers[c]);
 										LayerManager::Get().SetCollision(layerA, validLayers[c], !current);
@@ -917,7 +917,7 @@ namespace Span
 								ImGui::Separator();
 								if (ImGui::MenuItem("Isolate (Collide self only)"))
 								{
-									for (int c = 0; c < N; ++c) LayerManager::Get().SetCollision(layerA, validLayers[c], false);
+									for (size_t c = 0; c < N; ++c) LayerManager::Get().SetCollision(layerA, validLayers[c], false);
 									LayerManager::Get().SetCollision(layerA, layerA, true);
 								}
 								ImGui::Separator();
@@ -933,12 +933,12 @@ namespace Span
 							ImGui::PopID();
 
 							// --- チェックボックス (マトリクス部分) ---
-							for (int c = 0; c < N - r; ++c)
+							for (size_t c = 0; c < N - r; ++c)
 							{
-								int layerB = validLayers[N - 1 - c];
-								ImGui::TableSetColumnIndex(c + 1);
+								uint8_t layerB = validLayers[N - 1 - c];
+								ImGui::TableSetColumnIndex(static_cast<int>(c + 1));
 
-								ImGui::PushID(r * 1000 + c);
+								ImGui::PushID(static_cast<int>(r * 1000 + c));
 
 								bool canCollide = LayerManager::Get().CanCollide(layerA, layerB);
 

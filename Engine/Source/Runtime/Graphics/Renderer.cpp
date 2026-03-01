@@ -86,10 +86,10 @@ namespace Span
 	{
 		if (constantBufferIndex >= MAX_OBJECTS) return 0;
 
-		UINT8* dest = mappedConstantBuffer + (constantBufferIndex * CB_OBJ_SIZE);
+		UINT8* dest = mappedConstantBuffer + (static_cast<SIZE_T>(constantBufferIndex) * CB_OBJ_SIZE);
 		memcpy(dest, data, sizeInBytes);
 
-		D3D12_GPU_VIRTUAL_ADDRESS addr = constantBuffer->GetGPUVirtualAddress() + (constantBufferIndex * CB_OBJ_SIZE);
+		D3D12_GPU_VIRTUAL_ADDRESS addr = constantBuffer->GetGPUVirtualAddress() + (static_cast<SIZE_T>(constantBufferIndex) * CB_OBJ_SIZE);
 		constantBufferIndex++;
 
 		return addr;
@@ -128,8 +128,10 @@ namespace Span
 
 	void Renderer::OnResize(uint32 width, uint32 height)
 	{
-		if (context) context->OnResize(width, height);
-		if (m_passManager && context) m_passManager->OnResize(context->GetDevice(), width, height);
+		if (!context) return;
+
+		context->OnResize(width, height);
+		if (m_passManager) m_passManager->OnResize(context->GetDevice(), width, height);
 		if (m_lightManager) m_lightManager->OnResize(context->GetDevice(), width, height);
 	}
 
@@ -296,12 +298,15 @@ namespace Span
 		queue->Signal(fence.Get(), 1);
 
 		HANDLE fenceEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
-		if (fence->GetCompletedValue() < 1)
+		if (fenceEvent)
 		{
-			fence->SetEventOnCompletion(1, fenceEvent);
-			WaitForSingleObject(fenceEvent, INFINITE);
+			if (fence->GetCompletedValue() < 1)
+			{
+				fence->SetEventOnCompletion(1, fenceEvent);
+				WaitForSingleObject(fenceEvent, INFINITE);
+			}
+			CloseHandle(fenceEvent);
 		}
-		CloseHandle(fenceEvent);
 
 		builder.Shutdown();
 
@@ -316,10 +321,10 @@ namespace Span
 
 		auto device = context->GetDevice();
 		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
-		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destCpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 
 		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
-		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destGpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 
 		if (texture && texture->GetSRVHeap())
 		{
@@ -355,10 +360,10 @@ namespace Span
 
 		auto device = context->GetDevice();
 		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
-		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destCpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 
 		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
-		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destGpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 
 		if (shadowMap && shadowMap->GetSRVHeap())
 		{
@@ -380,10 +385,10 @@ namespace Span
 
 		auto device = context->GetDevice();
 		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
-		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destCpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 
 		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
-		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destGpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 
 		if (renderTarget && renderTarget->GetSRV().ptr != 0)
 		{
@@ -405,9 +410,9 @@ namespace Span
 		if (!m_frameSrvHeap) return;
 		auto device = context->GetDevice();
 		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
-		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destCpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
-		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destGpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 
 		if (buffer && buffer->GetSRV().ptr != 0)
 		{
@@ -426,9 +431,9 @@ namespace Span
 		if (!m_frameSrvHeap || srvHandle.ptr == 0) return;
 		auto device = context->GetDevice();
 		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
-		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destCpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
-		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destGpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 
 		device->CopyDescriptorsSimple(1, destCpu, srvHandle, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 		cmd->SetComputeRootDescriptorTable(rootIndex, destGpu);
@@ -440,9 +445,9 @@ namespace Span
 		if (!m_frameSrvHeap || uavHandle.ptr == 0) return;
 		auto device = context->GetDevice();
 		D3D12_CPU_DESCRIPTOR_HANDLE destCpu = m_frameSrvHeap->GetCPUDescriptorHandleForHeapStart();
-		destCpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destCpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 		D3D12_GPU_DESCRIPTOR_HANDLE destGpu = m_frameSrvHeap->GetGPUDescriptorHandleForHeapStart();
-		destGpu.ptr += m_frameSrvHeapOffset * m_srvDescriptorSize;
+		destGpu.ptr += static_cast<SIZE_T>(m_frameSrvHeapOffset) * m_srvDescriptorSize;
 
 		device->CopyDescriptorsSimple(1, destCpu, uavHandle, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 		cmd->SetComputeRootDescriptorTable(rootIndex, destGpu);
@@ -514,7 +519,7 @@ namespace Span
 
 	bool Renderer::CreateRootSignature()
 	{
-		D3D12_ROOT_PARAMETER rootParameters[20];
+		D3D12_ROOT_PARAMETER rootParameters[20] = {};
 
 		// [0] Transform (b0)
 		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -748,9 +753,9 @@ namespace Span
 		D3D12_CPU_DESCRIPTOR_HANDLE handle = m_dummySrvHeap->GetCPUDescriptorHandleForHeapStart();
 		uint32 size = context->GetDevice()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
-		if (dimension == D3D12_SRV_DIMENSION_TEXTURECUBE) handle.ptr += size * 1;
-		else if (dimension == D3D12_SRV_DIMENSION_TEXTURE2DARRAY) handle.ptr += size * 2;
-		else if (dimension == D3D12_SRV_DIMENSION_BUFFER) handle.ptr += size * 3;
+		if (dimension == D3D12_SRV_DIMENSION_TEXTURECUBE) handle.ptr += static_cast<SIZE_T>(size) * 1;
+		else if (dimension == D3D12_SRV_DIMENSION_TEXTURE2DARRAY) handle.ptr += static_cast<SIZE_T>(size) * 2;
+		else if (dimension == D3D12_SRV_DIMENSION_BUFFER) handle.ptr += static_cast<SIZE_T>(size) * 3;
 		// default is TEXTURE2D (offset 0)
 
 		return handle;

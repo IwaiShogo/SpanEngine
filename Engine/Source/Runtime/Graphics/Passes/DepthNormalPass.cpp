@@ -26,7 +26,7 @@ namespace Span
 		if (!m_shaderPS->Load(L"DepthNormal.hlsl", ShaderType::Pixel, "PSMain")) return false;
 
 		// --- Root Signature ---
-		D3D12_ROOT_PARAMETER rootParameters[1];
+		D3D12_ROOT_PARAMETER rootParameters[1] = {};
 		rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
 		rootParameters[0].Descriptor.ShaderRegister = 0; // b0
 		rootParameters[0].Descriptor.RegisterSpace = 0;

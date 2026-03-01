@@ -122,7 +122,7 @@ namespace Span::Internal
 		JsonSerializeVisitor(nlohmann::ordered_json& jsonRef) : j(jsonRef) {}
 
 		template<typename T>
-		void Visit(const char* name, T& value, const std::vector<Attribute>& attrs)
+		void Visit(const char* name, T& value, const std::vector<Attribute>& /* attrs */)
 		{
 			if constexpr (std::is_enum_v<T>) {
 				j[name] = static_cast<int>(value);
@@ -161,7 +161,7 @@ namespace Span::Internal
 		JsonDeserializeVisitor(const nlohmann::ordered_json& jsonRef) : j(jsonRef) {}
 
 		template<typename T>
-		void Visit(const char* name, T& value, const std::vector<Attribute>& attrs)
+		void Visit(const char* name, T& value, const std::vector<Attribute>& /* attrs */)
 		{
 			// 変数名がJSON内に存在するかチェック
 			if (!j.contains(name)) return;
@@ -174,13 +174,13 @@ namespace Span::Internal
 				strncpy_s(value.Data, str.c_str(), value.Capacity());
 			}
 			else if constexpr (std::is_same_v<T, Vector3>) {
-				auto arr = j[name];
+				const auto& arr = j[name];
 				if (arr.is_array() && arr.size() >= 3) {
 					value.x = arr[0]; value.y = arr[1]; value.z = arr[2];
 				}
 			}
 			else if constexpr (std::is_same_v<T, Quaternion>) {
-				auto arr = j[name];
+				const auto& arr = j[name];
 				if (arr.is_array() && arr.size() >= 4) {
 					value.x = arr[0]; value.y = arr[1]; value.z = arr[2]; value.w = arr[3];
 				}

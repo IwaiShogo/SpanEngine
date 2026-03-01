@@ -205,7 +205,7 @@ namespace Span
 
 		// ターゲットセット & クリア
 		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = rtvHeap->GetCPUDescriptorHandleForHeapStart();
-		rtvHandle.ptr += frameIndex * rtvDescriptorSize;
+		rtvHandle.ptr += static_cast<SIZE_T>(frameIndex) * rtvDescriptorSize;
 		D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = dsvHeap->GetCPUDescriptorHandleForHeapStart();
 
 		// 背景クリア色 (Cornflower Blue)
@@ -291,7 +291,7 @@ namespace Span
 	{
 		// ターゲットをバックバッファに戻す
 		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = rtvHeap->GetCPUDescriptorHandleForHeapStart();
-		rtvHandle.ptr += frameIndex * rtvDescriptorSize;
+		rtvHandle.ptr += static_cast<SIZE_T>(frameIndex) * rtvDescriptorSize;
 
 		D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = dsvHeap->GetCPUDescriptorHandleForHeapStart();
 
@@ -305,7 +305,7 @@ namespace Span
 	D3D12_CPU_DESCRIPTOR_HANDLE GraphicsContext::GetCurrentBackBufferRTV() const
 	{
 		D3D12_CPU_DESCRIPTOR_HANDLE handle = rtvHeap->GetCPUDescriptorHandleForHeapStart();
-		handle.ptr += frameIndex * rtvDescriptorSize;
+		handle.ptr += static_cast<SIZE_T>(frameIndex) * rtvDescriptorSize;
 		return handle;
 	}
 }

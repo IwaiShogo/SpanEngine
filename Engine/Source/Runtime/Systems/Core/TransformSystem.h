@@ -37,7 +37,7 @@ namespace Span
 		void OnUpdate() override
 		{
 			GetWorld()->ForEach<Transform, LocalToWorld>(
-				[&](Entity entity, Transform& t, LocalToWorld& ltw)
+				[&](Entity entity, Transform&, LocalToWorld& ltw)
 				{
 					// 行列計算
 					ltw.Value = ComputeWorldMatrix(entity);

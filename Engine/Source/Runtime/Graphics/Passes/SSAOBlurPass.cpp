@@ -25,7 +25,7 @@ namespace Span
 		if (!m_shaderPS->Load(L"SSAOBlur.hlsl", ShaderType::Pixel, "PSMain")) return false;
 
 		// --- Root Signature ---
-		D3D12_ROOT_PARAMETER rootParameters[1];
+		D3D12_ROOT_PARAMETER rootParameters[1] = {};
 		D3D12_DESCRIPTOR_RANGE range0 = {};
 		range0.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
 		range0.NumDescriptors = 1;

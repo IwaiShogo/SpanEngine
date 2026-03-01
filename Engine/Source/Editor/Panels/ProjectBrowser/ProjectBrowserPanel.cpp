@@ -71,7 +71,7 @@ namespace Span
 			auto it = std::search(
 				filename.begin(), filename.end(),
 				m_SearchFilter.begin(), m_SearchFilter.end(),
-				[](char a, char b) { return std::tolower(a) == std::tolower(b); }
+				[](unsigned char a, unsigned char b) { return std::tolower(a) == std::tolower(b); }
 			);
 			if (it == filename.end()) return false;
 		}
@@ -254,9 +254,6 @@ namespace Span
 
 			ImGui::SameLine();
 			ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
-			ImGui::SameLine();
-			float contentHeight = ImGui::GetContentRegionAvail().y - bottomBarHeight - 10.0f;
-
 			ImGui::SameLine();
 
 			// Zoom Slider
@@ -828,7 +825,6 @@ namespace Span
 				m_SelectedItems.clear();
 
 				// 現在の全ディレクトリ内のアイテムを走査後、StartとEndの間にあるものを追加
-				bool inRange = false;
 				std::filesystem::path start = m_LastSelectedPath;
 				std::filesystem::path end = path;
 
@@ -846,7 +842,6 @@ namespace Span
 
 				// 範囲選択の実行
 				SelectionManager::Clear();
-				bool selecting = false;
 
 				// インデックスベースで再取得
 				int startIdx = -1, endIdx = -1;

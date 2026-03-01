@@ -38,6 +38,8 @@ namespace Span
 		Matrix4x4 World;
 	};
 
+#pragma warning(push)
+#pragma warning(disable: 4324)
 	struct alignas(16) LightDataGPU
 	{
 		// 16 bytes
@@ -61,10 +63,13 @@ namespace Span
 		// 64 bytes
 		Matrix4x4 ShadowMatrix;
 	};
+#pragma warning(pop)
 
 	// 最大ライト数
 	constexpr int MAX_LIGHTS = 4096;
 
+#pragma warning(push)
+#pragma warning(disable: 4324)
 	struct alignas(16) GlobalLightData
 	{
 		Vector3 CameraPosition = { 0.0f, 0.0f, 0.0f };
@@ -78,14 +83,15 @@ namespace Span
 		Vector3 SkyBottomColor = { 0.2f, 0.2f, 0.2f };
 		int ActiveLightCount = 0;
 
-		int SkyMode;
-		int EnableSSAO;
-		uint32 ScreenWidth;
-		uint32 ScreenHeight;
+		int SkyMode = 0;
+		int EnableSSAO = 1;
+		uint32 ScreenWidth = 0;
+		uint32 ScreenHeight = 0;
 
 		// 光の視点の行列
 		Matrix4x4 DirectionalLightSpaceMatrix;
 	};
+#pragma warning(pop)
 
 	/**
 	 * @class	Renderer
