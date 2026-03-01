@@ -51,15 +51,21 @@ FetchContent_MakeAvailable(imguizmo)
 set(IMGUIZMO_DIR ${imguizmo_SOURCE_DIR})
 file(GLOB IMGUIZMO_SOURCES "${IMGUIZMO_DIR}/*.cpp")
 
-# --- 4. stb (画像読み込み) ---
-FetchContent_Declare(
-	stb
-	GIT_REPOSITORY https://github.com/nothings/stb.git
-	GIT_TAG master
-)
-FetchContent_MakeAvailable(stb)
+# --- 4. DirectXTex ---
+message(STATUS "Downloading DirectXTex...")
 
-# ソースファイルの収集 (これでSourceフォルダ以下の全cpp/hが含まれます)
+FetchContent_Declare(
+	directxtex
+	GIT_REPOSITORY https://github.com/microsoft/DirectXTex.git
+	GIT_TAG        oct2023
+)
+
+# エンジンに組み込むライブラリ部分のみに限定し、ツール類のビルドをスキップ
+set(BUILD_DXTEX_EXES OFF CACHE BOOL "" FORCE)
+set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(directxtex)
+
 file(GLOB_RECURSE ENGINE_SOURCES
 	"Source/*.cpp"
 	"Source/*.h"
@@ -97,10 +103,10 @@ target_include_directories(SpanCore PUBLIC
 	Source/Core
 	Source/Runtime
 	Source/Editor
-	${stb_SOURCE_DIR}
 	${IMGUI_DIR}
 	${IMGUI_DIR}/backends
 	${IMGUIZMO_DIR}
+	${directxtex_SOURCE_DIR}/DirectXTex
 )
 
 # プリコンパイル済みヘッダー
@@ -113,10 +119,12 @@ target_link_libraries(SpanCore PUBLIC
 	d3d12.lib
 	dxgi.lib
 	d3dcompiler.lib
+	dxguid.lib
 	assimp::assimp
 	xinput
 	magic_enum::magic_enum
 	nlohmann_json::nlohmann_json
+	DirectXTex
 )
 
 # コンパイルオプション

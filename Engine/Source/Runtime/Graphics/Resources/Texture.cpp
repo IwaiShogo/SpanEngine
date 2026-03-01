@@ -1,11 +1,29 @@
-﻿#include "Texture.h"
+﻿/*****************************************************************//**
+ * @file	Texture.cpp
+ * @brief	Textureの実装。
+ * 
+ * @details	
+ * 
+ * ------------------------------------------------------------
+ * @author	Iwai Shogo
+ * ------------------------------------------------------------
+ *********************************************************************/
 
-// 画像読み込みライブラリの実装を定義
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
+#include "Texture.h"
+#include <d3dx12.h>
 
 namespace Span
 {
+	// std::string を std::wstring に変換するヘルパー
+	static std::wstring ToWideString(const std::string& str)
+	{
+		if (str.empty()) return std::wstring();
+		int size_needed = MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), NULL, 0);
+		std::wstring wstrTo(size_needed, 0);
+		MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), &wstrTo[0], size_needed);
+		return wstrTo;
+	}
+
 	void Texture::Shutdown()
 	{
 		resource.Reset();
@@ -19,64 +37,76 @@ namespace Span
 		SPAN_LOG("Loading Texture: %s", filepath.c_str());
 		m_FilePath = filepath;
 
+		// 拡張子の取得と小文字化
+		std::string ext = std::filesystem::path(filepath).extension().string();
+		std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
+
 		// 拡張子でHDRかどうかを判定
-		m_IsHDR = (filepath.length() > 4 && filepath.substr(filepath.length() - 4) == ".hdr");
+		m_IsHDR = (ext == ".hdr");
+		std::wstring wFilePath = ToWideString(filepath);
 
-		int w, h, channels;
-		void* data = nullptr;
-		DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM;
-		uint64_t bytesPerPixel = 4;
+		DirectX::ScratchImage image;
+		HRESULT hr = S_OK;
 
-		if (m_IsHDR)
+		// 1. 拡張子に応じたデコーダーで画像を読み込む
+		if (ext == ".dds")
 		{
-			// HDR画像は float の配列として読み込む
-			data = stbi_loadf(filepath.c_str(), &w, &h, &channels, 4);
-			format = DXGI_FORMAT_R32G32B32A32_FLOAT;
-			bytesPerPixel = 16;
+			// DDSなら超高速ロード
+			hr = DirectX::LoadFromDDSFile(wFilePath.c_str(), DirectX::DDS_FLAGS_NONE, nullptr, image);
+		}
+		else if (ext == ".hdr")
+		{
+			// HDR画像
+			hr = DirectX::LoadFromHDRFile(wFilePath.c_str(), nullptr, image);
 		}
 		else
 		{
-			// LDR画像は unsigned char 配列として読み込む
-			data = stbi_load(filepath.c_str(), &w, &h, &channels, 4);
+			// PNG, JPG等の一般的なWIC対応フォーマット
+			hr = DirectX::LoadFromWICFile(wFilePath.c_str(), DirectX::WIC_FLAGS_NONE, nullptr, image);
 		}
 
-		if (!data)
+		if (FAILED(hr))
 		{
-			SPAN_ERROR("Failed to load image: %s", filepath.c_str());
+			SPAN_ERROR("Failed to load image via DirectXTex: %s (HRESULT: 0x%08X)", filepath.c_str(), hr);
 			return false;
 		}
 
-		width = static_cast<uint32_t>(w);
-		height = static_cast<uint32_t>(h);
+		const DirectX::TexMetadata& meta = image.GetMetadata();
+		width = static_cast<uint32_t>(meta.width);
+		height = static_cast<uint32_t>(meta.height);
 
-		// 2. GPUへアップロード
-		if (!UploadTexture(device, commandQueue, data, width, height, bytesPerPixel, format))
+		// 2. GPUへアップロード (ミップマップ対応版)
+		if (!UploadTexture(device, commandQueue, image))
 		{
-			stbi_image_free(data);
+			SPAN_ERROR("Failed to upload texture to GPU: %s", filepath.c_str());
 			return false;
 		}
 
-		// メモリ解放
-		stbi_image_free(data);
-
-		// 3. SRV (Shader Resource View) ヒープの作成
+		// 3. SRV ヒープとビューの作成
 		D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
 		srvHeapDesc.NumDescriptors = 1;
 		srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 
-		if (FAILED(device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap))))
-		{
-			SPAN_ERROR("Failed to create SRV Heap");
-			return false;
-		}
+		if (FAILED(device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap)))) return false;
 
-		// 4. SRV (ビュー) の作成
 		D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
 		srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-		srvDesc.Format = format;
+		srvDesc.Format = meta.format;
 		srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
-		srvDesc.Texture2D.MipLevels = 1;
+
+		// Cubemap判定（DDS読み込み等でCubemapフラグが立っている場合）
+		if (meta.miscFlags & DirectX::TEX_MISC_TEXTURECUBE)
+		{
+			srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURECUBE;
+			srvDesc.TextureCube.MipLevels = static_cast<UINT>(meta.mipLevels);
+			srvDesc.TextureCube.MostDetailedMip = 0;
+		}
+		else
+		{
+			srvDesc.Texture2D.MipLevels = static_cast<UINT>(meta.mipLevels);
+			srvDesc.Texture2D.MostDetailedMip = 0;
+		}
 
 		srvHandleCPU = srvHeap->GetCPUDescriptorHandleForHeapStart();
 		device->CreateShaderResourceView(resource.Get(), &srvDesc, srvHandleCPU);
@@ -123,7 +153,7 @@ namespace Span
 		D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
 		srvHeapDesc.NumDescriptors = 1;
 		srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 		device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap));
 
 		D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
@@ -175,7 +205,7 @@ namespace Span
 		D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
 		srvHeapDesc.NumDescriptors = 1;
 		srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 		device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap));
 
 		D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
@@ -199,7 +229,7 @@ namespace Span
 		if (!data) return false;
 
 		// 1. GPUへアップロード
-		if (!UploadTexture(device, commandQueue, data, width, height, bytesPerPixel, format))
+		if (!UploadTextureSingle(device, commandQueue, data, width, height, bytesPerPixel, format))
 		{
 			return false;
 		}
@@ -208,7 +238,7 @@ namespace Span
 		D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
 		srvHeapDesc.NumDescriptors = 1;
 		srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+		srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 
 		if (FAILED(device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap))))
 		{
@@ -229,7 +259,75 @@ namespace Span
 		return true;
 	}
 
-	bool Texture::UploadTexture(ID3D12Device* device, ID3D12CommandQueue* commandQueue,
+	bool Texture::UploadTexture(ID3D12Device* device, ID3D12CommandQueue* commandQueue, const DirectX::ScratchImage& image)
+	{
+		const DirectX::TexMetadata& meta = image.GetMetadata();
+
+		// 1. DirectXTexの機能で、最適なテクスチャリソースを生成
+		HRESULT hr = DirectX::CreateTexture(device, meta, &resource);
+		if (FAILED(hr)) return false;
+
+		// 2. アップロード用バッファの要件を取得
+		std::vector<D3D12_SUBRESOURCE_DATA> subresources;
+		hr = DirectX::PrepareUpload(device, image.GetImages(), image.GetImageCount(), meta, subresources);
+		if (FAILED(hr)) return false;
+
+		const UINT64 uploadBufferSize = GetRequiredIntermediateSize(resource.Get(), 0, static_cast<UINT>(subresources.size()));
+
+		// 3. アップロードヒープの作成
+		D3D12_HEAP_PROPERTIES uploadHeap = { D3D12_HEAP_TYPE_UPLOAD };
+		D3D12_RESOURCE_DESC bufferDesc = CD3DX12_RESOURCE_DESC::Buffer(uploadBufferSize);
+
+		hr = device->CreateCommittedResource(
+			&uploadHeap,
+			D3D12_HEAP_FLAG_NONE,
+			&bufferDesc,
+			D3D12_RESOURCE_STATE_GENERIC_READ,
+			nullptr,
+			IID_PPV_ARGS(&uploadBuffer));
+		if (FAILED(hr)) return false;
+
+		// 4. コマンドリストの作成
+		ComPtr<ID3D12CommandAllocator> cmdAlloc;
+		ComPtr<ID3D12GraphicsCommandList> cmdList;
+		device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&cmdAlloc));
+		device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, cmdAlloc.Get(), nullptr, IID_PPV_ARGS(&cmdList));
+
+		// 5. データ転送 (d3dx12.h の UpdateSubresources を活用)
+		UpdateSubresources(cmdList.Get(), resource.Get(), uploadBuffer.Get(), 0, 0, static_cast<UINT>(subresources.size()), subresources.data());
+
+		// 6. リソースバリア
+		D3D12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(
+			resource.Get(),
+			D3D12_RESOURCE_STATE_COPY_DEST,
+			D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
+		cmdList->ResourceBarrier(1, &barrier);
+
+		cmdList->Close();
+
+		// 7. 実行して待機
+		ID3D12CommandList* ppCommandLists[] = { cmdList.Get() };
+		commandQueue->ExecuteCommandLists(1, ppCommandLists);
+
+		ComPtr<ID3D12Fence> fence;
+		device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence));
+		commandQueue->Signal(fence.Get(), 1);
+
+		HANDLE fenceEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
+		if (fenceEvent)
+		{
+			if (fence->GetCompletedValue() < 1)
+			{
+				fence->SetEventOnCompletion(1, fenceEvent);
+				WaitForSingleObject(fenceEvent, INFINITE);
+			}
+			CloseHandle(fenceEvent);
+		}
+
+		return true;
+	}
+
+	bool Texture::UploadTextureSingle(ID3D12Device* device, ID3D12CommandQueue* commandQueue,
 		const void* initialData, uint64_t w, uint64_t h, uint64_t bytesPerPixel, DXGI_FORMAT format)
 	{
 		// リソース記述
