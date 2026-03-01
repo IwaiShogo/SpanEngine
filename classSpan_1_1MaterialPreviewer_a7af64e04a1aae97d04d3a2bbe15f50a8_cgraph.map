@@ -1,112 +1,109 @@
 <map id="Span::MaterialPreviewer::Render" name="Span::MaterialPreviewer::Render">
-<area shape="rect" id="Node000001" title="オフスクリーンターゲットに球体を描画します。" alt="" coords="5,571,187,611"/>
-<area shape="rect" id="Node000002" href="$classSpan_1_1Renderer.html#ade1cd95fe5d2e6aa78493393ce39c767" title="メッシュ描画コマンドの発行。" alt="" coords="249,504,447,529"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,569,234,538,266,530,267,535,235,543,147,574"/>
-<area shape="rect" id="Node000028" href="$classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e" title="シングルトンインスタンスの取得" alt="" coords="265,603,431,628"/>
-<area shape="poly" id="edge31_Node000001_Node000028" title=" " alt="" coords="187,597,251,603,251,609,187,602"/>
-<area shape="rect" id="Node000049" href="$classSpan_1_1Renderer.html#a377035eefc48745e3d15bcceae5f885a" title=" " alt="" coords="247,652,449,677"/>
-<area shape="poly" id="edge45_Node000001_Node000049" title=" " alt="" coords="151,609,235,637,272,646,271,651,234,642,150,614"/>
-<area shape="rect" id="Node000050" href="$classSpan_1_1Renderer.html#a4763d852f768394d7272e03a2e4d32e4" title=" " alt="" coords="239,702,457,742"/>
-<area shape="poly" id="edge46_Node000001_Node000050" title=" " alt="" coords="122,609,173,648,236,686,255,695,253,699,233,691,170,652,119,613"/>
-<area shape="rect" id="Node000051" href="$classSpan_1_1Renderer.html#a333cb4a9e8db91602609815c0d5237dd" title=" " alt="" coords="235,767,461,792"/>
-<area shape="poly" id="edge47_Node000001_Node000051" title=" " alt="" coords="111,610,130,642,159,680,194,719,236,752,251,759,249,764,233,756,191,723,155,684,126,645,106,613"/>
-<area shape="rect" id="Node000052" href="$structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557" title="単位行列" alt="" coords="255,79,441,104"/>
-<area shape="poly" id="edge48_Node000001_Node000052" title=" " alt="" coords="94,571,95,486,101,428,111,363,128,295,153,229,187,167,209,139,233,113,241,107,244,111,236,117,213,142,192,170,157,231,133,297,116,364,106,428,101,487,99,571"/>
-<area shape="rect" id="Node000054" href="$structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa" title="ビュー行列作成 (左手系: Z+が奥)" alt="" coords="249,128,447,153"/>
-<area shape="poly" id="edge51_Node000001_Node000054" title=" " alt="" coords="106,569,331,164,335,167,111,572"/>
-<area shape="rect" id="Node000056" href="$structSpan_1_1Matrix4x4.html#afe0101ccded226fc963d79f61111a6ed" title="透視投影行列作成 (左手系)" alt="" coords="242,14,454,54"/>
-<area shape="poly" id="edge55_Node000001_Node000056" title=" " alt="" coords="97,571,113,465,141,313,160,235,182,163,206,104,233,64,237,60,240,64,237,68,211,107,187,165,165,236,147,315,118,466,103,571"/>
-<area shape="rect" id="Node000057" href="$classSpan_1_1Renderer.html#a5c4ce1187eccfa4c75acd068c4ae9706" title="Camera" alt="" coords="247,553,449,579"/>
-<area shape="poly" id="edge58_Node000001_Node000057" title=" " alt="" coords="187,579,233,575,234,580,187,585"/>
-<area shape="rect" id="Node000058" href="$classSpan_1_1GraphicsContext.html#a30d20086e646e5db11d178a8d549d20d" title="現在のレンダーターゲットをバックバッファ (スワップチェーン) に戻します。 オフスクリーン描画からメイン描画に戻る際に使用します。" alt="" coords="237,817,459,857"/>
-<area shape="poly" id="edge60_Node000001_Node000058" title=" " alt="" coords="107,610,125,651,152,702,190,756,212,780,236,801,247,808,244,812,233,805,208,784,185,759,148,705,120,653,102,613"/>
-<area shape="rect" id="Node000003" href="$classSpan_1_1Renderer.html#a5ee526eb262da98fad30d48b97e51d88" title="動的定数バッファのメモリを確保し、データをコピーしてGPUアドレスを返します。" alt="" coords="528,177,737,203"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="350,503,365,450,396,374,417,332,442,291,473,253,508,220,532,205,534,210,511,224,476,256,447,294,421,334,400,376,370,452,355,504"/>
-<area shape="rect" id="Node000004" href="$classSpan_1_1Renderer.html#a2a47762d9edc86294bef1d38ab5e93b9" title="フレーム共通リソースをバインドする" alt="" coords="533,578,733,618"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="423,527,462,538,487,550,510,562,537,571,535,576,508,567,484,555,460,543,421,532"/>
-<area shape="rect" id="Node000012" href="$classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3" title="指定スロットにテクスチャをバインドします。Nullの場合は安全なダミーを生成します。" alt="" coords="819,416,1026,441"/>
-<area shape="poly" id="edge18_Node000002_Node000012" title=" " alt="" coords="356,502,378,472,413,433,457,394,482,378,508,365,559,350,612,345,665,347,717,354,812,380,884,408,882,413,810,385,716,360,665,352,612,350,560,356,510,370,484,382,460,398,416,436,382,475,360,505"/>
-<area shape="rect" id="Node000016" href="$classSpan_1_1Mesh.html#a778cd9c09642759f91c6f0cbe53503a1" title="描画コマンドを発行します。" alt="" coords="563,528,702,553"/>
-<area shape="poly" id="edge19_Node000002_Node000016" title=" " alt="" coords="448,522,550,531,550,536,447,528"/>
-<area shape="rect" id="Node000017" href="$structSpan_1_1Matrix4x4.html#a4adf277b2c441fe8d2ea295a0c0a2610" title=" " alt="" coords="827,52,1018,77"/>
-<area shape="poly" id="edge20_Node000002_Node000017" title=" " alt="" coords="351,503,369,457,400,391,447,322,475,290,508,264,541,245,572,235,601,232,630,232,688,232,720,226,755,211,800,183,840,150,901,86,905,90,844,154,803,188,757,216,721,231,689,237,630,238,602,237,573,241,543,250,511,268,479,294,451,325,405,394,374,459,356,505"/>
-<area shape="rect" id="Node000018" href="$classSpan_1_1Material.html#a88e607ee1549839bf30d9b43d788c509" title=" " alt="" coords="523,643,743,668"/>
-<area shape="poly" id="edge21_Node000002_Node000018" title=" " alt="" coords="443,527,463,538,474,549,481,561,488,585,494,607,500,618,511,628,521,634,518,639,508,632,496,621,489,609,483,586,477,563,470,553,460,543,440,532"/>
-<area shape="rect" id="Node000019" href="$classSpan_1_1Material.html#ad7569721f0bc47da673b5c13a4f336cc" title=" " alt="" coords="535,692,730,717"/>
-<area shape="poly" id="edge22_Node000002_Node000019" title=" " alt="" coords="446,527,463,539,478,556,485,574,488,610,491,645,497,661,511,677,524,686,521,691,508,681,493,664,485,646,483,610,480,575,473,559,460,543,443,531"/>
-<area shape="rect" id="Node000020" href="$classSpan_1_1Material.html#ad9003f93ab66eb68d215cd050e753bc8" title=" " alt="" coords="523,741,743,767"/>
-<area shape="poly" id="edge23_Node000002_Node000020" title=" " alt="" coords="448,527,463,539,481,562,489,586,490,611,488,635,486,659,487,682,494,705,511,727,517,731,513,735,507,730,490,707,482,683,480,659,483,634,485,611,484,587,476,565,459,542,444,532"/>
-<area shape="rect" id="Node000021" href="$classSpan_1_1Material.html#aa4cc5eef369e687cde86fb2bfc3620c1" title=" " alt="" coords="515,791,750,816"/>
-<area shape="poly" id="edge24_Node000002_Node000021" title=" " alt="" coords="448,527,463,539,484,568,493,599,492,629,488,660,483,690,483,719,491,748,511,776,516,781,513,785,507,780,486,750,478,720,478,689,483,659,487,629,487,600,480,571,459,542,445,532"/>
-<area shape="rect" id="Node000022" href="$classSpan_1_1Material.html#ac1ad98a9d8fdea157446dfa1ac6b8868" title="GPU仮想アドレスの取得" alt="" coords="523,841,742,881"/>
-<area shape="poly" id="edge25_Node000002_Node000022" title=" " alt="" coords="449,527,463,539,488,575,497,611,496,647,489,683,482,719,480,755,489,790,511,826,516,830,512,834,507,829,484,792,475,755,477,719,484,682,490,647,492,612,483,577,459,542,445,531"/>
-<area shape="rect" id="Node000023" href="$classSpan_1_1Material.html#aa2be29da476461b6fe0921efd286e374" title=" " alt="" coords="519,279,746,304"/>
-<area shape="poly" id="edge26_Node000002_Node000023" title=" " alt="" coords="354,502,375,466,409,417,454,365,480,341,508,321,539,306,542,311,511,325,483,346,458,369,413,420,380,469,358,505"/>
-<area shape="rect" id="Node000024" href="$classSpan_1_1Material.html#ae5aefeb9744213a3a4973d9180ffcaf8" title=" " alt="" coords="521,380,744,405"/>
-<area shape="poly" id="edge27_Node000002_Node000024" title=" " alt="" coords="364,501,425,458,465,434,508,414,531,406,533,411,510,419,468,439,428,463,367,506"/>
-<area shape="rect" id="Node000025" href="$classSpan_1_1Material.html#a78f6b453f3e2252990741d88ba1aed03" title=" " alt="" coords="509,429,756,455"/>
-<area shape="poly" id="edge28_Node000002_Node000025" title=" " alt="" coords="385,501,509,463,545,455,547,460,510,468,387,506"/>
-<area shape="rect" id="Node000026" href="$structSpan_1_1Matrix4x4.html#afc3f3a8aeeaac6aa4302a64b7568fbf3" title=" " alt="" coords="547,905,718,931"/>
-<area shape="poly" id="edge29_Node000002_Node000026" title=" " alt="" coords="449,527,463,539,481,561,492,583,499,606,502,628,498,673,488,717,478,761,474,805,477,827,483,848,494,869,511,891,535,907,532,912,508,894,490,872,478,850,471,828,469,805,472,761,483,716,493,672,496,628,494,607,487,585,476,564,459,542,446,531"/>
-<area shape="rect" id="Node000027" href="$classSpan_1_1Material.html#a879a957f83f3a9a274b3415614ffe18f" title="変更がある場合、データをGPUへ転送します。" alt="" coords="547,479,718,504"/>
-<area shape="poly" id="edge30_Node000002_Node000027" title=" " alt="" coords="447,505,533,497,534,503,448,510"/>
-<area shape="rect" id="Node000005" href="$classSpan_1_1Renderer.html#ae80d42760b33469aa814b3e4e215536d" title="ComputeBufferをSRVとしてバインドします。" alt="" coords="814,642,1031,682"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="725,615,819,636,818,642,724,621"/>
-<area shape="rect" id="Node000008" href="$classSpan_1_1Renderer.html#a30d84e655d8659ace346e4b3c1e0bdd4" title="指定スロットにRenderTargetのSRVをバインドします。" alt="" coords="821,578,1025,618"/>
-<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="733,595,807,595,807,601,733,601"/>
-<area shape="rect" id="Node000010" href="$classSpan_1_1Renderer.html#a0cc384bd7056f0c488bcca951da8ab95" title="指定スロットにシャドウマップをバインドします。Nullの場合は安全なダミーを生成します。" alt="" coords="804,528,1041,553"/>
-<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="732,576,844,553,845,558,733,581"/>
-<area shape="poly" id="edge13_Node000004_Node000012" title=" " alt="" coords="727,575,755,562,770,551,779,540,802,513,889,447,892,451,806,517,783,543,773,555,757,567,729,580"/>
-<area shape="rect" id="Node000006" href="$classSpan_1_1Renderer.html#a1eea26b84a1f3668628114993580ff49" title=" " alt="" coords="1105,541,1309,581"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1012,639,1040,628,1064,609,1088,590,1104,583,1106,588,1091,595,1067,613,1043,632,1014,644"/>
-<area shape="rect" id="Node000007" href="$classSpan_1_1ComputeBuffer.html#a0fe4d32e374187093f51f68b7f4fefca" title=" " alt="" coords="1127,669,1287,709"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="1032,669,1113,677,1113,682,1031,675"/>
-<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="1024,582,1090,573,1091,578,1025,587"/>
-<area shape="rect" id="Node000009" href="$classSpan_1_1RenderTarget.html#a3149f0c570573ab2973d7bc21a6dd14d" title=" " alt="" coords="1133,605,1281,645"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="1025,605,1119,614,1119,619,1025,610"/>
-<area shape="poly" id="edge11_Node000010_Node000006" title=" " alt="" coords="1042,546,1091,550,1091,555,1041,552"/>
-<area shape="rect" id="Node000011" href="$classSpan_1_1ShadowMap.html#af987352f614203d2e9c8e1a37375a401" title=" " alt="" coords="1091,491,1323,516"/>
-<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="1019,525,1096,515,1096,520,1020,530"/>
-<area shape="poly" id="edge15_Node000012_Node000006" title=" " alt="" coords="943,439,1007,481,1090,525,1113,534,1111,539,1088,530,1004,485,941,444"/>
-<area shape="rect" id="Node000013" href="$classSpan_1_1Texture.html#ab7f1497482e3c11f84341d83aab51b94" title="SRVヒープ上のCPUハンドル (ディスクリプタのコピー元)" alt="" coords="1089,327,1324,367"/>
-<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="965,413,1089,377,1118,368,1119,373,1090,382,966,418"/>
-<area shape="rect" id="Node000014" href="$classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75" title="DirectXリソースの取得" alt="" coords="1106,392,1307,417"/>
-<area shape="poly" id="edge16_Node000012_Node000014" title=" " alt="" coords="1026,417,1092,412,1093,417,1027,422"/>
-<area shape="rect" id="Node000015" href="$classSpan_1_1Texture.html#a1e117e901ab11ec8630ef240fa59de6b" title="SRVヒープ自体 (ShaderVisibleではない、保管用)" alt="" coords="1106,441,1307,467"/>
-<area shape="poly" id="edge17_Node000012_Node000015" title=" " alt="" coords="1027,435,1093,441,1092,446,1026,440"/>
-<area shape="rect" id="Node000029" href="$classSpan_1_1Application.html#a0c44e973ca5db1d23a02a2cee66f5c11" title=" " alt="" coords="561,955,704,995"/>
-<area shape="poly" id="edge32_Node000028_Node000029" title=" " alt="" coords="433,618,449,626,463,637,479,656,489,676,498,714,496,753,489,791,481,829,479,867,487,904,497,923,511,941,529,955,549,965,547,970,526,960,507,945,492,926,482,906,474,867,476,828,484,790,491,752,493,715,484,678,474,659,459,641,446,631,431,623"/>
-<area shape="rect" id="Node000030" href="$namespaceSpan.html#a3f4b8561d46e69596ba6a7c3177a92e7" title=" " alt="" coords="829,881,1017,907"/>
-<area shape="poly" id="edge33_Node000029_Node000030" title=" " alt="" coords="704,957,755,941,779,929,803,917,835,907,836,912,805,922,781,933,757,946,705,962"/>
-<area shape="rect" id="Node000032" href="$classSpan_1_1AssetManager.html#a8b80e59ea529e23c8c8f5280d136fbf0" title="シングルトンインスタンスを取得します。" alt="" coords="829,763,1016,788"/>
-<area shape="poly" id="edge36_Node000029_Node000032" title=" " alt="" coords="704,966,731,957,754,941,768,925,774,908,777,874,780,838,788,820,802,803,816,792,820,796,806,806,792,823,786,839,783,874,780,910,772,928,758,945,733,962,705,971"/>
-<area shape="rect" id="Node000034" href="$classSpan_1_1AssetManager.html#a69ad0e84f0e86f10a14693275d0872f2" title="マネージャーを初期化します。" alt="" coords="845,817,1000,857"/>
-<area shape="poly" id="edge38_Node000029_Node000034" title=" " alt="" coords="704,964,730,955,754,941,770,924,778,905,785,885,802,866,831,851,833,856,806,871,790,888,783,907,775,926,758,945,732,959,705,969"/>
-<area shape="rect" id="Node000043" href="$classSpan_1_1GuiManager.html#ab78e1a284f6d5aced7912c00ab43c559" title="ImGuiコンテキストとバックエンドを初期化します。" alt="" coords="820,931,1025,956"/>
-<area shape="poly" id="edge41_Node000029_Node000043" title=" " alt="" coords="704,965,806,953,806,959,705,970"/>
-<area shape="rect" id="Node000046" href="$classSpan_1_1Input.html#aac6e8f1cf694b484ed01742f2d16d63c" title=" " alt="" coords="843,980,1002,1005"/>
-<area shape="poly" id="edge42_Node000029_Node000046" title=" " alt="" coords="704,977,830,984,830,990,704,982"/>
-<area shape="rect" id="Node000047" href="$classSpan_1_1Logger.html#a557d77ccfa31551817d7b28d985866c8" title="ロガーを初期化し、ログファイルを開きます。" alt="" coords="837,1029,1008,1055"/>
-<area shape="poly" id="edge43_Node000029_Node000047" title=" " alt="" coords="705,991,805,1015,844,1024,843,1029,803,1020,704,996"/>
-<area shape="rect" id="Node000048" href="$classSpan_1_1Time.html#ae9e018cd0d5a3b34b773e80c750860e7" title="初期化（エンジン起動時）" alt="" coords="843,1079,1002,1104"/>
-<area shape="poly" id="edge44_Node000029_Node000048" title=" " alt="" coords="666,993,729,1030,805,1065,831,1073,829,1078,803,1070,726,1034,663,998"/>
-<area shape="rect" id="Node000031" href="$classSpan_1_1Application.html#a095598d0c2e753bfb8d00acee435980f" title="シングルトンインスタンスのポインタ取得 (存在チェック用)" alt="" coords="1126,1029,1287,1055"/>
-<area shape="poly" id="edge34_Node000030_Node000031" title=" " alt="" coords="1006,904,1042,917,1084,940,1124,967,1185,1018,1181,1022,1120,971,1082,944,1040,922,1004,909"/>
-<area shape="poly" id="edge35_Node000031_Node000029" title=" " alt="" coords="1186,1057,1124,1090,1084,1107,1042,1119,975,1134,921,1141,868,1137,803,1119,759,1097,718,1068,684,1037,657,1008,661,1004,688,1033,722,1064,761,1093,805,1114,869,1132,921,1136,974,1128,1041,1114,1082,1102,1121,1085,1184,1052"/>
-<area shape="rect" id="Node000033" href="$classSpan_1_1AssetManager.html#a9d65496b728f9a4fef2a5334d5a8ad56" title=" " alt="" coords="1129,753,1284,793"/>
-<area shape="poly" id="edge37_Node000032_Node000033" title=" " alt="" coords="1016,772,1116,771,1116,776,1016,777"/>
-<area shape="rect" id="Node000035" href="$classSpan_1_1AssetRegistry.html#a2b83eeb5aa2e6d4c807d4e4a11db563c" title=" " alt="" coords="1115,881,1298,907"/>
-<area shape="poly" id="edge39_Node000034_Node000035" title=" " alt="" coords="1001,849,1130,876,1129,881,1000,855"/>
-<area shape="rect" id="Node000036" href="$classSpan_1_1AssetRegistry.html#a71c0e006b41117cb0b296adaf0de1c56" title="指定ディレクトリ以下の全アセットをスキャンし、レジストリを構築します。" alt="" coords="1131,817,1283,857"/>
-<area shape="poly" id="edge40_Node000034_Node000036" title=" " alt="" coords="1000,834,1117,834,1117,839,1000,839"/>
-<area shape="rect" id="Node000053" href="$structSpan_1_1Matrix4x4.html#a431bf3af613c1029e6de25d64cfda6b7" title=" " alt="" coords="531,27,734,52"/>
-<area shape="poly" id="edge49_Node000052_Node000053" title=" " alt="" coords="418,76,549,52,550,57,419,81"/>
-<area shape="poly" id="edge50_Node000053_Node000017" title=" " alt="" coords="734,45,814,52,813,58,734,51"/>
-<area shape="poly" id="edge52_Node000054_Node000017" title=" " alt="" coords="426,125,509,113,813,74,814,79,510,118,427,130"/>
-<area shape="poly" id="edge53_Node000054_Node000053" title=" " alt="" coords="429,125,460,113,474,103,483,92,493,80,508,69,546,53,548,58,511,74,497,84,487,95,478,107,463,118,430,130"/>
-<area shape="rect" id="Node000055" href="$structSpan_1_1Vector3.html#a3f30a6301de9087ae83240d2ac0ee1c7" title=" " alt="" coords="555,128,710,153"/>
-<area shape="poly" id="edge54_Node000054_Node000055" title=" " alt="" coords="448,138,542,138,542,143,448,143"/>
-<area shape="poly" id="edge56_Node000056_Node000017" title=" " alt="" coords="454,15,598,3,678,4,756,11,821,26,878,44,876,50,819,31,756,17,677,9,598,9,455,20"/>
-<area shape="poly" id="edge57_Node000056_Node000053" title=" " alt="" coords="454,33,517,34,517,40,454,39"/>
-<area shape="poly" id="edge59_Node000057_Node000026" title=" " alt="" coords="449,577,463,588,478,607,489,626,498,665,496,703,488,742,480,780,478,817,487,854,497,872,511,891,536,907,533,912,508,894,492,875,482,856,473,818,475,779,483,741,490,703,492,665,484,628,474,610,459,592,446,581"/>
+<area shape="rect" id="Node000001" title="オフスクリーンターゲットに球体を描画します。" alt="" coords="5,567,187,607"/>
+<area shape="rect" id="Node000002" href="$classSpan_1_1Renderer.html#ade1cd95fe5d2e6aa78493393ce39c767" title="メッシュ描画コマンドの発行。" alt="" coords="249,500,447,525"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,564,234,534,266,525,267,531,235,539,147,569"/>
+<area shape="rect" id="Node000021" href="$classSpan_1_1Application.html#ae2e9eaebe90ffdf55cfef9d74ccbce3e" title="シングルトンインスタンスの取得" alt="" coords="265,598,431,624"/>
+<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="187,593,251,599,251,604,187,598"/>
+<area shape="rect" id="Node000042" href="$classSpan_1_1Renderer.html#a377035eefc48745e3d15bcceae5f885a" title=" " alt="" coords="247,648,449,673"/>
+<area shape="poly" id="edge42_Node000001_Node000042" title=" " alt="" coords="151,605,235,632,272,642,271,647,234,637,150,610"/>
+<area shape="rect" id="Node000043" href="$classSpan_1_1Renderer.html#a4763d852f768394d7272e03a2e4d32e4" title=" " alt="" coords="239,698,457,738"/>
+<area shape="poly" id="edge43_Node000001_Node000043" title=" " alt="" coords="122,605,173,644,236,682,255,690,253,695,233,687,170,648,119,609"/>
+<area shape="rect" id="Node000044" href="$classSpan_1_1Renderer.html#a333cb4a9e8db91602609815c0d5237dd" title=" " alt="" coords="235,762,461,788"/>
+<area shape="poly" id="edge44_Node000001_Node000044" title=" " alt="" coords="111,606,130,637,159,676,194,715,236,747,251,755,249,760,233,752,191,719,155,680,126,640,106,608"/>
+<area shape="rect" id="Node000045" href="$structSpan_1_1Matrix4x4.html#a9c4e6a6d01ebda4b0b5818a910afa557" title="単位行列" alt="" coords="255,85,441,110"/>
+<area shape="poly" id="edge45_Node000001_Node000045" title=" " alt="" coords="94,567,96,484,102,427,113,364,130,298,154,234,188,173,233,121,241,114,244,118,237,125,193,176,159,236,135,300,118,365,107,428,102,484,99,567"/>
+<area shape="rect" id="Node000047" href="$structSpan_1_1Matrix4x4.html#a89c2ef7e5d64bc5015019811d0c88dfa" title="ビュー行列作成 (左手系: Z+が奥)" alt="" coords="249,36,447,61"/>
+<area shape="poly" id="edge48_Node000001_Node000047" title=" " alt="" coords="97,566,113,462,141,313,160,236,181,166,206,109,233,70,237,67,240,71,237,74,210,112,186,168,165,238,146,314,118,463,103,567"/>
+<area shape="rect" id="Node000049" href="$structSpan_1_1Matrix4x4.html#afe0101ccded226fc963d79f61111a6ed" title="透視投影行列作成 (左手系)" alt="" coords="242,135,454,175"/>
+<area shape="poly" id="edge52_Node000001_Node000049" title=" " alt="" coords="107,565,326,186,330,188,111,568"/>
+<area shape="rect" id="Node000050" href="$classSpan_1_1Renderer.html#a5c4ce1187eccfa4c75acd068c4ae9706" title="Camera" alt="" coords="247,549,449,574"/>
+<area shape="poly" id="edge55_Node000001_Node000050" title=" " alt="" coords="187,575,233,570,234,576,187,580"/>
+<area shape="rect" id="Node000051" href="$classSpan_1_1GraphicsContext.html#a30d20086e646e5db11d178a8d549d20d" title="現在のレンダーターゲットをバックバッファ (スワップチェーン) に戻します。 オフスクリーン描画からメイン描画に戻る際に使用します。" alt="" coords="237,812,459,852"/>
+<area shape="poly" id="edge57_Node000001_Node000051" title=" " alt="" coords="107,606,125,647,152,698,190,751,212,776,236,797,247,804,244,808,233,801,208,779,185,755,148,701,120,649,102,608"/>
+<area shape="rect" id="Node000003" href="$classSpan_1_1Renderer.html#a5ee526eb262da98fad30d48b97e51d88" title="動的定数バッファのメモリを確保し、データをコピーしてGPUアドレスを返します。" alt="" coords="528,352,737,377"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="360,497,420,443,462,412,508,386,527,378,529,383,510,391,465,416,423,447,363,501"/>
+<area shape="rect" id="Node000004" href="$classSpan_1_1Renderer.html#a99045dcc7cdaadce2843b7c2540156a3" title="指定スロットにテクスチャをバインドします。Nullの場合は安全なダミーを生成します。" alt="" coords="529,648,736,673"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="444,523,463,534,475,546,482,559,488,585,493,610,500,622,511,633,520,639,517,643,508,637,496,625,489,612,483,586,477,561,471,550,460,538,441,527"/>
+<area shape="rect" id="Node000009" href="$classSpan_1_1Mesh.html#a778cd9c09642759f91c6f0cbe53503a1" title="描画コマンドを発行します。" alt="" coords="563,598,702,624"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="436,523,463,534,478,546,488,559,496,572,511,583,551,599,549,603,508,588,492,576,483,562,474,550,460,539,434,528"/>
+<area shape="rect" id="Node000010" href="$structSpan_1_1Matrix4x4.html#a4adf277b2c441fe8d2ea295a0c0a2610" title=" " alt="" coords="826,110,1017,136"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="350,499,366,447,396,372,417,331,443,291,473,254,508,222,556,203,644,180,843,136,844,141,645,185,558,208,511,227,477,258,447,294,422,334,401,374,371,449,355,500"/>
+<area shape="rect" id="Node000011" href="$classSpan_1_1Material.html#a88e607ee1549839bf30d9b43d788c509" title=" " alt="" coords="523,697,743,722"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="447,523,463,534,478,553,486,572,488,610,490,648,497,665,511,682,518,688,515,692,507,686,492,668,485,649,483,610,481,573,474,555,460,538,444,527"/>
+<area shape="rect" id="Node000012" href="$classSpan_1_1Material.html#ad7569721f0bc47da673b5c13a4f336cc" title=" " alt="" coords="535,746,730,772"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="448,523,463,534,482,559,490,584,491,610,488,635,485,660,486,685,494,708,511,732,524,742,521,746,507,735,489,711,481,686,480,660,483,635,485,610,484,585,477,561,459,538,444,527"/>
+<area shape="rect" id="Node000013" href="$classSpan_1_1Material.html#ad9003f93ab66eb68d215cd050e753bc8" title=" " alt="" coords="523,796,743,821"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="448,523,463,534,485,565,493,597,493,629,488,660,483,691,482,722,490,752,511,781,516,786,513,790,507,785,486,754,477,722,478,691,483,659,488,628,488,598,480,568,459,538,445,527"/>
+<area shape="rect" id="Node000014" href="$classSpan_1_1Material.html#aa4cc5eef369e687cde86fb2bfc3620c1" title=" " alt="" coords="515,237,750,262"/>
+<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="351,498,370,454,402,393,448,328,476,298,508,273,520,266,523,270,511,277,480,302,452,331,407,396,375,457,356,500"/>
+<area shape="rect" id="Node000015" href="$classSpan_1_1Material.html#ac1ad98a9d8fdea157446dfa1ac6b8868" title="GPU仮想アドレスの取得" alt="" coords="523,287,742,327"/>
+<area shape="poly" id="edge14_Node000002_Node000015" title=" " alt="" coords="355,498,378,465,412,422,456,376,508,337,520,330,523,335,511,341,460,380,416,425,382,469,359,501"/>
+<area shape="rect" id="Node000016" href="$classSpan_1_1Material.html#aa2be29da476461b6fe0921efd286e374" title=" " alt="" coords="519,401,746,426"/>
+<area shape="poly" id="edge15_Node000002_Node000016" title=" " alt="" coords="371,497,432,466,508,435,538,427,539,432,510,440,434,471,373,502"/>
+<area shape="rect" id="Node000017" href="$classSpan_1_1Material.html#ae5aefeb9744213a3a4973d9180ffcaf8" title=" " alt="" coords="521,450,744,476"/>
+<area shape="poly" id="edge16_Node000002_Node000017" title=" " alt="" coords="421,497,544,475,545,481,422,502"/>
+<area shape="rect" id="Node000018" href="$classSpan_1_1Material.html#a78f6b453f3e2252990741d88ba1aed03" title=" " alt="" coords="509,500,756,525"/>
+<area shape="poly" id="edge17_Node000002_Node000018" title=" " alt="" coords="448,510,496,510,496,515,448,515"/>
+<area shape="rect" id="Node000019" href="$structSpan_1_1Matrix4x4.html#afc3f3a8aeeaac6aa4302a64b7568fbf3" title=" " alt="" coords="547,845,718,870"/>
+<area shape="poly" id="edge18_Node000002_Node000019" title=" " alt="" coords="449,523,463,534,478,553,489,572,497,610,495,648,488,686,480,723,478,760,487,796,497,814,511,832,536,848,533,852,508,836,492,817,482,798,473,760,475,722,482,685,490,647,492,610,484,574,474,556,459,538,445,527"/>
+<area shape="rect" id="Node000020" href="$classSpan_1_1Material.html#a879a957f83f3a9a274b3415614ffe18f" title="変更がある場合、データをGPUへ転送します。" alt="" coords="547,549,718,574"/>
+<area shape="poly" id="edge19_Node000002_Node000020" title=" " alt="" coords="422,522,545,544,544,549,421,528"/>
+<area shape="rect" id="Node000005" href="$classSpan_1_1Texture.html#ab7f1497482e3c11f84341d83aab51b94" title="SRVヒープ上のCPUハンドル (ディスクリプタのコピー元)" alt="" coords="804,519,1039,559"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="729,645,754,633,770,618,778,602,786,585,802,569,812,563,815,567,806,573,790,588,783,604,774,621,758,637,731,650"/>
+<area shape="rect" id="Node000006" href="$classSpan_1_1Renderer.html#a1eea26b84a1f3668628114993580ff49" title=" " alt="" coords="819,583,1023,623"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="697,645,806,623,807,628,698,650"/>
+<area shape="rect" id="Node000007" href="$classSpan_1_1Texture.html#af654e1e521ed18e71b35ca59cce1da75" title="DirectXリソースの取得" alt="" coords="821,648,1022,673"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="736,658,807,658,807,663,736,663"/>
+<area shape="rect" id="Node000008" href="$classSpan_1_1Texture.html#a1e117e901ab11ec8630ef240fa59de6b" title="SRVヒープ自体 (ShaderVisibleではない、保管用)" alt="" coords="821,697,1022,722"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="708,670,833,692,832,697,707,676"/>
+<area shape="rect" id="Node000022" href="$classSpan_1_1Application.html#a0c44e973ca5db1d23a02a2cee66f5c11" title=" " alt="" coords="561,903,704,943"/>
+<area shape="poly" id="edge21_Node000021_Node000022" title=" " alt="" coords="433,614,449,622,463,633,485,664,494,695,494,727,490,758,485,789,484,820,492,850,511,881,528,896,549,906,547,911,525,900,507,885,487,852,479,820,480,788,484,757,489,726,489,696,481,666,459,637,446,626,431,619"/>
+<area shape="rect" id="Node000023" href="$namespaceSpan.html#a3f4b8561d46e69596ba6a7c3177a92e7" title=" " alt="" coords="827,1061,1015,1086"/>
+<area shape="poly" id="edge22_Node000022_Node000023" title=" " alt="" coords="659,941,722,990,763,1016,805,1039,847,1055,845,1060,803,1044,760,1021,719,994,656,945"/>
+<area shape="rect" id="Node000025" href="$classSpan_1_1AssetManager.html#a8b80e59ea529e23c8c8f5280d136fbf0" title="シングルトンインスタンスを取得します。" alt="" coords="828,1110,1015,1136"/>
+<area shape="poly" id="edge25_Node000022_Node000025" title=" " alt="" coords="649,941,674,976,710,1018,755,1061,805,1097,819,1103,817,1108,803,1101,751,1065,706,1022,670,979,645,945"/>
+<area shape="rect" id="Node000027" href="$classSpan_1_1AssetManager.html#a69ad0e84f0e86f10a14693275d0872f2" title="マネージャーを初期化します。" alt="" coords="844,747,999,787"/>
+<area shape="poly" id="edge27_Node000022_Node000027" title=" " alt="" coords="703,907,730,896,754,881,770,861,777,840,785,818,802,797,829,781,832,786,806,801,789,821,782,841,775,863,758,885,733,901,705,912"/>
+<area shape="rect" id="Node000036" href="$classSpan_1_1GuiManager.html#ab78e1a284f6d5aced7912c00ab43c559" title="ImGuiコンテキストとバックエンドを初期化します。" alt="" coords="819,812,1024,837"/>
+<area shape="poly" id="edge36_Node000022_Node000036" title=" " alt="" coords="703,901,755,881,778,864,803,847,827,838,829,843,805,852,781,868,757,885,705,906"/>
+<area shape="rect" id="Node000039" href="$classSpan_1_1Input.html#aac6e8f1cf694b484ed01742f2d16d63c" title=" " alt="" coords="842,861,1001,886"/>
+<area shape="poly" id="edge39_Node000022_Node000039" title=" " alt="" coords="704,908,832,886,833,891,705,913"/>
+<area shape="rect" id="Node000040" href="$classSpan_1_1Logger.html#a557d77ccfa31551817d7b28d985866c8" title="ロガーを初期化し、ログファイルを開きます。" alt="" coords="836,910,1007,936"/>
+<area shape="poly" id="edge40_Node000022_Node000040" title=" " alt="" coords="704,920,822,920,822,926,704,926"/>
+<area shape="rect" id="Node000041" href="$classSpan_1_1Time.html#ae9e018cd0d5a3b34b773e80c750860e7" title="初期化（エンジン起動時）" alt="" coords="842,960,1001,985"/>
+<area shape="poly" id="edge41_Node000022_Node000041" title=" " alt="" coords="705,932,833,955,832,960,704,938"/>
+<area shape="rect" id="Node000024" href="$classSpan_1_1Application.html#a095598d0c2e753bfb8d00acee435980f" title="シングルトンインスタンスのポインタ取得 (存在チェック用)" alt="" coords="1115,1032,1277,1057"/>
+<area shape="poly" id="edge23_Node000023_Node000024" title=" " alt="" coords="1015,1061,1101,1052,1102,1057,1016,1066"/>
+<area shape="poly" id="edge24_Node000024_Node000022" title=" " alt="" coords="1115,1044,969,1031,885,1019,803,1000,739,978,682,952,685,947,741,973,805,995,886,1013,969,1026,1115,1039"/>
+<area shape="rect" id="Node000026" href="$classSpan_1_1AssetManager.html#a9d65496b728f9a4fef2a5334d5a8ad56" title=" " alt="" coords="1119,1103,1273,1143"/>
+<area shape="poly" id="edge26_Node000025_Node000026" title=" " alt="" coords="1015,1120,1105,1120,1105,1126,1015,1126"/>
+<area shape="rect" id="Node000028" href="$classSpan_1_1AssetRegistry.html#a2b83eeb5aa2e6d4c807d4e4a11db563c" title=" " alt="" coords="1105,697,1287,722"/>
+<area shape="poly" id="edge28_Node000027_Node000028" title=" " alt="" coords="998,748,1121,722,1122,728,999,753"/>
+<area shape="rect" id="Node000029" href="$classSpan_1_1AssetRegistry.html#a71c0e006b41117cb0b296adaf0de1c56" title="指定ディレクトリ以下の全アセットをスキャンし、レジストリを構築します。" alt="" coords="1120,747,1272,787"/>
+<area shape="poly" id="edge29_Node000027_Node000029" title=" " alt="" coords="999,764,1106,764,1106,770,999,770"/>
+<area shape="rect" id="Node000030" href="$classSpan_1_1AssetRegistry.html#a432dbe6ae1b0ab930bd903d93ad5a734" title="パスからアセット情報を登録・更新します (ファイル移動/作成時用)。" alt="" coords="1353,747,1505,787"/>
+<area shape="poly" id="edge30_Node000029_Node000030" title=" " alt="" coords="1272,764,1339,764,1339,770,1272,770"/>
+<area shape="rect" id="Node000031" href="$structSpan_1_1AssetMetadata.html#a83c8ed8bfd79a2aa90ed8d4e36b785b8" title=" " alt="" coords="1806,718,1966,758"/>
+<area shape="poly" id="edge31_Node000030_Node000031" title=" " alt="" coords="1505,759,1792,741,1792,746,1506,765"/>
+<area shape="rect" id="Node000032" href="$classSpan_1_1AssetSerializer.html#adea72d3eb1434b36473f6e0d38396451" title="指定したアセットのメタデータを取得します。 .metaファイルが存在しない場合は、新規にGUIDを生成して作成します。" alt="" coords="1553,775,1735,815"/>
+<area shape="poly" id="edge32_Node000030_Node000032" title=" " alt="" coords="1506,774,1540,779,1539,784,1505,779"/>
+<area shape="poly" id="edge34_Node000032_Node000031" title=" " alt="" coords="1728,772,1792,757,1793,762,1730,777"/>
+<area shape="rect" id="Node000033" href="$classSpan_1_1AssetSerializer.html#a39e6a3bea02531fc2c31683a27d52061" title="拡張子から汗ッとタイプを推論します。" alt="" coords="1783,832,1989,872"/>
+<area shape="poly" id="edge33_Node000032_Node000033" title=" " alt="" coords="1730,812,1788,826,1787,832,1728,818"/>
+<area shape="rect" id="Node000034" href="$namespaceSpan.html#a8ba99036404afdb464fdc44c3dbc7136" title=" " alt="" coords="1826,782,1946,808"/>
+<area shape="poly" id="edge35_Node000032_Node000034" title=" " alt="" coords="1735,792,1812,792,1812,798,1735,798"/>
+<area shape="rect" id="Node000037" href="$classSpan_1_1GuiManager.html#a79fd10d93a58b741c10bd8c8477afc0a" title="管理対象のエディタパネルを追加します。" alt="" coords="1091,812,1301,837"/>
+<area shape="poly" id="edge37_Node000036_Node000037" title=" " alt="" coords="1024,822,1078,822,1078,827,1024,827"/>
+<area shape="rect" id="Node000038" href="$classSpan_1_1GuiManager.html#ad8ff21c11b12bff5ee5b454a4dae33d0" title="フォントや配色などのスタイル設定を適用します。" alt="" coords="1087,861,1305,886"/>
+<area shape="poly" id="edge38_Node000036_Node000038" title=" " alt="" coords="993,834,1112,856,1111,861,992,840"/>
+<area shape="rect" id="Node000046" href="$structSpan_1_1Matrix4x4.html#a431bf3af613c1029e6de25d64cfda6b7" title=" " alt="" coords="531,85,734,110"/>
+<area shape="poly" id="edge46_Node000045_Node000046" title=" " alt="" coords="442,95,518,95,518,100,442,100"/>
+<area shape="poly" id="edge47_Node000046_Node000010" title=" " alt="" coords="734,104,813,111,812,116,734,109"/>
+<area shape="poly" id="edge49_Node000047_Node000010" title=" " alt="" coords="396,33,467,18,557,6,657,5,708,10,757,20,797,36,836,57,897,99,894,104,833,61,795,41,755,25,707,15,657,10,558,12,467,23,397,38"/>
+<area shape="poly" id="edge50_Node000047_Node000046" title=" " alt="" coords="422,58,545,80,544,85,421,64"/>
+<area shape="rect" id="Node000048" href="$structSpan_1_1Vector3.html#a3f30a6301de9087ae83240d2ac0ee1c7" title=" " alt="" coords="555,36,710,61"/>
+<area shape="poly" id="edge51_Node000047_Node000048" title=" " alt="" coords="448,46,542,46,542,51,448,51"/>
+<area shape="poly" id="edge53_Node000049_Node000010" title=" " alt="" coords="454,146,812,126,813,132,454,152"/>
+<area shape="poly" id="edge54_Node000049_Node000046" title=" " alt="" coords="447,132,555,110,556,116,448,137"/>
+<area shape="poly" id="edge56_Node000050_Node000019" title=" " alt="" coords="448,572,463,584,485,615,493,647,493,679,488,710,483,742,482,772,490,802,511,832,535,848,532,852,507,836,485,805,477,773,477,741,482,709,488,678,488,647,480,617,459,587,445,577"/>
 </map>
