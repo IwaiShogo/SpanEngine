@@ -1,4 +1,4 @@
 var Texture_8cpp =
 [
-    [ "STB_IMAGE_IMPLEMENTATION", "Texture_8cpp.html#a18372412ad2fc3ce1e3240b3cf0efe78", null ]
+    [ "Span::ToWideString", "namespaceSpan.html#ad54b1326a5c3040915ff8939b32acd16", null ]
 ];

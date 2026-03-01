@@ -10,7 +10,7 @@ var indexSectionsWithContent =
   7: "abcklps",
   8: "abcdefghijklmnopqrstuvwxyz",
   9: "insw",
-  10: "abcdfilmprsu⚠アパビメラリ使座操注計🌳🏗📁📊📏📝🔄🖱🖼🧠🧮"
+  10: "abcdfilmrsu⚠アパビメラリ使座操注計🌳🏗📁📊📏📝🔄🖱🖼🧠🧮"
 };
 
 var indexSectionNames =

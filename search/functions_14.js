@@ -6,5 +6,6 @@ var searchData=
   ['updatedata_3',['UpdateData',['../classSpan_1_1ComputeBuffer.html#a47f7ad9f077bcdbeaa342533f7d9df95',1,'Span::ComputeBuffer']]],
   ['updatelightdata_4',['UpdateLightData',['../classSpan_1_1LightManager.html#a60d5b183bec191289b0487564ae08af6',1,'Span::LightManager']]],
   ['updatesystems_5',['UpdateSystems',['../classSpan_1_1World.html#a0cf3c16fe3672409ea7d34226220111c',1,'Span::World']]],
-  ['uploadtexture_6',['UploadTexture',['../classSpan_1_1Texture.html#a5f376f62e8cc6759217f4bbddad30c97',1,'Span::Texture']]]
+  ['uploadtexture_6',['UploadTexture',['../classSpan_1_1Texture.html#a5d570091e4a558cc0f7ed70ad31acdcf',1,'Span::Texture']]],
+  ['uploadtexturesingle_7',['UploadTextureSingle',['../classSpan_1_1Texture.html#ac5370f5dc6e0b457a75701a8597c1ddc',1,'Span::Texture']]]
 ];

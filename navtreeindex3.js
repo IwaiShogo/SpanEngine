@@ -1,6 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"classSpan_1_1EntityBuilder.html#ad2a2954b340827e9da99a646ab1f7909":[1,0,0,56,4],
 "classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2":[0,0,0,56,0],
 "classSpan_1_1EntityBuilder.html#afef310a392dbdfdaee2008ad5765b7c2":[1,0,0,56,0],
 "classSpan_1_1EntityManager.html":[0,0,0,57],
@@ -249,5 +248,6 @@ var NAVTREEINDEX3 =
 "classSpan_1_1ImGuiUI.html#a34b9192587c923b4380f4cbc72155b75":[1,0,0,18,2],
 "classSpan_1_1ImGuiUI.html#a507f6a32cef79a1160e393192a572f27":[0,0,0,18,5],
 "classSpan_1_1ImGuiUI.html#a507f6a32cef79a1160e393192a572f27":[1,0,0,18,5],
-"classSpan_1_1ImGuiUI.html#a7406027629260cb8a8ab6110dcd20a6c":[0,0,0,18,1]
+"classSpan_1_1ImGuiUI.html#a7406027629260cb8a8ab6110dcd20a6c":[0,0,0,18,1],
+"classSpan_1_1ImGuiUI.html#a7406027629260cb8a8ab6110dcd20a6c":[1,0,0,18,1]
 };

@@ -13,9 +13,9 @@ var searchData=
   ['updatedata_10',['UpdateData',['../classSpan_1_1ComputeBuffer.html#a47f7ad9f077bcdbeaa342533f7d9df95',1,'Span::ComputeBuffer']]],
   ['updatelightdata_11',['UpdateLightData',['../classSpan_1_1LightManager.html#a60d5b183bec191289b0487564ae08af6',1,'Span::LightManager']]],
   ['updatesystems_12',['UpdateSystems',['../classSpan_1_1World.html#a0cf3c16fe3672409ea7d34226220111c',1,'Span::World']]],
-  ['upload_20process_13',['🔄 Upload Process',['../classSpan_1_1Texture.html#autotoc_md198',1,'']]],
-  ['uploadbuffer_14',['uploadBuffer',['../classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a',1,'Span::Texture']]],
-  ['uploadtexture_15',['UploadTexture',['../classSpan_1_1Texture.html#a5f376f62e8cc6759217f4bbddad30c97',1,'Span::Texture']]],
+  ['uploadbuffer_13',['uploadBuffer',['../classSpan_1_1Texture.html#a44848875a4af76b2d462e019c73c911a',1,'Span::Texture']]],
+  ['uploadtexture_14',['UploadTexture',['../classSpan_1_1Texture.html#a5d570091e4a558cc0f7ed70ad31acdcf',1,'Span::Texture']]],
+  ['uploadtexturesingle_15',['UploadTextureSingle',['../classSpan_1_1Texture.html#ac5370f5dc6e0b457a75701a8597c1ddc',1,'Span::Texture']]],
   ['usage_16',['Usage',['../classSpan_1_1Input.html#autotoc_md6',1,'📝 Usage'],['../classSpan_1_1EntityBuilder.html#autotoc_md116',1,'📝 Usage'],['../classSpan_1_1ConstantBuffer.html#autotoc_md136',1,'📝 Usage']]],
   ['usedoffset_17',['usedOffset',['../classSpan_1_1MemoryArena.html#a029c90126f890269c315d7c8f34af0bd',1,'Span::MemoryArena']]],
   ['uv_18',['uv',['../structSpan_1_1Vertex.html#abac13f64d1c801dba33ee5ffac17474c',1,'Span::Vertex']]]

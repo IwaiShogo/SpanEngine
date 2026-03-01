@@ -9,6 +9,5 @@ var searchData=
   ['span_5finspector_5fend_6',['SPAN_INSPECTOR_END',['../SpanReflection_8h.html#a03c56469341230c856b122f920371494',1,'SpanReflection.h']]],
   ['span_5flog_7',['SPAN_LOG',['../Logger_8h.html#a1b7ff4efe93a9030e55f7598d493448c',1,'Logger.h']]],
   ['span_5fnon_5fcopyable_8',['SPAN_NON_COPYABLE',['../CoreMinimal_8h.html#a8060c7382a7330c4518b5bbccf78d2b7',1,'CoreMinimal.h']]],
-  ['span_5fwarn_9',['SPAN_WARN',['../Logger_8h.html#addc59e16e18e49e14189a1adde02e125',1,'Logger.h']]],
-  ['stb_5fimage_5fimplementation_10',['STB_IMAGE_IMPLEMENTATION',['../Texture_8cpp.html#a18372412ad2fc3ce1e3240b3cf0efe78',1,'Texture.cpp']]]
+  ['span_5fwarn_9',['SPAN_WARN',['../Logger_8h.html#addc59e16e18e49e14189a1adde02e125',1,'Logger.h']]]
 ];

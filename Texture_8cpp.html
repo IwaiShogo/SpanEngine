@@ -92,8 +92,11 @@ $(function(){initNavTree('Texture_8cpp.html','',''); });
   <div class="headertitle"><div class="title">Texture.cpp ファイル</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Textureの実装。  
+<a href="#details">[詳解]</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="Texture_8h_source.html">Texture.h</a>&quot;</code><br />
-<code>#include &lt;stb_image.h&gt;</code><br />
+<code>#include &lt;d3dx12.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Texture.cpp の依存先関係図:</div>
 <div class="dyncontent">
@@ -106,28 +109,21 @@ Texture.cpp の依存先関係図:</div>
 名前空間</h2></td></tr>
 <tr class="memitem:Span" id="r_Span"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html">Span</a></td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
-マクロ定義</h2></td></tr>
-<tr class="memitem:a18372412ad2fc3ce1e3240b3cf0efe78" id="r_a18372412ad2fc3ce1e3240b3cf0efe78"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a18372412ad2fc3ce1e3240b3cf0efe78">STB_IMAGE_IMPLEMENTATION</a></td></tr>
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ad54b1326a5c3040915ff8939b32acd16" id="r_ad54b1326a5c3040915ff8939b32acd16"><td class="memItemLeft">static std::wstring&#160;</td><td class="memItemRight"><a class="el" href="namespaceSpan.html#ad54b1326a5c3040915ff8939b32acd16">Span::ToWideString</a> (const std::string &amp;str)</td></tr>
 </table>
-<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">マクロ定義詳解</h2>
-<a id="a18372412ad2fc3ce1e3240b3cf0efe78" name="a18372412ad2fc3ce1e3240b3cf0efe78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18372412ad2fc3ce1e3240b3cf0efe78">&#9670;&#160;</a></span>STB_IMAGE_IMPLEMENTATION</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
+<div class="textblock"><p>Textureの実装。 </p>
+<p><br  />
+</p>
+<hr  />
+ <h2 class="doxsection"><a class="anchor" id="autotoc_md197"></a>
+autotoc_md197</h2>
+<dl class="section author"><dt>著者</dt><dd>Iwai Shogo </dd></dl>
 
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define STB_IMAGE_IMPLEMENTATION</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="Texture_8cpp_source.html">Texture.cpp</a> の <a class="el" href="Texture_8cpp_source.html#l00004">4</a> 行目に定義があります。</p>
-
-</div>
-</div>
-</div><!-- contents -->
+<p class="definition"> <a class="el" href="Texture_8cpp_source.html">Texture.cpp</a> に定義があります。</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

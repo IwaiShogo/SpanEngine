@@ -273,6 +273,7 @@ var namespaceSpan =
     [ "ToDegrees", "namespaceSpan.html#a6d290667947dd9fb137877008986c724", null ],
     [ "Tooltip", "namespaceSpan.html#a3a9bfa653e8f9e248d4313ed0939db77", null ],
     [ "ToRadians", "namespaceSpan.html#a2e4930a806963e7ab8c6c60031c41fe8", null ],
+    [ "ToWideString", "namespaceSpan.html#ad54b1326a5c3040915ff8939b32acd16", null ],
     [ "CHUNK_SIZE", "namespaceSpan.html#a51dc0b6d0daae8cf8e6841254d8dc062", null ],
     [ "HalfPI", "namespaceSpan.html#aab3b565f31423405c3fdb453380bc937", null ],
     [ "is_fixed_string_v", "namespaceSpan.html#a145b8dc890551fcd9c17ad183b945a13", null ],
