@@ -110,6 +110,7 @@ var annotated_dup =
       [ "TransformSystem", "classSpan_1_1TransformSystem.html", "classSpan_1_1TransformSystem" ],
       [ "CameraSystem", "classSpan_1_1CameraSystem.html", "classSpan_1_1CameraSystem" ],
       [ "EditorCameraSystem", "classSpan_1_1EditorCameraSystem.html", "classSpan_1_1EditorCameraSystem" ],
+      [ "RenderItem", "structSpan_1_1RenderItem.html", "structSpan_1_1RenderItem" ],
       [ "RenderingSystem", "classSpan_1_1RenderingSystem.html", "classSpan_1_1RenderingSystem" ]
     ] ],
     [ "std", "namespacestd.html", [

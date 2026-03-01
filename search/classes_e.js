@@ -5,6 +5,7 @@ var searchData=
   ['renamefilecommand_2',['RenameFileCommand',['../classSpan_1_1RenameFileCommand.html',1,'Span']]],
   ['renderer_3',['Renderer',['../classSpan_1_1Renderer.html',1,'Span']]],
   ['renderingsystem_4',['RenderingSystem',['../classSpan_1_1RenderingSystem.html',1,'Span']]],
-  ['renderpassmanager_5',['RenderPassManager',['../classSpan_1_1RenderPassManager.html',1,'Span']]],
-  ['rendertarget_6',['RenderTarget',['../classSpan_1_1RenderTarget.html',1,'Span']]]
+  ['renderitem_5',['RenderItem',['../structSpan_1_1RenderItem.html',1,'Span']]],
+  ['renderpassmanager_6',['RenderPassManager',['../classSpan_1_1RenderPassManager.html',1,'Span']]],
+  ['rendertarget_7',['RenderTarget',['../classSpan_1_1RenderTarget.html',1,'Span']]]
 ];

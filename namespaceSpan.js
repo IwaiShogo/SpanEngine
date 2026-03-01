@@ -105,6 +105,7 @@ var namespaceSpan =
     [ "TransformSystem", "classSpan_1_1TransformSystem.html", "classSpan_1_1TransformSystem" ],
     [ "CameraSystem", "classSpan_1_1CameraSystem.html", "classSpan_1_1CameraSystem" ],
     [ "EditorCameraSystem", "classSpan_1_1EditorCameraSystem.html", "classSpan_1_1EditorCameraSystem" ],
+    [ "RenderItem", "structSpan_1_1RenderItem.html", "structSpan_1_1RenderItem" ],
     [ "RenderingSystem", "classSpan_1_1RenderingSystem.html", "classSpan_1_1RenderingSystem" ],
     [ "AddComponentFunc", "namespaceSpan.html#a6af56d259d0ccdc218e0cadc2dcd8e08", null ],
     [ "AssetHandle", "namespaceSpan.html#afdfa4cf289fb42dc538251b285a5a446", null ],

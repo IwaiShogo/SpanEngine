@@ -83,6 +83,7 @@ var hierarchy =
     [ "Span::Quaternion", "structSpan_1_1Quaternion.html", null ],
     [ "Span::Relationship", "structSpan_1_1Relationship.html", null ],
     [ "Span::Renderer", "classSpan_1_1Renderer.html", null ],
+    [ "Span::RenderItem", "structSpan_1_1RenderItem.html", null ],
     [ "Span::RenderPassManager", "classSpan_1_1RenderPassManager.html", null ],
     [ "Span::RenderTarget", "classSpan_1_1RenderTarget.html", null ],
     [ "Span::Scene", "classSpan_1_1Scene.html", null ],
