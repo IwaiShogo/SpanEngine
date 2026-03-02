@@ -15,6 +15,11 @@ namespace Span
 
 	ID3D12Device* GuiManager::m_device = nullptr;
 
+	// テクスチャキャッシュ用変数
+	static std::unordered_map<SIZE_T, D3D12_GPU_DESCRIPTOR_HANDLE> s_TextureCache;
+	static int s_NextStaticIndex = 1;	// 1~127: 静的アセット用
+	static int s_NextDynamicIndex = 128;	// 128~255: 動的テクスチャ用
+
 	void GuiManager::Initialize(HWND hWnd, ID3D12Device* device, ID3D12CommandQueue* commandQueue,int numFrames)
 	{
 		if (!device)
@@ -104,6 +109,8 @@ namespace Span
 
 	void GuiManager::BeginFrame()
 	{
+		s_NextDynamicIndex = 128;
+
 		ImGui_ImplDX12_NewFrame();
 		ImGui_ImplWin32_NewFrame();
 		ImGui::NewFrame();
@@ -246,25 +253,52 @@ namespace Span
 		panels.push_back(panel);
 	}
 
-	D3D12_GPU_DESCRIPTOR_HANDLE GuiManager::RegisterTexture(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)
+	D3D12_GPU_DESCRIPTOR_HANDLE GuiManager::RegisterTexture(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle, bool isDynamic)
 	{
 		if (!m_device || !srvHeap || srcHandle.ptr == 0) return { 0 };
 
-		// SRVヒープの先頭ハンドルを取得
+		int targetIndex = 0;
+
+		if (isDynamic)
+		{
+			// 動的テクスチャはキャッシュせず、毎フレーム新しい領域にコピー
+			if (s_NextDynamicIndex >= 256)
+			{
+				SPAN_WARN("[GuiManager] Dynamic Descriptor Heap is full!");
+				return srvHeap->GetGPUDescriptorHandleForHeapStart(); // フォールバック
+			}
+			targetIndex = s_NextDynamicIndex++;
+		}
+		else
+		{
+			// 静的テクスチャはキャッシュを利用
+			auto it = s_TextureCache.find(srcHandle.ptr);
+			if (it != s_TextureCache.end()) return it->second;
+
+			if (s_NextStaticIndex >= 128)
+			{
+				SPAN_WARN("[GuiManager] Static Descriptor Heap is full!");
+				return s_TextureCache.begin()->second; // フォールバック
+			}
+			targetIndex = s_NextStaticIndex++;
+		}
+
+		// コピー先ハンドルの計算
 		D3D12_CPU_DESCRIPTOR_HANDLE destHandleCPU = srvHeap->GetCPUDescriptorHandleForHeapStart();
 		D3D12_GPU_DESCRIPTOR_HANDLE destHandleGPU = srvHeap->GetGPUDescriptorHandleForHeapStart();
-
-		// インクリメントサイズを取得
 		UINT handleIncrementSize = m_device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
-		// インデックス1番目を使用する (0番目はImGuiのフォント用に使われているため)
-		int index = 1;
-
-		destHandleCPU.ptr += (UINT64)index * handleIncrementSize;
-		destHandleGPU.ptr += (UINT64)index * handleIncrementSize;
+		destHandleCPU.ptr += (UINT64)targetIndex * handleIncrementSize;
+		destHandleGPU.ptr += (UINT64)targetIndex * handleIncrementSize;
 
 		// デバイスを使ってコピーを実行
 		m_device->CopyDescriptorsSimple(1, destHandleCPU, srcHandle, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+
+		// 静的テクスチャのみキャッシュに保存
+		if (!isDynamic)
+		{
+			s_TextureCache[srcHandle.ptr] = destHandleGPU;
+		}
 
 		return destHandleGPU;
 	}

@@ -174,8 +174,10 @@ namespace Span
 			ImGui::TextColored(ImVec4(0.4f, 0.8f, 1.0f, 1.0f), "Type: Texture");
 
 			// 画像プレビュー
-			if (void* texID = AssetManager::Get().GetEditorThumbnail(path))
+			auto tex = AssetManager::Get().GetTexture(path.string());
+			if (tex)
 			{
+				void* texID = (void*)GuiManager::RegisterTexture(tex->GetCPUDescriptorHandle()).ptr;
 				float availWidth = ImGui::GetContentRegionAvail().x;
 				float size = std::min(availWidth, 256.0f);
 				ImGui::Image((ImTextureID)texID, ImVec2(size, size));
@@ -498,8 +500,12 @@ namespace Span
 		m_MaterialPreviewer.Render(renderer.GetCommandList(), &renderer, editMaterial.get());
 
 		// ImGui 上にプレビューテクスチャを中央ぞろえで描画
-		if (void* texID = m_MaterialPreviewer.GetTextureID())
+		D3D12_CPU_DESCRIPTOR_HANDLE srvHandle = m_MaterialPreviewer.GetSRV();
+		if (srvHandle.ptr != 0)
 		{
+			// 動的テクスチャとして毎フレーム登録
+			void* texID = (void*)GuiManager::RegisterTexture(srvHandle, true).ptr;
+
 			float windowWidth = ImGui::GetWindowSize().x;
 			float imageSize = 256.0f;
 			ImGui::SetCursorPosX((windowWidth - imageSize) * 0.5f);
@@ -538,7 +544,7 @@ namespace Span
 
 			// 1. サムネイルボタンの描画
 			ImVec2 texSize(48.0f, 48.0f);
-			void* texID = currentTex ? currentTex->GetImGuiTextureID() : nullptr;
+			void* texID = currentTex ? (void*)GuiManager::RegisterTexture(currentTex->GetCPUDescriptorHandle()).ptr : nullptr;
 
 			if (texID)
 			{

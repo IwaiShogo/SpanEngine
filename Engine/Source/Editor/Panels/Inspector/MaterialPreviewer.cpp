@@ -67,6 +67,9 @@ namespace Span
 		Matrix4x4 view = Matrix4x4::LookAtLH(Vector3(0, 0, -3.0f), Vector3(0, 0, 0), Vector3(0, 1, 0));
 		renderer->SetCamera(view, proj);
 
+		// 球体を描画する前に、エンジン用のヒープとグローバルリソースを再バインドする
+		renderer->BindGlobalResources();
+
 		Matrix4x4 world = Matrix4x4::Identity();
 		renderer->DrawMesh(m_SphereMesh, material, world);
 

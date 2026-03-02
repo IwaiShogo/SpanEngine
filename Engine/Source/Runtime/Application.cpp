@@ -250,7 +250,7 @@ namespace Span
 				D3D12_CPU_DESCRIPTOR_HANDLE srvHandle = sceneBuffer.GetSRV();
 				if (srvHandle.ptr != 0)
 				{
-					D3D12_GPU_DESCRIPTOR_HANDLE imGuiTexture = GuiManager::RegisterTexture(srvHandle);
+					D3D12_GPU_DESCRIPTOR_HANDLE imGuiTexture = GuiManager::RegisterTexture(srvHandle, true);
 					scenePanel->SetTexture(imGuiTexture);
 				}
 			}

@@ -149,7 +149,11 @@ namespace Span
 		/// @brief	GPU仮想アドレスを取得 (SetGraphicsRootConstantBufferView用)
 		D3D12_GPU_VIRTUAL_ADDRESS GetGPUVirtualAddress() const
 		{
-			return resource->GetGPUVirtualAddress();
+			if (resource)
+			{
+				return resource->GetGPUVirtualAddress();
+			}
+			return 0;
 		}
 
 	private:

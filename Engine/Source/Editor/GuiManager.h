@@ -93,9 +93,10 @@ namespace Span
 		 * 返されたハンドルは `ImGui::Image((ImTextureID)handle.ptr, ...)` で使用できます。
 		 * 
 		 * @param	srcHandle コピー元のCPUディスクリプタハンドル
+		 * @param	isDynamic 毎フレーム内容が変わる・再生成されるリソースは場合は true を指定
 		 * @return	ImGuiで使用可能なGPUディスクリプタハンドル
 		 */
-		static D3D12_GPU_DESCRIPTOR_HANDLE RegisterTexture(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle);
+		static D3D12_GPU_DESCRIPTOR_HANDLE RegisterTexture(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle, bool isDynamic = false);
 
 	private:
 		/// @brief	フォントや配色などのスタイル設定を適用します。

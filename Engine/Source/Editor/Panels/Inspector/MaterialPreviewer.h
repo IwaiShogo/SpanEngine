@@ -48,7 +48,7 @@ namespace Span
 		/**
 		 * @brief	描画結果のテクスチャIDを取得します。
 		 */
-		void* GetTextureID() const { return m_RenderTarget.GetImGuiTextureID(); }
+		D3D12_CPU_DESCRIPTOR_HANDLE GetSRV() const { return m_RenderTarget.GetSRV(); }
 
 	private:
 		void GenerateSphereMesh(ID3D12Device* device);

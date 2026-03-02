@@ -65,10 +65,10 @@ namespace Span
 		 */
 		void* GetImGuiTextureID() const
 		{
-			if (srvHeap)
+			/*if (srvHeap)
 			{
 				return (void*)srvHeap->GetGPUDescriptorHandleForHeapStart().ptr;
-			}
+			}*/
 			return nullptr;
 		}
 

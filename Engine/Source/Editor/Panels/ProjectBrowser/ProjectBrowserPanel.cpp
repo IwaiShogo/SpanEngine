@@ -14,6 +14,7 @@
 #include "ProjectBrowserPanel.h"
 #include "Utils/EditorFileSystem.h"
 #include "Editor/Commands/FileCommands.h"
+#include "Editor/GuiManager.h"
 
 #include <imgui.h>
 
@@ -533,7 +534,15 @@ namespace Span
 		if (!isDir)
 		{
 			if (extension == ".cpp" || extension == ".h") iconStr = ICON_FA_FILE_CODE;
-			else if (extension == ".png" || extension == ".jpg") iconStr = ICON_FA_IMAGE;
+			else if (extension == ".png" || extension == ".jpg" || extension == ".jpeg" || extension == ".tga")
+			{
+				iconStr = ICON_FA_IMAGE;
+				auto tex = AssetManager::Get().GetTexture(path.string());
+				if (tex)
+				{
+					textureID = (void*)GuiManager::RegisterTexture(tex->GetCPUDescriptorHandle()).ptr;
+				}
+			}
 			else if (extension == ".fbx" || extension == ".obj") iconStr = ICON_FA_CUBE;
 		}
 
@@ -587,9 +596,12 @@ namespace Span
 				}
 				else
 				{
-					std::filesystem::path preferredPath = path;
-					preferredPath.make_preferred();
-					EditorFileSystem::OpenExternal(preferredPath);
+					if (extension == ".cpp" || extension == ".h" || extension == ".cs")
+					{
+						std::filesystem::path preferredPath = path;
+						preferredPath.make_preferred();
+						EditorFileSystem::OpenExternal(preferredPath);
+					}
 				}
 			}
 			else if (ImGui::IsMouseReleased(ImGuiMouseButton_Left) && !ImGui::IsMouseDragPastThreshold(ImGuiMouseButton_Left))
