@@ -1,5 +1,8 @@
 var NAVTREEINDEX13 =
 {
+"structSpan_1_1Vector3.html#a51e7e9375b5cdc327440413ad21208d9":[0,0,0,5,23],
+"structSpan_1_1Vector3.html#a51e7e9375b5cdc327440413ad21208d9":[1,0,0,5,23],
+"structSpan_1_1Vector3.html#a51e83060eb4799090622d1dc79193d9a":[0,0,0,5,21],
 "structSpan_1_1Vector3.html#a51e83060eb4799090622d1dc79193d9a":[1,0,0,5,21],
 "structSpan_1_1Vector3.html#a5b73d20c05747047ff35465dd3af4634":[0,0,0,5,0],
 "structSpan_1_1Vector3.html#a5b73d20c05747047ff35465dd3af4634":[1,0,0,5,0],

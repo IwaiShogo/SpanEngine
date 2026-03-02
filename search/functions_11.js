@@ -6,7 +6,7 @@ var searchData=
   ['refresh_3',['Refresh',['../classSpan_1_1AssetRegistry.html#a71c0e006b41117cb0b296adaf0de1c56',1,'Span::AssetRegistry']]],
   ['register_4',['Register',['../classSpan_1_1ComponentRegistry.html#ac42781d9cddf073a5ce9b37ef594ec41',1,'Span::ComponentRegistry']]],
   ['registerasset_5',['RegisterAsset',['../classSpan_1_1AssetRegistry.html#a432dbe6ae1b0ab930bd903d93ad5a734',1,'Span::AssetRegistry']]],
-  ['registertexture_6',['RegisterTexture',['../classSpan_1_1GuiManager.html#a0f7b43f95ca06cadd8b3d4436e4e5f18',1,'Span::GuiManager']]],
+  ['registertexture_6',['RegisterTexture',['../classSpan_1_1GuiManager.html#a513f68e121762f386fec1e9493e1763e',1,'Span::GuiManager']]],
   ['remove_7',['Remove',['../classSpan_1_1ArchetypeSignature.html#a22d6c763b5ab1aefed313b02b4e439f6',1,'Span::ArchetypeSignature']]],
   ['removecomponent_8',['RemoveComponent',['../classSpan_1_1World.html#a5d815ca319bd1f2756394cc107818c46',1,'Span::World']]],
   ['removeentity_9',['RemoveEntity',['../classSpan_1_1Archetype.html#a11d5987a2ad75d156021bb2516fff2e4',1,'Span::Archetype']]],

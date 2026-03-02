@@ -281,7 +281,10 @@ var namespaceSpan =
     [ "NullEntityID", "namespaceSpan.html#a20540fd2e2d58f1722c48a6f1c6d1af5", null ],
     [ "PI", "namespaceSpan.html#af4fc42a9402477b7586237d036530a3d", null ],
     [ "s_LogFile", "namespaceSpan.html#ad4a86ef64ab27c3f27b56242c873941a", null ],
+    [ "s_NextDynamicIndex", "namespaceSpan.html#aefbcd2ad0769711eaa9046e9b66092a9", null ],
+    [ "s_NextStaticIndex", "namespaceSpan.html#a9e64be21a165e3382060c4e3de3a2e72", null ],
     [ "s_RandomDevice", "namespaceSpan.html#a086d008b6a56d176facbbfbfde8a1cc5", null ],
+    [ "s_TextureCache", "namespaceSpan.html#a191ff514eaa5deb3cf00d6919ee3b0ea", null ],
     [ "s_UniformDistribution", "namespaceSpan.html#a3b1c3d559ac672629a7459d8b6513225", null ],
     [ "TwoPI", "namespaceSpan.html#abc577250df3b868bd5b5d433f4c5632b", null ]
 ];

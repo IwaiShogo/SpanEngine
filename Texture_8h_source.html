@@ -161,10 +161,10 @@ $(function(){initNavTree('Texture_8h_source.html','',''); });
 <div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classSpan_1_1Texture.html#abdb98b25e004e4caf0a2f6bf9ca93e7f">   66</a></span>        <span class="keywordtype">void</span>* <a class="code hl_function" href="classSpan_1_1Texture.html#abdb98b25e004e4caf0a2f6bf9ca93e7f">GetImGuiTextureID</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">srvHeap</a>)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)<a class="code hl_variable" href="classSpan_1_1Texture.html#adcfa46e251fcfa5ba9c8b9e568fef0cc">srvHeap</a>-&gt;GetGPUDescriptorHandleForHeapStart().ptr;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="comment">/*if (srvHeap)</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">            {</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">                return (void*)srvHeap-&gt;GetGPUDescriptorHandleForHeapStart().ptr;</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">            }*/</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        }</div>
 </div>

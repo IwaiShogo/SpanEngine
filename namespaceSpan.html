@@ -519,6 +519,9 @@ $(function(){initNavTree('namespaceSpan.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 変数</h2></td></tr>
 <tr class="memitem:ad4a86ef64ab27c3f27b56242c873941a" id="r_ad4a86ef64ab27c3f27b56242c873941a"><td class="memItemLeft">static FILE *&#160;</td><td class="memItemRight"><a class="el" href="#ad4a86ef64ab27c3f27b56242c873941a">s_LogFile</a> = nullptr</td></tr>
+<tr class="memitem:a191ff514eaa5deb3cf00d6919ee3b0ea" id="r_a191ff514eaa5deb3cf00d6919ee3b0ea"><td class="memItemLeft">static std::unordered_map&lt; SIZE_T, D3D12_GPU_DESCRIPTOR_HANDLE &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a191ff514eaa5deb3cf00d6919ee3b0ea">s_TextureCache</a></td></tr>
+<tr class="memitem:a9e64be21a165e3382060c4e3de3a2e72" id="r_a9e64be21a165e3382060c4e3de3a2e72"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a9e64be21a165e3382060c4e3de3a2e72">s_NextStaticIndex</a> = 1</td></tr>
+<tr class="memitem:aefbcd2ad0769711eaa9046e9b66092a9" id="r_aefbcd2ad0769711eaa9046e9b66092a9"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#aefbcd2ad0769711eaa9046e9b66092a9">s_NextDynamicIndex</a> = 128</td></tr>
 <tr class="memitem:a51dc0b6d0daae8cf8e6841254d8dc062" id="r_a51dc0b6d0daae8cf8e6841254d8dc062"><td class="memItemLeft">constexpr size_t&#160;</td><td class="memItemRight"><a class="el" href="#a51dc0b6d0daae8cf8e6841254d8dc062">CHUNK_SIZE</a> = 16 * 1024</td></tr>
 <tr class="memdesc:a51dc0b6d0daae8cf8e6841254d8dc062"><td class="mdescLeft">&#160;</td><td class="mdescRight">1つのチャンクが確保する固定メモリサイズ (16KB)  <br /></td></tr>
 <tr class="memitem:a20540fd2e2d58f1722c48a6f1c6d1af5" id="r_a20540fd2e2d58f1722c48a6f1c6d1af5"><td class="memItemLeft">static const <a class="el" href="structSpan_1_1EntityID.html">EntityID</a>&#160;</td><td class="memItemRight"><a class="el" href="#a20540fd2e2d58f1722c48a6f1c6d1af5">NullEntityID</a> = { UINT32_MAX, 0 }</td></tr>
@@ -2407,6 +2410,54 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
+<a id="aefbcd2ad0769711eaa9046e9b66092a9" name="aefbcd2ad0769711eaa9046e9b66092a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefbcd2ad0769711eaa9046e9b66092a9">&#9670;&#160;</a></span>s_NextDynamicIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Span::s_NextDynamicIndex = 128</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00021">21</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a9e64be21a165e3382060c4e3de3a2e72" name="a9e64be21a165e3382060c4e3de3a2e72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e64be21a165e3382060c4e3de3a2e72">&#9670;&#160;</a></span>s_NextStaticIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Span::s_NextStaticIndex = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00020">20</a> 行目に定義があります。</p>
+
+</div>
+</div>
 <a id="a086d008b6a56d176facbbfbfde8a1cc5" name="a086d008b6a56d176facbbfbfde8a1cc5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a086d008b6a56d176facbbfbfde8a1cc5">&#9670;&#160;</a></span>s_RandomDevice</h2>
 
@@ -2428,6 +2479,30 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition"> <a class="el" href="AssetSerializer_8cpp_source.html">AssetSerializer.cpp</a> の <a class="el" href="AssetSerializer_8cpp_source.html#l00018">18</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a191ff514eaa5deb3cf00d6919ee3b0ea" name="a191ff514eaa5deb3cf00d6919ee3b0ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a191ff514eaa5deb3cf00d6919ee3b0ea">&#9670;&#160;</a></span>s_TextureCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;SIZE_T, D3D12_GPU_DESCRIPTOR_HANDLE&gt; Span::s_TextureCache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00019">19</a> 行目に定義があります。</p>
 
 </div>
 </div>

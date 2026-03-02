@@ -118,8 +118,8 @@ Span::GuiManager 連携図</div>
 <tr class="memitem:a1b9ad1d7595409b13c41950822c0b58f" id="r_a1b9ad1d7595409b13c41950822c0b58f"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a1b9ad1d7595409b13c41950822c0b58f template"><td class="memItemLeft">static std::shared_ptr&lt; T &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a1b9ad1d7595409b13c41950822c0b58f">GetPanel</a> ()</td></tr>
 <tr class="memdesc:a1b9ad1d7595409b13c41950822c0b58f"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定の方のパネルを取得します。  <br /></td></tr>
-<tr class="memitem:a0f7b43f95ca06cadd8b3d4436e4e5f18" id="r_a0f7b43f95ca06cadd8b3d4436e4e5f18"><td class="memItemLeft">static D3D12_GPU_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight"><a class="el" href="#a0f7b43f95ca06cadd8b3d4436e4e5f18">RegisterTexture</a> (D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)</td></tr>
-<tr class="memdesc:a0f7b43f95ca06cadd8b3d4436e4e5f18"><td class="mdescLeft">&#160;</td><td class="mdescRight">テクスチャをImGuiで表示するために登録します。  <br /></td></tr>
+<tr class="memitem:a513f68e121762f386fec1e9493e1763e" id="r_a513f68e121762f386fec1e9493e1763e"><td class="memItemLeft">static D3D12_GPU_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight"><a class="el" href="#a513f68e121762f386fec1e9493e1763e">RegisterTexture</a> (D3D12_CPU_DESCRIPTOR_HANDLE srcHandle, bool isDynamic=false)</td></tr>
+<tr class="memdesc:a513f68e121762f386fec1e9493e1763e"><td class="mdescLeft">&#160;</td><td class="mdescRight">テクスチャをImGuiで表示するために登録します。  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 静的非公開メンバ関数</h2></td></tr>
@@ -165,7 +165,7 @@ Span::GuiManager 連携図</div>
 
 <p>管理対象のエディタパネルを追加します。 </p>
 
-<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00244">244</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00251">251</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -199,7 +199,7 @@ Span::GuiManager 連携図</div>
 
 <p>フォントや配色などのスタイル設定を適用します。 </p>
 
-<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00272">272</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00306">306</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -234,7 +234,7 @@ Span::GuiManager 連携図</div>
 <p>ImGuiのフレームを開始します。 </p>
 <p><span class="tt">ImGui()::NewFrame()</span> を呼び出し、入力のキャプチャ状態を更新します。 ゲームループの更新処理(Update)の前に呼び出す必要があります。 </p>
 
-<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00105">105</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00110">110</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -280,7 +280,7 @@ Span::GuiManager 連携図</div>
 </dl>
 <p>登録されている全てのパネルの <span class="tt">OnImGuiRender()</span> を呼び出し、 最終的な頂点データをコマンドリストに積みます。 </p>
 
-<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00117">117</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00124">124</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -385,7 +385,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00018">18</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00023">23</a> 行目に定義があります。</p>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
@@ -399,8 +399,8 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a id="a0f7b43f95ca06cadd8b3d4436e4e5f18" name="a0f7b43f95ca06cadd8b3d4436e4e5f18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f7b43f95ca06cadd8b3d4436e4e5f18">&#9670;&#160;</a></span>RegisterTexture()</h2>
+<a id="a513f68e121762f386fec1e9493e1763e" name="a513f68e121762f386fec1e9493e1763e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a513f68e121762f386fec1e9493e1763e">&#9670;&#160;</a></span>RegisterTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -411,8 +411,12 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="memname">D3D12_GPU_DESCRIPTOR_HANDLE Span::GuiManager::RegisterTexture </td>
           <td>(</td>
-          <td class="paramtype">D3D12_CPU_DESCRIPTOR_HANDLE</td>          <td class="paramname"><span class="paramname"><em>srcHandle</em></span></td><td>)</td>
+          <td class="paramtype">D3D12_CPU_DESCRIPTOR_HANDLE</td>          <td class="paramname"><span class="paramname"><em>srcHandle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isDynamic</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -427,16 +431,17 @@ template&lt;typename T&gt; </div>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">srcHandle</td><td>コピー元のCPUディスクリプタハンドル </td></tr>
+    <tr><td class="paramname">isDynamic</td><td>毎フレーム内容が変わる・再生成されるリソースは場合は true を指定 </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>ImGuiで使用可能なGPUディスクリプタハンドル </dd></dl>
 
-<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00249">249</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00256">256</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1GuiManager_a0f7b43f95ca06cadd8b3d4436e4e5f18_icgraph.svg" width="430" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classSpan_1_1GuiManager_a513f68e121762f386fec1e9493e1763e_icgraph.svg" width="100%" height="445"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -466,7 +471,7 @@ template&lt;typename T&gt; </div>
 
 <p>ImGuiのshutdown処理を行います。 </p>
 
-<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00088">88</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GuiManager_8cpp_source.html">GuiManager.cpp</a> の <a class="el" href="GuiManager_8cpp_source.html#l00093">93</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -496,7 +501,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="GuiManager_8h_source.html">GuiManager.h</a> の <a class="el" href="GuiManager_8h_source.html#l00108">108</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GuiManager_8h_source.html">GuiManager.h</a> の <a class="el" href="GuiManager_8h_source.html#l00109">109</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -522,7 +527,7 @@ template&lt;typename T&gt; </div>
 
 <p>管理中のパネルリスト </p>
 
-<p class="definition"> <a class="el" href="GuiManager_8h_source.html">GuiManager.h</a> の <a class="el" href="GuiManager_8h_source.html#l00106">106</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GuiManager_8h_source.html">GuiManager.h</a> の <a class="el" href="GuiManager_8h_source.html#l00107">107</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -548,7 +553,7 @@ template&lt;typename T&gt; </div>
 
 <p>ImGui専用のSRVヒープ </p>
 
-<p class="definition"> <a class="el" href="GuiManager_8h_source.html">GuiManager.h</a> の <a class="el" href="GuiManager_8h_source.html#l00105">105</a> 行目に定義があります。</p>
+<p class="definition"> <a class="el" href="GuiManager_8h_source.html">GuiManager.h</a> の <a class="el" href="GuiManager_8h_source.html#l00106">106</a> 行目に定義があります。</p>
 
 </div>
 </div>
