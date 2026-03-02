@@ -596,7 +596,7 @@ namespace Span
 				}
 				else
 				{
-					if (extension == ".cpp" || extension == ".h" || extension == ".cs")
+					if (extension != ".mat")
 					{
 						std::filesystem::path preferredPath = path;
 						preferredPath.make_preferred();
